@@ -1,0 +1,596 @@
+{
+  "meta": {
+    "home": {
+      "title": "Novieri — AI-first IT solutions with a nearshore edge",
+      "description": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates."
+    },
+    "services": {
+      "title": "Services — Novieri",
+      "description": "AI & automation, managed IT, cybersecurity & compliance, and custom software. Four pillars, one enterprise standard."
+    },
+    "ai": {
+      "title": "AI & automation — Novieri",
+      "description": "Agents, chatbots, and process automation with an honest assessment of where AI actually pays off in your operation."
+    },
+    "managedIt": {
+      "title": "Managed IT — Novieri",
+      "description": "Helpdesk, Microsoft 365, networking, firewall, and backups run by senior engineers. Your IT department, without having to build one."
+    },
+    "security": {
+      "title": "Cybersecurity & compliance — Novieri",
+      "description": "Hardening, vulnerability management, and SOC 2 / ISO 27001 readiness. Real security, with evidence."
+    },
+    "software": {
+      "title": "Custom software — Novieri",
+      "description": "Web apps, APIs, and integrations in React, FastAPI, and Node. Software that fits your operation, not the other way around."
+    },
+    "about": {
+      "title": "About — Novieri",
+      "description": "Novieri is the fusion of two surnames: a family-run firm with enterprise standards, serving the US and Colombia from Barranquilla."
+    },
+    "contact": {
+      "title": "Contact — Novieri",
+      "description": "Tell us about your case or book a call directly with the founders. Barranquilla, Colombia — working US Eastern hours."
+    },
+    "notFound": {
+      "title": "Page not found — Novieri"
+    }
+  },
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "bookCall": "Book a call",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "servicesMenuLabel": "See all services",
+    "localeSwitcherLabel": "Language",
+    "homeLink": "Novieri — home",
+    "skipToContent": "Skip to content"
+  },
+  "pillars": {
+    "ai": {
+      "name": "AI & automation",
+      "tagline": "Agents and automations that take repetitive work off your team's plate.",
+      "tags": ["agents", "chatbots", "workflows"]
+    },
+    "managedIt": {
+      "name": "Managed IT",
+      "tagline": "Your IT department, without having to build one.",
+      "tags": ["helpdesk", "microsoft 365", "backups"]
+    },
+    "security": {
+      "name": "Cybersecurity & compliance",
+      "tagline": "Real security, and a clear path to SOC 2 / ISO 27001.",
+      "tags": ["hardening", "soc 2", "iso 27001"]
+    },
+    "software": {
+      "name": "Custom software",
+      "tagline": "Software that fits your operation, not the other way around.",
+      "tags": ["react", "fastapi", "node"]
+    }
+  },
+  "common": {
+    "bookCall": "Book a call",
+    "seeServices": "See services",
+    "learnMore": "Learn more",
+    "talkCase": "Let's talk about your case",
+    "whatsappCta": "Message us on WhatsApp",
+    "goHome": "Back to home"
+  },
+  "home": {
+    "hero": {
+      "titleA": "AI-first IT solutions,",
+      "titleB": "with a nearshore edge.",
+      "subtitle": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates.",
+      "meta": "barranquilla, colombia ·· gmt-5, same clock as ny ·· en / es",
+      "ringText": "ai · automation · managed it · cybersecurity · software · barranquilla · gmt-5 · "
+    },
+    "trust": {
+      "items": ["Microsoft 365", "FortiGate", "AWS", "Python", "React", "Odoo", "HubSpot", "Power BI"]
+    },
+    "proof": {
+      "items": [
+        { "value": "300+", "label": "users operated as cto" },
+        { "value": "0h", "label": "time difference with ny" },
+        { "value": "SOC 2", "label": "program led end to end" },
+        { "value": "2", "label": "founders, zero middlemen" }
+      ]
+    },
+    "console": {
+      "eyebrow": "ai in production",
+      "title": "While you read this, our agents are working.",
+      "body": "This isn't a promise — it's a real workflow of the kind we build and operate. An agent reads, validates, posts, and escalates to a human only when it matters, with time-saved metrics in plain sight.",
+      "cta": "See AI & automation",
+      "barTitle": "novieri · invoicing agent",
+      "badge": "LIVE",
+      "lines": [
+        { "t": "09:41:07  ", "kind": "cmd", "text": "$ novieri-agent watch --process invoicing" },
+        { "kind": "step", "text": "reading shared inbox… ", "hl": "47 new emails" },
+        { "kind": "ok", "text": "12 invoices detected and extracted" },
+        { "kind": "ok", "text": "validated against purchase orders in ", "hl": "Odoo" },
+        { "kind": "step", "text": "posting journal entries…" },
+        { "kind": "ok", "text": "12/12 posted · 0 errors" },
+        { "kind": "step", "text": "edge case #8842 → ", "hl": "escalated to a human" },
+        { "kind": "ok", "text": "summary sent to accounting" },
+        { "t": "09:43:22  ", "kind": "done", "text": "done. 38 min of manual work saved today." }
+      ],
+      "footState": "status",
+      "footStateValue": "● operating",
+      "footUptime": "uptime 99.98%",
+      "footSaved": "today: 38 min saved"
+    },
+    "services": {
+      "eyebrow": "services",
+      "title": "Four pillars, one standard."
+    },
+    "why": {
+      "eyebrow": "why novieri",
+      "title": "Nearshore premium: enterprise practices, your time zone, sensible rates.",
+      "points": [
+        {
+          "title": "Same clock as US East",
+          "body": "Zero time difference with New York. Standups, incidents, and calls happen inside your working day — not the morning after."
+        },
+        {
+          "title": "Bilingual by default",
+          "body": "Native-level English and Spanish across the team. Requirements, documentation, and support without translation loss."
+        },
+        {
+          "title": "Enterprise practices, SOC 2 experience",
+          "body": "Monitoring, tested backups, managed security, and real processes — run by a CTO who has led a SOC 2 program end to end."
+        },
+        {
+          "title": "Senior-only delivery",
+          "body": "You work directly with the founders who design and operate your systems. No juniors learning on your dime, no account managers in between."
+        }
+      ],
+      "stat": {
+        "value": "0h",
+        "label": "time difference with US East"
+      }
+    },
+    "how": {
+      "eyebrow": "how we work",
+      "title": "A simple process, from diagnosis to continuous improvement.",
+      "steps": [
+        {
+          "title": "Diagnosis",
+          "body": "We understand your operation, your infrastructure, and your risks before proposing anything."
+        },
+        {
+          "title": "Proposal",
+          "body": "Concrete scope, defined deliverables, and a clear price. No fine print."
+        },
+        {
+          "title": "Implementation",
+          "body": "We execute with dates and owners, and show you progress at every milestone."
+        },
+        {
+          "title": "Operation & continuous improvement",
+          "body": "We monitor, maintain, and propose improvements every quarter. Technology doesn't stand still."
+        }
+      ]
+    },
+    "founders": {
+      "eyebrow": "who we are",
+      "title": "A family-run firm with enterprise standards.",
+      "body": "Novieri is the fusion of its two founders' surnames: technology led by a CTO with years operating systems for hundreds of users, and a commercial operation that actually answers.",
+      "link": "Read the story",
+      "photoAlt": "Photo of Novieri's founders (pending)"
+    },
+    "cta": {
+      "title": "Your company already needs a technology team. It doesn't need to hire one.",
+      "subtitle": "Tell us about your case in a 30-minute call, no strings attached.",
+      "button": "Book a call"
+    }
+  },
+  "servicesIndex": {
+    "eyebrow": "services",
+    "title": "What we do",
+    "intro": "Four pillars that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, and everything needs software that fits your operation."
+  },
+  "serviceCommon": {
+    "whatTitle": "What we do",
+    "howTitle": "How it looks",
+    "packagesTitle": "Packages",
+    "packagesIntro": "No list prices: every operation is different. These packages give shape to the conversation.",
+    "faqTitle": "Frequently asked questions",
+    "ctaTitle": "Shall we talk about your case?",
+    "ctaSubtitle": "A 30-minute call to understand your operation and tell you, frankly, whether we can help."
+  },
+  "ai": {
+    "hero": {
+      "eyebrow": "ai & automation",
+      "title": "Agents and automations that take repetitive work off your team's plate.",
+      "promise": "Most companies don't need \"more AI\" — they need to know which processes to automate first and to see one running end to end. That's exactly what we do: an honest assessment, a measurable pilot, and, when it makes sense, ongoing operation."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "AI opportunity assessment",
+          "body": "A 2-week diagnostic: we map your processes and prioritize where automation actually pays."
+        },
+        {
+          "title": "AI agents",
+          "body": "Assistants that read email, classify requests, draft responses, and execute tasks inside your systems."
+        },
+        {
+          "title": "Chatbots on your knowledge",
+          "body": "Customer and internal support with answers grounded in your documents and policies — not made up."
+        },
+        {
+          "title": "Process automation",
+          "body": "Flows across your tools — invoicing, CRM, inventory, reporting — without copy-pasting between screens."
+        },
+        {
+          "title": "Integration with your systems",
+          "body": "We connect AI to Microsoft 365, Odoo, HubSpot, or your ERP through APIs, with permissions and auditing."
+        },
+        {
+          "title": "Measurement and control",
+          "body": "Every automation ships with usage, cost, and error-rate metrics. If it can't be measured, it doesn't ship."
+        }
+      ]
+    },
+    "how": {
+      "caption": "A real flow: a request arrives by email, an agent classifies it, queries your system, and replies — with a human approving what matters."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "AI Opportunity Assessment",
+          "blurb": "Fixed-scope, 2-week diagnostic: process map, use cases ranked by return, and an automation roadmap ready to execute."
+        },
+        {
+          "name": "Automation Pilot",
+          "blurb": "One process automated end to end, in production, with metrics. Concrete proof that this works in your operation."
+        },
+        {
+          "name": "AI Partner",
+          "blurb": "Monthly retainer: we build and operate your agents and automations, with continuous improvements and support."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "Is my company too small for AI?",
+          "a": "If your team does repetitive computer work — answering similar emails, moving data between systems, assembling reports — there's a use case. Size matters less than the volume of repeatable work; the assessment tells you whether the return justifies the investment."
+        },
+        {
+          "q": "What about the confidentiality of my data?",
+          "a": "We define from day one which data may leave your company and which may not. We use business accounts with no-training agreements, and when the case demands it, models deployed in your own cloud."
+        },
+        {
+          "q": "Doesn't AI make mistakes?",
+          "a": "It does — which is why every flow includes human approval points where errors are costly, and visible error-rate metrics. We automate the fault-tolerant, low-risk work first."
+        },
+        {
+          "q": "How fast do we see results?",
+          "a": "The assessment takes 2 weeks. A typical pilot is in production 3 to 6 weeks later. You should see hours recovered in the chosen process within the first month."
+        }
+      ]
+    }
+  },
+  "managedIt": {
+    "hero": {
+      "eyebrow": "managed it",
+      "title": "Your IT department, without having to build one.",
+      "promise": "Support that answers, computers that work, backups that actually restore, and a network that stays up. We run your technology to big-company standards, at a fraction of the cost of an internal team."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "Helpdesk",
+          "body": "Remote support for your team, with agreed response times and follow-through on every case until it's closed."
+        },
+        {
+          "title": "Microsoft 365",
+          "body": "Email, Teams, SharePoint, and licensing managed: onboarding, offboarding, security, and good practices from day one."
+        },
+        {
+          "title": "Networking & firewall",
+          "body": "Design, installation, and management of your network and firewall (FortiGate), with secure VPN for remote work."
+        },
+        {
+          "title": "Backups & continuity",
+          "body": "Automatic backups of servers and critical machines, proven with real restores — not just green lights."
+        },
+        {
+          "title": "Patching & maintenance",
+          "body": "System and application updates applied on time, before an old vulnerability becomes an incident."
+        },
+        {
+          "title": "Proactive monitoring",
+          "body": "We watch disks, services, and backups 24/7; many failures get fixed before anyone notices."
+        }
+      ]
+    },
+    "how": {
+      "caption": "What a quiet month looks like: tickets resolved within SLA, patches current, and backups verified with a test restore."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "Essential",
+          "blurb": "Helpdesk, Microsoft 365, and managed patching. The baseline for running without surprises, per seat per month."
+        },
+        {
+          "name": "Complete",
+          "blurb": "Everything above plus network and firewall management, backups, and a continuity plan. For companies that can't stop."
+        },
+        {
+          "name": "Premium",
+          "blurb": "Adds proactive monitoring, a security baseline, and a quarterly IT roadmap with the founders."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "How fast do you respond?",
+          "a": "Every plan has response times agreed in writing by severity. A down workstation doesn't wait like a printer does; urgent issues get attention in minutes, not days."
+        },
+        {
+          "q": "We already have someone who \"knows computers\". Why change?",
+          "a": "Because your operation depends on that person being available, documenting things, and knowing security. We leave everything documented, monitored, and backed by a team — and we answer under a service agreement, not as a favor."
+        },
+        {
+          "q": "Do I have to replace my current equipment or licenses?",
+          "a": "Not up front. We start with a diagnostic of what you have; what works, stays. Investments are proposed with priority and budget, and you make the call."
+        },
+        {
+          "q": "Do you work with US-based teams?",
+          "a": "Yes — that's the point of being in Barranquilla: we operate on US Eastern hours with native bilingual communication, at nearshore rates. Remote-first, with the same standards a US MSP would offer."
+        }
+      ]
+    }
+  },
+  "security": {
+    "hero": {
+      "eyebrow": "cybersecurity & compliance",
+      "title": "Real security, and a clear path to SOC 2 / ISO 27001.",
+      "promise": "No fear-selling, no empty checklists: we harden your infrastructure, manage vulnerabilities continuously, and — when your customers demand certifications — take you all the way to the audit with real evidence."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "Infrastructure hardening",
+          "body": "Secure configuration of servers, endpoints, Microsoft 365, and network: MFA, encryption, least privilege, and documented baselines."
+        },
+        {
+          "title": "Vulnerability management",
+          "body": "Periodic scanning, risk-based prioritization, and verified remediation — a continuous cycle, not an annual PDF."
+        },
+        {
+          "title": "SOC 2 / ISO 27001 readiness",
+          "body": "Gap assessment, remediation plan, and evidence support until you pass the audit."
+        },
+        {
+          "title": "Identity & email protection",
+          "body": "The entry point for 90% of attacks — phishing, compromised accounts, misconfigured access — closed."
+        },
+        {
+          "title": "Incident response",
+          "body": "A tested plan for when something happens: containment, communication, and recovery without improvising."
+        },
+        {
+          "title": "Security awareness",
+          "body": "Short, recurring training for your people, because the best firewall doesn't fix a hasty click."
+        }
+      ]
+    },
+    "how": {
+      "caption": "A real review: every control with its status and its evidence. This is how a prepared company walks into a SOC 2 audit."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "Security Baseline",
+          "blurb": "Infrastructure hardening, vulnerability scan, and an executive report with clear priorities. The starting point."
+        },
+        {
+          "name": "SOC 2 / ISO 27001 Readiness",
+          "blurb": "Gap assessment against the standard, remediation plan, and evidence support through the audit."
+        },
+        {
+          "name": "vCISO",
+          "blurb": "Security as an ongoing function: risk management, periodic reviews, and a security lead without a full-time hire."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "Would anyone really attack a company my size?",
+          "a": "Mass attacks don't pick victims: they scan the internet and exploit whatever is open. SMBs are the most frequent target precisely because they tend to be less protected."
+        },
+        {
+          "q": "How long does SOC 2 readiness take?",
+          "a": "It depends on the starting point; typically 3 to 6 months from gap assessment to audit-ready. The initial assessment gives you an honest timeline within the first week."
+        },
+        {
+          "q": "Do you issue the certification?",
+          "a": "No — the audit is always performed by an independent third party. We prepare your infrastructure, policies, and evidence so you walk into that audit to pass it, not to discover problems."
+        },
+        {
+          "q": "Isn't this expensive?",
+          "a": "It costs a fraction of what an incident does: the ransom, the days down, the customers lost. We start with the baseline — the essentials done right — and grow from there based on your actual risk."
+        }
+      ]
+    }
+  },
+  "software": {
+    "hero": {
+      "eyebrow": "custom software",
+      "title": "Software that fits your operation, not the other way around.",
+      "promise": "When the spreadsheet can't take any more and off-the-shelf software forces you to work its way, we build the exact tool: web applications, APIs, and integrations that talk to what you already use."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "Web applications",
+          "body": "Internal portals, operations dashboards, and customer tools built in React and Next.js — fast and easy to use."
+        },
+        {
+          "title": "APIs & backends",
+          "body": "Services in FastAPI and Node: solid, documented, and ready to grow with your operation."
+        },
+        {
+          "title": "Integrations",
+          "body": "Your systems talking to each other — ERP, CRM, billing, logistics — without manual reconciliation in Excel."
+        },
+        {
+          "title": "System modernization",
+          "body": "That old system everyone depends on and nobody wants to touch: we migrate it piece by piece, without stopping the operation."
+        },
+        {
+          "title": "AI-enabled software",
+          "body": "Smart search, automatic classification, or assistants inside your own tool — where they add value."
+        },
+        {
+          "title": "Operation & evolution",
+          "body": "We don't deliver and disappear: we monitor, fix, and evolve the software on a monthly retainer."
+        }
+      ]
+    },
+    "how": {
+      "caption": "Real code: a typed, tested, documented API — the standard for every delivery."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "Discovery Sprint",
+          "blurb": "Fixed price: we understand the problem, prototype the solution, and deliver a plan with scope and budget. You decide on facts."
+        },
+        {
+          "name": "Project",
+          "blurb": "Defined-scope build with biweekly milestones and working demos — you see real progress, not progress reports."
+        },
+        {
+          "name": "Evolution Retainer",
+          "blurb": "Monthly hours to operate, improve, and extend your software with the same team that built it."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "Why not just buy off-the-shelf software?",
+          "a": "If a market product solves your case, we'll tell you — it's cheaper, and we'll implement it. Building custom makes sense when your process is your competitive edge, or when the generic tool forces you to deform your operation."
+        },
+        {
+          "q": "How do I know it won't become a never-ending project?",
+          "a": "The discovery sprint defines scope and budget before serious code gets written, and the project moves in biweekly milestones with working demos. If something drifts, you see it in two weeks — not six months."
+        },
+        {
+          "q": "Do I own the code?",
+          "a": "Yes. All code, documentation, and access are in your name from day one. If you want to work with another team tomorrow, you take everything with you."
+        },
+        {
+          "q": "What happens after delivery?",
+          "a": "Software needs operation: dependencies to update, bugs to fix, improvements to prioritize. That's what the evolution retainer is for — or we train your team to run it."
+        }
+      ]
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "about",
+      "title": "Two surnames, one firm.",
+      "intro": "Novieri is born from the fusion of its two founders' surnames. It is, literally, a company with its own name: family-run in how it treats you, enterprise in its standards."
+    },
+    "story": {
+      "title": "The story",
+      "body": "After years leading technology for an operation of 300+ agents — infrastructure, security, a SOC 2 program, and AI systems in production — we decided to build what we saw was missing: a firm bringing that level of practice to companies that can't, and shouldn't, build an internal IT department."
+    },
+    "founders": {
+      "title": "The founders",
+      "helgar": {
+        "name": "Helgar Palmieri",
+        "role": "Technology & delivery",
+        "bio": "CTO with years leading IT and AI systems for a 300+ agent operation: infrastructure, a SOC 2 program, and full-stack + AI engineering. Personally designs and operates every solution we deliver.",
+        "photoAlt": "Photo of Helgar Palmieri (pending)"
+      },
+      "partner": {
+        "name": "[WIFE_NAME]",
+        "role": "Commercial & operations",
+        "bio": "[WIFE_BIO] — client relationships, proposals, and administration.",
+        "photoAlt": "Photo of the co-founder (pending)"
+      }
+    },
+    "location": {
+      "title": "From Barranquilla, for two markets",
+      "body": "Barranquilla gives us something uncommon: the same time zone as the US East Coast, costs that allow fair rates, and a technical talent pool that grows every year. That's how we can serve a local SMB in the morning and a client in New York in the afternoon — same team, same standard."
+    },
+    "cta": {
+      "title": "Let's work together.",
+      "subtitle": "A short call is enough to know whether we're the team you need."
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "contact",
+      "title": "Tell us about your case.",
+      "intro": "We reply the same business day. If you'd rather talk directly, book a call."
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "company": "Company",
+      "companyPlaceholder": "Your company's name",
+      "email": "Email",
+      "emailPlaceholder": "you@company.com",
+      "service": "What do you need?",
+      "serviceOptions": {
+        "ai": "AI & automation",
+        "managedIt": "Managed IT",
+        "security": "Cybersecurity & compliance",
+        "software": "Custom software",
+        "other": "Not sure yet / other"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us what's going on and what you'd like to achieve",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "success": "Received. We'll reply within the same business day.",
+      "error": "We couldn't send your message. Try again, or write to us directly at {email}.",
+      "validation": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email.",
+        "message": "Even one line helps."
+      }
+    },
+    "booking": {
+      "title": "Prefer to just book a time?",
+      "body": "Pick a 30-minute slot with the founders. No strings attached.",
+      "fallback": "Online booking is coming soon. In the meantime, write to {email} and we'll coordinate by email."
+    },
+    "aside": {
+      "whatsappLabel": "Message us on WhatsApp",
+      "emailLabel": "Or by email",
+      "location": "Barranquilla, Colombia · Working US Eastern hours"
+    }
+  },
+  "whatsapp": {
+    "floatLabel": "Message us on WhatsApp",
+    "greeting": "Hi, I'm coming from the Novieri website and I'd like to talk about my company."
+  },
+  "footer": {
+    "description": "AI-first IT solutions from Barranquilla, for Colombia and the United States.",
+    "servicesTitle": "Services",
+    "companyTitle": "Company",
+    "contactTitle": "Contact",
+    "legalFallback": "© {year} Novieri",
+    "legal": "© {year} {razonSocial} · NIT {nit}",
+    "linkedinLabel": "Novieri on LinkedIn",
+    "location": "Barranquilla, Colombia"
+  },
+  "notFound": {
+    "eyebrow": "error 404",
+    "title": "This page doesn't exist.",
+    "body": "The link may be outdated or mistyped. What you're looking for is probably one click away:",
+    "cta": "Back to home"
+  }
+}
