@@ -12,6 +12,16 @@ type MetaKey =
   | "managedIt"
   | "security"
   | "software"
+  | "solutions"
+  | "sol_aiAssistant"
+  | "sol_whatsapp"
+  | "sol_itSuite"
+  | "sol_visitorIntel"
+  | "sol_ventia"
+  | "sol_matterFlow"
+  | "sol_monitoring"
+  | "sol_sentinel"
+  | "sol_webDev"
   | "about"
   | "contact";
 

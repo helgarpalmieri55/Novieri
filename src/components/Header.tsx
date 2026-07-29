@@ -14,13 +14,28 @@ const PILLARS: { key: string; href: AppPathname }[] = [
   { key: "software", href: "/services/custom-software" },
 ];
 
+const SOLUTIONS: { key: string; href: AppPathname }[] = [
+  { key: "aiAssistant", href: "/solutions/ai-virtual-assistant" },
+  { key: "whatsapp", href: "/solutions/whatsapp-ai-assistant" },
+  { key: "itSuite", href: "/solutions/it-management-rmm" },
+  { key: "monitoring", href: "/solutions/systems-monitoring" },
+  { key: "visitorIntel", href: "/solutions/visitor-intelligence" },
+  { key: "sentinel", href: "/solutions/vulnerability-management" },
+  { key: "ventia", href: "/solutions/ventia" },
+  { key: "matterFlow", href: "/solutions/matter-flow" },
+  { key: "webDev", href: "/solutions/ai-websites" },
+];
+
+type Menu = "services" | "solutions" | null;
+
 export default function Header() {
   const t = useTranslations("nav");
   const tp = useTranslations("pillars");
+  const tso = useTranslations("solutions.items");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const servicesRef = useRef<HTMLDivElement>(null);
+  const [openMenu, setOpenMenu] = useState<Menu>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -30,12 +45,12 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    if (!servicesOpen) return;
+    if (!openMenu) return;
     const onDown = (e: PointerEvent) => {
-      if (!servicesRef.current?.contains(e.target as Node)) setServicesOpen(false);
+      if (!navRef.current?.contains(e.target as Node)) setOpenMenu(null);
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setServicesOpen(false);
+      if (e.key === "Escape") setOpenMenu(null);
     };
     addEventListener("pointerdown", onDown);
     addEventListener("keydown", onKey);
@@ -43,7 +58,7 @@ export default function Header() {
       removeEventListener("pointerdown", onDown);
       removeEventListener("keydown", onKey);
     };
-  }, [servicesOpen]);
+  }, [openMenu]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -54,8 +69,21 @@ export default function Header() {
 
   const closeAll = () => {
     setMenuOpen(false);
-    setServicesOpen(false);
+    setOpenMenu(null);
   };
+
+  const Chevron = ({ open }: { open: boolean }) => (
+    <svg
+      aria-hidden
+      width="10"
+      height="6"
+      viewBox="0 0 10 6"
+      fill="none"
+      className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+    >
+      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
 
   return (
     <header
@@ -71,33 +99,60 @@ export default function Header() {
       >
         {t("skipToContent")}
       </a>
-      <div className="container-site flex h-[72px] items-center gap-7">
+      <div className="container-site flex h-[72px] items-center gap-6">
         <Link href="/" aria-label={t("homeLink")} onClick={closeAll} className="mr-auto flex items-center gap-2.5">
           <Image src="/brand/novieri-isotipo-color-256px.png" alt="" width={32} height={33} priority />
           <span className="font-display text-[21px] font-semibold leading-none text-ink">novieri</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label={t("services")}>
-          <div className="relative" ref={servicesRef}>
+        <nav ref={navRef} className="hidden items-center gap-6 md:flex" aria-label={t("services")}>
+          {/* Solutions dropdown */}
+          <div className="relative">
             <button
               type="button"
-              aria-expanded={servicesOpen}
-              onClick={() => setServicesOpen((v) => !v)}
+              aria-expanded={openMenu === "solutions"}
+              onClick={() => setOpenMenu((m) => (m === "solutions" ? null : "solutions"))}
+              className="flex items-center gap-1.5 text-[15px] font-medium text-ink-muted transition-colors hover:text-ink"
+            >
+              {t("solutions")}
+              <Chevron open={openMenu === "solutions"} />
+            </button>
+            {openMenu === "solutions" && (
+              <div className="absolute left-1/2 top-full z-50 mt-4 max-h-[70vh] w-[320px] -translate-x-1/2 overflow-y-auto rounded-2xl border border-line bg-white p-2">
+                {SOLUTIONS.map((s) => (
+                  <Link
+                    key={s.key}
+                    href={s.href}
+                    onClick={closeAll}
+                    className="block rounded-xl px-4 py-2.5 transition-colors hover:bg-plum-wash"
+                  >
+                    <span className="block text-[15px] font-medium text-ink">{tso(`${s.key}.name`)}</span>
+                    <span className="mt-0.5 block text-[12.5px] text-ink-muted">{tso(`${s.key}.tagline`)}</span>
+                  </Link>
+                ))}
+                <Link
+                  href="/solutions"
+                  onClick={closeAll}
+                  className="mt-1 block border-t border-line px-4 py-3 text-[13.5px] font-medium text-plum transition-colors hover:text-plum-deep"
+                >
+                  {t("solutionsMenuLabel")} →
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Services dropdown */}
+          <div className="relative">
+            <button
+              type="button"
+              aria-expanded={openMenu === "services"}
+              onClick={() => setOpenMenu((m) => (m === "services" ? null : "services"))}
               className="flex items-center gap-1.5 text-[15px] font-medium text-ink-muted transition-colors hover:text-ink"
             >
               {t("services")}
-              <svg
-                aria-hidden
-                width="10"
-                height="6"
-                viewBox="0 0 10 6"
-                fill="none"
-                className={`transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
-              >
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
+              <Chevron open={openMenu === "services"} />
             </button>
-            {servicesOpen && (
+            {openMenu === "services" && (
               <div className="absolute left-1/2 top-full z-50 mt-4 w-[300px] -translate-x-1/2 rounded-2xl border border-line bg-white p-2">
                 {PILLARS.map((p) => (
                   <Link
@@ -120,6 +175,7 @@ export default function Header() {
               </div>
             )}
           </div>
+
           <Link href="/about" className="text-[15px] font-medium text-ink-muted transition-colors hover:text-ink">
             {t("about")}
           </Link>
@@ -156,24 +212,34 @@ export default function Header() {
       {menuOpen && (
         <div className="fixed inset-x-0 bottom-0 top-[72px] z-40 overflow-y-auto bg-white md:hidden">
           <nav className="container-site flex flex-col gap-1 py-6">
+            <span className="idx-mono px-2 pb-1 lowercase text-gold-deep">·· {t("solutions")}</span>
+            {SOLUTIONS.map((s) => (
+              <Link
+                key={s.key}
+                href={s.href}
+                onClick={closeAll}
+                className="rounded-xl px-2 py-2.5 text-[17px] font-medium text-ink"
+              >
+                {tso(`${s.key}.name`)}
+              </Link>
+            ))}
+            <div className="my-3 h-px bg-line" />
+            <span className="idx-mono px-2 pb-1 lowercase text-gold-deep">·· {t("services")}</span>
             {PILLARS.map((p) => (
               <Link
                 key={p.key}
                 href={p.href}
                 onClick={closeAll}
-                className="rounded-xl px-2 py-3 text-[19px] font-medium text-ink"
+                className="rounded-xl px-2 py-2.5 text-[17px] font-medium text-ink"
               >
                 {tp(`${p.key}.name`)}
               </Link>
             ))}
             <div className="my-3 h-px bg-line" />
-            <Link href="/services" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-ink">
-              {t("services")}
-            </Link>
-            <Link href="/about" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-ink">
+            <Link href="/about" onClick={closeAll} className="rounded-xl px-2 py-3 text-[17px] font-medium text-ink">
               {t("about")}
             </Link>
-            <Link href="/contact" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-ink">
+            <Link href="/contact" onClick={closeAll} className="rounded-xl px-2 py-3 text-[17px] font-medium text-ink">
               {t("contact")}
             </Link>
             <div className="mt-6 flex items-center justify-between gap-4 px-2">

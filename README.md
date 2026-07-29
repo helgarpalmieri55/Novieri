@@ -33,6 +33,17 @@ npm run build    # production build
 | Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
 
+## Solutions content — review before launch
+
+Solution-page copy sources:
+
+- **Repo-verified** (written from the actual code/READMEs): AI Virtual Receptionist,
+  WhatsApp AI Assistant, IT Management Suite & RMM, Visitor Intelligence, Sentinel,
+  Networks & Systems Monitoring, Ventia.
+- **Drafted, needs owner review**: Matter Flow (no README provided — copy inferred
+  from the name; adjust `solutions.items.matterFlow` in both `messages/*.json`),
+  and AI-powered Websites (productized service, review positioning).
+
 ## Deploy
 
 Vercel. Apex `novieri.com`; `www` → apex redirect is configured in `next.config.ts`.
