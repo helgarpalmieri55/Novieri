@@ -11,12 +11,12 @@ export default function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="dark-s relative overflow-hidden pb-[clamp(3.5rem,8vh,5.5rem)] pt-[clamp(8.5rem,18vh,11rem)]">
+    <section className="relative overflow-hidden bg-white pb-[clamp(3.5rem,8vh,5.5rem)] pt-[clamp(8.5rem,18vh,11rem)]">
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
-          backgroundImage: "radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(rgba(22,18,29,0.10) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
           maskImage: "radial-gradient(ellipse 85% 90% at 70% 0%, #000 0%, transparent 68%)",
         }}
@@ -27,7 +27,7 @@ export default function PageHero({
           {title}
         </h1>
         {intro && (
-          <p className="rise mt-6 max-w-[62ch] text-lg text-on-dark-muted" style={{ ["--d" as string]: "220ms" }}>
+          <p className="rise mt-6 max-w-[62ch] text-lg text-ink-muted" style={{ ["--d" as string]: "220ms" }}>
             {intro}
           </p>
         )}

@@ -44,7 +44,7 @@ export default async function ServicePageTemplate({
     <>
       <PageHero eyebrow={t("hero.eyebrow")} title={t("hero.title")} intro={t("hero.promise")}>
         <div className="rise mt-9" style={{ ["--d" as string]: "320ms" }}>
-          <Link href="/contact" className="btn btn-white">
+          <Link href="/contact" className="btn btn-primary">
             {tc("bookCall")}
           </Link>
         </div>

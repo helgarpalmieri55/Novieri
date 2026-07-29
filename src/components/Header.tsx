@@ -61,8 +61,8 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
         scrolled || menuOpen
-          ? "border-b border-line-dark bg-black/85 backdrop-blur-xl"
-          : "border-b border-transparent bg-gradient-to-b from-black/70 to-transparent"
+          ? "border-b border-line bg-white/85 backdrop-blur-xl"
+          : "border-b border-transparent bg-gradient-to-b from-white/80 to-transparent"
       }`}
     >
       <a
@@ -73,8 +73,8 @@ export default function Header() {
       </a>
       <div className="container-site flex h-[72px] items-center gap-7">
         <Link href="/" aria-label={t("homeLink")} onClick={closeAll} className="mr-auto flex items-center gap-2.5">
-          <Image src="/brand/novieri-isotipo-blanco-256px.png" alt="" width={32} height={33} priority />
-          <span className="font-display text-[21px] font-semibold leading-none text-on-dark">novieri</span>
+          <Image src="/brand/novieri-isotipo-color-256px.png" alt="" width={32} height={33} priority />
+          <span className="font-display text-[21px] font-semibold leading-none text-ink">novieri</span>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label={t("services")}>
@@ -83,7 +83,7 @@ export default function Header() {
               type="button"
               aria-expanded={servicesOpen}
               onClick={() => setServicesOpen((v) => !v)}
-              className="flex items-center gap-1.5 text-[15px] font-medium text-on-dark-muted transition-colors hover:text-on-dark"
+              className="flex items-center gap-1.5 text-[15px] font-medium text-ink-muted transition-colors hover:text-ink"
             >
               {t("services")}
               <svg
@@ -98,32 +98,32 @@ export default function Header() {
               </svg>
             </button>
             {servicesOpen && (
-              <div className="absolute left-1/2 top-full z-50 mt-4 w-[300px] -translate-x-1/2 rounded-2xl border border-line-dark bg-black-2 p-2">
+              <div className="absolute left-1/2 top-full z-50 mt-4 w-[300px] -translate-x-1/2 rounded-2xl border border-line bg-white p-2">
                 {PILLARS.map((p) => (
                   <Link
                     key={p.key}
                     href={p.href}
                     onClick={closeAll}
-                    className="block rounded-xl px-4 py-3 transition-colors hover:bg-white/5"
+                    className="block rounded-xl px-4 py-3 transition-colors hover:bg-plum-wash"
                   >
-                    <span className="block text-[15px] font-medium text-on-dark">{tp(`${p.key}.name`)}</span>
-                    <span className="mt-0.5 block text-[13px] text-on-dark-muted">{tp(`${p.key}.tagline`)}</span>
+                    <span className="block text-[15px] font-medium text-ink">{tp(`${p.key}.name`)}</span>
+                    <span className="mt-0.5 block text-[13px] text-ink-muted">{tp(`${p.key}.tagline`)}</span>
                   </Link>
                 ))}
                 <Link
                   href="/services"
                   onClick={closeAll}
-                  className="mt-1 block border-t border-line-dark px-4 py-3 text-[13.5px] font-medium text-gold-bright transition-colors hover:text-on-dark"
+                  className="mt-1 block border-t border-line px-4 py-3 text-[13.5px] font-medium text-plum transition-colors hover:text-plum-deep"
                 >
                   {t("servicesMenuLabel")} →
                 </Link>
               </div>
             )}
           </div>
-          <Link href="/about" className="text-[15px] font-medium text-on-dark-muted transition-colors hover:text-on-dark">
+          <Link href="/about" className="text-[15px] font-medium text-ink-muted transition-colors hover:text-ink">
             {t("about")}
           </Link>
-          <Link href="/contact" className="text-[15px] font-medium text-on-dark-muted transition-colors hover:text-on-dark">
+          <Link href="/contact" className="text-[15px] font-medium text-ink-muted transition-colors hover:text-ink">
             {t("contact")}
           </Link>
         </nav>
@@ -138,7 +138,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-line-dark text-on-dark md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-ink md:hidden"
           aria-expanded={menuOpen}
           aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
           onClick={() => setMenuOpen((v) => !v)}
@@ -154,26 +154,26 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[72px] z-40 overflow-y-auto bg-black md:hidden">
+        <div className="fixed inset-x-0 bottom-0 top-[72px] z-40 overflow-y-auto bg-white md:hidden">
           <nav className="container-site flex flex-col gap-1 py-6">
             {PILLARS.map((p) => (
               <Link
                 key={p.key}
                 href={p.href}
                 onClick={closeAll}
-                className="rounded-xl px-2 py-3 text-[19px] font-medium text-on-dark"
+                className="rounded-xl px-2 py-3 text-[19px] font-medium text-ink"
               >
                 {tp(`${p.key}.name`)}
               </Link>
             ))}
-            <div className="my-3 h-px bg-line-dark" />
-            <Link href="/services" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-on-dark">
+            <div className="my-3 h-px bg-line" />
+            <Link href="/services" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-ink">
               {t("services")}
             </Link>
-            <Link href="/about" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-on-dark">
+            <Link href="/about" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-ink">
               {t("about")}
             </Link>
-            <Link href="/contact" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-on-dark">
+            <Link href="/contact" onClick={closeAll} className="rounded-xl px-2 py-3 text-[19px] font-medium text-ink">
               {t("contact")}
             </Link>
             <div className="mt-6 flex items-center justify-between gap-4 px-2">

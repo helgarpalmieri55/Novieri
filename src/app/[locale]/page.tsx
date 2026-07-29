@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import GemStage from "@/components/GemStage";
+import PillarTicker from "@/components/PillarTicker";
 import AgentConsole, { type ConsoleLine } from "@/components/AgentConsole";
 import Marquee from "@/components/Marquee";
 import CtaBand from "@/components/CtaBand";
@@ -36,37 +37,65 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const howSteps = t.raw("how.steps") as { title: string; body: string }[];
   const trustItems = t.raw("trust.items") as string[];
   const consoleLines = t.raw("console.lines") as ConsoleLine[];
-  const proofColors = ["text-plum-bright", "text-teal-bright", "text-gold-bright", "text-on-dark"];
+  const proofColors = ["text-plum", "text-teal", "text-gold-deep", "text-ink"];
 
   return (
     <>
-      {/* 1 · Hero — la gema viva */}
-      <section className="dark-s relative overflow-hidden pb-[clamp(4rem,9vh,6rem)] pt-[clamp(7.5rem,16vh,10rem)] text-center">
-        <GemStage ringText={t("hero.ringText")} />
-        <div className="container-site relative">
-          <h1 className="rise mx-auto mt-11 max-w-[16ch]" style={{ ["--d" as string]: "160ms" }}>
-            {t("hero.titleA")} <span className="text-gold-bright">{t("hero.titleB")}</span>
-          </h1>
-          <p
-            className="rise mx-auto mt-6 max-w-[54ch] text-[18.5px] text-on-dark-muted"
-            style={{ ["--d" as string]: "280ms" }}
-          >
-            {t("hero.subtitle")}
-          </p>
-          <div className="rise mt-9 flex flex-wrap justify-center gap-3.5" style={{ ["--d" as string]: "400ms" }}>
-            <Link href="/contact" className="btn btn-white">
-              {tc("bookCall")}
-            </Link>
-            <Link href="/services" className="btn btn-ghost-dark">
-              {tc("seeServices")}
-            </Link>
+      {/* 1 · Hero — la gema viva, en blanco */}
+      <section className="relative overflow-hidden bg-white pb-[clamp(3.5rem,8vh,5.5rem)] pt-[clamp(7.5rem,16vh,10rem)]">
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(rgba(22,18,29,0.10) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            maskImage: "radial-gradient(ellipse 75% 85% at 72% 30%, #000 0%, transparent 68%)",
+          }}
+        />
+        <div className="container-site relative grid items-center gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-[6fr_5fr]">
+          <div>
+            <div className="rise">
+              <PillarTicker
+                items={[
+                  { name: tp("ai.name"), cls: "text-plum" },
+                  { name: tp("managedIt.name"), cls: "text-teal" },
+                  { name: tp("security.name"), cls: "text-gold-deep" },
+                  { name: tp("software.name"), cls: "text-ink-muted" },
+                ]}
+              />
+            </div>
+            <h1 className="mt-5 max-w-[15ch]">
+              <span className="rise block" style={{ ["--d" as string]: "100ms" }}>
+                {t("hero.titleA")}
+              </span>
+              <span className="rise block text-plum" style={{ ["--d" as string]: "220ms" }}>
+                {t("hero.titleB")}
+              </span>
+            </h1>
+            <p
+              className="rise mt-6 max-w-[50ch] text-[18.5px] text-ink-muted"
+              style={{ ["--d" as string]: "340ms" }}
+            >
+              {t("hero.subtitle")}
+            </p>
+            <div className="rise mt-9 flex flex-wrap gap-3.5" style={{ ["--d" as string]: "460ms" }}>
+              <Link href="/contact" className="btn btn-primary">
+                {tc("bookCall")}
+              </Link>
+              <Link href="/services" className="btn btn-ghost-light">
+                {tc("seeServices")}
+              </Link>
+            </div>
+            <p
+              className="rise idx-mono mt-11 tracking-[0.07em] text-ink-faint"
+              style={{ ["--d" as string]: "580ms" }}
+            >
+              {t("hero.meta")}
+            </p>
           </div>
-          <p
-            className="rise idx-mono mt-11 tracking-[0.07em] text-on-dark-faint"
-            style={{ ["--d" as string]: "520ms" }}
-          >
-            {t("hero.meta")}
-          </p>
+          <div className="rise relative mx-auto w-[min(62vw,280px)] lg:w-full lg:max-w-[420px]" style={{ ["--d" as string]: "200ms" }}>
+            <GemStage ringText={t("hero.ringText")} />
+          </div>
         </div>
       </section>
 
@@ -74,18 +103,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Marquee items={trustItems} label="Stack" />
 
       {/* 3 · Proof strip */}
-      <div className="dark-s border-b border-line-dark">
+      <div className="border-b border-line bg-white">
         <div className="container-site grid grid-cols-2 md:grid-cols-4">
           {proofItems.map((p, i) => (
             <div
               key={i}
-              className={`reveal border-line-dark px-2 py-7 md:border-r md:px-6 md:last:border-r-0 ${i % 2 === 0 ? "" : ""}`}
+              className="reveal border-line px-2 py-7 md:border-r md:px-6 md:last:border-r-0"
               style={{ ["--rd" as string]: `${i * 70}ms` }}
             >
               <div className={`font-display text-[clamp(1.75rem,3vw,2.125rem)] font-medium ${proofColors[i]}`}>
                 {p.value}
               </div>
-              <div className="idx-mono mt-1.5 text-on-dark-faint">{p.label}</div>
+              <div className="idx-mono mt-1.5 text-ink-faint">{p.label}</div>
             </div>
           ))}
         </div>

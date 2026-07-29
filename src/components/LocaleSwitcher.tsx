@@ -11,16 +11,16 @@ export default function LocaleSwitcher({ label }: { label: string }) {
     <nav aria-label={label} className="idx-mono flex items-center text-[0.8125rem] tracking-[0.06em]">
       {(["es", "en"] as const).map((l, i) => (
         <span key={l} className="flex items-center">
-          {i > 0 && <span aria-hidden className="text-on-dark-faint">|</span>}
+          {i > 0 && <span aria-hidden className="text-ink-faint">|</span>}
           {l === locale ? (
-            <span aria-current="true" className="px-2 py-2.5 uppercase text-on-dark">
+            <span aria-current="true" className="px-2 py-2.5 uppercase text-ink">
               {l}
             </span>
           ) : (
             <Link
               href={pathname}
               locale={l}
-              className="px-2 py-2.5 uppercase text-on-dark-faint transition-colors hover:text-on-dark"
+              className="px-2 py-2.5 uppercase text-ink-faint transition-colors hover:text-ink"
             >
               {l}
             </Link>

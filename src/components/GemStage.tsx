@@ -2,12 +2,13 @@
 
 import { useEffect, useRef } from "react";
 
-const PARTICLE_COLORS = ["#4f93a6", "#8d63ad", "#c9a878", "#6d6580"];
+const PARTICLE_COLORS = ["#264e59", "#4f3461", "#a8875c", "#b0aabd"];
 
 /**
- * "La gema viva": the logo's facet language as a living centerpiece —
- * breathing facet squares, pulsing gradient core, rotating mono ring text,
- * a canvas particle field drifting toward it, and mouse parallax.
+ * "La gema viva", light edition: the logo's facet language in its true
+ * jewel colors on white — facets draw themselves in, then breathe; the
+ * gradient core pulses; mono ring text rotates; a subtle particle field
+ * drifts toward it; the whole gem follows the mouse.
  */
 export default function GemStage({ ringText }: { ringText: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -35,10 +36,10 @@ export default function GemStage({ ringText }: { ringText: string }) {
     const ro = new ResizeObserver(size);
     ro.observe(canvas);
 
-    const parts = Array.from({ length: 80 }, (_, i) => ({
+    const parts = Array.from({ length: 70 }, (_, i) => ({
       x: Math.random(),
       y: Math.random(),
-      r: Math.random() * 1.6 + 0.4,
+      r: Math.random() * 1.7 + 0.5,
       v: Math.random() * 0.0018 + 0.0005,
       c: PARTICLE_COLORS[i % PARTICLE_COLORS.length],
       tw: Math.random() * Math.PI * 2,
@@ -47,15 +48,15 @@ export default function GemStage({ ringText }: { ringText: string }) {
     const draw = (t: number) => {
       cx.clearRect(0, 0, W, H);
       for (const p of parts) {
-        const dx = 0.5 - p.x;
-        const dy = 0.44 - p.y;
+        const dx = 0.62 - p.x;
+        const dy = 0.5 - p.y;
         p.x += dx * p.v;
         p.y += dy * p.v;
         if (Math.abs(dx) < 0.02 && Math.abs(dy) < 0.02) {
           p.x = Math.random();
           p.y = Math.random() < 0.5 ? 0.02 : 0.98;
         }
-        cx.globalAlpha = 0.22 + 0.5 * Math.abs(Math.sin(t / 900 + p.tw));
+        cx.globalAlpha = 0.12 + 0.3 * Math.abs(Math.sin(t / 900 + p.tw));
         cx.fillStyle = p.c;
         cx.beginPath();
         cx.arc(p.x * W, p.y * H, p.r * dpr, 0, 7);
@@ -83,7 +84,7 @@ export default function GemStage({ ringText }: { ringText: string }) {
   return (
     <>
       <canvas ref={canvasRef} aria-hidden className="absolute inset-0 h-full w-full" />
-      <div ref={gemRef} className="relative mx-auto w-[min(44vh,360px)] transition-transform duration-300 ease-out">
+      <div ref={gemRef} className="relative mx-auto w-full transition-transform duration-300 ease-out">
         <svg
           aria-hidden
           viewBox="0 0 300 300"
@@ -97,7 +98,7 @@ export default function GemStage({ ringText }: { ringText: string }) {
             style={{
               font: "400 8.2px var(--font-mono)",
               letterSpacing: "0.32em",
-              fill: "#6d6580",
+              fill: "#8a8296",
             }}
           >
             <textPath href="#ring-circ">{ringText}</textPath>
@@ -106,23 +107,55 @@ export default function GemStage({ ringText }: { ringText: string }) {
         <svg viewBox="0 0 420 420" fill="none" aria-hidden className="w-full">
           <defs>
             <linearGradient id="gem-g" x1="70" y1="70" x2="350" y2="350" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stopColor="#4f93a6" />
-              <stop offset="0.5" stopColor="#8d63ad" />
-              <stop offset="1" stopColor="#c9a878" />
+              <stop offset="0" stopColor="#264e59" />
+              <stop offset="0.5" stopColor="#4f3461" />
+              <stop offset="1" stopColor="#a8875c" />
             </linearGradient>
           </defs>
-          <g strokeWidth="1.4">
+          <g strokeWidth="1.5">
             <g className="gem-facet" style={{ ["--fd" as string]: "0s" }}>
-              <rect x="70" y="70" width="170" height="170" rx="36" stroke="#4f93a6" transform="rotate(8 155 155)" />
+              <rect
+                className="gem-draw"
+                style={{ ["--dd" as string]: "0.15s" }}
+                x="70"
+                y="70"
+                width="170"
+                height="170"
+                rx="36"
+                stroke="#264e59"
+                transform="rotate(8 155 155)"
+              />
             </g>
             <g className="gem-facet" style={{ ["--fd" as string]: "2.2s" }}>
-              <rect x="180" y="70" width="170" height="170" rx="36" stroke="#8d63ad" transform="rotate(-8 265 155)" />
+              <rect
+                className="gem-draw"
+                style={{ ["--dd" as string]: "0.35s" }}
+                x="180"
+                y="70"
+                width="170"
+                height="170"
+                rx="36"
+                stroke="#4f3461"
+                transform="rotate(-8 265 155)"
+              />
             </g>
             <g className="gem-facet" style={{ ["--fd" as string]: "4.4s" }}>
-              <rect x="70" y="180" width="170" height="170" rx="36" stroke="#8d63ad" transform="rotate(-8 155 265)" />
+              <rect
+                className="gem-draw"
+                style={{ ["--dd" as string]: "0.55s" }}
+                x="70"
+                y="180"
+                width="170"
+                height="170"
+                rx="36"
+                stroke="#4f3461"
+                transform="rotate(-8 155 265)"
+              />
             </g>
             <g className="gem-facet" style={{ ["--fd" as string]: "6.6s" }}>
               <rect
+                className="gem-draw"
+                style={{ ["--dd" as string]: "0.75s" }}
                 x="180"
                 y="180"
                 width="170"
@@ -133,7 +166,13 @@ export default function GemStage({ ringText }: { ringText: string }) {
                 transform="rotate(8 265 265)"
               />
             </g>
-            <path d="M60 350 L350 68" stroke="#a8875c" strokeOpacity="0.55" />
+            <path
+              className="gem-draw"
+              style={{ ["--dd" as string]: "1s" }}
+              d="M60 350 L350 68"
+              stroke="#a8875c"
+              strokeOpacity="0.6"
+            />
           </g>
           <g className="gem-core">
             <path
