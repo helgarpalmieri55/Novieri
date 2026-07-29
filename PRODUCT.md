@@ -11,7 +11,7 @@ Two audiences, one brand:
 1. **US SMB / startup decision-makers** (founders, ops leads, CTOs of companies without an internal IT department), evaluating nearshore providers from a browser tab, in English (`/en`). They compare against US agencies and offshore body shops; the job to be done is "find a firm I can trust with my infrastructure, security, and AI roadmap without US-agency prices."
 2. **Barranquilla / Colombian SMB owners and managers**, in Spanish (`/es`), who need enterprise-level technology (security, monitoring, AI, real processes) without building an internal IT department. Warm, direct, "tú" voice; they buy trust in the founders, not a brand wall.
 
-Both arrive from referrals, LinkedIn, or search; the site's job is to establish senior-engineer credibility fast and convert to a booked call or WhatsApp conversation.
+Both arrive from referrals, LinkedIn, or search. Owner-confirmed: the two audiences carry **equal priority — the locale is the audience split** (no single flagship), and the one success action sitewide is **booking a call** (Cal.com); WhatsApp and the form are secondary paths.
 
 ## Product Purpose
 
@@ -19,9 +19,11 @@ Bilingual (ES default / EN) marketing site for Novieri, an AI-first IT solutions
 
 ## Brand Personality
 
-Confident, plain, specific. A senior engineer who explains clearly — never a sales deck. No buzzword salad, no exclamation marks, sentence case everywhere. Spanish uses "tú", warm but professional. The company is family-run (the name fuses the founders' two surnames) with enterprise standards — that pairing of warmth and rigor IS the brand.
+**Premium, jewel, distinctive** (owner-confirmed). Lean into the logo's gem language: jewel-tone color commitment, gold used with intent, visual drama in deliberate moments. Reference feel: **Linear-like precision** — engineered layouts, tight grids, mono details that speak to technical buyers. The two together: a jeweler's product photographed in a laboratory.
 
-Visual identity comes from the final logo: a faceted, gem-like geometric bloom with a four-point star at its center, in a teal → plum → gold gradient, with a dark-plum lowercase wordmark. Jewel-tone premium, not startup-blue tech.
+Voice: confident, plain, specific. A senior engineer who explains clearly — never a sales deck. No buzzword salad, no exclamation marks, sentence case everywhere. Spanish uses "tú", warm but professional. The company is family-run (the name fuses the founders' two surnames) with enterprise standards — that pairing of warmth and rigor IS the brand.
+
+Visual identity comes from the final logo: a faceted, gem-like geometric bloom with a four-point star at its center, in a teal → plum → gold gradient, with a dark-plum lowercase wordmark.
 
 ## Anti-references
 
