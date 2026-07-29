@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color — derived from the final logo (teal → plum → gold, plum-black wordmark) */
+  --color-paper: #fafaf8;
+  --color-surface: #ffffff;
+  --color-ink: #221b2c;
+  --color-ink-muted: #574e62;
+  --color-ink-faint: #857d90;
+  --color-line: #e8e5e1;
+  --color-line-dark: #453d51;
+  --color-plum: #4f3461;
+  --color-plum-deep: #3b2549;
+  --color-plum-wash: #f4f0f7;
+  --color-gold: #a8875c;
+  --color-gold-deep: #77613c;
+  --color-gold-soft: #c9b391;
+  --color-teal: #264e59;
+
+  /* Type scale */
+  --text-h1: clamp(2.5rem, 6vw, 4.5rem);
+  --text-h2: clamp(1.875rem, 4vw, 2.75rem);
+  --text-h3: 1.5rem;
+  --text-body: 1.0625rem;
+  --text-small: 0.875rem;
+  --text-eyebrow: 0.8125rem;
+
+  /* Motion */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-clash), var(--font-satoshi), system-ui, sans-serif;
+  --font-sans: var(--font-satoshi), system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+  }
+
+  h3 {
+    font-size: var(--text-h3);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-plum);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-plum);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    margin-inline: auto;
+    max-width: 72.5rem;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .section-pad {
+    padding-block: clamp(4.5rem, 12vh, 8rem);
+  }
+
+  .section-pad-tight {
+    padding-block: clamp(3rem, 8vh, 5.5rem);
+  }
+
+  /* ·· signature eyebrow — the one recurring brand element */
+  .eyebrow {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.625rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.08em;
+    color: var(--color-ink-muted);
+  }
+
+  .eyebrow::before {
+    content: "··";
+    color: var(--color-gold);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.12em;
+    line-height: 0;
+    position: relative;
+    top: -0.1em;
+  }
+
+  .eyebrow-on-dark {
+    color: var(--color-gold-soft);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.625rem;
+    padding: 0.8125rem 1.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.2;
+    transition:
+      background-color 200ms var(--ease-out-quart),
+      border-color 200ms var(--ease-out-quart),
+      color 200ms var(--ease-out-quart);
+  }
+
+  .btn-primary {
+    background: var(--color-plum);
+    color: var(--color-paper);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-plum-deep);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-plum);
+    color: var(--color-plum);
+  }
+
+  .btn-on-dark {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  .btn-on-dark:hover {
+    background: var(--color-gold-soft);
+  }
+
+  .link-accent {
+    color: var(--color-plum);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--color-plum) 35%, transparent);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 200ms var(--ease-out-quart);
+  }
+
+  .link-accent:hover {
+    text-decoration-color: var(--color-plum);
+  }
+
+  /* Two-dot list marker */
+  .dot-list li {
+    position: relative;
+    padding-left: 1.75rem;
+  }
+
+  .dot-list li::before {
+    content: "··";
+    position: absolute;
+    left: 0;
+    top: -0.05em;
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Thin diagonal rule at the logo's angle — max twice sitewide */
+  .diagonal-rule {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold) 20%,
+      var(--color-gold) 80%,
+      transparent
+    );
+    transform: rotate(-1.2deg);
+    opacity: 0.55;
+  }
+
+  .card-hairline {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 0.875rem;
+    transition: border-color 220ms var(--ease-out-quart);
+  }
+
+  .card-hairline:hover {
+    border-color: var(--color-plum);
+  }
+
+  .tag-mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--color-ink-muted);
+    background: var(--color-plum-wash);
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.5625rem;
+    white-space: nowrap;
+  }
+}
+
+/* Scroll reveal — content is visible by default; the `js` class (set by an
+   inline script before paint) opts into the animation, so no-JS visitors and
+   crawlers always see everything. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 450ms var(--ease-out-quart),
+      transform 450ms var(--ease-out-quart);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  html.js .hero-rise {
+    animation: hero-rise 600ms var(--ease-out-quart) both;
+    animation-delay: var(--rise-delay, 0ms);
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

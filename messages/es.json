@@ -1,0 +1,564 @@
+{
+  "meta": {
+    "home": {
+      "title": "Novieri — Soluciones de IT con inteligencia artificial en el centro",
+      "description": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación. Tecnología de nivel enterprise para empresas en Barranquilla y Colombia, sin montar un departamento de IT."
+    },
+    "services": {
+      "title": "Servicios — Novieri",
+      "description": "IA y automatización, IT administrado, ciberseguridad y cumplimiento, y desarrollo a medida. Cuatro pilares, un mismo estándar enterprise."
+    },
+    "ai": {
+      "title": "IA y automatización — Novieri",
+      "description": "Agentes, chatbots y automatización de procesos con un diagnóstico claro de dónde la IA sí genera valor en tu operación."
+    },
+    "managedIt": {
+      "title": "IT administrado — Novieri",
+      "description": "Soporte, Microsoft 365, redes, firewall y backups administrados por ingenieros senior. Tu departamento de IT, sin tener que montarlo."
+    },
+    "security": {
+      "title": "Ciberseguridad y cumplimiento — Novieri",
+      "description": "Hardening, gestión de vulnerabilidades y preparación SOC 2 / ISO 27001. Seguridad de verdad, con evidencia."
+    },
+    "software": {
+      "title": "Desarrollo a medida — Novieri",
+      "description": "Aplicaciones web, APIs e integraciones en React, FastAPI y Node. Software que se ajusta a tu operación, no al revés."
+    },
+    "about": {
+      "title": "Nosotros — Novieri",
+      "description": "Novieri es la fusión de dos apellidos: una empresa familiar con estándares enterprise, desde Barranquilla para Colombia y Estados Unidos."
+    },
+    "contact": {
+      "title": "Contacto — Novieri",
+      "description": "Cuéntanos tu caso o agenda una llamada directa con los fundadores. Barranquilla, Colombia — atendemos EE. UU. en horario del este."
+    },
+    "notFound": {
+      "title": "Página no encontrada — Novieri"
+    }
+  },
+  "nav": {
+    "services": "Servicios",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "bookCall": "Agenda una llamada",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "servicesMenuLabel": "Ver todos los servicios",
+    "localeSwitcherLabel": "Idioma",
+    "homeLink": "Novieri — inicio",
+    "skipToContent": "Saltar al contenido"
+  },
+  "pillars": {
+    "ai": {
+      "name": "IA y automatización",
+      "tagline": "Agentes y automatizaciones que quitan trabajo repetitivo de la mesa.",
+      "tags": ["agentes", "chatbots", "procesos"]
+    },
+    "managedIt": {
+      "name": "IT administrado",
+      "tagline": "Tu departamento de IT, sin tener que montarlo.",
+      "tags": ["soporte", "microsoft 365", "backups"]
+    },
+    "security": {
+      "name": "Ciberseguridad y cumplimiento",
+      "tagline": "Seguridad de verdad y preparación SOC 2 / ISO 27001.",
+      "tags": ["hardening", "soc 2", "iso 27001"]
+    },
+    "software": {
+      "name": "Desarrollo a medida",
+      "tagline": "Software que se ajusta a tu operación, no al revés.",
+      "tags": ["react", "fastapi", "node"]
+    }
+  },
+  "common": {
+    "bookCall": "Agenda una llamada",
+    "seeServices": "Ver servicios",
+    "learnMore": "Conocer más",
+    "talkCase": "Hablemos de tu caso",
+    "whatsappCta": "Escríbenos por WhatsApp",
+    "goHome": "Volver al inicio"
+  },
+  "home": {
+    "hero": {
+      "title": "Tecnología de nivel enterprise, con inteligencia artificial en el centro.",
+      "subtitle": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación — para que tu empresa crezca sin un departamento de IT propio.",
+      "artAlt": "Composición geométrica abstracta inspirada en el logo de Novieri"
+    },
+    "trust": {
+      "label": "operamos",
+      "items": "Microsoft 365 · FortiGate · AWS · Python · React · Odoo · HubSpot · Power BI"
+    },
+    "services": {
+      "eyebrow": "servicios",
+      "title": "Cuatro pilares, un mismo estándar."
+    },
+    "why": {
+      "eyebrow": "por qué novieri",
+      "title": "Tecnología de nivel corporativo, sin el costo de un departamento interno.",
+      "points": [
+        {
+          "title": "Atención directa con los fundadores",
+          "body": "Hablas con quien diseña y opera tu tecnología, no con un vendedor. Sin intermediarios, sin tickets que nadie lee."
+        },
+        {
+          "title": "Prácticas de empresa grande",
+          "body": "Monitoreo, backups probados, seguridad gestionada y procesos reales — los mismos estándares que exige una operación con cientos de usuarios."
+        },
+        {
+          "title": "IA aplicada a tu operación",
+          "body": "No vendemos moda: identificamos qué procesos de tu empresa sí se benefician de automatización y lo demostramos con un piloto."
+        },
+        {
+          "title": "Costo predecible",
+          "body": "Planes mensuales claros por puesto o por equipo. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
+        }
+      ],
+      "stat": {
+        "value": "2",
+        "label": "fundadores, cero intermediarios"
+      }
+    },
+    "how": {
+      "eyebrow": "cómo trabajamos",
+      "title": "Un proceso simple, de diagnóstico a mejora continua.",
+      "steps": [
+        {
+          "title": "Diagnóstico",
+          "body": "Entendemos tu operación, tu infraestructura y tus riesgos antes de proponer nada."
+        },
+        {
+          "title": "Propuesta",
+          "body": "Alcance concreto, entregables definidos y un precio claro. Sin letra pequeña."
+        },
+        {
+          "title": "Implementación",
+          "body": "Ejecutamos con fechas y responsables, y te mostramos el avance en cada hito."
+        },
+        {
+          "title": "Operación y mejora continua",
+          "body": "Monitoreamos, mantenemos y proponemos mejoras cada trimestre. La tecnología no se queda quieta."
+        }
+      ]
+    },
+    "founders": {
+      "eyebrow": "quiénes somos",
+      "title": "Una empresa familiar con estándares enterprise.",
+      "body": "Novieri es la fusión de los apellidos de sus dos fundadores: tecnología dirigida por un CTO con años operando sistemas para cientos de usuarios, y una operación comercial que te responde de verdad.",
+      "link": "Conoce la historia",
+      "photoAlt": "Foto de los fundadores de Novieri (pendiente)"
+    },
+    "cta": {
+      "title": "Tu empresa ya necesita un equipo de tecnología. No necesita contratarlo.",
+      "subtitle": "Cuéntanos tu caso en una llamada de 30 minutos, sin compromiso.",
+      "button": "Agenda una llamada"
+    }
+  },
+  "servicesIndex": {
+    "eyebrow": "servicios",
+    "title": "Lo que hacemos",
+    "intro": "Cuatro pilares que se refuerzan entre sí: la automatización necesita infraestructura sana, la infraestructura necesita seguridad, y todo necesita software que se ajuste a tu operación."
+  },
+  "serviceCommon": {
+    "whatTitle": "Qué hacemos",
+    "howTitle": "Cómo se ve",
+    "packagesTitle": "Paquetes",
+    "packagesIntro": "Sin precios de lista: cada operación es distinta. Estos paquetes le dan forma a la conversación.",
+    "faqTitle": "Preguntas frecuentes",
+    "ctaTitle": "¿Hablamos de tu caso?",
+    "ctaSubtitle": "Una llamada de 30 minutos para entender tu operación y decirte, con franqueza, si podemos ayudar."
+  },
+  "ai": {
+    "hero": {
+      "eyebrow": "ia y automatización",
+      "title": "Agentes y automatizaciones que quitan trabajo repetitivo de la mesa.",
+      "promise": "La mayoría de las empresas no necesita \"más IA\": necesita saber qué procesos automatizar primero y ver uno funcionando de punta a punta. Eso es exactamente lo que hacemos — con un diagnóstico honesto, un piloto medible y, si tiene sentido, una operación continua."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "Evaluación de oportunidades de IA",
+          "body": "Diagnóstico de 2 semanas: mapeamos tus procesos y priorizamos dónde la automatización paga de verdad."
+        },
+        {
+          "title": "Agentes de IA",
+          "body": "Asistentes que leen correos, clasifican solicitudes, preparan respuestas y ejecutan tareas dentro de tus sistemas."
+        },
+        {
+          "title": "Chatbots con tu conocimiento",
+          "body": "Atención a clientes y equipos internos con respuestas basadas en tus documentos y políticas, no inventadas."
+        },
+        {
+          "title": "Automatización de procesos",
+          "body": "Flujos entre tus herramientas — facturación, CRM, inventario, reportes — sin copiar y pegar entre pantallas."
+        },
+        {
+          "title": "Integración con tus sistemas",
+          "body": "Conectamos la IA con Microsoft 365, Odoo, HubSpot o tu ERP mediante APIs, con permisos y auditoría."
+        },
+        {
+          "title": "Medición y control",
+          "body": "Cada automatización se entrega con métricas de uso, costo y tasa de error. Si no se puede medir, no se entrega."
+        }
+      ]
+    },
+    "how": {
+      "caption": "Un flujo real: una solicitud entra por correo, un agente la clasifica, consulta tu sistema y responde — con un humano aprobando lo importante."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "AI Opportunity Assessment",
+          "blurb": "Diagnóstico de alcance fijo, 2 semanas: mapa de procesos, casos priorizados por retorno y una hoja de ruta de automatización lista para ejecutar."
+        },
+        {
+          "name": "Automation Pilot",
+          "blurb": "Un proceso automatizado de punta a punta, en producción, con métricas. La prueba concreta de que esto funciona en tu operación."
+        },
+        {
+          "name": "AI Partner",
+          "blurb": "Retainer mensual: construimos y operamos tus agentes y automatizaciones, con mejoras continuas y soporte."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "¿Mi empresa es muy pequeña para usar IA?",
+          "a": "Si tu equipo hace tareas repetitivas en computador — responder correos parecidos, pasar datos entre sistemas, armar reportes — hay caso de uso. El tamaño importa menos que el volumen de trabajo repetible; el diagnóstico te dice si el retorno justifica la inversión."
+        },
+        {
+          "q": "¿Qué pasa con la confidencialidad de mis datos?",
+          "a": "Definimos desde el inicio qué datos pueden salir de tu empresa y cuáles no. Usamos cuentas empresariales con acuerdos de no-entrenamiento, y cuando el caso lo exige, modelos desplegados en tu propia nube."
+        },
+        {
+          "q": "¿La IA no comete errores?",
+          "a": "Sí los comete, por eso diseñamos cada flujo con puntos de aprobación humana donde el error cuesta, y con métricas de tasa de error visibles. Automatizamos primero lo que es tolerante a fallos y de bajo riesgo."
+        },
+        {
+          "q": "¿Cuánto tarda en verse el resultado?",
+          "a": "El assessment toma 2 semanas. Un piloto típico está en producción entre 3 y 6 semanas después. Desde el primer mes deberías ver horas recuperadas en el proceso elegido."
+        }
+      ]
+    }
+  },
+  "managedIt": {
+    "hero": {
+      "eyebrow": "it administrado",
+      "title": "Tu departamento de IT, sin tener que montarlo.",
+      "promise": "Soporte que responde, computadores que funcionan, backups que sí restauran y una red que no se cae. Administramos tu tecnología con los estándares de una empresa grande, por una fracción del costo de un equipo interno."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "Mesa de ayuda",
+          "body": "Soporte remoto para tu equipo, con tiempos de respuesta acordados y seguimiento de cada caso hasta cerrarlo."
+        },
+        {
+          "title": "Microsoft 365",
+          "body": "Correo, Teams, SharePoint y licencias administradas: altas, bajas, seguridad y buenas prácticas desde el día uno."
+        },
+        {
+          "title": "Redes y firewall",
+          "body": "Diseño, instalación y administración de tu red y firewall (FortiGate), con VPN segura para trabajo remoto."
+        },
+        {
+          "title": "Backups y continuidad",
+          "body": "Copias automáticas de servidores y equipos críticos, probadas con restauraciones reales — no solo con luces verdes."
+        },
+        {
+          "title": "Parcheo y mantenimiento",
+          "body": "Actualizaciones de sistemas y aplicaciones aplicadas a tiempo, antes de que una vulnerabilidad vieja se vuelva un incidente."
+        },
+        {
+          "title": "Monitoreo proactivo",
+          "body": "Vigilamos discos, servicios y respaldos 24/7; muchas fallas se corrigen antes de que alguien las note."
+        }
+      ]
+    },
+    "how": {
+      "caption": "Así se ve un mes tranquilo: tickets resueltos dentro del acuerdo, parches al día y backups verificados con restauración de prueba."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "Essential",
+          "blurb": "Mesa de ayuda, Microsoft 365 y parcheo administrado. La base para operar sin sobresaltos, por puesto al mes."
+        },
+        {
+          "name": "Complete",
+          "blurb": "Todo lo anterior más administración de red y firewall, backups y plan de continuidad. Para empresas que no pueden detenerse."
+        },
+        {
+          "name": "Premium",
+          "blurb": "Agrega monitoreo proactivo, línea base de seguridad y hoja de ruta trimestral de IT con los fundadores."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "¿Qué tan rápido responden un caso?",
+          "a": "Cada plan tiene tiempos de respuesta acordados por escrito según la severidad. Un equipo caído no espera lo mismo que una impresora; lo urgente se atiende en minutos, no en días."
+        },
+        {
+          "q": "Ya tengo \"el sobrino que sabe de sistemas\". ¿Por qué cambiar?",
+          "a": "Porque tu operación depende de que esa persona esté disponible, documente y sepa de seguridad. Nosotros dejamos todo documentado, monitoreado y con respaldo de un equipo — y respondemos con un acuerdo de servicio, no con favores."
+        },
+        {
+          "q": "¿Tengo que cambiar mis equipos o licencias actuales?",
+          "a": "No de entrada. Empezamos con un diagnóstico de lo que tienes; lo que funciona se queda. Las inversiones se proponen con prioridad y presupuesto, y las decides tú."
+        },
+        {
+          "q": "¿Atienden en sitio en Barranquilla?",
+          "a": "Sí. La operación diaria es remota — así resolvemos más rápido — y agendamos visitas en sitio cuando el caso lo requiere: cableado, instalaciones, cambios de red."
+        }
+      ]
+    }
+  },
+  "security": {
+    "hero": {
+      "eyebrow": "ciberseguridad y cumplimiento",
+      "title": "Seguridad de verdad y un camino claro a SOC 2 / ISO 27001.",
+      "promise": "Ni miedo ni checklists vacíos: endurecemos tu infraestructura, gestionamos vulnerabilidades de forma continua y, si tus clientes exigen certificaciones, te llevamos hasta la auditoría con evidencia real."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "Hardening de infraestructura",
+          "body": "Configuración segura de servidores, equipos, Microsoft 365 y red: MFA, cifrado, privilegios mínimos y líneas base documentadas."
+        },
+        {
+          "title": "Gestión de vulnerabilidades",
+          "body": "Escaneo periódico, priorización por riesgo real y remediación verificada — un ciclo continuo, no un PDF anual."
+        },
+        {
+          "title": "Preparación SOC 2 / ISO 27001",
+          "body": "Análisis de brechas, plan de remediación y acompañamiento en evidencias hasta que pasas la auditoría."
+        },
+        {
+          "title": "Protección de identidad y correo",
+          "body": "La puerta de entrada del 90 % de los ataques: phishing, cuentas comprometidas y accesos mal configurados, cerrada."
+        },
+        {
+          "title": "Respuesta a incidentes",
+          "body": "Un plan probado de qué hacer cuando algo pasa: contención, comunicación y recuperación sin improvisar."
+        },
+        {
+          "title": "Concientización del equipo",
+          "body": "Entrenamiento corto y periódico para tu gente, porque el mejor firewall no arregla un clic apurado."
+        }
+      ]
+    },
+    "how": {
+      "caption": "Una revisión real: cada control con su estado y su evidencia. Así llega una empresa preparada a una auditoría SOC 2."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "Security Baseline",
+          "blurb": "Hardening de tu infraestructura, escaneo de vulnerabilidades y un informe ejecutivo con prioridades claras. El punto de partida."
+        },
+        {
+          "name": "SOC 2 / ISO 27001 Readiness",
+          "blurb": "Análisis de brechas contra el estándar, plan de remediación y soporte de evidencias hasta la auditoría."
+        },
+        {
+          "name": "vCISO",
+          "blurb": "Seguridad como función continua: gestión de riesgos, revisiones periódicas y un responsable de seguridad sin contratarlo de planta."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "¿De verdad alguien atacaría a una empresa de mi tamaño?",
+          "a": "Los ataques masivos no eligen víctimas: escanean internet y explotan lo que esté abierto. Las pymes son el objetivo más frecuente precisamente porque suelen estar menos protegidas."
+        },
+        {
+          "q": "¿Cuánto toma estar listo para SOC 2?",
+          "a": "Depende del punto de partida; típicamente entre 3 y 6 meses desde el análisis de brechas hasta estar listo para auditoría. El gap assessment inicial te da una línea de tiempo honesta la primera semana."
+        },
+        {
+          "q": "¿Ustedes emiten la certificación?",
+          "a": "No — la auditoría la hace siempre un tercero independiente. Nosotros preparamos tu infraestructura, tus políticas y tu evidencia para que llegues a esa auditoría a pasar, no a descubrir problemas."
+        },
+        {
+          "q": "¿Esto no es carísimo?",
+          "a": "Cuesta una fracción de lo que cuesta un incidente: el rescate, los días parados y los clientes perdidos. Empezamos por la línea base — lo esencial bien hecho — y creces desde ahí según tu riesgo real."
+        }
+      ]
+    }
+  },
+  "software": {
+    "hero": {
+      "eyebrow": "desarrollo a medida",
+      "title": "Software que se ajusta a tu operación, no al revés.",
+      "promise": "Cuando la hoja de cálculo ya no da más y el software genérico te obliga a trabajar como él quiere, construimos la herramienta exacta: aplicaciones web, APIs e integraciones que hablan con lo que ya usas."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "Aplicaciones web",
+          "body": "Portales internos, paneles de operación y herramientas de cliente construidos en React y Next.js, rápidos y fáciles de usar."
+        },
+        {
+          "title": "APIs y backends",
+          "body": "Servicios en FastAPI y Node: sólidos, documentados y listos para crecer con tu operación."
+        },
+        {
+          "title": "Integraciones",
+          "body": "Tus sistemas hablando entre sí — ERP, CRM, facturación, logística — sin cuadres manuales en Excel."
+        },
+        {
+          "title": "Modernización de sistemas",
+          "body": "Ese sistema viejo del que todos dependen y nadie quiere tocar: lo migramos por partes, sin detener la operación."
+        },
+        {
+          "title": "Software con IA integrada",
+          "body": "Búsqueda inteligente, clasificación automática o asistentes dentro de tu propia herramienta, donde aportan valor."
+        },
+        {
+          "title": "Operación y evolución",
+          "body": "No entregamos y desaparecemos: monitoreamos, corregimos y evolucionamos el software con un retainer mensual."
+        }
+      ]
+    },
+    "how": {
+      "caption": "Código de verdad: una API tipada, probada y documentada — el estándar de cada entrega."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "Discovery Sprint",
+          "blurb": "Precio fijo: entendemos el problema, prototipamos la solución y entregamos un plan con alcance y presupuesto. Decides con hechos."
+        },
+        {
+          "name": "Proyecto",
+          "blurb": "Construcción con alcance definido, hitos quincenales y demos funcionales — ves avance real, no reportes de avance."
+        },
+        {
+          "name": "Evolution Retainer",
+          "blurb": "Horas mensuales para operar, mejorar y extender tu software con el mismo equipo que lo construyó."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "¿Por qué no comprar un software genérico y ya?",
+          "a": "Si un software de mercado resuelve tu caso, te lo vamos a decir — sale más barato y lo implementamos. Construir a medida tiene sentido cuando tu proceso es tu ventaja competitiva o cuando el genérico te obliga a deformar tu operación."
+        },
+        {
+          "q": "¿Cómo sé que no se va a volver un proyecto eterno?",
+          "a": "El discovery sprint define alcance y presupuesto antes de escribir código en serio, y el proyecto avanza en hitos quincenales con demos funcionales. Si algo se desvía, se ve en dos semanas, no en seis meses."
+        },
+        {
+          "q": "¿El código es mío?",
+          "a": "Sí. Todo el código, la documentación y los accesos quedan a tu nombre desde el primer día. Si mañana quieres trabajar con otro equipo, te llevas todo."
+        },
+        {
+          "q": "¿Qué pasa después de la entrega?",
+          "a": "El software necesita operación: dependencias que actualizar, errores que corregir, mejoras que priorizar. Para eso existe el retainer de evolución — o entrenamos a tu equipo para que lo opere."
+        }
+      ]
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "nosotros",
+      "title": "Dos apellidos, una empresa.",
+      "intro": "Novieri nace de la fusión de los apellidos de sus dos fundadores. Es, literalmente, una empresa con nombre propio: familiar en el trato, enterprise en los estándares."
+    },
+    "story": {
+      "title": "La historia",
+      "body": "Después de años dirigiendo tecnología para una operación de más de 300 agentes — infraestructura, seguridad, un programa SOC 2 y sistemas de IA en producción — decidimos construir lo que veíamos que faltaba: una firma que trajera ese nivel de práctica a empresas que no pueden, ni deberían, montar un departamento de IT propio."
+    },
+    "founders": {
+      "title": "Los fundadores",
+      "helgar": {
+        "name": "Helgar Palmieri",
+        "role": "Tecnología y entrega",
+        "bio": "CTO con años liderando IT y sistemas de IA para una operación de más de 300 agentes: infraestructura, programa SOC 2 e ingeniería full-stack y de IA. Diseña y opera personalmente cada solución que entregamos.",
+        "photoAlt": "Foto de Helgar Palmieri (pendiente)"
+      },
+      "partner": {
+        "name": "[WIFE_NAME]",
+        "role": "Comercial y operaciones",
+        "bio": "[WIFE_BIO] — relaciones con clientes, propuestas y administración.",
+        "photoAlt": "Foto de la cofundadora (pendiente)"
+      }
+    },
+    "location": {
+      "title": "Desde Barranquilla, para dos mercados",
+      "body": "Barranquilla nos da algo poco común: el mismo huso horario que la costa este de Estados Unidos, costos que permiten tarifas justas y un talento técnico que crece cada año. Por eso podemos atender a una pyme barranquillera por la mañana y a un cliente en Nueva York por la tarde — con el mismo equipo y el mismo estándar."
+    },
+    "cta": {
+      "title": "Trabajemos juntos.",
+      "subtitle": "Una llamada corta basta para saber si somos el equipo que necesitas."
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "contacto",
+      "title": "Cuéntanos tu caso.",
+      "intro": "Respondemos el mismo día hábil. Si prefieres hablar directo, agenda una llamada o escríbenos por WhatsApp."
+    },
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "company": "Empresa",
+      "companyPlaceholder": "Nombre de tu empresa",
+      "email": "Correo",
+      "emailPlaceholder": "tu@empresa.com",
+      "service": "¿Qué necesitas?",
+      "serviceOptions": {
+        "ai": "IA y automatización",
+        "managedIt": "IT administrado",
+        "security": "Ciberseguridad y cumplimiento",
+        "software": "Desarrollo a medida",
+        "other": "Aún no lo sé / otro"
+      },
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos qué está pasando y qué te gustaría lograr",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando…",
+      "success": "Recibido. Te respondemos el mismo día hábil.",
+      "error": "No pudimos enviar el mensaje. Intenta de nuevo o escríbenos directo a {email}.",
+      "validation": {
+        "name": "Escribe tu nombre.",
+        "email": "Escribe un correo válido.",
+        "message": "Cuéntanos aunque sea una línea."
+      }
+    },
+    "booking": {
+      "title": "¿Prefieres agendar directo?",
+      "body": "Elige un espacio de 30 minutos con los fundadores. Sin compromiso.",
+      "fallback": "El calendario en línea estará disponible pronto. Mientras tanto, escríbenos a {email} y coordinamos por correo."
+    },
+    "aside": {
+      "whatsappLabel": "Escríbenos por WhatsApp",
+      "emailLabel": "O por correo",
+      "location": "Barranquilla, Colombia · Atendemos EE. UU. en horario del este"
+    }
+  },
+  "whatsapp": {
+    "floatLabel": "Escríbenos por WhatsApp",
+    "greeting": "Hola, vengo del sitio de Novieri y quiero hablar sobre mi empresa."
+  },
+  "footer": {
+    "description": "Soluciones de IT con inteligencia artificial en el centro, desde Barranquilla para Colombia y Estados Unidos.",
+    "servicesTitle": "Servicios",
+    "companyTitle": "Empresa",
+    "contactTitle": "Contacto",
+    "legalFallback": "© {year} Novieri",
+    "legal": "© {year} {razonSocial} · NIT {nit}",
+    "linkedinLabel": "Novieri en LinkedIn",
+    "location": "Barranquilla, Colombia"
+  },
+  "notFound": {
+    "eyebrow": "error 404",
+    "title": "Esta página no existe.",
+    "body": "El enlace puede estar vencido o mal escrito. Lo que buscas probablemente está a un clic:",
+    "cta": "Volver al inicio"
+  }
+}
