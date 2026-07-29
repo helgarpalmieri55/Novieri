@@ -34,6 +34,46 @@
     },
     "notFound": {
       "title": "Página no encontrada — Novieri"
+    },
+    "solutions": {
+      "title": "Soluciones — Novieri",
+      "description": "Productos construidos y operados por Novieri: recepcionista y asistentes de IA, gestión IT y RMM, monitoreo, seguridad, inteligencia de visitantes y e-commerce con IA."
+    },
+    "sol_aiAssistant": {
+      "title": "Recepcionista Virtual de IA — Novieri",
+      "description": "Un recepcionista de IA que contesta cada llamada: responde con tu información, captura leads en el CRM, transfiere a tu equipo y agenda reuniones."
+    },
+    "sol_whatsapp": {
+      "title": "Asistente de IA para WhatsApp — Novieri",
+      "description": "Agente conversacional real por WhatsApp para restaurantes y hoteles: toma pedidos, gestiona reservas, responde con tu información y escala a humanos."
+    },
+    "sol_itSuite": {
+      "title": "Suite de Gestión IT y RMM — Novieri",
+      "description": "Plataforma de gestión de endpoints: inventario, parches, control remoto, logs de seguridad, respaldo y documentación IT con un solo agente."
+    },
+    "sol_visitorIntel": {
+      "title": "Inteligencia de Visitantes Web — Novieri",
+      "description": "Identifica las empresas que visitan tu sitio, interpreta su comportamiento con IA y entrega cuentas calificadas a tu equipo comercial cada día."
+    },
+    "sol_ventia": {
+      "title": "Ventia — E-commerce con agente de ventas IA — Novieri",
+      "description": "Plataforma de comercio electrónico multi-tienda con un agente de ventas de IA integrado. Construida y operada por Novieri."
+    },
+    "sol_matterFlow": {
+      "title": "Matter Flow — Novieri",
+      "description": "Gestión de casos y flujos de trabajo para equipos de servicios profesionales."
+    },
+    "sol_monitoring": {
+      "title": "Monitoreo de Redes y Sistemas — Novieri",
+      "description": "Plataforma de observabilidad: dispositivos de red, rutas de ISP, servidores y bases de datos con alertas y tableros en tiempo real."
+    },
+    "sol_sentinel": {
+      "title": "Sentinel — Gestión de vulnerabilidades con IA — Novieri",
+      "description": "Descubre activos, detecta vulnerabilidades, prioriza con IA y genera reportes listos para auditoría — en tu propia infraestructura."
+    },
+    "sol_webDev": {
+      "title": "Sitios web con IA — Novieri",
+      "description": "Desarrollo de sitios web modernos con funcionalidades de IA integradas: asistentes, búsqueda inteligente y contenido bilingüe."
     }
   },
   "nav": {
@@ -46,28 +86,46 @@
     "servicesMenuLabel": "Ver todos los servicios",
     "localeSwitcherLabel": "Idioma",
     "homeLink": "Novieri — inicio",
-    "skipToContent": "Saltar al contenido"
+    "skipToContent": "Saltar al contenido",
+    "solutions": "Soluciones",
+    "solutionsMenuLabel": "Ver todas las soluciones"
   },
   "pillars": {
     "ai": {
       "name": "IA y automatización",
       "tagline": "Agentes y automatizaciones que quitan trabajo repetitivo de la mesa.",
-      "tags": ["agentes", "chatbots", "procesos"]
+      "tags": [
+        "agentes",
+        "chatbots",
+        "procesos"
+      ]
     },
     "managedIt": {
       "name": "IT administrado",
       "tagline": "Tu departamento de IT, sin tener que montarlo.",
-      "tags": ["soporte", "microsoft 365", "backups"]
+      "tags": [
+        "soporte",
+        "microsoft 365",
+        "backups"
+      ]
     },
     "security": {
       "name": "Ciberseguridad y cumplimiento",
       "tagline": "Seguridad de verdad y preparación SOC 2 / ISO 27001.",
-      "tags": ["hardening", "soc 2", "iso 27001"]
+      "tags": [
+        "hardening",
+        "soc 2",
+        "iso 27001"
+      ]
     },
     "software": {
       "name": "Desarrollo a medida",
       "tagline": "Software que se ajusta a tu operación, no al revés.",
-      "tags": ["react", "fastapi", "node"]
+      "tags": [
+        "react",
+        "fastapi",
+        "node"
+      ]
     }
   },
   "common": {
@@ -87,14 +145,35 @@
       "ringText": "ia · automatización · it administrado · ciberseguridad · desarrollo · barranquilla · gmt-5 · "
     },
     "trust": {
-      "items": ["Microsoft 365", "FortiGate", "AWS", "Python", "React", "Odoo", "HubSpot", "Power BI"]
+      "items": [
+        "Microsoft 365",
+        "FortiGate",
+        "AWS",
+        "Python",
+        "React",
+        "Odoo",
+        "HubSpot",
+        "Power BI"
+      ]
     },
     "proof": {
       "items": [
-        { "value": "300+", "label": "usuarios operados como cto" },
-        { "value": "0h", "label": "diferencia horaria con ny" },
-        { "value": "SOC 2", "label": "programa dirigido de punta a punta" },
-        { "value": "2", "label": "fundadores, cero intermediarios" }
+        {
+          "value": "300+",
+          "label": "usuarios operados como cto"
+        },
+        {
+          "value": "0h",
+          "label": "diferencia horaria con ny"
+        },
+        {
+          "value": "SOC 2",
+          "label": "programa dirigido de punta a punta"
+        },
+        {
+          "value": "2",
+          "label": "fundadores, cero intermediarios"
+        }
       ]
     },
     "console": {
@@ -105,15 +184,47 @@
       "barTitle": "novieri · agente de facturación",
       "badge": "EN VIVO",
       "lines": [
-        { "t": "09:41:07  ", "kind": "cmd", "text": "$ novieri-agent watch --proceso facturación" },
-        { "kind": "step", "text": "leyendo bandeja compartida… ", "hl": "47 correos nuevos" },
-        { "kind": "ok", "text": "12 facturas detectadas y extraídas" },
-        { "kind": "ok", "text": "validadas contra órdenes de compra en ", "hl": "Odoo" },
-        { "kind": "step", "text": "registrando asientos contables…" },
-        { "kind": "ok", "text": "12/12 registradas · 0 errores" },
-        { "kind": "step", "text": "caso atípico #8842 → ", "hl": "escalado a humano" },
-        { "kind": "ok", "text": "resumen enviado a contabilidad" },
-        { "t": "09:43:22  ", "kind": "done", "text": "listo. 38 min de trabajo manual ahorrados hoy." }
+        {
+          "t": "09:41:07  ",
+          "kind": "cmd",
+          "text": "$ novieri-agent watch --proceso facturación"
+        },
+        {
+          "kind": "step",
+          "text": "leyendo bandeja compartida… ",
+          "hl": "47 correos nuevos"
+        },
+        {
+          "kind": "ok",
+          "text": "12 facturas detectadas y extraídas"
+        },
+        {
+          "kind": "ok",
+          "text": "validadas contra órdenes de compra en ",
+          "hl": "Odoo"
+        },
+        {
+          "kind": "step",
+          "text": "registrando asientos contables…"
+        },
+        {
+          "kind": "ok",
+          "text": "12/12 registradas · 0 errores"
+        },
+        {
+          "kind": "step",
+          "text": "caso atípico #8842 → ",
+          "hl": "escalado a humano"
+        },
+        {
+          "kind": "ok",
+          "text": "resumen enviado a contabilidad"
+        },
+        {
+          "t": "09:43:22  ",
+          "kind": "done",
+          "text": "listo. 38 min de trabajo manual ahorrados hoy."
+        }
       ],
       "footState": "estado",
       "footStateValue": "● operando",
@@ -585,12 +696,487 @@
     "legalFallback": "© {year} Novieri",
     "legal": "© {year} {razonSocial} · NIT {nit}",
     "linkedinLabel": "Novieri en LinkedIn",
-    "location": "Barranquilla, Colombia"
+    "location": "Barranquilla, Colombia",
+    "solutionsTitle": "Soluciones"
   },
   "notFound": {
     "eyebrow": "error 404",
     "title": "Esta página no existe.",
     "body": "El enlace puede estar vencido o mal escrito. Lo que buscas probablemente está a un clic:",
     "cta": "Volver al inicio"
+  },
+  "solutions": {
+    "index": {
+      "eyebrow": "soluciones",
+      "title": "Productos con nuestro sello.",
+      "intro": "No solo implementamos tecnología de otros: construimos productos propios y los operamos para nuestros clientes. Cada solución nace de un problema real de una operación real — y lleva el estándar Novieri adentro."
+    },
+    "common": {
+      "eyebrow": "solución novieri",
+      "featuresTitle": "Qué hace",
+      "builtEyebrow": "cómo está construido",
+      "poweredBadge": "powered by novieri",
+      "poweredTitle": "Detrás de cada producto está el mismo equipo.",
+      "poweredBody": "Cada solución la diseña, construye y opera el equipo de Novieri — con las mismas prácticas enterprise de nuestros servicios: seguridad, monitoreo y mejora continua. No compras un software y quedas solo: compras un producto con un equipo detrás.",
+      "seeSolution": "Ver solución",
+      "demoCta": "Agenda una demo",
+      "ctaTitle": "¿Quieres verlo funcionando con tus datos?",
+      "ctaSubtitle": "Agenda una demo de 30 minutos y te lo mostramos aplicado a tu caso, sin compromiso."
+    },
+    "items": {
+      "aiAssistant": {
+        "name": "Recepcionista Virtual de IA",
+        "tagline": "Contesta cada llamada, captura el lead y agenda la reunión — con voz natural.",
+        "tags": [
+          "voz",
+          "llamadas",
+          "crm"
+        ],
+        "hero": {
+          "title": "Ninguna llamada vuelve a perderse.",
+          "promise": "Un recepcionista de IA que contesta tu línea comercial en segundos, con voz natural: responde preguntas con la información de tu empresa, captura los datos del interesado en tu CRM, transfiere en caliente a tu equipo en horario laboral y agenda reuniones cuando ya no hay nadie."
+        },
+        "features": [
+          {
+            "title": "Contesta todas las llamadas",
+            "body": "Cada llamada entrante es atendida al instante, en horario laboral o a medianoche — se acabaron los buzones llenos y los leads perdidos."
+          },
+          {
+            "title": "Responde con tu conocimiento",
+            "body": "Su base de conocimiento se construye desde tu propio sitio web y tus datos, y se actualiza automáticamente cada semana."
+          },
+          {
+            "title": "Captura leads en tu CRM",
+            "body": "Nombre, empresa, interés y teléfono quedan registrados en HubSpot con la transcripción de la llamada como actividad."
+          },
+          {
+            "title": "Transferencia en caliente",
+            "body": "En horario laboral, detecta cuándo la llamada merece a un humano y la transfiere a tu equipo comercial con contexto."
+          },
+          {
+            "title": "Agenda fuera de horario",
+            "body": "Cuando tu equipo no está, ofrece y reserva una reunión en el calendario real del equipo, con confirmación por correo."
+          },
+          {
+            "title": "Seguro por diseño",
+            "body": "Cada integración viaja firmada y verificada, las transcripciones se depuran automáticamente y las fallas degradan con elegancia — la conversación nunca se cae."
+          }
+        ],
+        "built": {
+          "title": "Telefonía real, IA real.",
+          "body": "Telefonía empresarial conectada a un agente de voz con Claude de Anthropic, backend propio en FastAPI que ejecuta acciones reales — CRM, calendario, notificaciones a Teams — y una base de conocimiento sincronizada desde tu sitio. Configuración como código, probada de punta a punta."
+        },
+        "stack": [
+          "voz ia",
+          "claude",
+          "fastapi",
+          "hubspot",
+          "microsoft bookings"
+        ]
+      },
+      "whatsapp": {
+        "name": "Asistente de IA para WhatsApp",
+        "tagline": "Un agente conversacional real que toma pedidos y reservas por WhatsApp.",
+        "tags": [
+          "whatsapp",
+          "restaurantes",
+          "hoteles"
+        ],
+        "hero": {
+          "title": "Tu WhatsApp atiende, vende y reserva. Solo.",
+          "promise": "Diseñado para restaurantes y hoteles: un agente de IA que conversa de verdad — nada de menús de botones. Consulta tu menú o tus servicios, toma pedidos, gestiona reservas, responde preguntas con tu propia información y pasa la conversación a tu equipo cuando hace falta."
+        },
+        "features": [
+          {
+            "title": "Conversación real, no botones",
+            "body": "Entiende lo que el cliente escribe — o dicta: las notas de voz se transcriben automáticamente, porque así escriben los clientes en Colombia."
+          },
+          {
+            "title": "Toma pedidos y reservas",
+            "body": "Consulta el menú o los servicios, arma el pedido, agenda la reserva y lo registra — acciones reales sobre tus datos, no solo respuestas."
+          },
+          {
+            "title": "Responde con tu información",
+            "body": "Precios, horarios, políticas y disponibilidad salen de tu propia base de conocimiento; lo que no sabe, lo escala."
+          },
+          {
+            "title": "Traspaso a humanos",
+            "body": "Detecta cuándo interviene una persona y marca la conversación para tu equipo, con todo el historial a la vista."
+          },
+          {
+            "title": "Panel de administración",
+            "body": "Onboarding, contenido del bot y métricas de atención en un panel web propio: tú controlas lo que el asistente sabe y hace."
+          },
+          {
+            "title": "Bilingüe y multi-sede",
+            "body": "Atiende en español e inglés y soporta varias marcas o sedes con aislamiento estricto de datos entre cada una."
+          }
+        ],
+        "built": {
+          "title": "Un producto real, en producción.",
+          "body": "Plataforma SaaS multi-tenant: capa de WhatsApp sobre Evolution API y la API oficial de WhatsApp Business, agente con Claude de Anthropic y tool-use, RAG sobre PostgreSQL con pgvector, colas en Redis y panel en React — con pruebas de aislamiento de datos entre clientes incluidas."
+        },
+        "stack": [
+          "whatsapp api",
+          "claude",
+          "fastapi",
+          "postgresql · pgvector",
+          "redis",
+          "react"
+        ]
+      },
+      "itSuite": {
+        "name": "Suite de Gestión IT y RMM",
+        "tagline": "Inventario, parches, control remoto y respaldo — un solo agente, un solo panel.",
+        "tags": [
+          "rmm",
+          "endpoints",
+          "soc 2"
+        ],
+        "hero": {
+          "title": "Todo tu parque tecnológico, gobernado desde un panel.",
+          "promise": "Una plataforma modular de gestión de endpoints en la categoría de NinjaOne o Endpoint Central: un agente liviano en cada computador y servidor entrega inventario, parcheo, control remoto, despliegue de software, respaldo y evidencia de seguridad — con una arquitectura de seguridad poco común en su categoría."
+        },
+        "features": [
+          {
+            "title": "Inventario con historial",
+            "body": "Hardware y software de cada endpoint, con historial de cambios, grupos dinámicos de equipos, búsqueda de software en toda la flota y exportes CSV."
+          },
+          {
+            "title": "Parcheo multi-OS",
+            "body": "Actualizaciones de sistema y de terceros en Windows, Linux y macOS, con flujos de aprobación."
+          },
+          {
+            "title": "Control remoto y despliegue",
+            "body": "Sesiones remotas administrativas sin intervención del usuario y distribución de paquetes de software por sistema operativo."
+          },
+          {
+            "title": "Evidencia para SOC 2",
+            "body": "Logs de inicio de sesión y acciones privilegiadas centralizados, con retención auditada de 365 días y exportes listos para el auditor."
+          },
+          {
+            "title": "Bóveda de credenciales",
+            "body": "Secretos cifrados por sobre (AES-256-GCM), descifrados solo al usarse, con retiro auditado y razón obligatoria."
+          },
+          {
+            "title": "Documentación IT viva",
+            "body": "Runbooks versionados y registros tipados de redes, servicios y proveedores, vinculados a los activos reales."
+          }
+        ],
+        "built": {
+          "title": "Seguridad de plataforma, no de folleto.",
+          "body": "Multi-tenant con aislamiento a nivel de base de datos, trabajos firmados con Ed25519 que el agente verifica antes de ejecutar, canal mTLS de salida únicamente, bitácora de auditoría encadenada por hash y agente único en Go para Windows, Linux y macOS. Primero operado en nuestra propia flota, diseñado para comercializarse."
+        },
+        "stack": [
+          "agente go",
+          "mtls",
+          "postgresql rls",
+          "ed25519",
+          "keycloak"
+        ]
+      },
+      "visitorIntel": {
+        "name": "Inteligencia de Visitantes Web",
+        "tagline": "Sabe qué empresas visitan tu sitio y recibe las cuentas calificadas cada mañana.",
+        "tags": [
+          "b2b",
+          "ventas",
+          "ia"
+        ],
+        "hero": {
+          "title": "Tu sitio recibe compradores que nunca escriben. Ahora llegan a tu correo.",
+          "promise": "Un sistema de inteligencia de cuentas, propio y auto-alojado: identifica la empresa detrás de cada visita, interpreta su comportamiento con IA, la califica contra tu cliente ideal y envía a tu equipo comercial un reporte diario con las cuentas que valen una llamada."
+        },
+        "features": [
+          {
+            "title": "Identificación de empresas",
+            "body": "Resuelve la empresa detrás de la visita y la enriquece con industria, tamaño y contactos ejecutivos."
+          },
+          {
+            "title": "Análisis con IA",
+            "body": "La IA interpreta el recorrido — páginas, tiempos, regresos — y redacta un resumen accionable de cada cuenta."
+          },
+          {
+            "title": "Calificación contra tu ICP",
+            "body": "Cada cuenta se puntúa contra tu perfil de cliente ideal: tu equipo llama primero a quien más encaja."
+          },
+          {
+            "title": "Reporte diario a ventas",
+            "body": "Un correo cada mañana con las cuentas calificadas — HTML, Excel y PDF listos para trabajar o importar al CRM."
+          },
+          {
+            "title": "Embudo del formulario",
+            "body": "Mide quién abre tu formulario de contacto, hasta dónde llega y dónde abandona — sin leer jamás lo que escriben."
+          },
+          {
+            "title": "Cumplimiento por diseño",
+            "body": "Recolección first-party con consentimiento, respeto de señales de privacidad en tiempo real, IP descartada tras la consulta y sin grabación de sesiones."
+          }
+        ],
+        "built": {
+          "title": "Inteligencia comercial, no vigilancia.",
+          "body": "Colector propio, cola de enriquecimiento (IP → empresa → firmografía → contactos), análisis con Claude, tablero de cuentas y programador de reportes — todo en un stack auto-alojado que corre en un solo servidor, multi-sitio de nacimiento."
+        },
+        "stack": [
+          "typescript",
+          "fastify",
+          "prisma · postgresql",
+          "claude",
+          "redis"
+        ]
+      },
+      "ventia": {
+        "name": "Ventia — E-commerce con IA",
+        "tagline": "Comercio electrónico multi-tienda con un agente de ventas de IA integrado.",
+        "tags": [
+          "e-commerce",
+          "agente ia",
+          "multi-tienda"
+        ],
+        "hero": {
+          "title": "Una plataforma de ventas con un vendedor de IA adentro.",
+          "promise": "Ventia es la plataforma de e-commerce de Novieri: tiendas en línea completas — catálogo, carrito, pagos — con un agente de ventas de IA que atiende a cada visitante, y una arquitectura multi-tienda que permite lanzar varias marcas sobre la misma base."
+        },
+        "features": [
+          {
+            "title": "Agente de ventas de IA",
+            "body": "Un vendedor conversacional dentro de la tienda: orienta, recomienda y acompaña la compra de principio a fin."
+          },
+          {
+            "title": "Tienda completa",
+            "body": "Storefront rápido con catálogo, variantes, carrito y checkout — la base sólida de una operación de venta seria."
+          },
+          {
+            "title": "Multi-tienda de nacimiento",
+            "body": "Varias marcas o tiendas sobre una misma plataforma, cada una con sus datos aislados y su propia identidad visual — hasta la tipografía."
+          },
+          {
+            "title": "Panel del comerciante",
+            "body": "Productos, pedidos y clientes gestionados desde un panel de administración dedicado."
+          },
+          {
+            "title": "Pagos conectables",
+            "body": "Arquitectura de proveedores de pago intercambiables, lista para adaptarse a los medios de pago de cada mercado."
+          },
+          {
+            "title": "Ingeniería que aguanta",
+            "body": "Monorepo TypeScript con API dedicada, base de datos con esquema tipado y pruebas automatizadas contra bases reales."
+          }
+        ],
+        "built": {
+          "title": "Construida como producto, no como plantilla.",
+          "body": "Monorepo Turborepo: storefront y panel en Next.js 15, API en NestJS, datos en PostgreSQL con Prisma y cliente con aislamiento por tienda, Redis y despliegue en contenedores — desarrollo propio de Novieri de punta a punta."
+        },
+        "stack": [
+          "next.js 15",
+          "nestjs",
+          "prisma · postgresql",
+          "turborepo",
+          "redis",
+          "ia"
+        ]
+      },
+      "matterFlow": {
+        "name": "Matter Flow",
+        "tagline": "Casos, tareas y documentos de tu práctica profesional, fluyendo en orden.",
+        "tags": [
+          "casos",
+          "flujos",
+          "productividad"
+        ],
+        "hero": {
+          "title": "Cada caso avanza. Nada se pierde.",
+          "promise": "Matter Flow organiza el trabajo de equipos de servicios profesionales: cada caso con su responsable, sus plazos, sus documentos y su historial — y flujos que mueven el trabajo solo, de etapa en etapa."
+        },
+        "features": [
+          {
+            "title": "Gestión de casos",
+            "body": "Cada asunto con su estado, responsable, fechas límite y prioridad — visible para todo el equipo."
+          },
+          {
+            "title": "Flujos por etapas",
+            "body": "Define el camino que sigue un caso en tu práctica y deja que el tablero muestre exactamente dónde está cada uno."
+          },
+          {
+            "title": "Documentos en su lugar",
+            "body": "Los archivos de cada caso viven con el caso — no en el correo de alguien."
+          },
+          {
+            "title": "Tareas y plazos",
+            "body": "Asignaciones claras con recordatorios; los vencimientos dejan de depender de la memoria."
+          },
+          {
+            "title": "Historial completo",
+            "body": "Quién hizo qué y cuándo, en cada caso — trazabilidad para clientes y auditorías."
+          },
+          {
+            "title": "Automatización con IA",
+            "body": "Clasificación de solicitudes entrantes y resúmenes de casos generados automáticamente."
+          }
+        ],
+        "built": {
+          "title": "Orden operativo, hecho software.",
+          "body": "Desarrollado por Novieri para operaciones que viven de gestionar casos y compromisos, con la IA aplicada donde ahorra horas reales."
+        },
+        "stack": [
+          "flujos de trabajo",
+          "web app",
+          "ia",
+          "reportes"
+        ]
+      },
+      "monitoring": {
+        "name": "Monitoreo de Redes y Sistemas",
+        "tagline": "Observabilidad de red, servidores e ISPs — de clase SolarWinds, sin su factura.",
+        "tags": [
+          "observabilidad",
+          "redes",
+          "isp"
+        ],
+        "hero": {
+          "title": "Ve tu infraestructura como la ve un NOC.",
+          "promise": "Una plataforma de observabilidad con tres piezas: un plano de control en la nube, un colector de red que vigila lo que la nube no alcanza — SNMP, hosts, bases de datos — y un agente liviano que además mide la calidad de tus enlaces de internet, salto por salto y por operador."
+        },
+        "features": [
+          {
+            "title": "Dispositivos de red",
+            "body": "Switches, firewalls, UPS y controladores monitoreados por SNMP e ICMP, con descubrimiento asistido y estados claros: arriba, advertencia, crítico, caído."
+          },
+          {
+            "title": "Calidad de ISP por ruta",
+            "body": "Latencia y pérdida de paquetes salto por salto, agrupadas por operador — evidencia dura para reclamarle a tu proveedor, estilo PingPlotter."
+          },
+          {
+            "title": "Servidores y bases de datos",
+            "body": "Métricas de hosts Windows y Linux y de tus motores de base de datos, recolectadas por el mismo agente."
+          },
+          {
+            "title": "Alertas con criterio",
+            "body": "Reglas por severidad con histéresis — sin tormentas de alertas — y notificación a correo, Slack o Teams."
+          },
+          {
+            "title": "Tableros en vivo",
+            "body": "Resumen tipo NOC con estados, disponibilidad y salud del hardware; tableros por dominio para red, nubes y bases de datos."
+          },
+          {
+            "title": "Reportes de calidad",
+            "body": "Reportes PDF de aptitud de la red — para escritorio remoto, VoIP o web — por sede, ciudad y operador."
+          }
+        ],
+        "built": {
+          "title": "Nacida en una operación real multi-sede.",
+          "body": "Diseñada para una operación de cientos de agentes en varios países con doble ISP: colector y agente en Go que solo marcan hacia afuera, ingesta por colas, métricas en una base de series de tiempo y panel en React — multi-tenant desde el día uno."
+        },
+        "stack": [
+          "go",
+          "snmp · icmp · wmi",
+          "victoriametrics",
+          "nats",
+          "fastapi",
+          "react"
+        ]
+      },
+      "sentinel": {
+        "name": "Sentinel — Gestión de Vulnerabilidades",
+        "tagline": "Descubre, detecta, prioriza con IA y demuestra el avance — en tu propia red.",
+        "tags": [
+          "seguridad",
+          "vulnerabilidades",
+          "ia"
+        ],
+        "hero": {
+          "title": "Conoce tus vulnerabilidades antes de que otro las encuentre.",
+          "promise": "Un tablero de gestión de vulnerabilidades auto-alojado: descubre los activos de tu red, los escanea con motores reconocidos en modo seguro, cruza los hallazgos con inteligencia de amenazas viva y usa IA para priorizarlos y explicar — en lenguaje claro — qué arreglar primero y cómo."
+        },
+        "features": [
+          {
+            "title": "Descubrimiento de activos",
+            "body": "Inventario continuo de lo que realmente vive en tu red — solo dentro del alcance autorizado, garantizado por código."
+          },
+          {
+            "title": "Detección con motores probados",
+            "body": "Escaneo con motores open-source reconocidos, siempre en modo seguro: detección sí, intrusión jamás."
+          },
+          {
+            "title": "Inteligencia de amenazas viva",
+            "body": "Cada hallazgo se cruza con los catálogos oficiales de vulnerabilidades y explotación activa para saber qué es urgente de verdad."
+          },
+          {
+            "title": "Priorización con IA",
+            "body": "La IA hace triage de los hallazgos, descarta falsos positivos y redacta planes de remediación en lenguaje claro — cada análisis queda auditado."
+          },
+          {
+            "title": "Ciclo de remediación completo",
+            "body": "De abierto a verificado, con re-escaneo de confirmación, métricas de tiempo de corrección y aceptaciones de riesgo con vencimiento."
+          },
+          {
+            "title": "Reportes listos para auditoría",
+            "body": "Informes ejecutivos, técnicos y de evidencia SOC 2 generados con IA, exportables a PDF."
+          }
+        ],
+        "built": {
+          "title": "Seguridad defensiva con barandas de hierro.",
+          "body": "Alcance autorizado por lista blanca aplicado por defecto-denegar, modo seguro forzado en código, RBAC del lado del servidor, MFA, bitácora inmutable y despliegue endurecido en contenedores — más de 200 pruebas automatizadas lo respaldan."
+        },
+        "stack": [
+          "fastapi",
+          "nmap · nuclei · openvas",
+          "claude",
+          "postgresql",
+          "celery · redis",
+          "react"
+        ]
+      },
+      "webDev": {
+        "name": "Sitios Web con IA",
+        "tagline": "Tu sitio comercial, moderno y bilingüe — con IA trabajando adentro.",
+        "tags": [
+          "web",
+          "ia",
+          "bilingüe"
+        ],
+        "hero": {
+          "title": "Un sitio que no solo se ve bien: trabaja.",
+          "promise": "Diseñamos y construimos sitios web comerciales con las funcionalidades de IA que ya operamos en producción: asistentes que atienden a tus visitantes, búsqueda que entiende preguntas, contenido bilingüe y la inteligencia de visitantes conectada — todo con el estándar de diseño y velocidad que estás viendo en esta misma página."
+        },
+        "features": [
+          {
+            "title": "Diseño a medida, no plantilla",
+            "body": "Identidad, tipografía y movimiento diseñados para tu marca, con el nivel de artesanía de este sitio."
+          },
+          {
+            "title": "Asistente de IA integrado",
+            "body": "Un asistente entrenado con tu información atiende a los visitantes en tu sitio — y puede conectarse con WhatsApp o tu línea telefónica."
+          },
+          {
+            "title": "Bilingüe de nacimiento",
+            "body": "Español e inglés con URLs localizadas y SEO internacional bien hecho — como este sitio."
+          },
+          {
+            "title": "Inteligencia de visitantes",
+            "body": "Conexión nativa con nuestra plataforma de visitor intelligence: sabrás qué empresas te visitan desde el día uno."
+          },
+          {
+            "title": "Rápido y medible",
+            "body": "Arquitectura moderna con puntajes de rendimiento altos, analítica ligera y formularios que sí entregan."
+          },
+          {
+            "title": "Operado, no abandonado",
+            "body": "Alojamiento, seguridad, cambios y mejoras continuas bajo el mismo retainer — el sitio evoluciona contigo."
+          }
+        ],
+        "built": {
+          "title": "El mismo estándar de este sitio.",
+          "body": "Next.js y React con internacionalización real, integraciones de IA con Claude, despliegue en la nube y monitoreo — construido por el mismo equipo que desarrolla nuestros productos."
+        },
+        "stack": [
+          "next.js",
+          "react",
+          "tailwind",
+          "claude",
+          "vercel"
+        ]
+      }
+    }
   }
 }

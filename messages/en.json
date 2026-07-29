@@ -34,6 +34,46 @@
     },
     "notFound": {
       "title": "Page not found — Novieri"
+    },
+    "solutions": {
+      "title": "Solutions — Novieri",
+      "description": "Products built and operated by Novieri: AI receptionist and assistants, IT management & RMM, monitoring, security, visitor intelligence, and AI e-commerce."
+    },
+    "sol_aiAssistant": {
+      "title": "AI Virtual Receptionist — Novieri",
+      "description": "An AI receptionist that answers every call: responds from your knowledge, captures CRM leads, warm-transfers to your team, and books meetings."
+    },
+    "sol_whatsapp": {
+      "title": "WhatsApp AI Assistant — Novieri",
+      "description": "A real conversational agent on WhatsApp for restaurants and hotels: takes orders, manages reservations, answers from your data, and hands off to humans."
+    },
+    "sol_itSuite": {
+      "title": "IT Management Suite & RMM — Novieri",
+      "description": "Endpoint management platform: inventory, patching, remote control, security logs, backup, and IT documentation from a single agent."
+    },
+    "sol_visitorIntel": {
+      "title": "Website Visitor Intelligence — Novieri",
+      "description": "Identify the companies visiting your site, interpret their behavior with AI, and deliver qualified accounts to your sales team daily."
+    },
+    "sol_ventia": {
+      "title": "Ventia — E-commerce with an AI sales agent — Novieri",
+      "description": "A multi-store e-commerce platform with a built-in AI sales agent. Built and operated by Novieri."
+    },
+    "sol_matterFlow": {
+      "title": "Matter Flow — Novieri",
+      "description": "Case and workflow management for professional-services teams."
+    },
+    "sol_monitoring": {
+      "title": "Networks & Systems Monitoring — Novieri",
+      "description": "Observability platform: network devices, ISP paths, servers, and databases with real-time alerts and dashboards."
+    },
+    "sol_sentinel": {
+      "title": "Sentinel — AI Vulnerability Management — Novieri",
+      "description": "Discover assets, detect vulnerabilities, prioritize with AI, and produce audit-ready reports — on your own infrastructure."
+    },
+    "sol_webDev": {
+      "title": "AI-powered Websites — Novieri",
+      "description": "Modern website development with AI built in: assistants, smart search, and bilingual content."
     }
   },
   "nav": {
@@ -46,28 +86,46 @@
     "servicesMenuLabel": "See all services",
     "localeSwitcherLabel": "Language",
     "homeLink": "Novieri — home",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "solutions": "Solutions",
+    "solutionsMenuLabel": "See all solutions"
   },
   "pillars": {
     "ai": {
       "name": "AI & automation",
       "tagline": "Agents and automations that take repetitive work off your team's plate.",
-      "tags": ["agents", "chatbots", "workflows"]
+      "tags": [
+        "agents",
+        "chatbots",
+        "workflows"
+      ]
     },
     "managedIt": {
       "name": "Managed IT",
       "tagline": "Your IT department, without having to build one.",
-      "tags": ["helpdesk", "microsoft 365", "backups"]
+      "tags": [
+        "helpdesk",
+        "microsoft 365",
+        "backups"
+      ]
     },
     "security": {
       "name": "Cybersecurity & compliance",
       "tagline": "Real security, and a clear path to SOC 2 / ISO 27001.",
-      "tags": ["hardening", "soc 2", "iso 27001"]
+      "tags": [
+        "hardening",
+        "soc 2",
+        "iso 27001"
+      ]
     },
     "software": {
       "name": "Custom software",
       "tagline": "Software that fits your operation, not the other way around.",
-      "tags": ["react", "fastapi", "node"]
+      "tags": [
+        "react",
+        "fastapi",
+        "node"
+      ]
     }
   },
   "common": {
@@ -87,14 +145,35 @@
       "ringText": "ai · automation · managed it · cybersecurity · software · barranquilla · gmt-5 · "
     },
     "trust": {
-      "items": ["Microsoft 365", "FortiGate", "AWS", "Python", "React", "Odoo", "HubSpot", "Power BI"]
+      "items": [
+        "Microsoft 365",
+        "FortiGate",
+        "AWS",
+        "Python",
+        "React",
+        "Odoo",
+        "HubSpot",
+        "Power BI"
+      ]
     },
     "proof": {
       "items": [
-        { "value": "300+", "label": "users operated as cto" },
-        { "value": "0h", "label": "time difference with ny" },
-        { "value": "SOC 2", "label": "program led end to end" },
-        { "value": "2", "label": "founders, zero middlemen" }
+        {
+          "value": "300+",
+          "label": "users operated as cto"
+        },
+        {
+          "value": "0h",
+          "label": "time difference with ny"
+        },
+        {
+          "value": "SOC 2",
+          "label": "program led end to end"
+        },
+        {
+          "value": "2",
+          "label": "founders, zero middlemen"
+        }
       ]
     },
     "console": {
@@ -105,15 +184,47 @@
       "barTitle": "novieri · invoicing agent",
       "badge": "LIVE",
       "lines": [
-        { "t": "09:41:07  ", "kind": "cmd", "text": "$ novieri-agent watch --process invoicing" },
-        { "kind": "step", "text": "reading shared inbox… ", "hl": "47 new emails" },
-        { "kind": "ok", "text": "12 invoices detected and extracted" },
-        { "kind": "ok", "text": "validated against purchase orders in ", "hl": "Odoo" },
-        { "kind": "step", "text": "posting journal entries…" },
-        { "kind": "ok", "text": "12/12 posted · 0 errors" },
-        { "kind": "step", "text": "edge case #8842 → ", "hl": "escalated to a human" },
-        { "kind": "ok", "text": "summary sent to accounting" },
-        { "t": "09:43:22  ", "kind": "done", "text": "done. 38 min of manual work saved today." }
+        {
+          "t": "09:41:07  ",
+          "kind": "cmd",
+          "text": "$ novieri-agent watch --process invoicing"
+        },
+        {
+          "kind": "step",
+          "text": "reading shared inbox… ",
+          "hl": "47 new emails"
+        },
+        {
+          "kind": "ok",
+          "text": "12 invoices detected and extracted"
+        },
+        {
+          "kind": "ok",
+          "text": "validated against purchase orders in ",
+          "hl": "Odoo"
+        },
+        {
+          "kind": "step",
+          "text": "posting journal entries…"
+        },
+        {
+          "kind": "ok",
+          "text": "12/12 posted · 0 errors"
+        },
+        {
+          "kind": "step",
+          "text": "edge case #8842 → ",
+          "hl": "escalated to a human"
+        },
+        {
+          "kind": "ok",
+          "text": "summary sent to accounting"
+        },
+        {
+          "t": "09:43:22  ",
+          "kind": "done",
+          "text": "done. 38 min of manual work saved today."
+        }
       ],
       "footState": "status",
       "footStateValue": "● operating",
@@ -585,12 +696,487 @@
     "legalFallback": "© {year} Novieri",
     "legal": "© {year} {razonSocial} · NIT {nit}",
     "linkedinLabel": "Novieri on LinkedIn",
-    "location": "Barranquilla, Colombia"
+    "location": "Barranquilla, Colombia",
+    "solutionsTitle": "Solutions"
   },
   "notFound": {
     "eyebrow": "error 404",
     "title": "This page doesn't exist.",
     "body": "The link may be outdated or mistyped. What you're looking for is probably one click away:",
     "cta": "Back to home"
+  },
+  "solutions": {
+    "index": {
+      "eyebrow": "solutions",
+      "title": "Products with our name on them.",
+      "intro": "We don't just implement other people's technology — we build our own products and operate them for our clients. Every solution was born from a real problem in a real operation, and carries the Novieri standard inside."
+    },
+    "common": {
+      "eyebrow": "novieri solution",
+      "featuresTitle": "What it does",
+      "builtEyebrow": "how it's built",
+      "poweredBadge": "powered by novieri",
+      "poweredTitle": "The same team stands behind every product.",
+      "poweredBody": "Each solution is designed, built, and operated by the Novieri team — with the same enterprise practices as our services: security, monitoring, and continuous improvement. You're not buying software and getting left alone; you're buying a product with a team behind it.",
+      "seeSolution": "See solution",
+      "demoCta": "Book a demo",
+      "ctaTitle": "Want to see it running on your data?",
+      "ctaSubtitle": "Book a 30-minute demo and we'll show it applied to your case, no strings attached."
+    },
+    "items": {
+      "aiAssistant": {
+        "name": "AI Virtual Receptionist",
+        "tagline": "Answers every call, captures the lead, and books the meeting — in a natural voice.",
+        "tags": [
+          "voice",
+          "calls",
+          "crm"
+        ],
+        "hero": {
+          "title": "No call goes unanswered again.",
+          "promise": "An AI receptionist that picks up your sales line in seconds, in a natural voice: it answers questions from your company's information, captures the caller's details into your CRM, warm-transfers to your team during business hours, and books meetings when nobody's in."
+        },
+        "features": [
+          {
+            "title": "Answers every call",
+            "body": "Every inbound call is attended instantly, during business hours or at midnight — no more full voicemail boxes and lost leads."
+          },
+          {
+            "title": "Answers from your knowledge",
+            "body": "Its knowledge base is built from your own website and data, and refreshes automatically every week."
+          },
+          {
+            "title": "Captures leads into your CRM",
+            "body": "Name, company, interest, and phone are logged in HubSpot, with the call transcript attached as an activity."
+          },
+          {
+            "title": "Warm transfer",
+            "body": "During business hours, it detects when a call deserves a human and transfers it to your sales team with context."
+          },
+          {
+            "title": "Books after hours",
+            "body": "When your team is out, it offers and books a meeting on the team's real calendar, with email confirmation."
+          },
+          {
+            "title": "Secure by design",
+            "body": "Every integration call is signed and verified, transcripts are purged automatically, and failures degrade gracefully — the conversation never drops."
+          }
+        ],
+        "built": {
+          "title": "Real telephony, real AI.",
+          "body": "Business telephony connected to a Claude-powered voice agent, a dedicated FastAPI backend that performs real actions — CRM, calendar, Teams notifications — and a knowledge base synced from your site. Configuration as code, tested end to end."
+        },
+        "stack": [
+          "voice ai",
+          "claude",
+          "fastapi",
+          "hubspot",
+          "microsoft bookings"
+        ]
+      },
+      "whatsapp": {
+        "name": "WhatsApp AI Assistant",
+        "tagline": "A real conversational agent that takes orders and reservations on WhatsApp.",
+        "tags": [
+          "whatsapp",
+          "restaurants",
+          "hotels"
+        ],
+        "hero": {
+          "title": "Your WhatsApp answers, sells, and books. On its own.",
+          "promise": "Built for restaurants and hotels: an AI agent that genuinely converses — no button menus. It consults your menu or services, takes orders, manages reservations, answers questions from your own information, and hands the conversation to your team when needed."
+        },
+        "features": [
+          {
+            "title": "Real conversation, not buttons",
+            "body": "It understands what customers write — or say: voice notes are transcribed automatically, because that's how customers actually message."
+          },
+          {
+            "title": "Takes orders and reservations",
+            "body": "Consults the menu or services, builds the order, books the reservation, and records it — real actions on your data, not just replies."
+          },
+          {
+            "title": "Answers from your information",
+            "body": "Prices, hours, policies, and availability come from your own knowledge base; what it doesn't know, it escalates."
+          },
+          {
+            "title": "Human handoff",
+            "body": "It detects when a person should step in and flags the conversation for your team, full history in view."
+          },
+          {
+            "title": "Admin panel",
+            "body": "Onboarding, bot content, and support metrics in a dedicated web panel: you control what the assistant knows and does."
+          },
+          {
+            "title": "Bilingual and multi-location",
+            "body": "Serves customers in Spanish and English and supports multiple brands or locations with strict data isolation between them."
+          }
+        ],
+        "built": {
+          "title": "A real product, in production.",
+          "body": "A multi-tenant SaaS platform: WhatsApp layer on Evolution API and the official WhatsApp Business API, an Anthropic Claude agent with tool use, RAG on PostgreSQL with pgvector, Redis queues, and a React panel — with cross-tenant data-isolation tests included."
+        },
+        "stack": [
+          "whatsapp api",
+          "claude",
+          "fastapi",
+          "postgresql · pgvector",
+          "redis",
+          "react"
+        ]
+      },
+      "itSuite": {
+        "name": "IT Management Suite & RMM",
+        "tagline": "Inventory, patching, remote control, and backup — one agent, one panel.",
+        "tags": [
+          "rmm",
+          "endpoints",
+          "soc 2"
+        ],
+        "hero": {
+          "title": "Your entire fleet, governed from one panel.",
+          "promise": "A modular endpoint-management platform in the NinjaOne / Endpoint Central category: a lightweight agent on every computer and server delivers inventory, patching, remote control, software deployment, backup, and security evidence — with a security architecture uncommon in its class."
+        },
+        "features": [
+          {
+            "title": "Inventory with history",
+            "body": "Hardware and software for every endpoint, with change history, dynamic device groups, fleet-wide software search, and CSV exports."
+          },
+          {
+            "title": "Cross-OS patching",
+            "body": "OS and third-party updates on Windows, Linux, and macOS, with approval workflows."
+          },
+          {
+            "title": "Remote control & deployment",
+            "body": "Unattended administrative remote sessions and per-OS software package distribution."
+          },
+          {
+            "title": "SOC 2 evidence",
+            "body": "Centralized logon and privileged-action logs with audited 365-day retention and auditor-ready exports."
+          },
+          {
+            "title": "Credential vault",
+            "body": "Envelope-encrypted secrets (AES-256-GCM), decrypted only at use, with audited checkout and a required reason."
+          },
+          {
+            "title": "Living IT documentation",
+            "body": "Versioned runbooks and typed records of networks, services, and vendors, linked to real assets."
+          }
+        ],
+        "built": {
+          "title": "Platform security, not brochure security.",
+          "body": "Multi-tenant with database-level isolation, Ed25519-signed jobs the agent verifies before executing, an outbound-only mTLS channel, a hash-chained audit log, and a single Go agent for Windows, Linux, and macOS. Dogfooded on our own fleet first, designed to be commercialized."
+        },
+        "stack": [
+          "go agent",
+          "mtls",
+          "postgresql rls",
+          "ed25519",
+          "keycloak"
+        ]
+      },
+      "visitorIntel": {
+        "name": "Website Visitor Intelligence",
+        "tagline": "Know which companies visit your site — qualified accounts in your inbox every morning.",
+        "tags": [
+          "b2b",
+          "sales",
+          "ai"
+        ],
+        "hero": {
+          "title": "Your site gets buyers who never write. Now they land in your inbox.",
+          "promise": "A self-hosted, first-party account-intelligence system: it identifies the company behind each visit, interprets the behavior with AI, scores it against your ideal customer profile, and emails your sales team a daily report of the accounts worth a call."
+        },
+        "features": [
+          {
+            "title": "Company identification",
+            "body": "Resolves the company behind the visit and enriches it with industry, size, and executive contacts."
+          },
+          {
+            "title": "AI analysis",
+            "body": "AI interprets the journey — pages, time, return visits — and writes an actionable brief for each account."
+          },
+          {
+            "title": "Scoring against your ICP",
+            "body": "Every account is scored against your ideal customer profile: your team calls the best fit first."
+          },
+          {
+            "title": "Daily report to sales",
+            "body": "An email every morning with the qualified accounts — HTML, Excel, and PDF ready to work or import into the CRM."
+          },
+          {
+            "title": "Contact-form funnel",
+            "body": "Measures who opens your contact form, how far they get, and where they abandon — without ever reading what they type."
+          },
+          {
+            "title": "Compliance by design",
+            "body": "First-party collection with consent, real-time privacy-signal honoring, raw IP discarded after lookup, and no session recording."
+          }
+        ],
+        "built": {
+          "title": "Sales intelligence, not surveillance.",
+          "body": "A dedicated collector, an enrichment pipeline (IP → company → firmographics → contacts), Claude analysis, an account dashboard, and a report scheduler — a self-hosted stack that runs on a single server, multi-site from birth."
+        },
+        "stack": [
+          "typescript",
+          "fastify",
+          "prisma · postgresql",
+          "claude",
+          "redis"
+        ]
+      },
+      "ventia": {
+        "name": "Ventia — AI E-commerce",
+        "tagline": "Multi-store e-commerce with a built-in AI sales agent.",
+        "tags": [
+          "e-commerce",
+          "ai agent",
+          "multi-store"
+        ],
+        "hero": {
+          "title": "A sales platform with an AI salesperson inside.",
+          "promise": "Ventia is Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI sales agent that attends every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
+        },
+        "features": [
+          {
+            "title": "AI sales agent",
+            "body": "A conversational salesperson inside the store: it guides, recommends, and walks the customer through the purchase end to end."
+          },
+          {
+            "title": "A complete store",
+            "body": "A fast storefront with catalog, variants, cart, and checkout — the solid base of a serious sales operation."
+          },
+          {
+            "title": "Multi-store by birth",
+            "body": "Several brands or stores on one platform, each with isolated data and its own visual identity — down to the typography."
+          },
+          {
+            "title": "Merchant panel",
+            "body": "Products, orders, and customers managed from a dedicated admin application."
+          },
+          {
+            "title": "Pluggable payments",
+            "body": "A swappable payment-provider architecture, ready to adapt to each market's payment methods."
+          },
+          {
+            "title": "Engineering that holds",
+            "body": "A TypeScript monorepo with a dedicated API, a typed database schema, and automated tests against real databases."
+          }
+        ],
+        "built": {
+          "title": "Built as a product, not a template.",
+          "body": "A Turborepo monorepo: Next.js 15 storefront and admin, NestJS API, PostgreSQL with Prisma and a tenant-scoped client, Redis, and containerized deployment — Novieri's own development end to end."
+        },
+        "stack": [
+          "next.js 15",
+          "nestjs",
+          "prisma · postgresql",
+          "turborepo",
+          "redis",
+          "ai"
+        ]
+      },
+      "matterFlow": {
+        "name": "Matter Flow",
+        "tagline": "Cases, tasks, and documents of your professional practice, flowing in order.",
+        "tags": [
+          "cases",
+          "workflows",
+          "productivity"
+        ],
+        "hero": {
+          "title": "Every case moves forward. Nothing falls through.",
+          "promise": "Matter Flow organizes the work of professional-services teams: every matter with its owner, deadlines, documents, and history — and workflows that move work forward on their own, stage by stage."
+        },
+        "features": [
+          {
+            "title": "Case management",
+            "body": "Every matter with its status, owner, deadlines, and priority — visible to the whole team."
+          },
+          {
+            "title": "Stage-based workflows",
+            "body": "Define the path a case follows in your practice and let the board show exactly where each one stands."
+          },
+          {
+            "title": "Documents where they belong",
+            "body": "Each case's files live with the case — not in somebody's inbox."
+          },
+          {
+            "title": "Tasks and deadlines",
+            "body": "Clear assignments with reminders; due dates stop depending on memory."
+          },
+          {
+            "title": "Full history",
+            "body": "Who did what and when, on every case — traceability for clients and audits."
+          },
+          {
+            "title": "AI automation",
+            "body": "Incoming requests classified automatically and case summaries generated on demand."
+          }
+        ],
+        "built": {
+          "title": "Operational order, turned into software.",
+          "body": "Developed by Novieri for operations that live on managing cases and commitments, with AI applied where it saves real hours."
+        },
+        "stack": [
+          "workflows",
+          "web app",
+          "ai",
+          "reporting"
+        ]
+      },
+      "monitoring": {
+        "name": "Networks & Systems Monitoring",
+        "tagline": "Network, server, and ISP observability — SolarWinds-class, without the invoice.",
+        "tags": [
+          "observability",
+          "networks",
+          "isp"
+        ],
+        "hero": {
+          "title": "See your infrastructure the way a NOC does.",
+          "promise": "An observability platform in three pieces: a cloud control plane, a network collector that watches what the cloud can't reach — SNMP, hosts, databases — and a lightweight agent that also measures your internet links' quality, hop by hop and per carrier."
+        },
+        "features": [
+          {
+            "title": "Network devices",
+            "body": "Switches, firewalls, UPS units, and controllers monitored over SNMP and ICMP, with assisted discovery and clear states: up, warning, critical, down."
+          },
+          {
+            "title": "Per-path ISP quality",
+            "body": "Hop-by-hop latency and packet loss, grouped by carrier — hard evidence for claims against your provider, PingPlotter-style."
+          },
+          {
+            "title": "Servers and databases",
+            "body": "Metrics from Windows and Linux hosts and your database engines, collected by the same agent."
+          },
+          {
+            "title": "Alerts with judgment",
+            "body": "Severity-based rules with hysteresis — no alert storms — and notification to email, Slack, or Teams."
+          },
+          {
+            "title": "Live dashboards",
+            "body": "A NOC-style summary with states, availability, and hardware health; per-domain dashboards for network, clouds, and databases."
+          },
+          {
+            "title": "Quality reports",
+            "body": "PDF network-suitability reports — for remote desktop, VoIP, or web — by site, city, and carrier."
+          }
+        ],
+        "built": {
+          "title": "Born in a real multi-site operation.",
+          "body": "Designed for an operation of hundreds of agents across countries with dual ISPs: Go collector and agent that only dial out, queued ingestion, metrics in a time-series database, and a React console — multi-tenant from day one."
+        },
+        "stack": [
+          "go",
+          "snmp · icmp · wmi",
+          "victoriametrics",
+          "nats",
+          "fastapi",
+          "react"
+        ]
+      },
+      "sentinel": {
+        "name": "Sentinel — Vulnerability Management",
+        "tagline": "Discover, detect, prioritize with AI, and prove progress — on your own network.",
+        "tags": [
+          "security",
+          "vulnerabilities",
+          "ai"
+        ],
+        "hero": {
+          "title": "Know your vulnerabilities before someone else finds them.",
+          "promise": "A self-hosted vulnerability-management dashboard: it discovers the assets on your network, scans them with established engines in safe mode, joins findings with live threat intelligence, and uses AI to prioritize and explain — in plain language — what to fix first and how."
+        },
+        "features": [
+          {
+            "title": "Asset discovery",
+            "body": "A continuous inventory of what actually lives on your network — only within authorized scope, guaranteed in code."
+          },
+          {
+            "title": "Detection with proven engines",
+            "body": "Scanning with recognized open-source engines, always in safe mode: detection yes, intrusion never."
+          },
+          {
+            "title": "Live threat intelligence",
+            "body": "Every finding is joined with the official vulnerability and known-exploited catalogs, so you know what's genuinely urgent."
+          },
+          {
+            "title": "AI prioritization",
+            "body": "AI triages findings, flags false positives, and drafts plain-language remediation plans — every analysis is audited."
+          },
+          {
+            "title": "Full remediation lifecycle",
+            "body": "From open to verified, with confirmation rescans, time-to-remediate metrics, and risk acceptances that expire."
+          },
+          {
+            "title": "Audit-ready reports",
+            "body": "Executive, technical, and SOC 2-evidence reports generated with AI, exportable to PDF."
+          }
+        ],
+        "built": {
+          "title": "Defensive security with iron guardrails.",
+          "body": "Allowlisted authorized scope enforced default-deny, safe mode forced in code, server-side RBAC, MFA, an immutable audit log, and a hardened containerized deployment — backed by 200+ automated tests."
+        },
+        "stack": [
+          "fastapi",
+          "nmap · nuclei · openvas",
+          "claude",
+          "postgresql",
+          "celery · redis",
+          "react"
+        ]
+      },
+      "webDev": {
+        "name": "AI-powered Websites",
+        "tagline": "Your commercial site, modern and bilingual — with AI working inside.",
+        "tags": [
+          "web",
+          "ai",
+          "bilingual"
+        ],
+        "hero": {
+          "title": "A site that doesn't just look good. It works.",
+          "promise": "We design and build commercial websites with the AI features we already run in production: assistants that attend your visitors, search that understands questions, bilingual content, and visitor intelligence wired in — all with the design and speed standard you're seeing on this very page."
+        },
+        "features": [
+          {
+            "title": "Custom design, not a template",
+            "body": "Identity, typography, and motion designed for your brand, with the level of craft on this site."
+          },
+          {
+            "title": "Built-in AI assistant",
+            "body": "An assistant trained on your information attends visitors on your site — and can connect to WhatsApp or your phone line."
+          },
+          {
+            "title": "Bilingual by birth",
+            "body": "Spanish and English with localized URLs and international SEO done right — like this site."
+          },
+          {
+            "title": "Visitor intelligence",
+            "body": "Native connection to our visitor-intelligence platform: you'll know which companies visit you from day one."
+          },
+          {
+            "title": "Fast and measurable",
+            "body": "Modern architecture with high performance scores, lightweight analytics, and forms that actually deliver."
+          },
+          {
+            "title": "Operated, not abandoned",
+            "body": "Hosting, security, changes, and continuous improvements under one retainer — the site evolves with you."
+          }
+        ],
+        "built": {
+          "title": "The same standard as this site.",
+          "body": "Next.js and React with real internationalization, Claude AI integrations, cloud deployment, and monitoring — built by the same team that develops our products."
+        },
+        "stack": [
+          "next.js",
+          "react",
+          "tailwind",
+          "claude",
+          "vercel"
+        ]
+      }
+    }
   }
 }

@@ -26,6 +26,46 @@ export const routing = defineRouting({
       es: "/servicios/desarrollo-a-medida",
       en: "/services/custom-software",
     },
+    "/solutions": {
+      es: "/soluciones",
+      en: "/solutions",
+    },
+    "/solutions/ai-virtual-assistant": {
+      es: "/soluciones/asistente-virtual-ia",
+      en: "/solutions/ai-virtual-assistant",
+    },
+    "/solutions/it-management-rmm": {
+      es: "/soluciones/gestion-it-rmm",
+      en: "/solutions/it-management-rmm",
+    },
+    "/solutions/visitor-intelligence": {
+      es: "/soluciones/inteligencia-de-visitantes",
+      en: "/solutions/visitor-intelligence",
+    },
+    "/solutions/whatsapp-ai-assistant": {
+      es: "/soluciones/asistente-ia-whatsapp",
+      en: "/solutions/whatsapp-ai-assistant",
+    },
+    "/solutions/ventia": {
+      es: "/soluciones/ventia",
+      en: "/solutions/ventia",
+    },
+    "/solutions/matter-flow": {
+      es: "/soluciones/matter-flow",
+      en: "/solutions/matter-flow",
+    },
+    "/solutions/systems-monitoring": {
+      es: "/soluciones/monitoreo-de-sistemas",
+      en: "/solutions/systems-monitoring",
+    },
+    "/solutions/vulnerability-management": {
+      es: "/soluciones/gestion-de-vulnerabilidades",
+      en: "/solutions/vulnerability-management",
+    },
+    "/solutions/ai-websites": {
+      es: "/soluciones/sitios-web-con-ia",
+      en: "/solutions/ai-websites",
+    },
     "/about": {
       es: "/nosotros",
       en: "/about",

@@ -11,21 +11,46 @@ const SERVICE_LINKS: { key: string; href: AppPathname }[] = [
   { key: "software", href: "/services/custom-software" },
 ];
 
+const SOLUTION_LINKS: { key: string; href: AppPathname }[] = [
+  { key: "aiAssistant", href: "/solutions/ai-virtual-assistant" },
+  { key: "whatsapp", href: "/solutions/whatsapp-ai-assistant" },
+  { key: "itSuite", href: "/solutions/it-management-rmm" },
+  { key: "monitoring", href: "/solutions/systems-monitoring" },
+  { key: "visitorIntel", href: "/solutions/visitor-intelligence" },
+  { key: "sentinel", href: "/solutions/vulnerability-management" },
+  { key: "ventia", href: "/solutions/ventia" },
+  { key: "matterFlow", href: "/solutions/matter-flow" },
+  { key: "webDev", href: "/solutions/ai-websites" },
+];
+
 export default async function Footer({ locale }: { locale: string }) {
   const t = await getTranslations("footer");
   const tp = await getTranslations("pillars");
   const tn = await getTranslations("nav");
   const tw = await getTranslations("whatsapp");
+  const tso = await getTranslations("solutions.items");
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-line bg-white">
       <div className="container-site pb-10 pt-16">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[4fr_2fr_2fr_2fr]">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[3fr_3fr_3fr_2fr_2fr]">
           <div className="col-span-2 md:col-span-1">
             <Image src="/brand/novieri-isotipo-color-256px.png" alt="" width={38} height={39} />
             <p className="mt-4 max-w-[34ch] text-[14.5px] text-ink-muted">{t("description")}</p>
           </div>
+          <nav aria-label={t("solutionsTitle")}>
+            <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("solutionsTitle")}</h2>
+            <ul className="grid gap-2.5 text-[14.5px]">
+              {SOLUTION_LINKS.map((s) => (
+                <li key={s.key}>
+                  <Link href={s.href} className="text-ink-muted transition-colors hover:text-ink">
+                    {tso(`${s.key}.name`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <nav aria-label={t("servicesTitle")}>
             <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("servicesTitle")}</h2>
             <ul className="grid gap-2.5 text-[14.5px]">
