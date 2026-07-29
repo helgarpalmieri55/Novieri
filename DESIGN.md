@@ -1,54 +1,71 @@
 # Design
 
-Light-mode-only, minimalist premium. Depth from 1px hairline borders and background steps (paper → surface), never drop shadows. No gradients in UI (the logo artwork is the single gradient on the site), no glassmorphism, no glow.
+Direction (owner-approved): **"La gema viva" hero + "La consola" proof** — futuristic
+premium on a white-and-black canvas with the logo's jewel accents. Dark stage moments
+(hero, console demo, CTA band, footer) alternate with white engineering sections.
+Reference feel: Linear-like precision; personality: premium / jewel / distinctive.
 
 ## Color
 
-All tokens as CSS variables, derived from the final logo (teal → plum → gold gradient, dark-plum wordmark):
+White and black carry the page; jewel accents (from the final logo) do the work on top.
 
 ```css
---paper:      #FAFAF8;  /* page background — near-white, whisper of warmth */
---surface:    #FFFFFF;  /* cards, elevated surfaces */
---ink:        #221B2C;  /* primary text — plum-black, from the wordmark */
---ink-muted:  #574E62;  /* secondary text (4.5:1+ on paper) */
---ink-faint:  #857D90;  /* captions, placeholders (large/label use only) */
---border:     #E8E5E1;  /* hairline borders */
---plum:       #4F3461;  /* accent — links, CTAs, interaction */
---plum-deep:  #3B2549;  /* hover / active */
---plum-wash:  #F4F0F7;  /* tinted backgrounds: tags, highlights */
---gold:       #A8875C;  /* the star, key numbers ≥24px, decorative rules */
---gold-deep:  #77613C;  /* gold for small text (AA on paper) */
---teal:       #264E59;  /* rare third voice: eyebrow labels, terminal art */
+--white:         #ffffff;  /* light sections */
+--black:         #0c0a10;  /* dark stage sections (hero, console, CTA, footer) */
+--ink:           #16121d;  /* text on white */
+--ink-muted:     #554d60;
+--ink-faint:     #6f6880;  /* large/label use only */
+--on-dark:       #f4f2f7;  /* text on black */
+--on-dark-muted: #a49cb2;
+--on-dark-faint: #8b8399;
+--line:          #e9e6ee;  /* hairlines on white */
+--line-dark:     #2b2536;  /* hairlines on black */
+--plum:          #4f3461;  /* primary accent: CTAs, links (on white) */
+--plum-bright:   #8d63ad;  /* plum on dark surfaces */
+--plum-deep:     #3b2549;  /* hover */
+--plum-wash:     #f4f0f8;  /* tags, founders panel */
+--gold:          #a8875c;  /* ·· motif on white */
+--gold-bright:   #c9a878;  /* gold on dark; hero highlight */
+--gold-deep:     #77613c;  /* gold for small text on white (AA) */
+--teal:          #264e59;  /* third voice on white */
+--teal-bright:   #4f93a6;  /* teal on dark */
 ```
 
-Rules: plum is the one interactive accent. Gold appears only where the eye should land — the two i-dots, the four-point star, one key stat per page. Teal only in mono labels and coded illustrations. If a section feels flat, fix typography/spacing, not color.
+Gradient is reserved for: the logo artwork, the gem's core/facets, and 2px hairline
+seams between dark and light sections (teal→plum→gold). Never on text, never as fills.
+
+## Signature elements
+
+1. **The living gem** (home hero): the logo's facet language rebuilt as animated SVG —
+   breathing facet squares, pulsing gradient star core, rotating mono ring-text, canvas
+   particle field drifting toward it, mouse parallax.
+2. **The agent console**: dark terminal card with typed log lines of a real automation
+   loop — home proof section and AI service page illustration.
+3. **The two dots `··`**: eyebrows, list markers, index numbers (`··01`). Gold.
+4. **The four-point star ✦**: gem core, marquee separators, dark-band ornament.
+5. **Per-pillar accent**: AI=plum, Managed IT=teal, Security=gold, Software=neutral ink.
 
 ## Typography
 
-- **Display — Clash Display** (500, 600, self-hosted): H1–H3, big statements. Letter-spacing -0.02em on large sizes. Lowercase-leaning, like the wordmark.
-- **Body — Satoshi** (400, 500, 700, self-hosted): everything else, line-height 1.6–1.7, max 70ch.
-- **Mono — JetBrains Mono** (400, self-hosted): eyebrows/section labels (13px, letter-spacing 0.08em), numbers, technical details.
-
-Scale: H1 `clamp(2.5rem, 6vw, 4.5rem)` · H2 `clamp(1.875rem, 4vw, 2.75rem)` · H3 24px · body 17px · small 14px · eyebrow 13px mono. `text-wrap: balance` on headings.
-
-## Signature motifs
-
-1. **The two dots `··`** (from the wordmark's two i's): section eyebrows (`·· servicios`), feature-list markers. The one recurring element. Rendered in gold.
-2. **The four-point star ✦** (from the logo's center): sparingly — dark CTA band, hero composition, favicon company. Never as list bullets.
-3. Thin diagonal rule at the logo's angle as a section divider — max twice sitewide.
-
-## Components
-
-- **Buttons:** primary = plum fill, paper text, 10px radius, hover plum-deep; secondary = 1px border, ink text, hover border-plum. No shadows.
-- **Cards:** surface bg + 1px border + generous padding (32–40px); hover: border → plum. No lift.
-- **Eyebrow:** `·· label` — gold dots + mono ink-muted label, lowercase.
-- **Header:** sticky, paper bg, hairline bottom border appears on scroll; real logo mark + wordmark.
-- **Dark band:** `--ink` bg, paper text, gold star — the one dark moment per page.
+Clash Display (500/600) display · Satoshi (400/500/700) body · JetBrains Mono (400)
+labels/numbers/console. H1 clamp(2.5rem…4.5rem), tight -0.02em; eyebrows 13px mono
+0.1em tracking, lowercase.
 
 ## Motion
 
-One restrained system: fade-up on scroll (12px, 400–500ms, ease-out-quart), 60ms stagger in grids; hero gets a slightly choreographed load (mark draws in / text staggers). `prefers-reduced-motion` disables everything. Content must be visible without JS.
+- Hero: staggered rise entrance; gem breathes/pulses continuously; particles drift;
+  parallax on mouse.
+- Console: lines type in on loop, cursor blinks.
+- Scroll: IntersectionObserver reveals (16px rise, 600ms ease-out-quart, 60–90ms
+  stagger); process steps grow a gold tick.
+- Hover: cards lift 4–6px + accent border/top-edge; arrows slide; buttons lift 2px.
+- Marquee: infinite tech belt, ~30s loop.
+- All gated by `html.js` (content visible without JS) and fully disabled under
+  `prefers-reduced-motion`.
 
 ## Layout
 
-Max content width 1120px, gutters `clamp(20px, 5vw, 48px)`. Section padding `clamp(72px, 12vh, 128px)` — vary rhythm, tighter for connected sections. Fully responsive 360→1440px, no horizontal scroll.
+Structure: dark hero → gradient seam → white sections → dark console proof →
+white → plum-wash founders → black CTA band → black footer. Inner pages open with a
+compact dark hero band (header always sits on black). Max width 1200–1240px, section
+padding clamp(84px…140px), hairline borders, no shadows.

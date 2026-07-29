@@ -80,13 +80,45 @@
   },
   "home": {
     "hero": {
-      "title": "Tecnología de nivel enterprise, con inteligencia artificial en el centro.",
+      "titleA": "Tecnología enterprise,",
+      "titleB": "con IA en el centro.",
       "subtitle": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación — para que tu empresa crezca sin un departamento de IT propio.",
-      "artAlt": "Composición geométrica abstracta inspirada en el logo de Novieri"
+      "meta": "barranquilla, colombia ·· gmt-5, mismo huso que ny ·· es / en",
+      "ringText": "ia · automatización · it administrado · ciberseguridad · desarrollo · barranquilla · gmt-5 · "
     },
     "trust": {
-      "label": "operamos",
-      "items": "Microsoft 365 · FortiGate · AWS · Python · React · Odoo · HubSpot · Power BI"
+      "items": ["Microsoft 365", "FortiGate", "AWS", "Python", "React", "Odoo", "HubSpot", "Power BI"]
+    },
+    "proof": {
+      "items": [
+        { "value": "300+", "label": "usuarios operados como cto" },
+        { "value": "0h", "label": "diferencia horaria con ny" },
+        { "value": "SOC 2", "label": "programa dirigido de punta a punta" },
+        { "value": "2", "label": "fundadores, cero intermediarios" }
+      ]
+    },
+    "console": {
+      "eyebrow": "ia en producción",
+      "title": "Mientras lees esto, nuestros agentes están trabajando.",
+      "body": "Esto no es una promesa: es un flujo real de los que construimos y operamos. Un agente lee, valida, registra y escala a un humano solo cuando hace falta — con métricas visibles de tiempo ahorrado.",
+      "cta": "Ver IA y automatización",
+      "barTitle": "novieri · agente de facturación",
+      "badge": "EN VIVO",
+      "lines": [
+        { "t": "09:41:07  ", "kind": "cmd", "text": "$ novieri-agent watch --proceso facturación" },
+        { "kind": "step", "text": "leyendo bandeja compartida… ", "hl": "47 correos nuevos" },
+        { "kind": "ok", "text": "12 facturas detectadas y extraídas" },
+        { "kind": "ok", "text": "validadas contra órdenes de compra en ", "hl": "Odoo" },
+        { "kind": "step", "text": "registrando asientos contables…" },
+        { "kind": "ok", "text": "12/12 registradas · 0 errores" },
+        { "kind": "step", "text": "caso atípico #8842 → ", "hl": "escalado a humano" },
+        { "kind": "ok", "text": "resumen enviado a contabilidad" },
+        { "t": "09:43:22  ", "kind": "done", "text": "listo. 38 min de trabajo manual ahorrados hoy." }
+      ],
+      "footState": "estado",
+      "footStateValue": "● operando",
+      "footUptime": "uptime 99.98%",
+      "footSaved": "hoy: 38 min ahorrados"
     },
     "services": {
       "eyebrow": "servicios",

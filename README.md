@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# novieri.com
 
-## Getting Started
+Bilingual (ES/EN) marketing site for Novieri — AI-first IT solutions from
+Barranquilla, Colombia. Next.js 15 (App Router) · Tailwind CSS v4 · next-intl.
 
-First, run the development server:
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000  (/ redirects to /es or /en by Accept-Language)
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `messages/es.json`, `messages/en.json` — all copy lives here, no hardcoded strings.
+- `src/i18n/routing.ts` — localized pathnames (`/es/servicios/...` ↔ `/en/services/...`).
+- `src/config/site.ts` — single config point for launch placeholders.
+- `PRODUCT.md` / `DESIGN.md` — strategy + visual system (impeccable skill).
+- `Logo/` — original brand assets; web copies live in `public/brand/`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## TODO before launch (brief §9)
 
-## Learn More
+| Item | Where |
+|---|---|
+| `RESEND_API_KEY` (+ optional `CONTACT_EMAIL`, `RESEND_FROM`) | env — contact form delivery |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | env or `src/config/site.ts` (default hola@novieri.com) |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` (+57…, digits only) | env — WhatsApp button hidden until set |
+| `NEXT_PUBLIC_CAL_LINK` (e.g. `novieri/intro`) | env — Cal.com embed shows fallback until set |
+| `NEXT_PUBLIC_LINKEDIN_URL` | env — footer icon hidden until set |
+| `razonSocial`, `NIT` | `src/config/site.ts` — footer legal line |
+| `[WIFE_NAME]`, `[WIFE_BIO]` | `messages/*.json` (about.founders.partner) |
+| Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel. Apex `novieri.com`; `www` → apex redirect is configured in `next.config.ts`.
