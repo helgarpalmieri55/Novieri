@@ -26,7 +26,8 @@ export default function ContactForm() {
 
     setStatus("sending");
     try {
-      const res = await fetch(`${site.apiBase || "/api"}/contact.php`, {
+      const res = await fetch(`${site.apiBase}/contact.php`, {
+        credentials: "omit",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...data, locale }),

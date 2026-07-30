@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -12,6 +11,8 @@ import Footer from "@/components/Footer";
 import RevealInit from "@/components/RevealInit";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ChatWidget from "@/components/ChatWidget";
+import CookieBanner from "@/components/CookieBanner";
+import Analytics from "@/components/Analytics";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -61,18 +62,12 @@ export default async function LocaleLayout({
           <main id="main">{children}</main>
           <Footer locale={locale} />
           {locale === "es" && <WhatsAppFloat />}
-          {site.apiBase && <ChatWidget />}
+          <ChatWidget />
+          <CookieBanner />
+          <Analytics />
           <RevealInit />
         </NextIntlClientProvider>
         <JsonLd data={organizationJsonLd} />
-        {site.plausibleDomain && (
-          <Script
-            defer
-            data-domain={site.plausibleDomain}
-            src="https://plausible.io/js/script.js"
-            strategy="afterInteractive"
-          />
-        )}
       </body>
     </html>
   );

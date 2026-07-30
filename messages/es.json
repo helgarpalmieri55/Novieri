@@ -74,6 +74,18 @@
     "sol_webDev": {
       "title": "Sitios web con IA — Novieri",
       "description": "Desarrollo de sitios web modernos con funcionalidades de IA integradas: asistentes, búsqueda inteligente y contenido bilingüe."
+    },
+    "legalPrivacy": {
+      "title": "Política de privacidad — Novieri",
+      "description": "Cómo Novieri trata, protege y conserva tus datos personales, y cómo ejercer tus derechos según la Ley 1581 de 2012."
+    },
+    "legalCookies": {
+      "title": "Política de cookies — Novieri",
+      "description": "Qué cookies usa novieri.com, para qué sirven y cómo aceptarlas, rechazarlas o cambiar tu decisión en cualquier momento."
+    },
+    "legalTerms": {
+      "title": "Términos de uso — Novieri",
+      "description": "Condiciones de acceso y uso del sitio novieri.com: propiedad intelectual, responsabilidad y ley aplicable en Colombia."
     }
   },
   "nav": {
@@ -141,20 +153,7 @@
       "titleA": "Tecnología enterprise,",
       "titleB": "con IA en el centro.",
       "subtitle": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación — para que tu empresa crezca sin un departamento de IT propio.",
-      "meta": "barranquilla, colombia ·· gmt-5, mismo huso que ny ·· es / en",
       "ringText": "ia · automatización · it administrado · ciberseguridad · desarrollo · barranquilla · gmt-5 · "
-    },
-    "trust": {
-      "items": [
-        "Microsoft 365",
-        "FortiGate",
-        "AWS",
-        "Python",
-        "React",
-        "Odoo",
-        "HubSpot",
-        "Power BI"
-      ]
     },
     "proof": {
       "items": [
@@ -176,60 +175,68 @@
         }
       ]
     },
-    "console": {
+    "liveChat": {
       "eyebrow": "ia en producción",
-      "title": "Mientras lees esto, nuestros agentes están trabajando.",
-      "body": "Esto no es una promesa: es un flujo real de los que construimos y operamos. Un agente lee, valida, registra y escala a un humano solo cuando hace falta — con métricas visibles de tiempo ahorrado.",
-      "cta": "Ver IA y automatización",
-      "barTitle": "novieri · agente de facturación",
-      "badge": "EN VIVO",
-      "lines": [
+      "title": "Mientras lees esto, nuestros agentes están atendiendo.",
+      "body": "Esto no es una promesa: es el asistente de WhatsApp que operamos para restaurantes y hoteles. Entiende notas de voz, responde en segundos, crea la reserva en el sistema y escala a una persona solo cuando hace falta.",
+      "cta": "Ver asistente de WhatsApp",
+      "header": {
+        "name": "Marisquería La Bahía",
+        "status": "en línea · responde al instante"
+      },
+      "badge": "DEMO",
+      "inputHint": "Escribe un mensaje",
+      "entries": [
         {
-          "t": "09:41:07  ",
-          "kind": "cmd",
-          "text": "$ novieri-agent watch --proceso facturación"
+          "from": "guest",
+          "text": "Buenas, ¿tienen mesa para 4 esta noche a las 8?",
+          "t": "7:42 p. m."
         },
         {
-          "kind": "step",
-          "text": "leyendo bandeja compartida… ",
-          "hl": "47 correos nuevos"
+          "from": "bot",
+          "text": "Buenas noches. Sí, tenemos mesa para 4 a las 8:00 p. m. — en salón o en terraza, como prefieras.",
+          "t": "7:42 p. m."
         },
         {
-          "kind": "ok",
-          "text": "12 facturas detectadas y extraídas"
+          "from": "guest",
+          "kind": "voice",
+          "duration": "0:07",
+          "t": "7:43 p. m."
         },
         {
-          "kind": "ok",
-          "text": "validadas contra órdenes de compra en ",
-          "hl": "Odoo"
+          "kind": "transcript",
+          "label": "nota de voz",
+          "text": "«En terraza, y si se puede una silla para bebé»"
         },
         {
-          "kind": "step",
-          "text": "registrando asientos contables…"
+          "from": "bot",
+          "text": "Anotado: terraza y silla para bebé. Te la confirmo ahora.",
+          "t": "7:43 p. m."
         },
         {
-          "kind": "ok",
-          "text": "12/12 registradas · 0 errores"
+          "kind": "action",
+          "text": "reserva creada · #1284 · 4 personas · 8:00 p. m. · terraza"
         },
         {
-          "kind": "step",
-          "text": "caso atípico #8842 → ",
-          "hl": "escalado a humano"
+          "from": "guest",
+          "text": "¿tienen algo sin gluten?",
+          "t": "7:44 p. m."
         },
         {
-          "kind": "ok",
-          "text": "resumen enviado a contabilidad"
+          "from": "bot",
+          "text": "Sí. Hoy en carta: ceviche de corvina, pargo a la plancha y arroz de coco. Le aviso a la cocina para que lo tengan presente.",
+          "t": "7:44 p. m."
         },
         {
-          "t": "09:43:22  ",
-          "kind": "done",
-          "text": "listo. 38 min de trabajo manual ahorrados hoy."
+          "kind": "action",
+          "text": "cocina notificada · sin gluten"
         }
       ],
-      "footState": "estado",
-      "footStateValue": "● operando",
-      "footUptime": "uptime 99.98%",
-      "footSaved": "hoy: 38 min ahorrados"
+      "foot": [
+        "atiende 24/7",
+        "reservas y pedidos",
+        "español e inglés"
+      ]
     },
     "services": {
       "eyebrow": "servicios",
@@ -382,6 +389,57 @@
           "a": "El assessment toma 2 semanas. Un piloto típico está en producción entre 3 y 6 semanas después. Desde el primer mes deberías ver horas recuperadas en el proceso elegido."
         }
       ]
+    },
+    "console": {
+      "barTitle": "novieri · agente de facturación",
+      "badge": "EN VIVO",
+      "lines": [
+        {
+          "t": "09:41:07  ",
+          "kind": "cmd",
+          "text": "$ novieri-agent watch --proceso facturación"
+        },
+        {
+          "kind": "step",
+          "text": "leyendo bandeja compartida… ",
+          "hl": "47 correos nuevos"
+        },
+        {
+          "kind": "ok",
+          "text": "12 facturas detectadas y extraídas"
+        },
+        {
+          "kind": "ok",
+          "text": "validadas contra órdenes de compra en ",
+          "hl": "Odoo"
+        },
+        {
+          "kind": "step",
+          "text": "registrando asientos contables…"
+        },
+        {
+          "kind": "ok",
+          "text": "12/12 registradas · 0 errores"
+        },
+        {
+          "kind": "step",
+          "text": "caso atípico #8842 → ",
+          "hl": "escalado a humano"
+        },
+        {
+          "kind": "ok",
+          "text": "resumen enviado a contabilidad"
+        },
+        {
+          "t": "09:43:22  ",
+          "kind": "done",
+          "text": "listo. 38 min de trabajo manual ahorrados hoy."
+        }
+      ],
+      "footState": "estado",
+      "footStateValue": "● operando",
+      "footUptime": "uptime 99.98%",
+      "footSaved": "hoy: 38 min ahorrados"
     }
   },
   "managedIt": {
@@ -697,7 +755,11 @@
     "legal": "© {year} {razonSocial} · NIT {nit}",
     "linkedinLabel": "Novieri en LinkedIn",
     "location": "Barranquilla, Colombia",
-    "solutionsTitle": "Soluciones"
+    "solutionsTitle": "Soluciones",
+    "legalTitle": "Legal",
+    "privacy": "Política de privacidad",
+    "cookies": "Política de cookies",
+    "terms": "Términos de uso"
   },
   "notFound": {
     "eyebrow": "error 404",
@@ -1189,5 +1251,275 @@
     "placeholder": "Escribe tu pregunta…",
     "send": "Enviar",
     "error": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto."
+  },
+  "legal": {
+    "common": {
+      "eyebrow": "legal",
+      "updated": "Última actualización",
+      "updatedValue": "30 de julio de 2026",
+      "toc": "Contenido",
+      "identityTitle": "Responsable",
+      "identityBody": "{company}[[, NIT {nit}]], con domicilio en Barranquilla, Atlántico, Colombia. Correo de contacto para asuntos de datos personales y legales: {email}.",
+      "questionsTitle": "¿Dudas sobre este documento?",
+      "questionsBody": "Escríbenos a {email} y te respondemos. Si tu solicitud tiene que ver con tus datos personales, indícalo en el asunto para tramitarla dentro de los plazos de ley.",
+      "otherDocs": "Otros documentos"
+    },
+    "privacy": {
+      "title": "Política de tratamiento de datos personales",
+      "lead": "Esta política explica cómo Novieri recolecta, usa, almacena y protege los datos personales que recibe a través de este sitio web y de su operación comercial, en cumplimiento de la Ley 1581 de 2012, el Decreto 1074 de 2015 y las instrucciones de la Superintendencia de Industria y Comercio.",
+      "sections": [
+        {
+          "h": "1. Responsable del tratamiento",
+          "p": [
+            "El responsable del tratamiento de tus datos personales es {company}, sociedad domiciliada en Barranquilla, Atlántico, Colombia[[, identificada con NIT {nit}]].",
+            "Para cualquier asunto relacionado con esta política, incluido el ejercicio de tus derechos como titular, puedes escribir a {email}. Este es el canal oficial de atención al titular."
+          ]
+        },
+        {
+          "h": "2. Marco legal",
+          "p": [
+            "Esta política se rige por la Constitución Política de Colombia (artículo 15), la Ley Estatutaria 1581 de 2012, el Decreto Único Reglamentario 1074 de 2015 (que compiló el Decreto 1377 de 2013) y las circulares e instrucciones de la Superintendencia de Industria y Comercio, autoridad de protección de datos en Colombia."
+          ]
+        },
+        {
+          "h": "3. Datos personales que tratamos",
+          "p": [
+            "Solo recolectamos los datos que necesitamos para atender tu solicitud. Según cómo interactúes con nosotros, estos pueden incluir:"
+          ],
+          "ul": [
+            "Datos de identificación y contacto: nombre, correo electrónico, empresa y cargo, cuando completas el formulario de contacto o agendas una llamada.",
+            "Contenido de tus comunicaciones: el mensaje que nos envías, el servicio que te interesa y las conversaciones que sostienes con nuestro asistente virtual del sitio.",
+            "Datos técnicos de navegación: dirección IP, tipo de dispositivo y navegador, páginas visitadas y datos agregados de uso, con fines estadísticos y de seguridad.",
+            "Datos derivados de la relación comercial: información de facturación y contacto operativo, cuando llegamos a un acuerdo de servicios."
+          ],
+          "p2": [
+            "No recolectamos datos sensibles (origen racial o étnico, orientación política, convicciones religiosas, pertenencia a sindicatos, datos de salud, vida sexual o datos biométricos) a través de este sitio. Tampoco solicitamos datos de niñas, niños y adolescentes. Si crees que un menor de edad nos envió datos personales, escríbenos y los suprimiremos."
+          ]
+        },
+        {
+          "h": "4. Finalidades del tratamiento",
+          "p": [
+            "Tratamos tus datos personales para las siguientes finalidades:"
+          ],
+          "ul": [
+            "Responder tus consultas y solicitudes de información comercial.",
+            "Elaborar y enviar propuestas de servicios, cotizaciones y agendar reuniones.",
+            "Ejecutar, administrar y facturar los servicios contratados.",
+            "Prestar soporte técnico y comunicarte información operativa relevante sobre los servicios.",
+            "Enviarte comunicaciones comerciales sobre nuestros servicios, cuando lo hayas autorizado; puedes retirar esa autorización en cualquier momento.",
+            "Mantener la seguridad del sitio, prevenir fraude y abuso, y llevar registros internos y contables.",
+            "Cumplir obligaciones legales, contables, tributarias y requerimientos de autoridades competentes."
+          ],
+          "p2": [
+            "No usamos tus datos para finalidades distintas de las anunciadas, ni tomamos decisiones automatizadas que produzcan efectos jurídicos sobre ti."
+          ]
+        },
+        {
+          "h": "5. Autorización del titular",
+          "p": [
+            "Al enviarnos el formulario de contacto, escribirnos por correo o por WhatsApp, o conversar con el asistente virtual del sitio, autorizas de forma previa, expresa e informada el tratamiento de tus datos personales conforme a esta política.",
+            "La autorización para recibir comunicaciones comerciales es opcional y separable: puedes negarte a recibirlas y seguir siendo atendido en tu solicitud. Conservamos prueba de la autorización otorgada, tal como lo exige la ley."
+          ]
+        },
+        {
+          "h": "6. Tus derechos como titular",
+          "p": [
+            "Como titular de los datos personales, la ley te reconoce los siguientes derechos:"
+          ],
+          "ul": [
+            "Conocer, actualizar y rectificar tus datos personales frente a Novieri.",
+            "Solicitar prueba de la autorización que otorgaste, salvo en los casos en que la ley no la exige.",
+            "Ser informado, previa solicitud, sobre el uso que le hemos dado a tus datos.",
+            "Presentar quejas ante la Superintendencia de Industria y Comercio por infracciones a la normativa de protección de datos.",
+            "Revocar la autorización y/o solicitar la supresión de tus datos, cuando no exista un deber legal o contractual que nos obligue a conservarlos.",
+            "Acceder de forma gratuita a tus datos personales."
+          ]
+        },
+        {
+          "h": "7. Cómo ejercer tus derechos",
+          "p": [
+            "Puedes ejercer tus derechos escribiendo a {email} desde una dirección que permita identificarte, indicando tu nombre, la descripción de tu solicitud y los documentos que quieras hacer valer.",
+            "Atendemos las consultas en un término máximo de diez (10) días hábiles, prorrogable por cinco (5) días hábiles más cuando no sea posible resolverlas en ese plazo, informándote los motivos y la fecha en que se resolverá.",
+            "Los reclamos se atienden en un término máximo de quince (15) días hábiles, prorrogable por ocho (8) días hábiles más, siguiendo el procedimiento del artículo 15 de la Ley 1581 de 2012. Si el reclamo resulta incompleto, te solicitaremos la información faltante dentro de los cinco (5) días siguientes a su recibo."
+          ]
+        },
+        {
+          "h": "8. Encargados y transferencias internacionales",
+          "p": [
+            "Para operar el sitio y prestar nuestros servicios usamos proveedores tecnológicos que pueden actuar como encargados del tratamiento y estar ubicados fuera de Colombia, entre ellos: alojamiento web y correo, herramientas de productividad y almacenamiento, agenda de reuniones en línea, analítica del sitio y el proveedor de modelos de inteligencia artificial que soporta el asistente virtual.",
+            "Cuando esas transferencias o transmisiones internacionales ocurren, exigimos a nuestros proveedores estándares de seguridad y confidencialidad equivalentes a los de esta política, mediante contratos de transmisión de datos u obligaciones contractuales de protección, conforme a los artículos 25 y 26 de la Ley 1581 de 2012.",
+            "No vendemos, arrendamos ni comercializamos tus datos personales con terceros."
+          ]
+        },
+        {
+          "h": "9. Conversaciones con el asistente virtual",
+          "p": [
+            "El sitio ofrece un asistente virtual que responde preguntas sobre Novieri. El contenido de la conversación se envía a nuestro proveedor de modelos de inteligencia artificial únicamente para generar la respuesta.",
+            "Te pedimos no escribir en el chat datos sensibles, credenciales, información confidencial de terceros ni datos personales que no sean necesarios para tu consulta. Si necesitas tratar un asunto que involucre información confidencial, escríbenos a {email}."
+          ]
+        },
+        {
+          "h": "10. Seguridad y conservación",
+          "p": [
+            "Aplicamos medidas técnicas, humanas y administrativas razonables para proteger tus datos frente a acceso no autorizado, pérdida, alteración o uso indebido: cifrado en tránsito, control de acceso por roles, registro de actividad y revisión periódica de nuestros proveedores.",
+            "Conservamos tus datos mientras exista una relación comercial o una finalidad vigente, y después por el tiempo necesario para cumplir obligaciones legales, contables y tributarias. Vencidos esos plazos, los suprimimos o anonimizamos."
+          ]
+        },
+        {
+          "h": "11. Vigencia y cambios",
+          "p": [
+            "Esta política rige a partir de la fecha de su última actualización y permanece vigente mientras Novieri trate datos personales. Cualquier cambio sustancial se publicará en esta misma página; te recomendamos revisarla periódicamente.",
+            "Las bases de datos se conservarán durante la vigencia de las finalidades del tratamiento y de los deberes legales aplicables."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Política de cookies",
+      "lead": "Esta política explica qué son las cookies y tecnologías similares, cuáles usamos en novieri.com, para qué sirven y cómo puedes aceptarlas, rechazarlas o cambiar tu decisión en cualquier momento.",
+      "sections": [
+        {
+          "h": "1. Qué son las cookies",
+          "p": [
+            "Una cookie es un pequeño archivo de texto que un sitio web guarda en tu navegador para recordar información entre visitas. Junto con las cookies existen tecnologías similares, como el almacenamiento local del navegador (localStorage), que cumplen funciones parecidas.",
+            "Usamos el término «cookies» en esta política para referirnos a todas esas tecnologías."
+          ]
+        },
+        {
+          "h": "2. Base legal y consentimiento",
+          "p": [
+            "En Colombia, la instalación de cookies que traten datos personales requiere consentimiento previo, expreso e informado del titular, conforme a la Ley 1581 de 2012 y el Decreto 1074 de 2015.",
+            "Por eso, al entrar por primera vez al sitio te mostramos un aviso donde puedes aceptar o rechazar las cookies que no son estrictamente necesarias. Mientras no aceptes, no activamos analítica ni tecnologías de medición. Las cookies estrictamente necesarias no requieren consentimiento porque sin ellas el sitio no puede funcionar."
+          ]
+        },
+        {
+          "h": "3. Cookies que usamos",
+          "p": [
+            "Mantenemos el sitio deliberadamente ligero. Estas son las categorías que aplicamos:"
+          ],
+          "ul": [
+            "Estrictamente necesarias: guardamos tu decisión sobre cookies en el almacenamiento local de tu navegador (clave «novieri-consent») para no volver a preguntarte en cada visita. No identifica a personas y no se comparte con terceros.",
+            "Analítica y medición: si las aceptas, activamos una herramienta de analítica web que nos permite saber cuántas personas visitan el sitio y qué páginas consultan, con datos agregados. La usamos para mejorar el contenido, no para perfilar personas.",
+            "Funcionales de terceros: al abrir el agendamiento de reuniones o el chat de WhatsApp, el proveedor correspondiente puede instalar sus propias cookies en tu navegador, sujetas a sus políticas.",
+            "Publicitarias: no usamos cookies publicitarias ni de seguimiento entre sitios."
+          ]
+        },
+        {
+          "h": "4. Cómo cambiar tu decisión",
+          "p": [
+            "Puedes cambiar tu elección en cualquier momento borrando los datos del sitio en tu navegador: al volver a entrar, el aviso aparecerá de nuevo y podrás decidir otra vez.",
+            "También puedes configurar tu navegador para bloquear o eliminar cookies. Ten en cuenta que bloquear las estrictamente necesarias puede afectar el funcionamiento del sitio. Los navegadores más usados explican cómo hacerlo en sus páginas de ayuda de privacidad."
+          ]
+        },
+        {
+          "h": "5. Cookies de terceros",
+          "p": [
+            "Cuando usas funciones provistas por terceros —agendamiento de reuniones, WhatsApp o contenido incrustado— esos proveedores actúan como responsables de las cookies que instalan y del tratamiento que hacen de esos datos. Te recomendamos revisar sus respectivas políticas de privacidad y de cookies."
+          ]
+        },
+        {
+          "h": "6. Datos personales y cookies",
+          "p": [
+            "Cuando una cookie trate datos personales, aplica también nuestra política de tratamiento de datos personales, incluidos tus derechos como titular y los canales para ejercerlos.",
+            "Si tienes preguntas sobre esta política, escríbenos a {email}."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Términos de uso del sitio web",
+      "lead": "Estos términos regulan el acceso y uso de novieri.com. Al navegar el sitio aceptas estas condiciones; si no estás de acuerdo con ellas, por favor no lo uses.",
+      "sections": [
+        {
+          "h": "1. Identificación y objeto",
+          "p": [
+            "Este sitio web es operado por {company}[[, NIT {nit}]], con domicilio en Barranquilla, Atlántico, Colombia, en adelante «Novieri».",
+            "El sitio tiene una finalidad informativa y comercial: presentar los servicios y productos de Novieri y habilitar canales de contacto. La información publicada no constituye una oferta comercial vinculante ni asesoría técnica, legal, contable o financiera aplicable a tu caso concreto."
+          ]
+        },
+        {
+          "h": "2. Marco legal",
+          "p": [
+            "Estos términos se rigen por la ley colombiana, en particular la Ley 527 de 1999 sobre mensajes de datos y comercio electrónico, la Ley 1480 de 2011 (Estatuto del Consumidor), la Ley 1581 de 2012 sobre protección de datos personales, la Ley 1273 de 2009 sobre delitos informáticos y las normas de propiedad intelectual aplicables, entre ellas la Ley 23 de 1982 y la Decisión Andina 486 de 2000."
+          ]
+        },
+        {
+          "h": "3. Uso permitido",
+          "p": [
+            "Puedes consultar, descargar y compartir el contenido del sitio para fines informativos, personales o de evaluación comercial, siempre que respetes la integridad del contenido y su atribución a Novieri."
+          ],
+          "p2": [
+            "Al usar el sitio te comprometes a no:"
+          ],
+          "ul": [
+            "Alterar, interferir o intentar acceder sin autorización al sitio, sus servidores o sus sistemas asociados.",
+            "Usar mecanismos automatizados de extracción masiva de contenido que afecten el funcionamiento del sitio.",
+            "Introducir código malicioso ni realizar conductas tipificadas en la Ley 1273 de 2009.",
+            "Enviar por los formularios o el asistente virtual contenido ilícito, difamatorio, engañoso, ni datos personales de terceros sin su autorización.",
+            "Suplantar identidades o presentarte falsamente como parte de Novieri."
+          ]
+        },
+        {
+          "h": "4. Propiedad intelectual",
+          "p": [
+            "La marca Novieri, su logotipo, su identidad visual, los textos, el diseño, el código fuente y los demás contenidos del sitio son propiedad de Novieri o se usan con autorización de sus titulares, y están protegidos por las normas de derecho de autor y propiedad industrial.",
+            "El acceso al sitio no otorga licencia alguna sobre esos contenidos. Cualquier uso comercial, reproducción sustancial, obra derivada o uso de la marca requiere autorización previa y escrita de Novieri. Las marcas de terceros mencionadas pertenecen a sus respectivos titulares y se citan con fines descriptivos."
+          ]
+        },
+        {
+          "h": "5. Asistente virtual y contenido generado con inteligencia artificial",
+          "p": [
+            "El sitio incluye un asistente virtual que responde preguntas sobre Novieri a partir del contenido publicado. Sus respuestas se generan automáticamente y pueden contener imprecisiones o quedar desactualizadas.",
+            "Las respuestas del asistente son informativas y no constituyen una oferta, cotización, compromiso contractual ni asesoría profesional. Cualquier alcance, precio o condición se define únicamente en una propuesta escrita firmada por Novieri. No escribas en el chat credenciales, datos sensibles ni información confidencial."
+          ]
+        },
+        {
+          "h": "6. Disponibilidad del sitio",
+          "p": [
+            "Procuramos que el sitio esté disponible de forma continua, pero puede haber interrupciones por mantenimiento, actualizaciones, fallas de terceros proveedores o causas de fuerza mayor. Novieri puede modificar, suspender o descontinuar total o parcialmente el sitio o sus funcionalidades en cualquier momento."
+          ]
+        },
+        {
+          "h": "7. Enlaces a sitios de terceros",
+          "p": [
+            "El sitio puede enlazar a páginas o servicios de terceros. Novieri no controla su contenido ni sus prácticas de privacidad y no responde por ellos. El acceso a esos sitios se hace bajo tu propia responsabilidad y sujeto a sus términos."
+          ]
+        },
+        {
+          "h": "8. Limitación de responsabilidad",
+          "p": [
+            "El contenido del sitio se ofrece «tal cual», con base en la información disponible al momento de su publicación. En la máxima medida permitida por la ley colombiana, Novieri no responde por daños derivados del uso o la imposibilidad de uso del sitio, de decisiones tomadas con base en su contenido informativo, ni por indisponibilidades atribuibles a terceros.",
+            "Esta limitación no excluye ni restringe los derechos que la Ley 1480 de 2011 reconoce a los consumidores, ni la responsabilidad de Novieri por dolo o culpa grave."
+          ]
+        },
+        {
+          "h": "9. Datos personales",
+          "p": [
+            "El tratamiento de los datos personales que nos suministres a través del sitio se rige por nuestra política de tratamiento de datos personales y por nuestra política de cookies, que forman parte integral de estos términos."
+          ]
+        },
+        {
+          "h": "10. Cambios en los términos",
+          "p": [
+            "Novieri puede actualizar estos términos para reflejar cambios en el sitio, en sus servicios o en la normativa aplicable. La versión vigente es la publicada en esta página, con su fecha de última actualización. El uso del sitio con posterioridad a un cambio implica su aceptación."
+          ]
+        },
+        {
+          "h": "11. Ley aplicable y jurisdicción",
+          "p": [
+            "Estos términos se rigen por la ley colombiana. Cualquier controversia derivada de ellos se someterá a los jueces y tribunales competentes de la ciudad de Barranquilla, Colombia, sin perjuicio de las competencias que la ley asigne a la Superintendencia de Industria y Comercio en materia de protección al consumidor y de datos personales.",
+            "Para cualquier comunicación relacionada con estos términos: {email}."
+          ]
+        }
+      ]
+    }
+  },
+  "cookies": {
+    "title": "Cookies en novieri.com",
+    "body": "Usamos cookies propias necesarias para que el sitio funcione y, solo si lo aceptas, analítica agregada para entender qué contenido es útil. No usamos cookies publicitarias.",
+    "accept": "Aceptar todas",
+    "reject": "Solo las necesarias",
+    "more": "Ver política de cookies",
+    "label": "Aviso de cookies"
   }
 }

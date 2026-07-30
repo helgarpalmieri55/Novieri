@@ -23,7 +23,10 @@ type MetaKey =
   | "sol_sentinel"
   | "sol_webDev"
   | "about"
-  | "contact";
+  | "contact"
+  | "legalPrivacy"
+  | "legalCookies"
+  | "legalTerms";
 
 export async function pageMetadata(
   locale: string,

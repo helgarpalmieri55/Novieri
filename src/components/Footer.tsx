@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
-import { site, whatsappHref } from "@/config/site";
+import { asset, site, whatsappHref } from "@/config/site";
 
 const SERVICE_LINKS: { key: string; href: AppPathname }[] = [
   { key: "ai", href: "/services/ai-automation" },
@@ -23,6 +23,12 @@ const SOLUTION_LINKS: { key: string; href: AppPathname }[] = [
   { key: "webDev", href: "/solutions/ai-websites" },
 ];
 
+const LEGAL_LINKS: { key: string; href: AppPathname }[] = [
+  { key: "privacy", href: "/legal/privacy" },
+  { key: "cookies", href: "/legal/cookies" },
+  { key: "terms", href: "/legal/terms" },
+];
+
 export default async function Footer({ locale }: { locale: string }) {
   const t = await getTranslations("footer");
   const tp = await getTranslations("pillars");
@@ -36,7 +42,7 @@ export default async function Footer({ locale }: { locale: string }) {
       <div className="container-site pb-10 pt-16">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[3fr_3fr_3fr_2fr_2fr]">
           <div className="col-span-2 md:col-span-1">
-            <Image src="/brand/novieri-isotipo-color-256px.png" alt="" width={38} height={39} />
+            <Image src={asset("/brand/novieri-isotipo-color-256px.png")} alt="" width={38} height={39} />
             <p className="mt-4 max-w-[34ch] text-[14.5px] text-ink-muted">{t("description")}</p>
           </div>
           <nav aria-label={t("solutionsTitle")}>
@@ -76,6 +82,16 @@ export default async function Footer({ locale }: { locale: string }) {
                   {tn("contact")}
                 </Link>
               </li>
+            </ul>
+            <h2 className="idx-mono mb-3.5 mt-8 lowercase text-gold-deep">·· {t("legalTitle")}</h2>
+            <ul className="grid gap-2.5 text-[14.5px]">
+              {LEGAL_LINKS.map((l) => (
+                <li key={l.key}>
+                  <Link href={l.href} className="text-ink-muted transition-colors hover:text-ink">
+                    {t(l.key)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
           <div>

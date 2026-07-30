@@ -5,8 +5,7 @@ import type { AppPathname } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import GemStage from "@/components/GemStage";
 import PillarTicker from "@/components/PillarTicker";
-import AgentConsole, { type ConsoleLine } from "@/components/AgentConsole";
-import Marquee from "@/components/Marquee";
+import WhatsAppChat, { type ChatEntry } from "@/components/WhatsAppChat";
 import CtaBand from "@/components/CtaBand";
 
 const PILLARS: { key: string; href: AppPathname; accent: string }[] = [
@@ -35,8 +34,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const proofItems = t.raw("proof.items") as { value: string; label: string }[];
   const whyPoints = t.raw("why.points") as { title: string; body: string }[];
   const howSteps = t.raw("how.steps") as { title: string; body: string }[];
-  const trustItems = t.raw("trust.items") as string[];
-  const consoleLines = t.raw("console.lines") as ConsoleLine[];
+  const chatEntries = t.raw("liveChat.entries") as ChatEntry[];
   const proofColors = ["text-plum", "text-teal", "text-gold-deep", "text-ink"];
 
   return (
@@ -86,12 +84,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {tc("seeServices")}
               </Link>
             </div>
-            <p
-              className="rise idx-mono mt-11 tracking-[0.07em] text-ink-faint"
-              style={{ ["--d" as string]: "580ms" }}
-            >
-              {t("hero.meta")}
-            </p>
           </div>
           <div className="rise relative mx-auto w-[min(62vw,280px)] lg:w-full lg:max-w-[420px]" style={{ ["--d" as string]: "200ms" }}>
             <GemStage ringText={t("hero.ringText")} />
@@ -99,10 +91,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* 2 · Trust marquee */}
-      <Marquee items={trustItems} label="Stack" />
-
-      {/* 3 · Proof strip */}
+      {/* 2 · Proof strip */}
       <div className="border-b border-line bg-white">
         <div className="container-site grid grid-cols-2 md:grid-cols-4">
           {proofItems.map((p, i) => (
@@ -156,32 +145,28 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* 5 · Console — la consola en vivo */}
+      {/* 5 · Live chat — el asistente de WhatsApp atendiendo */}
       <section className="dark-s relative overflow-hidden">
         <div aria-hidden className="seam absolute inset-x-0 top-0" />
         <div className="container-site section-pad grid items-center gap-[clamp(2.5rem,5vw,5rem)] lg:grid-cols-[5fr_6fr]">
           <div className="reveal">
-            <span className="eyebrow">{t("console.eyebrow")}</span>
-            <h2 className="mt-4">{t("console.title")}</h2>
-            <p className="mt-5 max-w-[52ch] text-on-dark-muted">{t("console.body")}</p>
+            <span className="eyebrow">{t("liveChat.eyebrow")}</span>
+            <h2 className="mt-4">{t("liveChat.title")}</h2>
+            <p className="mt-5 max-w-[52ch] text-on-dark-muted">{t("liveChat.body")}</p>
             <Link
-              href="/services/ai-automation"
+              href="/solutions/whatsapp-ai-assistant"
               className="mt-7 inline-flex items-center gap-2 font-medium text-gold-bright transition-[gap] duration-200 hover:gap-3.5"
             >
-              {t("console.cta")} <span aria-hidden>→</span>
+              {t("liveChat.cta")} <span aria-hidden>→</span>
             </Link>
           </div>
           <div className="reveal" style={{ ["--rd" as string]: "120ms" }}>
-            <AgentConsole
-              barTitle={t("console.barTitle")}
-              badge={t("console.badge")}
-              lines={consoleLines}
-              foot={{
-                state: t("console.footState"),
-                stateValue: t("console.footStateValue"),
-                uptime: t("console.footUptime"),
-                saved: t("console.footSaved"),
-              }}
+            <WhatsAppChat
+              header={t.raw("liveChat.header") as { name: string; status: string }}
+              badge={t("liveChat.badge")}
+              entries={chatEntries}
+              foot={t.raw("liveChat.foot") as string[]}
+              inputHint={t("liveChat.inputHint")}
             />
           </div>
         </div>

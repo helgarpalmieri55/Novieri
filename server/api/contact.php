@@ -12,9 +12,10 @@ require __DIR__ . '/lib/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 
+$config = load_config();
+handle_cors($config);
 require_post();
 enforce_rate_limit('contact', 5, 600);
-$config = load_config();
 $body = read_json_body();
 
 // Honeypot: bots fill it, humans never see it. Pretend success.

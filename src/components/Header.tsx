@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { asset } from "@/config/site";
 import type { AppPathname } from "@/i18n/routing";
 import LocaleSwitcher from "./LocaleSwitcher";
 
@@ -101,7 +102,7 @@ export default function Header() {
       </a>
       <div className="container-site flex h-[72px] items-center gap-6">
         <Link href="/" aria-label={t("homeLink")} onClick={closeAll} className="mr-auto flex items-center gap-2.5">
-          <Image src="/brand/novieri-isotipo-color-256px.png" alt="" width={32} height={33} priority />
+          <Image src={asset("/brand/novieri-isotipo-color-256px.png")} alt="" width={32} height={33} priority />
           <span className="font-display text-[21px] font-semibold leading-none text-ink">novieri</span>
         </Link>
 
