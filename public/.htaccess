@@ -1,0 +1,24 @@
+# Apache config for GoDaddy hosting (copied into the deploy as-is).
+
+# Canonical host + HTTPS
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Custom 404 (file emitted by the Next.js export)
+ErrorDocument 404 /404.html
+
+# Never serve the backend config over HTTP
+<Files "config.php">
+  Require all denied
+</Files>
+
+# Long-lived caching for hashed build assets
+<IfModule mod_headers.c>
+  <FilesMatch "^.+\.(woff2|png|svg|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
+AddDefaultCharset utf-8

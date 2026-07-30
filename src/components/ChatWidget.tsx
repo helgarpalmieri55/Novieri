@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { site } from "@/config/site";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -33,7 +34,7 @@ export default function ChatWidget() {
     setMessages(next);
     setBusy(true);
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${site.apiBase}/chat.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next }),

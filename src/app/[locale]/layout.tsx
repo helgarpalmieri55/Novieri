@@ -61,7 +61,7 @@ export default async function LocaleLayout({
           <main id="main">{children}</main>
           <Footer locale={locale} />
           {locale === "es" && <WhatsAppFloat />}
-          {process.env.ANTHROPIC_API_KEY && <ChatWidget />}
+          {site.apiBase && <ChatWidget />}
           <RevealInit />
         </NextIntlClientProvider>
         <JsonLd data={organizationJsonLd} />
