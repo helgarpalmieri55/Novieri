@@ -16,15 +16,21 @@ return [
     'anthropic_api_key' => '',
 
     // GoDaddy mailbox used by the contact form (contact.php).
-    // Create the mailbox in your GoDaddy panel first (e.g. hola@novieri.com).
+    // Create the mailbox in your GoDaddy panel first (e.g. sales@novieri.com).
     'smtp_host' => 'smtpout.secureserver.net',
     'smtp_port' => 465, // implicit SSL
-    'smtp_user' => 'hola@novieri.com',
+    'smtp_user' => 'sales@novieri.com',
     'smtp_pass' => '',
 
     // Where form submissions arrive / the From identity they are sent with.
-    'mail_to'   => 'hola@novieri.com',
-    'mail_from' => 'hola@novieri.com',
+    'mail_to'   => 'sales@novieri.com',
+    'mail_from' => 'sales@novieri.com',
+
+    // Origins allowed to call these endpoints from another host. Same-origin
+    // calls (the site on this server) never need an entry. Add the GitHub
+    // Pages preview origin here if you want its form/chatbot to work:
+    // 'https://helgarpalmieri55.github.io'
+    'allowed_origins' => [],
 
     // Your own integrations (read by your code, not by these endpoints).
     'tracking_code' => '',

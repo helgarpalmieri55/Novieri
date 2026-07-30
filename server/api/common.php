@@ -22,6 +22,28 @@ function load_config(): array
     return is_array($config) ? $config : [];
 }
 
+/**
+ * Same-origin calls need nothing; a preview deploy (GitHub Pages) calling the
+ * production backend does. Only origins listed in config.php are allowed, and
+ * an OPTIONS preflight is answered here.
+ */
+function handle_cors(array $config): void
+{
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+    $allowed = array_map('strval', (array) ($config['allowed_origins'] ?? []));
+    if ($origin !== '' && in_array($origin, $allowed, true)) {
+        header('Access-Control-Allow-Origin: ' . $origin);
+        header('Vary: Origin');
+        header('Access-Control-Allow-Headers: Content-Type');
+        header('Access-Control-Allow-Methods: POST, OPTIONS');
+        header('Access-Control-Max-Age: 86400');
+    }
+    if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
+        http_response_code(204);
+        exit;
+    }
+}
+
 function require_post(): void
 {
     if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {

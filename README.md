@@ -32,14 +32,40 @@ verify every sitemap URL resolves to a file.
 | `anthropic_api_key` | `api/config.php` on the server — chatbot answers 503 until set |
 | SMTP mailbox + password (`smtp_user`, `smtp_pass`, `mail_to`, `mail_from`) | `api/config.php` on the server — contact form delivery |
 | FTPS secrets (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, optional `FTP_SERVER_DIR` variable) | GitHub repo → Settings → Secrets and variables → Actions |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | env or `src/config/site.ts` (default hola@novieri.com) |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | env or `src/config/site.ts` (default sales@novieri.com) |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` (+57…, digits only) | env — WhatsApp button hidden until set |
 | `NEXT_PUBLIC_CAL_LINK` (e.g. `novieri/intro`) | env — Cal.com embed shows fallback until set |
 | `NEXT_PUBLIC_LINKEDIN_URL` | env — footer icon hidden until set |
-| `razonSocial`, `NIT` | `src/config/site.ts` — footer legal line |
+| `razonSocial`, `NIT` | `src/config/site.ts` — **required**: footer legal line *and* the controller identification in the legal pages (the NIT clause is omitted while empty) |
 | `[WIFE_NAME]`, `[WIFE_BIO]` | `messages/*.json` (about.founders.partner) |
 | Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
+
+## Legal pages — have a lawyer review before launch
+
+`/legal/privacy`, `/legal/cookies`, and `/legal/terms` (both locales) are
+drafted against Colombian law — Ley 1581 de 2012 and Decreto 1074 de 2015
+(data protection, SIC as authority), Ley 1480 de 2011 (consumer statute),
+Ley 527 de 1999 (electronic commerce), Ley 1273 de 2009 (computer crimes),
+and Ley 23 de 1982 / Decisión Andina 486 (intellectual property). They are a
+solid starting point written from the site's actual data flows, **not legal
+advice** — have Colombian counsel review them before launch.
+
+Two things must be filled in first: `razonSocial` and `nit` in
+`src/config/site.ts`. Until then the pages identify the controller as
+"Novieri" and omit the NIT clause. Also check whether the company must
+register its databases in the *Registro Nacional de Bases de Datos* (RNBD)
+of the Superintendencia de Industria y Comercio — that depends on the
+company's assets and headcount.
+
+Copy lives in `messages/*.json` under `legal.*`. A `[[…]]` block in that copy
+is dropped automatically when a value inside it is empty, which is how the
+NIT clause disappears cleanly.
+
+The cookie banner (`src/components/CookieBanner.tsx`) stores the choice in
+localStorage under `novieri-consent` and analytics
+(`src/components/Analytics.tsx`) stays off until the visitor accepts — prior,
+express, informed consent, as the regulation requires.
 
 ## Solutions content — review before launch
 

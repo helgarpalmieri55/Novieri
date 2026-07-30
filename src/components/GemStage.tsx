@@ -1,14 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { asset } from "@/config/site";
 
 const PARTICLE_COLORS = ["#264e59", "#4f3461", "#a8875c", "#b0aabd"];
+const MARK = "/brand/novieri-isotipo-color.svg";
 
 /**
- * "La gema viva", light edition: the logo's facet language in its true
- * jewel colors on white — facets draw themselves in, then breathe; the
- * gradient core pulses; mono ring text rotates; a subtle particle field
- * drifts toward it; the whole gem follows the mouse.
+ * "La gema viva": the real logo mark is the centerpiece — no redrawn
+ * approximation. A light sweep travels across its facets (a gradient masked
+ * by the mark itself), jewel-toned halos breathe behind it, mono ring text
+ * rotates around it, and a particle field drifts inward. The mark follows the
+ * mouse. Everything decorative stops under prefers-reduced-motion.
  */
 export default function GemStage({ ringText }: { ringText: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -48,7 +52,7 @@ export default function GemStage({ ringText }: { ringText: string }) {
     const draw = (t: number) => {
       cx.clearRect(0, 0, W, H);
       for (const p of parts) {
-        const dx = 0.62 - p.x;
+        const dx = 0.5 - p.x;
         const dy = 0.5 - p.y;
         p.x += dx * p.v;
         p.y += dy * p.v;
@@ -68,8 +72,8 @@ export default function GemStage({ ringText }: { ringText: string }) {
     draw(0);
 
     const onMove = (e: MouseEvent) => {
-      const rx = (e.clientX / innerWidth - 0.5) * 14;
-      const ry = (e.clientY / innerHeight - 0.5) * 10;
+      const rx = (e.clientX / innerWidth - 0.5) * 16;
+      const ry = (e.clientY / innerHeight - 0.5) * 12;
       gem.style.transform = `translate(${rx}px, ${ry}px)`;
     };
     if (!reduced) addEventListener("mousemove", onMove, { passive: true });
@@ -84,103 +88,66 @@ export default function GemStage({ ringText }: { ringText: string }) {
   return (
     <>
       <canvas ref={canvasRef} aria-hidden className="absolute inset-0 h-full w-full" />
+
       <div ref={gemRef} className="relative mx-auto w-full transition-transform duration-300 ease-out">
+        {/* Breathing halos, in the mark's own gradient stops */}
+        <div
+          aria-hidden
+          className="gem-halo absolute left-1/2 top-1/2 h-[86%] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(79,52,97,0.10) 0%, rgba(38,78,89,0.07) 45%, transparent 70%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="gem-halo absolute left-1/2 top-1/2 h-[62%] w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            ["--hd" as string]: "1.6s",
+            background: "radial-gradient(circle, rgba(168,135,92,0.13) 0%, transparent 68%)",
+          }}
+        />
+
+        {/* Rotating mono ring */}
         <svg
           aria-hidden
           viewBox="0 0 300 300"
-          className="ring-text absolute -inset-[13%] h-[126%] w-[126%]"
+          className="ring-text absolute -inset-[11%] h-[122%] w-[122%]"
           style={{ transformOrigin: "50% 50%" }}
         >
           <defs>
             <path id="ring-circ" d="M150 150 m -128 0 a 128 128 0 1 1 256 0 a 128 128 0 1 1 -256 0" />
           </defs>
-          <text
-            style={{
-              font: "400 8.2px var(--font-mono)",
-              letterSpacing: "0.32em",
-              fill: "#8a8296",
-            }}
-          >
+          <text style={{ font: "400 8.2px var(--font-mono)", letterSpacing: "0.32em", fill: "#8a8296" }}>
             <textPath href="#ring-circ">{ringText}</textPath>
           </text>
         </svg>
-        <svg viewBox="0 0 420 420" fill="none" aria-hidden className="w-full">
-          <defs>
-            <linearGradient id="gem-g" x1="70" y1="70" x2="350" y2="350" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stopColor="#264e59" />
-              <stop offset="0.5" stopColor="#4f3461" />
-              <stop offset="1" stopColor="#a8875c" />
-            </linearGradient>
-          </defs>
-          <g strokeWidth="1.5">
-            <g className="gem-facet" style={{ ["--fd" as string]: "0s" }}>
-              <rect
-                className="gem-draw"
-                style={{ ["--dd" as string]: "0.15s" }}
-                x="70"
-                y="70"
-                width="170"
-                height="170"
-                rx="36"
-                stroke="#264e59"
-                transform="rotate(8 155 155)"
-              />
-            </g>
-            <g className="gem-facet" style={{ ["--fd" as string]: "2.2s" }}>
-              <rect
-                className="gem-draw"
-                style={{ ["--dd" as string]: "0.35s" }}
-                x="180"
-                y="70"
-                width="170"
-                height="170"
-                rx="36"
-                stroke="#4f3461"
-                transform="rotate(-8 265 155)"
-              />
-            </g>
-            <g className="gem-facet" style={{ ["--fd" as string]: "4.4s" }}>
-              <rect
-                className="gem-draw"
-                style={{ ["--dd" as string]: "0.55s" }}
-                x="70"
-                y="180"
-                width="170"
-                height="170"
-                rx="36"
-                stroke="#4f3461"
-                transform="rotate(-8 155 265)"
-              />
-            </g>
-            <g className="gem-facet" style={{ ["--fd" as string]: "6.6s" }}>
-              <rect
-                className="gem-draw"
-                style={{ ["--dd" as string]: "0.75s" }}
-                x="180"
-                y="180"
-                width="170"
-                height="170"
-                rx="36"
-                stroke="url(#gem-g)"
-                strokeWidth="2"
-                transform="rotate(8 265 265)"
-              />
-            </g>
-            <path
-              className="gem-draw"
-              style={{ ["--dd" as string]: "1s" }}
-              d="M60 350 L350 68"
-              stroke="#a8875c"
-              strokeOpacity="0.6"
-            />
-          </g>
-          <g className="gem-core">
-            <path
-              d="M210 148 C218.5 188.5 229 199 270 210 C229 221 218.5 231.5 210 272 C201.5 231.5 191 221 150 210 C191 199 201.5 188.5 210 148 Z"
-              fill="url(#gem-g)"
-            />
-          </g>
-        </svg>
+
+        {/* The mark itself, plus a light sweep masked to its facets */}
+        <div className="gem-float relative mx-auto aspect-square w-[82%]">
+          <Image
+            src={asset(MARK)}
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 1024px) 70vw, 34vw"
+            className="select-none"
+          />
+          <div
+            aria-hidden
+            className="gem-sweep absolute inset-0"
+            style={{
+              maskImage: `url(${asset(MARK)})`,
+              WebkitMaskImage: `url(${asset(MARK)})`,
+              maskSize: "contain",
+              WebkitMaskSize: "contain",
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
+              maskPosition: "center",
+              WebkitMaskPosition: "center",
+            }}
+          />
+        </div>
       </div>
     </>
   );

@@ -12,8 +12,9 @@
 
 require __DIR__ . '/common.php';
 
-require_post();
 $config = load_config();
+handle_cors($config);
+require_post();
 if (empty($config['anthropic_api_key'])) {
     send_json(503, ['error' => 'not_configured']);
 }
@@ -110,7 +111,7 @@ function company_knowledge(string $contactEmail): string
     ]);
 }
 
-$contactEmail = (string) ($config['mail_to'] ?? 'hola@novieri.com');
+$contactEmail = (string) ($config['mail_to'] ?? 'sales@novieri.com');
 $system = <<<PROMPT
 You are the website assistant for Novieri (novieri.com), an AI-first IT solutions company in Barranquilla, Colombia.
 

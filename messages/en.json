@@ -74,6 +74,18 @@
     "sol_webDev": {
       "title": "AI-powered Websites — Novieri",
       "description": "Modern website development with AI built in: assistants, smart search, and bilingual content."
+    },
+    "legalPrivacy": {
+      "title": "Privacy Policy — Novieri",
+      "description": "How Novieri processes, protects, and retains your personal data, and how to exercise your rights under Colombian Law 1581 of 2012."
+    },
+    "legalCookies": {
+      "title": "Cookie Policy — Novieri",
+      "description": "Which cookies novieri.com uses, what they are for, and how to accept, reject, or change your decision at any time."
+    },
+    "legalTerms": {
+      "title": "Terms of Use — Novieri",
+      "description": "Conditions for accessing and using novieri.com: intellectual property, liability, and governing law in Colombia."
     }
   },
   "nav": {
@@ -141,20 +153,7 @@
       "titleA": "AI-first IT solutions,",
       "titleB": "with a nearshore edge.",
       "subtitle": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates.",
-      "meta": "barranquilla, colombia ·· gmt-5, same clock as ny ·· en / es",
       "ringText": "ai · automation · managed it · cybersecurity · software · barranquilla · gmt-5 · "
-    },
-    "trust": {
-      "items": [
-        "Microsoft 365",
-        "FortiGate",
-        "AWS",
-        "Python",
-        "React",
-        "Odoo",
-        "HubSpot",
-        "Power BI"
-      ]
     },
     "proof": {
       "items": [
@@ -176,60 +175,68 @@
         }
       ]
     },
-    "console": {
+    "liveChat": {
       "eyebrow": "ai in production",
-      "title": "While you read this, our agents are working.",
-      "body": "This isn't a promise — it's a real workflow of the kind we build and operate. An agent reads, validates, posts, and escalates to a human only when it matters, with time-saved metrics in plain sight.",
-      "cta": "See AI & automation",
-      "barTitle": "novieri · invoicing agent",
-      "badge": "LIVE",
-      "lines": [
+      "title": "While you read this, our agents are answering.",
+      "body": "This isn't a promise — it's the WhatsApp assistant we run for restaurants and hotels. It understands voice notes, replies in seconds, creates the booking in your system, and hands off to a person only when it matters.",
+      "cta": "See the WhatsApp assistant",
+      "header": {
+        "name": "Marisquería La Bahía",
+        "status": "online · replies instantly"
+      },
+      "badge": "DEMO",
+      "inputHint": "Type a message",
+      "entries": [
         {
-          "t": "09:41:07  ",
-          "kind": "cmd",
-          "text": "$ novieri-agent watch --process invoicing"
+          "from": "guest",
+          "text": "Hi, do you have a table for 4 tonight at 8?",
+          "t": "7:42 PM"
         },
         {
-          "kind": "step",
-          "text": "reading shared inbox… ",
-          "hl": "47 new emails"
+          "from": "bot",
+          "text": "Good evening. Yes, we have a table for 4 at 8:00 PM — indoors or on the terrace, whichever you prefer.",
+          "t": "7:42 PM"
         },
         {
-          "kind": "ok",
-          "text": "12 invoices detected and extracted"
+          "from": "guest",
+          "kind": "voice",
+          "duration": "0:07",
+          "t": "7:43 PM"
         },
         {
-          "kind": "ok",
-          "text": "validated against purchase orders in ",
-          "hl": "Odoo"
+          "kind": "transcript",
+          "label": "voice note",
+          "text": "“On the terrace, and a high chair if you have one”"
         },
         {
-          "kind": "step",
-          "text": "posting journal entries…"
+          "from": "bot",
+          "text": "Noted: terrace and a high chair. Confirming it now.",
+          "t": "7:43 PM"
         },
         {
-          "kind": "ok",
-          "text": "12/12 posted · 0 errors"
+          "kind": "action",
+          "text": "booking created · #1284 · 4 guests · 8:00 PM · terrace"
         },
         {
-          "kind": "step",
-          "text": "edge case #8842 → ",
-          "hl": "escalated to a human"
+          "from": "guest",
+          "text": "anything gluten-free?",
+          "t": "7:44 PM"
         },
         {
-          "kind": "ok",
-          "text": "summary sent to accounting"
+          "from": "bot",
+          "text": "Yes. On today's menu: sea bass ceviche, grilled snapper, and coconut rice. I'll flag it to the kitchen so they know.",
+          "t": "7:44 PM"
         },
         {
-          "t": "09:43:22  ",
-          "kind": "done",
-          "text": "done. 38 min of manual work saved today."
+          "kind": "action",
+          "text": "kitchen notified · gluten-free"
         }
       ],
-      "footState": "status",
-      "footStateValue": "● operating",
-      "footUptime": "uptime 99.98%",
-      "footSaved": "today: 38 min saved"
+      "foot": [
+        "answers 24/7",
+        "bookings and orders",
+        "Spanish and English"
+      ]
     },
     "services": {
       "eyebrow": "services",
@@ -382,6 +389,57 @@
           "a": "The assessment takes 2 weeks. A typical pilot is in production 3 to 6 weeks later. You should see hours recovered in the chosen process within the first month."
         }
       ]
+    },
+    "console": {
+      "barTitle": "novieri · invoicing agent",
+      "badge": "LIVE",
+      "lines": [
+        {
+          "t": "09:41:07  ",
+          "kind": "cmd",
+          "text": "$ novieri-agent watch --process invoicing"
+        },
+        {
+          "kind": "step",
+          "text": "reading shared inbox… ",
+          "hl": "47 new emails"
+        },
+        {
+          "kind": "ok",
+          "text": "12 invoices detected and extracted"
+        },
+        {
+          "kind": "ok",
+          "text": "validated against purchase orders in ",
+          "hl": "Odoo"
+        },
+        {
+          "kind": "step",
+          "text": "posting journal entries…"
+        },
+        {
+          "kind": "ok",
+          "text": "12/12 posted · 0 errors"
+        },
+        {
+          "kind": "step",
+          "text": "edge case #8842 → ",
+          "hl": "escalated to a human"
+        },
+        {
+          "kind": "ok",
+          "text": "summary sent to accounting"
+        },
+        {
+          "t": "09:43:22  ",
+          "kind": "done",
+          "text": "done. 38 min of manual work saved today."
+        }
+      ],
+      "footState": "status",
+      "footStateValue": "● operating",
+      "footUptime": "uptime 99.98%",
+      "footSaved": "today: 38 min saved"
     }
   },
   "managedIt": {
@@ -697,7 +755,11 @@
     "legal": "© {year} {razonSocial} · NIT {nit}",
     "linkedinLabel": "Novieri on LinkedIn",
     "location": "Barranquilla, Colombia",
-    "solutionsTitle": "Solutions"
+    "solutionsTitle": "Solutions",
+    "legalTitle": "Legal",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie policy",
+    "terms": "Terms of use"
   },
   "notFound": {
     "eyebrow": "error 404",
@@ -1189,5 +1251,275 @@
     "placeholder": "Type your question…",
     "send": "Send",
     "error": "I couldn't answer right now. Try again, or write to us from the contact page."
+  },
+  "legal": {
+    "common": {
+      "eyebrow": "legal",
+      "updated": "Last updated",
+      "updatedValue": "July 30, 2026",
+      "toc": "Contents",
+      "identityTitle": "Data controller",
+      "identityBody": "{company}[[, tax ID (NIT) {nit}]], domiciled in Barranquilla, Atlántico, Colombia. Contact address for data protection and legal matters: {email}.",
+      "questionsTitle": "Questions about this document?",
+      "questionsBody": "Write to {email} and we'll answer. If your request concerns your personal data, say so in the subject line so we can handle it within the statutory deadlines.",
+      "otherDocs": "Other documents"
+    },
+    "privacy": {
+      "title": "Personal data processing policy",
+      "lead": "This policy explains how Novieri collects, uses, stores, and protects the personal data it receives through this website and its business operation, in compliance with Colombian Law 1581 of 2012, Decree 1074 of 2015, and the instructions of the Superintendence of Industry and Commerce.",
+      "sections": [
+        {
+          "h": "1. Data controller",
+          "p": [
+            "The controller of your personal data is {company}, a company domiciled in Barranquilla, Atlántico, Colombia[[, with tax ID (NIT) {nit}]].",
+            "For any matter related to this policy, including exercising your rights as a data subject, write to {email}. This is the official channel for data subject requests."
+          ]
+        },
+        {
+          "h": "2. Legal framework",
+          "p": [
+            "This policy is governed by the Political Constitution of Colombia (article 15), Statutory Law 1581 of 2012, Single Regulatory Decree 1074 of 2015 (which compiled Decree 1377 of 2013), and the circulars and instructions of the Superintendence of Industry and Commerce, Colombia's data protection authority."
+          ]
+        },
+        {
+          "h": "3. Personal data we process",
+          "p": [
+            "We only collect the data we need to handle your request. Depending on how you interact with us, this may include:"
+          ],
+          "ul": [
+            "Identification and contact data: name, email address, company, and role, when you complete the contact form or book a call.",
+            "The content of your communications: the message you send us, the service you're interested in, and your conversations with the website assistant.",
+            "Technical browsing data: IP address, device and browser type, pages visited, and aggregate usage data, for statistical and security purposes.",
+            "Data arising from a commercial relationship: billing and operational contact information, once we reach a services agreement."
+          ],
+          "p2": [
+            "We do not collect sensitive data (racial or ethnic origin, political views, religious beliefs, union membership, health data, sexual life, or biometric data) through this website. We also do not request data from children or adolescents. If you believe a minor has sent us personal data, write to us and we will delete it."
+          ]
+        },
+        {
+          "h": "4. Purposes of processing",
+          "p": [
+            "We process your personal data for the following purposes:"
+          ],
+          "ul": [
+            "Responding to your questions and requests for commercial information.",
+            "Preparing and sending service proposals and quotes, and scheduling meetings.",
+            "Delivering, administering, and invoicing contracted services.",
+            "Providing technical support and sending you relevant operational information about the services.",
+            "Sending you commercial communications about our services where you have authorized it; you may withdraw that authorization at any time.",
+            "Keeping the site secure, preventing fraud and abuse, and maintaining internal and accounting records.",
+            "Complying with legal, accounting, and tax obligations and with requests from competent authorities."
+          ],
+          "p2": [
+            "We do not use your data for purposes other than those stated, and we do not make automated decisions that produce legal effects on you."
+          ]
+        },
+        {
+          "h": "5. Data subject authorization",
+          "p": [
+            "By submitting the contact form, writing to us by email or WhatsApp, or chatting with the website assistant, you give prior, express, and informed authorization for the processing of your personal data in accordance with this policy.",
+            "Authorization to receive commercial communications is optional and separable: you may decline it and still have your request handled. We keep evidence of the authorization granted, as required by law."
+          ]
+        },
+        {
+          "h": "6. Your rights as a data subject",
+          "p": [
+            "As the owner of the personal data, Colombian law grants you the following rights:"
+          ],
+          "ul": [
+            "To access, update, and rectify your personal data held by Novieri.",
+            "To request proof of the authorization you granted, except where the law does not require it.",
+            "To be informed, upon request, about how we have used your data.",
+            "To file complaints with the Superintendence of Industry and Commerce for breaches of data protection rules.",
+            "To revoke your authorization and/or request deletion of your data, where no legal or contractual duty requires us to keep it.",
+            "To access your personal data free of charge."
+          ]
+        },
+        {
+          "h": "7. How to exercise your rights",
+          "p": [
+            "You may exercise your rights by writing to {email} from an address that identifies you, stating your name, a description of your request, and any supporting documents.",
+            "We answer queries within a maximum of ten (10) business days, extendable by five (5) further business days when they cannot be resolved in that time, informing you of the reasons and the date of resolution.",
+            "Complaints are handled within a maximum of fifteen (15) business days, extendable by eight (8) further business days, following the procedure in article 15 of Law 1581 of 2012. If a complaint is incomplete, we will ask you for the missing information within five (5) days of receiving it."
+          ]
+        },
+        {
+          "h": "8. Processors and international transfers",
+          "p": [
+            "To run the website and deliver our services we use technology providers that may act as data processors and be located outside Colombia, including: web hosting and email, productivity and storage tools, online meeting scheduling, website analytics, and the AI model provider behind the website assistant.",
+            "Where such international transfers or transmissions occur, we require our providers to apply security and confidentiality standards equivalent to those in this policy, through data transmission agreements or contractual protection obligations, in accordance with articles 25 and 26 of Law 1581 of 2012.",
+            "We do not sell, rent, or trade your personal data with third parties."
+          ]
+        },
+        {
+          "h": "9. Conversations with the website assistant",
+          "p": [
+            "The site offers a virtual assistant that answers questions about Novieri. The content of the conversation is sent to our AI model provider solely to generate the reply.",
+            "Please do not enter sensitive data, credentials, third-party confidential information, or personal data that isn't necessary for your question. If you need to discuss something confidential, write to {email}."
+          ]
+        },
+        {
+          "h": "10. Security and retention",
+          "p": [
+            "We apply reasonable technical, human, and administrative measures to protect your data against unauthorized access, loss, alteration, or misuse: encryption in transit, role-based access control, activity logging, and periodic review of our providers.",
+            "We retain your data while a commercial relationship or an active purpose exists, and afterwards for as long as needed to meet legal, accounting, and tax obligations. Once those periods lapse, we delete or anonymize it."
+          ]
+        },
+        {
+          "h": "11. Effective date and changes",
+          "p": [
+            "This policy applies from the date of its last update and remains in force for as long as Novieri processes personal data. Any substantial change will be published on this page; we recommend reviewing it periodically.",
+            "Databases are kept for as long as the processing purposes and applicable legal duties remain in force."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Cookie policy",
+      "lead": "This policy explains what cookies and similar technologies are, which ones novieri.com uses, what they are for, and how you can accept them, reject them, or change your mind at any time.",
+      "sections": [
+        {
+          "h": "1. What cookies are",
+          "p": [
+            "A cookie is a small text file that a website stores in your browser to remember information between visits. Alongside cookies there are similar technologies, such as browser local storage, that serve comparable purposes.",
+            "In this policy we use the word “cookies” to refer to all of those technologies."
+          ]
+        },
+        {
+          "h": "2. Legal basis and consent",
+          "p": [
+            "In Colombia, setting cookies that process personal data requires the data subject's prior, express, and informed consent, under Law 1581 of 2012 and Decree 1074 of 2015.",
+            "That's why, the first time you visit the site, we show a notice where you can accept or reject cookies that are not strictly necessary. Until you accept, we do not activate analytics or measurement technologies. Strictly necessary cookies do not require consent because the site cannot work without them."
+          ]
+        },
+        {
+          "h": "3. Cookies we use",
+          "p": [
+            "We keep the site deliberately light. These are the categories we apply:"
+          ],
+          "ul": [
+            "Strictly necessary: we store your cookie decision in your browser's local storage (key “novieri-consent”) so we don't ask again on every visit. It does not identify individuals and is not shared with third parties.",
+            "Analytics and measurement: if you accept them, we activate a web analytics tool that tells us how many people visit the site and which pages they read, in aggregate. We use it to improve the content, not to profile people.",
+            "Third-party functional: when you open meeting scheduling or the WhatsApp chat, the relevant provider may set its own cookies in your browser, subject to its policies.",
+            "Advertising: we do not use advertising or cross-site tracking cookies."
+          ]
+        },
+        {
+          "h": "4. How to change your decision",
+          "p": [
+            "You can change your choice at any time by clearing this site's data in your browser: the next time you visit, the notice will appear again and you can decide anew.",
+            "You can also configure your browser to block or delete cookies. Note that blocking strictly necessary ones may affect how the site works. The major browsers explain how to do this in their privacy help pages."
+          ]
+        },
+        {
+          "h": "5. Third-party cookies",
+          "p": [
+            "When you use features provided by third parties — meeting scheduling, WhatsApp, or embedded content — those providers act as controllers of the cookies they set and of the processing they carry out. We recommend reviewing their respective privacy and cookie policies."
+          ]
+        },
+        {
+          "h": "6. Personal data and cookies",
+          "p": [
+            "Where a cookie processes personal data, our personal data processing policy also applies, including your rights as a data subject and the channels to exercise them.",
+            "If you have questions about this policy, write to {email}."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Website terms of use",
+      "lead": "These terms govern access to and use of novieri.com. By browsing the site you accept them; if you do not agree with them, please do not use it.",
+      "sections": [
+        {
+          "h": "1. Identification and purpose",
+          "p": [
+            "This website is operated by {company}[[, tax ID (NIT) {nit}]], domiciled in Barranquilla, Atlántico, Colombia, hereinafter “Novieri”.",
+            "The site has an informational and commercial purpose: to present Novieri's services and products and to provide contact channels. The information published does not constitute a binding commercial offer or technical, legal, accounting, or financial advice applicable to your specific case."
+          ]
+        },
+        {
+          "h": "2. Legal framework",
+          "p": [
+            "These terms are governed by Colombian law, in particular Law 527 of 1999 on data messages and electronic commerce, Law 1480 of 2011 (Consumer Statute), Law 1581 of 2012 on personal data protection, Law 1273 of 2009 on computer crimes, and applicable intellectual property rules, including Law 23 of 1982 and Andean Decision 486 of 2000."
+          ]
+        },
+        {
+          "h": "3. Permitted use",
+          "p": [
+            "You may read, download, and share the site's content for informational, personal, or commercial evaluation purposes, provided you respect the integrity of the content and its attribution to Novieri."
+          ],
+          "p2": [
+            "In using the site, you agree not to:"
+          ],
+          "ul": [
+            "Alter, interfere with, or attempt to gain unauthorized access to the site, its servers, or associated systems.",
+            "Use automated mass-extraction mechanisms that affect the site's operation.",
+            "Introduce malicious code or engage in conduct criminalized by Law 1273 of 2009.",
+            "Submit unlawful, defamatory, or misleading content through the forms or the assistant, or third-party personal data without authorization.",
+            "Impersonate others or falsely present yourself as part of Novieri."
+          ]
+        },
+        {
+          "h": "4. Intellectual property",
+          "p": [
+            "The Novieri trademark, its logo, visual identity, texts, design, source code, and other site content are owned by Novieri or used with the authorization of their owners, and are protected by copyright and industrial property rules.",
+            "Accessing the site grants no license over that content. Any commercial use, substantial reproduction, derivative work, or use of the trademark requires Novieri's prior written authorization. Third-party trademarks mentioned belong to their respective owners and are cited descriptively."
+          ]
+        },
+        {
+          "h": "5. The assistant and AI-generated content",
+          "p": [
+            "The site includes a virtual assistant that answers questions about Novieri based on published content. Its answers are generated automatically and may contain inaccuracies or become outdated.",
+            "The assistant's answers are informational and do not constitute an offer, quote, contractual commitment, or professional advice. Any scope, price, or condition is defined solely in a written proposal signed by Novieri. Do not enter credentials, sensitive data, or confidential information in the chat."
+          ]
+        },
+        {
+          "h": "6. Site availability",
+          "p": [
+            "We aim to keep the site continuously available, but interruptions may occur due to maintenance, updates, third-party provider failures, or force majeure. Novieri may modify, suspend, or discontinue the site or its features, in whole or in part, at any time."
+          ]
+        },
+        {
+          "h": "7. Links to third-party sites",
+          "p": [
+            "The site may link to third-party pages or services. Novieri does not control their content or privacy practices and is not responsible for them. Access to those sites is at your own risk and subject to their terms."
+          ]
+        },
+        {
+          "h": "8. Limitation of liability",
+          "p": [
+            "The site's content is provided “as is”, based on the information available at the time of publication. To the maximum extent permitted by Colombian law, Novieri is not liable for damages arising from the use of or inability to use the site, from decisions taken on the basis of its informational content, or from unavailability attributable to third parties.",
+            "This limitation neither excludes nor restricts the rights granted to consumers by Law 1480 of 2011, nor Novieri's liability for willful misconduct or gross negligence."
+          ]
+        },
+        {
+          "h": "9. Personal data",
+          "p": [
+            "The processing of personal data you provide through the site is governed by our personal data processing policy and our cookie policy, which form an integral part of these terms."
+          ]
+        },
+        {
+          "h": "10. Changes to these terms",
+          "p": [
+            "Novieri may update these terms to reflect changes to the site, its services, or applicable regulations. The version in force is the one published on this page, with its last-updated date. Using the site after a change implies acceptance of it."
+          ]
+        },
+        {
+          "h": "11. Governing law and jurisdiction",
+          "p": [
+            "These terms are governed by Colombian law. Any dispute arising from them shall be submitted to the competent courts of the city of Barranquilla, Colombia, without prejudice to the powers granted by law to the Superintendence of Industry and Commerce in consumer protection and personal data matters.",
+            "For any communication regarding these terms: {email}."
+          ]
+        }
+      ]
+    }
+  },
+  "cookies": {
+    "title": "Cookies on novieri.com",
+    "body": "We use first-party cookies needed for the site to work and, only if you accept, aggregate analytics to understand which content is useful. We don't use advertising cookies.",
+    "accept": "Accept all",
+    "reject": "Necessary only",
+    "more": "Read the cookie policy",
+    "label": "Cookie notice"
   }
 }

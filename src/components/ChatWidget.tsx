@@ -35,6 +35,9 @@ export default function ChatWidget() {
     setBusy(true);
     try {
       const res = await fetch(`${site.apiBase}/chat.php`, {
+        // The backend is same-origin in production and cross-origin from a
+        // preview deploy; never send cookies either way.
+        credentials: "omit",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next }),

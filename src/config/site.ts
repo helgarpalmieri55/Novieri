@@ -7,8 +7,7 @@ export const site = {
   url: "https://novieri.com",
   name: "Novieri",
 
-  // TODO: confirm final contact email.
-  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hola@novieri.com",
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "sales@novieri.com",
 
   // TODO: WhatsApp number in international format without "+", e.g. "573001234567".
   // The WhatsApp button/float stays hidden while this is empty.
@@ -30,11 +29,22 @@ export const site = {
   // config point, brief §3). Leave empty to ship without analytics.
   plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "",
 
-  // Base URL of the PHP backend (contact form + chatbot). The GoDaddy deploy
-  // sets "/api"; while empty (e.g. GitHub Pages preview) the chat widget is
-  // hidden and the contact form shows its email fallback on submit.
-  apiBase: process.env.NEXT_PUBLIC_API_BASE ?? "",
+  // Base URL of the PHP backend (contact form + chatbot). Defaults to the
+  // same-origin /api that the GoDaddy deploy uploads. Point it at an absolute
+  // URL (e.g. https://novieri.com/api) to make a preview deploy that has no
+  // PHP — GitHub Pages — talk to the production backend.
+  apiBase: process.env.NEXT_PUBLIC_API_BASE ?? "/api",
 } as const;
+
+/**
+ * Prefixes a path in public/ with the deployment's base path.
+ * next/image skips this when `images.unoptimized` is set, so any <Image>
+ * pointing at public/ must go through here or it 404s under a base path
+ * (e.g. GitHub Pages, where the site lives at /<repo-name>/).
+ */
+export function asset(path: string): string {
+  return (process.env.NEXT_PUBLIC_BASE_PATH ?? "") + path;
+}
 
 export function whatsappHref(message: string): string {
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;

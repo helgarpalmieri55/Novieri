@@ -331,35 +331,58 @@
     }
   }
 
-  /* gem */
-  .gem-facet {
-    transform-origin: 210px 210px;
-    animation: gem-breathe 9s ease-in-out infinite;
-    animation-delay: var(--fd, 0s);
+  /* gem — the real logo mark, breathing and catching the light */
+  .gem-float {
+    animation: gem-float 9s ease-in-out infinite;
   }
 
-  @keyframes gem-breathe {
+  @keyframes gem-float {
     0%,
     100% {
-      transform: rotate(0deg) scale(1);
+      transform: translateY(0) scale(1);
     }
     50% {
-      transform: rotate(2.5deg) scale(1.015);
+      transform: translateY(-8px) scale(1.014);
     }
   }
 
-  .gem-core {
-    transform-origin: 210px 210px;
-    animation: gem-pulse 5.5s ease-in-out infinite;
+  /* A highlight travelling across the mark's facets (masked to its shape) */
+  .gem-sweep {
+    background: linear-gradient(
+      104deg,
+      transparent 38%,
+      rgba(255, 255, 255, 0.78) 50%,
+      transparent 62%
+    );
+    background-size: 320% 100%;
+    background-repeat: no-repeat;
+    animation: gem-sweep 6.5s var(--ease-out-quart) infinite;
   }
 
-  @keyframes gem-pulse {
+  @keyframes gem-sweep {
+    0% {
+      background-position: 150% 0;
+    }
+    55%,
+    100% {
+      background-position: -60% 0;
+    }
+  }
+
+  .gem-halo {
+    animation: gem-halo 7s ease-in-out infinite;
+    animation-delay: var(--hd, 0s);
+  }
+
+  @keyframes gem-halo {
     0%,
     100% {
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.85;
     }
     50% {
-      transform: scale(1.09);
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 1;
     }
   }
 
@@ -374,16 +397,6 @@
   @keyframes spin-slow {
     to {
       transform: rotate(360deg);
-    }
-  }
-
-  .marquee-track {
-    animation: marquee 30s linear infinite;
-  }
-
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
     }
   }
 
@@ -408,20 +421,6 @@
     }
   }
 
-  /* hero facets draw themselves in on load */
-  .gem-draw {
-    stroke-dasharray: 900;
-    stroke-dashoffset: 900;
-    animation: gem-draw 2s var(--ease-out-quart) forwards;
-    animation-delay: var(--dd, 0.2s);
-  }
-
-  @keyframes gem-draw {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
   .ticker-word {
     display: inline-block;
     animation: ticker-in 500ms var(--ease-out-quart) both;
@@ -439,8 +438,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none !important;
-  }
-}

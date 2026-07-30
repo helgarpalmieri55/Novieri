@@ -75,7 +75,23 @@ if (missing.length > 0) {
   process.exit(1);
 }
 
-// 4. Sanity: no English-named route directories left behind under /es.
+// 4. Base path: every root-relative asset URL must carry it. next/image skips
+//    the prefix when images.unoptimized is set, which silently 404s the logo
+//    on GitHub Pages — this catches that class of bug at build time.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+if (basePath) {
+  const html = readFileSync(join(OUT, "es", "index.html"), "utf8");
+  const unprefixed = [...html.matchAll(/(?:src|href)="(\/[^"]*)"/g)]
+    .map((m) => m[1])
+    .filter((url) => !url.startsWith(`${basePath}/`) && !url.startsWith("//"));
+  if (unprefixed.length > 0) {
+    console.error(`localize-export: ${unprefixed.length} asset URL(s) missing base path "${basePath}":`);
+    for (const url of new Set(unprefixed)) console.error(`  ${url}`);
+    process.exit(1);
+  }
+}
+
+// 5. Sanity: no English-named route directories left behind under /es.
 const leftovers = ["services", "solutions", "about", "contact"].filter((d) =>
   readdirSync(join(OUT, "es")).includes(d),
 );

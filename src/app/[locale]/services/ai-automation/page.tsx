@@ -16,7 +16,7 @@ export async function generateMetadata({
 export default async function AiAutomationPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("home.console");
+  const t = await getTranslations("ai.console");
 
   return (
     <ServicePageTemplate
