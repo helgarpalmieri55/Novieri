@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "Novieri — Soluciones de IT con inteligencia artificial en el centro",
-      "description": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación. Tecnología de nivel enterprise para empresas en Barranquilla y Colombia, sin montar un departamento de IT."
+      "title": "Novieri — Tecnología enterprise con IA en el centro",
+      "description": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación. Tecnología enterprise para tu empresa, sin montar un departamento de IT."
     },
     "services": {
       "title": "Servicios — Novieri",
@@ -37,7 +37,7 @@
     },
     "solutions": {
       "title": "Soluciones — Novieri",
-      "description": "Productos construidos y operados por Novieri: recepcionista y asistentes de IA, gestión IT y RMM, monitoreo, seguridad, inteligencia de visitantes y e-commerce con IA."
+      "description": "Productos construidos y operados por Novieri: asistentes de IA, gestión IT y RMM, monitoreo, seguridad e inteligencia de visitantes."
     },
     "sol_aiAssistant": {
       "title": "Recepcionista Virtual de IA — Novieri",
@@ -1180,5 +1180,14 @@
         ]
       }
     }
+  },
+  "chat": {
+    "title": "Asistente de Novieri",
+    "open": "Abrir chat",
+    "close": "Cerrar chat",
+    "greeting": "Hola. Soy el asistente de Novieri — pregúntame lo que quieras sobre nuestros servicios, soluciones o cómo trabajamos.",
+    "placeholder": "Escribe tu pregunta…",
+    "send": "Enviar",
+    "error": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto."
   }
 }

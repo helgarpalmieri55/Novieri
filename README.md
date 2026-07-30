@@ -24,6 +24,7 @@ npm run build    # production build
 | Item | Where |
 |---|---|
 | `RESEND_API_KEY` (+ optional `CONTACT_EMAIL`, `RESEND_FROM`) | env — contact form delivery |
+| `ANTHROPIC_API_KEY` | env — company chatbot (widget hidden until set; set it at build time on Vercel) |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | env or `src/config/site.ts` (default hola@novieri.com) |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` (+57…, digits only) | env — WhatsApp button hidden until set |
 | `NEXT_PUBLIC_CAL_LINK` (e.g. `novieri/intro`) | env — Cal.com embed shows fallback until set |

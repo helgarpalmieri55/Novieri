@@ -1180,5 +1180,14 @@
         ]
       }
     }
+  },
+  "chat": {
+    "title": "Novieri assistant",
+    "open": "Open chat",
+    "close": "Close chat",
+    "greeting": "Hi. I'm Novieri's assistant — ask me anything about our services, solutions, or how we work.",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "error": "I couldn't answer right now. Try again, or write to us from the contact page."
   }
 }
