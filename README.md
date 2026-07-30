@@ -40,9 +40,11 @@ Solution-page copy sources:
 - **Repo-verified** (written from the actual code/READMEs): AI Virtual Receptionist,
   WhatsApp AI Assistant, IT Management Suite & RMM, Visitor Intelligence, Sentinel,
   Networks & Systems Monitoring, Ventia.
-- **Drafted, needs owner review**: Matter Flow (no README provided — copy inferred
-  from the name; adjust `solutions.items.matterFlow` in both `messages/*.json`),
-  and AI-powered Websites (productized service, review positioning).
+- **Repo-verified too**: Matter Flow (observability platform — rewritten from its
+  README; the Systems Monitoring page is positioned as the managed service that
+  runs on it).
+- **Drafted, needs owner review**: AI-powered Websites (productized service,
+  review positioning).
 
 ## Deploy
 
