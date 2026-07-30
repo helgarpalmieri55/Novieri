@@ -11,6 +11,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RevealInit from "@/components/RevealInit";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import ChatWidget from "@/components/ChatWidget";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -60,6 +61,7 @@ export default async function LocaleLayout({
           <main id="main">{children}</main>
           <Footer locale={locale} />
           {locale === "es" && <WhatsAppFloat />}
+          {site.apiBase && <ChatWidget />}
           <RevealInit />
         </NextIntlClientProvider>
         <JsonLd data={organizationJsonLd} />

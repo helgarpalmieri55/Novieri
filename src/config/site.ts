@@ -29,6 +29,11 @@ export const site = {
   // Analytics: set to your Plausible domain to enable the script (single
   // config point, brief §3). Leave empty to ship without analytics.
   plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "",
+
+  // Base URL of the PHP backend (contact form + chatbot). The GoDaddy deploy
+  // sets "/api"; while empty (e.g. GitHub Pages preview) the chat widget is
+  // hidden and the contact form shows its email fallback on submit.
+  apiBase: process.env.NEXT_PUBLIC_API_BASE ?? "",
 } as const;
 
 export function whatsappHref(message: string): string {

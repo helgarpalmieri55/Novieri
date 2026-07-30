@@ -3,6 +3,8 @@ import { routing, type AppPathname } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
 import { site } from "@/config/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const pathnames = Object.keys(routing.pathnames) as AppPathname[];
 

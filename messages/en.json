@@ -60,12 +60,12 @@
       "description": "A multi-store e-commerce platform with a built-in AI sales agent. Built and operated by Novieri."
     },
     "sol_matterFlow": {
-      "title": "Matter Flow — Novieri",
-      "description": "Case and workflow management for professional-services teams."
+      "title": "Matter Flow — Observability platform — Novieri",
+      "description": "A multi-tenant platform for monitoring networks, ISP paths, and systems: on-prem collector, lightweight agent, metrics, alerts, and live dashboards."
     },
     "sol_monitoring": {
       "title": "Networks & Systems Monitoring — Novieri",
-      "description": "Observability platform: network devices, ISP paths, servers, and databases with real-time alerts and dashboards."
+      "description": "24/7 managed monitoring of networks, servers, databases, and internet links — operated by Novieri on its own platform."
     },
     "sol_sentinel": {
       "title": "Sentinel — AI Vulnerability Management — Novieri",
@@ -978,56 +978,58 @@
       },
       "matterFlow": {
         "name": "Matter Flow",
-        "tagline": "Cases, tasks, and documents of your professional practice, flowing in order.",
+        "tagline": "The observability platform behind our monitoring: networks, ISPs, and systems.",
         "tags": [
-          "cases",
-          "workflows",
-          "productivity"
+          "observability",
+          "platform",
+          "multi-tenant"
         ],
         "hero": {
-          "title": "Every case moves forward. Nothing falls through.",
-          "promise": "Matter Flow organizes the work of professional-services teams: every matter with its owner, deadlines, documents, and history — and workflows that move work forward on their own, stage by stage."
+          "title": "The platform that sees your whole infrastructure.",
+          "promise": "Matter Flow is Novieri's observability platform: a cloud control plane, a network collector for what the cloud can't reach, and a lightweight agent on your hosts. Network devices, internet-link quality, metrics, alerts, and live dashboards — multi-tenant from its first line of code."
         },
         "features": [
           {
-            "title": "Case management",
-            "body": "Every matter with its status, owner, deadlines, and priority — visible to the whole team."
+            "title": "Collector + agent, no open ports",
+            "body": "Both binaries dial out only — firewall-friendly — and when the connection drops they buffer to disk and replay without duplicates on reconnect."
           },
           {
-            "title": "Stage-based workflows",
-            "body": "Define the path a case follows in your practice and let the board show exactly where each one stands."
+            "title": "Network device monitoring",
+            "body": "Switches, firewalls, and SNMP equipment polled by the collector, with an interface inventory that refreshes itself."
           },
           {
-            "title": "Documents where they belong",
-            "body": "Each case's files live with the case — not in somebody's inbox."
+            "title": "Per-path ISP quality",
+            "body": "Hop-by-hop ICMP probing from every agent: latency, loss, and quality classification — the evidence for claims against your provider."
           },
           {
-            "title": "Tasks and deadlines",
-            "body": "Clear assignments with reminders; due dates stop depending on memory."
+            "title": "Alerts that arrive",
+            "body": "A continuous evaluation engine with states and events, and notification delivery that's verified — not just sent."
           },
           {
-            "title": "Full history",
-            "body": "Who did what and when, on every case — traceability for clients and audits."
+            "title": "Live dashboards",
+            "body": "A web console with WebSocket updates — no refreshing the page to find out whether something is down."
           },
           {
-            "title": "AI automation",
-            "body": "Incoming requests classified automatically and case summaries generated on demand."
+            "title": "Genuinely multi-tenant",
+            "body": "Every metric and every row carries its tenant; every new endpoint is tested against cross-tenant leaks before it exists."
           }
         ],
         "built": {
-          "title": "Operational order, turned into software.",
-          "body": "Developed by Novieri for operations that live on managing cases and commitments, with AI applied where it saves real hours."
+          "title": "Platform engineering, tests first.",
+          "body": "A FastAPI control plane with Celery workers, Go agent and collector, metrics in VictoriaMetrics, a React console with its own design system — and a testing discipline where the quality classifier runs identically in Go and TypeScript against the same golden cases."
         },
         "stack": [
-          "workflows",
-          "web app",
-          "ai",
-          "reporting"
+          "go",
+          "fastapi",
+          "victoriametrics",
+          "react",
+          "celery · redis",
+          "postgresql"
         ]
       },
       "monitoring": {
         "name": "Networks & Systems Monitoring",
-        "tagline": "Network, server, and ISP observability — SolarWinds-class, without the invoice.",
+        "tagline": "24/7 managed monitoring of networks, servers, and ISPs — operated by Novieri.",
         "tags": [
           "observability",
           "networks",
@@ -1064,8 +1066,8 @@
           }
         ],
         "built": {
-          "title": "Born in a real multi-site operation.",
-          "body": "Designed for an operation of hundreds of agents across countries with dual ISPs: Go collector and agent that only dial out, queued ingestion, metrics in a time-series database, and a React console — multi-tenant from day one."
+          "title": "A service, with our own platform underneath.",
+          "body": "Novieri's managed monitoring runs on Matter Flow, our observability platform: an outbound-only collector and agent, time-series metrics, hysteresis-based alerting, and live dashboards. You get the service; we operate the platform."
         },
         "stack": [
           "go",
@@ -1178,5 +1180,14 @@
         ]
       }
     }
+  },
+  "chat": {
+    "title": "Novieri assistant",
+    "open": "Open chat",
+    "close": "Close chat",
+    "greeting": "Hi. I'm Novieri's assistant — ask me anything about our services, solutions, or how we work.",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "error": "I couldn't answer right now. Try again, or write to us from the contact page."
   }
 }

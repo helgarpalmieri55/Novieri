@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "Novieri — Soluciones de IT con inteligencia artificial en el centro",
-      "description": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación. Tecnología de nivel enterprise para empresas en Barranquilla y Colombia, sin montar un departamento de IT."
+      "title": "Novieri — Tecnología enterprise con IA en el centro",
+      "description": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación. Tecnología enterprise para tu empresa, sin montar un departamento de IT."
     },
     "services": {
       "title": "Servicios — Novieri",
@@ -37,7 +37,7 @@
     },
     "solutions": {
       "title": "Soluciones — Novieri",
-      "description": "Productos construidos y operados por Novieri: recepcionista y asistentes de IA, gestión IT y RMM, monitoreo, seguridad, inteligencia de visitantes y e-commerce con IA."
+      "description": "Productos construidos y operados por Novieri: asistentes de IA, gestión IT y RMM, monitoreo, seguridad e inteligencia de visitantes."
     },
     "sol_aiAssistant": {
       "title": "Recepcionista Virtual de IA — Novieri",
@@ -60,12 +60,12 @@
       "description": "Plataforma de comercio electrónico multi-tienda con un agente de ventas de IA integrado. Construida y operada por Novieri."
     },
     "sol_matterFlow": {
-      "title": "Matter Flow — Novieri",
-      "description": "Gestión de casos y flujos de trabajo para equipos de servicios profesionales."
+      "title": "Matter Flow — Plataforma de observabilidad — Novieri",
+      "description": "Plataforma multi-tenant de monitoreo de redes, rutas de ISP y sistemas: colector on-prem, agente liviano, métricas, alertas y tableros en vivo."
     },
     "sol_monitoring": {
       "title": "Monitoreo de Redes y Sistemas — Novieri",
-      "description": "Plataforma de observabilidad: dispositivos de red, rutas de ISP, servidores y bases de datos con alertas y tableros en tiempo real."
+      "description": "Monitoreo administrado 24/7 de redes, servidores, bases de datos y enlaces de internet — operado por Novieri sobre su propia plataforma."
     },
     "sol_sentinel": {
       "title": "Sentinel — Gestión de vulnerabilidades con IA — Novieri",
@@ -978,56 +978,58 @@
       },
       "matterFlow": {
         "name": "Matter Flow",
-        "tagline": "Casos, tareas y documentos de tu práctica profesional, fluyendo en orden.",
+        "tagline": "La plataforma de observabilidad detrás de nuestro monitoreo: redes, ISPs y sistemas.",
         "tags": [
-          "casos",
-          "flujos",
-          "productividad"
+          "observabilidad",
+          "plataforma",
+          "multi-tenant"
         ],
         "hero": {
-          "title": "Cada caso avanza. Nada se pierde.",
-          "promise": "Matter Flow organiza el trabajo de equipos de servicios profesionales: cada caso con su responsable, sus plazos, sus documentos y su historial — y flujos que mueven el trabajo solo, de etapa en etapa."
+          "title": "La plataforma que ve tu infraestructura completa.",
+          "promise": "Matter Flow es la plataforma de observabilidad de Novieri: un plano de control en la nube, un colector de red para lo que la nube no alcanza y un agente liviano en tus hosts. Dispositivos de red, calidad de enlaces de internet, métricas, alertas y tableros en vivo — multi-tenant desde su primera línea de código."
         },
         "features": [
           {
-            "title": "Gestión de casos",
-            "body": "Cada asunto con su estado, responsable, fechas límite y prioridad — visible para todo el equipo."
+            "title": "Colector + agente, sin puertos abiertos",
+            "body": "Los dos binarios marcan hacia afuera únicamente — amigables con tu firewall — y si pierden conexión, guardan en disco y reenvían sin duplicar al reconectar."
           },
           {
-            "title": "Flujos por etapas",
-            "body": "Define el camino que sigue un caso en tu práctica y deja que el tablero muestre exactamente dónde está cada uno."
+            "title": "Monitoreo de dispositivos de red",
+            "body": "Switches, firewalls y equipos SNMP sondeados por el colector, con inventario de interfaces que se refresca solo."
           },
           {
-            "title": "Documentos en su lugar",
-            "body": "Los archivos de cada caso viven con el caso — no en el correo de alguien."
+            "title": "Calidad de ISP por ruta",
+            "body": "Sondeo ICMP salto por salto desde cada agente: latencia, pérdida y clasificación de calidad — la evidencia para reclamarle al proveedor."
           },
           {
-            "title": "Tareas y plazos",
-            "body": "Asignaciones claras con recordatorios; los vencimientos dejan de depender de la memoria."
+            "title": "Alertas que llegan",
+            "body": "Motor de evaluación continua con estados y eventos, y entrega de notificaciones verificada — no solo enviada."
           },
           {
-            "title": "Historial completo",
-            "body": "Quién hizo qué y cuándo, en cada caso — trazabilidad para clientes y auditorías."
+            "title": "Tableros en vivo",
+            "body": "Consola web con actualizaciones por WebSocket — nada de refrescar la página para saber si algo se cayó."
           },
           {
-            "title": "Automatización con IA",
-            "body": "Clasificación de solicitudes entrantes y resúmenes de casos generados automáticamente."
+            "title": "Multi-tenant de verdad",
+            "body": "Cada métrica y cada fila llevan su tenant; cada endpoint nuevo se prueba contra fugas entre clientes antes de existir."
           }
         ],
         "built": {
-          "title": "Orden operativo, hecho software.",
-          "body": "Desarrollado por Novieri para operaciones que viven de gestionar casos y compromisos, con la IA aplicada donde ahorra horas reales."
+          "title": "Ingeniería de plataforma, con pruebas primero.",
+          "body": "Control plane en FastAPI con workers Celery, agente y colector en Go, métricas en VictoriaMetrics, consola React con sistema de diseño propio — y una disciplina de pruebas donde el clasificador de calidad corre idéntico en Go y TypeScript contra los mismos casos dorados."
         },
         "stack": [
-          "flujos de trabajo",
-          "web app",
-          "ia",
-          "reportes"
+          "go",
+          "fastapi",
+          "victoriametrics",
+          "react",
+          "celery · redis",
+          "postgresql"
         ]
       },
       "monitoring": {
         "name": "Monitoreo de Redes y Sistemas",
-        "tagline": "Observabilidad de red, servidores e ISPs — de clase SolarWinds, sin su factura.",
+        "tagline": "Monitoreo administrado 24/7 de redes, servidores e ISPs — operado por Novieri.",
         "tags": [
           "observabilidad",
           "redes",
@@ -1064,8 +1066,8 @@
           }
         ],
         "built": {
-          "title": "Nacida en una operación real multi-sede.",
-          "body": "Diseñada para una operación de cientos de agentes en varios países con doble ISP: colector y agente en Go que solo marcan hacia afuera, ingesta por colas, métricas en una base de series de tiempo y panel en React — multi-tenant desde el día uno."
+          "title": "Un servicio, con una plataforma propia debajo.",
+          "body": "El monitoreo administrado de Novieri corre sobre Matter Flow, nuestra plataforma de observabilidad: colector y agente que solo marcan hacia afuera, métricas en series de tiempo, alertas con histéresis y tableros en vivo. Tú recibes el servicio; nosotros operamos la plataforma."
         },
         "stack": [
           "go",
@@ -1178,5 +1180,14 @@
         ]
       }
     }
+  },
+  "chat": {
+    "title": "Asistente de Novieri",
+    "open": "Abrir chat",
+    "close": "Cerrar chat",
+    "greeting": "Hola. Soy el asistente de Novieri — pregúntame lo que quieras sobre nuestros servicios, soluciones o cómo trabajamos.",
+    "placeholder": "Escribe tu pregunta…",
+    "send": "Enviar",
+    "error": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto."
   }
 }
