@@ -23,6 +23,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Configure GitHub Pages
+        # Switches the repo's Pages site to "GitHub Actions" mode (branch mode
+        # publishes the raw source repo, which has no index.html at its root —
+        # the site only exists after the build). Falls back to the manual
+        # setting (Settings -> Pages -> Source: GitHub Actions) if the token
+        # can't change it.
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/setup-node@v4
         with:
           node-version: 22
