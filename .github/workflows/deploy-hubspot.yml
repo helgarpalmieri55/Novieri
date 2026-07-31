@@ -60,5 +60,15 @@ jobs:
           HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
         run: |
+          set -euo pipefail
           hs project validate --use-env
-          hs project upload --use-env --message "GitHub Actions ${GITHUB_SHA:0:7}"
+          # --forceCreate answers the "project does not exist, create it?"
+          # prompt. Without it the CLI waits on stdin, gets nothing on a
+          # runner, and exits 0 having uploaded nothing.
+          hs project upload --use-env --forceCreate \
+            --message "GitHub Actions ${GITHUB_SHA:0:7}" 2>&1 | tee upload.log
+          # A green run that uploaded nothing is worse than a red one.
+          grep -Eqi "build|deploy" upload.log || {
+            echo "::error::Upload finished without producing a build — see the log above"
+            exit 1
+          }
