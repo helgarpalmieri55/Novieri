@@ -386,61 +386,48 @@
     }
   }
 
-  /* ——— Hero lens: the video takes the mark's place as the gem ———
-     Square box, cover fit, feathered circular mask: no letterbox, no rim. */
-  .hero-lens,
-  .hero-lens-glow,
-  .hero-lens-rim {
+  /* ——— Hero backdrop: the clip runs behind the whole hero ———
+     Read through a white veil: opaque where the headline sits, thinning to
+     the right where the layout has room, fading out into the proof strip. */
+  .hero-bg {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    aspect-ratio: 1;
-    width: 82%;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.08) contrast(1.02);
+  }
+
+  .hero-veil {
+    position: absolute;
+    inset: 0;
+    background:
+      /* keep the header band clean */
+      linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0.86) 8%, transparent 24%),
+      linear-gradient(to bottom, transparent 55%, rgba(255, 255, 255, 0.72) 82%, #fff 100%),
+      linear-gradient(
+        100deg,
+        #fff 0%,
+        #fff 34%,
+        rgba(255, 255, 255, 0.94) 46%,
+        rgba(255, 255, 255, 0.76) 62%,
+        rgba(255, 255, 255, 0.62) 100%
+      );
+  }
+
+  /* One subject: the mark steps aside when the clip takes the hero.
+     The fade lives on the children — the wrapper carries the `rise`
+     entrance, whose forwards fill would outrank a plain opacity rule. */
+  .hero-gem > * {
+    transition: opacity 800ms var(--ease-out-quart);
+  }
+
+  html.hero-video-on .hero-gem {
     pointer-events: none;
   }
 
-  .hero-lens {
-    height: auto;
-    object-fit: cover;
-    border-radius: 50%;
-    object-position: var(--hero-lens-focus, 50% 50%);
-    filter: saturate(1.12) contrast(1.04);
-    /* Solid to the rim, then a short feather — a lens edge, not a smudge */
-    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 59%, rgba(0, 0, 0, 0.72) 63%, transparent 68%);
-    mask-image: radial-gradient(circle at 50% 50%, #000 59%, rgba(0, 0, 0, 0.72) 63%, transparent 68%);
-  }
-
-  .hero-lens-glow {
-    width: 104%;
-    background: radial-gradient(
-      circle at 50% 50%,
-      rgba(79, 52, 97, 0.26) 0%,
-      rgba(38, 78, 89, 0.16) 42%,
-      transparent 68%
-    );
-    filter: blur(10px);
-  }
-
-  .hero-lens-rim {
-    background: conic-gradient(
-      from 200deg,
-      var(--color-teal-bright),
-      var(--color-plum-bright) 34%,
-      var(--color-gold-bright) 66%,
-      var(--color-teal-bright)
-    );
-    opacity: 0.78;
-    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0 58.6%, #000 59.2% 60.6%, transparent 61.2%);
-    mask-image: radial-gradient(circle at 50% 50%, transparent 0 58.6%, #000 59.2% 60.6%, transparent 61.2%);
-    /* Counter-rotates against the mono ring for depth */
-    animation: rim-spin 64s linear infinite;
-  }
-
-  @keyframes rim-spin {
-    to {
-      transform: translate(-50%, -50%) rotate(-360deg);
-    }
+  html.hero-video-on .hero-gem > * {
+    opacity: 0;
   }
 
   /* Traffic travelling along an active agent edge */

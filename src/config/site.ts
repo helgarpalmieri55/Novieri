@@ -26,13 +26,13 @@ export const site = {
     partner: "https://www.linkedin.com/in/sylvananova-272303/",
   },
 
-  // Hero video in public/hero — a filename, or "" to keep the animated logo
-  // mark alone. It only loads on large screens with motion allowed, and
-  // `?hero=1` / `?hero=2` overrides it for side-by-side comparison.
-  heroVideo: "hero1.mp4",
+  // Hero backdrop clip in public/hero — a filename, or "" to keep the
+  // animated logo mark alone. Loads only on large screens with motion
+  // allowed; `?hero=1`…`?hero=4` swaps clips at runtime for comparison.
+  heroVideo: "hero3.mp4",
 
-  // Which part of the clip the circular lens keeps (CSS object-position).
-  // Nudge if the subject of the video sits off-centre, e.g. "34% 50%".
+  // Which part of the clip stays in frame when it is cropped to the hero
+  // (CSS object-position). Nudge if the subject sits off-centre.
   heroVideoFocus: "50% 50%",
 
   // Solutions section is hidden site-wide while this is false: no nav or
