@@ -2,7 +2,10 @@ name: Deploy to GitHub Pages
 
 # Preview deploy: static site only (no PHP backend on Pages, so the chat
 # widget is hidden and the contact form falls back to its email message).
-# One-time setup: repo Settings -> Pages -> Source: "GitHub Actions".
+#
+# The Pages source must be "GitHub Actions", not a branch — the first step
+# below sets it. In branch mode GitHub also runs its own Jekyll build, which
+# publishes the README as the home page and wins whenever it finishes last.
 
 on:
   push:
@@ -23,12 +26,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Put Pages in "GitHub Actions" mode
+        # While the repo is in branch mode, GitHub's built-in Jekyll builder
+        # ("pages build and deployment") publishes on every push as well, and
+        # whichever of the two deployments finishes last is the one that
+        # sticks. Jekyll renders README.md as the home page — which is what
+        # the site was serving. configure-pages below does not fix this: it
+        # only *creates* a Pages site, it will not move an existing one out of
+        # branch mode. This does, and it stops the Jekyll builder for good.
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X PUT "repos/${{ github.repository }}/pages" -f build_type=workflow \
+            || gh api -X POST "repos/${{ github.repository }}/pages" -f build_type=workflow \
+            || echo "::warning::Could not set Pages to Actions mode — set it by hand: Settings > Pages > Source: GitHub Actions"
       - name: Configure GitHub Pages
-        # Switches the repo's Pages site to "GitHub Actions" mode (branch mode
-        # publishes the raw source repo, which has no index.html at its root —
-        # the site only exists after the build). Falls back to the manual
-        # setting (Settings -> Pages -> Source: GitHub Actions) if the token
-        # can't change it.
         uses: actions/configure-pages@v5
         with:
           enablement: true
