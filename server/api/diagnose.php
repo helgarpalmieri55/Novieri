@@ -31,6 +31,7 @@ enforce_rate_limit('diagnose', 6, 3600);
 enforce_rate_limit('diagnose_all', (int) ($config['diagnose_daily_total'] ?? 100), 86400, 'site');
 
 $body = read_json_body();
+verify_recaptcha($config, $body['recaptcha'] ?? null, 'diagnostic');
 
 // Honeypot: bots fill it, humans never see it. Pretend success, generate nothing.
 if (!empty($body['website'])) {

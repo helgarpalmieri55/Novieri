@@ -302,6 +302,30 @@
     background: var(--color-black);
     color: var(--color-on-dark);
   }
+
+  /* The banner ships in the HTML and is revealed by the pre-paint script,
+     so it can no longer be the paint that arrives after hydration. */
+  .cookie-banner {
+    display: none;
+  }
+
+  .needs-consent .cookie-banner {
+    display: block;
+  }
+
+  /* reCAPTCHA v3 badge: hidden because it lands on top of the chat
+     launcher. Google allows this as long as the attribution text is shown,
+     which RecaptchaNotice does under both forms. */
+  .grecaptcha-badge {
+    visibility: hidden;
+  }
+
+  /* Chat launcher — the gradient carries the brand, the bubbles carry the
+     meaning. Both are needed: a plain mark reads as decoration. */
+  .chat-fab {
+    background: linear-gradient(135deg, var(--color-plum-deep), var(--color-plum-bright) 55%, #b4699f);
+    box-shadow: 0 6px 22px rgba(79, 52, 97, 0.32);
+  }
 }
 
 /* ————— Motion system —————

@@ -13,11 +13,19 @@ export const site = {
   // The WhatsApp button/float stays hidden while this is empty.
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 
-  // HubSpot Meetings link, e.g. "https://meetings.hubspot.com/helgar-palmieri".
-  // Booking through HubSpot keeps the meeting on the contact's timeline.
-  // While empty, the contact page shows its email fallback and the "book a
-  // call" buttons still route there.
-  meetingsLink: process.env.NEXT_PUBLIC_MEETINGS_LINK ?? "",
+  // HubSpot Meetings. Booking here keeps the meeting on the contact's
+  // timeline. While empty, the contact page shows its email fallback.
+  meetingsLink:
+    process.env.NEXT_PUBLIC_MEETINGS_LINK ?? "https://meetings.hubspot.com/helgar-palmieri",
+
+  // The website assistant's name — used by the widget and by the system
+  // prompt in api/chat.php, which must be kept in step with it.
+  assistantName: "Sylvi",
+
+  // Google reCAPTCHA v3 site key (public; the secret goes in api/config.php).
+  // While empty the forms submit without a token and the backend, seeing no
+  // secret configured, skips verification — so nothing breaks before setup.
+  recaptchaSiteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "",
 
   // TODO: LinkedIn company URL. Footer icon stays hidden while empty.
   linkedinUrl: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "",

@@ -151,7 +151,8 @@
     "learnMore": "Learn more",
     "talkCase": "Let's talk about your case",
     "whatsappCta": "Message us on WhatsApp",
-    "goHome": "Back to home"
+    "goHome": "Back to home",
+    "recaptchaNotice": "This site is protected by reCAPTCHA and the Google <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms> apply."
   },
   "home": {
     "hero": {
@@ -1365,10 +1366,10 @@
     }
   },
   "chat": {
-    "title": "Novieri assistant",
-    "open": "Open chat",
-    "close": "Close chat",
-    "greeting": "Hi. I'm Novieri's assistant — ask me anything about our services, solutions, or how we work.",
+    "title": "Sylvi · Novieri assistant",
+    "open": "Open the chat with Sylvi",
+    "close": "Close the chat",
+    "greeting": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, solutions or how we work.",
     "placeholder": "Type your question…",
     "send": "Send",
     "error": "I couldn't answer right now. Try again, or write to us from the contact page.",
@@ -1468,7 +1469,7 @@
         {
           "h": "8. Processors and international transfers",
           "p": [
-            "To run the website and deliver our services we use technology providers that may act as data processors and be located outside Colombia, including: web hosting and email, productivity and storage tools, online meeting scheduling, website analytics, and the AI model provider behind the website assistant.",
+            "To run the website and deliver our services we use technology providers that may act as data processors and be located outside Colombia, including: web hosting and email, productivity and storage tools, CRM and online meeting scheduling, website analytics, the form anti-abuse service (Google reCAPTCHA), and the AI model provider behind the website assistant.",
             "Where such international transfers or transmissions occur, we require our providers to apply security and confidentiality standards equivalent to those in this policy, through data transmission agreements or contractual protection obligations, in accordance with articles 25 and 26 of Law 1581 of 2012.",
             "We do not sell, rent, or trade your personal data with third parties."
           ]
@@ -1523,6 +1524,7 @@
             "Strictly necessary: we store your cookie decision in your browser's local storage (key “novieri-consent”) so we don't ask again on every visit. It does not identify individuals and is not shared with third parties.",
             "Analytics and measurement: if you accept them, we activate a web analytics tool that tells us how many people visit the site and which pages they read, in aggregate. We use it to improve the content, not to profile people.",
             "CRM and attribution (HubSpot): if you accept, we load HubSpot's script, which sets the __hstc, hubspotutk, __hssc, and __hssrc cookies. They recognise your browser between visits and link the form you submit to the pages you read beforehand, so we know which content was useful. If you reject them, the forms still work — they simply arrive without that history.",
+            "Form security (Google reCAPTCHA): when you start typing in the contact form or the self-diagnosis we load reCAPTCHA v3, which analyses session behaviour to tell people from bots and may set Google cookies. It is a strictly necessary security measure that keeps those forms usable; without it we cannot keep them working. Google's Privacy Policy and Terms of Service apply.",
             "Third-party functional: when you open meeting scheduling or the WhatsApp chat, the relevant provider may set its own cookies in your browser, subject to its policies.",
             "Advertising: we do not use advertising or cross-site tracking cookies."
           ]
@@ -1530,7 +1532,7 @@
         {
           "h": "4. How to change your decision",
           "p": [
-            "You can change your choice at any time by clearing this site's data in your browser: the next time you visit, the notice will appear again and you can decide anew.",
+            "You can change your choice at any time from the “Cookie settings” link in the footer: the notice opens again and you can decide anew. Clearing this site's data in your browser has the same effect.",
             "You can also configure your browser to block or delete cookies. Note that blocking strictly necessary ones may affect how the site works. The major browsers explain how to do this in their privacy help pages."
           ]
         },

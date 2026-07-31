@@ -45,7 +45,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <section className="section-pad-tight pb-[clamp(5rem,13vh,8rem)]">
         <div className="container-site grid gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-[6fr_5fr]">
           <div className="reveal">
-            <ClientMessages only={["contact"]}>
+            <ClientMessages only={["contact", "common"]}>
               <ContactForm />
             </ClientMessages>
             <div className="mt-9 border-t border-line pt-7">

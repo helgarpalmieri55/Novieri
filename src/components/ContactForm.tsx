@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { site } from "@/config/site";
 import { trackingContext } from "@/lib/hubspot";
+import { loadRecaptcha, recaptchaToken } from "@/lib/recaptcha";
+import RecaptchaNotice from "./RecaptchaNotice";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -27,6 +29,7 @@ export default function ContactForm() {
 
     setStatus("sending");
     try {
+      const recaptcha = await recaptchaToken("contact");
       const res = await fetch(`${site.apiBase}/contact.php`, {
         credentials: "omit",
         method: "POST",
@@ -35,6 +38,7 @@ export default function ContactForm() {
           ...data,
           locale,
           ...trackingContext(),
+          recaptcha,
           consentText: t("consentNote"),
         }),
       });
@@ -51,7 +55,7 @@ export default function ContactForm() {
   const labelCls = "mb-1.5 block text-small font-medium";
 
   return (
-    <form onSubmit={onSubmit} noValidate>
+    <form onSubmit={onSubmit} onFocusCapture={() => loadRecaptcha()} noValidate>
       {/* honeypot — invisible to humans, tempting to bots */}
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
@@ -157,6 +161,7 @@ export default function ContactForm() {
       </div>
 
       <p className="mt-4 max-w-[62ch] text-caption text-ink-faint">{t("consentNote")}</p>
+      <RecaptchaNotice />
 
       <div aria-live="polite">
         {status === "success" && (

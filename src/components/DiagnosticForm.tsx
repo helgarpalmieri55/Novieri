@@ -5,6 +5,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { site } from "@/config/site";
 import { trackingContext } from "@/lib/hubspot";
+import { loadRecaptcha, recaptchaToken } from "@/lib/recaptcha";
+import RecaptchaNotice from "./RecaptchaNotice";
 
 type Option = { v: string; w: number };
 type Question = { id: string; q: string; options: Option[] };
@@ -89,6 +91,7 @@ export default function DiagnosticForm() {
     setBusy(true);
     setError(null);
     try {
+      const recaptcha = await recaptchaToken("diagnostic");
       const res = await fetch(`${site.apiBase}/diagnose.php`, {
         method: "POST",
         credentials: "omit",
@@ -96,6 +99,7 @@ export default function DiagnosticForm() {
         body: JSON.stringify({
           locale,
           ...trackingContext(),
+          recaptcha,
           consentText: t("gate.consent"),
           contact: {
             name: data.name,
@@ -229,7 +233,7 @@ export default function DiagnosticForm() {
             <p className="mt-5 text-small text-ink-muted">{t("preview.body")}</p>
           </div>
 
-          <form onSubmit={submit} noValidate className="card-hairline p-7">
+          <form onSubmit={submit} onFocusCapture={() => loadRecaptcha()} noValidate className="card-hairline p-7">
             <h2 className="text-h3">{t("gate.title")}</h2>
             <p className="mt-2.5 text-small text-ink-muted">{t("gate.body")}</p>
 
@@ -295,6 +299,7 @@ export default function DiagnosticForm() {
                 </p>
               )}
             </div>
+            <RecaptchaNotice />
           </form>
         </div>
       )}

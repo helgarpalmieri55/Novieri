@@ -19,6 +19,7 @@ require_post();
 require_known_origin($config);
 enforce_rate_limit('contact', 5, 600);
 $body = read_json_body();
+verify_recaptcha($config, $body['recaptcha'] ?? null, 'contact');
 
 // Honeypot: bots fill it, humans never see it. Pretend success.
 if (!empty($body['website'])) {

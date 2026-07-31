@@ -69,15 +69,17 @@ export default function ChatWidget() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-label={open ? t("close") : t("open")}
-        className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-plum text-white transition-transform duration-300 hover:scale-110"
+        className="chat-fab fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full text-white transition-transform duration-300 hover:scale-110"
       >
         {open ? (
           <svg aria-hidden width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <path d="M3 3l12 12M15 3L3 15" />
           </svg>
         ) : (
-          <svg aria-hidden width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z" />
+          /* Two speech bubbles: it has to read as "chat" at a glance. */
+          <svg aria-hidden width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M8.5 15.5H5.2L2.5 18v-11a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2z" />
+            <path d="M8 10.5v-.5a2 2 0 0 1 2-2h9.5a2 2 0 0 1 2 2V16a2 2 0 0 1-2 2h-.8l-2.2 2.5V18" />
           </svg>
         )}
       </button>

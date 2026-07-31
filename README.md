@@ -34,11 +34,12 @@ verify every sitemap URL resolves to a file.
 | FTPS secrets (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, optional `FTP_SERVER_DIR` variable) | GitHub repo → Settings → Secrets and variables → Actions |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | env or `src/config/site.ts` (default sales@novieri.com) |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` (+57…, digits only) | env — WhatsApp button hidden until set |
-| `NEXT_PUBLIC_MEETINGS_LINK` (e.g. `https://meetings.hubspot.com/helgar-palmieri`) | env — the contact page shows its email fallback until set; booking through HubSpot keeps the meeting on the contact's timeline |
+| ~~`NEXT_PUBLIC_MEETINGS_LINK`~~ | **done** — `https://meetings.hubspot.com/helgar-palmieri` is the default in `src/config/site.ts`; the env var only overrides it |
+| reCAPTCHA keys | `RECAPTCHA_SITE_KEY` as a **repo variable** (Settings → Secrets and variables → Actions → Variables) and `recaptcha_secret` in `api/config.php`. Until both exist the forms work with no captcha. See **Form protection** below. |
+| Founder photos | drop `helgar.jpg` and `sylvana.jpg` into `public/team/`. The About page swaps the initials for the portrait automatically when the file is there (checked at build time). Square, 400×400 or larger, face near the top — the cards crop with `object-top`. |
 | `NEXT_PUBLIC_LINKEDIN_URL` | env — footer icon hidden until set |
 | `razonSocial`, `NIT` | `src/config/site.ts` — **required**: footer legal line *and* the controller identification in the legal pages (the NIT clause is omitted while empty) |
 | Solutions section | `showSolutions` in `src/config/site.ts` — `false` hides nav/footer links, drops the pages from the sitemap, and marks them `noindex`. Flip to `true` to publish. |
-| Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
 | Testimonials | `home.testimonials.items` in `messages/es.json` + `messages/en.json`. Ships **empty on purpose** — nothing about clients is invented here. Add `{ "quote": "…", "name": "…", "role": "…", "company": "…" }` (company optional) and the section appears on the home page; leave it empty and it stays out of the DOM entirely. Add each quote to both locales, translated. |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
 | `hubspot_token` (Private App, **not** an API key — those are deprecated) | `api/config.php` on the server — optional, adds the diagnosis as a note on the contact |
@@ -140,7 +141,7 @@ Dependency-free PHP (works on GoDaddy shared hosting, PHP ≥ 8.0):
 
 - `contact.php` — contact form → email via GoDaddy SMTP (vendored PHPMailer in
   `lib/`). Honeypot + per-IP rate limit (5/10 min).
-- `chat.php` — company chatbot → Claude API (`claude-opus-5`) over raw HTTPS.
+- `chat.php` — **Sylvi**, the website assistant → Claude API (`claude-opus-5`) over raw HTTPS.
   The company profile is assembled at request time from `data/es.json` +
   `data/en.json` (copies of `messages/*.json` made by the deploy), so the bot
   always matches the site. Prompt-cached system block. See **Chatbot
@@ -158,6 +159,33 @@ Dependency-free PHP (works on GoDaddy shared hosting, PHP ≥ 8.0):
   so a HubSpot outage never costs a lead or breaks a submission. The optional
   private-app token adds the diagnosis as a note on the contact.
 - `config.sample.php` — template for the server-managed `config.php`.
+
+### Form protection — Google reCAPTCHA v3
+
+Invisible and score-based: no puzzles, no checkbox. The script loads on the
+first focus inside a form (not on every page view), and the backend verifies
+the token with Google before doing anything with the submission.
+
+Setup, once:
+
+1. [google.com/recaptcha/admin](https://www.google.com/recaptcha/admin) →
+   register a site → **reCAPTCHA v3** → domains `novieri.com`, `www.novieri.com`
+   (add `localhost` if you want to test locally).
+2. Copy the **site key** into the repo variable `RECAPTCHA_SITE_KEY`
+   (Settings → Secrets and variables → Actions → **Variables**, not Secrets —
+   it ships in the HTML and is public by design).
+3. Copy the **secret key** into `recaptcha_secret` in `api/config.php` on the
+   server. That half is secret and never leaves GoDaddy.
+4. Re-run the deploy. Verify a real submission still arrives, then watch the
+   reCAPTCHA admin console for a day and tune `recaptcha_min_score` (default
+   0.5) if legitimate submissions are being turned away.
+
+Behaviour: no secret configured → verification is skipped entirely (nothing
+breaks before setup). Secret configured but no token → rejected. Token
+present but Google unreachable → **allowed**, and logged: a lead lost to
+someone else's outage costs more than the spam it stops. The badge is hidden
+because it lands on top of the chat launcher, which Google permits as long as
+the attribution text is shown — it is, under both forms.
 
 ### Chatbot guardrails
 

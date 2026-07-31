@@ -151,7 +151,8 @@
     "learnMore": "Conocer más",
     "talkCase": "Hablemos de tu caso",
     "whatsappCta": "Escríbenos por WhatsApp",
-    "goHome": "Volver al inicio"
+    "goHome": "Volver al inicio",
+    "recaptchaNotice": "Este sitio está protegido por reCAPTCHA y aplican la <privacy>Política de Privacidad</privacy> y los <terms>Términos del Servicio</terms> de Google."
   },
   "home": {
     "hero": {
@@ -1365,10 +1366,10 @@
     }
   },
   "chat": {
-    "title": "Asistente de Novieri",
-    "open": "Abrir chat",
-    "close": "Cerrar chat",
-    "greeting": "Hola. Soy el asistente de Novieri — pregúntame lo que quieras sobre nuestros servicios, soluciones o cómo trabajamos.",
+    "title": "Sylvi · asistente de Novieri",
+    "open": "Abrir el chat con Sylvi",
+    "close": "Cerrar el chat",
+    "greeting": "Hola, soy Sylvi, la asistente de IA de Novieri. Pregúntame lo que quieras sobre nuestros servicios, soluciones o cómo trabajamos.",
     "placeholder": "Escribe tu pregunta…",
     "send": "Enviar",
     "error": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto.",
@@ -1468,7 +1469,7 @@
         {
           "h": "8. Encargados y transferencias internacionales",
           "p": [
-            "Para operar el sitio y prestar nuestros servicios usamos proveedores tecnológicos que pueden actuar como encargados del tratamiento y estar ubicados fuera de Colombia, entre ellos: alojamiento web y correo, herramientas de productividad y almacenamiento, agenda de reuniones en línea, analítica del sitio y el proveedor de modelos de inteligencia artificial que soporta el asistente virtual.",
+            "Para operar el sitio y prestar nuestros servicios usamos proveedores tecnológicos que pueden actuar como encargados del tratamiento y estar ubicados fuera de Colombia, entre ellos: alojamiento web y correo, herramientas de productividad y almacenamiento, CRM y agenda de reuniones en línea, analítica del sitio, el servicio antiabuso de formularios (Google reCAPTCHA) y el proveedor de modelos de inteligencia artificial que soporta el asistente virtual.",
             "Cuando esas transferencias o transmisiones internacionales ocurren, exigimos a nuestros proveedores estándares de seguridad y confidencialidad equivalentes a los de esta política, mediante contratos de transmisión de datos u obligaciones contractuales de protección, conforme a los artículos 25 y 26 de la Ley 1581 de 2012.",
             "No vendemos, arrendamos ni comercializamos tus datos personales con terceros."
           ]
@@ -1523,6 +1524,7 @@
             "Estrictamente necesarias: guardamos tu decisión sobre cookies en el almacenamiento local de tu navegador (clave «novieri-consent») para no volver a preguntarte en cada visita. No identifica a personas y no se comparte con terceros.",
             "Analítica y medición: si las aceptas, activamos una herramienta de analítica web que nos permite saber cuántas personas visitan el sitio y qué páginas consultan, con datos agregados. La usamos para mejorar el contenido, no para perfilar personas.",
             "CRM y atribución (HubSpot): si aceptas, cargamos el script de HubSpot, que instala las cookies __hstc, hubspotutk, __hssc y __hssrc. Sirven para reconocer tu navegador entre visitas y asociar el formulario que envías con las páginas que consultaste antes, de modo que sepamos qué contenido resultó útil. Si las rechazas, los formularios siguen funcionando: solo se envían sin ese historial.",
+            "Seguridad de formularios (Google reCAPTCHA): al escribir en el formulario de contacto o en el autodiagnóstico cargamos reCAPTCHA v3, que analiza el comportamiento de la sesión para distinguir personas de bots y puede instalar cookies de Google. Es una medida de seguridad estrictamente necesaria para evitar el abuso de esos formularios; sin ella no podemos garantizar su funcionamiento. Aplican la Política de Privacidad y los Términos del Servicio de Google.",
             "Funcionales de terceros: al abrir el agendamiento de reuniones o el chat de WhatsApp, el proveedor correspondiente puede instalar sus propias cookies en tu navegador, sujetas a sus políticas.",
             "Publicitarias: no usamos cookies publicitarias ni de seguimiento entre sitios."
           ]
@@ -1530,7 +1532,7 @@
         {
           "h": "4. Cómo cambiar tu decisión",
           "p": [
-            "Puedes cambiar tu elección en cualquier momento borrando los datos del sitio en tu navegador: al volver a entrar, el aviso aparecerá de nuevo y podrás decidir otra vez.",
+            "Puedes cambiar tu elección en cualquier momento desde el enlace «Configurar cookies» que aparece en el pie de página: el aviso vuelve a abrirse y puedes decidir otra vez. También puedes borrar los datos del sitio en tu navegador, con el mismo efecto.",
             "También puedes configurar tu navegador para bloquear o eliminar cookies. Ten en cuenta que bloquear las estrictamente necesarias puede afectar el funcionamiento del sitio. Los navegadores más usados explican cómo hacerlo en sus páginas de ayuda de privacidad."
           ]
         },

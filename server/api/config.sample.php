@@ -56,6 +56,16 @@ return [
     // empty and everything else still works.
     'hubspot_token' => '',
 
+    // Google reCAPTCHA v3 (google.com/recaptcha/admin -> create a v3 site).
+    // The SITE key is public and goes in the build as
+    // NEXT_PUBLIC_RECAPTCHA_SITE_KEY; only the SECRET belongs here. While
+    // this is empty the endpoints skip verification, so the forms work
+    // before the keys exist. Scores run 0.0 (bot) to 1.0 (human); 0.5 is
+    // Google's suggested threshold — raise it if spam still gets through,
+    // lower it if real people are being turned away.
+    'recaptcha_secret'    => '',
+    'recaptcha_min_score' => 0.5,
+
     // Origins allowed to call these endpoints from another host. Same-origin
     // calls (the site on this server) never need an entry. Add the GitHub
     // Pages preview origin here if you want its form/chatbot to work:

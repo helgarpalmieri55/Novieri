@@ -73,8 +73,21 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${clash.variable} ${satoshi.variable} ${jetbrainsMono.variable}`}>
       <body>
-        {/* Opt into animations before first paint; content stays visible without JS */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/*
+          Runs before first paint. Two jobs: opt into animations (content
+          stays visible without JS), and decide whether the cookie banner
+          shows. The banner used to mount only after hydration, which made it
+          the largest paint on mobile and dragged LCP to 7s; now its markup is
+          in the HTML and this line decides, at parse time, whether to show it.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js');" +
+              "try{var c=localStorage.getItem('novieri-consent');" +
+              "if(c!=='all'&&c!=='necessary')document.documentElement.classList.add('needs-consent')}catch(e){}",
+          }}
+        />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main id="main">{children}</main>

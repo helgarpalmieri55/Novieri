@@ -101,6 +101,66 @@ function client_ip(): string
 }
 
 /**
+ * Google reCAPTCHA v3 verification. Does nothing while `recaptcha_secret` is
+ * empty, so the forms keep working before the keys exist. Once configured, a
+ * missing or failing token is rejected — except when Google itself is
+ * unreachable, where we let the submission through and log it: a lead lost to
+ * someone else's outage costs more than the spam it would have stopped.
+ */
+function verify_recaptcha(array $config, mixed $token, string $action): void
+{
+    $secret = (string) ($config['recaptcha_secret'] ?? '');
+    if ($secret === '') {
+        return;
+    }
+    if (!is_string($token) || $token === '') {
+        error_log('recaptcha: no token from ' . client_ip());
+        send_json(400, ['error' => 'captcha']);
+    }
+
+    $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => http_build_query([
+            'secret' => $secret,
+            'response' => $token,
+            'remoteip' => client_ip(),
+        ]),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 10,
+    ]);
+    $raw = curl_exec($ch);
+    $error = curl_error($ch);
+    curl_close($ch);
+
+    if ($raw === false) {
+        error_log('recaptcha: unreachable, allowing submission — ' . $error);
+        return;
+    }
+    $result = json_decode($raw, true);
+    if (!is_array($result)) {
+        error_log('recaptcha: unparseable response, allowing submission');
+        return;
+    }
+
+    $min = (float) ($config['recaptcha_min_score'] ?? 0.5);
+    $score = (float) ($result['score'] ?? 0);
+    $ok = ($result['success'] ?? false) === true
+        && ($result['action'] ?? '') === $action
+        && $score >= $min;
+    if (!$ok) {
+        error_log(sprintf(
+            'recaptcha: rejected ip=%s action=%s score=%.2f errors=%s',
+            client_ip(),
+            (string) ($result['action'] ?? ''),
+            $score,
+            implode(',', (array) ($result['error-codes'] ?? []))
+        ));
+        send_json(400, ['error' => 'captcha']);
+    }
+}
+
+/**
  * Small file-based rate limiter (per identity, per bucket). The identity is
  * the client IP unless one is passed — pass a constant to make the bucket
  * site-wide, which is how the daily spend ceiling is enforced. Fails open on
