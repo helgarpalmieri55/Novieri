@@ -15,11 +15,15 @@ export default async function ServicePageTemplate({
   ns,
   pathname,
   illustration,
+  illustrationWide,
 }: {
   locale: string;
   ns: ServiceNs;
   pathname: AppPathname;
-  illustration: React.ReactNode;
+  /** Sits beside the heading. Ignored when `illustrationWide` is given. */
+  illustration?: React.ReactNode;
+  /** Full-width variant: heading on top, illustration across the section. */
+  illustrationWide?: React.ReactNode;
 }) {
   const t = await getTranslations(ns);
   const tsc = await getTranslations("serviceCommon");
@@ -69,15 +73,27 @@ export default async function ServicePageTemplate({
       {/* How it looks */}
       <section className="dark-s relative">
         <div aria-hidden className="seam absolute inset-x-0 top-0" />
-        <div className="container-site section-pad-tight grid items-center gap-[clamp(2rem,5vw,4.5rem)] lg:grid-cols-[5fr_7fr]">
-          <div className="reveal">
-            <h2>{tsc("howTitle")}</h2>
-            <p className="mt-4 max-w-[46ch] text-on-dark-muted">{t("how.caption")}</p>
+        {illustrationWide ? (
+          <div className="container-site section-pad-tight">
+            <div className="reveal max-w-[62ch]">
+              <h2>{tsc("howTitle")}</h2>
+              <p className="mt-4 text-on-dark-muted">{t("how.caption")}</p>
+            </div>
+            <div className="reveal mt-[clamp(2.5rem,5vh,3.5rem)]" style={{ ["--rd" as string]: "120ms" }}>
+              {illustrationWide}
+            </div>
           </div>
-          <div className="reveal" style={{ ["--rd" as string]: "120ms" }}>
-            {illustration}
+        ) : (
+          <div className="container-site section-pad-tight grid items-center gap-[clamp(2rem,5vw,4.5rem)] lg:grid-cols-[5fr_7fr]">
+            <div className="reveal">
+              <h2>{tsc("howTitle")}</h2>
+              <p className="mt-4 max-w-[46ch] text-on-dark-muted">{t("how.caption")}</p>
+            </div>
+            <div className="reveal" style={{ ["--rd" as string]: "120ms" }}>
+              {illustration}
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* Packages */}

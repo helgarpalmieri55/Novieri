@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 import { site } from "@/config/site";
 import GemStage from "@/components/GemStage";
 import PillarTicker from "@/components/PillarTicker";
-import WhatsAppChat, { type ChatEntry } from "@/components/WhatsAppChat";
+import ChatDemo, { type ChatEntry } from "@/components/ChatDemo";
 import CtaBand from "@/components/CtaBand";
 
 const PILLARS: { key: string; href: AppPathname; accent: string }[] = [
@@ -162,7 +162,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </Link>
           </div>
           <div className="reveal" style={{ ["--rd" as string]: "120ms" }}>
-            <WhatsAppChat
+            <ChatDemo
               header={t.raw("liveChat.header") as { name: string; status: string }}
               badge={t("liveChat.badge")}
               entries={chatEntries}

@@ -349,7 +349,7 @@
       ]
     },
     "how": {
-      "caption": "Un flujo real: una solicitud entra por correo, un agente la clasifica, consulta tu sistema y responde — con un humano aprobando lo importante."
+      "caption": "Dos flujos reales, en los dos canales donde tus clientes ya escriben: WhatsApp y el chat de tu propio sitio. El asistente entiende, responde en segundos y ejecuta la acción — reservar, registrar, avisar a una persona — sin sacar al cliente de la conversación."
     },
     "packages": {
       "tiers": [
@@ -387,56 +387,62 @@
         }
       ]
     },
-    "console": {
-      "barTitle": "novieri · agente de facturación",
-      "badge": "EN VIVO",
-      "lines": [
+    "webChat": {
+      "header": {
+        "name": "Hotel Bahía Azul",
+        "status": "asistente del sitio · en línea"
+      },
+      "badge": "DEMO",
+      "inputHint": "Escribe tu mensaje",
+      "entries": [
         {
-          "t": "09:41:07  ",
-          "kind": "cmd",
-          "text": "$ novieri-agent watch --proceso facturación"
+          "from": "guest",
+          "text": "Hola, ¿tienen habitación doble para el 14 y 15 de agosto?",
+          "t": "9:12 p. m."
         },
         {
-          "kind": "step",
-          "text": "leyendo bandeja compartida… ",
-          "hl": "47 correos nuevos"
+          "from": "bot",
+          "text": "Buenas noches. Sí — queda disponible la doble superior con vista al mar para esas dos noches, con desayuno incluido.",
+          "t": "9:12 p. m."
         },
         {
-          "kind": "ok",
-          "text": "12 facturas detectadas y extraídas"
+          "kind": "action",
+          "text": "disponibilidad verificada · 2 noches · doble superior"
         },
         {
-          "kind": "ok",
-          "text": "validadas contra órdenes de compra en ",
-          "hl": "Odoo"
+          "from": "guest",
+          "text": "¿el check-out tarde tiene costo?",
+          "t": "9:13 p. m."
         },
         {
-          "kind": "step",
-          "text": "registrando asientos contables…"
+          "from": "bot",
+          "text": "Hasta las 2:00 p. m. no tiene costo, sujeto a la ocupación del día. Lo dejo anotado en tu reserva.",
+          "t": "9:13 p. m."
         },
         {
-          "kind": "ok",
-          "text": "12/12 registradas · 0 errores"
+          "from": "guest",
+          "text": "perfecto, ¿cómo reservo?",
+          "t": "9:14 p. m."
         },
         {
-          "kind": "step",
-          "text": "caso atípico #8842 → ",
-          "hl": "escalado a humano"
+          "from": "bot",
+          "text": "Te comparto el enlace de reserva con la tarifa aplicada. Si prefieres hablar con una persona, recepción te escribe por correo.",
+          "t": "9:14 p. m."
         },
         {
-          "kind": "ok",
-          "text": "resumen enviado a contabilidad"
-        },
-        {
-          "t": "09:43:22  ",
-          "kind": "done",
-          "text": "listo. 38 min de trabajo manual ahorrados hoy."
+          "kind": "action",
+          "text": "enlace de reserva enviado · check-out tarde anotado"
         }
       ],
-      "footState": "estado",
-      "footStateValue": "● operando",
-      "footUptime": "uptime 99.98%",
-      "footSaved": "hoy: 38 min ahorrados"
+      "foot": [
+        "responde en tu sitio 24/7",
+        "disponibilidad y reservas",
+        "escala a recepción"
+      ]
+    },
+    "demoLabels": {
+      "whatsapp": "WhatsApp · restaurante",
+      "web": "Chat del sitio · hotel"
     }
   },
   "managedIt": {
@@ -474,7 +480,7 @@
       ]
     },
     "how": {
-      "caption": "Así se ve un mes tranquilo: tickets resueltos dentro del acuerdo, parches al día y backups verificados con restauración de prueba."
+      "caption": "Tu flota en vivo: el agente reporta, la plataforma actúa sola donde puede —limpiezas, parches, reinicios— y solo te escribimos cuando hace falta una decisión."
     },
     "packages": {
       "tiers": [
@@ -511,6 +517,53 @@
           "a": "Sí. La operación diaria es remota — así resolvemos más rápido — y agendamos visitas en sitio cuando el caso lo requiere: cableado, instalaciones, cambios de red."
         }
       ]
+    },
+    "rmm": {
+      "barTitle": "novieri · rmm — flota",
+      "badge": "EN VIVO",
+      "stats": {
+        "online": "equipos en línea",
+        "patches": "parches pendientes",
+        "alerts": "alertas abiertas"
+      },
+      "devices": [
+        {
+          "name": "bog-srv-01",
+          "os": "Windows Server"
+        },
+        {
+          "name": "bog-ws-08",
+          "os": "Windows 11"
+        },
+        {
+          "name": "bog-ws-14",
+          "os": "Windows 11"
+        },
+        {
+          "name": "med-lt-07",
+          "os": "macOS"
+        },
+        {
+          "name": "fw-edge-01",
+          "os": "FortiGate"
+        }
+      ],
+      "status": {
+        "ok": "en línea",
+        "patch": "parcheando",
+        "reboot": "reiniciando",
+        "alert": "alerta",
+        "scan": "escaneando"
+      },
+      "feed": [
+        "alerta: disco al 92 % · bog-ws-14",
+        "limpieza automática ejecutada · sin ticket",
+        "alerta resuelta · 3 min",
+        "ventana de parches 2:00 a. m. · 7 equipos",
+        "med-lt-07 reinició y volvió en línea",
+        "flota al día · 0 pendientes"
+      ],
+      "footer": "monitoreo 24/7 · parches automáticos · backups verificados"
     }
   },
   "security": {
@@ -548,7 +601,7 @@
       ]
     },
     "how": {
-      "caption": "Una revisión real: cada control con su estado y su evidencia. Así llega una empresa preparada a una auditoría SOC 2."
+      "caption": "Una revisión real: cada control con su estado y su evidencia, subiendo hasta el 100 %. Así llega una empresa preparada a una auditoría."
     },
     "packages": {
       "tiers": [
@@ -584,6 +637,32 @@
           "q": "¿Esto no es carísimo?",
           "a": "Cuesta una fracción de lo que cuesta un incidente: el rescate, los días parados y los clientes perdidos. Empezamos por la línea base — lo esencial bien hecho — y creces desde ahí según tu riesgo real."
         }
+      ]
+    },
+    "audit": {
+      "barTitle": "novieri · revisión de controles",
+      "badge": "EN VIVO",
+      "readiness": "preparación para auditoría",
+      "evidence": "controles con evidencia",
+      "controls": [
+        "MFA en todas las cuentas",
+        "cifrado en reposo y tránsito",
+        "gestión de vulnerabilidades",
+        "plan de respuesta a incidentes",
+        "evidencia de restauración de backups",
+        "concientización del equipo"
+      ],
+      "status": {
+        "ok": "cumplido",
+        "progress": "remediando",
+        "todo": "planeado"
+      },
+      "feed": [
+        "recolectando evidencia · gestión de vulnerabilidades",
+        "control cumplido · escaneo continuo activo",
+        "plan de respuesta probado · evidencia adjunta",
+        "restauración de prueba verificada",
+        "listo para auditoría · sin hallazgos abiertos"
       ]
     }
   },
@@ -622,7 +701,7 @@
       ]
     },
     "how": {
-      "caption": "Código de verdad: una API tipada, probada y documentada — el estándar de cada entrega."
+      "caption": "Así construimos: una persona define el objetivo, un orquestador lo descompone y delega en agentes especializados que trabajan en paralelo, y nada se mezcla sin aprobación humana."
     },
     "packages": {
       "tiers": [
@@ -659,6 +738,33 @@
           "a": "El software necesita operación: dependencias que actualizar, errores que corregir, mejoras que priorizar. Para eso existe el retainer de evolución — o entrenamos a tu equipo para que lo opere."
         }
       ]
+    },
+    "swarm": {
+      "barTitle": "novieri · equipo de agentes — orders-app",
+      "badge": "EN VIVO",
+      "human": "· persona a cargo ·",
+      "orchestrator": "orquestador",
+      "agents": [
+        "arquitectura",
+        "backend",
+        "frontend",
+        "pruebas",
+        "revisión"
+      ],
+      "feed": [
+        "objetivo definido por la persona a cargo",
+        "orquestador descompone y delega en 5 agentes",
+        "backend y frontend construyen en paralelo",
+        "agente de pruebas escribe y corre la suite",
+        "revisión de seguridad y estilo antes del merge",
+        "cambios listos para aprobación"
+      ],
+      "gate": "aprobación humana antes de mezclar · nada entra solo",
+      "stats": {
+        "files": "archivos",
+        "tests": "pruebas",
+        "review": "revisado por una persona"
+      }
     }
   },
   "about": {

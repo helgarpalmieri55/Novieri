@@ -386,6 +386,32 @@
     }
   }
 
+  /* Traffic travelling along an active agent edge */
+  .edge-flow {
+    stroke-dasharray: 4 6;
+    animation: edge-flow 0.9s linear infinite;
+  }
+
+  @keyframes edge-flow {
+    to {
+      stroke-dashoffset: -10;
+    }
+  }
+
+  .node-pulse {
+    animation: node-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes node-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.72;
+    }
+  }
+
   .ring-text {
     animation: spin-slow 40s linear infinite;
   }
@@ -409,16 +435,6 @@
 
   html.js .tick-grow.in::before {
     transform: scaleX(1);
-  }
-
-  .cursor-blink {
-    animation: blink 1.1s steps(1) infinite;
-  }
-
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
   }
 
   .ticker-word {
