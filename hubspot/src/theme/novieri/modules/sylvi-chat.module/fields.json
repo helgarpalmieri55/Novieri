@@ -1,0 +1,37 @@
+[
+  { "id": "name", "name": "name", "label": "Assistant name", "type": "text", "default": "Sylvi" },
+  { "id": "title", "name": "title", "label": "Panel title", "type": "text", "default": "Sylvi · asistente de Novieri" },
+  {
+    "id": "greeting",
+    "name": "greeting",
+    "label": "Greeting",
+    "type": "textarea",
+    "default": "Hola, soy Sylvi, la asistente de IA de Novieri. Pregúntame lo que quieras sobre nuestros servicios, soluciones o cómo trabajamos."
+  },
+  { "id": "placeholder", "name": "placeholder", "label": "Input placeholder", "type": "text", "default": "Escribe tu pregunta…" },
+  { "id": "open_label", "name": "open_label", "label": "Open button label (screen readers)", "type": "text", "default": "Abrir el chat con Sylvi" },
+  { "id": "close_label", "name": "close_label", "label": "Close button label (screen readers)", "type": "text", "default": "Cerrar el chat" },
+  { "id": "send_label", "name": "send_label", "label": "Send button label (screen readers)", "type": "text", "default": "Enviar" },
+  {
+    "id": "error_text",
+    "name": "error_text",
+    "label": "Error message",
+    "type": "textarea",
+    "default": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto."
+  },
+  {
+    "id": "limit_text",
+    "name": "limit_text",
+    "label": "Rate-limit message",
+    "type": "textarea",
+    "default": "Has alcanzado el límite de mensajes por ahora. Escríbenos desde la página de contacto y te responde una persona."
+  },
+  {
+    "id": "endpoint",
+    "name": "endpoint",
+    "label": "Function endpoint",
+    "help_text": "Public URL of the chat serverless function. Change only if HubSpot reports a different path after deploying the project.",
+    "type": "text",
+    "default": "/hs/serverless/api/novieri_chat"
+  }
+]

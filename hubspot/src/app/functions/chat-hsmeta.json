@@ -1,0 +1,19 @@
+{
+  "uid": "novieri_chat",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/chat.js",
+    "secretKeys": [
+      "ANTHROPIC_API_KEY",
+      "CHAT_SECRET",
+      "CHAT_DAILY_PER_IP",
+      "CHAT_DAILY_TOTAL",
+      "CONTACT_EMAIL",
+      "RATE_LIMIT_TABLE_ID"
+    ],
+    "endpoint": {
+      "path": "chat",
+      "method": ["POST"]
+    }
+  }
+}

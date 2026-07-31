@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack && node scripts/localize-export.mjs",
     "serve": "npx serve out",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:hubspot": "node scripts/build-company-profile.mjs && tailwindcss -i hubspot/build/theme.css -o hubspot/src/theme/novieri/css/theme.css --minify"
   },
   "dependencies": {
     "next": "15.5.22",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/cli": "^4.3.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

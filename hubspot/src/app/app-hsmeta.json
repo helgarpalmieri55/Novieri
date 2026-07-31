@@ -1,0 +1,16 @@
+{
+  "uid": "novieri_site_app",
+  "type": "app",
+  "config": {
+    "name": "Novieri site",
+    "description": "Backend for novieri.com: the website assistant (Sylvi), the contact form and the self-diagnosis report.",
+    "distribution": "private",
+    "auth": {
+      "type": "static",
+      "requiredScopes": ["crm.objects.contacts.read", "hubdb"]
+    },
+    "permittedUrls": {
+      "fetch": ["https://api.anthropic.com", "https://www.google.com", "https://api.hsforms.com"]
+    }
+  }
+}

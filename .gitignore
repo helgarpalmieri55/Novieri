@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 server/api/config.php
 server/api/data/
+
+# HubSpot serverless deps are installed by the platform at build time
+hubspot/src/app/functions/node_modules/

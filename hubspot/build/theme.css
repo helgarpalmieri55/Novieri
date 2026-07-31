@@ -1,0 +1,15 @@
+/*
+ * Entry point for the theme stylesheet.
+ *
+ * It pulls in the site's existing design system (tokens, components, motion)
+ * unchanged, and points Tailwind at the HubL templates and modules instead of
+ * the React tree. Same class names in, same design out — which is what lets
+ * module markup be lifted from the components almost verbatim.
+ *
+ * Built by `npm run build:hubspot` into src/theme/novieri/css/theme.css.
+ */
+@import "../../src/app/globals.css";
+
+@source "../src/theme/novieri/templates/**/*.html";
+@source "../src/theme/novieri/modules/**/*.html";
+@source "../src/theme/novieri/js/**/*.js";
