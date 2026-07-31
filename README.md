@@ -126,8 +126,15 @@ Both workflows run on every push to `main` (and manually via *Run workflow*):
 
 - **GitHub Pages** (`.github/workflows/deploy-pages.yml`) — preview at
   `https://<user>.github.io/Novieri/`. Static site only: the chat widget is
-  hidden and the form shows its email fallback (no PHP on Pages). One-time
-  setup: repo Settings → Pages → Source: **GitHub Actions**.
+  hidden and the form shows its email fallback (no PHP on Pages).
+
+  The Pages source **must be "GitHub Actions"**, not a branch. In branch mode
+  GitHub runs its own Jekyll build on every push *in addition* to this
+  workflow, and whichever finishes last is what visitors get — Jekyll
+  publishes the rendered README as the home page. The workflow's first step
+  now sets the mode over the API, but if the token is ever refused, fix it by
+  hand: repo Settings → Pages → Source: **GitHub Actions**. You can tell which
+  one served a page by whether `/es/` returns 404.
 - **GoDaddy via FTPS** (`.github/workflows/deploy-godaddy.yml`) — production.
   Uploads the static site plus the PHP backend to `/api`. One-time setup:
   the FTPS secrets above, and on the server copy `api/config.sample.php` to
