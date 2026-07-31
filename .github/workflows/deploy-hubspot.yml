@@ -40,9 +40,16 @@ jobs:
         # Both generated files are committed so the repo always shows what is
         # deployed. A diff here means someone edited copy without rebuilding.
         run: git diff --exit-code hubspot/src/theme/novieri/css/theme.css hubspot/src/app/functions/lib/company-profile.json
-      - name: Upload to HubSpot
-        # project_dir is required: hsproject.json lives in hubspot/, not at the
-        # repository root, and the action defaults to "./".
-        uses: HubSpot/hubspot-project-actions/project-upload@v1.1.0
-        with:
-          project_dir: ./hubspot
+      # The official action is not used for the upload. It builds a shell
+      # command containing the commit subject and eval()s it, so any commit
+      # message with an apostrophe or parenthesis kills the run:
+      #   action-utils.sh: eval: line 69: syntax error near unexpected token `('
+      # The CLI it wraps takes --use-env and the same two variables, and here
+      # the deploy message is ours to quote safely.
+      - name: Install the HubSpot CLI
+        run: npm install -g "@hubspot/cli@${DEFAULT_CLI_VERSION}"
+      - name: Validate and upload the project
+        working-directory: hubspot
+        run: |
+          hs project validate --use-env
+          hs project upload --use-env --message "GitHub Actions ${GITHUB_SHA:0:7}"
