@@ -12,7 +12,7 @@
     "default": "Cookies on novieri.com"
   },
   {
-    "name": "body",
+    "name": "body_text",
     "label": "Body",
     "type": "text",
     "default": "We use first-party cookies needed for the site to work and, only if you accept, aggregate analytics plus HubSpot cookies that link your enquiry to the content you read. We don't use advertising cookies.",
