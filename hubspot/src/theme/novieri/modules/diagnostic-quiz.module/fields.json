@@ -49,6 +49,218 @@
           }
         ]
       }
+    ],
+    "default": [
+      {
+        "question_text": "How many people use technology in your company?",
+        "options": [
+          {
+            "option_text": "Fewer than 10",
+            "option_weight": 0
+          },
+          {
+            "option_text": "Between 10 and 50",
+            "option_weight": 1
+          },
+          {
+            "option_text": "Between 50 and 200",
+            "option_weight": 2
+          },
+          {
+            "option_text": "More than 200",
+            "option_weight": 3
+          }
+        ]
+      },
+      {
+        "question_text": "Who runs technology today?",
+        "options": [
+          {
+            "option_text": "Nobody in particular; we sort it out between us",
+            "option_weight": 0
+          },
+          {
+            "option_text": "Someone internal who also has another job",
+            "option_weight": 1
+          },
+          {
+            "option_text": "An external provider, by the hour",
+            "option_weight": 2
+          },
+          {
+            "option_text": "Our own IT team",
+            "option_weight": 3
+          }
+        ]
+      },
+      {
+        "question_text": "Do you have an inventory of devices, access, and licenses?",
+        "options": [
+          {
+            "option_text": "None",
+            "option_weight": 0
+          },
+          {
+            "option_text": "Partial, in a spreadsheet",
+            "option_weight": 1
+          },
+          {
+            "option_text": "Documented and updated regularly",
+            "option_weight": 2
+          },
+          {
+            "option_text": "Automated with a management tool",
+            "option_weight": 3
+          }
+        ]
+      },
+      {
+        "question_text": "How are your backups?",
+        "options": [
+          {
+            "option_text": "We have no formal backups",
+            "option_weight": 0
+          },
+          {
+            "option_text": "They exist, but we have never restored one",
+            "option_weight": 1
+          },
+          {
+            "option_text": "We test them occasionally",
+            "option_weight": 2
+          },
+          {
+            "option_text": "We test them with a real, scheduled restore",
+            "option_weight": 3
+          }
+        ]
+      },
+      {
+        "question_text": "Do you use multi-factor authentication on email and critical systems?",
+        "options": [
+          {
+            "option_text": "No",
+            "option_weight": 0
+          },
+          {
+            "option_text": "Only some people",
+            "option_weight": 1
+          },
+          {
+            "option_text": "Everyone, on email",
+            "option_weight": 2
+          },
+          {
+            "option_text": "Everyone, on email and critical systems",
+            "option_weight": 3
+          }
+        ]
+      },
+      {
+        "question_text": "How do you apply updates and security patches?",
+        "options": [
+          {
+            "option_text": "When someone asks or something breaks",
+            "option_weight": 0
+          },
+          {
+            "option_text": "Manually, with no fixed schedule",
+            "option_weight": 1
+          },
+          {
+            "option_text": "In scheduled windows",
+            "option_weight": 2
+          },
+          {
+            "option_text": "Automated and verified, with a report",
+            "option_weight": 3
+          }
+        ]
+      },
+      {
+        "question_text": "In the last 12 months, have you had incidents (ransomware, compromised account, extended outage)?",
+        "options": [
+          {
+            "option_text": "Several",
+            "option_weight": 0
+          },
+          {
+            "option_text": "One",
+            "option_weight": 1
+          },
+          {
+            "option_text": "None that we know of",
+            "option_weight": 2
+          },
+          {
+            "option_text": "None, and we monitor actively",
+            "option_weight": 3
+          }
+        ]
+      },
+      {
+        "question_text": "Do your clients or your industry require a standard?",
+        "options": [
+          {
+            "option_text": "Not for now",
+            "option_weight": 3
+          },
+          {
+            "option_text": "They are starting to ask",
+            "option_weight": 1
+          },
+          {
+            "option_text": "Yes: SOC 2 or similar",
+            "option_weight": 0
+          },
+          {
+            "option_text": "Yes: PCI DSS (we handle card data)",
+            "option_weight": 0
+          }
+        ]
+      },
+      {
+        "question_text": "How much time does your team lose on repetitive manual work?",
+        "options": [
+          {
+            "option_text": "Little; almost everything is systematized",
+            "option_weight": 3
+          },
+          {
+            "option_text": "A few hours a week",
+            "option_weight": 2
+          },
+          {
+            "option_text": "Several hours a week, in more than one area",
+            "option_weight": 1
+          },
+          {
+            "option_text": "A lot; we have people dedicated to copying and pasting data",
+            "option_weight": 0
+          }
+        ]
+      },
+      {
+        "question_text": "How do you use artificial intelligence today?",
+        "options": [
+          {
+            "option_text": "We don't",
+            "option_weight": 0
+          },
+          {
+            "option_text": "People use tools on their own",
+            "option_weight": 1
+          },
+          {
+            "option_text": "We have a pilot running",
+            "option_weight": 2
+          },
+          {
+            "option_text": "We already have AI processes in production",
+            "option_weight": 3
+          }
+        ]
+      }
     ]
   },
   {
@@ -92,6 +304,20 @@
         "label": "Name",
         "type": "text",
         "default": "Initial"
+      }
+    ],
+    "default": [
+      {
+        "level_name": "Initial"
+      },
+      {
+        "level_name": "Developing"
+      },
+      {
+        "level_name": "Solid"
+      },
+      {
+        "level_name": "Advanced"
       }
     ]
   },

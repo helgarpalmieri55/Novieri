@@ -76,6 +76,56 @@
           ]
         ]
       }
+    ],
+    "default": [
+      {
+        "card_name": "AI & automation",
+        "card_tagline": "Agents and automations that take repetitive work off your team's plate.",
+        "card_tags": "agents, chatbots, workflows",
+        "card_colour": "text-plum",
+        "card_link": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/services/ai-automation"
+          }
+        }
+      },
+      {
+        "card_name": "Managed IT",
+        "card_tagline": "Your IT department, without having to build one.",
+        "card_tags": "helpdesk, microsoft 365, backups",
+        "card_colour": "text-teal",
+        "card_link": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/services/managed-it"
+          }
+        }
+      },
+      {
+        "card_name": "Cybersecurity & compliance",
+        "card_tagline": "Real security, and a clear path to SOC 2 / PCI DSS.",
+        "card_tags": "hardening, soc 2, pci dss",
+        "card_colour": "text-gold-deep",
+        "card_link": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/services/cybersecurity-compliance"
+          }
+        }
+      },
+      {
+        "card_name": "Custom software",
+        "card_tagline": "Software that fits your operation, not the other way around.",
+        "card_tags": "react, fastapi, node",
+        "card_colour": "text-ink-muted",
+        "card_link": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/services/custom-software"
+          }
+        }
+      }
     ]
   },
   {
