@@ -26,6 +26,7 @@ const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
 const only = (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
 const verify = (args.find((a) => a.startsWith("--verify=")) || "").split("=")[1];
+const dump = args.find((a) => a.startsWith("--dump="))?.slice("--dump=".length);
 
 /**
  * Slugs come from src/i18n/pathnames.json, so they match what the React site
@@ -120,6 +121,38 @@ if (dryRun) {
 if (!TOKEN) {
   console.error("HUBSPOT_PRIVATE_APP_TOKEN is not set — a private app token with the `content` scope is required.");
   process.exit(1);
+}
+
+/** Finds a page by slug or name. The home page's slug is the empty string. */
+async function findPage(needle) {
+  const res = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
+  const pages = res.results || [];
+  return (
+    pages.find((p) => p.slug === needle) ||
+    pages.find((p) => (p.name || "").toLowerCase() === needle.toLowerCase()) ||
+    pages.find((p) => p.id === needle)
+  );
+}
+
+/**
+ * Prints a page's layoutSections verbatim.
+ *
+ * The API will not build drag-and-drop content from a template on its own, so
+ * it has to be sent explicitly — and the only trustworthy description of the
+ * shape HubSpot expects is a page HubSpot itself built. This reads that off
+ * the home page rather than guessing from the docs.
+ */
+if (dump !== undefined) {
+  const found = await findPage(dump);
+  if (!found) {
+    console.error(`no page matching "${dump}"`);
+    process.exit(1);
+  }
+  const full = await api(`/cms/v3/pages/site-pages/${found.id}`);
+  console.log(`# ${full.name} (id ${full.id}, slug "${full.slug}")`);
+  console.log(`# template ${full.templatePath}`);
+  console.log(JSON.stringify(full.layoutSections, null, 1));
+  process.exit(0);
 }
 
 /**
