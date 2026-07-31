@@ -37,7 +37,7 @@ verify every sitemap URL resolves to a file.
 | `NEXT_PUBLIC_CAL_LINK` (e.g. `novieri/intro`) | env — Cal.com embed shows fallback until set |
 | `NEXT_PUBLIC_LINKEDIN_URL` | env — footer icon hidden until set |
 | `razonSocial`, `NIT` | `src/config/site.ts` — **required**: footer legal line *and* the controller identification in the legal pages (the NIT clause is omitted while empty) |
-| Hero video | `heroVideo` in `src/config/site.ts` — `"hero1"`, `"hero2"`, or `""` for the animated logo mark alone. Loads only on ≥1024px with motion allowed; `?hero=1` / `?hero=2` compares them on the live site. **The clips are 7.9 MB and 11.4 MB — compress to ~1–2 MB before launch** (e.g. `ffmpeg -i hero1.mp4 -vf scale=1280:-2 -c:v libx264 -crf 30 -preset slow -movflags +faststart -an out.mp4`), or the hero will hurt load time. |
+| Hero video | `heroVideo` in `src/config/site.ts` — `"hero1"`, `"hero2"`, or `""` for the animated logo mark alone. Loads only on ≥1024px with motion allowed; `?hero=1` / `?hero=2` compares them on the live site. Clips are 1280×720, silent, ~2.05 MB each with `+faststart`. Re-encode with `ffmpeg -i in.mp4 -vf scale=1280:-2 -c:v libx264 -crf 30 -preset slow -movflags +faststart -an out.mp4` if you replace them. |
 | Solutions section | `showSolutions` in `src/config/site.ts` — `false` hides nav/footer links, drops the pages from the sitemap, and marks them `noindex`. Flip to `true` to publish. |
 | Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
