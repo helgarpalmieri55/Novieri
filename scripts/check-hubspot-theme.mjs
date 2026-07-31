@@ -78,10 +78,10 @@ for (const entry of readdirSync(MODULES)) {
   const short = basename(entry, ".module");
   moduleNames.add(short);
 
-  for (const required of ["meta.json", "fields.json", "module.hubl.htm"]) {
+  for (const required of ["meta.json", "fields.json", "module.hubl.html"]) {
     if (!existsSync(join(dir, required))) fail(dir, `missing ${required}`);
   }
-  for (const wrong of ["module.html", "module.js", "module.css", "fields.js"]) {
+  for (const wrong of ["module.html", "module.hubl.htm", "module.js", "module.css", "fields.js"]) {
     if (existsSync(join(dir, wrong))) fail(dir, `${wrong} — project modules use module.hubl.* names`);
   }
 
@@ -103,7 +103,7 @@ for (const entry of readdirSync(MODULES)) {
   moduleTopLevel.set(short, names);
 
   // Every module.<something> in the markup has to be a field that exists.
-  const htmlPath = join(dir, "module.hubl.htm");
+  const htmlPath = join(dir, "module.hubl.html");
   if (existsSync(htmlPath)) {
     const html = readFileSync(htmlPath, "utf8");
     for (const [, key] of html.matchAll(/\bmodule\.([a-z_][a-z0-9_]*)/g)) {
@@ -131,7 +131,7 @@ for (const entry of readdirSync(TEMPLATES, { recursive: true })) {
 // The stylesheet is generated from the markup — a stale @source glob silently
 // drops half the design, with no error anywhere.
 const entryCss = readFileSync("hubspot/build/theme.css", "utf8");
-for (const glob of ["modules/**/*.htm", "modules/**/*.js", "templates/**/*.html"]) {
+for (const glob of ["modules/**/*.html", "modules/**/*.js", "templates/**/*.html"]) {
   if (!entryCss.includes(glob)) fail("hubspot/build/theme.css", `@source no longer covers ${glob}`);
 }
 
