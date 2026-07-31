@@ -42,6 +42,23 @@
           ]
         ]
       }
+    ],
+    "default": [
+      {
+        "value": "1000+",
+        "stat_label": "users assisted as cto",
+        "colour": "text-plum"
+      },
+      {
+        "value": "PCI / SOC 2",
+        "stat_label": "programs led end to end",
+        "colour": "text-teal"
+      },
+      {
+        "value": "2",
+        "stat_label": "founders, zero middlemen",
+        "colour": "text-gold-deep"
+      }
     ]
   }
 ]

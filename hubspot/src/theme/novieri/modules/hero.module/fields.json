@@ -41,6 +41,24 @@
           ]
         ]
       }
+    ],
+    "default": [
+      {
+        "word": "AI & automation",
+        "colour": "text-plum"
+      },
+      {
+        "word": "Managed IT",
+        "colour": "text-teal"
+      },
+      {
+        "word": "Cybersecurity & compliance",
+        "colour": "text-gold-deep"
+      },
+      {
+        "word": "Custom software",
+        "colour": "text-ink-muted"
+      }
     ]
   },
   {

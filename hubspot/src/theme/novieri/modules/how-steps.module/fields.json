@@ -34,6 +34,24 @@
         "default": "We understand your operation, infrastructure and risks before proposing anything.",
         "allow_new_line": true
       }
+    ],
+    "default": [
+      {
+        "step_title": "Diagnosis",
+        "step_body": "We understand your operation, your infrastructure, and your risks before proposing anything."
+      },
+      {
+        "step_title": "Proposal",
+        "step_body": "Concrete scope, defined deliverables, and a clear price. No fine print."
+      },
+      {
+        "step_title": "Implementation",
+        "step_body": "We execute with dates and owners, and show you progress at every milestone."
+      },
+      {
+        "step_title": "Operation & continuous improvement",
+        "step_body": "We monitor, maintain, and propose improvements every quarter. Technology doesn't stand still."
+      }
     ]
   }
 ]

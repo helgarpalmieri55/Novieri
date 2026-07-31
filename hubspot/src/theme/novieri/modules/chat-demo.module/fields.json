@@ -43,8 +43,14 @@
     "default": "whatsapp",
     "help_text": "WhatsApp wears WhatsApp's palette; Website wears ours.",
     "choices": [
-      ["whatsapp", "WhatsApp"],
-      ["web", "Website widget"]
+      [
+        "whatsapp",
+        "WhatsApp"
+      ],
+      [
+        "web",
+        "Website widget"
+      ]
     ]
   },
   {
@@ -83,11 +89,26 @@
         "display": "select",
         "default": "guest",
         "choices": [
-          ["guest", "Customer message"],
-          ["bot", "Assistant reply"],
-          ["voice", "Customer voice note"],
-          ["transcript", "What it understood"],
-          ["action", "What it did"]
+          [
+            "guest",
+            "Customer message"
+          ],
+          [
+            "bot",
+            "Assistant reply"
+          ],
+          [
+            "voice",
+            "Customer voice note"
+          ],
+          [
+            "transcript",
+            "What it understood"
+          ],
+          [
+            "action",
+            "What it did"
+          ]
         ]
       },
       {
@@ -116,6 +137,71 @@
         "type": "text",
         "default": "7:42 PM"
       }
+    ],
+    "default": [
+      {
+        "row_kind": "guest",
+        "message": "Hi, do you have a table for 4 tonight at 8?",
+        "caption": "",
+        "duration": "",
+        "sent_at": "7:42 PM"
+      },
+      {
+        "row_kind": "bot",
+        "message": "Good evening. Yes, we have a table for 4 at 8:00 PM — indoors or on the terrace, whichever you prefer.",
+        "caption": "",
+        "duration": "",
+        "sent_at": "7:42 PM"
+      },
+      {
+        "row_kind": "voice",
+        "message": "",
+        "caption": "",
+        "duration": "0:07",
+        "sent_at": "7:43 PM"
+      },
+      {
+        "row_kind": "transcript",
+        "message": "“On the terrace, and a high chair if you have one”",
+        "caption": "voice note",
+        "duration": "",
+        "sent_at": ""
+      },
+      {
+        "row_kind": "bot",
+        "message": "Noted: terrace and a high chair. Confirming it now.",
+        "caption": "",
+        "duration": "",
+        "sent_at": "7:43 PM"
+      },
+      {
+        "row_kind": "action",
+        "message": "booking created · #1284 · 4 guests · 8:00 PM · terrace",
+        "caption": "",
+        "duration": "",
+        "sent_at": ""
+      },
+      {
+        "row_kind": "guest",
+        "message": "anything gluten-free?",
+        "caption": "",
+        "duration": "",
+        "sent_at": "7:44 PM"
+      },
+      {
+        "row_kind": "bot",
+        "message": "Yes. On today's menu: sea bass ceviche, grilled snapper, and coconut rice. I'll flag it to the kitchen so they know.",
+        "caption": "",
+        "duration": "",
+        "sent_at": "7:44 PM"
+      },
+      {
+        "row_kind": "action",
+        "message": "kitchen notified · gluten-free",
+        "caption": "",
+        "duration": "",
+        "sent_at": ""
+      }
     ]
   },
   {
@@ -139,6 +225,17 @@
         "label": "Item",
         "type": "text",
         "default": "answers 24/7"
+      }
+    ],
+    "default": [
+      {
+        "capability": "answers 24/7"
+      },
+      {
+        "capability": "bookings and orders"
+      },
+      {
+        "capability": "Spanish and English"
       }
     ]
   }
