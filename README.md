@@ -120,6 +120,67 @@ Solution-page copy sources:
 - **Drafted, needs owner review**: AI-powered Websites (productized service,
   review positioning).
 
+## HubSpot site (`hubspot/`)
+
+The site is being rebuilt as a HubSpot **project** (`platformVersion 2026.03`)
+so page copy can be edited in HubSpot instead of in this repo. Serverless
+functions do not exist in 2025.2 — HubSpot removed them there and restored
+them in 2026.03, where public endpoint functions need **Content Hub
+Enterprise** and get a 15-second timeout.
+
+```
+hubspot/
+├── hsproject.json
+├── build/theme.css            # Tailwind entry — not deployed, it is the source
+└── src/
+    ├── app/                   # private app + serverless endpoints
+    │   ├── app-hsmeta.json
+    │   └── functions/         # chat.js (Sylvi), lib/guard.js, lib/company-profile.json
+    └── theme/novieri/         # templates, modules, css, js, fonts, images
+```
+
+Two files are **generated — never edit them by hand**, and the deploy fails if
+they are stale:
+
+- `src/theme/novieri/css/theme.css` — Tailwind, scanning the HubL templates and
+  importing `src/app/globals.css`. The design system is shared with the Next.js
+  site, so module markup can be lifted from the React components unchanged.
+- `src/app/functions/lib/company-profile.json` — Sylvi's knowledge, built from
+  the site's own copy. When copy moves into HubSpot pages, change
+  `scripts/build-company-profile.mjs` and nothing else.
+
+Rebuild both with `npm run build:hubspot`.
+
+### One-time setup in HubSpot
+
+1. **Secrets** (`hs secrets add NAME`, then paste the value — they never touch
+   the repo): `ANTHROPIC_API_KEY`, and optionally `CHAT_SECRET`,
+   `CONTACT_EMAIL`, `CHAT_DAILY_PER_IP`, `CHAT_DAILY_TOTAL`, `RECAPTCHA_SECRET`.
+2. **HubDB table** for the chat rate limits — serverless invocations share no
+   filesystem, so the counters live in HubDB. Create a table named
+   `novieri_rate_limits` with two text columns, `bucket` and `hits`, publish
+   it, and add its id as the secret `RATE_LIMIT_TABLE_ID`. Until it exists the
+   limiter is inert and Sylvi is protected only by the origin check.
+3. **Menus** (Content → Navigation): one per language. The header and footer
+   read them, which is what makes links editable without a deploy.
+4. **Pages**: create each page from the theme's templates, then add the English
+   variant from the same page's language menu.
+5. **Domain**: connect `novieri.com` last, once the pages look right on the
+   `*.hs-sites.com` preview. The chat endpoint already allows that preview host.
+
+### Deploying
+
+`.github/workflows/deploy-hubspot.yml` uploads the project on every push to
+`main` that touches `hubspot/`, `messages/`, or the shared stylesheet. It uses
+the two repo secrets from `hs init` (`HUBSPOT_ACCOUNT_ID`,
+`HUBSPOT_PERSONAL_ACCESS_KEY`). Locally: `hs project upload`.
+
+A note on module CSS: HubSpot loads each module's `module.css` when that module
+renders, so the header and footer styles are not in `theme.css`. That is
+deliberate — those two files are the only place the design is applied by
+element selector, because `{% menu %}` and `{% language_switcher %}` emit
+HubSpot's own markup.
+
 ## Deploy
 
 Both workflows run on every push to `main` (and manually via *Run workflow*):

@@ -1,0 +1,19 @@
+/* HubSpot's {% menu %} markup, styled to match the rest of the footer. */
+.footer-links .hs-menu-wrapper ul {
+  display: grid;
+  gap: 0.625rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links a {
+  font-size: var(--text-small);
+  color: var(--color-ink-muted);
+  text-decoration: none;
+  transition: color 200ms var(--ease-out-quart);
+}
+
+.footer-links a:hover {
+  color: var(--color-ink);
+}

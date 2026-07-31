@@ -9,13 +9,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page_meta.html_title }}</title>
     <meta name="description" content="{{ page_meta.meta_description }}" />
-    {{ require_css(get_asset_url("../css/theme.css")) }}
-    {# Opt into animations before first paint; content stays visible without JS #}
-    <script>document.documentElement.classList.add("js");</script>
+    {{ require_css(get_asset_url("../../css/theme.css")) }}
+    {#
+      Runs before first paint. Two jobs: opt into animations (content stays
+      visible without JS), and decide whether the cookie banner shows. On the
+      old site the banner mounted only after hydration, which made it the
+      largest paint on mobile; this decides at parse time instead.
+    #}
+    <script>
+      document.documentElement.classList.add("js");
+      try {
+        var c = localStorage.getItem("novieri-consent");
+        if (c !== "all" && c !== "necessary") document.documentElement.classList.add("needs-consent");
+      } catch (e) {}
+    </script>
     {{ standard_header_includes }}
   </head>
+
   <body class="{{ builtin_body_classes }}">
-    <main id="main">{% block body %}{% endblock body %}</main>
+    {% global_partial path="./header.html" %}
+
+    <main id="main">
+      {% block body %}{% endblock body %}
+    </main>
+
+    {% global_partial path="./footer.html" %}
+
+    {% module "cookie_banner" path="../../modules/cookie-banner" %}
+    {% module "sylvi_chat" path="../../modules/sylvi-chat" %}
+
+    {{ require_js(get_asset_url("../../js/reveal.js")) }}
     {{ standard_footer_includes }}
   </body>
 </html>

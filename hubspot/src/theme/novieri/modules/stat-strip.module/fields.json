@@ -1,0 +1,17 @@
+[
+  {
+    "id": "stats",
+    "name": "stats",
+    "label": "Stats",
+    "type": "group",
+    "occurrence": { "min": 1, "max": 4, "default": 3 },
+    "children": [
+      { "id": "value", "name": "value", "label": "Value", "type": "text", "default": "1000+" },
+      { "id": "label", "name": "label", "label": "Label", "type": "text", "default": "usuarios asistidos como CTO" },
+      {
+        "id": "colour", "name": "colour", "label": "Colour", "type": "choice", "display": "select", "default": "text-plum",
+        "choices": [["text-plum", "Plum"], ["text-teal", "Teal"], ["text-gold-deep", "Gold"]]
+      }
+    ]
+  }
+]

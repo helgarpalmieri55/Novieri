@@ -1,0 +1,22 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "default": "servicios" },
+  { "id": "title", "name": "title", "label": "Title", "type": "text", "default": "Cuatro pilares, un mismo estándar." },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "occurrence": { "min": 1, "max": 8, "default": 4 },
+    "children": [
+      { "id": "name", "name": "name", "label": "Name", "type": "text", "default": "IA y automatización" },
+      { "id": "tagline", "name": "tagline", "label": "Tagline", "type": "textarea", "default": "Agentes y automatizaciones que quitan trabajo repetitivo de la mesa." },
+      { "id": "tags", "name": "tags", "label": "Tags (comma separated)", "type": "text", "default": "agentes, chatbots, procesos" },
+      { "id": "link", "name": "link", "label": "Link", "type": "link", "default": { "url": { "type": "CONTENT", "href": "/servicios" } } },
+      {
+        "id": "colour", "name": "colour", "label": "Accent", "type": "choice", "display": "select", "default": "text-plum",
+        "choices": [["text-plum", "Plum"], ["text-teal", "Teal"], ["text-gold-deep", "Gold"], ["text-ink-muted", "Ink"]]
+      }
+    ]
+  },
+  { "id": "link_label", "name": "link_label", "label": "Card link label", "type": "text", "default": "Conocer más" }
+]

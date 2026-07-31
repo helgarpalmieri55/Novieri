@@ -1,0 +1,92 @@
+/*
+ * HubSpot's {% menu %} and {% language_switcher %} emit their own markup, so
+ * these two blocks are the only place in the theme where the design is
+ * applied by element instead of by utility class. Kept small and local.
+ */
+.site-nav .hs-menu-wrapper > ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a,
+.site-mobile-nav a {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  text-decoration: none;
+  transition: color 200ms var(--ease-out-quart);
+}
+
+.site-nav a:hover,
+.site-mobile-nav a:hover {
+  color: var(--color-ink);
+}
+
+/* Dropdown for a menu item with children */
+.site-nav .hs-menu-children-wrapper {
+  position: absolute;
+  z-index: 50;
+  min-width: 300px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  list-style: none;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  background: var(--color-white);
+  box-shadow: 0 8px 40px rgba(22, 18, 29, 0.1);
+}
+
+.site-nav .hs-menu-children-wrapper a {
+  display: block;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  color: var(--color-ink);
+}
+
+.site-nav .hs-menu-children-wrapper a:hover {
+  background: var(--color-plum-wash);
+}
+
+.site-mobile-nav .hs-menu-wrapper ul {
+  display: grid;
+  gap: 0.875rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-mobile-nav .hs-menu-wrapper a {
+  font-size: var(--text-lead);
+}
+
+/* Language switcher: HubSpot renders a list with the current page's variants */
+.lang_list_class {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.lang_list_class li + li::before {
+  content: "|";
+  margin-right: 0.25rem;
+  color: var(--color-ink-faint);
+}
+
+.lang_list_class a {
+  padding: 0.625rem 0.5rem;
+  color: var(--color-ink-faint);
+  text-decoration: none;
+}
+
+.lang_list_class a:hover,
+.lang_list_class .lang_switcher_link[aria-current="true"] {
+  color: var(--color-ink);
+}

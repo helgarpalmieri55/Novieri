@@ -1,0 +1,63 @@
+[
+  {
+    "id": "ticker",
+    "name": "ticker",
+    "label": "Rotating words",
+    "help_text": "Cycled one at a time above the headline.",
+    "type": "group",
+    "occurrence": { "min": 1, "max": 6, "default": 4 },
+    "children": [
+      { "id": "word", "name": "word", "label": "Word", "type": "text", "default": "IA y automatización" },
+      {
+        "id": "colour",
+        "name": "colour",
+        "label": "Colour",
+        "type": "choice",
+        "display": "select",
+        "default": "text-plum",
+        "choices": [
+          ["text-plum", "Plum"],
+          ["text-teal", "Teal"],
+          ["text-gold-deep", "Gold"],
+          ["text-ink-muted", "Ink"]
+        ]
+      }
+    ]
+  },
+  { "id": "title_a", "name": "title_a", "label": "Headline, first line", "type": "text", "default": "Tecnología enterprise," },
+  { "id": "title_b", "name": "title_b", "label": "Headline, second line (accent)", "type": "text", "default": "con IA en el centro." },
+  {
+    "id": "subtitle",
+    "name": "subtitle",
+    "label": "Subtitle",
+    "type": "textarea",
+    "default": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación, para que tu empresa crezca sin un departamento de IT propio."
+  },
+  {
+    "id": "primary",
+    "name": "primary",
+    "label": "Primary button",
+    "type": "group",
+    "children": [
+      { "id": "label", "name": "label", "label": "Label", "type": "text", "default": "Agenda una llamada" },
+      { "id": "link", "name": "link", "label": "Link", "type": "link", "default": { "url": { "type": "CONTENT", "href": "/contacto" } } }
+    ]
+  },
+  {
+    "id": "secondary",
+    "name": "secondary",
+    "label": "Secondary button",
+    "type": "group",
+    "children": [
+      { "id": "label", "name": "label", "label": "Label", "type": "text", "default": "Ver servicios" },
+      { "id": "link", "name": "link", "label": "Link", "type": "link", "default": { "url": { "type": "CONTENT", "href": "/servicios" } } }
+    ]
+  },
+  {
+    "id": "mark",
+    "name": "mark",
+    "label": "Logo mark (the animated gem)",
+    "type": "image",
+    "default": { "src": "../../images/novieri-isotipo-color.svg", "alt": "" }
+  }
+]

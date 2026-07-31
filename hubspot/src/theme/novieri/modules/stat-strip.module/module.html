@@ -1,0 +1,11 @@
+{# The proof strip under the hero: three numbers, nothing else. #}
+<div class="border-b border-line bg-white">
+  <div class="container-site grid grid-cols-1 sm:grid-cols-3">
+    {% for stat in module.stats %}
+      <div class="reveal border-line px-2 py-7 md:border-r md:px-6 md:last:border-r-0" style="--rd: {{ loop.index0 * 70 }}ms">
+        <div class="font-display text-[clamp(1.75rem,3vw,2.125rem)] font-medium {{ stat.colour }}">{{ stat.value }}</div>
+        <div class="idx-mono mt-1.5 text-ink-faint">{{ stat.label }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
