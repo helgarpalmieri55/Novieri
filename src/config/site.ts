@@ -26,10 +26,14 @@ export const site = {
     partner: "https://www.linkedin.com/in/sylvananova-272303/",
   },
 
-  // Hero video in public/hero: "hero1" | "hero2" | "" to keep the animated
-  // logo mark alone. It only loads on large screens with motion allowed, and
+  // Hero video in public/hero — a filename, or "" to keep the animated logo
+  // mark alone. It only loads on large screens with motion allowed, and
   // `?hero=1` / `?hero=2` overrides it for side-by-side comparison.
-  heroVideo: "hero1" as "hero1" | "hero2" | "",
+  heroVideo: "hero1.mp4",
+
+  // Which part of the clip the circular lens keeps (CSS object-position).
+  // Nudge if the subject of the video sits off-centre, e.g. "34% 50%".
+  heroVideoFocus: "50% 50%",
 
   // Solutions section is hidden site-wide while this is false: no nav or
   // footer links, no sitemap entries, and the pages themselves are noindex.

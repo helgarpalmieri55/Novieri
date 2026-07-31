@@ -5,13 +5,17 @@ import { asset, site } from "@/config/site";
 import GemStage from "./GemStage";
 
 /**
- * The hero visual. The animated logo mark is the base layer and always
- * renders — it needs no network and no codec. On a large screen, with motion
- * allowed, the video loads on top and fades in only once it can actually
- * play; if it stalls, errors, or the codec is missing, the mark simply stays.
+ * The hero visual: one subject, never two.
  *
- * Phones never download it (the files are several MB), and `?hero=1` / `?hero=2`
- * switches clips at runtime so both can be compared on the deployed site.
+ * The animated logo mark is the floor — no network, no codec, always there.
+ * When a clip is configured and can actually play, it takes the mark's place
+ * as a lens: masked to a circle with a feathered edge (no letterbox, no hard
+ * rectangle), rimmed by the brand gradient, lit from behind by a jewel glow,
+ * and framed by the same rotating mono ring. The mark crossfades out as the
+ * lens fades in, so the composition never shows both.
+ *
+ * Phones never request the file. Reduced motion keeps the mark.
+ * `?hero=1` / `?hero=2` swaps clips at runtime for comparison.
  */
 export default function HeroVisual({ ringText }: { ringText: string }) {
   const [clip, setClip] = useState<string | null>(null);
@@ -24,38 +28,45 @@ export default function HeroVisual({ ringText }: { ringText: string }) {
     if (!matchMedia("(min-width: 1024px)").matches) return;
 
     const override = new URLSearchParams(location.search).get("hero");
-    setClip(override === "1" || override === "2" ? `hero${override}` : site.heroVideo);
+    setClip(override === "1" || override === "2" ? `hero${override}.mp4` : site.heroVideo);
   }, []);
 
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
-    // The element mounts with the source already set; if it is cached the
-    // canplay event may have fired before this ran.
-    if (v.readyState >= 3) setReady(true);
+    if (v && v.readyState >= 3) setReady(true);
   }, [clip]);
+
+  const fade = `transition-opacity duration-1000 ${ready ? "opacity-100" : "opacity-0"}`;
 
   return (
     <div className="relative">
-      <GemStage ringText={ringText} />
+      <GemStage ringText={ringText} showMark={!ready} />
 
       {clip && (
-        <video
-          ref={videoRef}
-          src={asset(`/hero/${clip}.mp4`)}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden
-          tabIndex={-1}
-          onCanPlay={() => setReady(true)}
-          onError={() => setReady(false)}
-          className={`pointer-events-none absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ${
-            ready ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        <>
+          {/* Jewel light behind the lens, so the dark circle sits on the white
+              canvas instead of being punched into it */}
+          <div aria-hidden className={`hero-lens-glow ${fade}`} />
+
+          <video
+            ref={videoRef}
+            src={asset(`/hero/${clip}`)}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden
+            tabIndex={-1}
+            onCanPlay={() => setReady(true)}
+            onError={() => setReady(false)}
+            style={{ ["--hero-lens-focus" as string]: site.heroVideoFocus }}
+            className={`hero-lens ${fade}`}
+          />
+
+          {/* Gradient rim, counter-rotating against the mono ring */}
+          <div aria-hidden className={`hero-lens-rim ${fade}`} />
+        </>
       )}
     </div>
   );
