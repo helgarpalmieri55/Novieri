@@ -1,0 +1,45 @@
+name: Create HubSpot pages
+
+# Manual only. Creates the site's pages from the deployed theme's templates,
+# as DRAFTS, skipping any slug that already exists — so running it twice is
+# safe and it will never overwrite something edited in HubSpot.
+#
+# Needs a repo secret HUBSPOT_PRIVATE_APP_TOKEN: a private app access token
+# with the `content` scope. The personal access key the deploy uses is for the
+# CLI and will not authenticate the CMS API.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "What to do"
+        type: choice
+        default: "dry-run"
+        options:
+          - dry-run
+          - one-page-test
+          - create-all
+      domain:
+        description: "Site domain"
+        default: "www.novieri.com"
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Create the pages
+        env:
+          HUBSPOT_PRIVATE_APP_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
+          HUBSPOT_SITE_DOMAIN: ${{ inputs.domain }}
+        run: |
+          set -euo pipefail
+          case "${{ inputs.mode }}" in
+            dry-run)       node scripts/create-hubspot-pages.mjs --dry-run ;;
+            # Prove one page comes out right before making eleven more.
+            one-page-test) node scripts/create-hubspot-pages.mjs --only=about ;;
+            create-all)    node scripts/create-hubspot-pages.mjs ;;
+          esac

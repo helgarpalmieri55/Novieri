@@ -223,6 +223,45 @@ Rebuild both with `npm run build:hubspot`.
 7. **Domain**: connect `novieri.com` last, once the pages look right on the
    `*.hs-sites.com` preview. Both endpoints already allow that preview host.
 
+### The pages to create
+
+Templates are not pages. Each row below is one page created in Content →
+Website Pages, choosing the template in column two and setting the slug in
+column three. Titles and descriptions are the ones the React site shipped
+(`messages/en.json` → `meta`), so they can be pasted straight in.
+
+`showSolutions` is `false` in `src/config/site.ts`, so the eight solution pages
+stay out until that flips.
+
+| Page | Template | Slug (EN) | Slug (ES) |
+| --- | --- | --- | --- |
+| Home | Novieri — home | *(empty — this is what makes it the homepage)* | *(empty)* |
+| Services | Novieri — service | `services` | `servicios` |
+| AI & automation | Novieri — service | `services/ai-automation` | `servicios/ia-y-automatizacion` |
+| Managed IT | Novieri — service | `services/managed-it` | `servicios/it-administrado` |
+| Cybersecurity & compliance | Novieri — service | `services/cybersecurity-compliance` | `servicios/ciberseguridad-y-cumplimiento` |
+| Custom software | Novieri — service | `services/custom-software` | `servicios/desarrollo-a-medida` |
+| About | Novieri — about | `about` | `nosotros` |
+| Contact | Novieri — contact | `contact` | `contacto` |
+| Self-diagnosis | Novieri — diagnostic | `self-diagnosis` | `autodiagnostico` |
+| Privacy policy | Novieri — legal | `legal/privacy-policy` | `legal/politica-de-privacidad` |
+| Cookie policy | Novieri — legal | `legal/cookie-policy` | `legal/politica-de-cookies` |
+| Terms of use | Novieri — legal | `legal/terms-of-use` | `legal/terminos-de-uso` |
+
+Then the menu (Content → Navigation), one per language — the header and footer
+both read it: **Services** (with the four pillars beneath it), **About**,
+**Contact**, **Self-diagnosis**.
+
+Two settings that are easy to miss:
+
+- **Turn off HubSpot's own cookie banner** (Settings → Privacy & Consent →
+  Cookies). The theme ships its own, and that one is not decorative: it calls
+  `_hsp.push(["setHubSpotConsent", …])`, so it is what actually gates HubSpot's
+  tracking cookies. Leaving both on shows the visitor two banners.
+- **Field defaults are copied when a page is created**, not read live. A page
+  made before a `fields.json` default changed keeps the old value — recreate it,
+  or edit the field in the page editor.
+
 ### Deploying
 
 `.github/workflows/deploy-hubspot.yml` uploads the project on every push to
