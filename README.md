@@ -128,6 +128,10 @@ functions do not exist in 2025.2 — HubSpot removed them there and restored
 them in 2026.03, where public endpoint functions need **Content Hub
 Enterprise** and get a 15-second timeout.
 
+The project is called **Novieri website** in HubSpot, and `hsproject.json`
+must keep that exact name: the CLI matches on it, and a mismatch silently
+creates a second project instead of uploading into yours.
+
 ```
 hubspot/
 ├── hsproject.json
