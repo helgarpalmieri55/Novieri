@@ -844,7 +844,8 @@
         "name": "Escribe tu nombre.",
         "email": "Escribe un correo válido.",
         "message": "Cuéntanos aunque sea una línea."
-      }
+      },
+      "consentNote": "Al enviar este formulario autorizas el tratamiento de tus datos conforme a nuestra política de privacidad."
     },
     "booking": {
       "title": "¿Prefieres agendar directo?",
@@ -1515,6 +1516,7 @@
           "ul": [
             "Estrictamente necesarias: guardamos tu decisión sobre cookies en el almacenamiento local de tu navegador (clave «novieri-consent») para no volver a preguntarte en cada visita. No identifica a personas y no se comparte con terceros.",
             "Analítica y medición: si las aceptas, activamos una herramienta de analítica web que nos permite saber cuántas personas visitan el sitio y qué páginas consultan, con datos agregados. La usamos para mejorar el contenido, no para perfilar personas.",
+            "CRM y atribución (HubSpot): si aceptas, cargamos el script de HubSpot, que instala las cookies __hstc, hubspotutk, __hssc y __hssrc. Sirven para reconocer tu navegador entre visitas y asociar el formulario que envías con las páginas que consultaste antes, de modo que sepamos qué contenido resultó útil. Si las rechazas, los formularios siguen funcionando: solo se envían sin ese historial.",
             "Funcionales de terceros: al abrir el agendamiento de reuniones o el chat de WhatsApp, el proveedor correspondiente puede instalar sus propias cookies en tu navegador, sujetas a sus políticas.",
             "Publicitarias: no usamos cookies publicitarias ni de seguimiento entre sitios."
           ]
@@ -1631,7 +1633,7 @@
   },
   "cookies": {
     "title": "Cookies en novieri.com",
-    "body": "Usamos cookies propias necesarias para que el sitio funcione y, solo si lo aceptas, analítica agregada para entender qué contenido es útil. No usamos cookies publicitarias.",
+    "body": "Usamos cookies propias necesarias para que el sitio funcione y, solo si lo aceptas, analítica agregada y las cookies de HubSpot que asocian tu consulta con el contenido que leíste. No usamos cookies publicitarias.",
     "accept": "Aceptar todas",
     "reject": "Solo las necesarias",
     "more": "Ver política de cookies",

@@ -40,6 +40,30 @@ verify every sitemap URL resolves to a file.
 | Solutions section | `showSolutions` in `src/config/site.ts` — `false` hides nav/footer links, drops the pages from the sitemap, and marks them `noindex`. Flip to `true` to publish. |
 | Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
+| `NEXT_PUBLIC_HUBSPOT_PORTAL_ID` | env — loads the HubSpot tracking script (only after cookie consent), which sets the `hubspotutk` cookie that attributes form submissions |
+| `hubspot_portal_id`, `hubspot_form_contact`, `hubspot_form_diagnostic` | `api/config.php` — leads stop reaching the CRM while empty; email still works |
+| `hubspot_token` (Private App, **not** an API key — those are deprecated) | `api/config.php` — optional, adds the diagnosis as a note on the contact |
+
+## HubSpot
+
+The site keeps its own forms and posts them server-side to HubSpot, so the
+design and the bilingual consent copy stay ours while HubSpot still gets a
+real form submission with full attribution.
+
+Before it works, in HubSpot:
+
+1. **Create two forms** (Marketing → Forms) — Contact and Self-diagnosis —
+   and copy each GUID into `api/config.php`. The fields only need to exist;
+   the forms are never embedded.
+2. **Create the custom contact properties** the diagnostic writes:
+   `novieri_diagnostic_score` (number), `novieri_diagnostic_level`,
+   `novieri_diagnostic_headline`, `novieri_diag_q1` … `novieri_diag_q10`, and
+   `novieri_service_interest` for the contact form. Unknown property names are
+   rejected by the submission, so create them first.
+3. Optionally create a **Private App** token for the timeline note.
+
+`hs_language` is set from the locale on every contact, so the ES and EN
+audiences can be segmented and nurtured separately from day one.
 
 ## Legal pages — have a lawyer review before launch
 
@@ -112,6 +136,12 @@ Dependency-free PHP (works on GoDaddy shared hosting, PHP ≥ 8.0):
   with the PDF attached to the sales mailbox and to the visitor, and returns
   the report plus the PDF as base64 in one response — nothing is written to
   disk. Honeypot + per-IP rate limit (6/hour).
+- `hubspot.php` — lead delivery to HubSpot via the **Forms Submission API**
+  (not the CRM API: only a form submission counts as a conversion, enrols
+  form-submission workflows and lands on the timeline). Needs no token — the
+  portal id and form GUID identify it. Every failure is logged and swallowed,
+  so a HubSpot outage never costs a lead or breaks a submission. The optional
+  private-app token adds the diagnosis as a note on the contact.
 - `config.sample.php` — template for the server-managed `config.php`.
 
 Local test: `php -S localhost:8223 -t server/api` (copy `messages/*.json` to

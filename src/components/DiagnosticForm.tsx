@@ -4,6 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { site } from "@/config/site";
+import { trackingContext } from "@/lib/hubspot";
 
 type Option = { v: string; w: number };
 type Question = { id: string; q: string; options: Option[] };
@@ -94,6 +95,8 @@ export default function DiagnosticForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           locale,
+          ...trackingContext(),
+          consentText: t("gate.consent"),
           contact: {
             name: data.name,
             email: data.email,

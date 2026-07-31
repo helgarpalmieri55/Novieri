@@ -6,6 +6,7 @@
  */
 
 require __DIR__ . '/common.php';
+require __DIR__ . '/hubspot.php';
 require __DIR__ . '/lib/Exception.php';
 require __DIR__ . '/lib/PHPMailer.php';
 require __DIR__ . '/lib/SMTP.php';
@@ -36,6 +37,9 @@ if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL
 if (strlen($name) > 200 || strlen($email) > 320 || strlen($company) > 200 || strlen($message) > 5000) {
     send_json(400, ['error' => 'too_long']);
 }
+
+// The CRM copy goes first: a mail outage must never cost us the lead.
+hubspot_lead($config, $body, $name, $email, $company, $service, $message, $locale);
 
 if (empty($config['smtp_pass']) || empty($config['smtp_user'])) {
     error_log('contact: SMTP credentials not configured');
@@ -74,4 +78,25 @@ try {
 } catch (Throwable $e) {
     error_log('contact: send failed — ' . $e->getMessage());
     send_json(502, ['error' => 'send_failed']);
+}
+
+function hubspot_lead(array $config, array $body, string $name, string $email, string $company, string $service, string $message, string $locale): void
+{
+    $parts = preg_split('/\s+/', trim($name), 2);
+    hubspot_submit_form($config, 'hubspot_form_contact', [
+        'email' => $email,
+        'firstname' => $parts[0] ?? $name,
+        'lastname' => $parts[1] ?? '',
+        'company' => $company,
+        'message' => $message,
+        'hs_language' => $locale,
+        'novieri_service_interest' => $service,
+    ], [
+        'hutk' => (string) ($body['hutk'] ?? ''),
+        'pageUri' => (string) ($body['pageUri'] ?? ''),
+        'pageName' => (string) ($body['pageName'] ?? ''),
+        'ipAddress' => client_ip(),
+    ], [
+        'text' => (string) ($body['consentText'] ?? ''),
+    ]);
 }

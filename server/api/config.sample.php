@@ -26,6 +26,19 @@ return [
     'mail_to'   => 'sales@novieri.com',
     'mail_from' => 'sales@novieri.com',
 
+    // HubSpot. The Forms API needs no token — the portal id and the form
+    // GUIDs identify the submission. Create both forms in HubSpot first
+    // (Marketing > Forms) and paste their GUIDs here.
+    'hubspot_portal_id'    => '',
+    'hubspot_form_contact' => '',
+    'hubspot_form_diagnostic' => '',
+
+    // Private App access token (Settings > Integrations > Private Apps).
+    // API keys were deprecated by HubSpot and no longer work. Only needed
+    // for writing the diagnosis as a note on the contact timeline; leave
+    // empty and everything else still works.
+    'hubspot_token' => '',
+
     // Origins allowed to call these endpoints from another host. Same-origin
     // calls (the site on this server) never need an entry. Add the GitHub
     // Pages preview origin here if you want its form/chatbot to work:
