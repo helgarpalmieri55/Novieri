@@ -219,6 +219,50 @@
   }
 }
 
+/*
+ * Print. The diagnostic's "Save as PDF" is the browser's own print dialog:
+ * the report is already on screen, so printing it beats generating a second
+ * copy server-side — and the file comes out in the real typefaces.
+ *
+ * Everything that isn't the report is dropped: the header, the footer, the
+ * chat widget, the cookie banner, and the report's own buttons.
+ */
+@media print {
+  header,
+  footer,
+  .sylvi,
+  .cookie-banner {
+    display: none !important;
+  }
+  html,
+  body {
+    background: #fff;
+  }
+  [data-diagnostic] .card-hairline {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  [data-diagnostic] {
+    font-size: 11pt;
+  }
+  /* A priority split across a page break is unreadable. */
+  [data-priorities] li,
+  [data-diagnostic] h2,
+  [data-diagnostic] h3 {
+    break-inside: avoid;
+  }
+  [data-diagnostic] h2,
+  [data-diagnostic] h3 {
+    break-after: avoid;
+  }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #6f6880;
+  }
+}
+
 /* HubSpot wraps dropped modules in its own grid; keep it out of the layout. */
 .dnd-section,
 .dnd-section > .row-fluid,

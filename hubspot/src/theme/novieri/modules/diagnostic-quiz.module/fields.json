@@ -1,0 +1,287 @@
+[
+  {
+    "name": "endpoint",
+    "label": "Function endpoint",
+    "type": "text",
+    "default": "/hs/serverless/api/novieri_diagnose",
+    "help_text": "Public URL of the diagnostic serverless function."
+  },
+  {
+    "name": "questions",
+    "label": "Questions",
+    "type": "group",
+    "help_text": "Ten is the number the page promises. Each option carries a weight from 0 to 3 — the score is their sum over the maximum.",
+    "occurrence": {
+      "min": 3,
+      "max": 15,
+      "default": 10
+    },
+    "children": [
+      {
+        "name": "question_text",
+        "label": "Question",
+        "type": "text",
+        "default": "How many people use technology in your company?"
+      },
+      {
+        "name": "options",
+        "label": "Options",
+        "type": "group",
+        "occurrence": {
+          "min": 2,
+          "max": 6,
+          "default": 4
+        },
+        "children": [
+          {
+            "name": "option_text",
+            "label": "Option",
+            "type": "text",
+            "default": "Fewer than 10"
+          },
+          {
+            "name": "option_weight",
+            "label": "Weight",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "default": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "progress_label",
+    "label": "Progress label",
+    "type": "text",
+    "default": "Question {n} of {total}",
+    "help_text": "{n} and {total} are replaced as the visitor moves through."
+  },
+  {
+    "name": "back_label",
+    "label": "Back button",
+    "type": "text",
+    "default": "Back"
+  },
+  {
+    "name": "next_label",
+    "label": "Next button",
+    "type": "text",
+    "default": "Next"
+  },
+  {
+    "name": "finish_label",
+    "label": "Last question's button",
+    "type": "text",
+    "default": "See my diagnostic"
+  },
+  {
+    "name": "levels",
+    "label": "Levels",
+    "type": "group",
+    "help_text": "Four bands, lowest first: under 30, 30-54, 55-79, 80 and up.",
+    "occurrence": {
+      "min": 4,
+      "max": 4,
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "level_name",
+        "label": "Name",
+        "type": "text",
+        "default": "Initial"
+      }
+    ]
+  },
+  {
+    "name": "preview_title",
+    "label": "Score card eyebrow",
+    "type": "text",
+    "default": "Your preliminary level"
+  },
+  {
+    "name": "preview_body",
+    "label": "Score card body",
+    "type": "text",
+    "default": "This is the quick calculation from your answers. The full report analyses each point and prioritises what to do first.",
+    "allow_new_line": true
+  },
+  {
+    "name": "gate_title",
+    "label": "Gate heading",
+    "type": "text",
+    "default": "Where should we send the report?"
+  },
+  {
+    "name": "gate_body",
+    "label": "Gate body",
+    "type": "text",
+    "default": "We generate your diagnostic with AI from your answers. We use your details only to send you the report and, if you ask, to discuss your case.",
+    "allow_new_line": true
+  },
+  {
+    "name": "gate_name",
+    "label": "Name field label",
+    "type": "text",
+    "default": "Name"
+  },
+  {
+    "name": "gate_company",
+    "label": "Company field label",
+    "type": "text",
+    "default": "Company"
+  },
+  {
+    "name": "gate_email",
+    "label": "Email field label",
+    "type": "text",
+    "default": "Work email"
+  },
+  {
+    "name": "gate_phone",
+    "label": "Phone field label",
+    "type": "text",
+    "default": "Phone (optional)"
+  },
+  {
+    "name": "gate_consent",
+    "label": "Consent text",
+    "type": "text",
+    "default": "I authorise the processing of my data under the privacy policy.",
+    "allow_new_line": true
+  },
+  {
+    "name": "gate_privacy",
+    "label": "Privacy link label",
+    "type": "text",
+    "default": "Read the privacy policy"
+  },
+  {
+    "name": "gate_privacy_link",
+    "label": "Privacy link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/legal/privacy"
+      }
+    }
+  },
+  {
+    "name": "gate_submit",
+    "label": "Submit button",
+    "type": "text",
+    "default": "Generate my diagnostic"
+  },
+  {
+    "name": "gate_sending",
+    "label": "Submit button while working",
+    "type": "text",
+    "default": "Analysing your answers…"
+  },
+  {
+    "name": "result_title",
+    "label": "Report eyebrow",
+    "type": "text",
+    "default": "Your diagnostic is ready"
+  },
+  {
+    "name": "result_strengths",
+    "label": "Strengths heading",
+    "type": "text",
+    "default": "What you already have"
+  },
+  {
+    "name": "result_risks",
+    "label": "Risks heading",
+    "type": "text",
+    "default": "Risks we see"
+  },
+  {
+    "name": "result_priorities",
+    "label": "Priorities heading",
+    "type": "text",
+    "default": "What we'd do first"
+  },
+  {
+    "name": "result_print",
+    "label": "Print button",
+    "type": "text",
+    "default": "Save as PDF"
+  },
+  {
+    "name": "result_cta",
+    "label": "Report call to action",
+    "type": "text",
+    "default": "Book a 30-minute call"
+  },
+  {
+    "name": "result_cta_link",
+    "label": "Report call-to-action link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/contact"
+      }
+    }
+  },
+  {
+    "name": "result_emailed",
+    "label": "Emailed note",
+    "type": "text",
+    "default": "We've emailed you a copy too."
+  },
+  {
+    "name": "result_again",
+    "label": "Start over link",
+    "type": "text",
+    "default": "Start over"
+  },
+  {
+    "name": "error_required",
+    "label": "Error — no option picked",
+    "type": "text",
+    "default": "Pick an option to continue."
+  },
+  {
+    "name": "error_name",
+    "label": "Error — name",
+    "type": "text",
+    "default": "Enter your name."
+  },
+  {
+    "name": "error_email",
+    "label": "Error — email",
+    "type": "text",
+    "default": "Enter a valid email."
+  },
+  {
+    "name": "error_company",
+    "label": "Error — company",
+    "type": "text",
+    "default": "Enter your company name."
+  },
+  {
+    "name": "error_consent",
+    "label": "Error — consent",
+    "type": "text",
+    "default": "We need your authorisation to send you the report."
+  },
+  {
+    "name": "error_failed",
+    "label": "Error — could not generate",
+    "type": "text",
+    "default": "We couldn't generate the report right now. Write to sales@novieri.com and we'll send it over.",
+    "allow_new_line": true
+  },
+  {
+    "name": "no_script",
+    "label": "Message when JavaScript is off",
+    "type": "text",
+    "default": "The diagnostic needs JavaScript. Write to sales@novieri.com and we'll go through it with you.",
+    "allow_new_line": true
+  }
+]

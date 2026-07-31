@@ -139,9 +139,35 @@ hubspot/
 └── src/
     ├── app/                   # private app + serverless endpoints
     │   ├── app-hsmeta.json
-    │   └── functions/         # chat.js (Sylvi), lib/guard.js, lib/company-profile.json
+    │   └── functions/         # chat.js (Sylvi), diagnose.js, lib/
     └── theme/novieri/         # templates, modules, css, js, fonts, images
 ```
+
+### Templates and modules
+
+Six templates, all extending `partials/base.hubl.html`:
+
+| Template | Used for | Editing |
+| --- | --- | --- |
+| `home` | the home page | drag-and-drop |
+| `service` | the four pillars, the service index, every solution page | drag-and-drop |
+| `about` | about | drag-and-drop |
+| `page` | anything else — starts with a rich-text block | drag-and-drop |
+| `contact` | contact | fixed layout, fields editable |
+| `legal` | privacy, cookies, terms | fixed layout, fields editable |
+| `diagnostic` | the self-diagnosis | fixed layout, fields editable |
+
+The drag-and-drop templates ship with a sensible section order; a page can drop
+a section it does not need or add another from the module list. Contact, legal
+and diagnostic are fixed because their arrangement *is* the design — everything
+in them is still edited from the sidebar.
+
+`npm run check:hubspot` enforces the rules HubSpot only reports one at a time,
+three minutes into an upload: reserved field names (`label`, `name`, `body`),
+names reused anywhere in a module (they are module-wide, not per group), the
+`module.hubl.*` file names, `module.x` references with no matching field,
+template paths pointing at modules that do not exist, and a `@source` glob that
+no longer covers the markup. It runs first inside `npm run build:hubspot`.
 
 Two files are **generated — never edit them by hand**, and the deploy fails if
 they are stale:
@@ -159,18 +185,34 @@ Rebuild both with `npm run build:hubspot`.
 
 1. **Secrets** (`hs secrets add NAME`, then paste the value — they never touch
    the repo): `ANTHROPIC_API_KEY`, and optionally `CHAT_SECRET`,
-   `CONTACT_EMAIL`, `CHAT_DAILY_PER_IP`, `CHAT_DAILY_TOTAL`, `RECAPTCHA_SECRET`.
-2. **HubDB table** for the chat rate limits — serverless invocations share no
+   `CONTACT_EMAIL`, `CHAT_DAILY_PER_IP`, `CHAT_DAILY_TOTAL`,
+   `DIAGNOSE_DAILY_TOTAL`, `RECAPTCHA_SECRET`, `HUBSPOT_PORTAL_ID`,
+   `HUBSPOT_FORM_DIAGNOSTIC`. The last two are how the diagnostic delivers its
+   lead; without them the report still reaches the visitor, it just does not
+   reach the CRM.
+2. **HubDB table** for the rate limits — serverless invocations share no
    filesystem, so the counters live in HubDB. Create a table named
    `novieri_rate_limits` with two text columns, `bucket` and `hits`, publish
    it, and add its id as the secret `RATE_LIMIT_TABLE_ID`. Until it exists the
-   limiter is inert and Sylvi is protected only by the origin check.
-3. **Menus** (Content → Navigation): one per language. The header and footer
+   limiter is inert and the endpoints are protected only by the origin check.
+3. **Forms**: a contact form (dropped straight onto the contact template) and a
+   diagnostic form whose GUID becomes `HUBSPOT_FORM_DIAGNOSTIC`. Give the
+   diagnostic form the contact properties the function writes:
+   `novieri_diagnostic_score`, `novieri_diagnostic_level`,
+   `novieri_diagnostic_headline`, and `novieri_diag_q1` … `novieri_diag_q10`.
+   Every answer as its own property is what keeps the CRM segmentable — "leads
+   over 50 people whose backups have never been restored" is then a list.
+4. **Workflows**: the diagnostic promises the visitor a copy by email. That is
+   a workflow on the diagnostic form submission, so the copy can be edited
+   without a deploy. Notification to sales belongs on the same trigger.
+5. **Menus** (Content → Navigation): one per language. The header and footer
    read them, which is what makes links editable without a deploy.
-4. **Pages**: create each page from the theme's templates, then add the English
-   variant from the same page's language menu.
-5. **Domain**: connect `novieri.com` last, once the pages look right on the
-   `*.hs-sites.com` preview. The chat endpoint already allows that preview host.
+6. **Pages**: create each page from the theme's templates, then add the English
+   variant from the same page's language menu. The home page must be set as the
+   domain's home page in Settings → Website → Domains, or `/` keeps answering
+   with HubSpot's 404 even once the page exists.
+7. **Domain**: connect `novieri.com` last, once the pages look right on the
+   `*.hs-sites.com` preview. Both endpoints already allow that preview host.
 
 ### Deploying
 

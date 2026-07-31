@@ -1,0 +1,20 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Novieri — diagnostic
+-->
+{# The quiz owns the whole page below the hero: it swaps between three stages
+   in place, so there is nothing for an editor to rearrange around it. #}
+{% extends "./partials/base.hubl.html" %}
+{% block body %}
+  {% module "page_hero" path="../modules/page-hero",
+     eyebrow="diagnostic",
+     title="A technology diagnostic in 3 minutes.",
+     intro="Ten questions about how your operation runs today: administration, security, compliance and automation. At the end you get a report with your level, the risks we see, and what we would do first — written for your case, not a template." %}
+
+  <section class="pb-[clamp(5rem,13vh,8rem)] pt-[clamp(2rem,5vh,3rem)]">
+    <div class="container-site max-w-[64rem]">
+      {% module "diagnostic_quiz" path="../modules/diagnostic-quiz" %}
+    </div>
+  </section>
+{% endblock body %}

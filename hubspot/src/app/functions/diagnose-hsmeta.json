@@ -1,0 +1,16 @@
+{
+  "uid": "novieri_diagnose",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/diagnose.js",
+    "secretKeys": [
+      "ANTHROPIC_API_KEY"
+    ],
+    "endpoint": {
+      "path": "diagnose",
+      "methods": [
+        "POST"
+      ]
+    }
+  }
+}
