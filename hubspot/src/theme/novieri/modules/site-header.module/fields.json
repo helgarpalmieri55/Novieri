@@ -19,6 +19,14 @@
     "default": "novieri"
   },
   {
+    "id": "home_url",
+    "name": "home_url",
+    "label": "Logo links to",
+    "help_text": "The language root: / for English, /es for Spanish.",
+    "type": "text",
+    "default": "/"
+  },
+  {
     "id": "menu",
     "name": "menu",
     "label": "Navigation menu",

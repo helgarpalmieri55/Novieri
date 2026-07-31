@@ -8,7 +8,7 @@
     ],
     "endpoint": {
       "path": "chat",
-      "method": [
+      "methods": [
         "POST"
       ]
     }
