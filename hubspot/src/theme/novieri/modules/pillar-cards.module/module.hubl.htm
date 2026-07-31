@@ -7,12 +7,12 @@
     </div>
     <div class="grid grid-cols-1 gap-4.5 sm:grid-cols-2 xl:grid-cols-4">
       {% for card in module.cards %}
-        <a href="{{ card.link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7" style="--rd: {{ loop.index0 * 70 }}ms">
-          <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.colour }}">··</span>
-          <h3>{{ card.name }}</h3>
-          <p class="grow text-small text-ink-muted">{{ card.tagline }}</p>
+        <a href="{{ card.card_link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7" style="--rd: {{ loop.index0 * 70 }}ms">
+          <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.card_colour }}">··</span>
+          <h3>{{ card.card_name }}</h3>
+          <p class="grow text-small text-ink-muted">{{ card.card_tagline }}</p>
           <span class="flex flex-wrap gap-1.5">
-            {% for tag in card.tags|split(",") %}
+            {% for tag in card.card_tags|split(",") %}
               <span class="tag-mono">{{ tag|trim }}</span>
             {% endfor %}
           </span>

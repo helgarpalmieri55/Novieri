@@ -1,6 +1,5 @@
 [
   {
-    "id": "logo",
     "name": "logo",
     "label": "Logo mark",
     "type": "image",
@@ -12,14 +11,13 @@
     }
   },
   {
-    "id": "description",
     "name": "description",
     "label": "Description",
-    "type": "textarea",
-    "default": "AI-first IT solutions from Barranquilla, for Colombia and the United States."
+    "type": "text",
+    "default": "AI-first IT solutions from Barranquilla, for Colombia and the United States.",
+    "allow_new_line": true
   },
   {
-    "id": "columns",
     "name": "columns",
     "label": "Link columns",
     "type": "group",
@@ -30,66 +28,50 @@
     },
     "children": [
       {
-        "id": "title",
-        "name": "title",
+        "name": "column_title",
         "label": "Title",
         "type": "text",
         "default": "services"
       },
       {
-        "id": "menu",
-        "name": "menu",
+        "name": "column_menu",
         "label": "Menu",
         "type": "menu"
       }
     ]
   },
   {
-    "id": "contact",
-    "name": "contact",
-    "label": "Contact",
-    "type": "group",
-    "children": [
-      {
-        "id": "title",
-        "name": "title",
-        "label": "Title",
-        "type": "text",
-        "default": "contact"
-      },
-      {
-        "id": "email",
-        "name": "email",
-        "label": "Email",
-        "type": "text",
-        "default": "sales@novieri.com"
-      },
-      {
-        "id": "location",
-        "name": "location",
-        "label": "Location",
-        "type": "text",
-        "default": "Barranquilla, Colombia"
-      },
-      {
-        "id": "linkedin",
-        "name": "linkedin",
-        "label": "LinkedIn URL",
-        "type": "text",
-        "default": ""
-      }
-    ]
+    "name": "contact_title",
+    "label": "Contact column title",
+    "type": "text",
+    "default": "contact"
   },
   {
-    "id": "legal_line",
+    "name": "contact_email",
+    "label": "Email",
+    "type": "text",
+    "default": "sales@novieri.com"
+  },
+  {
+    "name": "contact_location",
+    "label": "Location",
+    "type": "text",
+    "default": "Barranquilla, Colombia"
+  },
+  {
+    "name": "contact_linkedin",
+    "label": "LinkedIn URL",
+    "type": "text",
+    "default": ""
+  },
+  {
     "name": "legal_line",
     "label": "Legal line",
-    "help_text": "Shown at the bottom. Add the razón social and NIT before launch.",
     "type": "text",
-    "default": "© 2026 Novieri"
+    "default": "© 2026 Novieri",
+    "help_text": "Add the razón social and NIT before launch."
   },
   {
-    "id": "cookie_settings",
     "name": "cookie_settings",
     "label": "Cookie settings link",
     "type": "text",

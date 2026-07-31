@@ -1,6 +1,5 @@
 [
   {
-    "id": "logo",
     "name": "logo",
     "label": "Logo mark",
     "type": "image",
@@ -12,96 +11,69 @@
     }
   },
   {
-    "id": "wordmark",
     "name": "wordmark",
     "label": "Wordmark",
     "type": "text",
     "default": "novieri"
   },
   {
-    "id": "home_url",
     "name": "home_url",
     "label": "Logo links to",
-    "help_text": "The language root: / for English, /es for Spanish.",
     "type": "text",
-    "default": "/"
+    "default": "/",
+    "help_text": "The language root: / for English, /es for Spanish."
   },
   {
-    "id": "menu",
     "name": "menu",
     "label": "Navigation menu",
-    "help_text": "Edit the items in Settings > Content > Navigation. Each language has its own menu — the English one is the primary.",
-    "type": "menu"
+    "type": "menu",
+    "help_text": "Edit the items in Settings > Content > Navigation. Each language has its own menu."
   },
   {
-    "id": "cta",
-    "name": "cta",
-    "label": "Header button",
-    "type": "group",
-    "children": [
-      {
-        "id": "label",
-        "name": "label",
-        "label": "Label",
-        "type": "text",
-        "default": "Book a call"
-      },
-      {
-        "id": "link",
-        "name": "link",
-        "label": "Link",
-        "type": "link",
-        "default": {
-          "url": {
-            "type": "CONTENT",
-            "href": "/contact"
-          },
-          "open_in_new_tab": false
-        }
-      }
-    ]
+    "name": "cta_text",
+    "label": "Header button label",
+    "type": "text",
+    "default": "Book a call"
   },
   {
-    "id": "labels",
-    "name": "labels",
-    "label": "Accessibility labels",
-    "type": "group",
-    "children": [
-      {
-        "id": "skip",
-        "name": "skip",
-        "label": "Skip to content",
-        "type": "text",
-        "default": "Skip to content"
-      },
-      {
-        "id": "home",
-        "name": "home",
-        "label": "Home link",
-        "type": "text",
-        "default": "Novieri — home"
-      },
-      {
-        "id": "open_menu",
-        "name": "open_menu",
-        "label": "Open menu",
-        "type": "text",
-        "default": "Open menu"
-      },
-      {
-        "id": "close_menu",
-        "name": "close_menu",
-        "label": "Close menu",
-        "type": "text",
-        "default": "Close menu"
-      },
-      {
-        "id": "language",
-        "name": "language",
-        "label": "Language switcher",
-        "type": "text",
-        "default": "Language"
+    "name": "cta_link",
+    "label": "Header button link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/contact"
       }
-    ]
+    }
+  },
+  {
+    "name": "label_skip",
+    "label": "Skip to content",
+    "type": "text",
+    "default": "Skip to content"
+  },
+  {
+    "name": "label_home",
+    "label": "Home link (screen readers)",
+    "type": "text",
+    "default": "Novieri — home"
+  },
+  {
+    "name": "label_open_menu",
+    "label": "Open menu",
+    "type": "text",
+    "default": "Open menu"
+  },
+  {
+    "name": "label_close_menu",
+    "label": "Close menu",
+    "type": "text",
+    "default": "Close menu"
+  },
+  {
+    "name": "label_language",
+    "label": "Language switcher",
+    "type": "text",
+    "default": "Language"
   }
 ]

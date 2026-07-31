@@ -1,73 +1,66 @@
 [
   {
-    "id": "name",
-    "name": "name",
+    "name": "assistant_name",
     "label": "Assistant name",
     "type": "text",
     "default": "Sylvi"
   },
   {
-    "id": "title",
     "name": "title",
     "label": "Panel title",
     "type": "text",
     "default": "Sylvi · Novieri assistant"
   },
   {
-    "id": "greeting",
     "name": "greeting",
     "label": "Greeting",
-    "type": "textarea",
-    "default": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, solutions or how we work."
+    "type": "text",
+    "default": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, solutions or how we work.",
+    "allow_new_line": true
   },
   {
-    "id": "placeholder",
     "name": "placeholder",
     "label": "Input placeholder",
     "type": "text",
     "default": "Type your question…"
   },
   {
-    "id": "open_label",
     "name": "open_label",
     "label": "Open button label (screen readers)",
     "type": "text",
     "default": "Open the chat with Sylvi"
   },
   {
-    "id": "close_label",
     "name": "close_label",
     "label": "Close button label (screen readers)",
     "type": "text",
     "default": "Close the chat"
   },
   {
-    "id": "send_label",
     "name": "send_label",
     "label": "Send button label (screen readers)",
     "type": "text",
     "default": "Send"
   },
   {
-    "id": "error_text",
     "name": "error_text",
     "label": "Error message",
-    "type": "textarea",
-    "default": "I couldn't answer right now. Try again, or write to us from the contact page."
+    "type": "text",
+    "default": "I couldn't answer right now. Try again, or write to us from the contact page.",
+    "allow_new_line": true
   },
   {
-    "id": "limit_text",
     "name": "limit_text",
     "label": "Rate-limit message",
-    "type": "textarea",
-    "default": "You've reached the message limit for now. Write to us from the contact page and a person will reply."
+    "type": "text",
+    "default": "You've reached the message limit for now. Write to us from the contact page and a person will reply.",
+    "allow_new_line": true
   },
   {
-    "id": "endpoint",
     "name": "endpoint",
     "label": "Function endpoint",
-    "help_text": "Public URL of the chat serverless function. Change only if HubSpot reports a different path after deploying the project.",
     "type": "text",
-    "default": "/hs/serverless/api/novieri_chat"
+    "default": "/hs/serverless/api/novieri_chat",
+    "help_text": "Public URL of the chat serverless function."
   }
 ]

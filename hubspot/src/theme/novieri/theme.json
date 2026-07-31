@@ -1,5 +1,5 @@
 {
   "label": "Novieri",
-  "preview_path": "./templates/home.html",
+  "preview_path": "./templates/home.hubl.html",
   "enable_domain_stylesheets": false
 }

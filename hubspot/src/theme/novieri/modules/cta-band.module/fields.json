@@ -1,50 +1,38 @@
 [
   {
-    "id": "eyebrow",
     "name": "eyebrow",
     "label": "Eyebrow",
     "type": "text",
     "default": "next step"
   },
   {
-    "id": "title",
     "name": "title",
     "label": "Title",
     "type": "text",
     "default": "Your company already needs a technology team. It doesn't need to hire one."
   },
   {
-    "id": "subtitle",
     "name": "subtitle",
     "label": "Subtitle",
-    "type": "textarea",
-    "default": "Tell us about your case in a 30-minute call, no strings attached."
+    "type": "text",
+    "default": "Tell us about your case in a 30-minute call, no strings attached.",
+    "allow_new_line": true
   },
   {
-    "id": "button",
-    "name": "button",
-    "label": "Button",
-    "type": "group",
-    "children": [
-      {
-        "id": "label",
-        "name": "label",
-        "label": "Label",
-        "type": "text",
-        "default": "Book a call"
-      },
-      {
-        "id": "link",
-        "name": "link",
-        "label": "Link",
-        "type": "link",
-        "default": {
-          "url": {
-            "type": "CONTENT",
-            "href": "/contact"
-          }
-        }
+    "name": "button_text",
+    "label": "Button label",
+    "type": "text",
+    "default": "Book a call"
+  },
+  {
+    "name": "button_link",
+    "label": "Button link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/contact"
       }
-    ]
+    }
   }
 ]
