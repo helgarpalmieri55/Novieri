@@ -50,6 +50,15 @@ jobs:
         run: npm install -g "@hubspot/cli@${DEFAULT_CLI_VERSION}"
       - name: Validate and upload the project
         working-directory: hubspot
+        env:
+          # --use-env reads these two names, not the DEFAULT_* ones. Without
+          # them the CLI looks for a config file that does not exist on a
+          # runner: "An error occurred while reading your HubSpot config file:
+          # No config file found." The action set exactly these before calling
+          # the same commands.
+          HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+          HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+          HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
         run: |
           hs project validate --use-env
           hs project upload --use-env --message "GitHub Actions ${GITHUB_SHA:0:7}"
