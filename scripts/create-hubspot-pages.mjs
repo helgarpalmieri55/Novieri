@@ -27,6 +27,7 @@ const dryRun = args.includes("--dry-run");
 const only = (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
 const verify = (args.find((a) => a.startsWith("--verify=")) || "").split("=")[1];
 const dump = args.find((a) => a.startsWith("--dump="))?.slice("--dump=".length);
+const publish = (args.find((a) => a.startsWith("--publish=")) || "").split("=")[1];
 
 /**
  * Slugs come from src/i18n/pathnames.json, so they match what the React site
@@ -156,10 +157,38 @@ if (dump !== undefined) {
 }
 
 /**
- * Reports what a created page actually contains. A page can be created
- * successfully and still be empty: the API accepts a drag-and-drop template
- * without necessarily materialising its modules, and "201 Created" says
- * nothing about that. This looks.
+ * Publishes a page. `all` publishes every page this script manages.
+ *
+ * Deliberately separate from creation: a page going live deserves its own
+ * decision, and the point of creating drafts is to look before that happens.
+ */
+if (publish) {
+  const targets = publish === "all" ? PAGES.map((p) => p.slug) : [publish];
+  for (const slug of targets) {
+    const found = await findPage(slug);
+    if (!found) {
+      console.error(`skip    ${slug} — no such page`);
+      continue;
+    }
+    await api(`/cms/v3/pages/site-pages/${found.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ publishDate: new Date().toISOString(), state: "PUBLISHED" }),
+    });
+    console.log(`publish ${slug || "(home)"} — id ${found.id}`);
+  }
+  process.exit(0);
+}
+
+/**
+ * Reports a page's stored content.
+ *
+ * Read this carefully before trusting it: an untouched drag-and-drop page has
+ * EMPTY layoutSections and still renders every module in its template, because
+ * HubSpot only stores layoutSections once somebody edits the area in the page
+ * editor. The home page proves it — ten modules on screen, `{}` from the API.
+ *
+ * So zero sections here is normal, not a failure. The only honest check that a
+ * page has content is fetching its published URL.
  */
 if (verify) {
   const q = new URLSearchParams({ limit: "100" });
@@ -192,8 +221,9 @@ if (verify) {
   console.log(`widgets   ${Object.keys(full.widgets || {}).length}`);
   console.log(`modules   ${names.length}${names.length ? " — " + names.join(", ") : ""}`);
   if (!names.length && !Object.keys(full.widgets || {}).length) {
-    console.log("\nEMPTY — the template's modules did not come through. The page needs");
-    console.log("layoutSections supplied explicitly, or to be created in the editor.");
+    console.log("\nNo stored content — which is what an unedited drag-and-drop page");
+    console.log("looks like. It still renders the template's modules. Confirm by");
+    console.log("publishing it and fetching the URL; do not conclude anything here.");
   }
   process.exit(0);
 }

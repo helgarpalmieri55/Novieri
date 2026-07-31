@@ -20,6 +20,7 @@ on:
           - one-page-test
           - verify
           - dump
+          - publish
           - create-all
       slug:
         description: "Slug to verify (verify mode only)"
@@ -50,5 +51,7 @@ jobs:
             verify)        node scripts/create-hubspot-pages.mjs --verify='${{ inputs.slug }}' ;;
             # Read the drag-and-drop shape off a page HubSpot itself built.
             dump)          node scripts/create-hubspot-pages.mjs --dump='${{ inputs.slug }}' ;;
+            # 'all' publishes every page in the list; a slug publishes one.
+            publish)       node scripts/create-hubspot-pages.mjs --publish='${{ inputs.slug }}' ;;
             create-all)    node scripts/create-hubspot-pages.mjs ;;
           esac
