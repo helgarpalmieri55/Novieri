@@ -44,3 +44,5 @@ server/api/data/
 
 # HubSpot serverless deps are installed by the platform at build time
 hubspot/src/app/functions/node_modules/
+
+upload.log
