@@ -40,9 +40,7 @@ verify every sitemap URL resolves to a file.
 | Solutions section | `showSolutions` in `src/config/site.ts` — `false` hides nav/footer links, drops the pages from the sitemap, and marks them `noindex`. Flip to `true` to publish. |
 | Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
-| `NEXT_PUBLIC_HUBSPOT_PORTAL_ID` | env — loads the HubSpot tracking script (only after cookie consent), which sets the `hubspotutk` cookie that attributes form submissions |
-| `hubspot_portal_id`, `hubspot_form_contact`, `hubspot_form_diagnostic` | `api/config.php` — leads stop reaching the CRM while empty; email still works |
-| `hubspot_token` (Private App, **not** an API key — those are deprecated) | `api/config.php` — optional, adds the diagnosis as a note on the contact |
+| `hubspot_token` (Private App, **not** an API key — those are deprecated) | `api/config.php` on the server — optional, adds the diagnosis as a note on the contact |
 
 ## HubSpot
 
@@ -50,17 +48,31 @@ The site keeps its own forms and posts them server-side to HubSpot, so the
 design and the bilingual consent copy stay ours while HubSpot still gets a
 real form submission with full attribution.
 
-Before it works, in HubSpot:
+Portal **45528787** (region na1) and both form GUIDs are already in
+`src/config/site.ts` and `server/api/config.sample.php` — they are public
+values, the kind that appear in any embed code. Only the Private App token is
+secret, and it goes into `api/config.php` on the server.
 
-1. **Create two forms** (Marketing → Forms) — Contact and Self-diagnosis —
-   and copy each GUID into `api/config.php`. The fields only need to exist;
-   the forms are never embedded.
-2. **Create the custom contact properties** the diagnostic writes:
+**Which form is which:** `hubspot_form_contact` is assumed to be
+`21f27f61-…` and `hubspot_form_diagnostic` `42957848-…`. If a diagnostic
+submission is rejected for unknown fields while the contact form works, they
+are reversed — swap the two lines in `config.php`.
+
+Still to do in HubSpot:
+
+1. **Create the custom contact properties** the diagnostic writes:
    `novieri_diagnostic_score` (number), `novieri_diagnostic_level`,
    `novieri_diagnostic_headline`, `novieri_diag_q1` … `novieri_diag_q10`, and
    `novieri_service_interest` for the contact form. Unknown property names are
    rejected by the submission, so create them first.
+2. **Add every field to its form**, and enable *Data privacy and consent* on
+   both (Options tab) so the consent text we send is stored. HubSpot rejects a
+   submission carrying a field that isn't on the form.
 3. Optionally create a **Private App** token for the timeline note.
+
+**Nothing reaches HubSpot from GitHub Pages** — form submissions go through the
+PHP backend, which only exists on GoDaddy. The tracking script *does* run on
+Pages, so page views and the `hubspotutk` cookie start accumulating now.
 
 `hs_language` is set from the locale on every contact, so the ES and EN
 audiences can be segmented and nurtured separately from day one.

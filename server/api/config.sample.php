@@ -26,12 +26,15 @@ return [
     'mail_to'   => 'sales@novieri.com',
     'mail_from' => 'sales@novieri.com',
 
-    // HubSpot. The Forms API needs no token — the portal id and the form
-    // GUIDs identify the submission. Create both forms in HubSpot first
-    // (Marketing > Forms) and paste their GUIDs here.
-    'hubspot_portal_id'    => '',
-    'hubspot_form_contact' => '',
-    'hubspot_form_diagnostic' => '',
+    // HubSpot (account region na1, which api.hsforms.com serves; an eu1
+    // account would need api-eu1.hsforms.com in hubspot.php). The Forms API
+    // needs no token — the portal id and form GUID identify the submission.
+    'hubspot_portal_id' => '45528787',
+
+    // If a diagnostic submission is rejected for unknown fields while the
+    // contact form works, these two are the wrong way round — swap them.
+    'hubspot_form_contact'    => '21f27f61-c4bf-4076-8bdb-5d9d4c45d258',
+    'hubspot_form_diagnostic' => '42957848-6780-467b-8f8b-4e5944e2ebe0',
 
     // Private App access token (Settings > Integrations > Private Apps).
     // API keys were deprecated by HubSpot and no longer work. Only needed

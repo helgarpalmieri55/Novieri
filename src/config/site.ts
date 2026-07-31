@@ -44,7 +44,7 @@ export const site = {
   // sets the hubspotutk cookie that attributes form submissions to the
   // pages a visitor read, so it only loads after they accept cookies.
   // The backend has its own copy of the portal id in api/config.php.
-  hubspotPortalId: process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID ?? "",
+  hubspotPortalId: process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID ?? "45528787",
 
   // Base URL of the PHP backend (contact form + chatbot). Defaults to the
   // same-origin /api that the GoDaddy deploy uploads. Point it at an absolute
