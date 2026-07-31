@@ -14,7 +14,14 @@ const MARK = "/brand/novieri-isotipo-color.svg";
  * rotates around it, and a particle field drifts inward. The mark follows the
  * mouse. Everything decorative stops under prefers-reduced-motion.
  */
-export default function GemStage({ ringText }: { ringText: string }) {
+export default function GemStage({
+  ringText,
+  showMark = true,
+}: {
+  ringText: string;
+  /** The hero hands this to false once the video lens takes the centre. */
+  showMark?: boolean;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const gemRef = useRef<HTMLDivElement>(null);
 
@@ -124,7 +131,11 @@ export default function GemStage({ ringText }: { ringText: string }) {
         </svg>
 
         {/* The mark itself, plus a light sweep masked to its facets */}
-        <div className="gem-float relative mx-auto aspect-square w-[82%]">
+        <div
+          className={`gem-float relative mx-auto aspect-square w-[82%] transition-opacity duration-700 ${
+            showMark ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <Image
             src={asset(MARK)}
             alt=""

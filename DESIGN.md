@@ -69,3 +69,28 @@ Structure: dark hero → gradient seam → white sections → dark console proof
 white → plum-wash founders → black CTA band → black footer. Inner pages open with a
 compact dark hero band (header always sits on black). Max width 1200–1240px, section
 padding clamp(84px…140px), hairline borders, no shadows.
+
+## Hero lens (video)
+
+The hero shows **one subject, never two**. The animated logo mark is the floor:
+no network, no codec, always rendered. When a clip is configured and reports it
+can play, it takes the mark's place as a *lens* and the mark crossfades out.
+
+Rejected: dropping the clip in as a rectangle. A 16:9 video in the square hero
+column letterboxes into a hard black slab that breaks the white canvas and
+fights the mark behind it. Also rejected: wrapping it in the dark gradient-bordered
+panel used for the service illustrations — correct for those sections, but it
+makes the hero heavy and repeats a pattern that should stay downpage.
+
+The lens instead:
+
+- square box, `object-fit: cover` (no letterbox), circular mask with a short
+  feather at 59–68% so the edge reads as a lens rather than a smudge;
+- a brand-gradient rim (teal → plum → gold) sitting on the visible edge,
+  counter-rotating against the mono ring for depth;
+- a jewel glow behind it, so the dark disc sits *on* the white canvas instead of
+  being punched into it;
+- `saturate(1.12) contrast(1.04)` so the clip's colour reads as jewel, not grey.
+
+Never loaded below 1024px or under `prefers-reduced-motion`; any decode error
+leaves the mark in place.

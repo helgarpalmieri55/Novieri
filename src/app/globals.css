@@ -386,6 +386,63 @@
     }
   }
 
+  /* ——— Hero lens: the video takes the mark's place as the gem ———
+     Square box, cover fit, feathered circular mask: no letterbox, no rim. */
+  .hero-lens,
+  .hero-lens-glow,
+  .hero-lens-rim {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    aspect-ratio: 1;
+    width: 82%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-lens {
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: var(--hero-lens-focus, 50% 50%);
+    filter: saturate(1.12) contrast(1.04);
+    /* Solid to the rim, then a short feather — a lens edge, not a smudge */
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 59%, rgba(0, 0, 0, 0.72) 63%, transparent 68%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 59%, rgba(0, 0, 0, 0.72) 63%, transparent 68%);
+  }
+
+  .hero-lens-glow {
+    width: 104%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(79, 52, 97, 0.26) 0%,
+      rgba(38, 78, 89, 0.16) 42%,
+      transparent 68%
+    );
+    filter: blur(10px);
+  }
+
+  .hero-lens-rim {
+    background: conic-gradient(
+      from 200deg,
+      var(--color-teal-bright),
+      var(--color-plum-bright) 34%,
+      var(--color-gold-bright) 66%,
+      var(--color-teal-bright)
+    );
+    opacity: 0.78;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0 58.6%, #000 59.2% 60.6%, transparent 61.2%);
+    mask-image: radial-gradient(circle at 50% 50%, transparent 0 58.6%, #000 59.2% 60.6%, transparent 61.2%);
+    /* Counter-rotates against the mono ring for depth */
+    animation: rim-spin 64s linear infinite;
+  }
+
+  @keyframes rim-spin {
+    to {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+
   /* Traffic travelling along an active agent edge */
   .edge-flow {
     stroke-dasharray: 4 6;
