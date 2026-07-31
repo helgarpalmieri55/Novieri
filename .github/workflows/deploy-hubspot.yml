@@ -41,4 +41,8 @@ jobs:
         # deployed. A diff here means someone edited copy without rebuilding.
         run: git diff --exit-code hubspot/src/theme/novieri/css/theme.css hubspot/src/app/functions/lib/company-profile.json
       - name: Upload to HubSpot
-        uses: HubSpot/hubspot-project-actions@v1.1.0
+        # project_dir is required: hsproject.json lives in hubspot/, not at the
+        # repository root, and the action defaults to "./".
+        uses: HubSpot/hubspot-project-actions/project-upload@v1.1.0
+        with:
+          project_dir: ./hubspot

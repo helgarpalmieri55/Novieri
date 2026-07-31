@@ -5,9 +5,19 @@
     "label": "Rotating words",
     "help_text": "Cycled one at a time above the headline.",
     "type": "group",
-    "occurrence": { "min": 1, "max": 6, "default": 4 },
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 4
+    },
     "children": [
-      { "id": "word", "name": "word", "label": "Word", "type": "text", "default": "IA y automatización" },
+      {
+        "id": "word",
+        "name": "word",
+        "label": "Word",
+        "type": "text",
+        "default": "AI & automation"
+      },
       {
         "id": "colour",
         "name": "colour",
@@ -16,22 +26,46 @@
         "display": "select",
         "default": "text-plum",
         "choices": [
-          ["text-plum", "Plum"],
-          ["text-teal", "Teal"],
-          ["text-gold-deep", "Gold"],
-          ["text-ink-muted", "Ink"]
+          [
+            "text-plum",
+            "Plum"
+          ],
+          [
+            "text-teal",
+            "Teal"
+          ],
+          [
+            "text-gold-deep",
+            "Gold"
+          ],
+          [
+            "text-ink-muted",
+            "Ink"
+          ]
         ]
       }
     ]
   },
-  { "id": "title_a", "name": "title_a", "label": "Headline, first line", "type": "text", "default": "Tecnología enterprise," },
-  { "id": "title_b", "name": "title_b", "label": "Headline, second line (accent)", "type": "text", "default": "con IA en el centro." },
+  {
+    "id": "title_a",
+    "name": "title_a",
+    "label": "Headline, first line",
+    "type": "text",
+    "default": "AI-first IT solutions,"
+  },
+  {
+    "id": "title_b",
+    "name": "title_b",
+    "label": "Headline, second line (accent)",
+    "type": "text",
+    "default": "with a nearshore edge."
+  },
   {
     "id": "subtitle",
     "name": "subtitle",
     "label": "Subtitle",
     "type": "textarea",
-    "default": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación, para que tu empresa crezca sin un departamento de IT propio."
+    "default": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates."
   },
   {
     "id": "primary",
@@ -39,8 +73,25 @@
     "label": "Primary button",
     "type": "group",
     "children": [
-      { "id": "label", "name": "label", "label": "Label", "type": "text", "default": "Agenda una llamada" },
-      { "id": "link", "name": "link", "label": "Link", "type": "link", "default": { "url": { "type": "CONTENT", "href": "/contacto" } } }
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "default": "Book a call"
+      },
+      {
+        "id": "link",
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/contact"
+          }
+        }
+      }
     ]
   },
   {
@@ -49,8 +100,25 @@
     "label": "Secondary button",
     "type": "group",
     "children": [
-      { "id": "label", "name": "label", "label": "Label", "type": "text", "default": "Ver servicios" },
-      { "id": "link", "name": "link", "label": "Link", "type": "link", "default": { "url": { "type": "CONTENT", "href": "/servicios" } } }
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "default": "See services"
+      },
+      {
+        "id": "link",
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/services"
+          }
+        }
+      }
     ]
   },
   {
@@ -58,6 +126,9 @@
     "name": "mark",
     "label": "Logo mark (the animated gem)",
     "type": "image",
-    "default": { "src": "../../images/novieri-isotipo-color.svg", "alt": "" }
+    "default": {
+      "src": "../../images/novieri-isotipo-color.svg",
+      "alt": ""
+    }
   }
 ]

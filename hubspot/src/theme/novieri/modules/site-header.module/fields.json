@@ -11,12 +11,18 @@
       "height": 49
     }
   },
-  { "id": "wordmark", "name": "wordmark", "label": "Wordmark", "type": "text", "default": "novieri" },
+  {
+    "id": "wordmark",
+    "name": "wordmark",
+    "label": "Wordmark",
+    "type": "text",
+    "default": "novieri"
+  },
   {
     "id": "menu",
     "name": "menu",
     "label": "Navigation menu",
-    "help_text": "Edit the items in Content > Navigation. Each language has its own menu.",
+    "help_text": "Edit the items in Settings > Content > Navigation. Each language has its own menu — the English one is the primary.",
     "type": "menu"
   },
   {
@@ -25,13 +31,25 @@
     "label": "Header button",
     "type": "group",
     "children": [
-      { "id": "label", "name": "label", "label": "Label", "type": "text", "default": "Agenda una llamada" },
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "default": "Book a call"
+      },
       {
         "id": "link",
         "name": "link",
         "label": "Link",
         "type": "link",
-        "default": { "url": { "type": "CONTENT", "href": "/contacto" }, "open_in_new_tab": false }
+        "default": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/contact"
+          },
+          "open_in_new_tab": false
+        }
       }
     ]
   },
@@ -41,11 +59,41 @@
     "label": "Accessibility labels",
     "type": "group",
     "children": [
-      { "id": "skip", "name": "skip", "label": "Skip to content", "type": "text", "default": "Saltar al contenido" },
-      { "id": "home", "name": "home", "label": "Home link", "type": "text", "default": "Novieri, inicio" },
-      { "id": "open_menu", "name": "open_menu", "label": "Open menu", "type": "text", "default": "Abrir menú" },
-      { "id": "close_menu", "name": "close_menu", "label": "Close menu", "type": "text", "default": "Cerrar menú" },
-      { "id": "language", "name": "language", "label": "Language switcher", "type": "text", "default": "Cambiar idioma" }
+      {
+        "id": "skip",
+        "name": "skip",
+        "label": "Skip to content",
+        "type": "text",
+        "default": "Skip to content"
+      },
+      {
+        "id": "home",
+        "name": "home",
+        "label": "Home link",
+        "type": "text",
+        "default": "Novieri — home"
+      },
+      {
+        "id": "open_menu",
+        "name": "open_menu",
+        "label": "Open menu",
+        "type": "text",
+        "default": "Open menu"
+      },
+      {
+        "id": "close_menu",
+        "name": "close_menu",
+        "label": "Close menu",
+        "type": "text",
+        "default": "Close menu"
+      },
+      {
+        "id": "language",
+        "name": "language",
+        "label": "Language switcher",
+        "type": "text",
+        "default": "Language"
+      }
     ]
   }
 ]
