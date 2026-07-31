@@ -4,6 +4,7 @@ import { pageMetadata, JsonLd } from "@/lib/seo";
 import { site, whatsappHref } from "@/config/site";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import ClientMessages from "@/i18n/ClientMessages";
 import MeetingsEmbed from "@/components/MeetingsEmbed";
 
 export async function generateMetadata({
@@ -44,7 +45,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <section className="section-pad-tight pb-[clamp(5rem,13vh,8rem)]">
         <div className="container-site grid gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-[6fr_5fr]">
           <div className="reveal">
-            <ContactForm />
+            <ClientMessages only={["contact"]}>
+              <ContactForm />
+            </ClientMessages>
             <div className="mt-9 border-t border-line pt-7">
               <ul className="grid gap-3 text-[15px] text-ink-muted">
                 {site.whatsappNumber && (

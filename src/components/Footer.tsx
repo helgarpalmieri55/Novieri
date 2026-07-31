@@ -4,6 +4,9 @@ import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { asset, site, whatsappHref } from "@/config/site";
 
+// Footer links carry prefetch={false}: sixteen of them, each pulling a route
+// payload the visitor probably never uses. Prefetching the footer was adding
+// 200-400 KiB to every page load.
 const SERVICE_LINKS: { key: string; href: AppPathname }[] = [
   { key: "ai", href: "/services/ai-automation" },
   { key: "managedIt", href: "/services/managed-it" },
@@ -55,7 +58,7 @@ export default async function Footer({ locale }: { locale: string }) {
               <ul className="grid gap-2.5 text-[14.5px]">
                 {SOLUTION_LINKS.map((s) => (
                   <li key={s.key}>
-                    <Link href={s.href} className="text-ink-muted transition-colors hover:text-ink">
+                    <Link prefetch={false} href={s.href} className="text-ink-muted transition-colors hover:text-ink">
                       {tso(`${s.key}.name`)}
                     </Link>
                   </li>
@@ -68,7 +71,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <ul className="grid gap-2.5 text-[14.5px]">
               {SERVICE_LINKS.map((s) => (
                 <li key={s.key}>
-                  <Link href={s.href} className="text-ink-muted transition-colors hover:text-ink">
+                  <Link prefetch={false} href={s.href} className="text-ink-muted transition-colors hover:text-ink">
                     {tp(`${s.key}.name`)}
                   </Link>
                 </li>
@@ -79,12 +82,12 @@ export default async function Footer({ locale }: { locale: string }) {
             <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("companyTitle")}</h2>
             <ul className="grid gap-2.5 text-[14.5px]">
               <li>
-                <Link href="/about" className="text-ink-muted transition-colors hover:text-ink">
+                <Link prefetch={false} href="/about" className="text-ink-muted transition-colors hover:text-ink">
                   {tn("about")}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-ink-muted transition-colors hover:text-ink">
+                <Link prefetch={false} href="/contact" className="text-ink-muted transition-colors hover:text-ink">
                   {tn("contact")}
                 </Link>
               </li>
@@ -93,7 +96,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <ul className="grid gap-2.5 text-[14.5px]">
               {LEGAL_LINKS.map((l) => (
                 <li key={l.key}>
-                  <Link href={l.href} className="text-ink-muted transition-colors hover:text-ink">
+                  <Link prefetch={false} href={l.href} className="text-ink-muted transition-colors hover:text-ink">
                     {t(l.key)}
                   </Link>
                 </li>
