@@ -4,24 +4,44 @@
     "name": "logo",
     "label": "Logo mark",
     "type": "image",
-    "default": { "src": "../../images/novieri-isotipo-color-256px.png", "alt": "", "width": 57, "height": 58 }
+    "default": {
+      "src": "../../images/novieri-isotipo-color-256px.png",
+      "alt": "",
+      "width": 57,
+      "height": 58
+    }
   },
   {
     "id": "description",
     "name": "description",
     "label": "Description",
     "type": "textarea",
-    "default": "Soluciones de IT con IA en el centro, para empresas que quieren estándares enterprise sin montar un departamento."
+    "default": "AI-first IT solutions from Barranquilla, for Colombia and the United States."
   },
   {
     "id": "columns",
     "name": "columns",
     "label": "Link columns",
     "type": "group",
-    "occurrence": { "min": 0, "max": 4, "default": 2 },
+    "occurrence": {
+      "min": 0,
+      "max": 4,
+      "default": 2
+    },
     "children": [
-      { "id": "title", "name": "title", "label": "Title", "type": "text", "default": "servicios" },
-      { "id": "menu", "name": "menu", "label": "Menu", "type": "menu" }
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "services"
+      },
+      {
+        "id": "menu",
+        "name": "menu",
+        "label": "Menu",
+        "type": "menu"
+      }
     ]
   },
   {
@@ -30,10 +50,34 @@
     "label": "Contact",
     "type": "group",
     "children": [
-      { "id": "title", "name": "title", "label": "Title", "type": "text", "default": "contacto" },
-      { "id": "email", "name": "email", "label": "Email", "type": "text", "default": "sales@novieri.com" },
-      { "id": "location", "name": "location", "label": "Location", "type": "text", "default": "Barranquilla, Colombia" },
-      { "id": "linkedin", "name": "linkedin", "label": "LinkedIn URL", "type": "text", "default": "" }
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "contact"
+      },
+      {
+        "id": "email",
+        "name": "email",
+        "label": "Email",
+        "type": "text",
+        "default": "sales@novieri.com"
+      },
+      {
+        "id": "location",
+        "name": "location",
+        "label": "Location",
+        "type": "text",
+        "default": "Barranquilla, Colombia"
+      },
+      {
+        "id": "linkedin",
+        "name": "linkedin",
+        "label": "LinkedIn URL",
+        "type": "text",
+        "default": ""
+      }
     ]
   },
   {
@@ -44,5 +88,11 @@
     "type": "text",
     "default": "© 2026 Novieri"
   },
-  { "id": "cookie_settings", "name": "cookie_settings", "label": "Cookie settings link", "type": "text", "default": "Configurar cookies" }
+  {
+    "id": "cookie_settings",
+    "name": "cookie_settings",
+    "label": "Cookie settings link",
+    "type": "text",
+    "default": "Cookie settings"
+  }
 ]

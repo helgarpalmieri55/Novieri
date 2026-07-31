@@ -1,9 +1,56 @@
 [
-  { "id": "label", "name": "label", "label": "Dialog label (screen readers)", "type": "text", "default": "Aviso de cookies" },
-  { "id": "title", "name": "title", "label": "Title", "type": "text", "default": "Cookies en novieri.com" },
-  { "id": "body", "name": "body", "label": "Body", "type": "textarea", "default": "Usamos cookies propias necesarias para que el sitio funcione y, solo si lo aceptas, analítica agregada y las cookies de HubSpot que asocian tu consulta con el contenido que leíste. No usamos cookies publicitarias." },
-  { "id": "accept", "name": "accept", "label": "Accept button", "type": "text", "default": "Aceptar todas" },
-  { "id": "reject", "name": "reject", "label": "Reject button", "type": "text", "default": "Solo las necesarias" },
-  { "id": "more_label", "name": "more_label", "label": "Policy link label", "type": "text", "default": "Ver política de cookies" },
-  { "id": "more_link", "name": "more_link", "label": "Policy link", "type": "link", "default": { "url": { "type": "CONTENT", "href": "/legal/politica-de-cookies" } } }
+  {
+    "id": "label",
+    "name": "label",
+    "label": "Dialog label (screen readers)",
+    "type": "text",
+    "default": "Cookie notice"
+  },
+  {
+    "id": "title",
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Cookies on novieri.com"
+  },
+  {
+    "id": "body",
+    "name": "body",
+    "label": "Body",
+    "type": "textarea",
+    "default": "We use first-party cookies needed for the site to work and, only if you accept, aggregate analytics plus HubSpot cookies that link your enquiry to the content you read. We don't use advertising cookies."
+  },
+  {
+    "id": "accept",
+    "name": "accept",
+    "label": "Accept button",
+    "type": "text",
+    "default": "Accept all"
+  },
+  {
+    "id": "reject",
+    "name": "reject",
+    "label": "Reject button",
+    "type": "text",
+    "default": "Necessary only"
+  },
+  {
+    "id": "more_label",
+    "name": "more_label",
+    "label": "Policy link label",
+    "type": "text",
+    "default": "Read the cookie policy"
+  },
+  {
+    "id": "more_link",
+    "name": "more_link",
+    "label": "Policy link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/legal/cookie-policy"
+      }
+    }
+  }
 ]

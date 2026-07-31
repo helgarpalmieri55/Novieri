@@ -1,18 +1,24 @@
 [
-  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "default": "el siguiente paso" },
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "next step"
+  },
   {
     "id": "title",
     "name": "title",
     "label": "Title",
     "type": "text",
-    "default": "Tu empresa ya necesita un equipo de tecnología. Empecemos por una conversación."
+    "default": "Your company already needs a technology team. It doesn't need to hire one."
   },
   {
     "id": "subtitle",
     "name": "subtitle",
     "label": "Subtitle",
     "type": "textarea",
-    "default": "Cuéntanos tu caso en una llamada de 30 minutos. Sin compromiso."
+    "default": "Tell us about your case in a 30-minute call, no strings attached."
   },
   {
     "id": "button",
@@ -20,8 +26,25 @@
     "label": "Button",
     "type": "group",
     "children": [
-      { "id": "label", "name": "label", "label": "Label", "type": "text", "default": "Agenda una llamada" },
-      { "id": "link", "name": "link", "label": "Link", "type": "link", "default": { "url": { "type": "CONTENT", "href": "/contacto" } } }
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "default": "Book a call"
+      },
+      {
+        "id": "link",
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/contact"
+          }
+        }
+      }
     ]
   }
 ]

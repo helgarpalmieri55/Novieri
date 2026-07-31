@@ -1,22 +1,95 @@
 [
-  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "default": "servicios" },
-  { "id": "title", "name": "title", "label": "Title", "type": "text", "default": "Cuatro pilares, un mismo estándar." },
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "services"
+  },
+  {
+    "id": "title",
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Four pillars, one standard."
+  },
   {
     "id": "cards",
     "name": "cards",
     "label": "Cards",
     "type": "group",
-    "occurrence": { "min": 1, "max": 8, "default": 4 },
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 4
+    },
     "children": [
-      { "id": "name", "name": "name", "label": "Name", "type": "text", "default": "IA y automatización" },
-      { "id": "tagline", "name": "tagline", "label": "Tagline", "type": "textarea", "default": "Agentes y automatizaciones que quitan trabajo repetitivo de la mesa." },
-      { "id": "tags", "name": "tags", "label": "Tags (comma separated)", "type": "text", "default": "agentes, chatbots, procesos" },
-      { "id": "link", "name": "link", "label": "Link", "type": "link", "default": { "url": { "type": "CONTENT", "href": "/servicios" } } },
       {
-        "id": "colour", "name": "colour", "label": "Accent", "type": "choice", "display": "select", "default": "text-plum",
-        "choices": [["text-plum", "Plum"], ["text-teal", "Teal"], ["text-gold-deep", "Gold"], ["text-ink-muted", "Ink"]]
+        "id": "name",
+        "name": "name",
+        "label": "Name",
+        "type": "text",
+        "default": "AI & automation"
+      },
+      {
+        "id": "tagline",
+        "name": "tagline",
+        "label": "Tagline",
+        "type": "textarea",
+        "default": "Agents and automations that take repetitive work off your team's plate."
+      },
+      {
+        "id": "tags",
+        "name": "tags",
+        "label": "Tags (comma separated)",
+        "type": "text",
+        "default": "agents, chatbots, workflows"
+      },
+      {
+        "id": "link",
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/services"
+          }
+        }
+      },
+      {
+        "id": "colour",
+        "name": "colour",
+        "label": "Accent",
+        "type": "choice",
+        "display": "select",
+        "default": "text-plum",
+        "choices": [
+          [
+            "text-plum",
+            "Plum"
+          ],
+          [
+            "text-teal",
+            "Teal"
+          ],
+          [
+            "text-gold-deep",
+            "Gold"
+          ],
+          [
+            "text-ink-muted",
+            "Ink"
+          ]
+        ]
       }
     ]
   },
-  { "id": "link_label", "name": "link_label", "label": "Card link label", "type": "text", "default": "Conocer más" }
+  {
+    "id": "link_label",
+    "name": "link_label",
+    "label": "Card link label",
+    "type": "text",
+    "default": "Learn more"
+  }
 ]
