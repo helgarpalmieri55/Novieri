@@ -86,6 +86,10 @@
     "legalTerms": {
       "title": "Términos de uso — Novieri",
       "description": "Condiciones de acceso y uso del sitio novieri.com: propiedad intelectual, responsabilidad y ley aplicable en Colombia."
+    },
+    "diagnostic": {
+      "title": "Autodiagnóstico de tecnología — Novieri",
+      "description": "Diez preguntas sobre tu operación y un informe en PDF con tu nivel, los riesgos que vemos y qué priorizar. Toma tres minutos."
     }
   },
   "nav": {
@@ -100,7 +104,8 @@
     "homeLink": "Novieri — inicio",
     "skipToContent": "Saltar al contenido",
     "solutions": "Soluciones",
-    "solutionsMenuLabel": "Ver todas las soluciones"
+    "solutionsMenuLabel": "Ver todas las soluciones",
+    "diagnostic": "Autodiagnóstico"
   },
   "pillars": {
     "ai": {
@@ -298,6 +303,13 @@
       "title": "Tu empresa ya necesita un equipo de tecnología. No necesita contratarlo.",
       "subtitle": "Cuéntanos tu caso en una llamada de 30 minutos, sin compromiso.",
       "button": "Agenda una llamada"
+    },
+    "diagnose": {
+      "eyebrow": "empieza por aquí",
+      "title": "¿No sabes por dónde empezar?",
+      "body": "Responde diez preguntas sobre tu operación y te devolvemos un diagnóstico escrito para tu caso: en qué nivel estás, qué riesgos vemos y qué haríamos primero. Toma tres minutos y no compromete a nada.",
+      "button": "Autodiagnóstico",
+      "note": "3 minutos · informe en PDF · sin costo"
     }
   },
   "servicesIndex": {
@@ -1625,5 +1637,274 @@
     "reject": "Solo las necesarias",
     "more": "Ver política de cookies",
     "label": "Aviso de cookies"
+  },
+  "diagnostic": {
+    "eyebrow": "diagnóstico",
+    "title": "Diagnóstico de tecnología en 3 minutos.",
+    "intro": "Diez preguntas sobre cómo está tu operación hoy: administración, seguridad, cumplimiento y automatización. Al terminar recibes un informe con tu nivel, los riesgos que vemos y qué haríamos primero — escrito para tu caso, no una plantilla.",
+    "progress": "Pregunta {n} de {total}",
+    "back": "Anterior",
+    "next": "Siguiente",
+    "finish": "Ver mi diagnóstico",
+    "levels": {
+      "initial": "Inicial",
+      "developing": "En desarrollo",
+      "solid": "Sólido",
+      "advanced": "Avanzado"
+    },
+    "preview": {
+      "title": "Tu nivel preliminar",
+      "body": "Este es el cálculo rápido con tus respuestas. El informe completo analiza cada punto y prioriza qué hacer primero."
+    },
+    "gate": {
+      "title": "¿A dónde te enviamos el informe?",
+      "body": "Generamos tu diagnóstico con IA a partir de tus respuestas y te lo entregamos en PDF. Usamos tus datos solo para enviarte el informe y, si lo pides, conversar tu caso.",
+      "name": "Nombre",
+      "email": "Correo corporativo",
+      "company": "Empresa",
+      "phone": "Teléfono (opcional)",
+      "consent": "Autorizo el tratamiento de mis datos conforme a la política de privacidad.",
+      "submit": "Generar mi diagnóstico",
+      "sending": "Analizando tus respuestas…",
+      "privacy": "Ver política de privacidad"
+    },
+    "result": {
+      "title": "Tu diagnóstico está listo",
+      "download": "Descargar PDF",
+      "again": "Responder de nuevo",
+      "cta": "Agenda una llamada de 30 minutos",
+      "emailed": "También te lo enviamos por correo."
+    },
+    "errors": {
+      "required": "Selecciona una opción para continuar.",
+      "name": "Escribe tu nombre.",
+      "email": "Escribe un correo válido.",
+      "company": "Escribe el nombre de tu empresa.",
+      "consent": "Necesitamos tu autorización para enviarte el informe.",
+      "failed": "No pudimos generar el informe en este momento. Escríbenos a {email} y te lo enviamos.",
+      "notConfigured": "El diagnóstico automático no está disponible ahora mismo. Escríbenos a {email} y lo revisamos contigo."
+    },
+    "questions": [
+      {
+        "id": "size",
+        "q": "¿Cuántas personas usan tecnología en tu empresa?",
+        "options": [
+          {
+            "v": "Menos de 10",
+            "w": 0
+          },
+          {
+            "v": "Entre 10 y 50",
+            "w": 1
+          },
+          {
+            "v": "Entre 50 y 200",
+            "w": 2
+          },
+          {
+            "v": "Más de 200",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "who",
+        "q": "¿Quién administra la tecnología hoy?",
+        "options": [
+          {
+            "v": "Nadie en particular; lo resolvemos entre todos",
+            "w": 0
+          },
+          {
+            "v": "Alguien interno que además tiene otras funciones",
+            "w": 1
+          },
+          {
+            "v": "Un proveedor externo por horas",
+            "w": 2
+          },
+          {
+            "v": "Un equipo de IT propio",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "inventory",
+        "q": "¿Tienen inventario de equipos, accesos y licencias?",
+        "options": [
+          {
+            "v": "No existe",
+            "w": 0
+          },
+          {
+            "v": "Parcial, en una hoja de cálculo",
+            "w": 1
+          },
+          {
+            "v": "Documentado y actualizado con frecuencia",
+            "w": 2
+          },
+          {
+            "v": "Automatizado con una herramienta de gestión",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "backups",
+        "q": "¿Cómo están tus backups?",
+        "options": [
+          {
+            "v": "No tenemos backups formales",
+            "w": 0
+          },
+          {
+            "v": "Existen, pero nunca los hemos restaurado",
+            "w": 1
+          },
+          {
+            "v": "Se prueban de vez en cuando",
+            "w": 2
+          },
+          {
+            "v": "Se prueban con restauración real y periódica",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "mfa",
+        "q": "¿Usan doble factor (MFA) en correo y sistemas críticos?",
+        "options": [
+          {
+            "v": "No",
+            "w": 0
+          },
+          {
+            "v": "Solo algunas personas",
+            "w": 1
+          },
+          {
+            "v": "Todo el equipo en correo",
+            "w": 2
+          },
+          {
+            "v": "Todo el equipo, en correo y en los sistemas críticos",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "patching",
+        "q": "¿Cómo aplican actualizaciones y parches de seguridad?",
+        "options": [
+          {
+            "v": "Cuando alguien lo pide o falla algo",
+            "w": 0
+          },
+          {
+            "v": "Manualmente, sin calendario fijo",
+            "w": 1
+          },
+          {
+            "v": "En ventanas programadas",
+            "w": 2
+          },
+          {
+            "v": "Automatizados y verificados con reporte",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "incidents",
+        "q": "En los últimos 12 meses, ¿han tenido incidentes (ransomware, cuenta comprometida, caída prolongada)?",
+        "options": [
+          {
+            "v": "Varios",
+            "w": 0
+          },
+          {
+            "v": "Uno",
+            "w": 1
+          },
+          {
+            "v": "Ninguno que sepamos",
+            "w": 2
+          },
+          {
+            "v": "Ninguno, y lo monitoreamos activamente",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "compliance",
+        "q": "¿Tus clientes o tu industria te exigen algún estándar?",
+        "options": [
+          {
+            "v": "No, por ahora",
+            "w": 3
+          },
+          {
+            "v": "Nos lo empiezan a preguntar",
+            "w": 1
+          },
+          {
+            "v": "Sí: SOC 2 o similar",
+            "w": 0
+          },
+          {
+            "v": "Sí: PCI DSS (manejamos datos de tarjetas)",
+            "w": 0
+          }
+        ]
+      },
+      {
+        "id": "manual",
+        "q": "¿Cuánto tiempo pierde tu equipo en tareas manuales repetitivas?",
+        "options": [
+          {
+            "v": "Poco; casi todo está sistematizado",
+            "w": 3
+          },
+          {
+            "v": "Unas pocas horas por semana",
+            "w": 2
+          },
+          {
+            "v": "Varias horas por semana en más de un área",
+            "w": 1
+          },
+          {
+            "v": "Muchísimo; hay personas dedicadas a copiar y pegar datos",
+            "w": 0
+          }
+        ]
+      },
+      {
+        "id": "ai",
+        "q": "¿Cómo usan inteligencia artificial hoy?",
+        "options": [
+          {
+            "v": "No la usamos",
+            "w": 0
+          },
+          {
+            "v": "Cada quien usa herramientas por su cuenta",
+            "w": 1
+          },
+          {
+            "v": "Tenemos algún piloto en marcha",
+            "w": 2
+          },
+          {
+            "v": "Ya hay procesos con IA en producción",
+            "w": 3
+          }
+        ]
+      }
+    ]
   }
 }

@@ -82,5 +82,9 @@
   "/legal/terms": {
     "es": "/legal/terminos-de-uso",
     "en": "/legal/terms-of-use"
+  },
+  "/diagnostic": {
+    "es": "/autodiagnostico",
+    "en": "/self-diagnosis"
   }
 }
