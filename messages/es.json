@@ -162,8 +162,8 @@
           "label": "usuarios asistidos como cto"
         },
         {
-          "value": "SOC 2",
-          "label": "programa dirigido de punta a punta"
+          "value": "PCI / SOC 2",
+          "label": "programas dirigidos de punta a punta"
         },
         {
           "value": "2",
@@ -626,7 +626,7 @@
           "a": "Los ataques masivos no eligen víctimas: escanean internet y explotan lo que esté abierto. Las pymes son el objetivo más frecuente precisamente porque suelen estar menos protegidas."
         },
         {
-          "q": "¿Cuánto toma estar listo para SOC 2?",
+          "q": "¿Cuánto toma estar listo para SOC 2 o PCI DSS?",
           "a": "Depende del punto de partida; típicamente entre 3 y 6 meses desde el análisis de brechas hasta estar listo para auditoría. El gap assessment inicial te da una línea de tiempo honesta la primera semana."
         },
         {
@@ -1017,7 +1017,7 @@
             "body": "Sesiones remotas administrativas sin intervención del usuario y distribución de paquetes de software por sistema operativo."
           },
           {
-            "title": "Evidencia para SOC 2",
+            "title": "Evidencia para PCI y SOC 2",
             "body": "Logs de inicio de sesión y acciones privilegiadas centralizados, con retención auditada de 365 días y exportes listos para el auditor."
           },
           {
@@ -1279,7 +1279,7 @@
           },
           {
             "title": "Reportes listos para auditoría",
-            "body": "Informes ejecutivos, técnicos y de evidencia SOC 2 generados con IA, exportables a PDF."
+            "body": "Informes ejecutivos, técnicos y de evidencia PCI y SOC 2 generados con IA, exportables a PDF."
           }
         ],
         "built": {
