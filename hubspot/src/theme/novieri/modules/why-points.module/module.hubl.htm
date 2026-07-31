@@ -1,0 +1,23 @@
+{# Opens on the number rather than another eyebrow — the one section that
+   breaks the page's rhythm on purpose. #}
+<section class="section-pad">
+  <div class="container-site grid gap-[clamp(2.5rem,6vw,5.5rem)] lg:grid-cols-[5fr_7fr]">
+    <div class="reveal">
+      <div class="font-display text-[clamp(4rem,8vw,6rem)] font-medium leading-none tracking-tight text-gold-deep">
+        {{ module.stat_value }}
+      </div>
+      <div class="idx-mono mt-2.5 text-ink-muted">{{ module.stat_caption }}</div>
+      <h2 class="mt-9 border-t border-line pt-8">{{ module.title }}</h2>
+    </div>
+    <div>
+      {% for point in module.points %}
+        <div class="reveal border-b border-line py-6 last:border-b-0" style="--rd: {{ loop.index0 * 70 }}ms">
+          <h3 class="relative pl-7 before:absolute before:left-0 before:top-0 before:font-sans before:text-lead before:font-bold before:tracking-[0.1em] before:text-gold before:content-['··']">
+            {{ point.point_title }}
+          </h3>
+          <p class="mt-2 max-w-[58ch] pl-7 text-small text-ink-muted">{{ point.point_body }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Rather just talk?"
+  },
+  {
+    "name": "intro",
+    "label": "Body",
+    "type": "text",
+    "default": "Pick a 30-minute slot. No deck, no pitch — you describe the problem and we tell you whether we're the right people for it.",
+    "allow_new_line": true
+  },
+  {
+    "name": "meetings_url",
+    "label": "Meetings link",
+    "type": "text",
+    "default": "https://meetings.hubspot.com/helgar-palmieri",
+    "help_text": "Your HubSpot meetings link. Leave empty to show the fallback text instead."
+  },
+  {
+    "name": "fallback",
+    "label": "Fallback text",
+    "type": "text",
+    "default": "Write to sales@novieri.com and we'll send you a couple of times.",
+    "allow_new_line": true
+  }
+]

@@ -1,0 +1,39 @@
+[
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "A simple process, from diagnosis to continuous improvement."
+  },
+  {
+    "name": "eyebrow",
+    "label": "Label on the rule",
+    "type": "text",
+    "default": "how we work"
+  },
+  {
+    "name": "steps",
+    "label": "Steps",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "step_title",
+        "label": "Title",
+        "type": "text",
+        "default": "Diagnosis"
+      },
+      {
+        "name": "step_body",
+        "label": "Body",
+        "type": "text",
+        "default": "We understand your operation, infrastructure and risks before proposing anything.",
+        "allow_new_line": true
+      }
+    ]
+  }
+]

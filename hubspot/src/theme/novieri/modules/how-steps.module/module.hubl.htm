@@ -1,0 +1,22 @@
+{# Title first, label demoted to the rule — the second break in the rhythm. #}
+<section class="section-pad border-t border-line">
+  <div class="container-site">
+    <div class="reveal mb-[clamp(2.5rem,6vh,4rem)]">
+      <h2 class="max-w-2xl">{{ module.title }}</h2>
+      <div class="mt-7 flex items-center gap-5 border-t border-line pt-3.5">
+        <span class="idx-mono lowercase text-gold-deep">·· {{ module.eyebrow }}</span>
+        <span class="idx-mono ml-auto text-ink-faint">01 — 0{{ module.steps|length }}</span>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
+      {% for step in module.steps %}
+        <div class="tick-grow reveal relative border-t border-line pt-5 before:absolute before:-top-px before:left-0 before:h-0.5 before:w-11 before:bg-gold before:content-['']"
+             style="--rd: {{ loop.index0 * 90 }}ms">
+          <span class="idx-mono text-gold-deep">0{{ loop.index }}</span>
+          <h3 class="mt-2.5 text-lead">{{ step.step_title }}</h3>
+          <p class="mt-2 text-small text-ink-muted">{{ step.step_body }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

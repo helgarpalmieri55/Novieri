@@ -1,0 +1,46 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "clients"
+  },
+  {
+    "name": "quotes",
+    "label": "Quotes",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "quote",
+        "label": "Quote",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      },
+      {
+        "name": "quote_name",
+        "label": "Name",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "name": "quote_role",
+        "label": "Role",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "name": "quote_company",
+        "label": "Company",
+        "type": "text",
+        "default": ""
+      }
+    ],
+    "help_text": "Real quotes only. While this is empty the section does not render at all."
+  }
+]

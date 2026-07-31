@@ -1,0 +1,44 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "the founders"
+  },
+  {
+    "name": "word_a",
+    "label": "Wordmark, first half",
+    "type": "text",
+    "default": "nov"
+  },
+  {
+    "name": "word_b",
+    "label": "Wordmark, second half",
+    "type": "text",
+    "default": "ieri"
+  },
+  {
+    "name": "intro",
+    "label": "Body",
+    "type": "text",
+    "default": "A family company with enterprise standards: the two of us, and the people we bring in when a project needs them.",
+    "allow_new_line": true
+  },
+  {
+    "name": "cta_text",
+    "label": "Link label",
+    "type": "text",
+    "default": "Meet the founders"
+  },
+  {
+    "name": "cta_link",
+    "label": "Link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/about"
+      }
+    }
+  }
+]

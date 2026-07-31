@@ -1,0 +1,40 @@
+{# Founder / team cards. Initials stand in until a portrait is uploaded, so
+   the page never shows a broken image or an empty square. #}
+<section class="section-pad">
+  <div class="container-site">
+    {% if module.title %}<h2 class="reveal mb-[clamp(2.25rem,5vh,3.5rem)]">{{ module.title }}</h2>{% endif %}
+    <div class="grid gap-4.5 md:grid-cols-2">
+      {% for person in module.people %}
+        <div class="card-hairline reveal flex flex-col gap-5 p-8 sm:flex-row sm:items-start" style="--rd: {{ loop.index0 * 90 }}ms">
+          {% if person.person_photo.src %}
+            <img src="{{ person.person_photo.src }}"
+                 alt="{{ person.person_photo.alt }}"
+                 width="160" height="160" loading="lazy" decoding="async"
+                 class="h-20 w-20 flex-none rounded-xl border border-line bg-plum-wash object-cover object-top" />
+          {% else %}
+            <div role="img" aria-label="{{ person.person_name }}"
+                 class="grid h-20 w-20 flex-none place-items-center rounded-xl border border-line bg-plum-wash font-display text-h3 font-semibold text-plum">
+              {{ person.person_initials }}
+            </div>
+          {% endif %}
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <h3>{{ person.person_name }}</h3>
+              {% if person.person_linkedin %}
+                <a href="{{ person.person_linkedin }}" target="_blank" rel="noopener noreferrer"
+                   aria-label="{{ module.linkedin_label }} — {{ person.person_name }}"
+                   class="grid h-8 w-8 place-items-center rounded-lg border border-line text-ink-faint transition-colors hover:border-plum hover:text-plum">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                  </svg>
+                </a>
+              {% endif %}
+            </div>
+            <p class="idx-mono mt-1 lowercase text-gold-deep">·· {{ person.person_role }}</p>
+            <p class="mt-3 text-small text-ink-muted">{{ person.person_bio }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

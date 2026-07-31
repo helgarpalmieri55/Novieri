@@ -1,0 +1,11 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Novieri — legal document
+-->
+{# Privacy, cookies and terms all use this. One module holds the whole
+   document so the contents list and the section anchors stay in step. #}
+{% extends "./partials/base.hubl.html" %}
+{% block body %}
+  {% module "legal_doc" path="../modules/legal-doc" %}
+{% endblock body %}

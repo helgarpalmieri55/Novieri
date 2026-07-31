@@ -1,0 +1,52 @@
+[
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "What we actually do"
+  },
+  {
+    "name": "intro",
+    "label": "Intro",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  },
+  {
+    "name": "tone",
+    "label": "Background",
+    "type": "choice",
+    "display": "select",
+    "default": "light",
+    "choices": [
+      ["light", "White"],
+      ["wash", "Plum wash"],
+      ["dark", "Dark"]
+    ]
+  },
+  {
+    "name": "items",
+    "label": "Items",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "item_title",
+        "label": "Title",
+        "type": "text",
+        "default": "Process automation"
+      },
+      {
+        "name": "item_body",
+        "label": "Body",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      }
+    ]
+  }
+]

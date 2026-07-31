@@ -1,0 +1,55 @@
+{# Privacy / cookies / terms. Sticky contents on the left, numbered sections
+   on the right, the identification box first because Colombian law asks for
+   it before anything else. Ported from LegalPageTemplate.tsx. #}
+<section class="border-b border-line bg-white pb-[clamp(2.5rem,6vh,4rem)] pt-[clamp(7rem,14vh,9rem)]">
+  <div class="container-site max-w-[68rem]">
+    <span class="eyebrow">{{ module.eyebrow }}</span>
+    <h1 class="mt-4 max-w-[24ch] text-[clamp(2.1rem,4.6vw,3.4rem)]">{{ module.title }}</h1>
+    {% if module.lead %}<p class="mt-6 max-w-[70ch] text-ink-muted">{{ module.lead }}</p>{% endif %}
+    <p class="idx-mono mt-7 text-ink-faint">{{ module.updated_label }}: {{ module.updated_value }}</p>
+  </div>
+</section>
+
+<div class="container-site grid max-w-[68rem] gap-[clamp(2.5rem,5vw,4rem)] py-[clamp(3rem,8vh,5rem)] lg:grid-cols-[1fr_2.4fr]">
+  <nav aria-label="{{ module.toc_label }}" class="lg:sticky lg:top-24 lg:self-start">
+    <p class="idx-mono uppercase tracking-[0.12em] text-ink-faint">{{ module.toc_label }}</p>
+    <ol class="mt-4 space-y-2.5 text-small">
+      {% for section in module.sections %}
+        <li><a href="#s{{ loop.index }}" class="text-ink-muted transition-colors hover:text-plum">{{ section.heading }}</a></li>
+      {% endfor %}
+    </ol>
+
+    {% if module.other_docs %}
+      <p class="idx-mono mt-9 uppercase tracking-[0.12em] text-ink-faint">{{ module.other_label }}</p>
+      <ul class="mt-4 space-y-2.5 text-small">
+        {% for doc in module.other_docs %}
+          <li><a href="{{ doc.doc_link.url.href }}" class="text-ink-muted transition-colors hover:text-plum">{{ doc.doc_label }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </nav>
+
+  <div>
+    <div class="card-hairline mb-10 p-6 hover:!translate-y-0 hover:!border-line">
+      <p class="idx-mono uppercase tracking-[0.12em] text-ink-faint">{{ module.identity_title }}</p>
+      <div class="legal-prose mt-3 text-small">{{ module.identity_body }}</div>
+    </div>
+
+    {% for section in module.sections %}
+      <section id="s{{ loop.index }}" class="mb-10 scroll-mt-24">
+        <h2 class="text-h4">{{ section.heading }}</h2>
+        <div class="legal-prose mt-4">{{ section.content }}</div>
+      </section>
+    {% endfor %}
+
+    {% if module.questions_title %}
+      <div class="mt-12 rounded-2xl bg-plum-wash p-7">
+        <h2 class="text-lead">{{ module.questions_title }}</h2>
+        <p class="mt-3 text-ink-muted">{{ module.questions_body }}</p>
+        {% if module.questions_email %}
+          <a href="mailto:{{ module.questions_email }}" class="link-accent mt-4 inline-block">{{ module.questions_email }}</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

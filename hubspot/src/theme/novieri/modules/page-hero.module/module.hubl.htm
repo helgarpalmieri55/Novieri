@@ -1,0 +1,19 @@
+{# The compact hero every inner page opens on: dotted field, eyebrow, one
+   heading, one paragraph. Ported from PageHero.tsx. #}
+<section class="relative overflow-hidden bg-white pb-[clamp(3.5rem,8vh,5.5rem)] pt-[clamp(8.5rem,18vh,11rem)]">
+  <div aria-hidden="true" class="absolute inset-0"
+       style="background-image: radial-gradient(rgba(22,18,29,0.10) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse 85% 90% at 70% 0%, #000 0%, transparent 68%); mask-image: radial-gradient(ellipse 85% 90% at 70% 0%, #000 0%, transparent 68%)"></div>
+  <div class="container-site relative">
+    <span class="eyebrow rise">{{ module.eyebrow }}</span>
+    <h1 class="rise mt-5 max-w-[20ch]" style="--d: 100ms">{{ module.title }}</h1>
+    {% if module.intro %}
+      <p class="rise mt-6 max-w-[62ch] text-lead text-ink-muted" style="--d: 220ms">{{ module.intro }}</p>
+    {% endif %}
+    {% if module.button_text %}
+      <div class="rise mt-9" style="--d: 320ms">
+        <a href="{{ module.button_link.url.href }}" class="btn btn-primary">{{ module.button_text }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% if module.seam %}<div aria-hidden="true" class="seam"></div>{% endif %}

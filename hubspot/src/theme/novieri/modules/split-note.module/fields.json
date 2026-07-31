@@ -1,0 +1,32 @@
+[
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Barranquilla, two markets."
+  },
+  {
+    "name": "intro",
+    "label": "Body",
+    "type": "text",
+    "default": "We work Colombian and US hours from the same city, in Spanish and English, on the same calendar as you.",
+    "allow_new_line": true
+  },
+  {
+    "name": "footnote",
+    "label": "Mono footnote",
+    "type": "text",
+    "default": "barranquilla ·· gmt-5 ·· es / en",
+    "help_text": "Small monospaced line under the body. Leave empty to hide it."
+  },
+  {
+    "name": "picture",
+    "label": "Image",
+    "type": "image",
+    "help_text": "Optional. Replaces the body column when set — use for a console or product shot.",
+    "default": {
+      "src": "",
+      "alt": ""
+    }
+  }
+]

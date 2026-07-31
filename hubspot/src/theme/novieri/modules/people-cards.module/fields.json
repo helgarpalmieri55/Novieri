@@ -1,0 +1,69 @@
+[
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Who you'll be working with"
+  },
+  {
+    "name": "people",
+    "label": "People",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 2
+    },
+    "children": [
+      {
+        "name": "person_name",
+        "label": "Name",
+        "type": "text",
+        "default": "Helgar Palmieri"
+      },
+      {
+        "name": "person_role",
+        "label": "Role",
+        "type": "text",
+        "default": "co-founder · technology"
+      },
+      {
+        "name": "person_bio",
+        "label": "Bio",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      },
+      {
+        "name": "person_photo",
+        "label": "Photo",
+        "type": "image",
+        "help_text": "Square, at least 320px. Leave empty to show initials instead.",
+        "default": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "name": "person_initials",
+        "label": "Initials",
+        "type": "text",
+        "default": "HP",
+        "help_text": "Shown until a photo is uploaded."
+      },
+      {
+        "name": "person_linkedin",
+        "label": "LinkedIn URL",
+        "type": "text",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "name": "linkedin_label",
+    "label": "LinkedIn link label",
+    "type": "text",
+    "default": "LinkedIn profile",
+    "help_text": "Read by screen readers; the person's name is appended."
+  }
+]

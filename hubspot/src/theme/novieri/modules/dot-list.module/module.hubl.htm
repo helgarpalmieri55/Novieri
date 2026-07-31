@@ -1,0 +1,31 @@
+{# The "what we actually do" list: two columns, gold double-dot markers.
+   Used by every service and solution page. #}
+{% if module.tone == "dark" %}
+  {% set shell = "dark-s relative" %}
+{% elif module.tone == "wash" %}
+  {% set shell = "border-y border-line bg-plum-wash" %}
+{% else %}
+  {% set shell = "" %}
+{% endif %}
+
+<section class="section-pad {{ shell }}">
+  {% if module.tone == "dark" %}<div aria-hidden="true" class="seam absolute inset-x-0 top-0"></div>{% endif %}
+  <div class="container-site">
+    <div class="reveal mb-[clamp(2.25rem,5vh,3.5rem)] max-w-2xl">
+      <h2>{{ module.title }}</h2>
+      {% if module.intro %}
+        <p class="mt-4 {% if module.tone == "dark" %}text-on-dark-muted{% else %}text-ink-muted{% endif %}">{{ module.intro }}</p>
+      {% endif %}
+    </div>
+    <ul class="dot-list grid gap-x-14 gap-y-9 md:grid-cols-2">
+      {% for item in module.items %}
+        <li class="reveal" style="--rd: {{ loop.index0 % 2 * 80 }}ms">
+          <h3 class="text-lead">{{ item.item_title }}</h3>
+          {% if item.item_body %}
+            <p class="mt-1.5 max-w-[52ch] text-small {% if module.tone == "dark" %}text-on-dark-muted{% else %}text-ink-muted{% endif %}">{{ item.item_body }}</p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

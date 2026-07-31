@@ -66,6 +66,159 @@
   --font-jbmono: "JetBrains Mono";
 }
 
+/*
+ * Rich-text fields are the one place where an editor writes markup we can't
+ * put classes on. These rules give what they write the same typography the
+ * hand-built sections have.
+ */
+@layer components {
+  .legal-prose {
+    color: var(--color-ink-muted);
+  }
+  .legal-prose > * + * {
+    margin-top: 1rem;
+  }
+  .legal-prose h3,
+  .legal-prose h4 {
+    color: var(--color-ink);
+    font-size: var(--text-lead);
+    margin-top: 1.75rem;
+  }
+  .legal-prose a {
+    color: var(--color-plum);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .legal-prose a:hover {
+    color: var(--color-gold-deep);
+  }
+  .legal-prose strong {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+  .legal-prose ul,
+  .legal-prose ol {
+    margin-top: 1.25rem;
+    padding-left: 1.75rem;
+  }
+  .legal-prose ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .legal-prose ul > li {
+    position: relative;
+    padding-left: 1.75rem;
+  }
+  .legal-prose ul > li::before {
+    content: "··";
+    position: absolute;
+    left: 0;
+    top: -0.05em;
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+  .legal-prose ol {
+    list-style: decimal;
+  }
+  .legal-prose li + li {
+    margin-top: 0.625rem;
+  }
+}
+
+/*
+ * HubSpot renders forms with its own markup and class names. These rules make
+ * a native HubSpot form look like the one the React site hand-built, so the
+ * contact page keeps its typography while the submission goes straight into
+ * the CRM (and picks up HubSpot's own spam protection).
+ */
+@layer components {
+  .hs-form .hs-form-field {
+    margin-bottom: 1.25rem;
+  }
+  .hs-form label {
+    display: block;
+    margin-bottom: 0.375rem;
+    font-size: var(--text-small);
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .hs-form .hs-field-desc {
+    font-weight: 400;
+    color: var(--color-ink-faint);
+    font-size: var(--text-caption);
+  }
+  .hs-form input[type="text"],
+  .hs-form input[type="email"],
+  .hs-form input[type="tel"],
+  .hs-form input[type="number"],
+  .hs-form select,
+  .hs-form textarea {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    padding: 0.75rem 1rem;
+    font-family: inherit;
+    font-size: var(--text-small);
+    color: var(--color-ink);
+    transition: border-color 0.2s;
+  }
+  .hs-form input::placeholder,
+  .hs-form textarea::placeholder {
+    color: var(--color-ink-faint);
+  }
+  .hs-form input:focus,
+  .hs-form select:focus,
+  .hs-form textarea:focus {
+    border-color: var(--color-plum);
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-plum) 20%, transparent);
+  }
+  .hs-form .hs-error-msg,
+  .hs-form .hs-error-msgs label {
+    color: #b3261e;
+    font-size: var(--text-caption);
+    font-weight: 400;
+  }
+  .hs-form .legal-consent-container {
+    margin-top: 1rem;
+    font-size: var(--text-caption);
+    color: var(--color-ink-faint);
+  }
+  .hs-form .hs-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-plum);
+    padding: 0.8125rem 1.75rem;
+    font-family: inherit;
+    font-size: var(--text-small);
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    transition:
+      background-color 0.2s,
+      transform 0.2s;
+  }
+  .hs-form .hs-button:hover {
+    background: var(--color-plum-bright);
+    transform: translateY(-1px);
+  }
+  .submitted-message {
+    border-radius: 0.5rem;
+    border: 1px solid #bfe3c8;
+    background: #f0faf2;
+    padding: 0.875rem 1rem;
+    font-size: var(--text-small);
+    color: #1a6b32;
+  }
+}
+
 /* HubSpot wraps dropped modules in its own grid; keep it out of the layout. */
 .dnd-section,
 .dnd-section > .row-fluid,
