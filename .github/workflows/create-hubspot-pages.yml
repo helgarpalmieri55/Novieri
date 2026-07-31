@@ -18,7 +18,11 @@ on:
         options:
           - dry-run
           - one-page-test
+          - verify
           - create-all
+      slug:
+        description: "Slug to verify (verify mode only)"
+        default: "about"
       domain:
         description: "Site domain"
         default: "www.novieri.com"
@@ -41,5 +45,7 @@ jobs:
             dry-run)       node scripts/create-hubspot-pages.mjs --dry-run ;;
             # Prove one page comes out right before making eleven more.
             one-page-test) node scripts/create-hubspot-pages.mjs --only=about ;;
+            # "Created" says nothing about whether the page has any content.
+            verify)        node scripts/create-hubspot-pages.mjs --verify='${{ inputs.slug }}' ;;
             create-all)    node scripts/create-hubspot-pages.mjs ;;
           esac

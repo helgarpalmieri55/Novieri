@@ -25,6 +25,7 @@ const THEME = "@projects/Novieri website/novieri_theme/templates";
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
 const only = (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
+const verify = (args.find((a) => a.startsWith("--verify=")) || "").split("=")[1];
 
 /**
  * Slugs come from src/i18n/pathnames.json, so they match what the React site
@@ -119,6 +120,49 @@ if (dryRun) {
 if (!TOKEN) {
   console.error("HUBSPOT_PRIVATE_APP_TOKEN is not set — a private app token with the `content` scope is required.");
   process.exit(1);
+}
+
+/**
+ * Reports what a created page actually contains. A page can be created
+ * successfully and still be empty: the API accepts a drag-and-drop template
+ * without necessarily materialising its modules, and "201 Created" says
+ * nothing about that. This looks.
+ */
+if (verify) {
+  const q = new URLSearchParams({ limit: "100" });
+  const res = await api(`/cms/v3/pages/site-pages?${q}`);
+  const page = (res.results || []).find((p) => p.slug === verify || p.slug === `${verify}/`);
+  if (!page) {
+    console.error(`no page with slug "${verify}"`);
+    process.exit(1);
+  }
+  const full = await api(`/cms/v3/pages/site-pages/${page.id}`);
+  const sections = full.layoutSections || {};
+  const names = [];
+  const walk = (node) => {
+    if (!node || typeof node !== "object") return;
+    if (node.type === "module" || node.moduleId || node.module_id) {
+      names.push(node.name || node.moduleId || node.module_id);
+    }
+    for (const child of Object.values(node.cells || node.rows || node.params || {})) walk(child);
+    for (const key of ["cells", "rows", "widgets"]) {
+      if (node[key]) for (const child of Object.values(node[key])) walk(child);
+    }
+  };
+  for (const section of Object.values(sections)) walk(section);
+
+  console.log(`page      ${full.name} (id ${full.id})`);
+  console.log(`slug      ${full.slug}`);
+  console.log(`template  ${full.templatePath}`);
+  console.log(`state     ${full.currentState || full.state}`);
+  console.log(`sections  ${Object.keys(sections).length}`);
+  console.log(`widgets   ${Object.keys(full.widgets || {}).length}`);
+  console.log(`modules   ${names.length}${names.length ? " — " + names.join(", ") : ""}`);
+  if (!names.length && !Object.keys(full.widgets || {}).length) {
+    console.log("\nEMPTY — the template's modules did not come through. The page needs");
+    console.log("layoutSections supplied explicitly, or to be created in the editor.");
+  }
+  process.exit(0);
 }
 
 // One call, so an existing page is skipped rather than duplicated.
