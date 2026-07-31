@@ -3,7 +3,11 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { asset, site, whatsappHref } from "@/config/site";
+import CookieSettingsLink from "./CookieSettingsLink";
 
+// Footer links carry prefetch={false}: sixteen of them, each pulling a route
+// payload the visitor probably never uses. Prefetching the footer was adding
+// 200-400 KiB to every page load.
 const SERVICE_LINKS: { key: string; href: AppPathname }[] = [
   { key: "ai", href: "/services/ai-automation" },
   { key: "managedIt", href: "/services/managed-it" },
@@ -47,15 +51,15 @@ export default async function Footer({ locale }: { locale: string }) {
         >
           <div className="col-span-2 md:col-span-1">
             <Image src={asset("/brand/novieri-isotipo-color-256px.png")} alt="" width={57} height={58} />
-            <p className="mt-4 max-w-[34ch] text-[14.5px] text-ink-muted">{t("description")}</p>
+            <p className="mt-4 max-w-[34ch] text-small text-ink-muted">{t("description")}</p>
           </div>
           {site.showSolutions && (
             <nav aria-label={t("solutionsTitle")}>
               <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("solutionsTitle")}</h2>
-              <ul className="grid gap-2.5 text-[14.5px]">
+              <ul className="grid gap-2.5 text-small">
                 {SOLUTION_LINKS.map((s) => (
                   <li key={s.key}>
-                    <Link href={s.href} className="text-ink-muted transition-colors hover:text-ink">
+                    <Link prefetch={false} href={s.href} className="text-ink-muted transition-colors hover:text-ink">
                       {tso(`${s.key}.name`)}
                     </Link>
                   </li>
@@ -65,10 +69,10 @@ export default async function Footer({ locale }: { locale: string }) {
           )}
           <nav aria-label={t("servicesTitle")}>
             <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("servicesTitle")}</h2>
-            <ul className="grid gap-2.5 text-[14.5px]">
+            <ul className="grid gap-2.5 text-small">
               {SERVICE_LINKS.map((s) => (
                 <li key={s.key}>
-                  <Link href={s.href} className="text-ink-muted transition-colors hover:text-ink">
+                  <Link prefetch={false} href={s.href} className="text-ink-muted transition-colors hover:text-ink">
                     {tp(`${s.key}.name`)}
                   </Link>
                 </li>
@@ -77,32 +81,35 @@ export default async function Footer({ locale }: { locale: string }) {
           </nav>
           <nav aria-label={t("companyTitle")}>
             <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("companyTitle")}</h2>
-            <ul className="grid gap-2.5 text-[14.5px]">
+            <ul className="grid gap-2.5 text-small">
               <li>
-                <Link href="/about" className="text-ink-muted transition-colors hover:text-ink">
+                <Link prefetch={false} href="/about" className="text-ink-muted transition-colors hover:text-ink">
                   {tn("about")}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-ink-muted transition-colors hover:text-ink">
+                <Link prefetch={false} href="/contact" className="text-ink-muted transition-colors hover:text-ink">
                   {tn("contact")}
                 </Link>
               </li>
             </ul>
             <h2 className="idx-mono mb-3.5 mt-8 lowercase text-gold-deep">·· {t("legalTitle")}</h2>
-            <ul className="grid gap-2.5 text-[14.5px]">
+            <ul className="grid gap-2.5 text-small">
               {LEGAL_LINKS.map((l) => (
                 <li key={l.key}>
-                  <Link href={l.href} className="text-ink-muted transition-colors hover:text-ink">
+                  <Link prefetch={false} href={l.href} className="text-ink-muted transition-colors hover:text-ink">
                     {t(l.key)}
                   </Link>
                 </li>
               ))}
+              <li>
+                <CookieSettingsLink />
+              </li>
             </ul>
           </nav>
           <div>
             <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("contactTitle")}</h2>
-            <ul className="grid gap-2.5 text-[14.5px] text-ink-muted">
+            <ul className="grid gap-2.5 text-small text-ink-muted">
               <li>
                 <a href={`mailto:${site.contactEmail}`} className="transition-colors hover:text-ink">
                   {site.contactEmail}

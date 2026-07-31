@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import DiagnosticForm from "@/components/DiagnosticForm";
+import ClientMessages from "@/i18n/ClientMessages";
 
 export async function generateMetadata({
   params,
@@ -24,7 +25,9 @@ export default async function DiagnosticPage({ params }: { params: Promise<{ loc
       <div aria-hidden className="seam" />
       <section className="section-pad-tight">
         <div className="container-site max-w-[62rem]">
-          <DiagnosticForm />
+          <ClientMessages only={["diagnostic", "common"]}>
+            <DiagnosticForm />
+          </ClientMessages>
         </div>
       </section>
     </>

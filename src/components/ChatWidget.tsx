@@ -4,7 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { site } from "@/config/site";
 
-type Msg = { role: "user" | "assistant"; content: string };
+// `sig` is the server's HMAC over an assistant reply. It travels back with the
+// next request so the backend can tell its own words from an injected turn.
+type Msg = { role: "user" | "assistant"; content: string; sig?: string };
+
+const MAX_CHARS = 1000;
 
 export default function ChatWidget() {
   const t = useTranslations("chat");
@@ -12,7 +16,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<null | "generic" | "limit">(null);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -26,9 +30,9 @@ export default function ChatWidget() {
 
   async function send(e: React.FormEvent) {
     e.preventDefault();
-    const text = input.trim();
+    const text = input.trim().slice(0, MAX_CHARS);
     if (!text || busy) return;
-    setError(false);
+    setError(null);
     setInput("");
     const next: Msg[] = [...messages, { role: "user", content: text }];
     setMessages(next);
@@ -40,13 +44,19 @@ export default function ChatWidget() {
         credentials: "omit",
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next }),
+        body: JSON.stringify({
+          messages: next.map((m) => ({ role: m.role, content: m.content, sig: m.sig })),
+        }),
       });
+      if (res.status === 429) {
+        setError("limit");
+        return;
+      }
       if (!res.ok) throw new Error(String(res.status));
-      const data = (await res.json()) as { reply: string };
-      setMessages((m) => [...m, { role: "assistant", content: data.reply }]);
+      const data = (await res.json()) as { reply: string; sig?: string };
+      setMessages((m) => [...m, { role: "assistant", content: data.reply, sig: data.sig }]);
     } catch {
-      setError(true);
+      setError("generic");
     } finally {
       setBusy(false);
     }
@@ -59,15 +69,17 @@ export default function ChatWidget() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-label={open ? t("close") : t("open")}
-        className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-plum text-white transition-transform duration-300 hover:scale-110"
+        className="chat-fab fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full text-white transition-transform duration-300 hover:scale-110"
       >
         {open ? (
           <svg aria-hidden width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <path d="M3 3l12 12M15 3L3 15" />
           </svg>
         ) : (
-          <svg aria-hidden width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z" />
+          /* Two speech bubbles: it has to read as "chat" at a glance. */
+          <svg aria-hidden width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M8.5 15.5H5.2L2.5 18v-11a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2z" />
+            <path d="M8 10.5v-.5a2 2 0 0 1 2-2h9.5a2 2 0 0 1 2 2V16a2 2 0 0 1-2 2h-.8l-2.2 2.5V18" />
           </svg>
         )}
       </button>
@@ -86,22 +98,22 @@ export default function ChatWidget() {
               </svg>
             </span>
             <div>
-              <p className="text-[15px] font-medium leading-tight">{t("title")}</p>
+              <p className="text-small font-medium leading-tight">{t("title")}</p>
               <p className="idx-mono mt-0.5 lowercase text-on-dark-faint">·· novieri</p>
             </div>
           </div>
 
           <div ref={listRef} className="flex-1 overflow-y-auto px-4 py-4">
-            <div className="mb-3 max-w-[85%] rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-[14.5px] text-ink">
+            <div className="mb-3 max-w-[85%] rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-small text-ink">
               {t("greeting")}
             </div>
             {messages.map((m, i) =>
               m.role === "user" ? (
-                <div key={i} className="mb-3 ml-auto max-w-[85%] rounded-2xl rounded-tr-md bg-plum px-4 py-2.5 text-[14.5px] text-white">
+                <div key={i} className="mb-3 ml-auto max-w-[85%] rounded-2xl rounded-tr-md bg-plum px-4 py-2.5 text-small text-white">
                   {m.content}
                 </div>
               ) : (
-                <div key={i} className="mb-3 max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-[14.5px] text-ink">
+                <div key={i} className="mb-3 max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-small text-ink">
                   {m.content}
                 </div>
               ),
@@ -111,15 +123,15 @@ export default function ChatWidget() {
                 {[0, 1, 2].map((d) => (
                   <span
                     key={d}
-                    className="h-1.5 w-1.5 animate-bounce rounded-full bg-plum"
-                    style={{ animationDelay: `${d * 150}ms` }}
+                    className="dot-pulse h-1.5 w-1.5 rounded-full bg-plum"
+                    style={{ ["--dd" as string]: `${d * 150}ms` }}
                   />
                 ))}
               </div>
             )}
             {error && (
-              <p className="mb-3 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-3 py-2 text-[13.5px] text-[#a13b32]">
-                {t("error")}
+              <p className="mb-3 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-3 py-2 text-caption text-[#a13b32]">
+                {error === "limit" ? t("limit") : t("error")}
               </p>
             )}
           </div>
@@ -131,8 +143,8 @@ export default function ChatWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={t("placeholder")}
-              maxLength={2000}
-              className="min-w-0 flex-1 rounded-lg border border-line px-3.5 py-2.5 text-[14.5px] placeholder:text-ink-faint focus:border-plum focus:outline-none"
+              maxLength={MAX_CHARS}
+              className="min-w-0 flex-1 rounded-lg border border-line px-3.5 py-2.5 text-small placeholder:text-ink-faint focus:border-plum focus:outline-none"
             />
             <button
               type="submit"

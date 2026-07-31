@@ -50,13 +50,44 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  const messages = await getMessages();
+
+  // Only the namespaces client components actually read are inlined into the
+  // page. Shipping the whole catalog put the full legal copy on every page —
+  // 77% of the document weight, and it gated the largest paint on hydration.
+  const all = (await getMessages()) as Record<string, Record<string, never>>;
+  const solutions = all.solutions.items as unknown as Record<string, { name: string; tagline: string }>;
+  const messages = {
+    nav: all.nav,
+    pillars: all.pillars,
+    common: all.common,
+    cookies: all.cookies,
+    chat: all.chat,
+    // The header menu needs two lines per solution, not the whole page copy.
+    solutions: {
+      items: Object.fromEntries(
+        Object.entries(solutions).map(([key, s]) => [key, { name: s.name, tagline: s.tagline }]),
+      ),
+    },
+  };
 
   return (
     <html lang={locale} className={`${clash.variable} ${satoshi.variable} ${jetbrainsMono.variable}`}>
       <body>
-        {/* Opt into animations before first paint; content stays visible without JS */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/*
+          Runs before first paint. Two jobs: opt into animations (content
+          stays visible without JS), and decide whether the cookie banner
+          shows. The banner used to mount only after hydration, which made it
+          the largest paint on mobile and dragged LCP to 7s; now its markup is
+          in the HTML and this line decides, at parse time, whether to show it.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js');" +
+              "try{var c=localStorage.getItem('novieri-consent');" +
+              "if(c!=='all'&&c!=='necessary')document.documentElement.classList.add('needs-consent')}catch(e){}",
+          }}
+        />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main id="main">{children}</main>

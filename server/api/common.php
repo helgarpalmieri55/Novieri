@@ -44,6 +44,39 @@ function handle_cors(array $config): void
     }
 }
 
+/**
+ * Cross-origin write protection. A browser attaches Origin to every POST, so
+ * a POST that carries neither Origin nor Referer is not a visitor on the
+ * site — it is a script talking to the endpoint directly. Same-origin
+ * requests pass on the server's own host; anything else must be listed in
+ * `allowed_origins`.
+ */
+function require_known_origin(array $config): void
+{
+    $allowed = [];
+    foreach ((array) ($config['allowed_origins'] ?? []) as $origin) {
+        $host = parse_url((string) $origin, PHP_URL_HOST);
+        if (is_string($host) && $host !== '') {
+            $allowed[] = strtolower($host);
+        }
+    }
+    $self = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
+    $self = (string) preg_replace('/:\d+$/', '', $self);
+    if ($self !== '') {
+        $allowed[] = $self;
+        // www and apex are the same site; the .htaccess redirect only fires
+        // on navigations, not on a fetch() already in flight.
+        $allowed[] = str_starts_with($self, 'www.') ? substr($self, 4) : 'www.' . $self;
+    }
+
+    $source = (string) ($_SERVER['HTTP_ORIGIN'] ?? $_SERVER['HTTP_REFERER'] ?? '');
+    $from = $source !== '' ? parse_url($source, PHP_URL_HOST) : null;
+    if (!is_string($from) || !in_array(strtolower($from), $allowed, true)) {
+        error_log('novieri: blocked POST from origin "' . ($source ?: '(none)') . '" ip ' . client_ip());
+        send_json(403, ['error' => 'forbidden']);
+    }
+}
+
 function require_post(): void
 {
     if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -68,12 +101,74 @@ function client_ip(): string
 }
 
 /**
- * Small file-based rate limiter (per IP, per bucket). Fails open on
+ * Google reCAPTCHA v3 verification. Does nothing while `recaptcha_secret` is
+ * empty, so the forms keep working before the keys exist. Once configured, a
+ * missing or failing token is rejected — except when Google itself is
+ * unreachable, where we let the submission through and log it: a lead lost to
+ * someone else's outage costs more than the spam it would have stopped.
+ */
+function verify_recaptcha(array $config, mixed $token, string $action): void
+{
+    $secret = (string) ($config['recaptcha_secret'] ?? '');
+    if ($secret === '') {
+        return;
+    }
+    if (!is_string($token) || $token === '') {
+        error_log('recaptcha: no token from ' . client_ip());
+        send_json(400, ['error' => 'captcha']);
+    }
+
+    $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => http_build_query([
+            'secret' => $secret,
+            'response' => $token,
+            'remoteip' => client_ip(),
+        ]),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 10,
+    ]);
+    $raw = curl_exec($ch);
+    $error = curl_error($ch);
+    curl_close($ch);
+
+    if ($raw === false) {
+        error_log('recaptcha: unreachable, allowing submission — ' . $error);
+        return;
+    }
+    $result = json_decode($raw, true);
+    if (!is_array($result)) {
+        error_log('recaptcha: unparseable response, allowing submission');
+        return;
+    }
+
+    $min = (float) ($config['recaptcha_min_score'] ?? 0.5);
+    $score = (float) ($result['score'] ?? 0);
+    $ok = ($result['success'] ?? false) === true
+        && ($result['action'] ?? '') === $action
+        && $score >= $min;
+    if (!$ok) {
+        error_log(sprintf(
+            'recaptcha: rejected ip=%s action=%s score=%.2f errors=%s',
+            client_ip(),
+            (string) ($result['action'] ?? ''),
+            $score,
+            implode(',', (array) ($result['error-codes'] ?? []))
+        ));
+        send_json(400, ['error' => 'captcha']);
+    }
+}
+
+/**
+ * Small file-based rate limiter (per identity, per bucket). The identity is
+ * the client IP unless one is passed — pass a constant to make the bucket
+ * site-wide, which is how the daily spend ceiling is enforced. Fails open on
  * filesystem trouble — better to serve than to lock everyone out.
  */
-function enforce_rate_limit(string $bucket, int $max, int $windowSeconds): void
+function enforce_rate_limit(string $bucket, int $max, int $windowSeconds, ?string $identity = null): void
 {
-    $file = sys_get_temp_dir() . '/novieri_rl_' . md5($bucket . '|' . client_ip());
+    $file = sys_get_temp_dir() . '/novieri_rl_' . md5($bucket . '|' . ($identity ?? client_ip()));
     $handle = @fopen($file, 'c+');
     if ($handle === false) {
         return;

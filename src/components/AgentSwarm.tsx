@@ -59,13 +59,13 @@ export default function AgentSwarm({ copy }: { copy: SwarmCopy }) {
         aria-hidden
         className="absolute -inset-px rounded-[17px] bg-gradient-to-br from-teal-bright via-plum-bright to-gold-bright"
       />
-      <div className="relative overflow-hidden rounded-2xl bg-[#0d1117] font-mono text-[13px] text-[#c9d1d9]">
+      <div className="relative overflow-hidden rounded-2xl bg-[#0d1117] font-mono text-caption text-[#c9d1d9]">
         <div className="flex items-center gap-2 border-b border-[#21262d] px-4 py-3">
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
-          <span className="ml-2 text-[12px] tracking-[0.05em] text-on-dark-faint">{copy.barTitle}</span>
-          <span className="ml-auto rounded-full border border-[#3a3145] px-2.5 py-0.5 text-[10.5px] tracking-[0.08em] text-gold-bright">
+          <span className="ml-2 text-micro tracking-[0.05em] text-on-dark-faint">{copy.barTitle}</span>
+          <span className="ml-auto rounded-full border border-[#3a3145] px-2.5 py-0.5 text-micro tracking-[0.08em] text-gold-bright">
             {copy.badge}
           </span>
         </div>
@@ -156,7 +156,7 @@ export default function AgentSwarm({ copy }: { copy: SwarmCopy }) {
         </svg>
 
         {/* Approval gate + activity */}
-        <div className="border-t border-[#21262d] px-4 py-3 text-[11.5px]" aria-live="off">
+        <div className="border-t border-[#21262d] px-4 py-3 text-micro" aria-live="off">
           <span className={frame.gate ? "text-gold-bright" : "text-on-dark-faint"}>
             <span aria-hidden className="mr-2">
               {frame.gate ? "◆" : "→"}
@@ -165,7 +165,7 @@ export default function AgentSwarm({ copy }: { copy: SwarmCopy }) {
           </span>
         </div>
 
-        <div className="flex flex-wrap gap-x-5 gap-y-1 border-t border-[#21262d] px-4 py-3 text-[11px] tracking-[0.05em] text-on-dark-faint">
+        <div className="flex flex-wrap gap-x-5 gap-y-1 border-t border-[#21262d] px-4 py-3 text-micro tracking-[0.05em] text-on-dark-faint">
           <span className="tabular-nums">
             {frame.files} {copy.stats.files}
           </span>

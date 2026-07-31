@@ -27,11 +27,11 @@ export default function CtaBand({
         </svg>
       </div>
       <div className="container-site relative">
-        <span aria-hidden className="font-sans text-[26px] font-bold tracking-[0.14em] text-gold-bright">
+        <span aria-hidden className="font-sans text-display-sm font-bold tracking-[0.14em] text-gold-bright">
           ··
         </span>
         <h2 className="reveal mt-4 max-w-[18ch] text-[clamp(2.125rem,4.8vw,3.625rem)]">{title}</h2>
-        <p className="reveal mt-4 max-w-[52ch] text-lg text-on-dark-muted" style={{ ["--rd" as string]: "80ms" }}>
+        <p className="reveal mt-4 max-w-[52ch] text-lead text-on-dark-muted" style={{ ["--rd" as string]: "80ms" }}>
           {subtitle}
         </p>
         <Link href="/contact" className="btn btn-white reveal mt-9" style={{ ["--rd" as string]: "160ms" }}>

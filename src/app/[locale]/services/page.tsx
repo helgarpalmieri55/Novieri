@@ -44,7 +44,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               style={{ ["--rd" as string]: `${i * 70}ms` }}
             >
               <span className={`idx-mono ${p.accent}`}>··0{i + 1}</span>
-              <h2 className="text-[clamp(1.5rem,2.4vw,1.875rem)]">{tp(`${p.key}.name`)}</h2>
+              <h2 className="text-h4">{tp(`${p.key}.name`)}</h2>
               <p className="grow text-ink-muted">{tp(`${p.key}.tagline`)}</p>
               <span className="flex flex-wrap gap-1.5">
                 {(tp.raw(`${p.key}.tags`) as string[]).map((tag) => (

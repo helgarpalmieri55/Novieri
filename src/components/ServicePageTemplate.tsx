@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { getPathname } from "@/i18n/navigation";
+import { pageUrl } from "@/lib/urls";
 import type { AppPathname } from "@/i18n/routing";
 import { site } from "@/config/site";
 import { JsonLd } from "@/lib/seo";
@@ -39,7 +39,7 @@ export default async function ServicePageTemplate({
     "@type": "Service",
     name: tp(`${ns}.name`),
     description: tp(`${ns}.tagline`),
-    url: site.url + getPathname({ locale: locale as "es" | "en", href: pathname }),
+    url: pageUrl(locale as "es" | "en", pathname),
     provider: { "@type": "Organization", name: "Novieri", url: site.url },
     areaServed: ["CO", "US"],
   };
@@ -62,8 +62,8 @@ export default async function ServicePageTemplate({
           <ul className="dot-list grid gap-x-14 gap-y-9 md:grid-cols-2">
             {items.map((item, i) => (
               <li key={i} className="reveal" style={{ ["--rd" as string]: `${(i % 2) * 80}ms` }}>
-                <h3 className="text-[19px]">{item.title}</h3>
-                <p className="mt-1.5 max-w-[52ch] text-[15.5px] text-ink-muted">{item.body}</p>
+                <h3 className="text-lead">{item.title}</h3>
+                <p className="mt-1.5 max-w-[52ch] text-small text-ink-muted">{item.body}</p>
               </li>
             ))}
           </ul>
@@ -112,8 +112,8 @@ export default async function ServicePageTemplate({
               >
                 <span className="idx-mono text-gold-deep">··0{i + 1}</span>
                 <h3 className="mt-3">{tier.name}</h3>
-                <p className="mt-2.5 grow text-[15px] text-ink-muted">{tier.blurb}</p>
-                <Link href="/contact" className="link-accent mt-6 text-[15px]">
+                <p className="mt-2.5 grow text-small text-ink-muted">{tier.blurb}</p>
+                <Link href="/contact" className="link-accent mt-6 text-small">
                   {tc("talkCase")}
                 </Link>
               </div>

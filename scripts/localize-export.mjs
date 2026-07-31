@@ -91,7 +91,39 @@ if (basePath) {
   }
 }
 
-// 5. Sanity: no English-named route directories left behind under /es.
+// 5. Every internal page link in the export must resolve to a real page. The
+//    language switcher used to emit the *template* path (/en/diagnostic
+//    instead of /en/self-diagnosis) and nothing caught it, because the pages
+//    whose English slug equals the template key hid the failures.
+const pages = [];
+(function walk(dir) {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) walk(path);
+    else if (entry.name === "index.html") pages.push(path);
+  }
+})(OUT);
+
+const broken = new Map();
+for (const page of pages) {
+  const html = readFileSync(page, "utf8");
+  for (const [, href] of html.matchAll(/href="(\/[^"#?]*)"/g)) {
+    const path = (basePath && href.startsWith(basePath) ? href.slice(basePath.length) : href)
+      .replace(/\/$/, "");
+    if (!/^\/(es|en)(\/|$)/.test(path)) continue; // assets, not pages
+    const file = join(OUT, ...path.split("/").filter(Boolean), "index.html");
+    if (!existsSync(file)) {
+      broken.set(path, page.slice(OUT.length + 1));
+    }
+  }
+}
+if (broken.size > 0) {
+  console.error(`localize-export: ${broken.size} internal link(s) point at no page:`);
+  for (const [href, from] of broken) console.error(`  ${href}  (from ${from})`);
+  process.exit(1);
+}
+
+// 6. Sanity: no English-named route directories left behind under /es.
 const leftovers = ["services", "solutions", "about", "contact"].filter((d) =>
   readdirSync(join(OUT, "es")).includes(d),
 );
@@ -101,5 +133,6 @@ if (leftovers.length > 0) {
 }
 
 console.log(
-  `localize-export: renamed ${renamed} dirs, verified ${new Set(urls).size} sitemap URLs, wrote 404.html`,
+  `localize-export: renamed ${renamed} dirs, verified ${new Set(urls).size} sitemap URLs ` +
+    `and the internal links on ${pages.length} pages, wrote 404.html`,
 );

@@ -11,9 +11,23 @@
  * only read the keys listed below and ignore the rest.
  */
 return [
-    // Anthropic API key for the website chatbot (chat.php).
-    // While empty, chat.php answers 503 and the widget shows its error state.
+    // Anthropic API key for the website chatbot (chat.php) and the
+    // self-diagnosis report (diagnose.php). While empty, both answer 503 and
+    // the widget shows its error state. This is the only place it lives.
     'anthropic_api_key' => '',
+
+    // Abuse ceilings. Per-IP burst (5/min) and session (20/15 min) limits are
+    // fixed in chat.php; these two are the ones worth tuning, because they
+    // bound the monthly bill. 'chat_daily_total' is site-wide, so it holds
+    // even against someone rotating IP addresses.
+    'chat_daily_per_ip'    => 60,
+    'chat_daily_total'     => 800,
+    'diagnose_daily_total' => 100,
+
+    // Optional extra salt for the signature on chatbot replies (the backend
+    // uses it to tell its own words from a forged conversation). Any random
+    // string; changing it only invalidates chats already open in a browser.
+    'chat_secret' => '',
 
     // GoDaddy mailbox used by the contact form (contact.php).
     // Create the mailbox in your GoDaddy panel first (e.g. sales@novieri.com).
@@ -41,6 +55,16 @@ return [
     // for writing the diagnosis as a note on the contact timeline; leave
     // empty and everything else still works.
     'hubspot_token' => '',
+
+    // Google reCAPTCHA v3 (google.com/recaptcha/admin -> create a v3 site).
+    // The SITE key is public and goes in the build as
+    // NEXT_PUBLIC_RECAPTCHA_SITE_KEY; only the SECRET belongs here. While
+    // this is empty the endpoints skip verification, so the forms work
+    // before the keys exist. Scores run 0.0 (bot) to 1.0 (human); 0.5 is
+    // Google's suggested threshold — raise it if spam still gets through,
+    // lower it if real people are being turned away.
+    'recaptcha_secret'    => '',
+    'recaptcha_min_score' => 0.5,
 
     // Origins allowed to call these endpoints from another host. Same-origin
     // calls (the site on this server) never need an entry. Add the GitHub

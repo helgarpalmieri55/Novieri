@@ -62,7 +62,7 @@ export default async function LegalPageTemplate({
         {/* Contents */}
         <nav aria-label={t("common.toc")} className="lg:sticky lg:top-24 lg:self-start">
           <p className="idx-mono uppercase tracking-[0.12em] text-ink-faint">{t("common.toc")}</p>
-          <ol className="mt-4 space-y-2.5 text-[15px]">
+          <ol className="mt-4 space-y-2.5 text-small">
             {sections.map((s, i) => (
               <li key={anchor(i)}>
                 <a href={`#${anchor(i)}`} className="text-ink-muted transition-colors hover:text-plum">
@@ -73,7 +73,7 @@ export default async function LegalPageTemplate({
           </ol>
 
           <p className="idx-mono mt-9 uppercase tracking-[0.12em] text-ink-faint">{t("common.otherDocs")}</p>
-          <ul className="mt-4 space-y-2.5 text-[15px]">
+          <ul className="mt-4 space-y-2.5 text-small">
             {OTHER[doc].map((o) => (
               <li key={o.doc}>
                 <Link href={o.href} className="text-ink-muted transition-colors hover:text-plum">
@@ -88,14 +88,14 @@ export default async function LegalPageTemplate({
         <div>
           <div className="card-hairline mb-10 p-6">
             <p className="idx-mono uppercase tracking-[0.12em] text-ink-faint">{t("common.identityTitle")}</p>
-            <p className="mt-3 text-[15.5px] text-ink-muted">
+            <p className="mt-3 text-small text-ink-muted">
               {interpolate(t.raw("common.identityBody") as string, vars)}
             </p>
           </div>
 
           {sections.map((s, i) => (
             <section key={anchor(i)} id={anchor(i)} className="mb-10 scroll-mt-24">
-              <h2 className="text-[clamp(1.25rem,2.2vw,1.6rem)]">{s.h}</h2>
+              <h2 className="text-h4">{s.h}</h2>
               {s.p?.map((para, j) => (
                 <p key={j} className="mt-4 text-ink-muted">
                   {interpolate(para, vars)}
@@ -117,7 +117,7 @@ export default async function LegalPageTemplate({
           ))}
 
           <div className="mt-12 rounded-2xl bg-plum-wash p-7">
-            <h2 className="text-[1.25rem]">{t("common.questionsTitle")}</h2>
+            <h2 className="text-lead">{t("common.questionsTitle")}</h2>
             <p className="mt-3 text-ink-muted">
               {interpolate(t.raw("common.questionsBody") as string, vars)}
             </p>

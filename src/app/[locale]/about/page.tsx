@@ -1,7 +1,10 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/seo";
-import { site } from "@/config/site";
+import { asset, site } from "@/config/site";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
@@ -20,9 +23,19 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const t = await getTranslations("about");
   const tc = await getTranslations("common");
 
+  /**
+   * A portrait is used when the file exists in public/team/ and the initials
+   * stand in until it does. Checked at build time, which a static export can
+   * do and a runtime check cannot.
+   */
+  function photo(file: string): string | null {
+    return existsSync(join(process.cwd(), "public/team", file)) ? `/team/${file}` : null;
+  }
+
   const founders = [
     {
       initials: "HP",
+      photo: photo("helgar.jpg"),
       name: t("founders.helgar.name"),
       role: t("founders.helgar.role"),
       bio: t("founders.helgar.bio"),
@@ -30,8 +43,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       linkedin: site.founders.helgar,
     },
     {
-      // TODO before launch: add real founder photos
       initials: "SN",
+      photo: photo("sylvana.jpg"),
       name: t("founders.partner.name"),
       role: t("founders.partner.role"),
       bio: t("founders.partner.bio"),
@@ -56,7 +69,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <span className="text-gold-deep">ieri</span>
           </div>
           <div className="reveal mt-8 max-w-[68ch]" style={{ ["--rd" as string]: "100ms" }}>
-            <h2 className="text-[clamp(1.375rem,2.4vw,1.75rem)]">{t("story.title")}</h2>
+            <h2 className="text-h4">{t("story.title")}</h2>
             <p className="mt-3.5 text-ink-muted">{t("story.body")}</p>
           </div>
         </div>
@@ -73,13 +86,23 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 className="card-hairline reveal flex flex-col gap-5 p-8 sm:flex-row sm:items-start"
                 style={{ ["--rd" as string]: `${i * 90}ms` }}
               >
-                <div
-                  role="img"
-                  aria-label={f.photoAlt}
-                  className="grid h-20 w-20 flex-none place-items-center rounded-xl border border-line bg-plum-wash font-display text-[22px] font-semibold text-plum"
-                >
-                  {f.initials}
-                </div>
+                {f.photo ? (
+                  <Image
+                    src={asset(f.photo)}
+                    alt={f.photoAlt}
+                    width={160}
+                    height={160}
+                    className="h-20 w-20 flex-none rounded-xl border border-line bg-plum-wash object-cover object-top"
+                  />
+                ) : (
+                  <div
+                    role="img"
+                    aria-label={f.photoAlt}
+                    className="grid h-20 w-20 flex-none place-items-center rounded-xl border border-line bg-plum-wash font-display text-h3 font-semibold text-plum"
+                  >
+                    {f.initials}
+                  </div>
+                )}
                 <div>
                   <div className="flex flex-wrap items-center gap-3">
                     <h3>{f.name}</h3>
@@ -98,7 +121,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     )}
                   </div>
                   <p className="idx-mono mt-1 lowercase text-gold-deep">·· {f.role}</p>
-                  <p className="mt-3 text-[15.5px] text-ink-muted">{f.bio}</p>
+                  <p className="mt-3 text-small text-ink-muted">{f.bio}</p>
                 </div>
               </div>
             ))}
@@ -112,7 +135,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <div className="container-site section-pad-tight grid items-start gap-[clamp(2rem,5vw,5rem)] lg:grid-cols-[5fr_7fr]">
           <h2 className="reveal max-w-[16ch]">{t("location.title")}</h2>
           <div className="reveal" style={{ ["--rd" as string]: "100ms" }}>
-            <p className="max-w-[62ch] text-lg text-on-dark-muted">{t("location.body")}</p>
+            <p className="max-w-[62ch] text-lead text-on-dark-muted">{t("location.body")}</p>
             <p className="idx-mono mt-8 tracking-[0.07em] text-on-dark-faint">
               barranquilla <span className="text-gold-bright">··</span> gmt-5{" "}
               <span className="text-gold-bright">··</span> es / en

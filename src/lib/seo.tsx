@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { getPathname } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 import { site } from "@/config/site";
+import { pageUrl } from "@/lib/urls";
 
 type MetaKey =
   | "home"
@@ -38,9 +38,9 @@ export async function pageMetadata(
 
   const languages: Record<string, string> = {};
   for (const l of routing.locales) {
-    languages[l] = site.url + getPathname({ locale: l, href: pathname });
+    languages[l] = pageUrl(l, pathname);
   }
-  languages["x-default"] = site.url + getPathname({ locale: "en", href: pathname });
+  languages["x-default"] = pageUrl("en", pathname);
 
   // Solutions pages stay in the build but out of search while unpublished.
   const hidden = !site.showSolutions && pathname.startsWith("/solutions");
@@ -50,13 +50,13 @@ export async function pageMetadata(
     title: t(`${key}.title`),
     description: t(`${key}.description`),
     alternates: {
-      canonical: site.url + getPathname({ locale: locale as "es" | "en", href: pathname }),
+      canonical: pageUrl(locale as "es" | "en", pathname),
       languages,
     },
     openGraph: {
       title: t(`${key}.title`),
       description: t(`${key}.description`),
-      url: site.url + getPathname({ locale: locale as "es" | "en", href: pathname }),
+      url: pageUrl(locale as "es" | "en", pathname),
       siteName: "Novieri",
       locale: locale === "es" ? "es_CO" : "en_US",
       type: "website",

@@ -42,8 +42,8 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
                 <span aria-hidden className={`idx-mono ${s.accent}`}>
                   ··0{i + 1}
                 </span>
-                <h2 className="text-[clamp(1.25rem,1.9vw,1.5rem)]">{t(`items.${s.key}.name`)}</h2>
-                <p className="grow text-[15px] text-ink-muted">{t(`items.${s.key}.tagline`)}</p>
+                <h2 className="text-h4">{t(`items.${s.key}.name`)}</h2>
+                <p className="grow text-small text-ink-muted">{t(`items.${s.key}.tagline`)}</p>
                 <span className="flex flex-wrap gap-1.5">
                   {(t.raw(`items.${s.key}.tags`) as string[]).map((tag) => (
                     <span key={tag} className="tag-mono">
@@ -51,7 +51,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ loca
                     </span>
                   ))}
                 </span>
-                <span className="mt-1 inline-flex items-center gap-1.5 text-[15px] font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
+                <span className="mt-1 inline-flex items-center gap-1.5 text-small font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
                   {ts("seeSolution")} <span aria-hidden>→</span>
                 </span>
               </Link>

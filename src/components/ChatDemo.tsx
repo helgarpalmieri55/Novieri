@@ -71,7 +71,7 @@ function Bubble({ entry, theme }: { entry: ChatEntry; theme: (typeof THEME)[Vari
   if ("kind" in entry && entry.kind === "transcript") {
     return (
       <div className="my-1 flex justify-center">
-        <p className={`max-w-[85%] rounded-lg px-3 py-1.5 text-center text-[12.5px] leading-relaxed ${theme.system}`}>
+        <p className={`max-w-[85%] rounded-lg px-3 py-1.5 text-center text-caption leading-relaxed ${theme.system}`}>
           <span className={`idx-mono mr-1.5 uppercase tracking-[0.08em] ${theme.systemLabel}`}>{entry.label}</span>
           {entry.text}
         </p>
@@ -81,7 +81,7 @@ function Bubble({ entry, theme }: { entry: ChatEntry; theme: (typeof THEME)[Vari
   if ("kind" in entry && entry.kind === "action") {
     return (
       <div className="my-1 flex justify-center">
-        <p className="flex max-w-[90%] items-center gap-2 rounded-lg border border-gold-deep/45 bg-[#1b1a16] px-3 py-1.5 text-center text-[12.5px] text-gold-bright">
+        <p className="flex max-w-[90%] items-center gap-2 rounded-lg border border-gold-deep/45 bg-[#1b1a16] px-3 py-1.5 text-center text-caption text-gold-bright">
           <svg aria-hidden width="12" height="12" viewBox="0 0 14 14" fill="none" className="flex-none">
             <path d="M2 7.5l3.2 3.2L12 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -97,7 +97,7 @@ function Bubble({ entry, theme }: { entry: ChatEntry; theme: (typeof THEME)[Vari
     : `ml-auto rounded-2xl rounded-tr-md ${theme.guest}`;
 
   return (
-    <div className={`mb-2 max-w-[85%] px-3 pb-1.5 pt-2 text-[14.5px] leading-[1.5] ${bubble}`}>
+    <div className={`mb-2 max-w-[85%] px-3 pb-1.5 pt-2 text-small leading-[1.5] ${bubble}`}>
       {"kind" in entry && entry.kind === "voice" ? (
         <div className="flex items-center gap-2.5 py-0.5">
           <svg aria-hidden width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="flex-none opacity-90">
@@ -112,8 +112,8 @@ function Bubble({ entry, theme }: { entry: ChatEntry; theme: (typeof THEME)[Vari
       ) : (
         <p className="whitespace-pre-wrap">{"text" in entry ? entry.text : ""}</p>
       )}
-      <span className={`mt-0.5 flex items-center justify-end gap-1 text-[11px] ${theme.meta}`}>
-        {"kind" in entry && entry.kind === "voice" && <span className="mr-auto text-[11px]">{entry.duration}</span>}
+      <span className={`mt-0.5 flex items-center justify-end gap-1 text-micro ${theme.meta}`}>
+        {"kind" in entry && entry.kind === "voice" && <span className="mr-auto text-micro">{entry.duration}</span>}
         {"t" in entry && entry.t}
         {!bot && theme.ticks && <Ticks />}
       </span>
@@ -127,8 +127,8 @@ function Typing({ theme }: { theme: (typeof THEME)[Variant] }) {
       {[0, 1, 2].map((d) => (
         <span
           key={d}
-          className={`h-1.5 w-1.5 animate-bounce rounded-full ${theme.wave}`}
-          style={{ animationDelay: `${d * 150}ms` }}
+          className={`dot-pulse h-1.5 w-1.5 rounded-full ${theme.wave}`}
+          style={{ ["--dd" as string]: `${d * 150}ms` }}
         />
       ))}
     </div>
@@ -236,10 +236,10 @@ export default function ChatDemo({
             )}
           </span>
           <div className="min-w-0">
-            <p className={`truncate text-[14.5px] font-medium leading-tight ${theme.name}`}>{header.name}</p>
-            <p className={`mt-0.5 truncate text-[12px] ${theme.status}`}>{header.status}</p>
+            <p className={`truncate text-small font-medium leading-tight ${theme.name}`}>{header.name}</p>
+            <p className={`mt-0.5 truncate text-micro ${theme.status}`}>{header.status}</p>
           </div>
-          <span className="ml-auto flex-none rounded-full border border-[#3a3145] px-2.5 py-0.5 text-[10.5px] tracking-[0.08em] text-gold-bright">
+          <span className="ml-auto flex-none rounded-full border border-[#3a3145] px-2.5 py-0.5 text-micro tracking-[0.08em] text-gold-bright">
             {badge}
           </span>
         </div>
@@ -260,7 +260,7 @@ export default function ChatDemo({
 
         {/* Composer (decorative) */}
         <div className={`flex items-center gap-2.5 border-t px-3.5 py-3 ${theme.composer}`}>
-          <span aria-hidden className={`flex-1 truncate rounded-full px-3.5 py-2 text-[13.5px] ${theme.field}`}>
+          <span aria-hidden className={`flex-1 truncate rounded-full px-3.5 py-2 text-caption ${theme.field}`}>
             {inputHint}
           </span>
           <span
@@ -280,7 +280,7 @@ export default function ChatDemo({
         </div>
 
         {/* Capability strip */}
-        <div className={`flex flex-wrap gap-x-5 gap-y-1 border-t px-4 py-3 text-[11.5px] tracking-[0.05em] text-on-dark-faint ${theme.composer}`}>
+        <div className={`flex flex-wrap gap-x-5 gap-y-1 border-t px-4 py-3 text-micro tracking-[0.05em] text-on-dark-faint ${theme.composer}`}>
           {foot.map((item) => (
             <span key={item}>{item}</span>
           ))}

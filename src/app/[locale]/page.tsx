@@ -36,6 +36,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const whyPoints = t.raw("why.points") as { title: string; body: string }[];
   const howSteps = t.raw("how.steps") as { title: string; body: string }[];
   const chatEntries = t.raw("liveChat.entries") as ChatEntry[];
+  // Real quotes only. The array ships empty and the section stays out of the
+  // page until someone adds one to messages/*.json — see README.
+  const testimonials = t.raw("testimonials.items") as {
+    quote: string;
+    name: string;
+    role: string;
+    company?: string;
+  }[];
   const proofColors = ["text-plum", "text-teal", "text-gold-deep"];
 
   return (
@@ -72,7 +80,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </span>
             </h1>
             <p
-              className="rise mt-6 max-w-[50ch] text-[18.5px] text-ink-muted"
+              className="rise mt-6 max-w-[50ch] text-lead text-ink-muted"
               style={{ ["--d" as string]: "340ms" }}
             >
               {t("hero.subtitle")}
@@ -128,11 +136,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 className="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7"
                 style={{ ["--rd" as string]: `${i * 70}ms` }}
               >
-                <span aria-hidden className={`text-[22px] font-bold leading-[0.5] tracking-[0.1em] ${p.accent}`}>
+                <span aria-hidden className={`text-h3 font-bold leading-[0.5] tracking-[0.1em] ${p.accent}`}>
                   ··
                 </span>
                 <h3>{tp(`${p.key}.name`)}</h3>
-                <p className="grow text-[15px] text-ink-muted">{tp(`${p.key}.tagline`)}</p>
+                <p className="grow text-small text-ink-muted">{tp(`${p.key}.tagline`)}</p>
                 <span className="flex flex-wrap gap-1.5">
                   {(tp.raw(`${p.key}.tags`) as string[]).map((tag) => (
                     <span key={tag} className="tag-mono">
@@ -140,7 +148,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     </span>
                   ))}
                 </span>
-                <span className="mt-1 inline-flex items-center gap-1.5 text-[15px] font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
+                <span className="mt-1 inline-flex items-center gap-1.5 text-small font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
                   {tc("learnMore")} <span aria-hidden>→</span>
                 </span>
               </Link>
@@ -158,7 +166,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="mt-5 max-w-[56ch] text-ink-muted">{t("diagnose.body")}</p>
           </div>
           <div className="reveal lg:justify-self-end" style={{ ["--rd" as string]: "120ms" }}>
-            <Link href="/diagnostic" className="btn btn-primary text-[17px] !px-8 !py-4">
+            <Link href="/diagnostic" className="btn btn-primary text-body !px-8 !py-4">
               {t("diagnose.button")} <span aria-hidden>→</span>
             </Link>
             <p className="idx-mono mt-4 text-ink-faint">{t("diagnose.note")}</p>
@@ -193,18 +201,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* 6 · Why Novieri */}
+      {/* 6 · Why Novieri — opens on the number, not on another eyebrow */}
       <section className="section-pad">
         <div className="container-site grid gap-[clamp(2.5rem,6vw,5.5rem)] lg:grid-cols-[5fr_7fr]">
           <div className="reveal">
-            <span className="eyebrow">{t("why.eyebrow")}</span>
-            <h2 className="mt-4">{t("why.title")}</h2>
-            <div className="mt-11 border-t border-line pt-7">
-              <div className="font-display text-[clamp(4rem,8vw,6rem)] font-medium leading-none tracking-tight text-gold-deep">
-                {t("why.stat.value")}
-              </div>
-              <div className="idx-mono mt-2.5 text-ink-muted">{t("why.stat.label")}</div>
+            <div className="font-display text-[clamp(4rem,8vw,6rem)] font-medium leading-none tracking-tight text-gold-deep">
+              {t("why.stat.value")}
             </div>
+            <div className="idx-mono mt-2.5 text-ink-muted">{t("why.stat.label")}</div>
+            <h2 className="mt-9 border-t border-line pt-8">{t("why.title")}</h2>
           </div>
           <div>
             {whyPoints.map((p, i) => (
@@ -213,22 +218,54 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 className="reveal border-b border-line py-6 last:border-b-0"
                 style={{ ["--rd" as string]: `${i * 70}ms` }}
               >
-                <h3 className="relative pl-7 before:absolute before:left-0 before:top-0 before:font-sans before:text-[20px] before:font-bold before:tracking-[0.1em] before:text-gold before:content-['··']">
+                <h3 className="relative pl-7 before:absolute before:left-0 before:top-0 before:font-sans before:text-lead before:font-bold before:tracking-[0.1em] before:text-gold before:content-['··']">
                   {p.title}
                 </h3>
-                <p className="mt-2 max-w-[58ch] pl-7 text-[15.5px] text-ink-muted">{p.body}</p>
+                <p className="mt-2 max-w-[58ch] pl-7 text-small text-ink-muted">{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 7 · How we work */}
+      {/* 6b · Voices — nothing invented: renders only once real quotes exist */}
+      {testimonials.length > 0 && (
+        <section className="border-t border-line bg-plum-wash section-pad">
+          <div className="container-site">
+            <div className="reveal grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+              {testimonials.map((q, i) => (
+                <figure
+                  key={i}
+                  className="reveal card-hairline flex flex-col p-8"
+                  style={{ ["--rd" as string]: `${i * 70}ms` }}
+                >
+                  <span aria-hidden className="font-sans text-h3 font-bold leading-[0.5] tracking-[0.1em] text-gold">
+                    ··
+                  </span>
+                  <blockquote className="mt-5 grow text-lead leading-snug text-ink">{q.quote}</blockquote>
+                  <figcaption className="mt-6 border-t border-line pt-4">
+                    <span className="block text-small font-medium text-ink">{q.name}</span>
+                    <span className="idx-mono mt-1 block text-ink-faint">
+                      {[q.role, q.company].filter(Boolean).join(" · ")}
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="reveal idx-mono mt-10 lowercase text-ink-faint">·· {t("testimonials.eyebrow")}</p>
+          </div>
+        </section>
+      )}
+
+      {/* 7 · How we work — title first, label demoted to the rule */}
       <section className="section-pad border-t border-line">
         <div className="container-site">
-          <div className="reveal mb-[clamp(2.5rem,6vh,4rem)] max-w-2xl">
-            <span className="eyebrow">{t("how.eyebrow")}</span>
-            <h2 className="mt-4">{t("how.title")}</h2>
+          <div className="reveal mb-[clamp(2.5rem,6vh,4rem)]">
+            <h2 className="max-w-2xl">{t("how.title")}</h2>
+            <div className="mt-7 flex items-center gap-5 border-t border-line pt-3.5">
+              <span className="idx-mono lowercase text-gold-deep">·· {t("how.eyebrow")}</span>
+              <span className="idx-mono ml-auto text-ink-faint">01 — 0{howSteps.length}</span>
+            </div>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
             {howSteps.map((s, i) => (
@@ -238,8 +275,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 style={{ ["--rd" as string]: `${i * 90}ms` }}
               >
                 <span className="idx-mono text-gold-deep">0{i + 1}</span>
-                <h3 className="mt-2.5 text-[19px]">{s.title}</h3>
-                <p className="mt-2 text-[15px] text-ink-muted">{s.body}</p>
+                <h3 className="mt-2.5 text-lead">{s.title}</h3>
+                <p className="mt-2 text-small text-ink-muted">{s.body}</p>
               </div>
             ))}
           </div>

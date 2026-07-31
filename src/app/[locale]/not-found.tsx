@@ -18,7 +18,7 @@ export default async function NotFound() {
       <div className="container-site relative py-40">
         <span className="eyebrow">{t("eyebrow")}</span>
         <h1 className="mt-5 max-w-[16ch]">{t("title")}</h1>
-        <p className="mt-5 max-w-[52ch] text-lg text-ink-muted">{t("body")}</p>
+        <p className="mt-5 max-w-[52ch] text-lead text-ink-muted">{t("body")}</p>
         <Link href="/" className="btn btn-primary mt-9">
           {t("cta")}
         </Link>

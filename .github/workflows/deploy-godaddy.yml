@@ -36,6 +36,10 @@ jobs:
         env:
           # Same-origin PHP backend -> enables the chat widget + contact form
           NEXT_PUBLIC_API_BASE: /api
+          # reCAPTCHA site key. Public by design (it ships in the HTML); the
+          # secret half lives only in api/config.php on the server. Repo ->
+          # Settings -> Secrets and variables -> Actions -> Variables.
+          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ vars.RECAPTCHA_SITE_KEY }}
       - name: Add PHP backend to the deploy
         run: |
           mkdir -p out/api/data
