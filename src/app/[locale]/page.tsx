@@ -4,7 +4,8 @@ import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/config/site";
-import HeroVisual from "@/components/HeroVisual";
+import GemStage from "@/components/GemStage";
+import HeroBackdrop from "@/components/HeroBackdrop";
 import PillarTicker from "@/components/PillarTicker";
 import ChatDemo, { type ChatEntry } from "@/components/ChatDemo";
 import CtaBand from "@/components/CtaBand";
@@ -42,6 +43,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       {/* 1 · Hero — la gema viva, en blanco */}
       <section className="relative overflow-hidden bg-white pb-[clamp(3.5rem,8vh,5.5rem)] pt-[clamp(7.5rem,16vh,10rem)]">
+        <HeroBackdrop />
         <div
           aria-hidden
           className="absolute inset-0"
@@ -86,8 +88,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </Link>
             </div>
           </div>
-          <div className="rise relative mx-auto w-[min(62vw,280px)] lg:w-full lg:max-w-[420px]" style={{ ["--d" as string]: "200ms" }}>
-            <HeroVisual ringText={t("hero.ringText")} />
+          <div
+            className="hero-gem rise relative mx-auto w-[min(62vw,280px)] lg:w-full lg:max-w-[420px]"
+            style={{ ["--d" as string]: "200ms" }}
+          >
+            <GemStage ringText={t("hero.ringText")} />
           </div>
         </div>
       </section>
