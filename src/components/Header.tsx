@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { asset } from "@/config/site";
+import { asset, site } from "@/config/site";
 import type { AppPathname } from "@/i18n/routing";
 import LocaleSwitcher from "./LocaleSwitcher";
 
@@ -100,14 +100,15 @@ export default function Header() {
       >
         {t("skipToContent")}
       </a>
-      <div className="container-site flex h-[72px] items-center gap-6">
+      <div className="container-site flex h-[84px] items-center gap-6">
         <Link href="/" aria-label={t("homeLink")} onClick={closeAll} className="mr-auto flex items-center gap-2.5">
-          <Image src={asset("/brand/novieri-isotipo-color-256px.png")} alt="" width={32} height={33} priority />
-          <span className="font-display text-[21px] font-semibold leading-none text-ink">novieri</span>
+          <Image src={asset("/brand/novieri-isotipo-color-256px.png")} alt="" width={48} height={49} priority />
+          <span className="font-display text-[25px] font-semibold leading-none text-ink">novieri</span>
         </Link>
 
         <nav ref={navRef} className="hidden items-center gap-6 md:flex" aria-label={t("services")}>
-          {/* Solutions dropdown */}
+          {/* Solutions dropdown — not rendered while the section is unpublished */}
+          {site.showSolutions && (
           <div className="relative">
             <button
               type="button"
@@ -141,6 +142,7 @@ export default function Header() {
               </div>
             )}
           </div>
+          )}
 
           {/* Services dropdown */}
           <div className="relative">
@@ -211,20 +213,24 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[72px] z-40 overflow-y-auto bg-white md:hidden">
+        <div className="fixed inset-x-0 bottom-0 top-[84px] z-40 overflow-y-auto bg-white md:hidden">
           <nav className="container-site flex flex-col gap-1 py-6">
-            <span className="idx-mono px-2 pb-1 lowercase text-gold-deep">·· {t("solutions")}</span>
-            {SOLUTIONS.map((s) => (
-              <Link
-                key={s.key}
-                href={s.href}
-                onClick={closeAll}
-                className="rounded-xl px-2 py-2.5 text-[17px] font-medium text-ink"
-              >
-                {tso(`${s.key}.name`)}
-              </Link>
-            ))}
-            <div className="my-3 h-px bg-line" />
+            {site.showSolutions && (
+              <>
+                <span className="idx-mono px-2 pb-1 lowercase text-gold-deep">·· {t("solutions")}</span>
+                {SOLUTIONS.map((s) => (
+                  <Link
+                    key={s.key}
+                    href={s.href}
+                    onClick={closeAll}
+                    className="rounded-xl px-2 py-2.5 text-[17px] font-medium text-ink"
+                  >
+                    {tso(`${s.key}.name`)}
+                  </Link>
+                ))}
+                <div className="my-3 h-px bg-line" />
+              </>
+            )}
             <span className="idx-mono px-2 pb-1 lowercase text-gold-deep">·· {t("services")}</span>
             {PILLARS.map((p) => (
               <Link

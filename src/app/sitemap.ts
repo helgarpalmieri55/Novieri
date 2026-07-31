@@ -6,7 +6,9 @@ import { site } from "@/config/site";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pathnames = Object.keys(routing.pathnames) as AppPathname[];
+  const pathnames = (Object.keys(routing.pathnames) as AppPathname[]).filter(
+    (href) => site.showSolutions || !href.startsWith("/solutions"),
+  );
 
   return pathnames.map((href) => {
     const languages: Record<string, string> = {};
