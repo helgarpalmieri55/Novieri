@@ -102,14 +102,25 @@ for (const entry of readdirSync(MODULES)) {
   collectNames(fields, "", names, join(dir, "fields.json"));
   moduleTopLevel.set(short, names);
 
-  // Every module.<something> in the markup has to be a field that exists.
   const htmlPath = join(dir, "module.hubl.html");
   if (existsSync(htmlPath)) {
-    const html = readFileSync(htmlPath, "utf8");
+    // {# … #} comments are where we explain these rules, so they quote the
+    // very syntax the rules forbid. Scan the markup, not the prose.
+    const html = readFileSync(htmlPath, "utf8").replace(/{#[\s\S]*?#}/g, "");
+
+    // Every module.<something> in the markup has to be a field that exists.
     for (const [, key] of html.matchAll(/\bmodule\.([a-z_][a-z0-9_]*)/g)) {
       if (!names.has(key) && !BUILTIN_MODULE_KEYS.has(key)) {
         fail(htmlPath, `module.${key} is not a field in fields.json`);
       }
+    }
+
+    // A module cannot render another module. HubSpot's build says
+    // "'module' is disabled in this context" and fails the whole component.
+    // Standard tags — {% menu %}, {% language_switcher %}, {% form %} — are
+    // the way to reach HubSpot's own building blocks from in here.
+    if (/{%-?\s*module\s/.test(html)) {
+      fail(htmlPath, "{% module %} is disabled inside a module — use the standard tag instead");
     }
   }
 }

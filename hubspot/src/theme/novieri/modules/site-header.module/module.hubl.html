@@ -1,7 +1,9 @@
 {# Site header. The nav comes from a HubSpot menu, so links are edited in
    Content > Navigation rather than in code, and each language has its own.
    The language switcher is HubSpot's own variant list, which already knows
-   the translated URL of the page you are on. #}
+   the translated URL of the page you are on. It has to be the standalone
+   {% language_switcher %} tag, not {% module path="@hubspot/language_switcher" %}:
+   the module tag is disabled inside a module, and the build rejects it. #}
 
 <header class="site-header sticky top-0 z-50 border-b border-transparent bg-white/90 backdrop-blur transition-colors duration-300">
   <a
@@ -31,7 +33,7 @@
     </nav>
 
     <nav class="idx-mono hidden items-center text-caption tracking-[0.06em] md:flex" aria-label="{{ module.label_language|escape_attr }}">
-      {% module "language_switcher" path="@hubspot/language_switcher", label="Language switcher" %}
+      {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
     </nav>
 
     {% if module.cta_text %}
@@ -58,7 +60,7 @@
   <div class="site-mobile-nav hidden border-t border-line bg-white px-5 py-6 md:hidden">
     {% menu id=module.menu, site_map_name="default", root_type="site_root", max_levels="2", flow="vertical", label="Navigation" %}
     <div class="idx-mono mt-6 flex items-center gap-3 border-t border-line pt-5 text-caption">
-      {% module "language_switcher" path="@hubspot/language_switcher", label="Language switcher" %}
+      {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
     </div>
     {% if module.cta_text %}
       <a href="{{ module.cta_link.url.href }}" class="btn btn-primary mt-5 w-full">{{ module.cta_text }}</a>
