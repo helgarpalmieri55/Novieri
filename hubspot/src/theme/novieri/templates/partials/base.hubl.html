@@ -27,13 +27,13 @@
   </head>
 
   <body class="{{ builtin_body_classes }}">
-    {% global_partial path="./header.html" %}
+    {% global_partial path="./header.hubl.html" %}
 
     <main id="main">
       {% block body %}{% endblock body %}
     </main>
 
-    {% global_partial path="./footer.html" %}
+    {% global_partial path="./footer.hubl.html" %}
 
     {% module "cookie_banner" path="../../modules/cookie-banner" %}
     {% module "sylvi_chat" path="../../modules/sylvi-chat" %}

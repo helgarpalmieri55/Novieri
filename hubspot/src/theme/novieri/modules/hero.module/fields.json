@@ -1,10 +1,9 @@
 [
   {
-    "id": "ticker",
     "name": "ticker",
     "label": "Rotating words",
-    "help_text": "Cycled one at a time above the headline.",
     "type": "group",
+    "help_text": "Cycled one at a time above the headline.",
     "occurrence": {
       "min": 1,
       "max": 6,
@@ -12,14 +11,12 @@
     },
     "children": [
       {
-        "id": "word",
         "name": "word",
         "label": "Word",
         "type": "text",
         "default": "AI & automation"
       },
       {
-        "id": "colour",
         "name": "colour",
         "label": "Colour",
         "type": "choice",
@@ -47,82 +44,59 @@
     ]
   },
   {
-    "id": "title_a",
     "name": "title_a",
     "label": "Headline, first line",
     "type": "text",
     "default": "AI-first IT solutions,"
   },
   {
-    "id": "title_b",
     "name": "title_b",
     "label": "Headline, second line (accent)",
     "type": "text",
     "default": "with a nearshore edge."
   },
   {
-    "id": "subtitle",
     "name": "subtitle",
     "label": "Subtitle",
-    "type": "textarea",
-    "default": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates."
+    "type": "text",
+    "default": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates.",
+    "allow_new_line": true
   },
   {
-    "id": "primary",
-    "name": "primary",
-    "label": "Primary button",
-    "type": "group",
-    "children": [
-      {
-        "id": "label",
-        "name": "label",
-        "label": "Label",
-        "type": "text",
-        "default": "Book a call"
-      },
-      {
-        "id": "link",
-        "name": "link",
-        "label": "Link",
-        "type": "link",
-        "default": {
-          "url": {
-            "type": "CONTENT",
-            "href": "/contact"
-          }
-        }
+    "name": "primary_text",
+    "label": "Primary button label",
+    "type": "text",
+    "default": "Book a call"
+  },
+  {
+    "name": "primary_link",
+    "label": "Primary button link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/contact"
       }
-    ]
+    }
   },
   {
-    "id": "secondary",
-    "name": "secondary",
-    "label": "Secondary button",
-    "type": "group",
-    "children": [
-      {
-        "id": "label",
-        "name": "label",
-        "label": "Label",
-        "type": "text",
-        "default": "See services"
-      },
-      {
-        "id": "link",
-        "name": "link",
-        "label": "Link",
-        "type": "link",
-        "default": {
-          "url": {
-            "type": "CONTENT",
-            "href": "/services"
-          }
-        }
+    "name": "secondary_text",
+    "label": "Secondary button label",
+    "type": "text",
+    "default": "See services"
+  },
+  {
+    "name": "secondary_link",
+    "label": "Secondary button link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/services"
       }
-    ]
+    }
   },
   {
-    "id": "mark",
     "name": "mark",
     "label": "Logo mark (the animated gem)",
     "type": "image",

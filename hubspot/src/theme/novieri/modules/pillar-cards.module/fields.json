@@ -1,20 +1,17 @@
 [
   {
-    "id": "eyebrow",
     "name": "eyebrow",
     "label": "Eyebrow",
     "type": "text",
     "default": "services"
   },
   {
-    "id": "title",
     "name": "title",
     "label": "Title",
     "type": "text",
     "default": "Four pillars, one standard."
   },
   {
-    "id": "cards",
     "name": "cards",
     "label": "Cards",
     "type": "group",
@@ -25,29 +22,26 @@
     },
     "children": [
       {
-        "id": "name",
-        "name": "name",
+        "name": "card_name",
         "label": "Name",
         "type": "text",
         "default": "AI & automation"
       },
       {
-        "id": "tagline",
-        "name": "tagline",
+        "name": "card_tagline",
         "label": "Tagline",
-        "type": "textarea",
-        "default": "Agents and automations that take repetitive work off your team's plate."
+        "type": "text",
+        "default": "Agents and automations that take repetitive work off your team's plate.",
+        "allow_new_line": true
       },
       {
-        "id": "tags",
-        "name": "tags",
+        "name": "card_tags",
         "label": "Tags (comma separated)",
         "type": "text",
         "default": "agents, chatbots, workflows"
       },
       {
-        "id": "link",
-        "name": "link",
+        "name": "card_link",
         "label": "Link",
         "type": "link",
         "default": {
@@ -58,8 +52,7 @@
         }
       },
       {
-        "id": "colour",
-        "name": "colour",
+        "name": "card_colour",
         "label": "Accent",
         "type": "choice",
         "display": "select",
@@ -86,7 +79,6 @@
     ]
   },
   {
-    "id": "link_label",
     "name": "link_label",
     "label": "Card link label",
     "type": "text",

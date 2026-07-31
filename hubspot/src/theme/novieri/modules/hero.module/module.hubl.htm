@@ -26,11 +26,11 @@
       <p class="rise mt-6 max-w-[50ch] text-lead text-ink-muted" style="--d: 340ms">{{ module.subtitle }}</p>
 
       <div class="rise mt-9 flex flex-wrap gap-3.5" style="--d: 460ms">
-        {% if module.primary.label %}
-          <a href="{{ module.primary.link.url.href }}" class="btn btn-primary">{{ module.primary.label }}</a>
+        {% if module.primary_text %}
+          <a href="{{ module.primary_link.url.href }}" class="btn btn-primary">{{ module.primary_text }}</a>
         {% endif %}
-        {% if module.secondary.label %}
-          <a href="{{ module.secondary.link.url.href }}" class="btn btn-ghost-light">{{ module.secondary.label }}</a>
+        {% if module.secondary_text %}
+          <a href="{{ module.secondary_link.url.href }}" class="btn btn-ghost-light">{{ module.secondary_text }}</a>
         {% endif %}
       </div>
     </div>
