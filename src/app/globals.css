@@ -412,10 +412,6 @@
     }
   }
 
-  .ring-text {
-    animation: spin-slow 40s linear infinite;
-  }
-
   .spin-slower {
     animation: spin-slow 120s linear infinite;
   }

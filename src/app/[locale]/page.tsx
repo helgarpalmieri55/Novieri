@@ -90,7 +90,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             className="rise relative mx-auto w-[min(62vw,280px)] lg:w-full lg:max-w-[420px]"
             style={{ ["--d" as string]: "200ms" }}
           >
-            <GemStage ringText={t("hero.ringText")} />
+            <GemStage />
           </div>
         </div>
       </section>
