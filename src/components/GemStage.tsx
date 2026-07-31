@@ -10,11 +10,11 @@ const MARK = "/brand/novieri-isotipo-color.svg";
 /**
  * "La gema viva": the real logo mark is the centerpiece — no redrawn
  * approximation. A light sweep travels across its facets (a gradient masked
- * by the mark itself), jewel-toned halos breathe behind it, mono ring text
- * rotates around it, and a particle field drifts inward. The mark follows the
- * mouse. Everything decorative stops under prefers-reduced-motion.
+ * by the mark itself), jewel-toned halos breathe behind it, and a particle
+ * field drifts inward. The mark follows the mouse. Everything decorative
+ * stops under prefers-reduced-motion.
  */
-export default function GemStage({ ringText }: { ringText: string }) {
+export default function GemStage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const gemRef = useRef<HTMLDivElement>(null);
 
@@ -107,21 +107,6 @@ export default function GemStage({ ringText }: { ringText: string }) {
             background: "radial-gradient(circle, rgba(168,135,92,0.13) 0%, transparent 68%)",
           }}
         />
-
-        {/* Rotating mono ring */}
-        <svg
-          aria-hidden
-          viewBox="0 0 300 300"
-          className="ring-text absolute -inset-[11%] h-[122%] w-[122%]"
-          style={{ transformOrigin: "50% 50%" }}
-        >
-          <defs>
-            <path id="ring-circ" d="M150 150 m -128 0 a 128 128 0 1 1 256 0 a 128 128 0 1 1 -256 0" />
-          </defs>
-          <text style={{ font: "400 8.2px var(--font-mono)", letterSpacing: "0.32em", fill: "#8a8296" }}>
-            <textPath href="#ring-circ">{ringText}</textPath>
-          </text>
-        </svg>
 
         {/* The mark itself, plus a light sweep masked to its facets */}
         <div className="gem-float relative mx-auto aspect-square w-[82%]">
