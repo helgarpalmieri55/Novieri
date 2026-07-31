@@ -26,7 +26,8 @@ type MetaKey =
   | "contact"
   | "legalPrivacy"
   | "legalCookies"
-  | "legalTerms";
+  | "legalTerms"
+  | "diagnostic";
 
 export async function pageMetadata(
   locale: string,

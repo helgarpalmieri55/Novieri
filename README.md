@@ -29,7 +29,7 @@ verify every sitemap URL resolves to a file.
 
 | Item | Where |
 |---|---|
-| `anthropic_api_key` | `api/config.php` on the server — chatbot answers 503 until set |
+| `anthropic_api_key` | `api/config.php` on the server — chatbot **and the self-diagnosis** answer 503 until set |
 | SMTP mailbox + password (`smtp_user`, `smtp_pass`, `mail_to`, `mail_from`) | `api/config.php` on the server — contact form delivery |
 | FTPS secrets (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, optional `FTP_SERVER_DIR` variable) | GitHub repo → Settings → Secrets and variables → Actions |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | env or `src/config/site.ts` (default sales@novieri.com) |
@@ -106,6 +106,12 @@ Dependency-free PHP (works on GoDaddy shared hosting, PHP ≥ 8.0):
   `data/en.json` (copies of `messages/*.json` made by the deploy), so the bot
   always matches the site. Prompt-cached system block; per-IP rate limit
   (20/5 min).
+- `diagnose.php` — self-diagnosis: takes the ten answers plus contact details,
+  asks Claude for a report written for that company, renders it to a PDF
+  (vendored FPDF in `lib/`, core font metrics in `lib/font/`), emails the lead
+  with the PDF attached to the sales mailbox and to the visitor, and returns
+  the report plus the PDF as base64 in one response — nothing is written to
+  disk. Honeypot + per-IP rate limit (6/hour).
 - `config.sample.php` — template for the server-managed `config.php`.
 
 Local test: `php -S localhost:8223 -t server/api` (copy `messages/*.json` to

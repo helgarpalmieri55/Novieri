@@ -146,6 +146,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      {/* 4b · Self-diagnosis — la puerta de entrada de bajo compromiso */}
+      <section className="border-y border-line bg-plum-wash">
+        <div className="container-site section-pad-tight grid items-center gap-[clamp(2rem,5vw,4rem)] lg:grid-cols-[7fr_5fr]">
+          <div className="reveal">
+            <span className="eyebrow">{t("diagnose.eyebrow")}</span>
+            <h2 className="mt-4 max-w-[18ch]">{t("diagnose.title")}</h2>
+            <p className="mt-5 max-w-[56ch] text-ink-muted">{t("diagnose.body")}</p>
+          </div>
+          <div className="reveal lg:justify-self-end" style={{ ["--rd" as string]: "120ms" }}>
+            <Link href="/diagnostic" className="btn btn-primary text-[17px] !px-8 !py-4">
+              {t("diagnose.button")} <span aria-hidden>→</span>
+            </Link>
+            <p className="idx-mono mt-4 text-ink-faint">{t("diagnose.note")}</p>
+          </div>
+        </div>
+      </section>
+
       {/* 5 · Live chat — el asistente de WhatsApp atendiendo */}
       <section className="dark-s relative overflow-hidden">
         <div aria-hidden className="seam absolute inset-x-0 top-0" />

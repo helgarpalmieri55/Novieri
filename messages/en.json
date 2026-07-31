@@ -86,6 +86,10 @@
     "legalTerms": {
       "title": "Terms of Use — Novieri",
       "description": "Conditions for accessing and using novieri.com: intellectual property, liability, and governing law in Colombia."
+    },
+    "diagnostic": {
+      "title": "Technology Self-Diagnosis — Novieri",
+      "description": "Ten questions about your operation and a PDF report with your level, the risks we see, and what to prioritise. Takes three minutes."
     }
   },
   "nav": {
@@ -100,7 +104,8 @@
     "homeLink": "Novieri — home",
     "skipToContent": "Skip to content",
     "solutions": "Solutions",
-    "solutionsMenuLabel": "See all solutions"
+    "solutionsMenuLabel": "See all solutions",
+    "diagnostic": "Self-diagnosis"
   },
   "pillars": {
     "ai": {
@@ -261,8 +266,8 @@
         }
       ],
       "stat": {
-        "value": "0h",
-        "label": "time difference with US East"
+        "value": "2",
+        "label": "founders, zero middlemen"
       }
     },
     "how": {
@@ -298,6 +303,13 @@
       "title": "Your company already needs a technology team. It doesn't need to hire one.",
       "subtitle": "Tell us about your case in a 30-minute call, no strings attached.",
       "button": "Book a call"
+    },
+    "diagnose": {
+      "eyebrow": "start here",
+      "title": "Not sure where to start?",
+      "body": "Answer ten questions about your operation and we'll send back a diagnostic written for your case: the level you're at, the risks we see, and what we'd do first. It takes three minutes and commits you to nothing.",
+      "button": "Self-diagnosis",
+      "note": "3 minutes · PDF report · free"
     }
   },
   "servicesIndex": {
@@ -1625,5 +1637,274 @@
     "reject": "Necessary only",
     "more": "Read the cookie policy",
     "label": "Cookie notice"
+  },
+  "diagnostic": {
+    "eyebrow": "diagnostic",
+    "title": "A technology diagnostic in 3 minutes.",
+    "intro": "Ten questions about how your operation runs today: administration, security, compliance, and automation. At the end you get a report with your level, the risks we see, and what we would do first — written for your case, not a template.",
+    "progress": "Question {n} of {total}",
+    "back": "Back",
+    "next": "Next",
+    "finish": "See my diagnostic",
+    "levels": {
+      "initial": "Initial",
+      "developing": "Developing",
+      "solid": "Solid",
+      "advanced": "Advanced"
+    },
+    "preview": {
+      "title": "Your preliminary level",
+      "body": "This is the quick calculation from your answers. The full report analyses each point and prioritises what to do first."
+    },
+    "gate": {
+      "title": "Where should we send the report?",
+      "body": "We generate your diagnostic with AI from your answers and deliver it as a PDF. We use your details only to send you the report and, if you ask, to discuss your case.",
+      "name": "Name",
+      "email": "Work email",
+      "company": "Company",
+      "phone": "Phone (optional)",
+      "consent": "I authorise the processing of my data under the privacy policy.",
+      "submit": "Generate my diagnostic",
+      "sending": "Analysing your answers…",
+      "privacy": "Read the privacy policy"
+    },
+    "result": {
+      "title": "Your diagnostic is ready",
+      "download": "Download PDF",
+      "again": "Start over",
+      "cta": "Book a 30-minute call",
+      "emailed": "We've emailed you a copy too."
+    },
+    "errors": {
+      "required": "Pick an option to continue.",
+      "name": "Enter your name.",
+      "email": "Enter a valid email.",
+      "company": "Enter your company name.",
+      "consent": "We need your authorisation to send you the report.",
+      "failed": "We couldn't generate the report right now. Write to {email} and we'll send it over.",
+      "notConfigured": "The automatic diagnostic isn't available right now. Write to {email} and we'll go through it with you."
+    },
+    "questions": [
+      {
+        "id": "size",
+        "q": "How many people use technology in your company?",
+        "options": [
+          {
+            "v": "Fewer than 10",
+            "w": 0
+          },
+          {
+            "v": "Between 10 and 50",
+            "w": 1
+          },
+          {
+            "v": "Between 50 and 200",
+            "w": 2
+          },
+          {
+            "v": "More than 200",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "who",
+        "q": "Who runs technology today?",
+        "options": [
+          {
+            "v": "Nobody in particular; we sort it out between us",
+            "w": 0
+          },
+          {
+            "v": "Someone internal who also has another job",
+            "w": 1
+          },
+          {
+            "v": "An external provider, by the hour",
+            "w": 2
+          },
+          {
+            "v": "Our own IT team",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "inventory",
+        "q": "Do you have an inventory of devices, access, and licenses?",
+        "options": [
+          {
+            "v": "None",
+            "w": 0
+          },
+          {
+            "v": "Partial, in a spreadsheet",
+            "w": 1
+          },
+          {
+            "v": "Documented and updated regularly",
+            "w": 2
+          },
+          {
+            "v": "Automated with a management tool",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "backups",
+        "q": "How are your backups?",
+        "options": [
+          {
+            "v": "We have no formal backups",
+            "w": 0
+          },
+          {
+            "v": "They exist, but we have never restored one",
+            "w": 1
+          },
+          {
+            "v": "We test them occasionally",
+            "w": 2
+          },
+          {
+            "v": "We test them with a real, scheduled restore",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "mfa",
+        "q": "Do you use multi-factor authentication on email and critical systems?",
+        "options": [
+          {
+            "v": "No",
+            "w": 0
+          },
+          {
+            "v": "Only some people",
+            "w": 1
+          },
+          {
+            "v": "Everyone, on email",
+            "w": 2
+          },
+          {
+            "v": "Everyone, on email and critical systems",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "patching",
+        "q": "How do you apply updates and security patches?",
+        "options": [
+          {
+            "v": "When someone asks or something breaks",
+            "w": 0
+          },
+          {
+            "v": "Manually, with no fixed schedule",
+            "w": 1
+          },
+          {
+            "v": "In scheduled windows",
+            "w": 2
+          },
+          {
+            "v": "Automated and verified, with a report",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "incidents",
+        "q": "In the last 12 months, have you had incidents (ransomware, compromised account, extended outage)?",
+        "options": [
+          {
+            "v": "Several",
+            "w": 0
+          },
+          {
+            "v": "One",
+            "w": 1
+          },
+          {
+            "v": "None that we know of",
+            "w": 2
+          },
+          {
+            "v": "None, and we monitor actively",
+            "w": 3
+          }
+        ]
+      },
+      {
+        "id": "compliance",
+        "q": "Do your clients or your industry require a standard?",
+        "options": [
+          {
+            "v": "Not for now",
+            "w": 3
+          },
+          {
+            "v": "They are starting to ask",
+            "w": 1
+          },
+          {
+            "v": "Yes: SOC 2 or similar",
+            "w": 0
+          },
+          {
+            "v": "Yes: PCI DSS (we handle card data)",
+            "w": 0
+          }
+        ]
+      },
+      {
+        "id": "manual",
+        "q": "How much time does your team lose on repetitive manual work?",
+        "options": [
+          {
+            "v": "Little; almost everything is systematized",
+            "w": 3
+          },
+          {
+            "v": "A few hours a week",
+            "w": 2
+          },
+          {
+            "v": "Several hours a week, in more than one area",
+            "w": 1
+          },
+          {
+            "v": "A lot; we have people dedicated to copying and pasting data",
+            "w": 0
+          }
+        ]
+      },
+      {
+        "id": "ai",
+        "q": "How do you use artificial intelligence today?",
+        "options": [
+          {
+            "v": "We don't",
+            "w": 0
+          },
+          {
+            "v": "People use tools on their own",
+            "w": 1
+          },
+          {
+            "v": "We have a pilot running",
+            "w": 2
+          },
+          {
+            "v": "We already have AI processes in production",
+            "w": 3
+          }
+        ]
+      }
+    ]
   }
 }
