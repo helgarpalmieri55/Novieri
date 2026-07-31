@@ -1,0 +1,51 @@
+[
+  {
+    "id": "logo",
+    "name": "logo",
+    "label": "Logo mark",
+    "type": "image",
+    "default": {
+      "src": "../../images/novieri-isotipo-color-256px.png",
+      "alt": "",
+      "width": 48,
+      "height": 49
+    }
+  },
+  { "id": "wordmark", "name": "wordmark", "label": "Wordmark", "type": "text", "default": "novieri" },
+  {
+    "id": "menu",
+    "name": "menu",
+    "label": "Navigation menu",
+    "help_text": "Edit the items in Content > Navigation. Each language has its own menu.",
+    "type": "menu"
+  },
+  {
+    "id": "cta",
+    "name": "cta",
+    "label": "Header button",
+    "type": "group",
+    "children": [
+      { "id": "label", "name": "label", "label": "Label", "type": "text", "default": "Agenda una llamada" },
+      {
+        "id": "link",
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": { "url": { "type": "CONTENT", "href": "/contacto" }, "open_in_new_tab": false }
+      }
+    ]
+  },
+  {
+    "id": "labels",
+    "name": "labels",
+    "label": "Accessibility labels",
+    "type": "group",
+    "children": [
+      { "id": "skip", "name": "skip", "label": "Skip to content", "type": "text", "default": "Saltar al contenido" },
+      { "id": "home", "name": "home", "label": "Home link", "type": "text", "default": "Novieri, inicio" },
+      { "id": "open_menu", "name": "open_menu", "label": "Open menu", "type": "text", "default": "Abrir menú" },
+      { "id": "close_menu", "name": "close_menu", "label": "Close menu", "type": "text", "default": "Cerrar menú" },
+      { "id": "language", "name": "language", "label": "Language switcher", "type": "text", "default": "Cambiar idioma" }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "name": "novieri-functions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless endpoints for novieri.com",
+  "dependencies": {
+    "axios": "^1.19.0"
+  }
+}

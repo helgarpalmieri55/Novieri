@@ -1,0 +1,8 @@
+{
+  "uid": "novieri_theme",
+  "type": "theme",
+  "config": {
+    "themePath": "novieri",
+    "secretNames": []
+  }
+}

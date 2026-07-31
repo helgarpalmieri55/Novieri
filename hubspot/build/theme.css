@@ -1,0 +1,76 @@
+/*
+ * Entry point for the theme stylesheet.
+ *
+ * It pulls in the site's existing design system (tokens, components, motion)
+ * unchanged, and points Tailwind at the HubL templates and modules instead of
+ * the React tree. Same class names in, same design out — which is what lets
+ * module markup be lifted from the components almost verbatim.
+ *
+ * Built by `npm run build:hubspot` into src/theme/novieri/css/theme.css.
+ */
+@import "../../src/app/globals.css";
+
+@source "../src/theme/novieri/templates/**/*.html";
+@source "../src/theme/novieri/modules/**/*.html";
+@source "../src/theme/novieri/modules/**/*.js";
+@source "../src/theme/novieri/js/**/*.js";
+
+/* next/font declares these in the Next.js build; here they are ours. */
+@font-face {
+  font-family: "Clash Display";
+  src: url("../fonts/ClashDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("../fonts/ClashDisplay-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-clash: "Clash Display";
+  --font-satoshi: "Satoshi";
+  --font-jbmono: "JetBrains Mono";
+}
+
+/* HubSpot wraps dropped modules in its own grid; keep it out of the layout. */
+.dnd-section,
+.dnd-section > .row-fluid,
+.dnd-column,
+.dnd-row {
+  padding: 0;
+  margin: 0;
+  max-width: none;
+}

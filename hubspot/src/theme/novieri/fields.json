@@ -1,0 +1,13 @@
+[
+  {
+    "id": "brand",
+    "name": "brand",
+    "label": "Brand",
+    "type": "group",
+    "children": [
+      { "id": "plum", "name": "plum", "label": "Primary (plum)", "type": "color", "default": { "color": "#4f3461", "opacity": 100 } },
+      { "id": "gold", "name": "gold", "label": "Accent (gold)", "type": "color", "default": { "color": "#a8875c", "opacity": 100 } },
+      { "id": "teal", "name": "teal", "label": "Accent (teal)", "type": "color", "default": { "color": "#264e59", "opacity": 100 } }
+    ]
+  }
+]

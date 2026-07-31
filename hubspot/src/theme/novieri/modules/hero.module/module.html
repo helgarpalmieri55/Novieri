@@ -1,0 +1,66 @@
+{# Hero — "la gema viva". The real logo mark is the centrepiece: a light
+   sweep travels across its facets (a gradient masked by the mark itself),
+   jewel-toned halos breathe behind it, and a particle field drifts inward.
+   Everything decorative stops under prefers-reduced-motion. #}
+
+<section class="relative overflow-hidden bg-white pb-[clamp(3.5rem,8vh,5.5rem)] pt-[clamp(3rem,8vh,4.5rem)]">
+  <div
+    aria-hidden="true"
+    class="absolute inset-0"
+    style="background-image: radial-gradient(rgba(22,18,29,0.10) 1px, transparent 1px); background-size: 28px 28px; mask-image: radial-gradient(ellipse 75% 85% at 72% 30%, #000 0%, transparent 68%); -webkit-mask-image: radial-gradient(ellipse 75% 85% at 72% 30%, #000 0%, transparent 68%);"
+  ></div>
+
+  <div class="container-site relative grid items-center gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-[6fr_5fr]">
+    <div>
+      <p class="rise eyebrow" aria-live="off">
+        <span class="hero-ticker" data-words='{% for item in module.ticker %}{{ item.word }}{% if not loop.last %}|{% endif %}{% endfor %}' data-classes='{% for item in module.ticker %}{{ item.colour }}{% if not loop.last %}|{% endif %}{% endfor %}'>
+          {% if module.ticker %}<span class="ticker-word {{ module.ticker[0].colour }}">{{ module.ticker[0].word }}</span>{% endif %}
+        </span>
+      </p>
+
+      <h1 class="mt-5 max-w-[15ch]">
+        <span class="rise block">{{ module.title_a }}</span>
+        <span class="rise block text-plum" style="--d: 220ms">{{ module.title_b }}</span>
+      </h1>
+
+      <p class="rise mt-6 max-w-[50ch] text-lead text-ink-muted" style="--d: 340ms">{{ module.subtitle }}</p>
+
+      <div class="rise mt-9 flex flex-wrap gap-3.5" style="--d: 460ms">
+        {% if module.primary.label %}
+          <a href="{{ module.primary.link.url.href }}" class="btn btn-primary">{{ module.primary.label }}</a>
+        {% endif %}
+        {% if module.secondary.label %}
+          <a href="{{ module.secondary.link.url.href }}" class="btn btn-ghost-light">{{ module.secondary.label }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="rise relative mx-auto w-[min(62vw,280px)] lg:w-full lg:max-w-[420px]" style="--d: 200ms">
+      <canvas class="gem-particles absolute inset-0 h-full w-full" aria-hidden="true"></canvas>
+
+      <div class="gem-parallax relative mx-auto w-full transition-transform duration-300 ease-out">
+        {# Breathing halos, in the mark's own gradient stops #}
+        <div
+          aria-hidden="true"
+          class="gem-halo absolute left-1/2 top-1/2 h-[86%] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style="background: radial-gradient(circle, rgba(79,52,97,0.10) 0%, rgba(38,78,89,0.07) 45%, transparent 70%);"
+        ></div>
+        <div
+          aria-hidden="true"
+          class="gem-halo absolute left-1/2 top-1/2 h-[62%] w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style="--hd: 1.6s; background: radial-gradient(circle, rgba(168,135,92,0.13) 0%, transparent 68%);"
+        ></div>
+
+        {# The mark itself, plus a light sweep masked to its facets #}
+        <div class="gem-float relative mx-auto aspect-square w-[82%]">
+          <img src="{{ module.mark.src }}" alt="{{ module.mark.alt|escape_attr }}" class="absolute inset-0 h-full w-full select-none" fetchpriority="high" />
+          <div
+            aria-hidden="true"
+            class="gem-sweep absolute inset-0"
+            style="mask-image: url({{ module.mark.src }}); -webkit-mask-image: url({{ module.mark.src }}); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; mask-position: center; -webkit-mask-position: center;"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

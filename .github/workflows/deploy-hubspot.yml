@@ -1,0 +1,44 @@
+name: Deploy to HubSpot
+
+# Uploads the HubSpot project (theme + serverless functions) on every push to
+# main. The two secrets come from `hs init` — the personal access key is the
+# only credential involved; nothing here can read it back out.
+#
+# The build step regenerates two files that must never be edited by hand:
+# Sylvi's company profile (from the site's own copy) and the theme stylesheet
+# (Tailwind, scanning the HubL templates).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "hubspot/**"
+      - "messages/**"
+      - "src/app/globals.css"
+      - "scripts/build-company-profile.mjs"
+      - ".github/workflows/deploy-hubspot.yml"
+  workflow_dispatch:
+
+env:
+  DEFAULT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+  DEFAULT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+  DEFAULT_CLI_VERSION: "8.0.0"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # platformVersion 2026.03 requires Node 22
+          cache: npm
+      - run: npm ci
+      - name: Build the profile and the theme stylesheet
+        run: npm run build:hubspot
+      - name: Fail if the build left anything uncommitted
+        # Both generated files are committed so the repo always shows what is
+        # deployed. A diff here means someone edited copy without rebuilding.
+        run: git diff --exit-code hubspot/src/theme/novieri/css/theme.css hubspot/src/app/functions/lib/company-profile.json
+      - name: Upload to HubSpot
+        uses: HubSpot/hubspot-project-actions@v1.1.0

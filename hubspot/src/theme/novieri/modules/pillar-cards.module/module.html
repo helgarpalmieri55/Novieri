@@ -1,0 +1,26 @@
+{# The four service pillars, as cards. Each card is a group in the editor. #}
+<section class="section-pad">
+  <div class="container-site">
+    <div class="reveal mb-[clamp(2.5rem,6vh,4rem)] max-w-2xl">
+      <span class="eyebrow">{{ module.eyebrow }}</span>
+      <h2 class="mt-4">{{ module.title }}</h2>
+    </div>
+    <div class="grid grid-cols-1 gap-4.5 sm:grid-cols-2 xl:grid-cols-4">
+      {% for card in module.cards %}
+        <a href="{{ card.link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7" style="--rd: {{ loop.index0 * 70 }}ms">
+          <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.colour }}">··</span>
+          <h3>{{ card.name }}</h3>
+          <p class="grow text-small text-ink-muted">{{ card.tagline }}</p>
+          <span class="flex flex-wrap gap-1.5">
+            {% for tag in card.tags|split(",") %}
+              <span class="tag-mono">{{ tag|trim }}</span>
+            {% endfor %}
+          </span>
+          <span class="mt-1 inline-flex items-center gap-1.5 text-small font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
+            {{ module.link_label }} <span aria-hidden="true">→</span>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
