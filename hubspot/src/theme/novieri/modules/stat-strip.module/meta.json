@@ -1,1 +1,7 @@
-{ "label": "Stat strip", "is_available_for_new_content": true, "host_template_types": ["PAGE"], "icon": "chart", "categories": ["body_content"] }
+{
+  "label": "Stat strip",
+  "is_available_for_new_content": true,
+  "host_template_types": [
+    "PAGE"
+  ]
+}
