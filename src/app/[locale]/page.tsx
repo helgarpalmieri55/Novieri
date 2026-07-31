@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/config/site";
-import GemStage from "@/components/GemStage";
+import HeroVisual from "@/components/HeroVisual";
 import PillarTicker from "@/components/PillarTicker";
 import ChatDemo, { type ChatEntry } from "@/components/ChatDemo";
 import CtaBand from "@/components/CtaBand";
@@ -87,7 +87,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </div>
           </div>
           <div className="rise relative mx-auto w-[min(62vw,280px)] lg:w-full lg:max-w-[420px]" style={{ ["--d" as string]: "200ms" }}>
-            <GemStage ringText={t("hero.ringText")} />
+            <HeroVisual ringText={t("hero.ringText")} />
           </div>
         </div>
       </section>
