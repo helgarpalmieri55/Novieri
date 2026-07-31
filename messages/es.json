@@ -249,7 +249,7 @@
         },
         {
           "title": "Prácticas de empresa grande",
-          "body": "Monitoreo, backups probados, seguridad gestionada y procesos reales — los mismos estándares que exige una operación con cientos de usuarios."
+          "body": "Monitoreo, backups probados, seguridad gestionada y procesos reales — los mismos estándares que exige una operación de más de 1.000 personas."
         },
         {
           "title": "IA aplicada a tu operación",
@@ -257,7 +257,7 @@
         },
         {
           "title": "Costo predecible",
-          "body": "Planes mensuales claros por puesto o por equipo. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
+          "body": "Planes mensuales claros por puesto o por equipo, a una fracción de lo que cuesta ese mismo estándar en el mercado. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
         }
       ],
       "stat": {
@@ -669,7 +669,7 @@
     },
     "story": {
       "title": "La historia",
-      "body": "Después de años dirigiendo tecnología para operaciones 24/7 de cientos de agentes — infraestructura, seguridad, un programa SOC 2 y sistemas de IA en producción — y de otros tantos al frente de la relación con clientes en banca y en una de las plataformas de CRM más grandes del mundo, decidimos construir lo que veíamos que faltaba: una firma que traiga ese nivel de práctica a empresas que no pueden, ni deberían, montar un departamento de IT propio."
+      "body": "Después de más de 10 años dirigiendo tecnología para operaciones de más de 1.000 personas —infraestructura, seguridad, cumplimiento PCI DSS y SOC 2, y sistemas de IA puestos a producir resultados— vimos siempre el mismo patrón: el estándar enterprise existe, pero llega con precio de multinacional. Novieri nace para cerrar esa brecha: soluciones y servicios con los mismos estándares que operábamos en corporativo, a una fracción de lo que cuestan en el mercado. No es una versión recortada para empresas medianas; es el mismo nivel de práctica, con equipo propio en Barranquilla y sin capas de intermediarios que inflan la factura."
     },
     "founders": {
       "title": "Los fundadores",

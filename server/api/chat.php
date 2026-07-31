@@ -105,7 +105,7 @@ function company_knowledge(string $contactEmail): string
         '- La forma preferida de avanzar: agendar una llamada de 30 minutos desde la página de contacto (/es/contacto · /en/contact).',
         '',
         '## Hechos clave / Key facts',
-        '- El CTO ha liderado IT y sistemas de IA para una operación de más de 300 agentes, incluyendo un programa SOC 2 de punta a punta.',
+        '- El CTO ha liderado IT y sistemas de IA para operaciones de más de 1.000 personas, incluyendo cumplimiento PCI DSS y un programa SOC 2 de punta a punta.',
         '- Stack que opera: Microsoft 365, FortiGate, AWS, Python, React, Odoo, HubSpot, Power BI.',
         '- No se publican precios; cada propuesta se conversa (paquetes con alcance definido).',
     ]);
