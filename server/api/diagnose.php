@@ -22,10 +22,13 @@ use PHPMailer\PHPMailer\PHPMailer;
 $config = load_config();
 handle_cors($config);
 require_post();
+require_known_origin($config);
 if (empty($config['anthropic_api_key'])) {
     send_json(503, ['error' => 'not_configured']);
 }
 enforce_rate_limit('diagnose', 6, 3600);
+// Site-wide ceiling: each report costs an API call, a PDF and two emails.
+enforce_rate_limit('diagnose_all', (int) ($config['diagnose_daily_total'] ?? 100), 86400, 'site');
 
 $body = read_json_body();
 

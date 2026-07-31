@@ -34,7 +34,7 @@ verify every sitemap URL resolves to a file.
 | FTPS secrets (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, optional `FTP_SERVER_DIR` variable) | GitHub repo → Settings → Secrets and variables → Actions |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | env or `src/config/site.ts` (default sales@novieri.com) |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` (+57…, digits only) | env — WhatsApp button hidden until set |
-| `NEXT_PUBLIC_CAL_LINK` (e.g. `novieri/intro`) | env — Cal.com embed shows fallback until set |
+| `NEXT_PUBLIC_MEETINGS_LINK` (e.g. `https://meetings.hubspot.com/helgar-palmieri`) | env — the contact page shows its email fallback until set; booking through HubSpot keeps the meeting on the contact's timeline |
 | `NEXT_PUBLIC_LINKEDIN_URL` | env — footer icon hidden until set |
 | `razonSocial`, `NIT` | `src/config/site.ts` — **required**: footer legal line *and* the controller identification in the legal pages (the NIT clause is omitted while empty) |
 | Solutions section | `showSolutions` in `src/config/site.ts` — `false` hides nav/footer links, drops the pages from the sitemap, and marks them `noindex`. Flip to `true` to publish. |
@@ -140,8 +140,8 @@ Dependency-free PHP (works on GoDaddy shared hosting, PHP ≥ 8.0):
 - `chat.php` — company chatbot → Claude API (`claude-opus-5`) over raw HTTPS.
   The company profile is assembled at request time from `data/es.json` +
   `data/en.json` (copies of `messages/*.json` made by the deploy), so the bot
-  always matches the site. Prompt-cached system block; per-IP rate limit
-  (20/5 min).
+  always matches the site. Prompt-cached system block. See **Chatbot
+  guardrails** below.
 - `diagnose.php` — self-diagnosis: takes the ten answers plus contact details,
   asks Claude for a report written for that company, renders it to a PDF
   (vendored FPDF in `lib/`, core font metrics in `lib/font/`), emails the lead
@@ -155,6 +155,25 @@ Dependency-free PHP (works on GoDaddy shared hosting, PHP ≥ 8.0):
   so a HubSpot outage never costs a lead or breaks a submission. The optional
   private-app token adds the diagnosis as a note on the contact.
 - `config.sample.php` — template for the server-managed `config.php`.
+
+### Chatbot guardrails
+
+The chatbot spends money on every message, so the endpoint assumes the caller
+is hostile. Verified locally against each case:
+
+| Guard | Behaviour |
+|---|---|
+| **Origin** | POST without an `Origin`/`Referer` from this host (or an entry in `allowed_origins`) → `403`. A browser always sends one; a script usually doesn't. Also applied to `contact.php` and `diagnose.php`. |
+| **Per-IP limits** | 5/min · 20/15 min · `chat_daily_per_ip` (60) per day → `429`, and the widget shows a "write to us instead" message. |
+| **Site-wide daily cap** | `chat_daily_total` (800/day) across all IPs — the ceiling that holds when someone rotates addresses. `diagnose_daily_total` (100/day) does the same for the report. |
+| **Input size** | 1 000 characters per message (`413`), 8 000 per conversation, 12 turns kept, control/formatting characters stripped. |
+| **Reply size** | `max_tokens` 700, answers capped at ~120 words by the prompt. |
+| **Forged history** | Every reply is returned with an HMAC; the widget echoes it back and the server rejects any `assistant` turn it didn't write (`400`). Without this, a caller could put words in the bot's mouth — the cheapest jailbreak there is. Roles must also start at `user` and alternate strictly. |
+| **Scope** | The system prompt answers only from the company profile: no code, no translation, no homework, no other companies, no pricing, no commitments, no model/provider disclosure, and it treats visitor text as data rather than instructions. |
+
+The key that spends the money (`anthropic_api_key`) lives only in
+`api/config.php` on the server — never in the repo, never in the built HTML,
+never sent to the browser.
 
 Local test: `php -S localhost:8223 -t server/api` (copy `messages/*.json` to
 `server/api/data/` and create a `config.php` first — both are gitignored).

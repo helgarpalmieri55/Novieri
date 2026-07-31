@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { getPathname } from "@/i18n/navigation";
+import { pageUrl } from "@/lib/urls";
 import type { AppPathname } from "@/i18n/routing";
 import { site } from "@/config/site";
 import { JsonLd } from "@/lib/seo";
@@ -39,7 +39,7 @@ export default async function ServicePageTemplate({
     "@type": "Service",
     name: tp(`${ns}.name`),
     description: tp(`${ns}.tagline`),
-    url: site.url + getPathname({ locale: locale as "es" | "en", href: pathname }),
+    url: pageUrl(locale as "es" | "en", pathname),
     provider: { "@type": "Organization", name: "Novieri", url: site.url },
     areaServed: ["CO", "US"],
   };

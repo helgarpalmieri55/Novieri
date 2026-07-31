@@ -13,9 +13,11 @@ export const site = {
   // The WhatsApp button/float stays hidden while this is empty.
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 
-  // TODO: Cal.com link, e.g. "novieri/intro". The contact page shows an
-  // email fallback while this is empty.
-  calLink: process.env.NEXT_PUBLIC_CAL_LINK ?? "",
+  // HubSpot Meetings link, e.g. "https://meetings.hubspot.com/helgar-palmieri".
+  // Booking through HubSpot keeps the meeting on the contact's timeline.
+  // While empty, the contact page shows its email fallback and the "book a
+  // call" buttons still route there.
+  meetingsLink: process.env.NEXT_PUBLIC_MEETINGS_LINK ?? "",
 
   // TODO: LinkedIn company URL. Footer icon stays hidden while empty.
   linkedinUrl: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "",

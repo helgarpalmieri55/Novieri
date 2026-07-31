@@ -11,9 +11,23 @@
  * only read the keys listed below and ignore the rest.
  */
 return [
-    // Anthropic API key for the website chatbot (chat.php).
-    // While empty, chat.php answers 503 and the widget shows its error state.
+    // Anthropic API key for the website chatbot (chat.php) and the
+    // self-diagnosis report (diagnose.php). While empty, both answer 503 and
+    // the widget shows its error state. This is the only place it lives.
     'anthropic_api_key' => '',
+
+    // Abuse ceilings. Per-IP burst (5/min) and session (20/15 min) limits are
+    // fixed in chat.php; these two are the ones worth tuning, because they
+    // bound the monthly bill. 'chat_daily_total' is site-wide, so it holds
+    // even against someone rotating IP addresses.
+    'chat_daily_per_ip'    => 60,
+    'chat_daily_total'     => 800,
+    'diagnose_daily_total' => 100,
+
+    // Optional extra salt for the signature on chatbot replies (the backend
+    // uses it to tell its own words from a forged conversation). Any random
+    // string; changing it only invalidates chats already open in a browser.
+    'chat_secret' => '',
 
     // GoDaddy mailbox used by the contact form (contact.php).
     // Create the mailbox in your GoDaddy panel first (e.g. sales@novieri.com).

@@ -265,8 +265,8 @@
         }
       ],
       "stat": {
-        "value": "2",
-        "label": "founders, zero middlemen"
+        "value": "12+",
+        "label": "years building and running systems"
       }
     },
     "how": {
@@ -786,7 +786,7 @@
     },
     "story": {
       "title": "The story",
-      "body": "After 10+ years leading technology for operations of more than 1,000 people — infrastructure, security, PCI DSS and SOC 2 compliance, and AI systems put to work on real production outcomes — we kept seeing the same pattern: the enterprise standard exists, but it arrives with a multinational price tag. Novieri exists to close that gap: solutions and services built to the same standards we ran in corporate, at a fraction of what the market charges for them. This isn't a stripped-down tier for mid-sized companies; it's the same level of practice, delivered by our own team in Barranquilla, without the layers of middlemen that inflate the invoice."
+      "body": "After 10+ years leading technology for operations of more than 1,000 people (infrastructure, security, PCI DSS and SOC 2 compliance, and AI systems put to work on real production outcomes) and as many years owning client relationships in banking and at one of the world's largest CRM platforms, we kept seeing the same pattern: the enterprise standard exists, but it arrives with a multinational price tag. Novieri exists to close that gap: solutions and services built to the same standards we ran in corporate, at a fraction of what the market charges. This isn't a stripped-down tier for mid-sized companies; it's the same level of practice, delivered by our own team in Barranquilla, without the layers of middlemen that inflate the invoice."
     },
     "founders": {
       "title": "The founders",
@@ -1366,7 +1366,8 @@
     "greeting": "Hi. I'm Novieri's assistant — ask me anything about our services, solutions, or how we work.",
     "placeholder": "Type your question…",
     "send": "Send",
-    "error": "I couldn't answer right now. Try again, or write to us from the contact page."
+    "error": "I couldn't answer right now. Try again, or write to us from the contact page.",
+    "limit": "You've reached the message limit for now. Write to us from the contact page and a person will reply."
   },
   "legal": {
     "common": {

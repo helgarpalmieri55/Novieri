@@ -127,8 +127,8 @@ function Typing({ theme }: { theme: (typeof THEME)[Variant] }) {
       {[0, 1, 2].map((d) => (
         <span
           key={d}
-          className={`h-1.5 w-1.5 animate-bounce rounded-full ${theme.wave}`}
-          style={{ animationDelay: `${d * 150}ms` }}
+          className={`dot-pulse h-1.5 w-1.5 rounded-full ${theme.wave}`}
+          style={{ ["--dd" as string]: `${d * 150}ms` }}
         />
       ))}
     </div>

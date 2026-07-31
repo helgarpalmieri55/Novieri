@@ -16,6 +16,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 $config = load_config();
 handle_cors($config);
 require_post();
+require_known_origin($config);
 enforce_rate_limit('contact', 5, 600);
 $body = read_json_body();
 

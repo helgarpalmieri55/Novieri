@@ -412,6 +412,24 @@
     }
   }
 
+  /* Typing indicator — ease-out, not the default bounce */
+  .dot-pulse {
+    animation: dot-pulse 1.2s var(--ease-out-quart) infinite;
+    animation-delay: var(--dd, 0ms);
+  }
+
+  @keyframes dot-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: translateY(0);
+    }
+    40% {
+      opacity: 1;
+      transform: translateY(-3px);
+    }
+  }
+
   .spin-slower {
     animation: spin-slow 120s linear infinite;
   }

@@ -265,8 +265,8 @@
         }
       ],
       "stat": {
-        "value": "2",
-        "label": "fundadores, cero intermediarios"
+        "value": "12+",
+        "label": "años construyendo y operando sistemas"
       }
     },
     "how": {
@@ -786,7 +786,7 @@
     },
     "story": {
       "title": "La historia",
-      "body": "Después de más de 10 años dirigiendo tecnología para operaciones de más de 1.000 personas —infraestructura, seguridad, cumplimiento PCI DSS y SOC 2, y sistemas de IA puestos a producir resultados— vimos siempre el mismo patrón: el estándar enterprise existe, pero llega con precio de multinacional. Novieri nace para cerrar esa brecha: soluciones y servicios con los mismos estándares que operábamos en corporativo, a una fracción de lo que cuestan en el mercado. No es una versión recortada para empresas medianas; es el mismo nivel de práctica, con equipo propio en Barranquilla y sin capas de intermediarios que inflan la factura."
+      "body": "Después de más de 10 años dirigiendo tecnología para operaciones de más de 1.000 personas (infraestructura, seguridad, cumplimiento PCI DSS y SOC 2, y sistemas de IA puestos a producir resultados) y de otros tantos al frente de la relación con clientes en banca y en una de las plataformas de CRM más grandes del mundo, vimos siempre el mismo patrón: el estándar enterprise existe, pero llega con precio de multinacional. Novieri nace para cerrar esa brecha: soluciones y servicios con los mismos estándares que operábamos en corporativo, a una fracción de lo que cuestan en el mercado. No es una versión recortada para empresas medianas; es el mismo nivel de práctica, con equipo propio en Barranquilla y sin capas de intermediarios que inflan la factura."
     },
     "founders": {
       "title": "Los fundadores",
@@ -1366,7 +1366,8 @@
     "greeting": "Hola. Soy el asistente de Novieri — pregúntame lo que quieras sobre nuestros servicios, soluciones o cómo trabajamos.",
     "placeholder": "Escribe tu pregunta…",
     "send": "Enviar",
-    "error": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto."
+    "error": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto.",
+    "limit": "Has alcanzado el límite de mensajes por ahora. Escríbenos desde la página de contacto y te responde una persona."
   },
   "legal": {
     "common": {

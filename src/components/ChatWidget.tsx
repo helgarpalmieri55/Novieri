@@ -4,7 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { site } from "@/config/site";
 
-type Msg = { role: "user" | "assistant"; content: string };
+// `sig` is the server's HMAC over an assistant reply. It travels back with the
+// next request so the backend can tell its own words from an injected turn.
+type Msg = { role: "user" | "assistant"; content: string; sig?: string };
+
+const MAX_CHARS = 1000;
 
 export default function ChatWidget() {
   const t = useTranslations("chat");
@@ -12,7 +16,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<null | "generic" | "limit">(null);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -26,9 +30,9 @@ export default function ChatWidget() {
 
   async function send(e: React.FormEvent) {
     e.preventDefault();
-    const text = input.trim();
+    const text = input.trim().slice(0, MAX_CHARS);
     if (!text || busy) return;
-    setError(false);
+    setError(null);
     setInput("");
     const next: Msg[] = [...messages, { role: "user", content: text }];
     setMessages(next);
@@ -40,13 +44,19 @@ export default function ChatWidget() {
         credentials: "omit",
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next }),
+        body: JSON.stringify({
+          messages: next.map((m) => ({ role: m.role, content: m.content, sig: m.sig })),
+        }),
       });
+      if (res.status === 429) {
+        setError("limit");
+        return;
+      }
       if (!res.ok) throw new Error(String(res.status));
-      const data = (await res.json()) as { reply: string };
-      setMessages((m) => [...m, { role: "assistant", content: data.reply }]);
+      const data = (await res.json()) as { reply: string; sig?: string };
+      setMessages((m) => [...m, { role: "assistant", content: data.reply, sig: data.sig }]);
     } catch {
-      setError(true);
+      setError("generic");
     } finally {
       setBusy(false);
     }
@@ -111,15 +121,15 @@ export default function ChatWidget() {
                 {[0, 1, 2].map((d) => (
                   <span
                     key={d}
-                    className="h-1.5 w-1.5 animate-bounce rounded-full bg-plum"
-                    style={{ animationDelay: `${d * 150}ms` }}
+                    className="dot-pulse h-1.5 w-1.5 rounded-full bg-plum"
+                    style={{ ["--dd" as string]: `${d * 150}ms` }}
                   />
                 ))}
               </div>
             )}
             {error && (
               <p className="mb-3 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-3 py-2 text-[13.5px] text-[#a13b32]">
-                {t("error")}
+                {error === "limit" ? t("limit") : t("error")}
               </p>
             )}
           </div>
@@ -131,7 +141,7 @@ export default function ChatWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={t("placeholder")}
-              maxLength={2000}
+              maxLength={MAX_CHARS}
               className="min-w-0 flex-1 rounded-lg border border-line px-3.5 py-2.5 text-[14.5px] placeholder:text-ink-faint focus:border-plum focus:outline-none"
             />
             <button

@@ -4,7 +4,7 @@ import { pageMetadata, JsonLd } from "@/lib/seo";
 import { site, whatsappHref } from "@/config/site";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
-import CalEmbed from "@/components/CalEmbed";
+import MeetingsEmbed from "@/components/MeetingsEmbed";
 
 export async function generateMetadata({
   params,
@@ -83,8 +83,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <h2 className="text-[clamp(1.375rem,2vw,1.625rem)]">{t("booking.title")}</h2>
               <p className="mt-2.5 text-[15.5px] text-ink-muted">{t("booking.body")}</p>
               <div className="mt-5">
-                {site.calLink ? (
-                  <CalEmbed />
+                {site.meetingsLink ? (
+                  <MeetingsEmbed />
                 ) : (
                   <p className="rounded-lg bg-plum-wash px-4 py-3.5 text-[14.5px] text-ink-muted">
                     {t("booking.fallback", { email: site.contactEmail })}
