@@ -69,27 +69,3 @@ Structure: dark hero → gradient seam → white sections → dark console proof
 white → plum-wash founders → black CTA band → black footer. Inner pages open with a
 compact dark hero band (header always sits on black). Max width 1200–1240px, section
 padding clamp(84px…140px), hairline borders, no shadows.
-
-## Hero video
-
-The hero shows **one subject, never two**. The animated logo mark is the floor:
-no network, no codec, always rendered. When a clip is configured and reports it
-can play, `html.hero-video-on` fades the mark out — the two never stack.
-
-Two shapes were tried and rejected before the current one:
-
-1. **Object in the right column.** A 16:9 clip in the square column letterboxes
-   into a hard black rectangle that breaks the white canvas.
-2. **Circular lens in the mark's place.** Better — no letterbox, feathered edge,
-   gradient rim — but a heavy dark disc still fought the airy hero, and the mono
-   ring read as clutter around it.
-
-**Current: full-bleed backdrop.** The clip covers the whole hero section and is
-read *through* a white veil — opaque on the left so the headline keeps full
-contrast on white, thinning across to the right where the layout has room,
-fading to white at the top so the header stays legible and at the bottom into
-the proof strip. Wide footage gets used at its natural aspect, the dark frames
-become atmosphere rather than a block, and the type never loses contrast.
-
-Never loaded below 1024px or under `prefers-reduced-motion`; any decode error
-hands the hero back to the mark.

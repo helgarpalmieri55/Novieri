@@ -26,15 +26,6 @@ export const site = {
     partner: "https://www.linkedin.com/in/sylvananova-272303/",
   },
 
-  // Hero backdrop clip in public/hero — a filename, or "" to keep the
-  // animated logo mark alone. Loads only on large screens with motion
-  // allowed; `?hero=1`…`?hero=4` swaps clips at runtime for comparison.
-  heroVideo: "hero3.mp4",
-
-  // Which part of the clip stays in frame when it is cropped to the hero
-  // (CSS object-position). Nudge if the subject sits off-centre.
-  heroVideoFocus: "50% 50%",
-
   // Solutions section is hidden site-wide while this is false: no nav or
   // footer links, no sitemap entries, and the pages themselves are noindex.
   // The pages stay in the build — flip this to true to publish them.
