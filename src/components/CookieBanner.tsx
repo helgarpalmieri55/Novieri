@@ -31,6 +31,11 @@ export default function CookieBanner() {
 
   useEffect(() => {
     if (readConsent() === null) setVisible(true);
+    // The footer link reopens the banner so a choice can be changed without
+    // clearing site data, which is the only way it used to be possible.
+    const reopen = () => setVisible(true);
+    addEventListener("novieri:cookie-settings", reopen);
+    return () => removeEventListener("novieri:cookie-settings", reopen);
   }, []);
 
   function decide(choice: Consent) {

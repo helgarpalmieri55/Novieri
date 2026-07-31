@@ -39,6 +39,7 @@ verify every sitemap URL resolves to a file.
 | `razonSocial`, `NIT` | `src/config/site.ts` — **required**: footer legal line *and* the controller identification in the legal pages (the NIT clause is omitted while empty) |
 | Solutions section | `showSolutions` in `src/config/site.ts` — `false` hides nav/footer links, drops the pages from the sitemap, and marks them `noindex`. Flip to `true` to publish. |
 | Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
+| Testimonials | `home.testimonials.items` in `messages/es.json` + `messages/en.json`. Ships **empty on purpose** — nothing about clients is invented here. Add `{ "quote": "…", "name": "…", "role": "…", "company": "…" }` (company optional) and the section appears on the home page; leave it empty and it stays out of the DOM entirely. Add each quote to both locales, translated. |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
 | `hubspot_token` (Private App, **not** an API key — those are deprecated) | `api/config.php` on the server — optional, adds the diagnosis as a note on the contact |
 
@@ -101,7 +102,9 @@ NIT clause disappears cleanly.
 The cookie banner (`src/components/CookieBanner.tsx`) stores the choice in
 localStorage under `novieri-consent` and analytics
 (`src/components/Analytics.tsx`) stays off until the visitor accepts — prior,
-express, informed consent, as the regulation requires.
+express, informed consent, as the regulation requires. The footer's *cookie
+settings* link reopens the banner, so consent is as easy to withdraw as it
+was to give.
 
 ## Solutions content — review before launch
 

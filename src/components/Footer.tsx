@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { asset, site, whatsappHref } from "@/config/site";
+import CookieSettingsLink from "./CookieSettingsLink";
 
 // Footer links carry prefetch={false}: sixteen of them, each pulling a route
 // payload the visitor probably never uses. Prefetching the footer was adding
@@ -101,6 +102,9 @@ export default async function Footer({ locale }: { locale: string }) {
                   </Link>
                 </li>
               ))}
+              <li>
+                <CookieSettingsLink />
+              </li>
             </ul>
           </nav>
           <div>

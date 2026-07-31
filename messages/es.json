@@ -269,6 +269,11 @@
         "label": "años construyendo y operando sistemas"
       }
     },
+    "testimonials": {
+      "eyebrow": "clientes",
+      "title": "Lo que dicen quienes ya trabajan con nosotros.",
+      "items": []
+    },
     "how": {
       "eyebrow": "cómo trabajamos",
       "title": "Un proceso simple, de diagnóstico a mejora continua.",
@@ -1638,7 +1643,8 @@
     "accept": "Aceptar todas",
     "reject": "Solo las necesarias",
     "more": "Ver política de cookies",
-    "label": "Aviso de cookies"
+    "label": "Aviso de cookies",
+    "settings": "Configurar cookies"
   },
   "diagnostic": {
     "eyebrow": "diagnóstico",

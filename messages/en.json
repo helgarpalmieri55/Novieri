@@ -269,6 +269,11 @@
         "label": "years building and running systems"
       }
     },
+    "testimonials": {
+      "eyebrow": "clients",
+      "title": "What the people we work with say.",
+      "items": []
+    },
     "how": {
       "eyebrow": "how we work",
       "title": "A simple process, from diagnosis to continuous improvement.",
@@ -1638,7 +1643,8 @@
     "accept": "Accept all",
     "reject": "Necessary only",
     "more": "Read the cookie policy",
-    "label": "Cookie notice"
+    "label": "Cookie notice",
+    "settings": "Cookie settings"
   },
   "diagnostic": {
     "eyebrow": "diagnostic",
