@@ -11,8 +11,10 @@
 @import "../../src/app/globals.css";
 
 @source "../src/theme/novieri/templates/**/*.html";
-/* Project modules use module.hubl.htm / module.hubl.js, not .html / .js */
-@source "../src/theme/novieri/modules/**/*.htm";
+/* Project modules are module.hubl.html / .js / .css — the .hubl goes before
+   the original extension, and HubSpot silently renders nothing if it is not
+   exactly that. */
+@source "../src/theme/novieri/modules/**/*.html";
 @source "../src/theme/novieri/modules/**/*.js";
 @source "../src/theme/novieri/js/**/*.js";
 

@@ -162,12 +162,21 @@ a section it does not need or add another from the module list. Contact, legal
 and diagnostic are fixed because their arrangement *is* the design — everything
 in them is still edited from the sidebar.
 
-`npm run check:hubspot` enforces the rules HubSpot only reports one at a time,
-three minutes into an upload: reserved field names (`label`, `name`, `body`),
-names reused anywhere in a module (they are module-wide, not per group), the
-`module.hubl.*` file names, `module.x` references with no matching field,
-template paths pointing at modules that do not exist, and a `@source` glob that
-no longer covers the markup. It runs first inside `npm run build:hubspot`.
+Inside a project, every HubL file takes `.hubl` **before** its original
+extension: `module.html` → `module.hubl.html`, `module.css` →
+`module.hubl.css`, `module.js` → `module.hubl.js`, `template.html` →
+`template.hubl.html`. JSON files keep their names. Get this wrong and there is
+no error anywhere: the upload succeeds, the module's CSS and JS load on the
+page, and the module renders **nothing** — an empty `hs_cos_wrapper` div. A
+theme of blank white pages is the only symptom you get. `.hubl.htm` cost us a
+deploy this way.
+
+`npm run check:hubspot` enforces that, plus the rules HubSpot only reports one
+at a time, three minutes into an upload: reserved field names (`label`, `name`,
+`body`), names reused anywhere in a module (they are module-wide, not per
+group), `module.x` references with no matching field, template paths pointing
+at modules that do not exist, and a `@source` glob that no longer covers the
+markup. It runs first inside `npm run build:hubspot`.
 
 Two files are **generated — never edit them by hand**, and the deploy fails if
 they are stale:
