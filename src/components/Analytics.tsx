@@ -7,8 +7,9 @@ import { site } from "@/config/site";
 
 /**
  * Loads analytics only after the visitor accepts non-essential cookies, and
- * reacts to the banner's decision in the same page view. Renders nothing when
- * no analytics domain is configured.
+ * reacts to the banner's decision in the same page view. Covers Plausible
+ * (cookieless traffic) and HubSpot (which sets the tracking cookie that
+ * attributes form submissions). Each renders only when configured.
  */
 export default function Analytics() {
   const [allowed, setAllowed] = useState(false);
@@ -22,14 +23,26 @@ export default function Analytics() {
     return () => removeEventListener("novieri:consent", onConsent);
   }, []);
 
-  if (!site.plausibleDomain || !allowed) return null;
+  if (!allowed) return null;
 
   return (
-    <Script
-      defer
-      data-domain={site.plausibleDomain}
-      src="https://plausible.io/js/script.js"
-      strategy="afterInteractive"
-    />
+    <>
+      {site.plausibleDomain && (
+        <Script
+          defer
+          data-domain={site.plausibleDomain}
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
+      )}
+      {site.hubspotPortalId && (
+        <Script
+          id="hs-script-loader"
+          defer
+          src={`https://js.hs-scripts.com/${site.hubspotPortalId}.js`}
+          strategy="afterInteractive"
+        />
+      )}
+    </>
   );
 }

@@ -11,6 +11,7 @@
  */
 
 require __DIR__ . '/common.php';
+require __DIR__ . '/hubspot.php';
 require __DIR__ . '/lib/fpdf.php';
 require __DIR__ . '/lib/Exception.php';
 require __DIR__ . '/lib/PHPMailer.php';
@@ -325,6 +326,45 @@ if (!empty($config['smtp_user']) && !empty($config['smtp_pass'])) {
         // The visitor still gets their report; only the notification failed.
         error_log('diagnose: mail failed — ' . $e->getMessage());
     }
+}
+
+/* ---------- 4. The CRM ---------- */
+
+// Every answer becomes a contact property, so the CRM is segmentable:
+// "leads over 50 people whose backups have never been restored" is a list.
+$nameParts = preg_split('/\s+/', trim($name), 2);
+$fields = [
+    'email' => $email,
+    'firstname' => $nameParts[0] ?? $name,
+    'lastname' => $nameParts[1] ?? '',
+    'company' => $company,
+    'phone' => $phone,
+    'hs_language' => $locale,
+    'novieri_diagnostic_score' => (string) $pct,
+    'novieri_diagnostic_level' => $level,
+    'novieri_diagnostic_headline' => $report['headline'],
+];
+foreach ($answers as $i => $a) {
+    $fields['novieri_diag_q' . ($i + 1)] = $a['answer'];
+}
+
+if (hubspot_submit_form($config, 'hubspot_form_diagnostic', $fields, [
+    'hutk' => (string) ($body['hutk'] ?? ''),
+    'pageUri' => (string) ($body['pageUri'] ?? ''),
+    'pageName' => (string) ($body['pageName'] ?? ''),
+    'ipAddress' => client_ip(),
+], [
+    'text' => (string) ($body['consentText'] ?? ''),
+])) {
+    // The full diagnosis on the timeline, so sales reads it before the call.
+    $note = "Autodiagnóstico — {$level} ({$pct}/100)\n\n{$report['headline']}\n\n{$report['summary']}";
+    if ($report['risks']) {
+        $note .= "\n\nRiesgos:\n- " . implode("\n- ", $report['risks']);
+    }
+    foreach ($report['priorities'] as $i => $pr) {
+        $note .= "\n\n" . ($i + 1) . '. ' . $pr['title'] . "\n" . $pr['body'];
+    }
+    hubspot_note($config, $email, nl2br(htmlspecialchars($note, ENT_QUOTES, 'UTF-8')));
 }
 
 send_json(200, [

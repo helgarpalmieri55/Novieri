@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { site } from "@/config/site";
+import { trackingContext } from "@/lib/hubspot";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -30,7 +31,12 @@ export default function ContactForm() {
         credentials: "omit",
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, locale }),
+        body: JSON.stringify({
+          ...data,
+          locale,
+          ...trackingContext(),
+          consentText: t("consentNote"),
+        }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("success");
@@ -149,6 +155,8 @@ export default function ContactForm() {
           {status === "sending" ? t("sending") : t("submit")}
         </button>
       </div>
+
+      <p className="mt-4 max-w-[62ch] text-[13.5px] text-ink-faint">{t("consentNote")}</p>
 
       <div aria-live="polite">
         {status === "success" && (

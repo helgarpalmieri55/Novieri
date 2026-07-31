@@ -844,7 +844,8 @@
         "name": "Please enter your name.",
         "email": "Please enter a valid email.",
         "message": "Even one line helps."
-      }
+      },
+      "consentNote": "By submitting this form you authorise the processing of your data under our privacy policy."
     },
     "booking": {
       "title": "Prefer to just book a time?",
@@ -1515,6 +1516,7 @@
           "ul": [
             "Strictly necessary: we store your cookie decision in your browser's local storage (key “novieri-consent”) so we don't ask again on every visit. It does not identify individuals and is not shared with third parties.",
             "Analytics and measurement: if you accept them, we activate a web analytics tool that tells us how many people visit the site and which pages they read, in aggregate. We use it to improve the content, not to profile people.",
+            "CRM and attribution (HubSpot): if you accept, we load HubSpot's script, which sets the __hstc, hubspotutk, __hssc, and __hssrc cookies. They recognise your browser between visits and link the form you submit to the pages you read beforehand, so we know which content was useful. If you reject them, the forms still work — they simply arrive without that history.",
             "Third-party functional: when you open meeting scheduling or the WhatsApp chat, the relevant provider may set its own cookies in your browser, subject to its policies.",
             "Advertising: we do not use advertising or cross-site tracking cookies."
           ]
@@ -1631,7 +1633,7 @@
   },
   "cookies": {
     "title": "Cookies on novieri.com",
-    "body": "We use first-party cookies needed for the site to work and, only if you accept, aggregate analytics to understand which content is useful. We don't use advertising cookies.",
+    "body": "We use first-party cookies needed for the site to work and, only if you accept, aggregate analytics plus HubSpot cookies that link your enquiry to the content you read. We don't use advertising cookies.",
     "accept": "Accept all",
     "reject": "Necessary only",
     "more": "Read the cookie policy",
