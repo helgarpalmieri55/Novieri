@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/seo";
+import { site } from "@/config/site";
 import PageHero from "@/components/PageHero";
 import CtaBand from "@/components/CtaBand";
 
@@ -26,14 +27,16 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       role: t("founders.helgar.role"),
       bio: t("founders.helgar.bio"),
       photoAlt: t("founders.helgar.photoAlt"),
+      linkedin: site.founders.helgar,
     },
     {
-      // TODO before launch: replace [WIFE_NAME]/[WIFE_BIO] in messages and add real photos
-      initials: "··",
+      // TODO before launch: add real founder photos
+      initials: "SN",
       name: t("founders.partner.name"),
       role: t("founders.partner.role"),
       bio: t("founders.partner.bio"),
       photoAlt: t("founders.partner.photoAlt"),
+      linkedin: site.founders.partner,
     },
   ];
 
@@ -78,7 +81,22 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   {f.initials}
                 </div>
                 <div>
-                  <h3>{f.name}</h3>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3>{f.name}</h3>
+                    {f.linkedin && (
+                      <a
+                        href={f.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={t("founders.linkedinLabel", { name: f.name })}
+                        className="grid h-8 w-8 place-items-center rounded-lg border border-line text-ink-faint transition-colors hover:border-plum hover:text-plum"
+                      >
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                          <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                   <p className="idx-mono mt-1 lowercase text-gold-deep">·· {f.role}</p>
                   <p className="mt-3 text-[15.5px] text-ink-muted">{f.bio}</p>
                 </div>

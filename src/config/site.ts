@@ -20,6 +20,17 @@ export const site = {
   // TODO: LinkedIn company URL. Footer icon stays hidden while empty.
   linkedinUrl: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "",
 
+  // Founder profiles (each card's LinkedIn icon is hidden while empty).
+  founders: {
+    helgar: "https://www.linkedin.com/in/helgar-palmieri-82726b16a/",
+    partner: "https://www.linkedin.com/in/sylvananova-272303/",
+  },
+
+  // Solutions section is hidden site-wide while this is false: no nav or
+  // footer links, no sitemap entries, and the pages themselves are noindex.
+  // The pages stay in the build — flip this to true to publish them.
+  showSolutions: false,
+
   // TODO: legal identity for the footer line "© 2026 RAZON_SOCIAL · NIT ...".
   // While empty the footer shows "© 2026 Novieri" only.
   razonSocial: "",

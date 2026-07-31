@@ -37,7 +37,7 @@ verify every sitemap URL resolves to a file.
 | `NEXT_PUBLIC_CAL_LINK` (e.g. `novieri/intro`) | env — Cal.com embed shows fallback until set |
 | `NEXT_PUBLIC_LINKEDIN_URL` | env — footer icon hidden until set |
 | `razonSocial`, `NIT` | `src/config/site.ts` — **required**: footer legal line *and* the controller identification in the legal pages (the NIT clause is omitted while empty) |
-| `[WIFE_NAME]`, `[WIFE_BIO]` | `messages/*.json` (about.founders.partner) |
+| Solutions section | `showSolutions` in `src/config/site.ts` — `false` hides nav/footer links, drops the pages from the sitemap, and marks them `noindex`. Flip to `true` to publish. |
 | Founders photo | `src/app/[locale]/about/page.tsx` placeholders |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (`novieri.com`) | env — analytics off until set |
 

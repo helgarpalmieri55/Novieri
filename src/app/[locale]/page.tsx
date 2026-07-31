@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { AppPathname } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
+import { site } from "@/config/site";
 import GemStage from "@/components/GemStage";
 import PillarTicker from "@/components/PillarTicker";
 import WhatsAppChat, { type ChatEntry } from "@/components/WhatsAppChat";
@@ -35,7 +36,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const whyPoints = t.raw("why.points") as { title: string; body: string }[];
   const howSteps = t.raw("how.steps") as { title: string; body: string }[];
   const chatEntries = t.raw("liveChat.entries") as ChatEntry[];
-  const proofColors = ["text-plum", "text-teal", "text-gold-deep", "text-ink"];
+  const proofColors = ["text-plum", "text-teal", "text-gold-deep"];
 
   return (
     <>
@@ -93,7 +94,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       {/* 2 · Proof strip */}
       <div className="border-b border-line bg-white">
-        <div className="container-site grid grid-cols-2 md:grid-cols-4">
+        <div className="container-site grid grid-cols-1 sm:grid-cols-3">
           {proofItems.map((p, i) => (
             <div
               key={i}
@@ -154,10 +155,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <h2 className="mt-4">{t("liveChat.title")}</h2>
             <p className="mt-5 max-w-[52ch] text-on-dark-muted">{t("liveChat.body")}</p>
             <Link
-              href="/solutions/whatsapp-ai-assistant"
+              href={site.showSolutions ? "/solutions/whatsapp-ai-assistant" : "/services/ai-automation"}
               className="mt-7 inline-flex items-center gap-2 font-medium text-gold-bright transition-[gap] duration-200 hover:gap-3.5"
             >
-              {t("liveChat.cta")} <span aria-hidden>→</span>
+              {t(site.showSolutions ? "liveChat.cta" : "liveChat.ctaService")} <span aria-hidden>→</span>
             </Link>
           </div>
           <div className="reveal" style={{ ["--rd" as string]: "120ms" }}>

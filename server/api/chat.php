@@ -86,7 +86,7 @@ function company_knowledge(string $contactEmail): string
         '',
         '## Fundadores / Founders',
         "- {$es['about']['founders']['helgar']['name']} — {$es['about']['founders']['helgar']['role']}: {$es['about']['founders']['helgar']['bio']}",
-        "- Cofundadora — {$es['about']['founders']['partner']['role']} (perfil comercial y de operaciones).",
+        "- {$es['about']['founders']['partner']['name']} — {$es['about']['founders']['partner']['role']}: {$es['about']['founders']['partner']['bio']}",
         '',
         services_block($es, '## Servicios (ES)'),
         services_block($en, '## Services (EN)'),

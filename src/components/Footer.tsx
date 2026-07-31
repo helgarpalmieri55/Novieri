@@ -40,23 +40,29 @@ export default async function Footer({ locale }: { locale: string }) {
   return (
     <footer className="border-t border-line bg-white">
       <div className="container-site pb-10 pt-16">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[3fr_3fr_3fr_2fr_2fr]">
+        <div
+          className={`grid grid-cols-2 gap-x-8 gap-y-10 ${
+            site.showSolutions ? "md:grid-cols-[3fr_3fr_3fr_2fr_2fr]" : "md:grid-cols-[4fr_3fr_3fr_3fr]"
+          }`}
+        >
           <div className="col-span-2 md:col-span-1">
-            <Image src={asset("/brand/novieri-isotipo-color-256px.png")} alt="" width={38} height={39} />
+            <Image src={asset("/brand/novieri-isotipo-color-256px.png")} alt="" width={57} height={58} />
             <p className="mt-4 max-w-[34ch] text-[14.5px] text-ink-muted">{t("description")}</p>
           </div>
-          <nav aria-label={t("solutionsTitle")}>
-            <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("solutionsTitle")}</h2>
-            <ul className="grid gap-2.5 text-[14.5px]">
-              {SOLUTION_LINKS.map((s) => (
-                <li key={s.key}>
-                  <Link href={s.href} className="text-ink-muted transition-colors hover:text-ink">
-                    {tso(`${s.key}.name`)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {site.showSolutions && (
+            <nav aria-label={t("solutionsTitle")}>
+              <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("solutionsTitle")}</h2>
+              <ul className="grid gap-2.5 text-[14.5px]">
+                {SOLUTION_LINKS.map((s) => (
+                  <li key={s.key}>
+                    <Link href={s.href} className="text-ink-muted transition-colors hover:text-ink">
+                      {tso(`${s.key}.name`)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
           <nav aria-label={t("servicesTitle")}>
             <h2 className="idx-mono mb-3.5 lowercase text-gold-deep">·· {t("servicesTitle")}</h2>
             <ul className="grid gap-2.5 text-[14.5px]">

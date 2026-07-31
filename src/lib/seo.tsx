@@ -41,7 +41,11 @@ export async function pageMetadata(
   }
   languages["x-default"] = site.url + getPathname({ locale: "en", href: pathname });
 
+  // Solutions pages stay in the build but out of search while unpublished.
+  const hidden = !site.showSolutions && pathname.startsWith("/solutions");
+
   return {
+    ...(hidden ? { robots: { index: false, follow: false } } : {}),
     title: t(`${key}.title`),
     description: t(`${key}.description`),
     alternates: {
