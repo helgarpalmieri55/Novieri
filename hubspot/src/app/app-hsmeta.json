@@ -7,10 +7,20 @@
     "distribution": "private",
     "auth": {
       "type": "static",
-      "requiredScopes": ["crm.objects.contacts.read", "hubdb"]
+      "requiredScopes": [
+        "crm.objects.contacts.read",
+        "hubdb"
+      ]
     },
     "permittedUrls": {
-      "fetch": ["https://api.anthropic.com", "https://www.google.com", "https://api.hsforms.com"]
+      "fetch": [
+        "https://api.anthropic.com",
+        "https://api.hubapi.com",
+        "https://api.hsforms.com",
+        "https://www.google.com"
+      ],
+      "iframe": [],
+      "img": []
     }
   }
 }
