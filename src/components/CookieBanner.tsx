@@ -52,20 +52,20 @@ export default function CookieBanner() {
       className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-[46rem] rounded-2xl border border-line bg-white p-5 shadow-[0_8px_40px_rgba(22,18,29,0.16)] sm:inset-x-5 sm:bottom-5 sm:p-6"
     >
       <div aria-hidden className="seam mb-4 -mt-1 rounded-full" />
-      <p className="font-display text-[17px] font-semibold">{t("title")}</p>
-      <p className="mt-2 max-w-[62ch] text-[14.5px] leading-relaxed text-ink-muted">{t("body")}</p>
+      <p className="font-display text-body font-semibold">{t("title")}</p>
+      <p className="mt-2 max-w-[62ch] text-small leading-relaxed text-ink-muted">{t("body")}</p>
       <div className="mt-5 flex flex-wrap items-center gap-3">
-        <button type="button" onClick={() => decide("all")} className="btn btn-primary px-5 py-2.5 text-[15px]">
+        <button type="button" onClick={() => decide("all")} className="btn btn-primary px-5 py-2.5 text-small">
           {t("accept")}
         </button>
         <button
           type="button"
           onClick={() => decide("necessary")}
-          className="btn btn-ghost-light px-5 py-2.5 text-[15px]"
+          className="btn btn-ghost-light px-5 py-2.5 text-small"
         >
           {t("reject")}
         </button>
-        <Link href="/legal/cookies" className="link-accent ml-auto text-[14.5px]">
+        <Link href="/legal/cookies" className="link-accent ml-auto text-small">
           {t("more")}
         </Link>
       </div>

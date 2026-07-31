@@ -66,8 +66,8 @@ export default async function SolutionPageTemplate({
           <ul className="dot-list grid gap-x-14 gap-y-9 md:grid-cols-2">
             {features.map((f, i) => (
               <li key={i} className="reveal" style={{ ["--rd" as string]: `${(i % 2) * 80}ms` }}>
-                <h3 className="text-[19px]">{f.title}</h3>
-                <p className="mt-1.5 max-w-[52ch] text-[15.5px] text-ink-muted">{f.body}</p>
+                <h3 className="text-lead">{f.title}</h3>
+                <p className="mt-1.5 max-w-[52ch] text-small text-ink-muted">{f.body}</p>
               </li>
             ))}
           </ul>
@@ -90,7 +90,7 @@ export default async function SolutionPageTemplate({
               {stack.map((s) => (
                 <span
                   key={s}
-                  className="rounded-md border border-line-dark px-2.5 py-1 font-mono text-[12px] tracking-[0.04em] text-on-dark-muted"
+                  className="rounded-md border border-line-dark px-2.5 py-1 font-mono text-micro tracking-[0.04em] text-on-dark-muted"
                 >
                   {s}
                 </span>
@@ -109,8 +109,8 @@ export default async function SolutionPageTemplate({
       <section className="border-b border-line bg-plum-wash py-[clamp(3.5rem,9vh,5.5rem)]">
         <div className="container-site grid items-center gap-8 lg:grid-cols-[7fr_5fr]">
           <div className="reveal">
-            <h2 className="text-[clamp(1.375rem,2.4vw,1.75rem)]">{ts("poweredTitle")}</h2>
-            <p className="mt-3 max-w-[62ch] text-[15.5px] text-ink-muted">{ts("poweredBody")}</p>
+            <h2 className="text-h4">{ts("poweredTitle")}</h2>
+            <p className="mt-3 max-w-[62ch] text-small text-ink-muted">{ts("poweredBody")}</p>
           </div>
           <div className="reveal lg:justify-self-end" style={{ ["--rd" as string]: "100ms" }}>
             <Link href="/services" className="link-accent">

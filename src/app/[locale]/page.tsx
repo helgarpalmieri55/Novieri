@@ -72,7 +72,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </span>
             </h1>
             <p
-              className="rise mt-6 max-w-[50ch] text-[18.5px] text-ink-muted"
+              className="rise mt-6 max-w-[50ch] text-lead text-ink-muted"
               style={{ ["--d" as string]: "340ms" }}
             >
               {t("hero.subtitle")}
@@ -128,11 +128,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 className="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7"
                 style={{ ["--rd" as string]: `${i * 70}ms` }}
               >
-                <span aria-hidden className={`text-[22px] font-bold leading-[0.5] tracking-[0.1em] ${p.accent}`}>
+                <span aria-hidden className={`text-h3 font-bold leading-[0.5] tracking-[0.1em] ${p.accent}`}>
                   ··
                 </span>
                 <h3>{tp(`${p.key}.name`)}</h3>
-                <p className="grow text-[15px] text-ink-muted">{tp(`${p.key}.tagline`)}</p>
+                <p className="grow text-small text-ink-muted">{tp(`${p.key}.tagline`)}</p>
                 <span className="flex flex-wrap gap-1.5">
                   {(tp.raw(`${p.key}.tags`) as string[]).map((tag) => (
                     <span key={tag} className="tag-mono">
@@ -140,7 +140,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     </span>
                   ))}
                 </span>
-                <span className="mt-1 inline-flex items-center gap-1.5 text-[15px] font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
+                <span className="mt-1 inline-flex items-center gap-1.5 text-small font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
                   {tc("learnMore")} <span aria-hidden>→</span>
                 </span>
               </Link>
@@ -158,7 +158,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="mt-5 max-w-[56ch] text-ink-muted">{t("diagnose.body")}</p>
           </div>
           <div className="reveal lg:justify-self-end" style={{ ["--rd" as string]: "120ms" }}>
-            <Link href="/diagnostic" className="btn btn-primary text-[17px] !px-8 !py-4">
+            <Link href="/diagnostic" className="btn btn-primary text-body !px-8 !py-4">
               {t("diagnose.button")} <span aria-hidden>→</span>
             </Link>
             <p className="idx-mono mt-4 text-ink-faint">{t("diagnose.note")}</p>
@@ -213,10 +213,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 className="reveal border-b border-line py-6 last:border-b-0"
                 style={{ ["--rd" as string]: `${i * 70}ms` }}
               >
-                <h3 className="relative pl-7 before:absolute before:left-0 before:top-0 before:font-sans before:text-[20px] before:font-bold before:tracking-[0.1em] before:text-gold before:content-['··']">
+                <h3 className="relative pl-7 before:absolute before:left-0 before:top-0 before:font-sans before:text-lead before:font-bold before:tracking-[0.1em] before:text-gold before:content-['··']">
                   {p.title}
                 </h3>
-                <p className="mt-2 max-w-[58ch] pl-7 text-[15.5px] text-ink-muted">{p.body}</p>
+                <p className="mt-2 max-w-[58ch] pl-7 text-small text-ink-muted">{p.body}</p>
               </div>
             ))}
           </div>
@@ -238,8 +238,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 style={{ ["--rd" as string]: `${i * 90}ms` }}
               >
                 <span className="idx-mono text-gold-deep">0{i + 1}</span>
-                <h3 className="mt-2.5 text-[19px]">{s.title}</h3>
-                <p className="mt-2 text-[15px] text-ink-muted">{s.body}</p>
+                <h3 className="mt-2.5 text-lead">{s.title}</h3>
+                <p className="mt-2 text-small text-ink-muted">{s.body}</p>
               </div>
             ))}
           </div>

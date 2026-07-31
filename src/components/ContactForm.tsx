@@ -47,8 +47,8 @@ export default function ContactForm() {
   }
 
   const inputCls =
-    "w-full rounded-lg border border-line bg-white px-4 py-3 text-[15.5px] text-ink placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20 transition-colors";
-  const labelCls = "mb-1.5 block text-[14px] font-medium";
+    "w-full rounded-lg border border-line bg-white px-4 py-3 text-small text-ink placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20 transition-colors";
+  const labelCls = "mb-1.5 block text-small font-medium";
 
   return (
     <form onSubmit={onSubmit} noValidate>
@@ -76,7 +76,7 @@ export default function ContactForm() {
             aria-describedby={errors.name ? "cf-name-err" : undefined}
           />
           {errors.name && (
-            <p id="cf-name-err" className="mt-1.5 text-[13.5px] text-[#b3261e]">
+            <p id="cf-name-err" className="mt-1.5 text-caption text-[#b3261e]">
               {errors.name}
             </p>
           )}
@@ -111,7 +111,7 @@ export default function ContactForm() {
           aria-describedby={errors.email ? "cf-email-err" : undefined}
         />
         {errors.email && (
-          <p id="cf-email-err" className="mt-1.5 text-[13.5px] text-[#b3261e]">
+          <p id="cf-email-err" className="mt-1.5 text-caption text-[#b3261e]">
             {errors.email}
           </p>
         )}
@@ -144,7 +144,7 @@ export default function ContactForm() {
           aria-describedby={errors.message ? "cf-message-err" : undefined}
         />
         {errors.message && (
-          <p id="cf-message-err" className="mt-1.5 text-[13.5px] text-[#b3261e]">
+          <p id="cf-message-err" className="mt-1.5 text-caption text-[#b3261e]">
             {errors.message}
           </p>
         )}
@@ -156,16 +156,16 @@ export default function ContactForm() {
         </button>
       </div>
 
-      <p className="mt-4 max-w-[62ch] text-[13.5px] text-ink-faint">{t("consentNote")}</p>
+      <p className="mt-4 max-w-[62ch] text-caption text-ink-faint">{t("consentNote")}</p>
 
       <div aria-live="polite">
         {status === "success" && (
-          <p className="mt-4 rounded-lg border border-[#bfe3c8] bg-[#f0faf2] px-4 py-3 text-[15px] text-[#1a6b32]">
+          <p className="mt-4 rounded-lg border border-[#bfe3c8] bg-[#f0faf2] px-4 py-3 text-small text-[#1a6b32]">
             {t("success")}
           </p>
         )}
         {status === "error" && (
-          <p className="mt-4 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-4 py-3 text-[15px] text-[#a13b32]">
+          <p className="mt-4 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-4 py-3 text-small text-[#a13b32]">
             {t("error", { email: site.contactEmail })}
           </p>
         )}

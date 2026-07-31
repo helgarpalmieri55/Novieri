@@ -143,8 +143,8 @@ export default function DiagnosticForm() {
   }
 
   const inputCls =
-    "w-full rounded-lg border border-line bg-white px-4 py-3 text-[15.5px] text-ink placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20 transition-colors";
-  const labelCls = "mb-1.5 block text-[14px] font-medium";
+    "w-full rounded-lg border border-line bg-white px-4 py-3 text-small text-ink placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20 transition-colors";
+  const labelCls = "mb-1.5 block text-small font-medium";
 
   return (
     <div ref={topRef} className="scroll-mt-28">
@@ -168,7 +168,7 @@ export default function DiagnosticForm() {
           </div>
 
           <fieldset className="mt-6">
-            <legend className="font-display text-[clamp(1.25rem,2.4vw,1.6rem)] font-semibold leading-snug">
+            <legend className="font-display text-h4 font-semibold leading-snug">
               {current.q}
             </legend>
             <div className="mt-6 grid gap-2.5">
@@ -177,7 +177,7 @@ export default function DiagnosticForm() {
                 return (
                   <label
                     key={o.v}
-                    className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 text-[15.5px] transition-colors ${
+                    className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 text-small transition-colors ${
                       selected ? "border-plum bg-plum-wash" : "border-line hover:border-plum/40"
                     }`}
                   >
@@ -194,7 +194,7 @@ export default function DiagnosticForm() {
               })}
             </div>
             {touched && !answered && (
-              <p className="mt-3 text-[13.5px] text-[#b3261e]">{t("errors.required")}</p>
+              <p className="mt-3 text-caption text-[#b3261e]">{t("errors.required")}</p>
             )}
           </fieldset>
 
@@ -226,12 +226,12 @@ export default function DiagnosticForm() {
                 style={{ width: `${pct}%` }}
               />
             </span>
-            <p className="mt-5 text-[15px] text-ink-muted">{t("preview.body")}</p>
+            <p className="mt-5 text-small text-ink-muted">{t("preview.body")}</p>
           </div>
 
           <form onSubmit={submit} noValidate className="card-hairline p-7">
-            <h2 className="text-[1.4rem]">{t("gate.title")}</h2>
-            <p className="mt-2.5 text-[15px] text-ink-muted">{t("gate.body")}</p>
+            <h2 className="text-h3">{t("gate.title")}</h2>
+            <p className="mt-2.5 text-small text-ink-muted">{t("gate.body")}</p>
 
             {/* honeypot */}
             <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
@@ -247,7 +247,7 @@ export default function DiagnosticForm() {
                   {t("gate.name")}
                 </label>
                 <input id="dg-name" name="name" type="text" autoComplete="name" className={inputCls} />
-                {formErrors.name && <p className="mt-1.5 text-[13.5px] text-[#b3261e]">{formErrors.name}</p>}
+                {formErrors.name && <p className="mt-1.5 text-caption text-[#b3261e]">{formErrors.name}</p>}
               </div>
               <div>
                 <label htmlFor="dg-company" className={labelCls}>
@@ -255,7 +255,7 @@ export default function DiagnosticForm() {
                 </label>
                 <input id="dg-company" name="company" type="text" autoComplete="organization" className={inputCls} />
                 {formErrors.company && (
-                  <p className="mt-1.5 text-[13.5px] text-[#b3261e]">{formErrors.company}</p>
+                  <p className="mt-1.5 text-caption text-[#b3261e]">{formErrors.company}</p>
                 )}
               </div>
               <div>
@@ -263,7 +263,7 @@ export default function DiagnosticForm() {
                   {t("gate.email")}
                 </label>
                 <input id="dg-email" name="email" type="email" autoComplete="email" className={inputCls} />
-                {formErrors.email && <p className="mt-1.5 text-[13.5px] text-[#b3261e]">{formErrors.email}</p>}
+                {formErrors.email && <p className="mt-1.5 text-caption text-[#b3261e]">{formErrors.email}</p>}
               </div>
               <div>
                 <label htmlFor="dg-phone" className={labelCls}>
@@ -273,7 +273,7 @@ export default function DiagnosticForm() {
               </div>
             </div>
 
-            <label className="mt-5 flex items-start gap-2.5 text-[14px] text-ink-muted">
+            <label className="mt-5 flex items-start gap-2.5 text-small text-ink-muted">
               <input type="checkbox" name="consent" className="mt-1 h-4 w-4 flex-none accent-[#4f3461]" />
               <span>
                 {t("gate.consent")}{" "}
@@ -282,7 +282,7 @@ export default function DiagnosticForm() {
                 </Link>
               </span>
             </label>
-            {formErrors.consent && <p className="mt-1.5 text-[13.5px] text-[#b3261e]">{formErrors.consent}</p>}
+            {formErrors.consent && <p className="mt-1.5 text-caption text-[#b3261e]">{formErrors.consent}</p>}
 
             <button type="submit" disabled={busy} className="btn btn-primary mt-7 w-full disabled:opacity-60">
               {busy ? t("gate.sending") : t("gate.submit")}
@@ -290,7 +290,7 @@ export default function DiagnosticForm() {
 
             <div aria-live="polite">
               {error && (
-                <p className="mt-4 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-4 py-3 text-[15px] text-[#a13b32]">
+                <p className="mt-4 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-4 py-3 text-small text-[#a13b32]">
                   {error}
                 </p>
               )}
@@ -309,8 +309,8 @@ export default function DiagnosticForm() {
           <div className="mt-8 grid gap-8 md:grid-cols-2">
             {report.strengths?.length > 0 && (
               <div>
-                <h3 className="text-[17px]">{locale === "es" ? "Lo que ya tienes" : "What you already have"}</h3>
-                <ul className="dot-list mt-3.5 grid gap-2 text-[15px] text-ink-muted">
+                <h3 className="text-body">{locale === "es" ? "Lo que ya tienes" : "What you already have"}</h3>
+                <ul className="dot-list mt-3.5 grid gap-2 text-small text-ink-muted">
                   {report.strengths.map((s, i) => (
                     <li key={i}>{s}</li>
                   ))}
@@ -319,8 +319,8 @@ export default function DiagnosticForm() {
             )}
             {report.risks?.length > 0 && (
               <div>
-                <h3 className="text-[17px]">{locale === "es" ? "Riesgos que vemos" : "Risks we see"}</h3>
-                <ul className="dot-list mt-3.5 grid gap-2 text-[15px] text-ink-muted">
+                <h3 className="text-body">{locale === "es" ? "Riesgos que vemos" : "Risks we see"}</h3>
+                <ul className="dot-list mt-3.5 grid gap-2 text-small text-ink-muted">
                   {report.risks.map((s, i) => (
                     <li key={i}>{s}</li>
                   ))}
@@ -331,13 +331,13 @@ export default function DiagnosticForm() {
 
           {report.priorities?.length > 0 && (
             <div className="mt-10">
-              <h3 className="text-[17px]">{locale === "es" ? "Qué haríamos primero" : "What we'd do first"}</h3>
+              <h3 className="text-body">{locale === "es" ? "Qué haríamos primero" : "What we'd do first"}</h3>
               <ol className="mt-4 grid gap-4">
                 {report.priorities.map((p, i) => (
                   <li key={i} className="rounded-xl bg-plum-wash p-5">
                     <span className="idx-mono text-gold-deep">··0{i + 1}</span>
                     <p className="mt-2 font-medium">{p.title}</p>
-                    <p className="mt-1.5 text-[15px] text-ink-muted">{p.body}</p>
+                    <p className="mt-1.5 text-small text-ink-muted">{p.body}</p>
                   </li>
                 ))}
               </ol>
@@ -357,7 +357,7 @@ export default function DiagnosticForm() {
             </Link>
             <span className="idx-mono text-ink-faint">{t("result.emailed")}</span>
           </div>
-          <p className="mt-6 text-[14px] text-ink-faint">
+          <p className="mt-6 text-small text-ink-faint">
             <button
               type="button"
               onClick={() => {

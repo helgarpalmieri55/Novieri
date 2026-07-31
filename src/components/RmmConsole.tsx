@@ -86,13 +86,13 @@ export default function RmmConsole({ copy }: { copy: RmmCopy }) {
         aria-hidden
         className="absolute -inset-px rounded-[17px] bg-gradient-to-br from-teal-bright via-plum-bright to-gold-bright"
       />
-      <div className="relative overflow-hidden rounded-2xl bg-[#0d1117] font-mono text-[13px] text-[#c9d1d9]">
+      <div className="relative overflow-hidden rounded-2xl bg-[#0d1117] font-mono text-caption text-[#c9d1d9]">
         <div className="flex items-center gap-2 border-b border-[#21262d] px-4 py-3">
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
-          <span className="ml-2 text-[12px] tracking-[0.05em] text-on-dark-faint">{copy.barTitle}</span>
-          <span className="ml-auto rounded-full border border-[#3a3145] px-2.5 py-0.5 text-[10.5px] tracking-[0.08em] text-gold-bright">
+          <span className="ml-2 text-micro tracking-[0.05em] text-on-dark-faint">{copy.barTitle}</span>
+          <span className="ml-auto rounded-full border border-[#3a3145] px-2.5 py-0.5 text-micro tracking-[0.08em] text-gold-bright">
             {copy.badge}
           </span>
         </div>
@@ -101,10 +101,10 @@ export default function RmmConsole({ copy }: { copy: RmmCopy }) {
         <div className="grid grid-cols-3 border-b border-[#21262d]">
           {stats.map((s) => (
             <div key={s.label} className="border-r border-[#21262d] px-4 py-3.5 last:border-r-0">
-              <div className={`font-display text-[26px] font-medium leading-none tabular-nums ${s.tone}`}>
+              <div className={`font-display text-display-sm font-medium leading-none tabular-nums ${s.tone}`}>
                 {s.value}
               </div>
-              <div className="mt-1.5 text-[11px] leading-tight tracking-[0.04em] text-on-dark-faint">{s.label}</div>
+              <div className="mt-1.5 text-micro leading-tight tracking-[0.04em] text-on-dark-faint">{s.label}</div>
             </div>
           ))}
         </div>
@@ -117,22 +117,22 @@ export default function RmmConsole({ copy }: { copy: RmmCopy }) {
               <div key={d.name} className="grid grid-cols-[1.4fr_0.8fr_1fr_auto] items-center gap-3 py-[7px]">
                 <span className="flex items-center gap-2 truncate">
                   <span aria-hidden className={`h-2 w-2 flex-none rounded-full ${DOT[st]}`} />
-                  <span className="truncate text-[12.5px]">{d.name}</span>
+                  <span className="truncate text-caption">{d.name}</span>
                 </span>
-                <span className="truncate text-[11.5px] text-on-dark-faint">{d.os}</span>
+                <span className="truncate text-micro text-on-dark-faint">{d.os}</span>
                 <Bar value={shown.cpu[n]} status={st} />
-                <span className={`w-[92px] text-right text-[11.5px] ${PILL[st]}`}>{copy.status[st]}</span>
+                <span className={`w-[92px] text-right text-micro ${PILL[st]}`}>{copy.status[st]}</span>
               </div>
             );
           })}
         </div>
 
         {/* Activity line */}
-        <div className="border-t border-[#21262d] px-4 py-3 text-[11.5px] text-on-dark-faint">
+        <div className="border-t border-[#21262d] px-4 py-3 text-micro text-on-dark-faint">
           <span aria-hidden className="mr-2 text-[#7ee787]">→</span>
           {feedLine}
         </div>
-        <div className="border-t border-[#21262d] px-4 py-2.5 text-[11px] tracking-[0.05em] text-on-dark-faint">
+        <div className="border-t border-[#21262d] px-4 py-2.5 text-micro tracking-[0.05em] text-on-dark-faint">
           {copy.footer}
         </div>
       </div>

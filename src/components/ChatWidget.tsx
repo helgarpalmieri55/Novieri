@@ -96,22 +96,22 @@ export default function ChatWidget() {
               </svg>
             </span>
             <div>
-              <p className="text-[15px] font-medium leading-tight">{t("title")}</p>
+              <p className="text-small font-medium leading-tight">{t("title")}</p>
               <p className="idx-mono mt-0.5 lowercase text-on-dark-faint">·· novieri</p>
             </div>
           </div>
 
           <div ref={listRef} className="flex-1 overflow-y-auto px-4 py-4">
-            <div className="mb-3 max-w-[85%] rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-[14.5px] text-ink">
+            <div className="mb-3 max-w-[85%] rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-small text-ink">
               {t("greeting")}
             </div>
             {messages.map((m, i) =>
               m.role === "user" ? (
-                <div key={i} className="mb-3 ml-auto max-w-[85%] rounded-2xl rounded-tr-md bg-plum px-4 py-2.5 text-[14.5px] text-white">
+                <div key={i} className="mb-3 ml-auto max-w-[85%] rounded-2xl rounded-tr-md bg-plum px-4 py-2.5 text-small text-white">
                   {m.content}
                 </div>
               ) : (
-                <div key={i} className="mb-3 max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-[14.5px] text-ink">
+                <div key={i} className="mb-3 max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-small text-ink">
                   {m.content}
                 </div>
               ),
@@ -128,7 +128,7 @@ export default function ChatWidget() {
               </div>
             )}
             {error && (
-              <p className="mb-3 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-3 py-2 text-[13.5px] text-[#a13b32]">
+              <p className="mb-3 rounded-lg border border-[#eec4c0] bg-[#fdf3f2] px-3 py-2 text-caption text-[#a13b32]">
                 {error === "limit" ? t("limit") : t("error")}
               </p>
             )}
@@ -142,7 +142,7 @@ export default function ChatWidget() {
               onChange={(e) => setInput(e.target.value)}
               placeholder={t("placeholder")}
               maxLength={MAX_CHARS}
-              className="min-w-0 flex-1 rounded-lg border border-line px-3.5 py-2.5 text-[14.5px] placeholder:text-ink-faint focus:border-plum focus:outline-none"
+              className="min-w-0 flex-1 rounded-lg border border-line px-3.5 py-2.5 text-small placeholder:text-ink-faint focus:border-plum focus:outline-none"
             />
             <button
               type="submit"

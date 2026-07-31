@@ -27,7 +27,7 @@ export default function PageHero({
           {title}
         </h1>
         {intro && (
-          <p className="rise mt-6 max-w-[62ch] text-lg text-ink-muted" style={{ ["--d" as string]: "220ms" }}>
+          <p className="rise mt-6 max-w-[62ch] text-lead text-ink-muted" style={{ ["--d" as string]: "220ms" }}>
             {intro}
           </p>
         )}

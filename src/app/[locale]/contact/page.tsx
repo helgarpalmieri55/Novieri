@@ -49,7 +49,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <ContactForm />
             </ClientMessages>
             <div className="mt-9 border-t border-line pt-7">
-              <ul className="grid gap-3 text-[15px] text-ink-muted">
+              <ul className="grid gap-3 text-small text-ink-muted">
                 {site.whatsappNumber && (
                   <li>
                     <a
@@ -83,13 +83,13 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
           <aside className="reveal" style={{ ["--rd" as string]: "120ms" }}>
             <div className="card-hairline p-7 hover:!translate-y-0 hover:!border-line">
-              <h2 className="text-[clamp(1.375rem,2vw,1.625rem)]">{t("booking.title")}</h2>
-              <p className="mt-2.5 text-[15.5px] text-ink-muted">{t("booking.body")}</p>
+              <h2 className="text-h4">{t("booking.title")}</h2>
+              <p className="mt-2.5 text-small text-ink-muted">{t("booking.body")}</p>
               <div className="mt-5">
                 {site.meetingsLink ? (
                   <MeetingsEmbed />
                 ) : (
-                  <p className="rounded-lg bg-plum-wash px-4 py-3.5 text-[14.5px] text-ink-muted">
+                  <p className="rounded-lg bg-plum-wash px-4 py-3.5 text-small text-ink-muted">
                     {t("booking.fallback", { email: site.contactEmail })}
                   </p>
                 )}

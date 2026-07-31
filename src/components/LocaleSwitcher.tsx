@@ -36,7 +36,7 @@ export default function LocaleSwitcher({ label }: { label: string }) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label={label} className="idx-mono flex items-center text-[0.8125rem] tracking-[0.06em]">
+    <nav aria-label={label} className="idx-mono flex items-center text-caption tracking-[0.06em]">
       {(["es", "en"] as const).map((l, i) => (
         <span key={l} className="flex items-center">
           {i > 0 && <span aria-hidden className="text-ink-faint">|</span>}

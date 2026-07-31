@@ -56,22 +56,22 @@ export default function AuditConsole({ copy }: { copy: AuditCopy }) {
         aria-hidden
         className="absolute -inset-px rounded-[17px] bg-gradient-to-br from-teal-bright via-plum-bright to-gold-bright"
       />
-      <div className="relative overflow-hidden rounded-2xl bg-[#0d1117] font-mono text-[13px] text-[#c9d1d9]">
+      <div className="relative overflow-hidden rounded-2xl bg-[#0d1117] font-mono text-caption text-[#c9d1d9]">
         <div className="flex items-center gap-2 border-b border-[#21262d] px-4 py-3">
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
           <span aria-hidden className="h-[11px] w-[11px] rounded-full bg-[#21262d]" />
-          <span className="ml-2 text-[12px] tracking-[0.05em] text-on-dark-faint">{copy.barTitle}</span>
-          <span className="ml-auto rounded-full border border-[#3a3145] px-2.5 py-0.5 text-[10.5px] tracking-[0.08em] text-gold-bright">
+          <span className="ml-2 text-micro tracking-[0.05em] text-on-dark-faint">{copy.barTitle}</span>
+          <span className="ml-auto rounded-full border border-[#3a3145] px-2.5 py-0.5 text-micro tracking-[0.08em] text-gold-bright">
             {copy.badge}
           </span>
         </div>
 
         {/* Readiness */}
         <div className="border-b border-[#21262d] px-5 py-4">
-          <div className="mb-2 flex items-baseline justify-between text-[11.5px] tracking-[0.05em]">
+          <div className="mb-2 flex items-baseline justify-between text-micro tracking-[0.05em]">
             <span className="text-on-dark-faint">{copy.readiness}</span>
-            <span className="font-display text-[22px] font-medium tabular-nums text-[#7ee787]">
+            <span className="font-display text-h3 font-medium tabular-nums text-[#7ee787]">
               {frame.readiness}%
             </span>
           </div>
@@ -100,10 +100,10 @@ export default function AuditConsole({ copy }: { copy: AuditCopy }) {
                   >
                     {STYLE[st].glyph}
                   </span>
-                  <span className="text-[12.5px]">{label}</span>
+                  <span className="text-caption">{label}</span>
                 </span>
                 <span
-                  className="text-[11px] tracking-[0.06em] transition-colors duration-500"
+                  className="text-micro tracking-[0.06em] transition-colors duration-500"
                   style={{ color: STYLE[st].color }}
                 >
                   {copy.status[st]}
@@ -113,7 +113,7 @@ export default function AuditConsole({ copy }: { copy: AuditCopy }) {
           })}
         </ul>
 
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-[#21262d] px-5 py-3 text-[11.5px] text-on-dark-faint">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-[#21262d] px-5 py-3 text-micro text-on-dark-faint">
           <span>
             <span aria-hidden className="mr-2 text-[#7ee787]">
               →

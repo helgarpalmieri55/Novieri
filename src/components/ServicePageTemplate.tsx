@@ -62,8 +62,8 @@ export default async function ServicePageTemplate({
           <ul className="dot-list grid gap-x-14 gap-y-9 md:grid-cols-2">
             {items.map((item, i) => (
               <li key={i} className="reveal" style={{ ["--rd" as string]: `${(i % 2) * 80}ms` }}>
-                <h3 className="text-[19px]">{item.title}</h3>
-                <p className="mt-1.5 max-w-[52ch] text-[15.5px] text-ink-muted">{item.body}</p>
+                <h3 className="text-lead">{item.title}</h3>
+                <p className="mt-1.5 max-w-[52ch] text-small text-ink-muted">{item.body}</p>
               </li>
             ))}
           </ul>
@@ -112,8 +112,8 @@ export default async function ServicePageTemplate({
               >
                 <span className="idx-mono text-gold-deep">··0{i + 1}</span>
                 <h3 className="mt-3">{tier.name}</h3>
-                <p className="mt-2.5 grow text-[15px] text-ink-muted">{tier.blurb}</p>
-                <Link href="/contact" className="link-accent mt-6 text-[15px]">
+                <p className="mt-2.5 grow text-small text-ink-muted">{tier.blurb}</p>
+                <Link href="/contact" className="link-accent mt-6 text-small">
                   {tc("talkCase")}
                 </Link>
               </div>

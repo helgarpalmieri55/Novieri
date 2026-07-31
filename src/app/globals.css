@@ -23,12 +23,18 @@
   --color-teal: #264e59;
   --color-teal-bright: #4f93a6;
 
+  /* Type scale — seven steps, and every size on the site is one of them.
+     There used to be seventeen, six of them within 5px of each other. */
   --text-h1: clamp(2.5rem, 6vw, 4.5rem);
   --text-h2: clamp(2rem, 4.2vw, 3.25rem);
-  --text-h3: 1.375rem;
-  --text-body: 1.0625rem;
-  --text-small: 0.875rem;
-  --text-eyebrow: 0.8125rem;
+  --text-display-sm: 1.625rem; /* 26 — card and panel headings */
+  --text-h3: 1.375rem; /* 22 */
+  --text-h4: clamp(1.25rem, 2.2vw, 1.625rem); /* small headings, fluid */
+  --text-lead: 1.1875rem; /* 19 — intros, pull quotes */
+  --text-body: 1.0625rem; /* 17 */
+  --text-small: 0.9375rem; /* 15 — the workhorse: lists, cards, UI */
+  --text-caption: 0.8125rem; /* 13 — labels, meta, fine print */
+  --text-micro: 0.71875rem; /* 11.5 — mono tags and indices */
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -132,7 +138,7 @@
     align-items: baseline;
     gap: 0.625rem;
     font-family: var(--font-mono);
-    font-size: var(--text-eyebrow);
+    font-size: var(--text-caption);
     letter-spacing: 0.1em;
     color: var(--color-ink-muted);
   }
@@ -167,7 +173,7 @@
     border-radius: 0.625rem;
     padding: 0.875rem 1.625rem;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: var(--text-body);
     line-height: 1.2;
     transition:
       background-color 250ms var(--ease-out-quart),
@@ -277,7 +283,7 @@
 
   .tag-mono {
     font-family: var(--font-mono);
-    font-size: 0.71875rem;
+    font-size: var(--text-micro);
     letter-spacing: 0.04em;
     color: var(--color-ink-muted);
     background: var(--color-plum-wash);
@@ -288,7 +294,7 @@
 
   .idx-mono {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-micro);
     letter-spacing: 0.1em;
   }
 
