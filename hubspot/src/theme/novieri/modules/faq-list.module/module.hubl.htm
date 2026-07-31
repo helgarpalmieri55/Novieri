@@ -1,0 +1,36 @@
+{# Native <details> accordion — opens with no JS, and the browser's own
+   find-in-page can reach the answers. Ported from FaqList.tsx. #}
+<section class="pb-[clamp(5rem,13vh,8rem)] pt-[clamp(3rem,7vh,5rem)]">
+  <div class="container-site max-w-[860px]">
+    {% if module.title %}<h2 class="reveal mb-[clamp(2rem,4vh,3rem)]">{{ module.title }}</h2>{% endif %}
+    <div class="reveal divide-y divide-line border-y border-line" style="--rd: 80ms">
+      {% for item in module.items %}
+        <details class="group py-1">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-4 text-body font-medium marker:hidden [&::-webkit-details-marker]:hidden">
+            {{ item.question }}
+            <span aria-hidden="true" class="text-h3 font-normal leading-none text-plum transition-transform duration-300 group-open:rotate-45">+</span>
+          </summary>
+          <p class="max-w-[68ch] pb-5 text-small text-ink-muted">{{ item.answer }}</p>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if module.schema %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in module.items %}
+          {
+            "@type": "Question",
+            "name": "{{ item.question|escapejson }}",
+            "acceptedAnswer": { "@type": "Answer", "text": "{{ item.answer|escapejson }}" }
+          }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  </script>
+{% endif %}

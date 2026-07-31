@@ -1,0 +1,21 @@
+{# Nothing invented: with no quotes entered the section renders nothing at
+   all, rather than shipping placeholder praise. #}
+{% if module.quotes %}
+  <section class="section-pad border-t border-line bg-plum-wash">
+    <div class="container-site">
+      <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        {% for q in module.quotes %}
+          <figure class="card-hairline reveal flex flex-col p-8" style="--rd: {{ loop.index0 * 70 }}ms">
+            <span aria-hidden="true" class="font-sans text-h3 font-bold leading-[0.5] tracking-[0.1em] text-gold">··</span>
+            <blockquote class="mt-5 grow text-lead leading-snug text-ink">{{ q.quote }}</blockquote>
+            <figcaption class="mt-6 border-t border-line pt-4">
+              <span class="block text-small font-medium text-ink">{{ q.quote_name }}</span>
+              <span class="idx-mono mt-1 block text-ink-faint">{{ q.quote_role }}{% if q.quote_company %} · {{ q.quote_company }}{% endif %}</span>
+            </figcaption>
+          </figure>
+        {% endfor %}
+      </div>
+      <p class="reveal idx-mono mt-10 lowercase text-ink-faint">·· {{ module.eyebrow }}</p>
+    </div>
+  </section>
+{% endif %}

@@ -1,0 +1,145 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "ai in production"
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "While you read this, our agents are answering."
+  },
+  {
+    "name": "intro",
+    "label": "Body",
+    "type": "text",
+    "default": "This isn't a promise — it's the WhatsApp assistant we run for restaurants and hotels. It understands voice notes, replies in seconds, creates the booking in your system, and hands off to a person only when it matters.",
+    "allow_new_line": true
+  },
+  {
+    "name": "cta_text",
+    "label": "Link label",
+    "type": "text",
+    "default": "See AI & automation"
+  },
+  {
+    "name": "cta_link",
+    "label": "Link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/services/ai-automation"
+      }
+    }
+  },
+  {
+    "name": "channel",
+    "label": "Channel skin",
+    "type": "choice",
+    "display": "select",
+    "default": "whatsapp",
+    "help_text": "WhatsApp wears WhatsApp's palette; Website wears ours.",
+    "choices": [
+      ["whatsapp", "WhatsApp"],
+      ["web", "Website widget"]
+    ]
+  },
+  {
+    "name": "chat_name",
+    "label": "Chat header name",
+    "type": "text",
+    "default": "Marisquería La Bahía"
+  },
+  {
+    "name": "chat_status",
+    "label": "Chat header status",
+    "type": "text",
+    "default": "online · replies instantly"
+  },
+  {
+    "name": "badge",
+    "label": "Badge",
+    "type": "text",
+    "default": "DEMO"
+  },
+  {
+    "name": "entries",
+    "label": "Conversation",
+    "type": "group",
+    "help_text": "Played back one row at a time, with a typing pause before every assistant reply.",
+    "occurrence": {
+      "min": 2,
+      "max": 14,
+      "default": 9
+    },
+    "children": [
+      {
+        "name": "row_kind",
+        "label": "Row",
+        "type": "choice",
+        "display": "select",
+        "default": "guest",
+        "choices": [
+          ["guest", "Customer message"],
+          ["bot", "Assistant reply"],
+          ["voice", "Customer voice note"],
+          ["transcript", "What it understood"],
+          ["action", "What it did"]
+        ]
+      },
+      {
+        "name": "message",
+        "label": "Text",
+        "type": "text",
+        "default": "Hi, do you have a table for 4 tonight at 8?",
+        "allow_new_line": true
+      },
+      {
+        "name": "caption",
+        "label": "Caption",
+        "type": "text",
+        "default": "",
+        "help_text": "The small uppercase label in front of a transcript row."
+      },
+      {
+        "name": "duration",
+        "label": "Voice note length",
+        "type": "text",
+        "default": "0:07"
+      },
+      {
+        "name": "sent_at",
+        "label": "Time",
+        "type": "text",
+        "default": "7:42 PM"
+      }
+    ]
+  },
+  {
+    "name": "input_hint",
+    "label": "Input placeholder",
+    "type": "text",
+    "default": "Type a message"
+  },
+  {
+    "name": "capabilities",
+    "label": "Capability strip",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 5,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "capability",
+        "label": "Item",
+        "type": "text",
+        "default": "answers 24/7"
+      }
+    ]
+  }
+]

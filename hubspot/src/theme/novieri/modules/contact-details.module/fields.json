@@ -1,0 +1,33 @@
+[
+  {
+    "name": "whatsapp_label",
+    "label": "WhatsApp link label",
+    "type": "text",
+    "default": "Write to us on WhatsApp"
+  },
+  {
+    "name": "whatsapp_url",
+    "label": "WhatsApp URL",
+    "type": "text",
+    "default": "",
+    "help_text": "A full wa.me link. Leave empty to hide the row."
+  },
+  {
+    "name": "email_label",
+    "label": "Email row label",
+    "type": "text",
+    "default": "Email"
+  },
+  {
+    "name": "email_address",
+    "label": "Email address",
+    "type": "text",
+    "default": "sales@novieri.com"
+  },
+  {
+    "name": "location",
+    "label": "Location line",
+    "type": "text",
+    "default": "Barranquilla, Colombia ·· GMT-5"
+  }
+]

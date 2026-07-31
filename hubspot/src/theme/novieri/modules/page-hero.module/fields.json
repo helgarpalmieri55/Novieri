@@ -1,0 +1,47 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "services"
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Four pillars, one team."
+  },
+  {
+    "name": "intro",
+    "label": "Intro",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  },
+  {
+    "name": "button_text",
+    "label": "Button label",
+    "type": "text",
+    "default": "",
+    "help_text": "Leave empty for no button."
+  },
+  {
+    "name": "button_link",
+    "label": "Button link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/contact"
+      }
+    }
+  },
+  {
+    "name": "seam",
+    "label": "Hairline seam below",
+    "type": "boolean",
+    "display": "toggle",
+    "default": true,
+    "help_text": "The thin gradient rule that separates the hero from what follows."
+  }
+]

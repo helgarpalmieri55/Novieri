@@ -1,0 +1,18 @@
+{# The booking card. The embed goes through HubSpot Meetings so a booking
+   creates or matches the contact and lands on their timeline, rather than
+   sitting in a second system. #}
+<aside class="reveal" style="--rd: 120ms">
+  <div class="card-hairline p-7 hover:!translate-y-0 hover:!border-line">
+    <h2 class="text-h4">{{ module.title }}</h2>
+    <p class="mt-2.5 text-small text-ink-muted">{{ module.intro }}</p>
+    <div class="mt-5">
+      {% if module.meetings_url %}
+        <div class="meetings-iframe-container min-h-[620px] w-full"
+             data-src="{{ module.meetings_url }}{% if '?' in module.meetings_url %}&{% else %}?{% endif %}embed=true"></div>
+        <script src="https://static.hsappstatic.net/MeetingsEmbedCode/static-1/MeetingsEmbedCode.js" async></script>
+      {% else %}
+        <p class="rounded-lg bg-plum-wash px-4 py-3.5 text-small text-ink-muted">{{ module.fallback }}</p>
+      {% endif %}
+    </div>
+  </div>
+</aside>

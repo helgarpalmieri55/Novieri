@@ -1,0 +1,45 @@
+[
+  {
+    "name": "stat_value",
+    "label": "Stat value",
+    "type": "text",
+    "default": "12+"
+  },
+  {
+    "name": "stat_caption",
+    "label": "Stat caption",
+    "type": "text",
+    "default": "years building and running systems"
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Enterprise-grade technology, without the cost of an in-house department."
+  },
+  {
+    "name": "points",
+    "label": "Points",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "point_title",
+        "label": "Title",
+        "type": "text",
+        "default": "Direct access to the founders"
+      },
+      {
+        "name": "point_body",
+        "label": "Body",
+        "type": "text",
+        "default": "You talk to the people who design and run your technology, not to a salesperson.",
+        "allow_new_line": true
+      }
+    ]
+  }
+]

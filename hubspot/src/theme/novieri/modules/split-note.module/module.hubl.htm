@@ -1,0 +1,20 @@
+{# The dark band that carries one statement: heading held short on the left,
+   the sentence that earns it on the right. #}
+<section class="dark-s relative">
+  <div aria-hidden="true" class="seam absolute inset-x-0 top-0"></div>
+  <div class="container-site section-pad-tight grid items-start gap-[clamp(2rem,5vw,5rem)] lg:grid-cols-[5fr_7fr]">
+    <h2 class="reveal max-w-[16ch]">{{ module.title }}</h2>
+    <div class="reveal" style="--rd: 100ms">
+      {% if module.picture.src %}
+        <img src="{{ module.picture.src }}" alt="{{ module.picture.alt }}" loading="lazy" decoding="async"
+             class="w-full rounded-2xl border border-white/10" />
+        {% if module.intro %}<p class="mt-6 max-w-[62ch] text-on-dark-muted">{{ module.intro }}</p>{% endif %}
+      {% else %}
+        <p class="max-w-[62ch] text-lead text-on-dark-muted">{{ module.intro }}</p>
+      {% endif %}
+      {% if module.footnote %}
+        <p class="idx-mono mt-8 tracking-[0.07em] text-on-dark-faint">{{ module.footnote }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>

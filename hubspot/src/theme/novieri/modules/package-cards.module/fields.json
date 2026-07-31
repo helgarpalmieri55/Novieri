@@ -1,0 +1,57 @@
+[
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "How we package it"
+  },
+  {
+    "name": "intro",
+    "label": "Intro",
+    "type": "text",
+    "default": "Three ways in. We'll tell you which one fits after the first call — not before.",
+    "allow_new_line": true
+  },
+  {
+    "name": "link_label",
+    "label": "Card link label",
+    "type": "text",
+    "default": "Talk about your case"
+  },
+  {
+    "name": "link_target",
+    "label": "Card link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/contact"
+      }
+    }
+  },
+  {
+    "name": "tiers",
+    "label": "Tiers",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 4,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "tier_name",
+        "label": "Name",
+        "type": "text",
+        "default": "Pilot"
+      },
+      {
+        "name": "tier_blurb",
+        "label": "Blurb",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      }
+    ]
+  }
+]

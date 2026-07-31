@@ -1,0 +1,20 @@
+{# The fusion moment: the wordmark at display size, split in the two brand
+   colours, standing in for a heading. #}
+<section class="border-y border-line bg-plum-wash py-[clamp(5rem,13vh,7.5rem)]">
+  <div class="container-site">
+    <div class="reveal max-w-[720px]">
+      <span class="eyebrow">{{ module.eyebrow }}</span>
+      <div aria-hidden="true" class="mt-5 font-display text-[clamp(3.75rem,9vw,7.375rem)] font-semibold leading-none tracking-tight">
+        <span class="text-plum">{{ module.word_a }}</span><span class="text-gold-deep">{{ module.word_b }}</span>
+      </div>
+      <p class="mt-4 max-w-[54ch] text-ink-muted">{{ module.intro }}</p>
+    </div>
+    {% if module.cta_text %}
+      <a href="{{ module.cta_link.url.href }}"
+         class="reveal mt-8 inline-flex items-center gap-2 font-medium text-plum transition-[gap] duration-200 hover:gap-3.5"
+         style="--rd: 120ms">
+        {{ module.cta_text }} <span aria-hidden="true">→</span>
+      </a>
+    {% endif %}
+  </div>
+</section>

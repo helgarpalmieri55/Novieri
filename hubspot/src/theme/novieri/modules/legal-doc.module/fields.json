@@ -1,0 +1,129 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "legal"
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Privacy policy"
+  },
+  {
+    "name": "lead",
+    "label": "Lead paragraph",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  },
+  {
+    "name": "updated_label",
+    "label": "Updated label",
+    "type": "text",
+    "default": "Last updated"
+  },
+  {
+    "name": "updated_value",
+    "label": "Updated date",
+    "type": "text",
+    "default": "July 2026"
+  },
+  {
+    "name": "toc_label",
+    "label": "Contents heading",
+    "type": "text",
+    "default": "Contents"
+  },
+  {
+    "name": "identity_title",
+    "label": "Identity box heading",
+    "type": "text",
+    "default": "Who is responsible"
+  },
+  {
+    "name": "identity_body",
+    "label": "Identity box text",
+    "type": "richtext",
+    "default": "<p>Novieri, Barranquilla, Colombia. Write to <a href=\"mailto:sales@novieri.com\">sales@novieri.com</a> for anything in this document.</p>"
+  },
+  {
+    "name": "sections",
+    "label": "Sections",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 30,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "default": "What we collect"
+      },
+      {
+        "name": "content",
+        "label": "Text",
+        "type": "richtext",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "name": "other_label",
+    "label": "Other documents heading",
+    "type": "text",
+    "default": "Other documents"
+  },
+  {
+    "name": "other_docs",
+    "label": "Other documents",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 5,
+      "default": 2
+    },
+    "children": [
+      {
+        "name": "doc_label",
+        "label": "Label",
+        "type": "text",
+        "default": "Cookies"
+      },
+      {
+        "name": "doc_link",
+        "label": "Link",
+        "type": "link",
+        "default": {
+          "url": {
+            "type": "CONTENT",
+            "href": "/legal/cookies"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "questions_title",
+    "label": "Questions box heading",
+    "type": "text",
+    "default": "Questions about this policy?"
+  },
+  {
+    "name": "questions_body",
+    "label": "Questions box text",
+    "type": "text",
+    "default": "Write to us and a person answers — this isn't a legal department, it's the two of us.",
+    "allow_new_line": true
+  },
+  {
+    "name": "questions_email",
+    "label": "Questions email",
+    "type": "text",
+    "default": "sales@novieri.com"
+  }
+]
