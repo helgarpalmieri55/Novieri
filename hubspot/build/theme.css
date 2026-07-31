@@ -11,7 +11,8 @@
 @import "../../src/app/globals.css";
 
 @source "../src/theme/novieri/templates/**/*.html";
-@source "../src/theme/novieri/modules/**/*.html";
+/* Project modules use module.hubl.htm / module.hubl.js, not .html / .js */
+@source "../src/theme/novieri/modules/**/*.htm";
 @source "../src/theme/novieri/modules/**/*.js";
 @source "../src/theme/novieri/js/**/*.js";
 
