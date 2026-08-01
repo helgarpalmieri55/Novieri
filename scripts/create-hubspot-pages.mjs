@@ -219,22 +219,38 @@ if (variants) {
       process.exitCode = 1;
       continue;
     }
+    const meta = META[enSlug];
     try {
-      const variant = await api("/cms/v3/pages/site-pages/multi-language/create-language-variant", {
+      // Clone, then attach to the English page's language group. The
+      // create-language-variant path the docs describe returns 404, so this
+      // uses the two endpoints that do exist: an ordinary clone, and
+      // attach-to-lang-group, which is what actually creates the pairing the
+      // language switcher reads.
+      const clone = await api(`/cms/v3/pages/site-pages/${source.id}/clone`, {
         method: "POST",
-        body: JSON.stringify({ id: source.id, language: "es" }),
+        body: JSON.stringify({ id: source.id, cloneName: `${source.name} (ES)` }),
       });
-      const meta = META[enSlug];
-      await api(`/cms/v3/pages/site-pages/${variant.id}`, {
+      await api(`/cms/v3/pages/site-pages/${clone.id}`, {
         method: "PATCH",
         body: JSON.stringify({
           slug: esSlug,
+          language: "es",
           ...(meta ? { htmlTitle: meta.title, metaDescription: meta.description } : {}),
         }),
       });
-      console.log(`variant ${esSlug} — id ${variant.id} (from ${enSlug || "home"})`);
+      try {
+        await api("/cms/v3/pages/site-pages/multi-language/attach-to-lang-group", {
+          method: "PUT",
+          body: JSON.stringify({ id: clone.id, primaryId: source.id, language: "es" }),
+        });
+        console.log(`variant ${esSlug} — id ${clone.id}, grouped with ${enSlug || "home"}`);
+      } catch (e) {
+        // The page is real and correct either way; only the switcher pairing
+        // is missing, and that is fixable in the page's language settings.
+        console.log(`variant ${esSlug} — id ${clone.id}, NOT grouped (${e.message.slice(0, 80)})`);
+      }
     } catch (e) {
-      console.error(`FAILED  ${esSlug} — ${e.message}`);
+      console.error(`FAILED  ${esSlug} — ${e.message.slice(0, 160)}`);
       process.exitCode = 1;
     }
   }
