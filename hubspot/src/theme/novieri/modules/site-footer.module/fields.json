@@ -35,8 +35,14 @@
       },
       {
         "name": "column_menu",
-        "label": "Menu",
+        "label": "Menu — English",
         "type": "menu"
+      },
+      {
+        "name": "column_menu_es",
+        "label": "Menu — Spanish",
+        "type": "menu",
+        "help_text": "Falls back to the English menu when empty."
       }
     ]
   },

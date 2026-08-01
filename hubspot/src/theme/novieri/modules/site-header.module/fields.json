@@ -25,9 +25,15 @@
   },
   {
     "name": "menu",
-    "label": "Navigation menu",
+    "label": "Navigation menu — English",
     "type": "menu",
-    "help_text": "Edit the items in Settings > Content > Navigation. Each language has its own menu."
+    "help_text": "Edited in Settings > Content > Navigation menus."
+  },
+  {
+    "name": "menu_es",
+    "label": "Navigation menu — Spanish",
+    "type": "menu",
+    "help_text": "Used on pages whose language is Spanish. Falls back to the English menu when empty."
   },
   {
     "name": "cta_text",

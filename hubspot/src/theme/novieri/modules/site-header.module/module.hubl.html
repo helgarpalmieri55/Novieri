@@ -34,8 +34,16 @@
       a "#" — which is what shipped until we read HubSpot's own menu module
       and found it does this instead. It also hands us the tree, so the markup
       and the design are ours rather than hs-menu-wrapper's.
+
+      One global header serves every page, so the menu is chosen per page
+      rather than per module — otherwise the Spanish pages carry the English
+      navigation, which is what shipped.
     #}
-    {% set nav_items = menu(module.menu, "site_root").children %}
+    {% set nav_menu = module.menu %}
+    {% if html_lang == "es" and module.menu_es %}
+      {% set nav_menu = module.menu_es %}
+    {% endif %}
+    {% set nav_items = menu(nav_menu, "site_root").children %}
     <nav class="site-nav hidden items-center gap-6 md:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
       {% for item in nav_items %}
         <div class="group relative">
