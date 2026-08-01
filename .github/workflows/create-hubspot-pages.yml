@@ -22,6 +22,7 @@ on:
           - dump
           - publish
           - fill-content
+          - fill-one
           - create-all
       slug:
         description: "Slug to verify (verify mode only)"
@@ -57,4 +58,5 @@ jobs:
             create-all)    node scripts/create-hubspot-pages.mjs ;;
             # Per-page copy from messages/*.json into each page's modules.
             fill-content)  node scripts/fill-hubspot-pages.mjs ;;
+            fill-one)      node scripts/fill-hubspot-pages.mjs --only='${{ inputs.slug }}' ;;
           esac

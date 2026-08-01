@@ -104,8 +104,200 @@ function legalWidgets(doc) {
   };
 }
 
-/** slug -> the widgets to write. Only fixed-layout templates belong here. */
+/**
+ * Drag-and-drop modules have no name of our choosing — HubSpot generates
+ * `main-module-N`, numbered from 2 in the order the template declares them.
+ * The rendered pages confirm it: About carries main-module-2..6, a service
+ * page main-module-2..7. So they are addressable as widgets after all, and
+ * no page needs hand-editing first.
+ *
+ * These orders must match the templates. Change a template's module order and
+ * change it here, or a page will fill its sections with each other's copy.
+ */
+const SERVICE_SLOTS = {
+  hero: "main-module-2",      // page-hero
+  what: "main-module-3",      // dot-list
+  how: "main-module-4",       // split-note
+  packages: "main-module-5",  // package-cards
+  faq: "main-module-6",       // faq-list
+  cta: "main-module-7",       // cta-band
+};
+const ABOUT_SLOTS = {
+  hero: "main-module-2",      // page-hero
+  story: "main-module-3",     // founders-band
+  people: "main-module-4",    // people-cards
+  location: "main-module-5",  // split-note
+  cta: "main-module-6",       // cta-band
+};
+
+/** The four pillars, and where each one's "learn more" points. */
+const SERVICES = [
+  ["ai", "services/ai-automation"],
+  ["managedIt", "services/managed-it"],
+  ["security", "services/cybersecurity-compliance"],
+  ["software", "services/custom-software"],
+];
+
+function serviceWidgets(ns) {
+  const s = t[ns];
+  const c = t.serviceCommon;
+  return {
+    [SERVICE_SLOTS.hero]: {
+      body: {
+        eyebrow: s.hero.eyebrow,
+        title: s.hero.title,
+        intro: s.hero.promise,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: "/contact" } },
+        seam: true,
+      },
+    },
+    [SERVICE_SLOTS.what]: {
+      body: {
+        title: c.whatTitle,
+        intro: "",
+        tone: "light",
+        items: s.what.items.map((i) => ({ item_title: i.title, item_body: i.body })),
+      },
+    },
+    [SERVICE_SLOTS.how]: {
+      body: { title: c.howTitle, intro: s.how.caption, footnote: "", picture: { src: "", alt: "" } },
+    },
+    [SERVICE_SLOTS.packages]: {
+      body: {
+        title: c.packagesTitle,
+        intro: c.packagesIntro,
+        link_label: t.common.talkCase,
+        link_target: { url: { type: "CONTENT", href: "/contact" } },
+        tiers: s.packages.tiers.map((x) => ({ tier_name: x.name, tier_blurb: x.blurb })),
+      },
+    },
+    [SERVICE_SLOTS.faq]: {
+      body: {
+        title: c.faqTitle,
+        schema: true,
+        items: s.faq.items.map((q) => ({ question: q.q, answer: q.a })),
+      },
+    },
+    [SERVICE_SLOTS.cta]: {
+      body: {
+        eyebrow: "next step",
+        title: c.ctaTitle,
+        subtitle: c.ctaSubtitle,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: "/contact" } },
+      },
+    },
+  };
+}
+
+/** The services index reuses the service template, minus what it has no copy for. */
+function servicesIndexWidgets() {
+  const idx = t.servicesIndex;
+  return {
+    [SERVICE_SLOTS.hero]: {
+      body: {
+        eyebrow: idx.eyebrow,
+        title: idx.title,
+        intro: idx.intro,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: "/contact" } },
+        seam: true,
+      },
+    },
+    [SERVICE_SLOTS.what]: {
+      body: {
+        title: "The four pillars",
+        intro: "",
+        tone: "light",
+        items: SERVICES.map(([key]) => ({
+          item_title: t.pillars[key].name,
+          item_body: t.pillars[key].tagline,
+        })),
+      },
+    },
+    [SERVICE_SLOTS.cta]: {
+      body: {
+        eyebrow: "next step",
+        title: t.serviceCommon.ctaTitle,
+        subtitle: t.serviceCommon.ctaSubtitle,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: "/contact" } },
+      },
+    },
+  };
+}
+
+function aboutWidgets() {
+  const a = t.about;
+  return {
+    [ABOUT_SLOTS.hero]: {
+      body: {
+        eyebrow: a.hero.eyebrow,
+        title: a.hero.title,
+        intro: a.hero.intro,
+        button_text: "",
+        seam: true,
+      },
+    },
+    [ABOUT_SLOTS.story]: {
+      body: {
+        eyebrow: "the story",
+        word_a: "nov",
+        word_b: "ieri",
+        intro: a.story.body,
+        cta_text: "",
+      },
+    },
+    [ABOUT_SLOTS.people]: {
+      body: {
+        title: a.founders.title,
+        linkedin_label: "LinkedIn profile",
+        people: [
+          {
+            person_name: a.founders.helgar.name,
+            person_role: a.founders.helgar.role,
+            person_bio: a.founders.helgar.bio,
+            person_initials: "HP",
+            person_linkedin: "",
+            person_photo: { src: "", alt: a.founders.helgar.photoAlt },
+          },
+          {
+            person_name: a.founders.partner.name,
+            person_role: a.founders.partner.role,
+            person_bio: a.founders.partner.bio,
+            person_initials: "SN",
+            person_linkedin: "",
+            person_photo: { src: "", alt: a.founders.partner.photoAlt },
+          },
+        ],
+      },
+    },
+    [ABOUT_SLOTS.location]: {
+      body: {
+        title: a.location.title,
+        intro: a.location.body,
+        footnote: "barranquilla ·· gmt-5 ·· es / en",
+        picture: { src: "", alt: "" },
+      },
+    },
+    [ABOUT_SLOTS.cta]: {
+      body: {
+        eyebrow: "next step",
+        title: a.cta.title,
+        subtitle: a.cta.subtitle,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: "/contact" } },
+      },
+    },
+  };
+}
+
+/** slug -> the widgets to write. */
 const PAGES = {
+  services: servicesIndexWidgets(),
+  ...Object.fromEntries(SERVICES.map(([ns, slug]) => [slug, serviceWidgets(ns)])),
+  about: aboutWidgets(),
   [LEGAL_SLUGS.privacy]: legalWidgets("privacy"),
   [LEGAL_SLUGS.cookies]: legalWidgets("cookies"),
   [LEGAL_SLUGS.terms]: legalWidgets("terms"),
