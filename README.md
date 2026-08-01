@@ -227,7 +227,8 @@ Rebuild both with `npm run build:hubspot`.
 
 Two scripts, both run from the *Create HubSpot pages* workflow, both needing
 the `HUBSPOT_PRIVATE_APP_TOKEN` secret (a private app token with the `content`
-scope — the deploy's personal access key will not authenticate this API):
+and `files` scopes — the deploy's personal access key will not authenticate
+this API):
 
 - `create-hubspot-pages.mjs` — creates pages from the templates as drafts,
   skipping slugs that already exist, and publishes on request. Also `--dump`
@@ -242,6 +243,16 @@ drag-and-drop templates get HubSpot-generated names, `main-module-N` numbered
 from 2 in the order the template declares them. **The slot maps in
 `fill-hubspot-pages.mjs` mirror that order** — reorder a template's modules and
 they must be updated, or each section fills with another one's copy.
+
+Images that page content points at go through the file manager, not the theme.
+`hubspot/src/theme/novieri/images/` is the right home for the files and they
+deploy with the theme, but the URL the logo is served from —
+`/hubfs/raw_assets/public/@projects/…/novieri_theme/images/` — returned 404 for
+two JPEGs added there across two successful deploys, with and without a field
+default naming them, while the PNG and SVG beside them returned 200. So
+`fill-hubspot-pages.mjs` uploads the founder portraits to the file manager on
+every run (overwriting in place, `/novieri`) and writes the URL it gets back.
+That is what the `files` scope above is for.
 
 `layoutSections` is a red herring here: it stays empty until a page is edited
 in HubSpot's editor, and a page renders its template's modules regardless. Do
