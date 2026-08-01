@@ -30,6 +30,25 @@ const locale = (args.find((a) => a.startsWith("--locale=")) || "").split("=")[1]
 
 const t = JSON.parse(readFileSync(`messages/${locale}.json`, "utf8"));
 
+/**
+ * Every slug below is written in English and translated here, so the content
+ * map stays readable and there is one place that knows the Spanish routes.
+ * From src/i18n/pathnames.json.
+ */
+const ES_SLUGS = {
+  services: "servicios",
+  "services/ai-automation": "servicios/ia-y-automatizacion",
+  "services/managed-it": "servicios/it-administrado",
+  "services/cybersecurity-compliance": "servicios/ciberseguridad-y-cumplimiento",
+  "services/custom-software": "servicios/desarrollo-a-medida",
+  about: "nosotros",
+  contact: "contacto",
+  "legal/privacy-policy": "legal/politica-de-privacidad",
+  "legal/cookie-policy": "legal/politica-de-cookies",
+  "legal/terms-of-use": "legal/terminos-de-uso",
+};
+const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
+
 /** Matches src/config/site.ts. Both are empty until the company is registered. */
 const VARS = { company: "Novieri", nit: "", email: "sales@novieri.com" };
 
@@ -68,11 +87,15 @@ const LEGAL_SLUGS = {
   cookies: "legal/cookie-policy",
   terms: "legal/terms-of-use",
 };
+/** Labels come from the footer namespace, which already has both languages. */
 const OTHER = {
-  privacy: [["cookies", "Cookie policy"], ["terms", "Terms of use"]],
-  cookies: [["privacy", "Privacy policy"], ["terms", "Terms of use"]],
-  terms: [["privacy", "Privacy policy"], ["cookies", "Cookie policy"]],
+  privacy: ["cookies", "terms"],
+  cookies: ["privacy", "terms"],
+  terms: ["privacy", "cookies"],
 };
+
+/** The one string with no home in messages/*.json. */
+const NEXT_STEP = { en: "next step", es: "siguiente paso" }[locale] || "next step";
 
 function legalWidgets(doc) {
   const c = t.legal.common;
@@ -92,9 +115,9 @@ function legalWidgets(doc) {
           content: sectionHtml(s),
         })),
         other_label: c.otherDocs,
-        other_docs: OTHER[doc].map(([key, label]) => ({
-          doc_label: label,
-          doc_link: { url: { type: "CONTENT", href: `/${LEGAL_SLUGS[key]}` } },
+        other_docs: OTHER[doc].map((key) => ({
+          doc_label: t.footer[key],
+          doc_link: { url: { type: "CONTENT", href: `/${slugFor(LEGAL_SLUGS[key])}` } },
         })),
         questions_title: c.questionsTitle,
         questions_body: interpolate(c.questionsBody),
@@ -148,7 +171,7 @@ function serviceWidgets(ns) {
         title: s.hero.title,
         intro: s.hero.promise,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: "/contact" } },
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
         seam: true,
       },
     },
@@ -168,7 +191,7 @@ function serviceWidgets(ns) {
         title: c.packagesTitle,
         intro: c.packagesIntro,
         link_label: t.common.talkCase,
-        link_target: { url: { type: "CONTENT", href: "/contact" } },
+        link_target: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
         tiers: s.packages.tiers.map((x) => ({ tier_name: x.name, tier_blurb: x.blurb })),
       },
     },
@@ -181,11 +204,11 @@ function serviceWidgets(ns) {
     },
     [SERVICE_SLOTS.cta]: {
       body: {
-        eyebrow: "next step",
+        eyebrow: NEXT_STEP,
         title: c.ctaTitle,
         subtitle: c.ctaSubtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: "/contact" } },
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
       },
     },
   };
@@ -201,7 +224,7 @@ function servicesIndexWidgets() {
         title: idx.title,
         intro: idx.intro,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: "/contact" } },
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
         seam: true,
       },
     },
@@ -218,11 +241,11 @@ function servicesIndexWidgets() {
     },
     [SERVICE_SLOTS.cta]: {
       body: {
-        eyebrow: "next step",
+        eyebrow: NEXT_STEP,
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: "/contact" } },
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
       },
     },
   };
@@ -283,11 +306,11 @@ function aboutWidgets() {
     },
     [ABOUT_SLOTS.cta]: {
       body: {
-        eyebrow: "next step",
+        eyebrow: NEXT_STEP,
         title: a.cta.title,
         subtitle: a.cta.subtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: "/contact" } },
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
       },
     },
   };
@@ -295,13 +318,13 @@ function aboutWidgets() {
 
 /** slug -> the widgets to write. */
 const PAGES = {
-  services: servicesIndexWidgets(),
-  ...Object.fromEntries(SERVICES.map(([ns, slug]) => [slug, serviceWidgets(ns)])),
-  about: aboutWidgets(),
-  [LEGAL_SLUGS.privacy]: legalWidgets("privacy"),
-  [LEGAL_SLUGS.cookies]: legalWidgets("cookies"),
-  [LEGAL_SLUGS.terms]: legalWidgets("terms"),
-  contact: {
+  [slugFor("services")]: servicesIndexWidgets(),
+  ...Object.fromEntries(SERVICES.map(([ns, slug]) => [slugFor(slug), serviceWidgets(ns)])),
+  [slugFor("about")]: aboutWidgets(),
+  [slugFor(LEGAL_SLUGS.privacy)]: legalWidgets("privacy"),
+  [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),
+  [slugFor(LEGAL_SLUGS.terms)]: legalWidgets("terms"),
+  [slugFor("contact")]: {
     contact_details: {
       body: {
         whatsapp_label: t.contact.aside.whatsappLabel,

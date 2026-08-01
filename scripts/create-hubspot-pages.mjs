@@ -18,6 +18,8 @@
  * exists is skipped, so re-running is safe and will not clobber edits made in
  * HubSpot. Publishing stays a human decision in the page editor.
  */
+import { readFileSync } from "node:fs";
+
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const DOMAIN = process.env.HUBSPOT_SITE_DOMAIN || "www.novieri.com";
 const THEME = "@projects/Novieri website/novieri_theme/templates";
@@ -28,6 +30,26 @@ const only = (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
 const verify = (args.find((a) => a.startsWith("--verify=")) || "").split("=")[1];
 const dump = args.find((a) => a.startsWith("--dump="))?.slice("--dump=".length);
 const publish = (args.find((a) => a.startsWith("--publish=")) || "").split("=")[1];
+const variants = args.includes("--language-variants");
+
+/**
+ * The Spanish slugs, from src/i18n/pathnames.json. The home page is "es"
+ * rather than "" — only one page can hold the root, and that is English.
+ */
+const ES_SLUGS = {
+  "": "es",
+  services: "servicios",
+  "services/ai-automation": "servicios/ia-y-automatizacion",
+  "services/managed-it": "servicios/it-administrado",
+  "services/cybersecurity-compliance": "servicios/ciberseguridad-y-cumplimiento",
+  "services/custom-software": "servicios/desarrollo-a-medida",
+  about: "nosotros",
+  contact: "contacto",
+  "self-diagnosis": "autodiagnostico",
+  "legal/privacy-policy": "legal/politica-de-privacidad",
+  "legal/cookie-policy": "legal/politica-de-cookies",
+  "legal/terms-of-use": "legal/terminos-de-uso",
+};
 
 /**
  * Slugs come from src/i18n/pathnames.json, so they match what the React site
@@ -154,6 +176,69 @@ if (dump !== undefined) {
   console.log(`# template ${full.templatePath}`);
   console.log(JSON.stringify(full.layoutSections, null, 1));
   process.exit(0);
+}
+
+/**
+ * Creates the Spanish page for each English one.
+ *
+ * Through create-language-variant, not as fresh pages: that links the two into
+ * a language group, which is what makes HubSpot's language switcher — the one
+ * in our header — offer the right translated URL. Twelve unrelated Spanish
+ * pages would render fine and switch nowhere.
+ *
+ * The variant is born as a copy of the English page. This gives it its Spanish
+ * slug and metadata; fill-hubspot-pages.mjs --locale=es replaces the copy.
+ * Home is included here — unlike creation, a variant cannot take the root slug
+ * by accident.
+ */
+if (variants) {
+  const es = JSON.parse(readFileSync("messages/es.json", "utf8"));
+  const META = {
+    "": es.meta.home,
+    services: es.meta.services,
+    "services/ai-automation": es.meta.ai,
+    "services/managed-it": es.meta.managedIt,
+    "services/cybersecurity-compliance": es.meta.security,
+    "services/custom-software": es.meta.software,
+    about: es.meta.about,
+    contact: es.meta.contact,
+  };
+  const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
+  const pages = listed.results || [];
+  const bySlug = new Map(pages.map((p) => [p.slug, p]));
+  const taken = new Set(pages.map((p) => p.slug));
+
+  for (const [enSlug, esSlug] of Object.entries(ES_SLUGS)) {
+    if (taken.has(esSlug)) {
+      console.log(`skip    ${esSlug} — already exists`);
+      continue;
+    }
+    const source = bySlug.get(enSlug);
+    if (!source) {
+      console.error(`skip    ${esSlug} — no English page at "${enSlug}"`);
+      process.exitCode = 1;
+      continue;
+    }
+    try {
+      const variant = await api("/cms/v3/pages/site-pages/multi-language/create-language-variant", {
+        method: "POST",
+        body: JSON.stringify({ id: source.id, language: "es" }),
+      });
+      const meta = META[enSlug];
+      await api(`/cms/v3/pages/site-pages/${variant.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          slug: esSlug,
+          ...(meta ? { htmlTitle: meta.title, metaDescription: meta.description } : {}),
+        }),
+      });
+      console.log(`variant ${esSlug} — id ${variant.id} (from ${enSlug || "home"})`);
+    } catch (e) {
+      console.error(`FAILED  ${esSlug} — ${e.message}`);
+      process.exitCode = 1;
+    }
+  }
+  process.exit(process.exitCode || 0);
 }
 
 /**
