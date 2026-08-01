@@ -447,6 +447,15 @@ function homeWidgets() {
 function diagnosticWidgets() {
   const d = t.diagnostic;
   return {
+    page_hero: {
+      body: {
+        eyebrow: t.diagnostic.eyebrow,
+        title: t.diagnostic.title,
+        intro: t.diagnostic.intro,
+        button_text: "",
+        seam: true,
+      },
+    },
     diagnostic_quiz: {
       body: {
         endpoint: "/hs/serverless/api/novieri_diagnose",
@@ -499,6 +508,15 @@ const PAGES = {
   [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),
   [slugFor(LEGAL_SLUGS.terms)]: legalWidgets("terms"),
   [slugFor("contact")]: {
+    page_hero: {
+      body: {
+        eyebrow: t.contact.hero.eyebrow,
+        title: t.contact.hero.title,
+        intro: t.contact.hero.intro,
+        button_text: "",
+        seam: true,
+      },
+    },
     contact_details: {
       body: {
         whatsapp_label: t.contact.aside.whatsappLabel,
