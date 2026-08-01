@@ -23,6 +23,8 @@ on:
           - publish
           - fill-content
           - fill-one
+          - es-variants
+          - es-fill
           - create-all
       slug:
         description: "Slug to verify (verify mode only)"
@@ -59,4 +61,7 @@ jobs:
             # Per-page copy from messages/*.json into each page's modules.
             fill-content)  node scripts/fill-hubspot-pages.mjs ;;
             fill-one)      node scripts/fill-hubspot-pages.mjs --only='${{ inputs.slug }}' ;;
+            # Spanish: create the language variants, then fill and publish them.
+            es-variants)   node scripts/create-hubspot-pages.mjs --language-variants ;;
+            es-fill)       node scripts/fill-hubspot-pages.mjs --locale=es ;;
           esac
