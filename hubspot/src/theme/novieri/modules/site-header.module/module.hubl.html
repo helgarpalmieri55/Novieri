@@ -29,7 +29,7 @@
     </a>
 
     <nav class="site-nav hidden items-center gap-6 md:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
-      {% menu id=module.menu, site_map_name="default", root_type="site_root", flyouts="true", max_levels="2", flow="horizontal", label="Navigation" %}
+      {% menu id=module.menu, flyouts="true", max_levels="2", flow="horizontal", label="Navigation" %}
     </nav>
 
     <nav class="idx-mono hidden items-center text-caption tracking-[0.06em] md:flex" aria-label="{{ module.label_language|escape_attr }}">
@@ -58,7 +58,7 @@
   </div>
 
   <div class="site-mobile-nav hidden border-t border-line bg-white px-5 py-6 md:hidden">
-    {% menu id=module.menu, site_map_name="default", root_type="site_root", max_levels="2", flow="vertical", label="Navigation" %}
+    {% menu id=module.menu, max_levels="2", flow="vertical", label="Navigation" %}
     <div class="idx-mono mt-6 flex items-center gap-3 border-t border-line pt-5 text-caption">
       {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
     </div>
