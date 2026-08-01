@@ -30,7 +30,9 @@ on:
 env:
   DEFAULT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
   DEFAULT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
-  DEFAULT_CLI_VERSION: "8.0.0"
+  # 2026.03 serverless functions need 8.4.0+; the pin was 8.0.0, which
+  # uploaded them without registering their public endpoints.
+  DEFAULT_CLI_VERSION: "8.10.0"
 
 jobs:
   deploy:
