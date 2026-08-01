@@ -43,6 +43,7 @@ const ES_SLUGS = {
   "services/custom-software": "servicios/desarrollo-a-medida",
   about: "nosotros",
   contact: "contacto",
+  "self-diagnosis": "autodiagnostico",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
@@ -316,8 +317,181 @@ function aboutWidgets() {
   };
 }
 
+/**
+ * Home, in template order. The Spanish home is a clone of the English one, so
+ * without this it would render English from the field defaults.
+ */
+const HOME_SLOTS = {
+  hero: "main-module-2",
+  stats: "main-module-3",
+  pillars: "main-module-4",
+  diagnose: "main-module-5",
+  chat: "main-module-6",
+  why: "main-module-7",
+  quotes: "main-module-8",
+  how: "main-module-9",
+  founders: "main-module-10",
+  cta: "main-module-11",
+};
+const ACCENTS = ["text-plum", "text-teal", "text-gold-deep", "text-ink-muted"];
+
+function homeWidgets() {
+  const h = t.home;
+  const chatRow = (e) => ({
+    row_kind: e.kind || e.from,
+    message: e.text || "",
+    caption: e.label || "",
+    duration: e.duration || "",
+    sent_at: e.t || "",
+  });
+  return {
+    [HOME_SLOTS.hero]: {
+      body: {
+        ticker: SERVICES.map(([key], i) => ({ word: t.pillars[key].name, colour: ACCENTS[i] })),
+        title_a: h.hero.titleA,
+        title_b: h.hero.titleB,
+        subtitle: h.hero.subtitle,
+        primary_text: t.common.bookCall,
+        primary_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        secondary_text: t.nav.services,
+        secondary_link: { url: { type: "CONTENT", href: `/${slugFor("services")}` } },
+      },
+    },
+    [HOME_SLOTS.stats]: {
+      body: {
+        stats: h.proof.items.map((s, i) => ({
+          value: s.value,
+          stat_label: s.label,
+          colour: ACCENTS[i % 3],
+        })),
+      },
+    },
+    [HOME_SLOTS.pillars]: {
+      body: {
+        eyebrow: h.services.eyebrow,
+        title: h.services.title,
+        link_label: t.common.learnMore,
+        cards: SERVICES.map(([key, slug], i) => ({
+          card_name: t.pillars[key].name,
+          card_tagline: t.pillars[key].tagline,
+          card_tags: t.pillars[key].tags.join(", "),
+          card_colour: ACCENTS[i],
+          card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
+        })),
+      },
+    },
+    [HOME_SLOTS.diagnose]: {
+      body: {
+        eyebrow: h.diagnose.eyebrow,
+        title: h.diagnose.title,
+        intro: h.diagnose.body,
+        button_text: h.diagnose.button,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("self-diagnosis")}` } },
+        note: h.diagnose.note,
+      },
+    },
+    [HOME_SLOTS.chat]: {
+      body: {
+        eyebrow: h.liveChat.eyebrow,
+        title: h.liveChat.title,
+        intro: h.liveChat.body,
+        cta_text: h.liveChat.ctaService,
+        cta_link: { url: { type: "CONTENT", href: `/${slugFor("services/ai-automation")}` } },
+        channel: "whatsapp",
+        chat_name: h.liveChat.header.name,
+        chat_status: h.liveChat.header.status,
+        badge: h.liveChat.badge,
+        entries: h.liveChat.entries.map(chatRow),
+        input_hint: h.liveChat.inputHint,
+        capabilities: h.liveChat.foot.map((c) => ({ capability: c })),
+      },
+    },
+    [HOME_SLOTS.why]: {
+      body: {
+        stat_value: h.why.stat.value,
+        stat_caption: h.why.stat.label,
+        title: h.why.title,
+        points: h.why.points.map((p) => ({ point_title: p.title, point_body: p.body })),
+      },
+    },
+    [HOME_SLOTS.how]: {
+      body: {
+        title: h.how.title,
+        eyebrow: h.how.eyebrow,
+        steps: h.how.steps.map((s) => ({ step_title: s.title, step_body: s.body })),
+      },
+    },
+    [HOME_SLOTS.founders]: {
+      body: {
+        eyebrow: h.founders.eyebrow,
+        word_a: "nov",
+        word_b: "ieri",
+        intro: h.founders.body,
+        cta_text: h.founders.link,
+        cta_link: { url: { type: "CONTENT", href: `/${slugFor("about")}` } },
+      },
+    },
+    [HOME_SLOTS.cta]: {
+      body: {
+        eyebrow: NEXT_STEP,
+        title: h.cta.title,
+        subtitle: h.cta.subtitle,
+        button_text: h.cta.button,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+      },
+    },
+  };
+}
+
+/** The quiz: ten questions and their weights, plus every label around them. */
+function diagnosticWidgets() {
+  const d = t.diagnostic;
+  return {
+    diagnostic_quiz: {
+      body: {
+        endpoint: "/hs/serverless/api/novieri_diagnose",
+        questions: d.questions.map((q) => ({
+          question_text: q.q,
+          options: q.options.map((o) => ({ option_text: o.v, option_weight: o.w })),
+        })),
+        levels: ["initial", "developing", "solid", "advanced"].map((k) => ({ level_name: d.levels[k] })),
+        progress_label: d.progress,
+        back_label: d.back,
+        next_label: d.next,
+        finish_label: d.finish,
+        preview_title: d.preview.title,
+        preview_body: d.preview.body,
+        gate_title: d.gate.title,
+        gate_body: d.gate.body,
+        gate_name: d.gate.name,
+        gate_company: d.gate.company,
+        gate_email: d.gate.email,
+        gate_phone: d.gate.phone,
+        gate_consent: d.gate.consent,
+        gate_privacy: d.gate.privacy,
+        gate_privacy_link: { url: { type: "CONTENT", href: `/${slugFor(LEGAL_SLUGS.privacy)}` } },
+        gate_submit: d.gate.submit,
+        gate_sending: d.gate.sending,
+        result_title: d.result.title,
+        result_cta: d.result.cta,
+        result_cta_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        result_emailed: d.result.emailed,
+        result_again: d.result.again,
+        error_required: d.errors.required,
+        error_name: d.errors.name,
+        error_email: d.errors.email,
+        error_company: d.errors.company,
+        error_consent: d.errors.consent,
+        error_failed: d.errors.failed.replace("{email}", VARS.email),
+      },
+    },
+  };
+}
+
 /** slug -> the widgets to write. */
 const PAGES = {
+  [locale === "es" ? "es" : ""]: homeWidgets(),
+  [slugFor("self-diagnosis")]: diagnosticWidgets(),
   [slugFor("services")]: servicesIndexWidgets(),
   ...Object.fromEntries(SERVICES.map(([ns, slug]) => [slugFor(slug), serviceWidgets(ns)])),
   [slugFor("about")]: aboutWidgets(),
