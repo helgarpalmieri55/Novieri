@@ -1,17 +1,9 @@
 /*
- * HubSpot's {% menu %} and {% language_switcher %} emit their own markup, so
- * these two blocks are the only place in the theme where the design is
- * applied by element instead of by utility class. Kept small and local.
+ * {% language_switcher %} emits its own markup, so this is the one place in
+ * the theme where the design is applied by element instead of by utility
+ * class. The navigation used to need the same treatment; it renders from
+ * menu() now, with our own markup, so those rules are gone.
  */
-.site-nav .hs-menu-wrapper > ul {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .site-nav a,
 .site-mobile-nav a {
   font-size: var(--text-small);
@@ -26,42 +18,6 @@
   color: var(--color-ink);
 }
 
-/* Dropdown for a menu item with children */
-.site-nav .hs-menu-children-wrapper {
-  position: absolute;
-  z-index: 50;
-  min-width: 300px;
-  margin-top: 1rem;
-  padding: 0.5rem;
-  list-style: none;
-  border: 1px solid var(--color-line);
-  border-radius: 1rem;
-  background: var(--color-white);
-  box-shadow: 0 8px 40px rgba(22, 18, 29, 0.1);
-}
-
-.site-nav .hs-menu-children-wrapper a {
-  display: block;
-  padding: 0.625rem 1rem;
-  border-radius: 0.75rem;
-  color: var(--color-ink);
-}
-
-.site-nav .hs-menu-children-wrapper a:hover {
-  background: var(--color-plum-wash);
-}
-
-.site-mobile-nav .hs-menu-wrapper ul {
-  display: grid;
-  gap: 0.875rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.site-mobile-nav .hs-menu-wrapper a {
-  font-size: var(--text-lead);
-}
 
 /* Language switcher: HubSpot renders a list with the current page's variants */
 .lang_list_class {

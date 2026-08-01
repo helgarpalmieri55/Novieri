@@ -28,8 +28,37 @@
       <span class="font-display text-display-sm font-semibold leading-none text-ink">{{ module.wordmark }}</span>
     </a>
 
+    {#
+      The menu() function, not the {% menu %} tag. The tag ignores the id it
+      is given and renders HubSpot's demo sitemap — "Menu Item 1", every href
+      a "#" — which is what shipped until we read HubSpot's own menu module
+      and found it does this instead. It also hands us the tree, so the markup
+      and the design are ours rather than hs-menu-wrapper's.
+    #}
+    {% set nav_items = menu(module.menu, "site_root").children %}
     <nav class="site-nav hidden items-center gap-6 md:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
-      {% menu id=module.menu, flyouts="true", max_levels="2", flow="horizontal", label="Navigation" %}
+      {% for item in nav_items %}
+        <div class="group relative">
+          <a href="{{ item.url }}"
+             class="flex items-center gap-1.5 text-small font-medium text-ink-muted transition-colors hover:text-ink{% if item.activeBranch %} text-ink{% endif %}">
+            {{ item.label }}
+            {% if item.children %}
+              <svg aria-hidden="true" width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform duration-200 group-hover:rotate-180">
+                <path d="M1 1.5 4.5 5 8 1.5" />
+              </svg>
+            {% endif %}
+          </a>
+          {% if item.children %}
+            <div class="invisible absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-4 opacity-0 transition-[opacity,visibility] duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div class="grid gap-0.5 rounded-2xl border border-line bg-white p-2 shadow-[0_8px_40px_rgba(22,18,29,0.10)]">
+                {% for child in item.children %}
+                  <a href="{{ child.url }}" class="rounded-xl px-3.5 py-2.5 text-small text-ink-muted transition-colors hover:bg-plum-wash hover:text-ink">{{ child.label }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
     </nav>
 
     <nav class="idx-mono hidden items-center text-caption tracking-[0.06em] md:flex" aria-label="{{ module.label_language|escape_attr }}">
@@ -58,7 +87,14 @@
   </div>
 
   <div class="site-mobile-nav hidden border-t border-line bg-white px-5 py-6 md:hidden">
-    {% menu id=module.menu, max_levels="2", flow="vertical", label="Navigation" %}
+    <div class="grid gap-1">
+      {% for item in nav_items %}
+        <a href="{{ item.url }}" class="py-2 text-body font-medium text-ink">{{ item.label }}</a>
+        {% for child in item.children %}
+          <a href="{{ child.url }}" class="py-1.5 pl-4 text-small text-ink-muted">{{ child.label }}</a>
+        {% endfor %}
+      {% endfor %}
+    </div>
     <div class="idx-mono mt-6 flex items-center gap-3 border-t border-line pt-5 text-caption">
       {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
     </div>
