@@ -18,11 +18,21 @@ on:
       - "scripts/build-company-profile.mjs"
       - ".github/workflows/deploy-hubspot.yml"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "What to run"
+        type: choice
+        default: "deploy"
+        options:
+          - deploy
+          - list-secrets
 
 env:
   DEFAULT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
   DEFAULT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
-  DEFAULT_CLI_VERSION: "8.0.0"
+  # 2026.03 serverless functions need 8.4.0+; the pin was 8.0.0, which
+  # uploaded them without registering their public endpoints.
+  DEFAULT_CLI_VERSION: "8.10.0"
 
 jobs:
   deploy:
@@ -48,7 +58,18 @@ jobs:
       # the deploy message is ours to quote safely.
       - name: Install the HubSpot CLI
         run: npm install -g "@hubspot/cli@${DEFAULT_CLI_VERSION}"
+      # Names only — the CLI never prints a secret's value, so this is a safe
+      # way to answer "is the key actually set?" without touching it.
+      - name: List the project's secrets
+        if: inputs.mode == 'list-secrets'
+        working-directory: hubspot
+        env:
+          HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+          HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+          HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+        run: hs secrets list --use-env
       - name: Validate and upload the project
+        if: inputs.mode != 'list-secrets'
         working-directory: hubspot
         env:
           # --use-env reads these two names, not the DEFAULT_* ones. Without

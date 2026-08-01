@@ -286,6 +286,36 @@ Two settings that are easy to miss:
   made before a `fields.json` default changed keeps the old value — recreate it,
   or edit the field in the page editor.
 
+### The serverless endpoints are not routed yet
+
+Both public endpoints answer `404 GATEWAY_NOT_FOUND`:
+
+```
+POST https://www.novieri.com/hs/serverless/api/chat      → 404
+POST https://www.novieri.com/hs/serverless/api/diagnose  → 404
+```
+
+What has been ruled out, so nobody re-checks it:
+
+- **The code is deployed.** Every run logs `Building novieri_chat [function] …
+  DONE` and `Deploying … DONE`, for both functions.
+- **The secrets exist.** `hs secrets list` returns `ANTHROPIC_API_KEY`,
+  `CHAT_SECRET`, `CONTACT_EMAIL` and `RATE_LIMIT_TABLE_ID`. A missing key
+  would return 503 anyway, not 404.
+- **The CLI is current.** The pin was 8.0.0 against a documented 8.4.0+
+  requirement; 8.10.0 deploys green and the 404 is unchanged.
+- **The path is right.** It is `config.endpoint.path` from the function's
+  hsmeta (`chat`, `diagnose`), not the uid.
+
+What is left is the app itself: HubSpot documents that **an app with
+serverless functions has to be installed**, and that installing one needs an
+Enterprise subscription. Nothing in this repo can install it — look for the
+install prompt on the project page in HubSpot, or under Settings >
+Integrations > Connected Apps.
+
+Until that resolves, Sylvi's widget and the diagnostic's submit button both
+fail at the network call. The rest of both pages renders normally.
+
 ### Deploying
 
 `.github/workflows/deploy-hubspot.yml` uploads the project on every push to

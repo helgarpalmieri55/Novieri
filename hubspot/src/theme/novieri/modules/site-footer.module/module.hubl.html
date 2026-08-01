@@ -1,5 +1,23 @@
 {# Site footer. Link columns are HubSpot menus, so they are edited in
-   Content > Navigation and stay in step with the header. #}
+   Content > Navigation and stay in step with the header.
+
+   One global footer serves both languages, so every string it owns has a
+   Spanish twin, resolved once below. Each falls back to English when the
+   Spanish field is empty — a blank heading is worse than an untranslated
+   one. #}
+{% set is_es = html_lang == "es" %}
+{% set f_description = module.description %}
+{% set f_legal_title = module.legal_title %}
+{% set f_contact_title = module.contact_title %}
+{% set f_location = module.contact_location %}
+{% set f_cookies = module.cookie_settings %}
+{% if is_es %}
+  {% if module.description_es %}{% set f_description = module.description_es %}{% endif %}
+  {% if module.legal_title_es %}{% set f_legal_title = module.legal_title_es %}{% endif %}
+  {% if module.contact_title_es %}{% set f_contact_title = module.contact_title_es %}{% endif %}
+  {% if module.contact_location_es %}{% set f_location = module.contact_location_es %}{% endif %}
+  {% if module.cookie_settings_es %}{% set f_cookies = module.cookie_settings_es %}{% endif %}
+{% endif %}
 
 <footer class="border-t border-line bg-white">
   <div class="container-site pb-10 pt-16">
@@ -12,15 +30,17 @@
         {% if module.logo.src %}
           <img src="{{ module.logo.src }}" alt="{{ module.logo.alt|escape_attr }}" width="57" height="58" loading="lazy" />
         {% endif %}
-        <p class="mt-4 max-w-[34ch] text-small text-ink-muted">{{ module.description }}</p>
+        <p class="mt-4 max-w-[34ch] text-small text-ink-muted">{{ f_description }}</p>
       </div>
 
       {% for column in module.columns %}
-        <nav class="footer-links" aria-label="{{ column.column_title|escape_attr }}">
-          <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ column.column_title }}</h2>
+        {% set col_title = column.column_title %}
+        {% if is_es and column.column_title_es %}{% set col_title = column.column_title_es %}{% endif %}
+        <nav class="footer-links" aria-label="{{ col_title|escape_attr }}">
+          <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ col_title }}</h2>
           {# menu(), not {% menu %}, and per language — see site-header. #}
           {% set col_menu = column.column_menu %}
-          {% if html_lang == "es" and column.column_menu_es %}
+          {% if is_es and column.column_menu_es %}
             {% set col_menu = column.column_menu_es %}
           {% endif %}
           <ul class="grid gap-2.5 text-small text-ink-muted">
@@ -34,13 +54,13 @@
       {# Legal has its own column: these are the links a visitor comes looking
          for deliberately, and Colombian law expects them to be findable. #}
       {% set legal_menu = module.legal_menu %}
-      {% if html_lang == "es" and module.legal_menu_es %}
+      {% if is_es and module.legal_menu_es %}
         {% set legal_menu = module.legal_menu_es %}
       {% endif %}
       {% set legal_links = menu(legal_menu, "site_root").children %}
       {% if legal_links %}
-        <nav class="footer-links" aria-label="{{ module.legal_title|escape_attr }}">
-          <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ module.legal_title }}</h2>
+        <nav class="footer-links" aria-label="{{ f_legal_title|escape_attr }}">
+          <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ f_legal_title }}</h2>
           <ul class="grid gap-2.5 text-small text-ink-muted">
             {% for link in legal_links %}
               <li><a href="{{ link.url }}" class="transition-colors hover:text-ink">{{ link.label }}</a></li>
@@ -50,15 +70,15 @@
       {% endif %}
 
       <div>
-        <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ module.contact_title }}</h2>
+        <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ f_contact_title }}</h2>
         <ul class="grid gap-2.5 text-small text-ink-muted">
           <li>
             <a href="mailto:{{ module.contact_email }}" class="transition-colors hover:text-ink">{{ module.contact_email }}</a>
           </li>
-          <li>{{ module.contact_location }}</li>
+          <li>{{ f_location }}</li>
           <li>
             <button type="button" class="cookie-settings text-left transition-colors hover:text-ink">
-              {{ module.cookie_settings }}
+              {{ f_cookies }}
             </button>
           </li>
         </ul>
