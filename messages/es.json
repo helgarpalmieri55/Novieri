@@ -800,13 +800,13 @@
         "name": "Helgar Palmieri",
         "role": "Tecnología y entrega",
         "bio": "Arquitecto de soluciones e ingeniero de IA con más de 12 años construyendo sistemas en producción. Hoy es CTO de un BPO multinacional 24/7, donde diseña y programa personalmente el stack de IA e integraciones: copilotos internos, RAG, automatización de flujos y productos full-stack. Antes lideró IT en un call center con cumplimiento PCI DSS. MBA.",
-        "photoAlt": "Foto de Helgar Palmieri (pendiente)"
+        "photoAlt": "Helgar Palmieri, cofundador, tecnología y entrega"
       },
       "partner": {
         "name": "Sylvana Nova",
         "role": "Comercial y éxito del cliente",
         "bio": "Customer Success Manager en HubSpot y administradora de empresas, con más de 10 años en relación con clientes: entender el negocio, guiar la adopción y sostener la cuenta en el tiempo. Antes fue asesora comercial en Bancolombia. En Novieri lleva la relación de punta a punta — la propuesta, el seguimiento y que lo entregado de verdad se use.",
-        "photoAlt": "Foto de Sylvana Nova (pendiente)"
+        "photoAlt": "Sylvana Nova, cofundadora, comercial y éxito del cliente"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },

@@ -800,13 +800,13 @@
         "name": "Helgar Palmieri",
         "role": "Technology & delivery",
         "bio": "Solutions architect and AI engineer with 12+ years shipping production systems. Today CTO of a 24/7 multinational BPO, where he personally architects and writes the AI and integration stack: internal copilots, RAG tooling, workflow automation, and full-stack products. Previously led IT for a PCI DSS-compliant call center. MBA.",
-        "photoAlt": "Photo of Helgar Palmieri (pending)"
+        "photoAlt": "Helgar Palmieri, co-founder, technology and delivery"
       },
       "partner": {
         "name": "Sylvana Nova",
         "role": "Commercial & customer success",
         "bio": "Customer Success Manager at HubSpot and a business administration graduate, with 10+ years in client relationships: understanding the business, driving adoption, and keeping accounts healthy over time. Previously a commercial advisor at Bancolombia. At Novieri she owns the relationship end to end — the proposal, the follow-through, and making sure what we ship actually gets used.",
-        "photoAlt": "Photo of Sylvana Nova (pending)"
+        "photoAlt": "Sylvana Nova, co-founder, commercial and customer success"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
