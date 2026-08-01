@@ -18,6 +18,14 @@
     "allow_new_line": true
   },
   {
+    "name": "description_es",
+    "label": "Description — Spanish",
+    "type": "text",
+    "allow_new_line": true,
+    "default": "Soluciones de TI con IA desde Barranquilla, para Colombia y Estados Unidos.",
+    "help_text": "Falls back to the English text when empty."
+  },
+  {
     "name": "columns",
     "label": "Link columns",
     "type": "group",
@@ -32,6 +40,13 @@
         "label": "Title",
         "type": "text",
         "default": "services"
+      },
+      {
+        "name": "column_title_es",
+        "label": "Title — Spanish",
+        "type": "text",
+        "default": "",
+        "help_text": "Falls back to the English title when empty."
       },
       {
         "name": "column_menu",
@@ -49,6 +64,12 @@
   {
     "name": "legal_title",
     "label": "Legal column title",
+    "type": "text",
+    "default": "legal"
+  },
+  {
+    "name": "legal_title_es",
+    "label": "Legal column title — Spanish",
     "type": "text",
     "default": "legal"
   },
@@ -71,6 +92,12 @@
     "default": "contact"
   },
   {
+    "name": "contact_title_es",
+    "label": "Contact column title — Spanish",
+    "type": "text",
+    "default": "contacto"
+  },
+  {
     "name": "contact_email",
     "label": "Email",
     "type": "text",
@@ -79,6 +106,12 @@
   {
     "name": "contact_location",
     "label": "Location",
+    "type": "text",
+    "default": "Barranquilla, Colombia"
+  },
+  {
+    "name": "contact_location_es",
+    "label": "Location — Spanish",
     "type": "text",
     "default": "Barranquilla, Colombia"
   },
@@ -100,5 +133,11 @@
     "label": "Cookie settings link",
     "type": "text",
     "default": "Cookie settings"
+  },
+  {
+    "name": "cookie_settings_es",
+    "label": "Cookie settings link — Spanish",
+    "type": "text",
+    "default": "Preferencias de cookies"
   }
 ]
