@@ -54,6 +54,16 @@ const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 const VARS = { company: "Novieri", nit: "", email: "sales@novieri.com" };
 
 /**
+ * Theme images ship with the theme, so they get a stable URL the moment the
+ * project deploys — no upload to the file manager and no GUID to keep in step.
+ * The path is the one HubSpot renders for the logo on the live site; the space
+ * in the project name is encoded, which is why this is written out rather than
+ * built from the project name.
+ */
+const THEME_IMG =
+  "https://www.novieri.com/hubfs/raw_assets/public/@projects/Novieri%20website/novieri_theme/images/";
+
+/**
  * Fills {company} / {nit} / {email}. A [[…]] block is dropped whole when a
  * placeholder inside it has no value, so the legal identification reads
  * correctly before the razón social and NIT exist — no dangling "NIT —".
@@ -284,7 +294,12 @@ function aboutWidgets() {
             person_bio: a.founders.helgar.bio,
             person_initials: "HP",
             person_linkedin: "",
-            person_photo: { src: "", alt: a.founders.helgar.photoAlt },
+            person_photo: {
+              src: `${THEME_IMG}helgar.jpg`,
+              alt: a.founders.helgar.photoAlt,
+              width: 400,
+              height: 400,
+            },
           },
           {
             person_name: a.founders.partner.name,
@@ -292,7 +307,12 @@ function aboutWidgets() {
             person_bio: a.founders.partner.bio,
             person_initials: "SN",
             person_linkedin: "",
-            person_photo: { src: "", alt: a.founders.partner.photoAlt },
+            person_photo: {
+              src: `${THEME_IMG}sylvana.jpg`,
+              alt: a.founders.partner.photoAlt,
+              width: 400,
+              height: 400,
+            },
           },
         ],
       },
