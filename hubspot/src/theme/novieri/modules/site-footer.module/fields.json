@@ -47,6 +47,24 @@
     ]
   },
   {
+    "name": "legal_title",
+    "label": "Legal column title",
+    "type": "text",
+    "default": "legal"
+  },
+  {
+    "name": "legal_menu",
+    "label": "Legal menu — English",
+    "type": "menu",
+    "help_text": "Privacy, cookies and terms. Built in Settings > Content > Navigation menus."
+  },
+  {
+    "name": "legal_menu_es",
+    "label": "Legal menu — Spanish",
+    "type": "menu",
+    "help_text": "Falls back to the English menu when empty."
+  },
+  {
     "name": "contact_title",
     "label": "Contact column title",
     "type": "text",
