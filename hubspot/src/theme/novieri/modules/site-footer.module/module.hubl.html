@@ -3,8 +3,12 @@
 
 <footer class="border-t border-line bg-white">
   <div class="container-site pb-10 pt-16">
-    <div class="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[4fr_repeat(auto-fit,minmax(8rem,3fr))]">
-      <div class="col-span-2 md:col-span-1">
+    {# Equal tracks rather than a fixed list: the number of columns depends on
+       how many link columns the editor adds and whether legal has a menu, so a
+       hard-coded track list goes wrong the moment either changes. The brand
+       block takes the full row until there is space for it beside them. #}
+    <div class="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 xl:grid-cols-5">
+      <div class="col-span-2 md:col-span-4 xl:col-span-1">
         {% if module.logo.src %}
           <img src="{{ module.logo.src }}" alt="{{ module.logo.alt|escape_attr }}" width="57" height="58" loading="lazy" />
         {% endif %}
