@@ -54,14 +54,46 @@ const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 const VARS = { company: "Novieri", nit: "", email: "sales@novieri.com" };
 
 /**
- * Theme images ship with the theme, so they get a stable URL the moment the
- * project deploys — no upload to the file manager and no GUID to keep in step.
- * The path is the one HubSpot renders for the logo on the live site; the space
- * in the project name is encoded, which is why this is written out rather than
- * built from the project name.
+ * Founder portraits.
+ *
+ * They are committed with the theme, and the obvious URL for them is the one
+ * the logo is served from — /hubfs/raw_assets/public/@projects/…/images/. Two
+ * successful deploys later that path still returned 404 for the portraits
+ * while the logo beside them returned 200, so the theme copies are not a URL
+ * we can point page content at.
+ *
+ * The file manager is. These are uploaded there from the repo on every fill,
+ * overwriting in place, so the repo stays the source of truth, the URL is
+ * stable, and there is no file GUID to keep in step by hand.
  */
-const THEME_IMG =
-  "https://www.novieri.com/hubfs/raw_assets/public/@projects/Novieri%20website/novieri_theme/images/";
+const PHOTOS = { helgar: "helgar.jpg", sylvana: "sylvana.jpg" };
+
+async function uploadPhoto(file) {
+  const form = new FormData();
+  const bytes = readFileSync(`hubspot/src/theme/novieri/images/${file}`);
+  form.set("file", new Blob([bytes], { type: "image/jpeg" }), file);
+  form.set("folderPath", "/novieri");
+  form.set("fileName", file);
+  form.set(
+    "options",
+    JSON.stringify({
+      access: "PUBLIC_INDEXABLE",
+      overwrite: true,
+      duplicateValidationStrategy: "NONE",
+      duplicateValidationScope: "EXACT_FOLDER",
+    }),
+  );
+  // Not api(): that helper sets a JSON content type, and multipart needs the
+  // boundary fetch generates for it.
+  const res = await fetch("https://api.hubapi.com/files/v3/files", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${TOKEN}` },
+    body: form,
+  });
+  const body = await res.json();
+  if (!res.ok) throw new Error(`upload ${file}: ${res.status} ${body.message || res.statusText}`);
+  return body.url;
+}
 
 /**
  * Fills {company} / {nit} / {email}. A [[…]] block is dropped whole when a
@@ -295,7 +327,7 @@ function aboutWidgets() {
             person_initials: "HP",
             person_linkedin: "",
             person_photo: {
-              src: `${THEME_IMG}helgar.jpg`,
+              src: photoUrls.helgar || "",
               alt: a.founders.helgar.photoAlt,
               width: 400,
               height: 400,
@@ -308,7 +340,7 @@ function aboutWidgets() {
             person_initials: "SN",
             person_linkedin: "",
             person_photo: {
-              src: `${THEME_IMG}sylvana.jpg`,
+              src: photoUrls.sylvana || "",
               alt: a.founders.partner.photoAlt,
               width: 400,
               height: 400,
@@ -517,6 +549,22 @@ function diagnosticWidgets() {
   };
 }
 
+if (!dryRun && !TOKEN) {
+  console.error("HUBSPOT_PRIVATE_APP_TOKEN is not set.");
+  process.exit(1);
+}
+
+// Before the maps are built, because aboutWidgets() needs the URLs. Skipped on
+// a dry run and when About is not in the plan, so the common case does not
+// re-upload two files to look at one page's copy.
+const photoUrls = {};
+if (!dryRun && (!only || only === slugFor("about"))) {
+  for (const [who, file] of Object.entries(PHOTOS)) {
+    photoUrls[who] = await uploadPhoto(file);
+    console.log(`photo ${file} -> ${photoUrls[who]}`);
+  }
+}
+
 /** slug -> the widgets to write. */
 const PAGES = {
   [locale === "es" ? "es" : ""]: homeWidgets(),
@@ -580,11 +628,6 @@ if (dryRun) {
     }
   }
   process.exit(0);
-}
-
-if (!TOKEN) {
-  console.error("HUBSPOT_PRIVATE_APP_TOKEN is not set.");
-  process.exit(1);
 }
 
 const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
