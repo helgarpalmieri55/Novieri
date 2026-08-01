@@ -18,7 +18,17 @@ on:
         options:
           - dry-run
           - one-page-test
+          - verify
+          - dump
+          - publish
+          - fill-content
+          - fill-one
+          - es-variants
+          - es-fill
           - create-all
+      slug:
+        description: "Slug to verify (verify mode only)"
+        default: "about"
       domain:
         description: "Site domain"
         default: "www.novieri.com"
@@ -41,5 +51,17 @@ jobs:
             dry-run)       node scripts/create-hubspot-pages.mjs --dry-run ;;
             # Prove one page comes out right before making eleven more.
             one-page-test) node scripts/create-hubspot-pages.mjs --only=about ;;
+            # "Created" says nothing about whether the page has any content.
+            verify)        node scripts/create-hubspot-pages.mjs --verify='${{ inputs.slug }}' ;;
+            # Read the drag-and-drop shape off a page HubSpot itself built.
+            dump)          node scripts/create-hubspot-pages.mjs --dump='${{ inputs.slug }}' ;;
+            # 'all' publishes every page in the list; a slug publishes one.
+            publish)       node scripts/create-hubspot-pages.mjs --publish='${{ inputs.slug }}' ;;
             create-all)    node scripts/create-hubspot-pages.mjs ;;
+            # Per-page copy from messages/*.json into each page's modules.
+            fill-content)  node scripts/fill-hubspot-pages.mjs ;;
+            fill-one)      node scripts/fill-hubspot-pages.mjs --only='${{ inputs.slug }}' ;;
+            # Spanish: create the language variants, then fill and publish them.
+            es-variants)   node scripts/create-hubspot-pages.mjs --language-variants ;;
+            es-fill)       node scripts/fill-hubspot-pages.mjs --locale=es ;;
           esac

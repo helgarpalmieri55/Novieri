@@ -223,6 +223,30 @@ Rebuild both with `npm run build:hubspot`.
 7. **Domain**: connect `novieri.com` last, once the pages look right on the
    `*.hs-sites.com` preview. Both endpoints already allow that preview host.
 
+### Managing pages from here
+
+Two scripts, both run from the *Create HubSpot pages* workflow, both needing
+the `HUBSPOT_PRIVATE_APP_TOKEN` secret (a private app token with the `content`
+scope — the deploy's personal access key will not authenticate this API):
+
+- `create-hubspot-pages.mjs` — creates pages from the templates as drafts,
+  skipping slugs that already exist, and publishes on request. Also `--dump`
+  and `--verify`, which exist because the API's "201 Created" says nothing
+  about whether a page has content.
+- `fill-hubspot-pages.mjs` — writes each page's own copy from `messages/*.json`
+  into its modules.
+
+Per-page module content lives in `widgets`, keyed by module name. Templates
+that place modules with named `{% module %}` tags supply that name directly;
+drag-and-drop templates get HubSpot-generated names, `main-module-N` numbered
+from 2 in the order the template declares them. **The slot maps in
+`fill-hubspot-pages.mjs` mirror that order** — reorder a template's modules and
+they must be updated, or each section fills with another one's copy.
+
+`layoutSections` is a red herring here: it stays empty until a page is edited
+in HubSpot's editor, and a page renders its template's modules regardless. Do
+not read an empty `layoutSections` as an empty page.
+
 ### The pages to create
 
 Templates are not pages. Each row below is one page created in Content →

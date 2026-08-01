@@ -18,6 +18,8 @@
  * exists is skipped, so re-running is safe and will not clobber edits made in
  * HubSpot. Publishing stays a human decision in the page editor.
  */
+import { readFileSync } from "node:fs";
+
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const DOMAIN = process.env.HUBSPOT_SITE_DOMAIN || "www.novieri.com";
 const THEME = "@projects/Novieri website/novieri_theme/templates";
@@ -25,6 +27,29 @@ const THEME = "@projects/Novieri website/novieri_theme/templates";
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
 const only = (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
+const verify = (args.find((a) => a.startsWith("--verify=")) || "").split("=")[1];
+const dump = args.find((a) => a.startsWith("--dump="))?.slice("--dump=".length);
+const publish = (args.find((a) => a.startsWith("--publish=")) || "").split("=")[1];
+const variants = args.includes("--language-variants");
+
+/**
+ * The Spanish slugs, from src/i18n/pathnames.json. The home page is "es"
+ * rather than "" — only one page can hold the root, and that is English.
+ */
+const ES_SLUGS = {
+  "": "es",
+  services: "servicios",
+  "services/ai-automation": "servicios/ia-y-automatizacion",
+  "services/managed-it": "servicios/it-administrado",
+  "services/cybersecurity-compliance": "servicios/ciberseguridad-y-cumplimiento",
+  "services/custom-software": "servicios/desarrollo-a-medida",
+  about: "nosotros",
+  contact: "contacto",
+  "self-diagnosis": "autodiagnostico",
+  "legal/privacy-policy": "legal/politica-de-privacidad",
+  "legal/cookie-policy": "legal/politica-de-cookies",
+  "legal/terms-of-use": "legal/terminos-de-uso",
+};
 
 /**
  * Slugs come from src/i18n/pathnames.json, so they match what the React site
@@ -119,6 +144,181 @@ if (dryRun) {
 if (!TOKEN) {
   console.error("HUBSPOT_PRIVATE_APP_TOKEN is not set — a private app token with the `content` scope is required.");
   process.exit(1);
+}
+
+/** Finds a page by slug or name. The home page's slug is the empty string. */
+async function findPage(needle) {
+  const res = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
+  const pages = res.results || [];
+  return (
+    pages.find((p) => p.slug === needle) ||
+    pages.find((p) => (p.name || "").toLowerCase() === needle.toLowerCase()) ||
+    pages.find((p) => p.id === needle)
+  );
+}
+
+/**
+ * Prints a page's layoutSections verbatim.
+ *
+ * The API will not build drag-and-drop content from a template on its own, so
+ * it has to be sent explicitly — and the only trustworthy description of the
+ * shape HubSpot expects is a page HubSpot itself built. This reads that off
+ * the home page rather than guessing from the docs.
+ */
+if (dump !== undefined) {
+  const found = await findPage(dump);
+  if (!found) {
+    console.error(`no page matching "${dump}"`);
+    process.exit(1);
+  }
+  const full = await api(`/cms/v3/pages/site-pages/${found.id}`);
+  console.log(`# ${full.name} (id ${full.id}, slug "${full.slug}")`);
+  console.log(`# template ${full.templatePath}`);
+  console.log(JSON.stringify(full.layoutSections, null, 1));
+  process.exit(0);
+}
+
+/**
+ * Creates the Spanish page for each English one.
+ *
+ * Through create-language-variant, not as fresh pages: that links the two into
+ * a language group, which is what makes HubSpot's language switcher — the one
+ * in our header — offer the right translated URL. Twelve unrelated Spanish
+ * pages would render fine and switch nowhere.
+ *
+ * The variant is born as a copy of the English page. This gives it its Spanish
+ * slug and metadata; fill-hubspot-pages.mjs --locale=es replaces the copy.
+ * Home is included here — unlike creation, a variant cannot take the root slug
+ * by accident.
+ */
+if (variants) {
+  const es = JSON.parse(readFileSync("messages/es.json", "utf8"));
+  const META = {
+    "": es.meta.home,
+    services: es.meta.services,
+    "services/ai-automation": es.meta.ai,
+    "services/managed-it": es.meta.managedIt,
+    "services/cybersecurity-compliance": es.meta.security,
+    "services/custom-software": es.meta.software,
+    about: es.meta.about,
+    contact: es.meta.contact,
+  };
+  const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
+  const pages = listed.results || [];
+  const bySlug = new Map(pages.map((p) => [p.slug, p]));
+  const taken = new Set(pages.map((p) => p.slug));
+
+  for (const [enSlug, esSlug] of Object.entries(ES_SLUGS)) {
+    if (taken.has(esSlug)) {
+      console.log(`skip    ${esSlug} — already exists`);
+      continue;
+    }
+    const source = bySlug.get(enSlug);
+    if (!source) {
+      console.error(`skip    ${esSlug} — no English page at "${enSlug}"`);
+      process.exitCode = 1;
+      continue;
+    }
+    const meta = META[enSlug];
+    try {
+      // Path, spelling and body all come from HubSpot's own OpenAPI spec
+      // (api.hubspot.com/public/api/spec), not from the prose docs, which
+      // call this "create-language-variant" — a path that 404s.
+      const variant = await api("/cms/v3/pages/site-pages/multi-language/create-language-variation", {
+        method: "POST",
+        body: JSON.stringify({
+          id: source.id,
+          language: "es",
+          primaryLanguage: "en",
+          usePublished: true,
+        }),
+      });
+      await api(`/cms/v3/pages/site-pages/${variant.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          slug: esSlug,
+          ...(meta ? { htmlTitle: meta.title, metaDescription: meta.description } : {}),
+        }),
+      });
+      console.log(`variant ${esSlug} — id ${variant.id} (from ${enSlug || "home"})`);
+    } catch (e) {
+      console.error(`FAILED  ${esSlug} — ${e.message.slice(0, 200)}`);
+      process.exitCode = 1;
+    }
+  }
+  process.exit(process.exitCode || 0);
+}
+
+/**
+ * Publishes a page. `all` publishes every page this script manages.
+ *
+ * Deliberately separate from creation: a page going live deserves its own
+ * decision, and the point of creating drafts is to look before that happens.
+ */
+if (publish) {
+  const targets = publish === "all" ? PAGES.map((p) => p.slug) : [publish];
+  for (const slug of targets) {
+    const found = await findPage(slug);
+    if (!found) {
+      console.error(`skip    ${slug} — no such page`);
+      continue;
+    }
+    await api(`/cms/v3/pages/site-pages/${found.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ publishDate: new Date().toISOString(), state: "PUBLISHED" }),
+    });
+    console.log(`publish ${slug || "(home)"} — id ${found.id}`);
+  }
+  process.exit(0);
+}
+
+/**
+ * Reports a page's stored content.
+ *
+ * Read this carefully before trusting it: an untouched drag-and-drop page has
+ * EMPTY layoutSections and still renders every module in its template, because
+ * HubSpot only stores layoutSections once somebody edits the area in the page
+ * editor. The home page proves it — ten modules on screen, `{}` from the API.
+ *
+ * So zero sections here is normal, not a failure. The only honest check that a
+ * page has content is fetching its published URL.
+ */
+if (verify) {
+  const q = new URLSearchParams({ limit: "100" });
+  const res = await api(`/cms/v3/pages/site-pages?${q}`);
+  const page = (res.results || []).find((p) => p.slug === verify || p.slug === `${verify}/`);
+  if (!page) {
+    console.error(`no page with slug "${verify}"`);
+    process.exit(1);
+  }
+  const full = await api(`/cms/v3/pages/site-pages/${page.id}`);
+  const sections = full.layoutSections || {};
+  const names = [];
+  const walk = (node) => {
+    if (!node || typeof node !== "object") return;
+    if (node.type === "module" || node.moduleId || node.module_id) {
+      names.push(node.name || node.moduleId || node.module_id);
+    }
+    for (const child of Object.values(node.cells || node.rows || node.params || {})) walk(child);
+    for (const key of ["cells", "rows", "widgets"]) {
+      if (node[key]) for (const child of Object.values(node[key])) walk(child);
+    }
+  };
+  for (const section of Object.values(sections)) walk(section);
+
+  console.log(`page      ${full.name} (id ${full.id})`);
+  console.log(`slug      ${full.slug}`);
+  console.log(`template  ${full.templatePath}`);
+  console.log(`state     ${full.currentState || full.state}`);
+  console.log(`sections  ${Object.keys(sections).length}`);
+  console.log(`widgets   ${Object.keys(full.widgets || {}).length}`);
+  console.log(`modules   ${names.length}${names.length ? " — " + names.join(", ") : ""}`);
+  if (!names.length && !Object.keys(full.widgets || {}).length) {
+    console.log("\nNo stored content — which is what an unedited drag-and-drop page");
+    console.log("looks like. It still renders the template's modules. Confirm by");
+    console.log("publishing it and fetching the URL; do not conclude anything here.");
+  }
+  process.exit(0);
 }
 
 // One call, so an existing page is skipped rather than duplicated.
