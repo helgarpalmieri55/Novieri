@@ -15,7 +15,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const ROOT = process.cwd();
-const OUT = join(ROOT, "hubspot/src/app/functions/lib/company-profile.json");
+const OUT = join(ROOT, "hubspot/functions-src/lib/company-profile.json");
 
 const es = JSON.parse(readFileSync(join(ROOT, "messages/es.json"), "utf8"));
 const en = JSON.parse(readFileSync(join(ROOT, "messages/en.json"), "utf8"));

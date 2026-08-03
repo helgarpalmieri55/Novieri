@@ -244,6 +244,24 @@ from 2 in the order the template declares them. **The slot maps in
 `fill-hubspot-pages.mjs` mirror that order** — reorder a template's modules and
 they must be updated, or each section fills with another one's copy.
 
+A serverless function is packaged as exactly one file. The entrypoint is
+copied to /var/task/file.js and nothing else from the project follows it — a
+probe of the running function listed /var/task as file.js plus HubSpot's own
+handler, and `require("./lib/guard.js")` threw at load. Dependencies declared
+in the function folder's package.json are fine; they resolve through NODE_PATH.
+So the sources live in `hubspot/functions-src/` — outside srcDir, so they are
+not uploaded — and `scripts/build-functions.mjs` inlines each require graph
+into the single file the platform will run. Edit the sources, never the
+generated `hubspot/src/app/functions/*.js`.
+
+An endpoint is served at `https://<domain>/hs/serverless/<endpoint.path>` — not
+`/hs/serverless/api/<uid>`, which is what the modules called and what the 404
+in this section used to be blamed on.
+
+A secret reaches a function only if its name is in that function's
+`secretKeys`. Both functions listed ANTHROPIC_API_KEY alone while reading four
+others, which reads as a missing secret and is not one.
+
 Images that page content points at go through the file manager, not the theme.
 `hubspot/src/theme/novieri/images/` is the right home for the files and they
 deploy with the theme, but the URL the logo is served from —
