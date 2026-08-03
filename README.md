@@ -278,6 +278,12 @@ default naming them, while the PNG and SVG beside them returned 200. So
 every run (overwriting in place, `/novieri`) and writes the URL it gets back.
 That is what the `files` scope above is for.
 
+A PATCH of a page's `widgets` **replaces** the map — it does not merge. So one
+script owns a page's content and writes all of it: `fill-hubspot-pages.mjs`,
+form included. A second writer costs you the first one's work, silently, and
+the page falls back to its modules' field defaults, which look like real
+content until you read them.
+
 `layoutSections` is a red herring here: it stays empty until a page is edited
 in HubSpot's editor, and a page renders its template's modules regardless. Do
 not read an empty `layoutSections` as an empty page.

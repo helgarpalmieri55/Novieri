@@ -565,6 +565,20 @@ if (!dryRun && (!only || only === slugFor("about"))) {
   }
 }
 
+/**
+ * The contact form, found by the name it carries in Marketing > Forms rather
+ * than by GUID, so rebuilding the form does not leave a dead reference here.
+ */
+const CONTACT_FORM = "Website Contact";
+let contactFormGuid = "";
+if (!dryRun && (!only || only === slugFor("contact"))) {
+  const forms = await api(`/marketing/v3/forms?${new URLSearchParams({ limit: "100" })}`);
+  const match = (forms.results || []).find((f) => f.name === CONTACT_FORM);
+  if (!match) throw new Error(`no form named "${CONTACT_FORM}" — hubspot-forms.mjs --list shows what is there`);
+  contactFormGuid = match.id;
+  console.log(`form   ${CONTACT_FORM} -> ${contactFormGuid}`);
+}
+
 /** slug -> the widgets to write. */
 const PAGES = {
   [locale === "es" ? "es" : ""]: homeWidgets(),
@@ -576,6 +590,22 @@ const PAGES = {
   [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),
   [slugFor(LEGAL_SLUGS.terms)]: legalWidgets("terms"),
   [slugFor("contact")]: {
+    // The form belongs in this map, not in a script of its own. A PATCH of
+    // `widgets` replaces the map rather than merging into it, so whichever
+    // script wrote last erased the other's work: wiring the form blanked the
+    // hero, and the next fill blanked the form.
+    contact_form: {
+      body: {
+        title: "",
+        form: {
+          form_id: contactFormGuid,
+          response_type: "inline",
+          message: t.contact.form.success,
+          redirect_id: null,
+          redirect_url: null,
+        },
+      },
+    },
     page_hero: {
       body: {
         eyebrow: t.contact.hero.eyebrow,
