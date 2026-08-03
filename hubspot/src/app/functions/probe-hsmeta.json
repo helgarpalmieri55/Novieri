@@ -1,0 +1,12 @@
+{
+  "uid": "novieri_probe",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/probe.js",
+    "secretKeys": [],
+    "endpoint": {
+      "path": "probe",
+      "methods": ["GET", "POST"]
+    }
+  }
+}
