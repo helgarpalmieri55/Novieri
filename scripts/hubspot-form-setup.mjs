@@ -122,9 +122,16 @@ eachField(enPatch, (f) => {
 
 // --- Spanish: the same form, in Spanish ------------------------------------
 const esStub = (all.results || []).find((f) => f.name === ES_FORM);
+// createdAt, updatedAt and archived are required on create — not optional
+// metadata, per HubSpotFormDefinitionCreateRequest in the Forms OpenAPI spec.
+// Without them the POST fails with "Some required fields were not set".
+const now = new Date().toISOString();
 const esBody = {
   name: ES_FORM,
   formType: "hubspot",
+  createdAt: now,
+  updatedAt: now,
+  archived: false,
   fieldGroups: JSON.parse(JSON.stringify(en.fieldGroups)),
   configuration: {
     ...en.configuration,
