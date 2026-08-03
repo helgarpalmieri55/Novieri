@@ -187,7 +187,7 @@
         method: "POST",
         credentials: "omit",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: messages }),
+        body: JSON.stringify({ messages: messages, locale: root.dataset.lang }),
       })
         .then(function (res) {
           if (res.status === 429) {
