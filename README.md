@@ -278,6 +278,15 @@ default naming them, while the PNG and SVG beside them returned 200. So
 every run (overwriting in place, `/novieri`) and writes the URL it gets back.
 That is what the `files` scope above is for.
 
+Forms carry the account's company name into their legal copy at the moment
+they are created — which is how "Sylvana Nova's Personal Portal" ended up in
+the consent text of a Novieri form. `scripts/hubspot-form-setup.mjs` rewrites
+that copy, trims the language dropdown to the two languages the site is
+published in, and keeps a Spanish twin of the contact form in step with the
+English one (a HubSpot form has a single language, so /contacto needs its own).
+Rename the account in HubSpot's settings as well, or the next form made there
+inherits the same text.
+
 A PATCH of a page's `widgets` **replaces** the map — it does not merge. So one
 script owns a page's content and writes all of it: `fill-hubspot-pages.mjs`,
 form included. A second writer costs you the first one's work, silently, and
