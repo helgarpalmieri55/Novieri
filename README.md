@@ -269,12 +269,19 @@ function is therefore emptied rather than deleted; take it out from the
 project's page in HubSpot.
 
 Images that page content points at go through the file manager, not the theme.
-`hubspot/src/theme/novieri/images/` is the right home for the files and they
-deploy with the theme, but the URL the logo is served from —
-`/hubfs/raw_assets/public/@projects/…/novieri_theme/images/` — returned 404 for
-two JPEGs added there across two successful deploys, with and without a field
-default naming them, while the PNG and SVG beside them returned 200. So
-`fill-hubspot-pages.mjs` uploads the founder portraits to the file manager on
+`hubspot/src/theme/novieri/images/` is the right home for a file a *module*
+uses — `{{ module.mark.src }}` resolves to whatever URL the current build has —
+but it is the wrong place to take a URL from and store on a page, for two
+reasons found the hard way:
+
+- A theme asset is only published if something in the theme references it. Two
+  JPEGs added to `images/` and named by nothing came back 404 from every path
+  tried; the white logo mark added later, and named by a field default, was
+  served immediately.
+- The path carries the build number: `/hubfs/raw_assets/**33**/public/@projects/…`.
+  It changes on the next deploy, so a URL copied out of it today rots tomorrow.
+
+So `fill-hubspot-pages.mjs` uploads the founder portraits to the file manager on
 every run (overwriting in place, `/novieri`) and writes the URL it gets back.
 That is what the `files` scope above is for.
 
