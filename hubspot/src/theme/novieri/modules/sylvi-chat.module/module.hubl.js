@@ -8,6 +8,78 @@
 (function () {
   var MAX_CHARS = 1000;
 
+  var escapeHtml = function (text) {
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  };
+
+  /**
+   * The small part of Markdown the model actually writes back.
+   *
+   * Replies arrived as one run-on paragraph with literal asterisks in it —
+   * "- **Trabajo repetitivo**: agentes de IA que…" — which is unreadable on a
+   * phone. This turns the handful of constructs that show up (bold, bullets,
+   * numbered steps, links, blank-line paragraphs) into markup and leaves
+   * everything else alone.
+   *
+   * The reply is model output and is treated as untrusted: the text is escaped
+   * first, so the only tags in the result are the ones built here. Nothing the
+   * model writes can introduce an attribute or an element of its own.
+   */
+  function render(text) {
+    var safe = escapeHtml(text);
+
+    // Links and bare emails, before the inline styling so URLs with
+    // underscores or asterisks are already inside an href.
+    safe = safe.replace(/\bhttps?:\/\/[^\s<)]+[^\s<).,;:]/g, function (url) {
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + "</a>";
+    });
+    safe = safe.replace(/\b[\w.+-]+@[\w-]+\.[\w.]+\b/g, function (mail) {
+      return '<a href="mailto:' + mail + '">' + mail + "</a>";
+    });
+
+    safe = safe.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    safe = safe.replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+
+    // Blocks. A run of "- " or "1. " lines becomes one list; anything else
+    // separated by a blank line becomes a paragraph.
+    var lines = safe.split(/\n/);
+    var out = [];
+    var list = null;
+
+    function closeList() {
+      if (list) {
+        out.push("<" + list.tag + ">" + list.items.join("") + "</" + list.tag + ">");
+        list = null;
+      }
+    }
+
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i].trim();
+      var bullet = line.match(/^[-•*]\s+(.*)$/);
+      var numbered = line.match(/^\d+[.)]\s+(.*)$/);
+
+      if (bullet || numbered) {
+        var tag = bullet ? "ul" : "ol";
+        if (!list || list.tag !== tag) {
+          closeList();
+          list = { tag: tag, items: [] };
+        }
+        list.items.push("<li>" + (bullet ? bullet[1] : numbered[1]) + "</li>");
+        continue;
+      }
+
+      closeList();
+      if (line) out.push("<p>" + line + "</p>");
+    }
+    closeList();
+
+    return out.join("");
+  }
+
   document.querySelectorAll(".sylvi").forEach(function (root) {
     var toggle = root.querySelector(".sylvi-toggle");
     var panel = root.querySelector(".sylvi-panel");
@@ -26,10 +98,14 @@
 
     function bubble(text, mine) {
       var el = document.createElement("div");
-      el.className = mine
-        ? "mb-3 ml-auto max-w-[85%] rounded-2xl rounded-tr-md bg-plum px-4 py-2.5 text-small text-white"
-        : "mb-3 max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-small text-ink";
-      el.textContent = text;
+      if (mine) {
+        // The visitor's own words go in as text. Nothing they type is markup.
+        el.className = "mb-3 ml-auto max-w-[85%] rounded-2xl rounded-tr-md bg-plum px-4 py-2.5 text-small text-white";
+        el.textContent = text;
+      } else {
+        el.className = "sylvi-reply mb-3 max-w-[90%] rounded-2xl rounded-tl-md bg-plum-wash px-4 py-3 text-small text-ink";
+        el.innerHTML = render(text);
+      }
       log.appendChild(el);
       scrollDown();
     }
@@ -77,10 +153,25 @@
       send.disabled = busy || input.value.trim().length === 0;
     });
 
+    // The openers are a shortcut into the same path a typed message takes.
+    var starters = root.querySelector(".sylvi-starters");
+    if (starters) {
+      starters.addEventListener("click", function (event) {
+        var chip = event.target.closest(".sylvi-starter");
+        if (!chip) return;
+        input.value = chip.textContent.trim();
+        send.disabled = false;
+        form.dispatchEvent(new Event("submit", { cancelable: true }));
+      });
+    }
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       var text = input.value.trim().slice(0, MAX_CHARS);
       if (!text || busy) return;
+
+      // Once the conversation has started they are in the way.
+      if (starters) starters.remove();
 
       var stale = log.querySelector(".sylvi-notice");
       if (stale) stale.remove();

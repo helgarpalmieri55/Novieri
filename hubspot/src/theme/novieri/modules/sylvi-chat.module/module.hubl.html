@@ -1,25 +1,49 @@
 {# Sylvi — the website assistant. Every string is a module field, so the
    copy is editable in the page editor without a deploy. The logic lives in
-   module.hubl.js and talks to the serverless function in src/app/functions. #}
+   module.hubl.js and talks to the serverless function in src/app/functions.
+
+   One global widget serves both languages, so each string has a Spanish twin
+   resolved here — the greeting was English on the Spanish pages, which is the
+   first thing a Spanish-speaking visitor saw. Each falls back to English when
+   its Spanish field is empty. #}
+{% set is_es = html_lang == "es" %}
+{% set s_title = module.title %}
+{% set s_greeting = module.greeting %}
+{% set s_placeholder = module.placeholder %}
+{% set s_open = module.open_label %}
+{% set s_close = module.close_label %}
+{% set s_send = module.send_label %}
+{% set s_error = module.error_text %}
+{% set s_limit = module.limit_text %}
+{% if is_es %}
+  {% if module.title_es %}{% set s_title = module.title_es %}{% endif %}
+  {% if module.greeting_es %}{% set s_greeting = module.greeting_es %}{% endif %}
+  {% if module.placeholder_es %}{% set s_placeholder = module.placeholder_es %}{% endif %}
+  {% if module.open_label_es %}{% set s_open = module.open_label_es %}{% endif %}
+  {% if module.close_label_es %}{% set s_close = module.close_label_es %}{% endif %}
+  {% if module.send_label_es %}{% set s_send = module.send_label_es %}{% endif %}
+  {% if module.error_text_es %}{% set s_error = module.error_text_es %}{% endif %}
+  {% if module.limit_text_es %}{% set s_limit = module.limit_text_es %}{% endif %}
+{% endif %}
 
 <div
   class="sylvi"
   data-endpoint="{{ module.endpoint|escape_attr }}"
-  data-error="{{ module.error_text|escape_attr }}"
-  data-limit="{{ module.limit_text|escape_attr }}"
+  data-error="{{ s_error|escape_attr }}"
+  data-limit="{{ s_limit|escape_attr }}"
 >
   <button
     type="button"
     class="sylvi-toggle chat-fab fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full text-white transition-transform duration-300 hover:scale-110"
     aria-expanded="false"
-    aria-label="{{ module.open_label|escape_attr }}"
-    data-open-label="{{ module.open_label|escape_attr }}"
-    data-close-label="{{ module.close_label|escape_attr }}"
+    aria-label="{{ s_open|escape_attr }}"
+    data-open-label="{{ s_open|escape_attr }}"
+    data-close-label="{{ s_close|escape_attr }}"
   >
-    {# The four-point star from the centre of the logo mark. #}
-    <svg class="sylvi-icon-open" aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z" />
-    </svg>
+    {# The logo mark itself, in the white cut, rather than a stand-in star. #}
+    {% if module.mark.src %}
+      <img class="sylvi-icon-open h-8 w-8" src="{{ module.mark.src }}" alt="" width="32" height="32" loading="lazy" decoding="async" />
+    {% endif %}
     <svg class="sylvi-icon-close hidden" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
       <path d="M3 3l12 12M15 3L3 15" />
     </svg>
@@ -28,39 +52,54 @@
   <div
     class="sylvi-panel hidden fixed bottom-24 right-5 z-40 flex h-[min(70vh,540px)] w-[min(92vw,380px)] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-[0_8px_40px_rgba(22,18,29,0.18)]"
     role="dialog"
-    aria-label="{{ module.title|escape_attr }}"
+    aria-label="{{ s_title|escape_attr }}"
   >
     <div class="dark-s relative flex items-center gap-3 px-5 py-4">
       <div aria-hidden="true" class="seam absolute inset-x-0 top-0"></div>
-      <span aria-hidden="true" class="text-gold-bright">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2 C13 8 16 11 22 12 C16 13 13 16 12 22 C11 16 8 13 2 12 C8 11 11 8 12 2 Z" />
-        </svg>
-      </span>
+      {% if module.mark.src %}
+        <img class="h-5 w-5 flex-none" src="{{ module.mark.src }}" alt="" width="20" height="20" loading="lazy" decoding="async" />
+      {% endif %}
       <div>
-        <p class="text-small font-medium leading-tight">{{ module.title }}</p>
+        <p class="text-small font-medium leading-tight">{{ s_title }}</p>
         <p class="idx-mono mt-0.5 lowercase text-on-dark-faint">·· novieri</p>
       </div>
     </div>
 
     <div class="sylvi-log flex-1 overflow-y-auto px-4 py-4">
       <div class="mb-3 max-w-[85%] rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-small text-ink">
-        {{ module.greeting }}
+        {{ s_greeting }}
       </div>
+
+      {# Openers. A blank box and a cursor is a lot to ask of someone who came
+         to read about managed IT; these give them somewhere to start. They
+         disappear on the first message, theirs or ours. #}
+      {% if module.starters %}
+        <div class="sylvi-starters mb-3 flex flex-wrap gap-2">
+          {% for starter in module.starters %}
+            {% set opener = starter.question %}
+            {% if is_es and starter.question_es %}{% set opener = starter.question_es %}{% endif %}
+            {% if opener %}
+              <button type="button" class="sylvi-starter rounded-full border border-line px-3 py-1.5 text-left text-caption text-ink-muted transition-colors hover:border-plum hover:text-plum">
+                {{ opener }}
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
 
     <form class="sylvi-form flex items-center gap-2 border-t border-line p-3">
       <input
         type="text"
         class="sylvi-input min-w-0 flex-1 rounded-lg border border-line px-3.5 py-2.5 text-small placeholder:text-ink-faint focus:border-plum focus:outline-none"
-        placeholder="{{ module.placeholder|escape_attr }}"
+        placeholder="{{ s_placeholder|escape_attr }}"
         maxlength="1000"
         autocomplete="off"
       />
       <button
         type="submit"
         class="sylvi-send flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-plum text-white transition-colors hover:bg-plum-deep disabled:opacity-40"
-        aria-label="{{ module.send_label|escape_attr }}"
+        aria-label="{{ s_send|escape_attr }}"
         disabled
       >
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
