@@ -14,6 +14,8 @@
  *   node scripts/hubspot-forms.mjs --widgets=contact
  *   node scripts/hubspot-forms.mjs                 # wire the contact pages
  */
+import { readFileSync } from "node:fs";
+
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
 const list = args.includes("--list");
@@ -23,8 +25,15 @@ const widgetsOf = args.find((a) => a.startsWith("--widgets="))?.slice("--widgets
 const CONTACT_FORM = "Website Contact";
 const DIAGNOSTIC_FORM = "Website · Self-diagnosis";
 
-/** The contact page in both languages. From src/i18n/pathnames.json. */
-const CONTACT_SLUGS = ["contact", "contacto"];
+/**
+ * The contact page in both languages, each with the confirmation the visitor
+ * sees in place of the form. The copy is the same line the old site showed on
+ * a successful submit, from messages/*.json.
+ */
+const CONTACT_PAGES = [
+  { slug: "contact", locale: "en" },
+  { slug: "contacto", locale: "es" },
+];
 
 async function api(path, options = {}) {
   const res = await fetch(`https://api.hubapi.com${path}`, {
@@ -71,13 +80,17 @@ if (!contactGuid) {
   process.exit(1);
 }
 
-for (const slug of CONTACT_SLUGS) {
+for (const { slug, locale } of CONTACT_PAGES) {
   const page = bySlug.get(slug);
   if (!page) {
     console.error(`skip   ${slug} — no such page`);
     process.exitCode = 1;
     continue;
   }
+  // The shape is @hubspot/form's own: a `form` object holding form_id and how
+  // to answer a submit. Inline rather than a redirect — there is no thank-you
+  // page, and one would cost the visitor a page load to read one sentence.
+  const message = JSON.parse(readFileSync(`messages/${locale}.json`, "utf8")).contact.form.success;
   try {
     await api(`/cms/v3/pages/site-pages/${page.id}`, {
       method: "PATCH",
@@ -85,9 +98,14 @@ for (const slug of CONTACT_SLUGS) {
         widgets: {
           contact_form: {
             body: {
-              form_to_use: contactGuid,
-              form: { form_id: contactGuid, form_type: "HUBSPOT", response_type: "inline", message: "" },
               title: "",
+              form: {
+                form_id: contactGuid,
+                response_type: "inline",
+                message,
+                redirect_id: null,
+                redirect_url: null,
+              },
             },
           },
         },
