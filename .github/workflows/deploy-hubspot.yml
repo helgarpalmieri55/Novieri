@@ -26,6 +26,7 @@ on:
         options:
           - deploy
           - list-secrets
+          - set-diagnostic-form
 
 env:
   DEFAULT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
@@ -62,6 +63,22 @@ jobs:
         run: npm install -g "@hubspot/cli@${DEFAULT_CLI_VERSION}"
       # Names only — the CLI never prints a secret's value, so this is a safe
       # way to answer "is the key actually set?" without touching it.
+      # The diagnostic's form GUID. It is a public value — it appears in any
+      # embed code — but a function only sees an environment variable if it is
+      # a project secret named in that function's secretKeys, so a secret is
+      # what it has to be. `hs secrets add` takes the value on stdin.
+      - name: Set the diagnostic form secret
+        if: inputs.mode == 'set-diagnostic-form'
+        working-directory: hubspot
+        env:
+          HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+          HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+          HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+          FORM_GUID: 42957848-6780-467b-8f8b-4e5944e2ebe0
+        run: |
+          echo "$FORM_GUID" | hs secrets add HUBSPOT_FORM_DIAGNOSTIC --use-env \
+            || echo "$FORM_GUID" | hs secrets update HUBSPOT_FORM_DIAGNOSTIC --use-env
+          hs secrets list --use-env
       - name: List the project's secrets
         if: inputs.mode == 'list-secrets'
         working-directory: hubspot
@@ -71,7 +88,7 @@ jobs:
           HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
         run: hs secrets list --use-env
       - name: Validate and upload the project
-        if: inputs.mode != 'list-secrets'
+        if: inputs.mode == 'deploy'
         working-directory: hubspot
         env:
           # --use-env reads these two names, not the DEFAULT_* ones. Without
