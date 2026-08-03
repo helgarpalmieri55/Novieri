@@ -39,11 +39,31 @@ function walk(dir, depth = 0) {
 }
 
 exports.main = async (context, sendResponse) => {
+  // Only /var/task/file.js and the platform's handler came back the first
+  // time: the entrypoint is packaged alone, with neither the files beside it
+  // nor node_modules. So what a function may call is whatever the runtime
+  // itself provides — which is the next thing to establish.
+  const has = (name) => {
+    try {
+      require(name);
+      return "ok";
+    } catch (e) {
+      return e.code || String(e.message).slice(0, 60);
+    }
+  };
   const body = {
     cwd: process.cwd(),
     dirname: __dirname,
     filename: __filename,
     task: walk("/var/task"),
+    node: process.version,
+    globals: {
+      fetch: typeof fetch,
+      FormData: typeof FormData,
+      AbortController: typeof AbortController,
+    },
+    modules: { axios: has("axios"), https: has("https"), crypto: has("crypto") },
+    env: Object.keys(process.env).filter((k) => !/KEY|SECRET|TOKEN|PASS/i.test(k)).sort(),
   };
   const response = { statusCode: 200, headers: { "Content-Type": "application/json" }, body };
   if (typeof sendResponse === "function") return sendResponse(response);
