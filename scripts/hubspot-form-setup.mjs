@@ -18,6 +18,8 @@
  *   node scripts/hubspot-form-setup.mjs --dry-run
  *   node scripts/hubspot-form-setup.mjs
  */
+import { readFileSync } from "node:fs";
+
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const dryRun = process.argv.slice(2).includes("--dry-run");
 
@@ -47,6 +49,20 @@ const ES = {
   privacy: "Cuidamos tu privacidad. Lee cómo tratamos tus datos en nuestra política de privacidad: https://www.novieri.com/legal/politica-de-privacidad",
   process: "Para responder tu consulta necesitamos tu permiso para almacenar y tratar tus datos personales.",
 };
+
+/**
+ * Dropdown option labels, English to Spanish, from messages/*.json. Matched by
+ * the English label rather than by value, because the values are HubSpot
+ * property internals and the labels are what the two files agree on.
+ */
+const EN_MESSAGES = JSON.parse(readFileSync("messages/en.json", "utf8"));
+const ES_MESSAGES = JSON.parse(readFileSync("messages/es.json", "utf8"));
+const OPTION_LABELS = Object.fromEntries(
+  Object.keys(EN_MESSAGES.contact.form.serviceOptions).map((key) => [
+    EN_MESSAGES.contact.form.serviceOptions[key],
+    ES_MESSAGES.contact.form.serviceOptions[key],
+  ]),
+);
 
 /** Field labels and placeholders, by the property each field writes to. */
 const ES_FIELDS = {
@@ -151,6 +167,10 @@ const esBody = {
 };
 eachField(esBody, (f) => {
   if (f.name === "hs_language") f.options = LANGUAGE_OPTIONS;
+  // A translated label over an English dropdown is worse than neither.
+  if (Array.isArray(f.options)) {
+    f.options = f.options.map((o) => (OPTION_LABELS[o.label] ? { ...o, label: OPTION_LABELS[o.label] } : o));
+  }
   const es = ES_FIELDS[f.name];
   if (!es) return;
   f.label = es.label;
