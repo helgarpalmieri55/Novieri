@@ -856,7 +856,8 @@
     "booking": {
       "title": "¿Prefieres agendar directo?",
       "body": "Elige un espacio de 30 minutos con los fundadores. Sin compromiso.",
-      "fallback": "El calendario en línea estará disponible pronto. Mientras tanto, escríbenos a {email} y coordinamos por correo."
+      "fallback": "El calendario en línea estará disponible pronto. Mientras tanto, escríbenos a {email} y coordinamos por correo.",
+      "button": "Abrir el calendario"
     },
     "aside": {
       "whatsappLabel": "Escríbenos por WhatsApp",

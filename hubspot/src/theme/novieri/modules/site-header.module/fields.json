@@ -42,6 +42,13 @@
     "default": "Book a call"
   },
   {
+    "name": "cta_text_short",
+    "label": "Call to action, short",
+    "type": "text",
+    "default": "Book",
+    "help_text": "Shown in the header on phones, where the full label does not fit."
+  },
+  {
     "name": "cta_link",
     "label": "Header button link",
     "type": "link",

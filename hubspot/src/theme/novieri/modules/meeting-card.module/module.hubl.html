@@ -7,7 +7,17 @@
     <p class="mt-2.5 text-small text-ink-muted">{{ module.intro }}</p>
     <div class="mt-5">
       {% if module.meetings_url %}
-        <div class="meetings-iframe-container min-h-[620px] w-full"
+        {# The direct link comes first and always renders. The embed below it
+           is HubSpot's script writing an iframe into an empty div, and a
+           content blocker — or Safari, or a bad network — leaves that div
+           empty with no error and no way to book. A link is not a fallback
+           here so much as the reliable path, with the calendar as a
+           convenience for the people whose browsers allow it. #}
+        <a href="{{ module.meetings_url }}" target="_blank" rel="noopener noreferrer"
+           class="btn btn-primary w-full">
+          {{ module.button_text }} <span aria-hidden="true">→</span>
+        </a>
+        <div class="meetings-iframe-container mt-5 w-full"
              data-src="{{ module.meetings_url }}{% if '?' in module.meetings_url %}&{% else %}?{% endif %}embed=true"></div>
         <script src="https://static.hsappstatic.net/MeetingsEmbedCode/static-1/MeetingsEmbedCode.js" async></script>
       {% else %}

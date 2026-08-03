@@ -69,13 +69,23 @@
       {% endfor %}
     </nav>
 
-    <nav class="idx-mono hidden items-center text-caption tracking-[0.06em] md:flex" aria-label="{{ module.label_language|escape_attr }}">
+    {# HubSpot's tag, because it is the only thing that knows the translated
+       URL of the page you are on. Its markup is a bare <ul> that renders as
+       two words in a row, which is why nobody could find it; lang-toggle in
+       the stylesheet turns it into an EN | ES pair with the current language
+       marked. data-lang lets the CSS know which one that is. #}
+    <nav class="lang-toggle hidden md:flex" data-lang="{{ html_lang }}" aria-label="{{ module.label_language|escape_attr }}">
       {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
     </nav>
 
     {% if module.cta_text %}
       <a href="{{ module.cta_link.url.href }}" class="btn btn-primary hidden !px-4.5 !py-2.5 !text-small md:inline-flex">
         {{ module.cta_text }}
+      </a>
+      {# The same call to action on a phone. It used to live only inside the
+         menu, behind the hamburger, where it may as well not have existed. #}
+      <a href="{{ module.cta_link.url.href }}" class="btn btn-primary !px-4 !py-2 !text-small md:hidden">
+        {{ module.cta_text_short or module.cta_text }}
       </a>
     {% endif %}
 
@@ -103,8 +113,10 @@
         {% endfor %}
       {% endfor %}
     </div>
-    <div class="idx-mono mt-6 flex items-center gap-3 border-t border-line pt-5 text-caption">
-      {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
+    <div class="mt-6 border-t border-line pt-5">
+      <nav class="lang-toggle" data-lang="{{ html_lang }}" aria-label="{{ module.label_language|escape_attr }}">
+        {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
+      </nav>
     </div>
     {% if module.cta_text %}
       <a href="{{ module.cta_link.url.href }}" class="btn btn-primary mt-5 w-full">{{ module.cta_text }}</a>

@@ -856,7 +856,8 @@
     "booking": {
       "title": "Prefer to just book a time?",
       "body": "Pick a 30-minute slot with the founders. No strings attached.",
-      "fallback": "Online booking is coming soon. In the meantime, write to {email} and we'll coordinate by email."
+      "fallback": "Online booking is coming soon. In the meantime, write to {email} and we'll coordinate by email.",
+      "button": "Open the booking calendar"
     },
     "aside": {
       "whatsappLabel": "Message us on WhatsApp",
