@@ -43,6 +43,17 @@
     {% if html_lang == "es" and module.menu_es %}
       {% set nav_menu = module.menu_es %}
     {% endif %}
+    {# The call to action needs the same treatment: one global header, so
+       without this the Spanish pages read "Book a call" and send people to
+       the English contact page. #}
+    {% set cta_text = module.cta_text %}
+    {% set cta_text_short = module.cta_text_short %}
+    {% set cta_href = module.cta_link.url.href %}
+    {% if html_lang == "es" %}
+      {% if module.cta_text_es %}{% set cta_text = module.cta_text_es %}{% endif %}
+      {% if module.cta_text_short_es %}{% set cta_text_short = module.cta_text_short_es %}{% endif %}
+      {% if module.cta_link_es.url.href %}{% set cta_href = module.cta_link_es.url.href %}{% endif %}
+    {% endif %}
     {% set nav_items = menu(nav_menu, "site_root").children %}
     <nav class="site-nav hidden items-center gap-6 md:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
       {% for item in nav_items %}
@@ -78,14 +89,14 @@
       {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
     </nav>
 
-    {% if module.cta_text %}
-      <a href="{{ module.cta_link.url.href }}" class="btn btn-primary hidden !px-4.5 !py-2.5 !text-small md:inline-flex">
-        {{ module.cta_text }}
+    {% if cta_text %}
+      <a href="{{ cta_href }}" class="btn btn-primary hidden !px-4.5 !py-2.5 !text-small md:inline-flex">
+        {{ cta_text }}
       </a>
       {# The same call to action on a phone. It used to live only inside the
          menu, behind the hamburger, where it may as well not have existed. #}
-      <a href="{{ module.cta_link.url.href }}" class="btn btn-primary !px-4 !py-2 !text-small md:hidden">
-        {{ module.cta_text_short or module.cta_text }}
+      <a href="{{ cta_href }}" class="btn btn-primary !px-4 !py-2 !text-small md:hidden">
+        {{ cta_text_short or cta_text }}
       </a>
     {% endif %}
 
@@ -118,8 +129,8 @@
         {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
       </nav>
     </div>
-    {% if module.cta_text %}
-      <a href="{{ module.cta_link.url.href }}" class="btn btn-primary mt-5 w-full">{{ module.cta_text }}</a>
+    {% if cta_text %}
+      <a href="{{ cta_href }}" class="btn btn-primary mt-5 w-full">{{ cta_text }}</a>
     {% endif %}
   </div>
 </header>

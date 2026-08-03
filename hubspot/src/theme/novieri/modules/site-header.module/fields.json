@@ -60,6 +60,31 @@
     }
   },
   {
+    "name": "cta_text_es",
+    "label": "Call to action (Spanish)",
+    "type": "text",
+    "default": "Agenda una llamada",
+    "help_text": "Used on Spanish pages. Falls back to the English label if empty."
+  },
+  {
+    "name": "cta_text_short_es",
+    "label": "Call to action, short (Spanish)",
+    "type": "text",
+    "default": "Agendar"
+  },
+  {
+    "name": "cta_link_es",
+    "label": "Call to action link (Spanish)",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/contacto"
+      }
+    },
+    "help_text": "The Spanish contact page. Without it the Spanish header sends people to the English one."
+  },
+  {
     "name": "label_skip",
     "label": "Skip to content",
     "type": "text",
