@@ -1,71 +1,19 @@
 /**
- * TEMPORARY. Lists what the platform actually packaged, so the two real
- * functions can require their helpers by a path that exists.
+ * A component that no longer does anything.
  *
- * Both of them fail at load with "Cannot find module './lib/guard.js'" while
- * the entrypoint itself runs as /var/task/file.js — the entrypoint is moved,
- * and it is not documented where (or whether) the files beside it land. This
- * walks the runtime's own filesystem rather than guessing again.
+ * This was a diagnostic: it walked /var/task and reported what the platform
+ * had packaged, which is how the "Cannot find module './lib/guard.js'" behind
+ * both endpoints was finally explained — an app function is packaged as
+ * exactly one file. The finding is written up in the README and acted on by
+ * scripts/build-functions.mjs; nothing here is needed any more.
  *
- * Delete this file, its -hsmeta.json, and the endpoint once the answer is in.
+ * It is emptied rather than deleted because deleting a component fails the
+ * whole deploy — "You are about to remove a component", reported against every
+ * other component too, with no CLI flag that answers it. Removing it for real
+ * is a job for the project's page in HubSpot.
  */
-const fs = require("fs");
-const path = require("path");
-
-function walk(dir, depth = 0) {
-  if (depth > 3) return ["…"];
-  let entries;
-  try {
-    entries = fs.readdirSync(dir, { withFileTypes: true });
-  } catch (e) {
-    return [`${dir}: ${e.code}`];
-  }
-  const out = [];
-  for (const e of entries) {
-    // node_modules is large and not what is in question here.
-    if (e.name === "node_modules") {
-      out.push(`${path.join(dir, e.name)}/  (skipped)`);
-      continue;
-    }
-    const full = path.join(dir, e.name);
-    if (e.isDirectory()) {
-      out.push(`${full}/`);
-      out.push(...walk(full, depth + 1));
-    } else {
-      out.push(full);
-    }
-  }
-  return out;
-}
-
 exports.main = async (context, sendResponse) => {
-  // Only /var/task/file.js and the platform's handler came back the first
-  // time: the entrypoint is packaged alone, with neither the files beside it
-  // nor node_modules. So what a function may call is whatever the runtime
-  // itself provides — which is the next thing to establish.
-  const has = (name) => {
-    try {
-      require(name);
-      return "ok";
-    } catch (e) {
-      return e.code || String(e.message).slice(0, 60);
-    }
-  };
-  const body = {
-    cwd: process.cwd(),
-    dirname: __dirname,
-    filename: __filename,
-    task: walk("/var/task"),
-    node: process.version,
-    globals: {
-      fetch: typeof fetch,
-      FormData: typeof FormData,
-      AbortController: typeof AbortController,
-    },
-    modules: { axios: has("axios"), https: has("https"), crypto: has("crypto") },
-    env: Object.keys(process.env).filter((k) => !/KEY|SECRET|TOKEN|PASS/i.test(k)).sort(),
-  };
-  const response = { statusCode: 200, headers: { "Content-Type": "application/json" }, body };
+  const response = { statusCode: 404, headers: { "Content-Type": "application/json" }, body: {} };
   if (typeof sendResponse === "function") return sendResponse(response);
   return response;
 };

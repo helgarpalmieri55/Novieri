@@ -262,6 +262,12 @@ A secret reaches a function only if its name is in that function's
 `secretKeys`. Both functions listed ANTHROPIC_API_KEY alone while reading four
 others, which reads as a missing secret and is not one.
 
+Deleting a component fails the deploy: "You are about to remove a component"
+comes back against *every* component in the build, and `--force` does not
+answer it — it skips CLI prompts, and this refusal is the server's. The probe
+function is therefore emptied rather than deleted; take it out from the
+project's page in HubSpot.
+
 Images that page content points at go through the file manager, not the theme.
 `hubspot/src/theme/novieri/images/` is the right home for the files and they
 deploy with the theme, but the URL the logo is served from —

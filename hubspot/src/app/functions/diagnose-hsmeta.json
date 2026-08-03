@@ -7,7 +7,8 @@
       "ANTHROPIC_API_KEY",
       "CHAT_SECRET",
       "RATE_LIMIT_TABLE_ID",
-      "CONTACT_EMAIL"
+      "CONTACT_EMAIL",
+      "HUBSPOT_FORM_DIAGNOSTIC"
     ],
     "endpoint": {
       "path": "diagnose",
