@@ -11,12 +11,14 @@
  * contact hero, and the next fill blanked the form. fill-hubspot-pages.mjs
  * owns every page's widgets now, the form included.
  *
- *   node scripts/hubspot-forms.mjs --list
+ *   node scripts/hubspot-forms.mjs                      # names and GUIDs
+ *   node scripts/hubspot-forms.mjs --form="Website Contact"
  *   node scripts/hubspot-forms.mjs --widgets=contact
  */
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
 const widgetsOf = args.find((a) => a.startsWith("--widgets="))?.slice("--widgets=".length);
+const formOf = args.find((a) => a.startsWith("--form="))?.slice("--form=".length);
 
 async function api(path, options = {}) {
   const res = await fetch(`https://api.hubapi.com${path}`, {
@@ -48,4 +50,15 @@ if (widgetsOf !== undefined) {
 }
 
 const forms = await api(`/marketing/v3/forms?${new URLSearchParams({ limit: "100" })}`);
+
+if (formOf !== undefined) {
+  const match = (forms.results || []).find((f) => f.name === formOf || f.id === formOf);
+  if (!match) {
+    console.error(`no form named "${formOf}"`);
+    process.exit(1);
+  }
+  console.log(JSON.stringify(await api(`/marketing/v3/forms/${match.id}`), null, 1));
+  process.exit(0);
+}
+
 for (const f of forms.results || []) console.log(`${f.id}  ${f.formType}  ${f.name}`);

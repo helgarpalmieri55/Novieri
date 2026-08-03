@@ -26,6 +26,7 @@ on:
           - es-variants
           - es-fill
           - forms-list
+          - form-dump
           - widgets
           - create-all
       slug:
@@ -68,5 +69,6 @@ jobs:
             es-fill)       node scripts/fill-hubspot-pages.mjs --locale=es ;;
             # Read-only: what forms exist, and what a page actually stores.
             forms-list)    node scripts/hubspot-forms.mjs ;;
+            form-dump)     node scripts/hubspot-forms.mjs --form='${{ inputs.slug }}' ;;
             widgets)       node scripts/hubspot-forms.mjs --widgets='${{ inputs.slug }}' ;;
           esac
