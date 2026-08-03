@@ -85,10 +85,12 @@ jobs:
         run: |
           set -euo pipefail
           hs project validate --use-env
-          # --forceCreate answers the "project does not exist, create it?"
-          # prompt. Without it the CLI waits on stdin, gets nothing on a
-          # runner, and exits 0 having uploaded nothing.
-          hs project upload --use-env --forceCreate \
+          # --force skips every confirmation prompt. Without it the CLI waits
+          # on stdin, gets nothing on a runner, and either uploads nothing or —
+          # when a component has been deleted — fails the whole deploy with
+          # "You are about to remove a component" against each of the others.
+          # (--forceCreate, which this used to pass, is not a flag in v8.)
+          hs project upload --use-env --force \
             --message "GitHub Actions ${GITHUB_SHA:0:7}" 2>&1 | tee upload.log
           # A green run that uploaded nothing is worse than a red one.
           grep -Eqi "build|deploy" upload.log || {
