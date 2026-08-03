@@ -3,7 +3,7 @@
     "name": "endpoint",
     "label": "Function endpoint",
     "type": "text",
-    "default": "/hs/serverless/api/novieri_diagnose",
+    "default": "/hs/serverless/diagnose",
     "help_text": "Public URL of the diagnostic serverless function."
   },
   {

@@ -227,7 +227,8 @@ Rebuild both with `npm run build:hubspot`.
 
 Two scripts, both run from the *Create HubSpot pages* workflow, both needing
 the `HUBSPOT_PRIVATE_APP_TOKEN` secret (a private app token with the `content`
-scope — the deploy's personal access key will not authenticate this API):
+and `files` scopes — the deploy's personal access key will not authenticate
+this API):
 
 - `create-hubspot-pages.mjs` — creates pages from the templates as drafts,
   skipping slugs that already exist, and publishes on request. Also `--dump`
@@ -242,6 +243,46 @@ drag-and-drop templates get HubSpot-generated names, `main-module-N` numbered
 from 2 in the order the template declares them. **The slot maps in
 `fill-hubspot-pages.mjs` mirror that order** — reorder a template's modules and
 they must be updated, or each section fills with another one's copy.
+
+A serverless function is packaged as exactly one file. The entrypoint is
+copied to /var/task/file.js and nothing else from the project follows it — a
+probe of the running function listed /var/task as file.js plus HubSpot's own
+handler, and `require("./lib/guard.js")` threw at load. Dependencies declared
+in the function folder's package.json are fine; they resolve through NODE_PATH.
+So the sources live in `hubspot/functions-src/` — outside srcDir, so they are
+not uploaded — and `scripts/build-functions.mjs` inlines each require graph
+into the single file the platform will run. Edit the sources, never the
+generated `hubspot/src/app/functions/*.js`.
+
+An endpoint is served at `https://<domain>/hs/serverless/<endpoint.path>` — not
+`/hs/serverless/api/<uid>`, which is what the modules called and what the 404
+in this section used to be blamed on.
+
+A secret reaches a function only if its name is in that function's
+`secretKeys`. Both functions listed ANTHROPIC_API_KEY alone while reading four
+others, which reads as a missing secret and is not one.
+
+Deleting a component fails the deploy: "You are about to remove a component"
+comes back against *every* component in the build, and `--force` does not
+answer it — it skips CLI prompts, and this refusal is the server's. The probe
+function is therefore emptied rather than deleted; take it out from the
+project's page in HubSpot.
+
+Images that page content points at go through the file manager, not the theme.
+`hubspot/src/theme/novieri/images/` is the right home for the files and they
+deploy with the theme, but the URL the logo is served from —
+`/hubfs/raw_assets/public/@projects/…/novieri_theme/images/` — returned 404 for
+two JPEGs added there across two successful deploys, with and without a field
+default naming them, while the PNG and SVG beside them returned 200. So
+`fill-hubspot-pages.mjs` uploads the founder portraits to the file manager on
+every run (overwriting in place, `/novieri`) and writes the URL it gets back.
+That is what the `files` scope above is for.
+
+A PATCH of a page's `widgets` **replaces** the map — it does not merge. So one
+script owns a page's content and writes all of it: `fill-hubspot-pages.mjs`,
+form included. A second writer costs you the first one's work, silently, and
+the page falls back to its modules' field defaults, which look like real
+content until you read them.
 
 `layoutSections` is a red herring here: it stays empty until a page is edited
 in HubSpot's editor, and a page renders its template's modules regardless. Do

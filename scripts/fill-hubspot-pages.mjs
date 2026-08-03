@@ -54,6 +54,48 @@ const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 const VARS = { company: "Novieri", nit: "", email: "sales@novieri.com" };
 
 /**
+ * Founder portraits.
+ *
+ * They are committed with the theme, and the obvious URL for them is the one
+ * the logo is served from — /hubfs/raw_assets/public/@projects/…/images/. Two
+ * successful deploys later that path still returned 404 for the portraits
+ * while the logo beside them returned 200, so the theme copies are not a URL
+ * we can point page content at.
+ *
+ * The file manager is. These are uploaded there from the repo on every fill,
+ * overwriting in place, so the repo stays the source of truth, the URL is
+ * stable, and there is no file GUID to keep in step by hand.
+ */
+const PHOTOS = { helgar: "helgar.jpg", sylvana: "sylvana.jpg" };
+
+async function uploadPhoto(file) {
+  const form = new FormData();
+  const bytes = readFileSync(`hubspot/src/theme/novieri/images/${file}`);
+  form.set("file", new Blob([bytes], { type: "image/jpeg" }), file);
+  form.set("folderPath", "/novieri");
+  form.set("fileName", file);
+  form.set(
+    "options",
+    JSON.stringify({
+      access: "PUBLIC_INDEXABLE",
+      overwrite: true,
+      duplicateValidationStrategy: "NONE",
+      duplicateValidationScope: "EXACT_FOLDER",
+    }),
+  );
+  // Not api(): that helper sets a JSON content type, and multipart needs the
+  // boundary fetch generates for it.
+  const res = await fetch("https://api.hubapi.com/files/v3/files", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${TOKEN}` },
+    body: form,
+  });
+  const body = await res.json();
+  if (!res.ok) throw new Error(`upload ${file}: ${res.status} ${body.message || res.statusText}`);
+  return body.url;
+}
+
+/**
  * Fills {company} / {nit} / {email}. A [[…]] block is dropped whole when a
  * placeholder inside it has no value, so the legal identification reads
  * correctly before the razón social and NIT exist — no dangling "NIT —".
@@ -284,7 +326,12 @@ function aboutWidgets() {
             person_bio: a.founders.helgar.bio,
             person_initials: "HP",
             person_linkedin: "",
-            person_photo: { src: "", alt: a.founders.helgar.photoAlt },
+            person_photo: {
+              src: photoUrls.helgar || "",
+              alt: a.founders.helgar.photoAlt,
+              width: 400,
+              height: 400,
+            },
           },
           {
             person_name: a.founders.partner.name,
@@ -292,7 +339,12 @@ function aboutWidgets() {
             person_bio: a.founders.partner.bio,
             person_initials: "SN",
             person_linkedin: "",
-            person_photo: { src: "", alt: a.founders.partner.photoAlt },
+            person_photo: {
+              src: photoUrls.sylvana || "",
+              alt: a.founders.partner.photoAlt,
+              width: 400,
+              height: 400,
+            },
           },
         ],
       },
@@ -458,7 +510,7 @@ function diagnosticWidgets() {
     },
     diagnostic_quiz: {
       body: {
-        endpoint: "/hs/serverless/api/novieri_diagnose",
+        endpoint: "/hs/serverless/diagnose",
         questions: d.questions.map((q) => ({
           question_text: q.q,
           options: q.options.map((o) => ({ option_text: o.v, option_weight: o.w })),
@@ -497,6 +549,36 @@ function diagnosticWidgets() {
   };
 }
 
+if (!dryRun && !TOKEN) {
+  console.error("HUBSPOT_PRIVATE_APP_TOKEN is not set.");
+  process.exit(1);
+}
+
+// Before the maps are built, because aboutWidgets() needs the URLs. Skipped on
+// a dry run and when About is not in the plan, so the common case does not
+// re-upload two files to look at one page's copy.
+const photoUrls = {};
+if (!dryRun && (!only || only === slugFor("about"))) {
+  for (const [who, file] of Object.entries(PHOTOS)) {
+    photoUrls[who] = await uploadPhoto(file);
+    console.log(`photo ${file} -> ${photoUrls[who]}`);
+  }
+}
+
+/**
+ * The contact form, found by the name it carries in Marketing > Forms rather
+ * than by GUID, so rebuilding the form does not leave a dead reference here.
+ */
+const CONTACT_FORM = "Website Contact";
+let contactFormGuid = "";
+if (!dryRun && (!only || only === slugFor("contact"))) {
+  const forms = await api(`/marketing/v3/forms?${new URLSearchParams({ limit: "100" })}`);
+  const match = (forms.results || []).find((f) => f.name === CONTACT_FORM);
+  if (!match) throw new Error(`no form named "${CONTACT_FORM}" — hubspot-forms.mjs --list shows what is there`);
+  contactFormGuid = match.id;
+  console.log(`form   ${CONTACT_FORM} -> ${contactFormGuid}`);
+}
+
 /** slug -> the widgets to write. */
 const PAGES = {
   [locale === "es" ? "es" : ""]: homeWidgets(),
@@ -508,6 +590,22 @@ const PAGES = {
   [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),
   [slugFor(LEGAL_SLUGS.terms)]: legalWidgets("terms"),
   [slugFor("contact")]: {
+    // The form belongs in this map, not in a script of its own. A PATCH of
+    // `widgets` replaces the map rather than merging into it, so whichever
+    // script wrote last erased the other's work: wiring the form blanked the
+    // hero, and the next fill blanked the form.
+    contact_form: {
+      body: {
+        title: "",
+        form: {
+          form_id: contactFormGuid,
+          response_type: "inline",
+          message: t.contact.form.success,
+          redirect_id: null,
+          redirect_url: null,
+        },
+      },
+    },
     page_hero: {
       body: {
         eyebrow: t.contact.hero.eyebrow,
@@ -560,11 +658,6 @@ if (dryRun) {
     }
   }
   process.exit(0);
-}
-
-if (!TOKEN) {
-  console.error("HUBSPOT_PRIVATE_APP_TOKEN is not set.");
-  process.exit(1);
 }
 
 const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);

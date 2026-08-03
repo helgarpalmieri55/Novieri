@@ -14,6 +14,18 @@
       "max": 8,
       "default": 2
     },
+    "default": [
+      {
+        "person_name": "Helgar Palmieri",
+        "person_role": "Technology & delivery",
+        "person_initials": "HP"
+      },
+      {
+        "person_name": "Sylvana Nova",
+        "person_role": "Commercial & customer success",
+        "person_initials": "SN"
+      }
+    ],
     "children": [
       {
         "name": "person_name",

@@ -60,7 +60,7 @@
     "name": "endpoint",
     "label": "Function endpoint",
     "type": "text",
-    "default": "/hs/serverless/api/novieri_chat",
+    "default": "/hs/serverless/chat",
     "help_text": "Public URL of the chat serverless function."
   }
 ]

@@ -25,6 +25,8 @@ on:
           - fill-one
           - es-variants
           - es-fill
+          - forms-list
+          - widgets
           - create-all
       slug:
         description: "Slug to verify (verify mode only)"
@@ -64,4 +66,7 @@ jobs:
             # Spanish: create the language variants, then fill and publish them.
             es-variants)   node scripts/create-hubspot-pages.mjs --language-variants ;;
             es-fill)       node scripts/fill-hubspot-pages.mjs --locale=es ;;
+            # Read-only: what forms exist, and what a page actually stores.
+            forms-list)    node scripts/hubspot-forms.mjs ;;
+            widgets)       node scripts/hubspot-forms.mjs --widgets='${{ inputs.slug }}' ;;
           esac
