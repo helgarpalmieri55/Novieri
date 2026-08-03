@@ -33,6 +33,8 @@ const solutions = (m, label) =>
     .join("\n");
 
 const contactEmail = process.env.CONTACT_EMAIL ?? "sales@novieri.com";
+/** The founders' public HubSpot meetings link, same one the contact page embeds. */
+const meetingsUrl = "https://meetings.hubspot.com/helgar-palmieri";
 const how = Object.values(es.home.how.steps).map((s, i) => `${i + 1}. ${s.title}: ${s.body}`);
 
 const text = [
@@ -61,7 +63,13 @@ const text = [
   `- Email: ${contactEmail}`,
   "- Ubicación: Barranquilla, Colombia (GMT-5, mismo huso horario que la costa este de EE. UU.)",
   "- Atiende Colombia localmente y Estados Unidos de forma remota (nearshore), en español e inglés.",
-  "- La forma preferida de avanzar: agendar una llamada de 30 minutos desde la página de contacto (/es/contacto · /en/contact).",
+  // The routes are HubSpot's, not the old Next.js export's — Sylvi was sending
+  // people to /en/contact, which does not exist here.
+  "- Página de contacto / contact page: /contacto (ES) · /contact (EN).",
+  "- Agenda directa de 30 minutos con los fundadores / direct 30-minute booking:",
+  `  ${meetingsUrl}`,
+  "- Cuando alguien pida agendar una llamada, dale ese enlace directamente: es una agenda pública, se reserva sin intermediarios. No digas que la reserva la hace una persona.",
+  "- When someone asks to schedule a call, give them that link. It is a public booking page — they choose a slot themselves, no one has to arrange it.",
   "",
   "## Hechos clave / Key facts",
   "- El CTO ha liderado IT y sistemas de IA para operaciones de más de 1.000 personas, incluyendo cumplimiento PCI DSS y un programa SOC 2 de punta a punta.",

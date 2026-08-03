@@ -18,7 +18,7 @@
     },
     "security": {
       "title": "Ciberseguridad y cumplimiento — Novieri",
-      "description": "Hardening, gestión de vulnerabilidades y preparación SOC 2 / PCI DSS. Seguridad de verdad, con evidencia."
+      "description": "Protección de infraestructura, gestión de vulnerabilidades y preparación SOC 2 / PCI DSS. Seguridad de verdad, con evidencia."
     },
     "software": {
       "title": "Desarrollo a medida — Novieri",
@@ -130,7 +130,7 @@
       "name": "Ciberseguridad y cumplimiento",
       "tagline": "Seguridad de verdad y preparación SOC 2 / PCI DSS.",
       "tags": [
-        "hardening",
+        "protección",
         "soc 2",
         "pci dss"
       ]
@@ -326,7 +326,7 @@
     "whatTitle": "Qué hacemos",
     "howTitle": "Cómo se ve",
     "packagesTitle": "Paquetes",
-    "packagesIntro": "Sin precios de lista: cada operación es distinta. Estos paquetes le dan forma a la conversación.",
+    "packagesIntro": "No publicamos precios: no hay dos operaciones iguales. Estas son las formas que suele tomar el trabajo; el número sale después de entender tu caso.",
     "faqTitle": "Preguntas frecuentes",
     "ctaTitle": "¿Hablamos de tu caso?",
     "ctaSubtitle": "Una llamada de 30 minutos para entender tu operación y decirte, con franqueza, si podemos ayudar."
@@ -371,16 +371,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "AI Opportunity Assessment",
-          "blurb": "Diagnóstico de alcance fijo, 2 semanas: mapa de procesos, casos priorizados por retorno y una hoja de ruta de automatización lista para ejecutar."
+          "name": "Revisión de dos semanas",
+          "blurb": "Precio fijo, dos semanas. Miramos cómo se mueve el trabajo de verdad en tu negocio, encontramos qué puede hacer una máquina y te entregamos una lista corta, ordenada por lo que te ahorra. Sin compromiso después."
         },
         {
-          "name": "Automation Pilot",
-          "blurb": "Un proceso automatizado de punta a punta, en producción, con métricas. La prueba concreta de que esto funciona en tu operación."
+          "name": "Tu primera automatización",
+          "blurb": "Tomamos una sola tarea —normalmente la que más horas se come— y se la pasamos al software, de principio a fin, funcionando de verdad. Ves las horas que te devuelve antes de decidir algo más grande."
         },
         {
-          "name": "AI Partner",
-          "blurb": "Retainer mensual: construimos y operamos tus agentes y automatizaciones, con mejoras continuas y soporte."
+          "name": "Nosotros lo operamos",
+          "blurb": "Una cuota mensual fija: construimos, operamos y seguimos mejorando tus automatizaciones. Las cosas cambian, y nadie tiene que volver a negociar un proyecto cada vez que pasa."
         }
       ]
     },
@@ -400,7 +400,7 @@
         },
         {
           "q": "¿Cuánto tarda en verse el resultado?",
-          "a": "El assessment toma 2 semanas. Un piloto típico está en producción entre 3 y 6 semanas después. Desde el primer mes deberías ver horas recuperadas en el proceso elegido."
+          "a": "La revisión inicial toma 2 semanas. Un piloto típico está en producción entre 3 y 6 semanas después. Desde el primer mes deberías ver horas recuperadas en el proceso elegido."
         }
       ]
     },
@@ -502,16 +502,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "Essential",
-          "blurb": "Mesa de ayuda, Microsoft 365 y parcheo administrado. La base para operar sin sobresaltos, por puesto al mes."
+          "name": "Esencial",
+          "blurb": "Alguien a quien llamar cuando algo se daña, tu Microsoft 365 atendido y las actualizaciones al día antes de que se vuelvan un problema. Precio fijo por persona, al mes."
         },
         {
-          "name": "Complete",
-          "blurb": "Todo lo anterior más administración de red y firewall, backups y plan de continuidad. Para empresas que no pueden detenerse."
+          "name": "Completo",
+          "blurb": "Todo lo anterior, más tu red y tu firewall administrados, copias de seguridad que sí se prueban y un plan escrito para volver a operar. Para un negocio que no se puede dar el lujo de un día caído."
         },
         {
-          "name": "Premium",
-          "blurb": "Agrega monitoreo proactivo, línea base de seguridad y hoja de ruta trimestral de IT con los fundadores."
+          "name": "Avanzado",
+          "blurb": "Suma monitoreo permanente para ver los problemas antes que tú, tus sistemas asegurados con un estándar claro y un plan cada trimestre que revisas con los fundadores."
         }
       ]
     },
@@ -592,7 +592,7 @@
     "what": {
       "items": [
         {
-          "title": "Hardening de infraestructura",
+          "title": "Protección de tu infraestructura",
           "body": "Configuración segura de servidores, equipos, Microsoft 365 y red: MFA, cifrado, privilegios mínimos y líneas base documentadas."
         },
         {
@@ -623,16 +623,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "Security Baseline",
-          "blurb": "Hardening de tu infraestructura, escaneo de vulnerabilidades y un informe ejecutivo con prioridades claras. El punto de partida."
+          "name": "Revisión de seguridad",
+          "blurb": "Buscamos por dónde podría entrar alguien —tus sistemas, tu red, tus cuentas—, cerramos lo fácil y te entregamos un informe corto, en español claro, con qué arreglar primero."
         },
         {
-          "name": "SOC 2 / PCI DSS Readiness",
-          "blurb": "Análisis de brechas contra el estándar, plan de remediación y soporte de evidencias hasta la auditoría."
+          "name": "Listos para una auditoría",
+          "blurb": "Para cuando un cliente, un banco o una franquicia de tarjetas empieza a pedirte certificaciones. Te decimos qué te falta frente a SOC 2 o PCI DSS, lo arreglamos contigo y te acompañamos hasta la auditoría."
         },
         {
-          "name": "vCISO",
-          "blurb": "Seguridad como función continua: gestión de riesgos, revisiones periódicas y un responsable de seguridad sin contratarlo de planta."
+          "name": "Un responsable de seguridad, sin el sueldo",
+          "blurb": "Alguien que responde por la seguridad todos los meses: vigila los riesgos, define qué es prioritario y te rinde cuentas. El cargo que una empresa grande llena con una contratación de planta."
         }
       ]
     },
@@ -644,7 +644,7 @@
         },
         {
           "q": "¿Cuánto toma estar listo para SOC 2 o PCI DSS?",
-          "a": "Depende del punto de partida; típicamente entre 3 y 6 meses desde el análisis de brechas hasta estar listo para auditoría. El gap assessment inicial te da una línea de tiempo honesta la primera semana."
+          "a": "Depende del punto de partida; típicamente entre 3 y 6 meses desde el análisis de brechas hasta estar listo para auditoría. La revisión inicial contra el estándar te da una línea de tiempo honesta la primera semana."
         },
         {
           "q": "¿Ustedes emiten la certificación?",
@@ -713,7 +713,7 @@
         },
         {
           "title": "Operación y evolución",
-          "body": "No entregamos y desaparecemos: monitoreamos, corregimos y evolucionamos el software con un retainer mensual."
+          "body": "No entregamos y desaparecemos: monitoreamos, corregimos y evolucionamos el software con una cuota mensual de horas."
         }
       ]
     },
@@ -723,16 +723,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "Discovery Sprint",
-          "blurb": "Precio fijo: entendemos el problema, prototipamos la solución y entregamos un plan con alcance y presupuesto. Decides con hechos."
+          "name": "Primero el plan",
+          "blurb": "Precio fijo. Entendemos el problema, armamos una versión inicial que puedes usar y te entregamos un plan con alcance y costo. Después decides, sabiendo exactamente qué estás comprando."
         },
         {
-          "name": "Proyecto",
-          "blurb": "Construcción con alcance definido, hitos quincenales y demos funcionales — ves avance real, no reportes de avance."
+          "name": "La construcción",
+          "blurb": "Un alcance acordado, construido en tramos de dos semanas. Al final de cada uno usas lo que ya existe: avance que puedes tocar, no un informe de avance."
         },
         {
-          "name": "Evolution Retainer",
-          "blurb": "Horas mensuales para operar, mejorar y extender tu software con el mismo equipo que lo construyó."
+          "name": "Soporte y mejoras",
+          "blurb": "Una cantidad de horas al mes para operar, corregir y ampliar lo que construimos, con las mismas personas que lo construyeron. Sin entregarle tu sistema a un desconocido."
         }
       ]
     },
@@ -744,7 +744,7 @@
         },
         {
           "q": "¿Cómo sé que no se va a volver un proyecto eterno?",
-          "a": "El discovery sprint define alcance y presupuesto antes de escribir código en serio, y el proyecto avanza en hitos quincenales con demos funcionales. Si algo se desvía, se ve en dos semanas, no en seis meses."
+          "a": "La etapa de plan define alcance y presupuesto antes de escribir código en serio, y el proyecto avanza en hitos quincenales con demos funcionales. Si algo se desvía, se ve en dos semanas, no en seis meses."
         },
         {
           "q": "¿El código es mío?",
@@ -752,7 +752,7 @@
         },
         {
           "q": "¿Qué pasa después de la entrega?",
-          "a": "El software necesita operación: dependencias que actualizar, errores que corregir, mejoras que priorizar. Para eso existe el retainer de evolución — o entrenamos a tu equipo para que lo opere."
+          "a": "El software necesita operación: dependencias que actualizar, errores que corregir, mejoras que priorizar. Para eso existe el soporte mensual con mejoras — o entrenamos a tu equipo para que lo opere."
         }
       ]
     },
@@ -804,9 +804,9 @@
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Comercial y éxito del cliente",
-        "bio": "Customer Success Manager en HubSpot y administradora de empresas, con más de 10 años en relación con clientes: entender el negocio, guiar la adopción y sostener la cuenta en el tiempo. Antes fue asesora comercial en Bancolombia. En Novieri lleva la relación de punta a punta — la propuesta, el seguimiento y que lo entregado de verdad se use.",
-        "photoAlt": "Sylvana Nova, cofundadora, comercial y éxito del cliente"
+        "role": "Relación con clientes y acompañamiento",
+        "bio": "Más de diez años al lado de clientes, desde la primera conversación hasta los años que siguen a la venta: entender cómo funciona de verdad un negocio, acordar qué vale la pena hacer y quedarse a ver que funcione. Administradora de empresas. En Novieri es la persona con la que hablas — arma el caso contigo, hace el seguimiento de frente y se asegura de que lo entregado se use, no que solo quede instalado.",
+        "photoAlt": "Sylvana Nova, cofundadora, relación con clientes y acompañamiento"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
@@ -856,7 +856,8 @@
     "booking": {
       "title": "¿Prefieres agendar directo?",
       "body": "Elige un espacio de 30 minutos con los fundadores. Sin compromiso.",
-      "fallback": "El calendario en línea estará disponible pronto. Mientras tanto, escríbenos a {email} y coordinamos por correo."
+      "fallback": "El calendario en línea estará disponible pronto. Mientras tanto, escríbenos a {email} y coordinamos por correo.",
+      "button": "Abrir el calendario"
     },
     "aside": {
       "whatsappLabel": "Escríbenos por WhatsApp",
@@ -989,7 +990,7 @@
           },
           {
             "title": "Panel de administración",
-            "body": "Onboarding, contenido del bot y métricas de atención en un panel web propio: tú controlas lo que el asistente sabe y hace."
+            "body": "Puesta en marcha, contenido del bot y métricas de atención en un panel web propio: tú controlas lo que el asistente sabe y hace."
           },
           {
             "title": "Bilingüe y multi-sede",
@@ -1348,7 +1349,7 @@
           },
           {
             "title": "Operado, no abandonado",
-            "body": "Alojamiento, seguridad, cambios y mejoras continuas bajo el mismo retainer — el sitio evoluciona contigo."
+            "body": "Alojamiento, seguridad, cambios y mejoras continuas bajo la misma cuota mensual — el sitio evoluciona contigo."
           }
         ],
         "built": {

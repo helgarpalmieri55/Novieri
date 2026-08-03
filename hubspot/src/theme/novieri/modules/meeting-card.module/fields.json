@@ -13,6 +13,13 @@
     "allow_new_line": true
   },
   {
+    "name": "button_text",
+    "label": "Button label",
+    "type": "text",
+    "default": "Open the booking calendar",
+    "help_text": "Opens the meetings page in a new tab. Always shown, so booking works even when the embedded calendar is blocked."
+  },
+  {
     "name": "meetings_url",
     "label": "Meetings link",
     "type": "text",

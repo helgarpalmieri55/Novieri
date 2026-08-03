@@ -326,7 +326,7 @@
     "whatTitle": "What we do",
     "howTitle": "How it looks",
     "packagesTitle": "Packages",
-    "packagesIntro": "No list prices: every operation is different. These packages give shape to the conversation.",
+    "packagesIntro": "We do not publish prices — no two operations are the same. These are the shapes the work usually takes; the number comes after we understand your case.",
     "faqTitle": "Frequently asked questions",
     "ctaTitle": "Shall we talk about your case?",
     "ctaSubtitle": "A 30-minute call to understand your operation and tell you, frankly, whether we can help."
@@ -371,16 +371,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "AI Opportunity Assessment",
-          "blurb": "Fixed-scope, 2-week diagnostic: process map, use cases ranked by return, and an automation roadmap ready to execute."
+          "name": "A two-week review",
+          "blurb": "Fixed price, two weeks. We follow how the work actually moves through your business, find what a machine could take over, and hand you a short list ordered by what it saves you. No commitment after it."
         },
         {
-          "name": "Automation Pilot",
-          "blurb": "One process automated end to end, in production, with metrics. Concrete proof that this works in your operation."
+          "name": "Your first automation",
+          "blurb": "We take one job — usually the one that eats the most hours — and hand it over to software, end to end, running for real. You see the hours it gives back before deciding on anything bigger."
         },
         {
-          "name": "AI Partner",
-          "blurb": "Monthly retainer: we build and operate your agents and automations, with continuous improvements and support."
+          "name": "We run it for you",
+          "blurb": "A fixed monthly fee: we build, operate and keep improving your automations. Things change, and nobody has to renegotiate a project every time they do."
         }
       ]
     },
@@ -503,15 +503,15 @@
       "tiers": [
         {
           "name": "Essential",
-          "blurb": "Helpdesk, Microsoft 365, and managed patching. The baseline for running without surprises, per seat per month."
+          "blurb": "Someone to call when something breaks, your Microsoft 365 looked after, and updates applied before they become a problem. A fixed price per person, per month."
         },
         {
           "name": "Complete",
-          "blurb": "Everything above plus network and firewall management, backups, and a continuity plan. For companies that can't stop."
+          "blurb": "Everything above, plus your network and firewall managed, backups that are actually tested, and a written plan for getting back up. For a business that cannot afford a day offline."
         },
         {
-          "name": "Premium",
-          "blurb": "Adds proactive monitoring, a security baseline, and a quarterly IT roadmap with the founders."
+          "name": "Advanced",
+          "blurb": "Adds constant monitoring so we see problems before you do, your systems secured to a known standard, and a plan every quarter that you review with the founders."
         }
       ]
     },
@@ -623,16 +623,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "Security Baseline",
-          "blurb": "Infrastructure hardening, vulnerability scan, and an executive report with clear priorities. The starting point."
+          "name": "A security check-up",
+          "blurb": "We look for the ways someone could get in — your systems, your network, your accounts — close the easy ones, and give you a short report in plain language saying what to fix first."
         },
         {
-          "name": "SOC 2 / PCI DSS Readiness",
-          "blurb": "Gap assessment against the standard, remediation plan, and evidence support through the audit."
+          "name": "Ready for an audit",
+          "blurb": "For when a client, a bank or a card processor starts asking for certifications. We tell you what is missing against SOC 2 or PCI DSS, fix it with you, and stay with you through the audit."
         },
         {
-          "name": "vCISO",
-          "blurb": "Security as an ongoing function: risk management, periodic reviews, and a security lead without a full-time hire."
+          "name": "A security lead, without the salary",
+          "blurb": "Someone accountable for security every month: watching the risks, deciding what matters, answering to you. The role a large company fills with a full-time hire."
         }
       ]
     },
@@ -713,7 +713,7 @@
         },
         {
           "title": "Operation & evolution",
-          "body": "We don't deliver and disappear: we monitor, fix, and evolve the software on a monthly retainer."
+          "body": "We don't deliver and disappear: we monitor, fix, and evolve the software on a a set number of hours each month."
         }
       ]
     },
@@ -723,16 +723,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "Discovery Sprint",
-          "blurb": "Fixed price: we understand the problem, prototype the solution, and deliver a plan with scope and budget. You decide on facts."
+          "name": "The plan first",
+          "blurb": "Fixed price. We understand the problem, build a rough working version you can click through, and hand you a plan with scope and cost. Then you decide, knowing exactly what you are buying."
         },
         {
-          "name": "Project",
-          "blurb": "Defined-scope build with biweekly milestones and working demos — you see real progress, not progress reports."
+          "name": "The build",
+          "blurb": "An agreed scope, built in two-week steps. At the end of each one you use what exists so far — progress you can click on, not a status report."
         },
         {
-          "name": "Evolution Retainer",
-          "blurb": "Monthly hours to operate, improve, and extend your software with the same team that built it."
+          "name": "Support and improvements",
+          "blurb": "A set number of hours each month to run, fix and extend what we built, with the same people who built it. No handover to a stranger."
         }
       ]
     },
@@ -744,7 +744,7 @@
         },
         {
           "q": "How do I know it won't become a never-ending project?",
-          "a": "The discovery sprint defines scope and budget before serious code gets written, and the project moves in biweekly milestones with working demos. If something drifts, you see it in two weeks — not six months."
+          "a": "The planning stage defines scope and budget before serious code gets written, and the project moves in biweekly milestones with working demos. If something drifts, you see it in two weeks — not six months."
         },
         {
           "q": "Do I own the code?",
@@ -752,7 +752,7 @@
         },
         {
           "q": "What happens after delivery?",
-          "a": "Software needs operation: dependencies to update, bugs to fix, improvements to prioritize. That's what the evolution retainer is for — or we train your team to run it."
+          "a": "Software needs operation: dependencies to update, bugs to fix, improvements to prioritize. That's what the monthly support and improvements is for — or we train your team to run it."
         }
       ]
     },
@@ -804,9 +804,9 @@
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Commercial & customer success",
-        "bio": "Customer Success Manager at HubSpot and a business administration graduate, with 10+ years in client relationships: understanding the business, driving adoption, and keeping accounts healthy over time. Previously a commercial advisor at Bancolombia. At Novieri she owns the relationship end to end — the proposal, the follow-through, and making sure what we ship actually gets used.",
-        "photoAlt": "Sylvana Nova, co-founder, commercial and customer success"
+        "role": "Client relationships and delivery",
+        "bio": "More than ten years alongside clients, from the first conversation to the years after the sale: understanding how a business really runs, agreeing what is worth doing, and staying to see that it works. A business administration graduate. At Novieri she is the person you talk to — she scopes the case with you, keeps the follow-through honest, and makes sure what we deliver is actually used, not just installed.",
+        "photoAlt": "Sylvana Nova, co-founder, client relationships and delivery"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
@@ -856,7 +856,8 @@
     "booking": {
       "title": "Prefer to just book a time?",
       "body": "Pick a 30-minute slot with the founders. No strings attached.",
-      "fallback": "Online booking is coming soon. In the meantime, write to {email} and we'll coordinate by email."
+      "fallback": "Online booking is coming soon. In the meantime, write to {email} and we'll coordinate by email.",
+      "button": "Open the booking calendar"
     },
     "aside": {
       "whatsappLabel": "Message us on WhatsApp",
@@ -1348,7 +1349,7 @@
           },
           {
             "title": "Operated, not abandoned",
-            "body": "Hosting, security, changes, and continuous improvements under one retainer — the site evolves with you."
+            "body": "Hosting, security, changes, and continuous improvements under one monthly fee — the site evolves with you."
           }
         ],
         "built": {

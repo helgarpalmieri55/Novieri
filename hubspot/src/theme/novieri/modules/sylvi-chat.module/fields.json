@@ -1,5 +1,15 @@
 [
   {
+    "name": "mark",
+    "label": "Logo mark",
+    "type": "image",
+    "default": {
+      "src": "../../images/novieri-isotipo-blanco-256px.png",
+      "alt": ""
+    },
+    "help_text": "White cut of the isotipo. It sits on the plum button and on the dark panel header, so it has to be the white one."
+  },
+  {
     "name": "assistant_name",
     "label": "Assistant name",
     "type": "text",
@@ -12,11 +22,63 @@
     "default": "Sylvi · Novieri assistant"
   },
   {
+    "name": "title_es",
+    "label": "Panel title (Spanish)",
+    "type": "text",
+    "default": "Sylvi · asistente de Novieri"
+  },
+  {
     "name": "greeting",
     "label": "Greeting",
     "type": "text",
-    "default": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, solutions or how we work.",
+    "default": "Hi — I'm Sylvi. Tell me what's slowing your operation down and I'll tell you whether we're the right people for it.",
     "allow_new_line": true
+  },
+  {
+    "name": "greeting_es",
+    "label": "Greeting (Spanish)",
+    "type": "text",
+    "default": "Hola, soy Sylvi. Cuéntame qué está frenando tu operación y te digo si somos las personas indicadas para resolverlo.",
+    "allow_new_line": true
+  },
+  {
+    "name": "starters",
+    "label": "Opening questions",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 4,
+      "default": 3
+    },
+    "help_text": "Shown as chips under the greeting until the visitor writes something. Keep them short. One row per question, each with both languages.",
+    "default": [
+      {
+        "question": "What could you automate for us?",
+        "question_es": "¿Qué nos podrían automatizar?"
+      },
+      {
+        "question": "How does managed IT work?",
+        "question_es": "¿Cómo funciona el IT administrado?"
+      },
+      {
+        "question": "What does a project cost?",
+        "question_es": "¿Cuánto cuesta un proyecto?"
+      }
+    ],
+    "children": [
+      {
+        "name": "question",
+        "label": "Question",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "name": "question_es",
+        "label": "Question (Spanish)",
+        "type": "text",
+        "default": ""
+      }
+    ]
   },
   {
     "name": "placeholder",
@@ -25,10 +87,22 @@
     "default": "Type your question…"
   },
   {
+    "name": "placeholder_es",
+    "label": "Input placeholder (Spanish)",
+    "type": "text",
+    "default": "Escribe tu pregunta…"
+  },
+  {
     "name": "open_label",
     "label": "Open button label (screen readers)",
     "type": "text",
     "default": "Open the chat with Sylvi"
+  },
+  {
+    "name": "open_label_es",
+    "label": "Open button label (Spanish)",
+    "type": "text",
+    "default": "Abrir el chat con Sylvi"
   },
   {
     "name": "close_label",
@@ -37,10 +111,22 @@
     "default": "Close the chat"
   },
   {
+    "name": "close_label_es",
+    "label": "Close button label (Spanish)",
+    "type": "text",
+    "default": "Cerrar el chat"
+  },
+  {
     "name": "send_label",
     "label": "Send button label (screen readers)",
     "type": "text",
     "default": "Send"
+  },
+  {
+    "name": "send_label_es",
+    "label": "Send button label (Spanish)",
+    "type": "text",
+    "default": "Enviar"
   },
   {
     "name": "error_text",
@@ -50,10 +136,24 @@
     "allow_new_line": true
   },
   {
+    "name": "error_text_es",
+    "label": "Error message (Spanish)",
+    "type": "text",
+    "default": "No pude responder en este momento. Inténtalo de nuevo o escríbenos desde la página de contacto.",
+    "allow_new_line": true
+  },
+  {
     "name": "limit_text",
     "label": "Rate-limit message",
     "type": "text",
     "default": "You've reached the message limit for now. Write to us from the contact page and a person will reply.",
+    "allow_new_line": true
+  },
+  {
+    "name": "limit_text_es",
+    "label": "Rate-limit message (Spanish)",
+    "type": "text",
+    "default": "Has llegado al límite de mensajes por ahora. Escríbenos desde la página de contacto y te responde una persona.",
     "allow_new_line": true
   },
   {

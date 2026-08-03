@@ -568,8 +568,10 @@ if (!dryRun && (!only || only === slugFor("about"))) {
 /**
  * The contact form, found by the name it carries in Marketing > Forms rather
  * than by GUID, so rebuilding the form does not leave a dead reference here.
+ * One per language: a HubSpot form has a single language, and /contacto was
+ * rendering English labels over Spanish page copy.
  */
-const CONTACT_FORM = "Website Contact";
+const CONTACT_FORM = locale === "es" ? "Website Contact · ES" : "Website Contact";
 let contactFormGuid = "";
 if (!dryRun && (!only || only === slugFor("contact"))) {
   const forms = await api(`/marketing/v3/forms?${new URLSearchParams({ limit: "100" })}`);
@@ -628,6 +630,7 @@ const PAGES = {
       body: {
         title: t.contact.booking.title,
         intro: t.contact.booking.body,
+        button_text: t.contact.booking.button,
         meetings_url: "https://meetings.hubspot.com/helgar-palmieri",
         fallback: t.contact.booking.fallback.replace("{email}", VARS.email),
       },
