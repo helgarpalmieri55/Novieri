@@ -4,7 +4,10 @@
   "config": {
     "entrypoint": "/app/functions/diagnose.js",
     "secretKeys": [
-      "ANTHROPIC_API_KEY"
+      "ANTHROPIC_API_KEY",
+      "CHAT_SECRET",
+      "RATE_LIMIT_TABLE_ID",
+      "CONTACT_EMAIL"
     ],
     "endpoint": {
       "path": "diagnose",

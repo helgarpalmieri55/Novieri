@@ -4,7 +4,9 @@
   "config": {
     "entrypoint": "/app/functions/chat.js",
     "secretKeys": [
-      "ANTHROPIC_API_KEY"
+      "ANTHROPIC_API_KEY",
+      "CHAT_SECRET",
+      "RATE_LIMIT_TABLE_ID"
     ],
     "endpoint": {
       "path": "chat",

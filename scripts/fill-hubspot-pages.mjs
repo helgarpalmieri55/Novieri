@@ -510,7 +510,7 @@ function diagnosticWidgets() {
     },
     diagnostic_quiz: {
       body: {
-        endpoint: "/hs/serverless/api/novieri_diagnose",
+        endpoint: "/hs/serverless/diagnose",
         questions: d.questions.map((q) => ({
           question_text: q.q,
           options: q.options.map((o) => ({ option_text: o.v, option_weight: o.w })),
