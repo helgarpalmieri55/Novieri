@@ -33,9 +33,25 @@
         <p class="mt-4 max-w-[34ch] text-small text-ink-muted">{{ f_description }}</p>
       </div>
 
+      {# The Spanish column titles are a field an editor has to remember to
+         fill, and it was not filled — so a Spanish page carried "Services",
+         "About", "Contact" under Spanish links. This is a last resort for the
+         handful of words these columns actually use, not a translator: an
+         unrecognised title still falls back to the English one. #}
+      {% set es_titles = {
+        "services": "servicios", "solutions": "soluciones", "about": "nosotros",
+        "company": "empresa", "contact": "contacto", "legal": "legal",
+        "products": "productos", "resources": "recursos"
+      } %}
       {% for column in module.columns %}
         {% set col_title = column.column_title %}
-        {% if is_es and column.column_title_es %}{% set col_title = column.column_title_es %}{% endif %}
+        {% if is_es %}
+          {% if column.column_title_es %}
+            {% set col_title = column.column_title_es %}
+          {% elif es_titles[column.column_title|lower] %}
+            {% set col_title = es_titles[column.column_title|lower] %}
+          {% endif %}
+        {% endif %}
         <nav class="footer-links" aria-label="{{ col_title|escape_attr }}">
           <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ col_title }}</h2>
           {# menu(), not {% menu %}, and per language — see site-header. #}

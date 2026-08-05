@@ -5,17 +5,38 @@
    decides whether to show it. Mounting it after hydration made this panel the
    largest paint on mobile and dragged LCP past 6s. #}
 
+{# One global banner for both languages, so every string has a Spanish twin.
+   It was English on the Spanish pages, and consent that is not understood is
+   not informed consent. #}
+{% set is_es = html_lang == "es" %}
+{% set c_dialog = module.dialog_label %}
+{% set c_title = module.title %}
+{% set c_body = module.body_text %}
+{% set c_accept = module.accept %}
+{% set c_reject = module.reject %}
+{% set c_more = module.more_label %}
+{% set c_href = module.more_link.url.href %}
+{% if is_es %}
+  {% if module.dialog_label_es %}{% set c_dialog = module.dialog_label_es %}{% endif %}
+  {% if module.title_es %}{% set c_title = module.title_es %}{% endif %}
+  {% if module.body_text_es %}{% set c_body = module.body_text_es %}{% endif %}
+  {% if module.accept_es %}{% set c_accept = module.accept_es %}{% endif %}
+  {% if module.reject_es %}{% set c_reject = module.reject_es %}{% endif %}
+  {% if module.more_label_es %}{% set c_more = module.more_label_es %}{% endif %}
+  {% if module.more_link_es.url.href %}{% set c_href = module.more_link_es.url.href %}{% endif %}
+{% endif %}
+
 <div
   class="cookie-banner fixed inset-x-3 bottom-3 z-50 mx-auto max-w-[46rem] rounded-2xl border border-line bg-white p-5 shadow-[0_8px_40px_rgba(22,18,29,0.16)] sm:inset-x-5 sm:bottom-5 sm:p-6"
   role="dialog"
-  aria-label="{{ module.dialog_label|escape_attr }}"
+  aria-label="{{ c_dialog|escape_attr }}"
 >
   <div aria-hidden="true" class="seam mb-4 -mt-1 rounded-full"></div>
-  <p class="font-display text-body font-semibold">{{ module.title }}</p>
-  <p class="mt-2 max-w-[62ch] text-small leading-relaxed text-ink-muted">{{ module.body_text }}</p>
+  <p class="font-display text-body font-semibold">{{ c_title }}</p>
+  <p class="mt-2 max-w-[62ch] text-small leading-relaxed text-ink-muted">{{ c_body }}</p>
   <div class="mt-5 flex flex-wrap items-center gap-3">
-    <button type="button" class="cookie-accept btn btn-primary px-5 py-2.5 text-small">{{ module.accept }}</button>
-    <button type="button" class="cookie-reject btn btn-ghost-light px-5 py-2.5 text-small">{{ module.reject }}</button>
-    <a href="{{ module.more_link.url.href }}" class="link-accent ml-auto text-small">{{ module.more_label }}</a>
+    <button type="button" class="cookie-accept btn btn-primary px-5 py-2.5 text-small">{{ c_accept }}</button>
+    <button type="button" class="cookie-reject btn btn-ghost-light px-5 py-2.5 text-small">{{ c_reject }}</button>
+    <a href="{{ c_href }}" class="link-accent ml-auto text-small">{{ c_more }}</a>
   </div>
 </div>

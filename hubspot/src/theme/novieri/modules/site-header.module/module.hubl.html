@@ -78,15 +78,16 @@
           {% endif %}
         </div>
       {% endfor %}
-    </nav>
 
-    {# HubSpot's tag, because it is the only thing that knows the translated
-       URL of the page you are on. Its markup is a bare <ul> that renders as
-       two words in a row, which is why nobody could find it; lang-toggle in
-       the stylesheet turns it into an EN | ES pair with the current language
-       marked. data-lang lets the CSS know which one that is. #}
-    <nav class="lang-toggle hidden md:flex" data-lang="{{ html_lang }}" aria-label="{{ module.label_language|escape_attr }}">
-      {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
+      {# In the menu itself, where it was before the move to HubSpot — off to
+         the side by the call to action, people looked for it and did not find
+         it. HubSpot's tag, because it is the only thing that knows the
+         translated URL of the page you are on; lang-toggle in the stylesheet
+         turns its bare list into an EN | ES pair, and data-lang tells the CSS
+         which of the two you are reading. #}
+      <span class="lang-toggle ml-1" data-lang="{{ html_lang }}" aria-label="{{ module.label_language|escape_attr }}">
+        {% language_switcher "language_switcher" display_mode="localized", label="Language switcher" %}
+      </span>
     </nav>
 
     {% if cta_text %}

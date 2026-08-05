@@ -6,10 +6,22 @@
     "default": "Cookie notice"
   },
   {
+    "name": "dialog_label_es",
+    "label": "Dialog label (Spanish)",
+    "type": "text",
+    "default": "Aviso de cookies"
+  },
+  {
     "name": "title",
     "label": "Title",
     "type": "text",
     "default": "Cookies on novieri.com"
+  },
+  {
+    "name": "title_es",
+    "label": "Title (Spanish)",
+    "type": "text",
+    "default": "Cookies en novieri.com"
   },
   {
     "name": "body_text",
@@ -19,10 +31,23 @@
     "allow_new_line": true
   },
   {
+    "name": "body_text_es",
+    "label": "Body (Spanish)",
+    "type": "text",
+    "default": "Usamos cookies propias, necesarias para que el sitio funcione y, solo si aceptas, estadísticas agregadas y cookies de HubSpot que relacionan tu consulta con el contenido que leíste. No usamos cookies de publicidad.",
+    "allow_new_line": true
+  },
+  {
     "name": "accept",
     "label": "Accept button",
     "type": "text",
     "default": "Accept all"
+  },
+  {
+    "name": "accept_es",
+    "label": "Accept button (Spanish)",
+    "type": "text",
+    "default": "Aceptar todas"
   },
   {
     "name": "reject",
@@ -31,10 +56,22 @@
     "default": "Necessary only"
   },
   {
+    "name": "reject_es",
+    "label": "Reject button (Spanish)",
+    "type": "text",
+    "default": "Solo las necesarias"
+  },
+  {
     "name": "more_label",
     "label": "Policy link label",
     "type": "text",
     "default": "Read the cookie policy"
+  },
+  {
+    "name": "more_label_es",
+    "label": "Link label (Spanish)",
+    "type": "text",
+    "default": "Leer la política de cookies"
   },
   {
     "name": "more_link",
@@ -46,5 +83,17 @@
         "href": "/legal/cookie-policy"
       }
     }
+  },
+  {
+    "name": "more_link_es",
+    "label": "Link (Spanish)",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": "/legal/politica-de-cookies"
+      }
+    },
+    "help_text": "The Spanish cookie policy. Without it the banner sends Spanish readers to the English one."
   }
 ]
