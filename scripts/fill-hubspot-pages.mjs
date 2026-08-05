@@ -46,6 +46,12 @@ const ES_SLUGS = {
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
   pricing: "precios",
+  industries: "industrias",
+  "industries/bpo": "industrias/bpo",
+  "industries/hospitality": "industrias/hoteleria",
+  "industries/education": "industrias/educacion",
+  "case-studies": "casos-de-exito",
+  "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
   "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
@@ -810,8 +816,144 @@ if (!dryRun && (!only || only === slugFor("contact"))) {
   console.log(`form   ${CONTACT_FORM} -> ${contactFormGuid}`);
 }
 
+/**
+ * The industries and insights pages: copy lives in content/, one file per
+ * page per language, written by whoever drafts it and read verbatim here.
+ * Slot numbers mirror the module order each template declares.
+ */
+const readContent = (p) => {
+  try {
+    return JSON.parse(readFileSync(`content/${p}.json`, "utf8"));
+  } catch {
+    return null;
+  }
+};
+
+const heroOf = (c) => ({
+  body: { eyebrow: c.hero.eyebrow, title: c.hero.title, intro: c.hero.intro, button_text: "", seam: true },
+});
+const ctaOf = (c) => ({
+  body: {
+    eyebrow: "",
+    title: c.cta.title,
+    subtitle: c.cta.subtitle,
+    button_text: c.cta.buttonText,
+    button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+  },
+});
+const cardsOf = (cards, linkLabel) => ({
+  body: {
+    eyebrow: "",
+    title: "",
+    cards: cards.map((k) => ({
+      card_name: k.title,
+      card_tagline: k.body,
+      card_link: { url: { type: "CONTENT", href: k.href } },
+    })),
+    link_label: linkLabel,
+  },
+});
+
+// industry template: hero, pains, help, note, faq, cta.
+function industryWidgets(c) {
+  return {
+    "main-module-2": heroOf(c),
+    "main-module-3": {
+      body: {
+        title: c.pains.title,
+        intro: "",
+        items: c.pains.items.map((i) => ({ item_title: i.title, item_body: i.body })),
+      },
+    },
+    "main-module-4": {
+      body: {
+        eyebrow: c.help.eyebrow,
+        title: c.help.title,
+        cards: c.help.cards.map((k) => ({
+          card_name: k.title,
+          card_tagline: k.body,
+          card_link: { url: { type: "CONTENT", href: k.href } },
+        })),
+        link_label: c.help.cards[0]?.linkLabel || "",
+      },
+    },
+    "main-module-5": { body: { title: c.note.title, intro: c.note.body, footnote: "" } },
+    "main-module-6": {
+      body: {
+        title: c.faq.title,
+        items: c.faq.items.map((i) => ({ question: i.q, answer: i.a })),
+        schema: true,
+      },
+    },
+    "main-module-7": ctaOf(c),
+  };
+}
+
+// hub-index template: hero, cards, cta.
+function hubIndexWidgets(c) {
+  return {
+    "main-module-2": heroOf(c),
+    "main-module-3": cardsOf(c.cards, c.cards[0]?.linkLabel || ""),
+    "main-module-4": ctaOf(c),
+  };
+}
+
+// case-study template: hero, stats, challenge, solution, results, cta.
+function caseStudyWidgets(c) {
+  return {
+    "main-module-2": heroOf(c),
+    "main-module-3": { body: { stats: c.stats.map((s) => ({ value: s.value, stat_label: s.label })) } },
+    "main-module-4": { body: { eyebrow: "", title: c.challenge.title, content: c.challenge.body } },
+    "main-module-5": { body: { eyebrow: "", title: c.solution.title, content: c.solution.body } },
+    "main-module-6": {
+      body: {
+        title: c.results.title,
+        intro: "",
+        items: c.results.items.map((i) => ({ item_title: i.title, item_body: i.body })),
+      },
+    },
+    "main-module-7": ctaOf(c),
+  };
+}
+
+/** slug -> widgets, for whichever content files exist in this checkout. */
+function contentPages() {
+  const out = {};
+  if (locale === "es") {
+    for (const [file, slug] of [
+      ["industries/es-bpo", "industrias/bpo"],
+      ["industries/es-hoteleria", "industrias/hoteleria"],
+      ["industries/es-educacion", "industrias/educacion"],
+      ["industries/es-restaurantes", "industrias/restaurantes"],
+      ["industries/es-pymes", "industrias/pymes"],
+    ]) {
+      const c = readContent(file);
+      if (c) out[slug] = industryWidgets(c);
+    }
+    const ix = readContent("industries/es-index");
+    if (ix) out["industrias"] = hubIndexWidgets(ix);
+    const cx = readContent("case-studies/index");
+    if (cx) out["casos-de-exito"] = hubIndexWidgets(cx.es);
+    const c1 = readContent("case-studies/restaurant-whatsapp");
+    if (c1) out["casos-de-exito/restaurante-whatsapp-ia"] = caseStudyWidgets(c1.es);
+  } else {
+    for (const s of ["bpo", "hospitality", "education", "regulated"]) {
+      const c = readContent(`industries/en-${s}`);
+      if (c) out[`industries/${s}`] = industryWidgets(c);
+    }
+    const ix = readContent("industries/en-index");
+    if (ix) out["industries"] = hubIndexWidgets(ix);
+    const cx = readContent("case-studies/index");
+    if (cx) out["case-studies"] = hubIndexWidgets(cx.en);
+    const c1 = readContent("case-studies/restaurant-whatsapp");
+    if (c1) out["case-studies/restaurant-whatsapp-ai"] = caseStudyWidgets(c1.en);
+  }
+  return out;
+}
+
 /** slug -> the widgets to write. */
 const PAGES = {
+  ...contentPages(),
   [locale === "es" ? "es" : ""]: homeWidgets(),
   [slugFor("self-diagnosis")]: diagnosticWidgets(),
   [slugFor("services")]: servicesIndexWidgets(),

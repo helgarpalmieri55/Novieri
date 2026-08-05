@@ -1,0 +1,13 @@
+{# A titled run of paragraphs on the light background — the case-study
+   narrative sections. Content is HTML (p, ul, a) styled by article-prose;
+   dropping raw paragraphs into split-note's single <p> was the alternative,
+   and nested <p> tags are how you find out which browsers repair markup. #}
+<section class="py-[clamp(2.25rem,5vh,3.5rem)]">
+  <div class="container-site grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-4 lg:grid-cols-[5fr_7fr]">
+    <div class="reveal">
+      {% if module.eyebrow %}<p class="idx-mono lowercase text-gold-deep">{{ module.eyebrow }}</p>{% endif %}
+      <h2 class="mt-2 max-w-[16ch]">{{ module.title }}</h2>
+    </div>
+    <div class="reveal article-prose max-w-[62ch]" style="--rd: 100ms">{{ module.content }}</div>
+  </div>
+</section>

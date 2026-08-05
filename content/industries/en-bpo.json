@@ -1,0 +1,85 @@
+{
+  "slug": "bpo",
+  "lang": "en",
+  "name": "BPOs & contact centers",
+  "htmlTitle": "IT for BPOs & contact centers — Novieri",
+  "metaDescription": "Nearshore IT for BPOs and contact centers, from founders who run technology for a 24/7 multinational BPO. Managed IT, AI, and PCI / SOC 2 readiness.",
+  "hero": {
+    "eyebrow": "industries",
+    "title": "IT for contact centers, from people who run one.",
+    "intro": "Our CTO runs technology for a 24/7 multinational BPO today — the seats, the SLAs, the client audits, all of it. Novieri brings that operating experience to your floor, on US Eastern hours, at nearshore rates."
+  },
+  "pains": {
+    "eyebrow": "the reality",
+    "title": "What keeps a contact center operation up at night.",
+    "items": [
+      {
+        "title": "Downtime is measured in seats",
+        "body": "When the network or a critical app goes down, every minute is agents sitting idle and SLAs slipping in front of your client. There is no quiet hour to fail in."
+      },
+      {
+        "title": "Your clients audit you",
+        "body": "Enterprise clients send security questionnaires and demand PCI DSS or SOC 2 evidence before — and after — they sign. A weak answer costs you the account."
+      },
+      {
+        "title": "Constant onboarding and offboarding",
+        "body": "Agent turnover means accounts, endpoints, and access are created and revoked every week. Done by hand, it's slow going in and dangerous going out."
+      },
+      {
+        "title": "24/7 operations, 9-to-5 support",
+        "body": "The campaign runs nights and weekends, but most IT providers don't. A ticket opened Saturday at 3 AM can't wait until Monday's standup."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "how we help",
+    "title": "Three ways we take the load.",
+    "cards": [
+      {
+        "title": "Managed IT built for the floor",
+        "body": "Helpdesk, Microsoft 365, network and firewall, patching, and monitoring — run to the standard a 1,000-seat operation demands, with response times agreed in writing.",
+        "href": "/services/managed-it",
+        "linkLabel": "See managed IT"
+      },
+      {
+        "title": "Compliance your clients will check",
+        "body": "PCI DSS and SOC 2 readiness led by someone who has taken both programs end to end inside a real contact center — gap assessment, remediation, and evidence that holds up.",
+        "href": "/services/cybersecurity-compliance",
+        "linkLabel": "See cybersecurity & compliance"
+      },
+      {
+        "title": "AI where it pays in a BPO",
+        "body": "Automating QA sampling, agent onboarding paperwork, reporting, and internal support — the repetitive work around the calls, not a gimmick on top of them.",
+        "href": "/services/ai-automation",
+        "linkLabel": "See AI & automation"
+      }
+    ]
+  },
+  "note": {
+    "title": "We're not guessing about your industry.",
+    "body": "Most IT providers have read about contact centers. Our founder is the CTO of one — a multinational BPO that runs 24/7, where he has led PCI DSS compliance and a SOC 2 program end to end and supported operations of over a thousand people. That means we already know what a client audit feels like, what a down dialer costs, and why offboarding matters as much as onboarding. You skip the part where you educate your vendor."
+  },
+  "faq": {
+    "eyebrow": "faq",
+    "title": "What BPO operators ask us.",
+    "items": [
+      {
+        "q": "Our clients send long security questionnaires. Can you help us answer them?",
+        "a": "Yes — and more importantly, we help you make the answers true. We harden the infrastructure, put the controls and evidence in place, and then the questionnaire becomes a description of what you actually do, not a creative writing exercise."
+      },
+      {
+        "q": "Do you actually cover our operating hours?",
+        "a": "Our working day overlaps US Eastern hours almost hour for hour, and automated monitoring watches your infrastructure around the clock, with alerts handled within your plan's agreed response times. Severity matters: a down site gets attention in minutes, not on the next business day."
+      },
+      {
+        "q": "We have an internal IT team. Do you replace them?",
+        "a": "Not necessarily. In many BPOs we take a defined layer — security and compliance, monitoring, or the infrastructure baseline — so your internal team can focus on the campaigns. Where there's no team yet, we are the team. Both models work; the diagnostic tells us which fits."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Talk to someone who has run your kind of operation.",
+    "subtitle": "A 30-minute call with the founders — bring your seat count, your clients' requirements, and your current pain, and we'll tell you frankly what we'd do first.",
+    "buttonText": "Book a call"
+  }
+}

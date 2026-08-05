@@ -1,0 +1,116 @@
+{
+  "en": {
+    "slug": "restaurant-whatsapp-ai",
+    "name": "Restaurant WhatsApp AI",
+    "htmlTitle": "Case study: a 10-person restaurant automates WhatsApp — Novieri",
+    "metaDescription": "How a 10-person restaurant put our WhatsApp AI assistant to work: replies in seconds, around the clock — and sales up about 20%, as the owner reports.",
+    "hero": {
+      "eyebrow": "case study",
+      "title": "The restaurant that stopped losing sales on WhatsApp.",
+      "intro": "A 10-person restaurant was losing sales because WhatsApp replies were slow — and keeping up meant someone watching the phone all day. Novieri's WhatsApp AI assistant, connected in real time to the restaurant's management software, now answers in seconds at any hour. The owner reports sales up around 20%."
+    },
+    "stats": [
+      {
+        "value": "+20%",
+        "label": "sales, as reported by the owner"
+      },
+      {
+        "value": "seconds",
+        "label": "to a first reply, instead of waiting on a busy team"
+      },
+      {
+        "value": "24/7",
+        "label": "the assistant answers, day and night"
+      }
+    ],
+    "challenge": {
+      "title": "Slow replies, lost sales",
+      "body": "<p>Orders and reservations came in over WhatsApp, but replying depended on whoever could grab the phone between tables. When the restaurant got busy — exactly when the messages piled up — answers slowed down, and some customers simply stopped waiting. The owner knew sales were being lost in that gap.</p><p>The workaround was worse: on a team of ten, someone had to be watching WhatsApp all day. That's a full pair of hands tied to a phone — and it still didn't guarantee a fast answer at night or in the middle of a rush.</p>"
+    },
+    "solution": {
+      "title": "An assistant that answers — and acts",
+      "body": "<p>Novieri implemented its WhatsApp AI assistant — the same product we operate for restaurants and hotels — connected in real time to the restaurant's management software. The assistant holds a real conversation, answers from the restaurant's own information, and records orders and reservations directly in the system, not in a side chat someone has to copy over later.</p><p>It doesn't replace the team; it filters for it. When a conversation needs a person — a complaint, a special request, something it doesn't know — the assistant hands it over with the full history in view. The rest of the time, nobody has to be looking at the phone.</p>"
+    },
+    "results": {
+      "title": "What changed",
+      "items": [
+        {
+          "title": "Sales up about 20%",
+          "body": "The owner reports roughly 20% more sales since the assistant went live: orders that used to die waiting for a reply now get answered and recorded."
+        },
+        {
+          "title": "Replies in seconds, at any hour",
+          "body": "Messages that used to wait on a busy team now get a first answer in seconds, at peak hour or at midnight. The owner describes the service as roughly three times faster."
+        },
+        {
+          "title": "Nobody babysits the phone",
+          "body": "The team stopped taking turns watching WhatsApp. The assistant handles the routine, and a person steps in only when the conversation calls for one."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Losing sales on WhatsApp too?",
+      "subtitle": "Book a 30-minute demo and we'll show you the assistant running on a case like yours, no strings attached.",
+      "buttonText": "Book a demo"
+    },
+    "productHref": "/products/whatsapp-ai-assistant",
+    "productLinkLabel": "See the WhatsApp AI Assistant"
+  },
+  "es": {
+    "slug": "restaurante-whatsapp-ia",
+    "name": "Restaurante con IA en WhatsApp",
+    "htmlTitle": "Caso de éxito: un restaurante de 10 empleados automatiza WhatsApp — Novieri",
+    "metaDescription": "Un restaurante de 10 empleados puso a trabajar nuestro asistente de IA para WhatsApp: respuestas en segundos, 24/7, y ventas un 20 % arriba según el dueño.",
+    "hero": {
+      "eyebrow": "caso de éxito",
+      "title": "El restaurante que dejó de perder ventas por WhatsApp.",
+      "intro": "Un restaurante de 10 empleados perdía ventas porque las respuestas por WhatsApp tardaban — y mantenerse al día exigía tener a alguien pendiente del teléfono todo el día. El asistente de IA para WhatsApp de Novieri, conectado en tiempo real con el software de gestión del restaurante, hoy responde en segundos a cualquier hora. El dueño reporta ventas alrededor de un 20 % arriba."
+    },
+    "stats": [
+      {
+        "value": "+20 %",
+        "label": "en ventas, según reporta el dueño"
+      },
+      {
+        "value": "segundos",
+        "label": "para la primera respuesta, sin esperar a que alguien se desocupe"
+      },
+      {
+        "value": "24/7",
+        "label": "el asistente atiende, de día y de noche"
+      }
+    ],
+    "challenge": {
+      "title": "Respuestas lentas, ventas perdidas",
+      "body": "<p>Los pedidos y las reservas llegaban por WhatsApp, pero responder dependía de quien pudiera agarrar el teléfono entre mesa y mesa. Justo cuando el restaurante se llenaba — y los mensajes se acumulaban — las respuestas se demoraban, y algunos clientes sencillamente dejaban de esperar. El dueño sabía que en ese vacío se estaban perdiendo ventas.</p><p>La solución provisional era peor: en un equipo de diez personas, alguien tenía que estar pendiente de WhatsApp todo el día. Un par de manos completo amarrado a un teléfono — y aun así nadie garantizaba una respuesta rápida de noche o en plena hora pico.</p>"
+    },
+    "solution": {
+      "title": "Un asistente que responde — y actúa",
+      "body": "<p>Novieri implementó su asistente de IA para WhatsApp — el mismo producto que operamos para restaurantes y hoteles — conectado en tiempo real con el software de gestión del restaurante. El asistente conversa de verdad, responde con la información del propio restaurante y registra pedidos y reservas directamente en el sistema, no en un chat aparte que alguien tenga que pasar a mano después.</p><p>No reemplaza al equipo: lo filtra. Cuando una conversación necesita a una persona — un reclamo, una petición especial, algo que no sabe — el asistente la traspasa con todo el historial a la vista. El resto del tiempo, nadie tiene que estar mirando el teléfono.</p>"
+    },
+    "results": {
+      "title": "Qué cambió",
+      "items": [
+        {
+          "title": "Ventas un 20 % arriba",
+          "body": "El dueño reporta alrededor de un 20 % más de ventas desde que el asistente entró en operación: pedidos que antes morían esperando respuesta ahora se atienden y quedan registrados."
+        },
+        {
+          "title": "Respuestas en segundos, a toda hora",
+          "body": "Los mensajes que antes esperaban a que alguien se desocupara hoy reciben respuesta en segundos, en plena hora pico o a medianoche. El dueño describe la atención como unas tres veces más rápida."
+        },
+        {
+          "title": "Nadie pendiente del teléfono",
+          "body": "El equipo dejó de turnarse para vigilar WhatsApp. El asistente resuelve lo rutinario, y una persona entra solo cuando la conversación lo pide."
+        }
+      ]
+    },
+    "cta": {
+      "title": "¿También pierdes ventas por WhatsApp?",
+      "subtitle": "Agenda una demo de 30 minutos y te mostramos el asistente funcionando en un caso como el tuyo, sin compromiso.",
+      "buttonText": "Agenda una demo"
+    },
+    "productHref": "/productos/asistente-ia-whatsapp",
+    "productLinkLabel": "Ver el Asistente de IA para WhatsApp"
+  }
+}

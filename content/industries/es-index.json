@@ -1,0 +1,48 @@
+{
+  "slug": "industrias",
+  "lang": "es",
+  "htmlTitle": "Industrias — Novieri",
+  "metaDescription": "IT e IA para BPO, restaurantes, hotelería, pymes y educación en Colombia — equipo senior en Barranquilla, automatización práctica y precios claros.",
+  "hero": {
+    "eyebrow": "industrias",
+    "title": "Hablamos tu industria, no solo nuestra tecnología.",
+    "intro": "Los mismos cinco servicios aterrizan distinto en un contact center que en un restaurante. Estas son las industrias donde ya conocemos el terreno: los sistemas, los puntos de dolor y qué conviene resolver primero."
+  },
+  "cards": [
+    {
+      "title": "BPO y contact centers",
+      "body": "IT y cumplimiento de fundadores que dirigen la tecnología de un BPO multinacional 24/7 — caídas, auditorías de clientes y rotación, manejadas por gente que las vive.",
+      "href": "/industrias/bpo",
+      "linkLabel": "IT para BPO"
+    },
+    {
+      "title": "Restaurantes",
+      "body": "Un asistente de IA que atiende tu WhatsApp: toma pedidos y reservas, entiende notas de voz y responde en segundos, incluso en hora pico.",
+      "href": "/industrias/restaurantes",
+      "linkLabel": "IA para restaurantes"
+    },
+    {
+      "title": "Hotelería",
+      "body": "Asistentes que responden a tus huéspedes 24/7 en español e inglés, empujan la reserva directa e IT que sostiene la operación del hotel.",
+      "href": "/industrias/hoteleria",
+      "linkLabel": "IA e IT para hoteles"
+    },
+    {
+      "title": "Pymes",
+      "body": "Tu departamento de IT sin tener que montarlo: soporte que responde, copias que sí restauran y automatización que devuelve horas — con precios publicados.",
+      "href": "/industrias/pymes",
+      "linkLabel": "IT para pymes"
+    },
+    {
+      "title": "Educación",
+      "body": "IT administrado, seguridad para datos de estudiantes y automatización para la secretaría — a la medida del presupuesto y del calendario académico.",
+      "href": "/industrias/educacion",
+      "linkLabel": "IT para educación"
+    }
+  ],
+  "cta": {
+    "title": "¿No ves tu industria? Cuéntanos de ella.",
+    "subtitle": "Una llamada de 30 minutos basta para saber si entendemos tu operación lo suficiente para ayudar — y te lo decimos con franqueza en cualquier caso.",
+    "buttonText": "Agenda una llamada"
+  }
+}

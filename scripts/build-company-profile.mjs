@@ -52,6 +52,26 @@ const solutions = (m, label, lang) =>
 
 const contactEmail = process.env.CONTACT_EMAIL ?? "sales@novieri.com";
 /** The founders' public HubSpot meetings link, same one the contact page embeds. */
+/**
+ * The published price anchors, both currencies per row — the same data the
+ * pricing page renders. Sylvi may quote these and nothing else; a row priced
+ * for one market only says so instead of showing a blank.
+ */
+const prices = (m, label) =>
+  `${label}\n` +
+  m.pricing.groups
+    .map((g) =>
+      `${g.name}:\n` +
+      g.rows
+        .map((r) => {
+          const usd = r.price_usd ? `USD ${r.price_usd}` : "(solo Colombia / not offered in USD)";
+          const cop = r.price_cop ? `COP ${r.price_cop}` : "(solo EE. UU. / US market only)";
+          return `- ${r.service} — ${usd} · ${cop} ${r.unit}`.trim();
+        })
+        .join("\n"),
+    )
+    .join("\n");
+
 const meetingsUrl = "https://meetings.hubspot.com/helgar-palmieri";
 const how = Object.values(es.home.how.steps).map((s, i) => `${i + 1}. ${s.title}: ${s.body}`);
 
@@ -74,6 +94,9 @@ const text = [
   "",
   solutions(en, "## Solutions / Products (EN)", "en"),
   "",
+  prices(es, "## Precios publicados (rangos, antes de IVA) / Published price ranges"),
+  "El punto exacto dentro de cada rango depende de las necesidades del negocio; el número final llega con la propuesta. La página muestra COP o USD según la ubicación del visitante.",
+  "",
   "## Cómo trabajamos / How we work",
   how.join("\n"),
   "",
@@ -84,7 +107,10 @@ const text = [
   // The routes are HubSpot's, not the old Next.js export's — Sylvi was sending
   // people to /en/contact, which does not exist here.
   "- Página de contacto / contact page: /contacto (ES) · /contact (EN).",
-  "- Índice de productos / products index: /soluciones (ES) · /solutions (EN).",
+  "- Índice de productos / products index: /productos (ES) · /products (EN).",
+  "- Precios publicados / published pricing: /precios (ES) · /pricing (EN). Son rangos honestos; el número exacto llega con la propuesta. La moneda (COP o USD) se elige según la ubicación del visitante, con un selector en la página.",
+  "- Industrias / industries: /industrias (ES: bpo, restaurantes, hoteleria, pymes, educacion) · /industries (EN: bpo, hospitality, education, regulated).",
+  "- Casos de éxito / case studies: /casos-de-exito (ES) · /case-studies (EN). Los clientes permanecen anónimos salvo que autoricen lo contrario; cita solo los resultados publicados allí y atribúyelos al cliente.",
   "- Cuando menciones un producto que tiene página, enlaza la ruta que aparece arriba. Si no tiene página, descríbelo y ofrece la llamada — nunca inventes una URL.",
   "- Agenda directa de 30 minutos con los fundadores / direct 30-minute booking:",
   `  ${meetingsUrl}`,
@@ -94,7 +120,7 @@ const text = [
   "## Hechos clave / Key facts",
   "- El CTO ha liderado IT y sistemas de IA para operaciones de más de 1.000 personas, incluyendo cumplimiento PCI DSS y un programa SOC 2 de punta a punta.",
   "- Stack que opera: Microsoft 365, FortiGate, AWS, Python, React, Odoo, HubSpot, Power BI.",
-  "- No se publican precios; cada propuesta se conversa (paquetes con alcance definido).",
+  "- Los precios de referencia están publicados en /precios y /pricing como rangos que dependen de las necesidades del negocio. Puedes citarlos tal como aparecen allí; nunca inventes cifras que no estén publicadas, y el número final siempre llega con una propuesta.",
 ].join("\n");
 
 mkdirSync(dirname(OUT), { recursive: true });

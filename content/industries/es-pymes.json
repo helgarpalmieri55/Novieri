@@ -1,0 +1,85 @@
+{
+  "slug": "pymes",
+  "lang": "es",
+  "name": "Pymes",
+  "htmlTitle": "IT para pymes — Novieri",
+  "metaDescription": "Tu departamento de IT sin tener que montarlo: soporte, seguridad y automatización práctica para pymes, con equipo senior en Barranquilla y precios claros.",
+  "hero": {
+    "eyebrow": "industrias",
+    "title": "Tu empresa ya depende de la tecnología. Alguien tiene que responder por ella.",
+    "intro": "La facturación, el inventario, el correo, los computadores: todo corre sobre sistemas que hoy nadie administra de verdad. Te damos un departamento de IT con estándares de empresa grande, por una fracción de lo que cuesta montarlo — y con precios publicados."
+  },
+  "pains": {
+    "eyebrow": "la realidad",
+    "title": "Lo que vemos en casi todas las pymes.",
+    "items": [
+      {
+        "title": "El de sistemas es un favor, no un cargo",
+        "body": "Un conocido que ayuda cuando puede, o el empleado al que le tocó porque \"sabe de computadores\". Funciona hasta el día que no está — o que el problema le queda grande."
+      },
+      {
+        "title": "Copias de seguridad que nadie ha probado",
+        "body": "Existe una copia, en teoría. Pero nadie ha intentado restaurarla, y el día que se necesite no es el día para descubrir que no sirve."
+      },
+      {
+        "title": "La operación vive en Excel y en la cabeza de alguien",
+        "body": "Cuadres manuales, datos copiados entre pantallas, procesos que solo una persona sabe hacer. Cada mes se pierden horas en trabajo que una máquina haría sin quejarse."
+      },
+      {
+        "title": "Comprar tecnología a ciegas",
+        "body": "Licencias que nadie usa, equipos comprados por impulso, propuestas que no sabes evaluar. Sin alguien de confianza que entienda de esto, cada decisión es una apuesta."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "cómo ayudamos",
+    "title": "Tres formas de quitarte el peso.",
+    "cards": [
+      {
+        "title": "Tu departamento de IT, administrado",
+        "body": "Soporte que sí responde, Microsoft 365 atendido, copias de seguridad que se prueban con restauraciones reales y monitoreo permanente — por un precio fijo al mes.",
+        "href": "/servicios/it-administrado",
+        "linkLabel": "Ver IT administrado"
+      },
+      {
+        "title": "Automatización que devuelve horas",
+        "body": "Empezamos por la tarea que más tiempo se come — reportes, cuadres, respuestas repetidas — y la pasamos al software de punta a punta. Ves las horas recuperadas antes de decidir algo más grande.",
+        "href": "/servicios/ia-y-automatizacion",
+        "linkLabel": "Ver IA y automatización"
+      },
+      {
+        "title": "Alguien de confianza para decidir",
+        "body": "Qué comprar, qué arreglar, qué dejar quieto y cuánto cuesta de verdad — consultoría de alguien que ya tuvo que vivir con esas decisiones.",
+        "href": "/servicios/consultoria-it",
+        "linkLabel": "Ver consultoría IT"
+      }
+    ]
+  },
+  "note": {
+    "title": "No te vamos a vender lo que no necesitas.",
+    "body": "Una pyme no necesita todo lo que necesita un banco, y venderte de más es la forma más rápida de perderte como cliente. Por eso empezamos siempre por un diagnóstico de lo que ya tienes: lo que funciona se queda, lo urgente se arregla primero y lo demás espera su turno con prioridad y presupuesto. Publicamos precios de referencia para que sepas por dónde va la cosa antes de hablar con nosotros — y si un software de mercado resuelve tu caso, te lo decimos, porque sale más barato."
+  },
+  "faq": {
+    "eyebrow": "preguntas frecuentes",
+    "title": "Lo que nos preguntan los dueños de pymes.",
+    "items": [
+      {
+        "q": "¿Mi empresa no es muy pequeña para esto?",
+        "a": "Si tu operación depende del correo, la facturación y unos cuantos computadores, ya tienes tamaño para que una falla te cueste caro. Los planes se cobran por persona, así que el precio crece con la empresa — no al revés."
+      },
+      {
+        "q": "Ya tengo a alguien que me ayuda cuando algo falla. ¿Qué cambia?",
+        "a": "Que tu operación deja de depender de que esa persona esté disponible. Nosotros dejamos todo documentado, monitoreado y con el respaldo de un equipo, y respondemos con tiempos acordados por escrito — no con favores."
+      },
+      {
+        "q": "¿Atienden en sitio o todo es remoto?",
+        "a": "La operación diaria es remota porque así se resuelve más rápido, y agendamos visitas en sitio en Barranquilla cuando el caso lo requiere: cableado, instalaciones, cambios de red."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Empieza por saber dónde estás parado.",
+    "subtitle": "Una llamada de 30 minutos — o el autodiagnóstico gratuito de tres minutos — y te decimos con franqueza qué arreglaríamos primero.",
+    "buttonText": "Agenda una llamada"
+  }
+}

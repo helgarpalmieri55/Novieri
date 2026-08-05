@@ -1,0 +1,85 @@
+{
+  "slug": "educacion",
+  "lang": "es",
+  "name": "Educación",
+  "htmlTitle": "IT para colegios y educación — Novieri",
+  "metaDescription": "IT administrado, seguridad y automatización para colegios e institutos: equipo senior en Barranquilla, a la medida de un presupuesto educativo.",
+  "hero": {
+    "eyebrow": "industrias",
+    "title": "Cientos de equipos, plataformas y familias — y casi nadie en sistemas.",
+    "intro": "Un colegio o un instituto hoy corre sobre tecnología: salas de cómputo, plataformas académicas, comunicación con las familias. Casi siempre con una sola persona de sistemas, o ninguna. Le ponemos a tu institución un equipo senior, a la medida de un presupuesto educativo."
+  },
+  "pains": {
+    "eyebrow": "la realidad",
+    "title": "Lo que enfrenta la tecnología en una institución educativa.",
+    "items": [
+      {
+        "title": "Una persona para todo el campus",
+        "body": "El coordinador de sistemas — o el profesor al que le tocó — administra computadores, cuentas, wifi y plataformas para toda la institución. Todo funciona, hasta el día que no."
+      },
+      {
+        "title": "Los picos llegan todos a la vez",
+        "body": "Matrículas, la primera semana de clases, la entrega de notas: los momentos en que familias y docentes más necesitan los sistemas son justo cuando más se caen."
+      },
+      {
+        "title": "La secretaría repite las mismas respuestas",
+        "body": "Requisitos, fechas, pagos, estado de la matrícula. Las mismas preguntas por WhatsApp y por teléfono, cientos de veces, mientras el trabajo de fondo espera."
+      },
+      {
+        "title": "Datos de menores, defensas de oficina",
+        "body": "Notas, historiales y datos de familias son información sensible protegida por ley, y suele estar detrás de contraseñas compartidas y copias que nadie prueba."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "cómo ayudamos",
+    "title": "Tres formas de quitarte el peso.",
+    "cards": [
+      {
+        "title": "Tu área de sistemas, administrada",
+        "body": "Soporte para docentes y administrativos, gestión de equipos y cuentas, red y wifi, copias probadas y monitoreo — un área de IT sin tener que contratarla.",
+        "href": "/servicios/it-administrado",
+        "linkLabel": "Ver IT administrado"
+      },
+      {
+        "title": "Automatización para la secretaría",
+        "body": "Asistentes que responden las preguntas de siempre con la información de tu institución, y automatizaciones para matrículas, certificados y reportes. Horas devueltas cada semana.",
+        "href": "/servicios/ia-y-automatizacion",
+        "linkLabel": "Ver IA y automatización"
+      },
+      {
+        "title": "Seguridad para datos que no son tuyos",
+        "body": "MFA, accesos con privilegios mínimos, gestión de vulnerabilidades y copias con restauraciones reales — la base para custodiar datos de menores como corresponde.",
+        "href": "/servicios/ciberseguridad-y-cumplimiento",
+        "linkLabel": "Ver ciberseguridad y cumplimiento"
+      }
+    ]
+  },
+  "note": {
+    "title": "Hablemos claro del presupuesto educativo.",
+    "body": "Sabemos que una institución educativa no compra tecnología como un banco: el presupuesto es anual, apretado y vigilado. Por eso empezamos por lo esencial bien hecho, con precios de referencia publicados para que puedas planear antes de hablar con nosotros. Y muchas veces la primera recomendación es dejar de pagar: licencias que nadie usa y herramientas duplicadas suelen financiar lo que de verdad hace falta. Los trabajos que interrumpen se hacen en vacaciones y fuera de horario — el calendario académico manda."
+  },
+  "faq": {
+    "eyebrow": "preguntas frecuentes",
+    "title": "Lo que nos preguntan los rectores y directores.",
+    "items": [
+      {
+        "q": "Ya tenemos coordinador de sistemas. ¿Dónde entran ustedes?",
+        "a": "Casi siempre al lado, no en lugar. Tomamos las capas difíciles de cubrir con una sola persona — monitoreo, seguridad, copias, escalamientos — y el coordinador queda libre para lo que da la cara al aula. Además deja de ser el único que sabe cómo funciona todo."
+      },
+      {
+        "q": "¿Cómo manejan los datos de los estudiantes?",
+        "a": "Como los datos sensibles que son: accesos con privilegios mínimos, MFA, cifrado y acuerdos claros de qué información va a dónde, en línea con la ley colombiana de protección de datos. Para funciones de IA definimos desde el día uno qué datos pueden salir de tus sistemas y cuáles no."
+      },
+      {
+        "q": "¿Pueden hacer cambios grandes sin interrumpir las clases?",
+        "a": "Sí — es sobre todo disciplina de calendario. Lo disruptivo va a vacaciones y horarios sin clase, los cambios se hacen por etapas y con reversa, y el plan del proyecto se arma alrededor del calendario académico, no al revés."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Revisemos tu institución antes de que empiece el próximo semestre.",
+    "subtitle": "Una llamada de 30 minutos para entender tu operación y decirte con franqueza qué arreglaríamos primero — y qué puede esperar.",
+    "buttonText": "Agenda una llamada"
+  }
+}

@@ -1,0 +1,50 @@
+<!--
+  templateType: blog_listing_page
+  isAvailableForNewContent: true
+  label: Novieri — blog listing
+-->
+{#
+  The Insights index: date, title, first-paragraph summary, in a list —
+  no thumbnail grid to feed, because there are no stock photos anywhere else
+  on this site either. Summaries come from the post's meta description so
+  the listing and the search snippet tell the same story.
+#}
+{% extends "./partials/base.hubl.html" %}
+{% block body %}
+  <section class="relative overflow-hidden">
+    <div class="container-site section-pad">
+      <p class="reveal idx-mono lowercase text-gold-deep">{{ group.public_title || "insights" }}</p>
+      <h1 class="reveal mt-3 max-w-[20ch]" style="--rd: 60ms">{{ group.html_title || content.html_title }}</h1>
+      {% if group.description %}
+        <p class="reveal mt-5 max-w-[56ch] text-lead text-ink-muted" style="--rd: 120ms">{{ group.description }}</p>
+      {% endif %}
+    </div>
+  </section>
+  <section class="container-site pb-[clamp(3rem,8vh,6rem)]">
+    <div class="overflow-hidden rounded-2xl border border-line">
+      {% for post in contents %}
+        <a href="{{ post.absolute_url }}"
+           class="group grid gap-x-8 gap-y-1 px-6 py-6 transition-colors hover:bg-mist sm:grid-cols-[auto_1fr] sm:items-baseline{% if not loop.first %} border-t border-line{% endif %}">
+          <span class="idx-mono lowercase text-ink-faint sm:w-28">{{ post.publish_date|datetimeformat("%b %e, %Y") }}</span>
+          <span>
+            <span class="block text-lead font-medium text-ink group-hover:text-plum">{{ post.name }}</span>
+            {% if post.meta_description %}
+              <span class="mt-1 block max-w-[70ch] text-small text-ink-muted">{{ post.meta_description }}</span>
+            {% endif %}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+    {% if last_page_num > 1 %}
+      <nav class="mt-8 flex items-center gap-6" aria-label="Pagination">
+        {% if current_page_num > 1 %}
+          <a href="{{ blog_page_link(current_page_num - 1) }}" class="idx-mono lowercase text-plum hover:text-gold-deep">&larr;</a>
+        {% endif %}
+        <span class="idx-mono lowercase text-ink-faint">{{ current_page_num }} / {{ last_page_num }}</span>
+        {% if current_page_num < last_page_num %}
+          <a href="{{ blog_page_link(current_page_num + 1) }}" class="idx-mono lowercase text-plum hover:text-gold-deep">&rarr;</a>
+        {% endif %}
+      </nav>
+    {% endif %}
+  </section>
+{% endblock body %}

@@ -34,6 +34,8 @@ on:
           - create-all
           - retemplate
           - rename-products
+          - blog-list
+          - blog-sync
       slug:
         description: "Slug to verify (verify mode only)"
         default: "about"
@@ -73,6 +75,11 @@ jobs:
             # One-time: /solutions -> /products (and /soluciones -> /productos)
             # with a 301 behind each old path. Safe to re-run.
             rename-products) node scripts/create-hubspot-pages.mjs --rename-products ;;
+            # The Insights posts. blog-list discovers blogs and their posts;
+            # blog-sync upserts content/insights/*.json into the first blog
+            # (both languages, paired into language groups) and publishes.
+            blog-list)     node scripts/manage-hubspot-blog.mjs --list ;;
+            blog-sync)     node scripts/manage-hubspot-blog.mjs --sync ;;
             # Per-page copy from messages/*.json into each page's modules.
             fill-content)  node scripts/fill-hubspot-pages.mjs ;;
             fill-one)      node scripts/fill-hubspot-pages.mjs --only='${{ inputs.slug }}' ;;

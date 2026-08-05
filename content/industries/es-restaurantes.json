@@ -1,0 +1,85 @@
+{
+  "slug": "restaurantes",
+  "lang": "es",
+  "name": "Restaurantes",
+  "htmlTitle": "IA e IT para restaurantes — Novieri",
+  "metaDescription": "Un asistente de IA que atiende tu WhatsApp: toma pedidos y reservas, entiende notas de voz y responde en segundos, operado por Novieri desde Barranquilla.",
+  "hero": {
+    "eyebrow": "industrias",
+    "title": "Tu WhatsApp atiende solo, incluso en hora pico.",
+    "intro": "En Colombia el restaurante se atiende por WhatsApp — y justo cuando más escriben es cuando nadie puede contestar. Operamos un asistente de IA que conversa de verdad: toma el pedido, agenda la reserva, entiende notas de voz y responde en segundos."
+  },
+  "pains": {
+    "eyebrow": "la realidad",
+    "title": "Lo que pasa todos los días en un restaurante.",
+    "items": [
+      {
+        "title": "El WhatsApp colapsa en hora pico",
+        "body": "Los mensajes entran justo cuando el salón está lleno y la cocina a tope. El cliente que no recibe respuesta en minutos pide en otra parte."
+      },
+      {
+        "title": "Reservas que se pierden en el camino",
+        "body": "Anotadas en un cuaderno, en la memoria del administrador o en un chat que nadie volvió a abrir. Después la mesa aparece doblemente reservada — o vacía."
+      },
+      {
+        "title": "Las mismas preguntas, mil veces",
+        "body": "Horarios, domicilios, el menú, si hay opciones sin gluten. Cada respuesta manual son minutos que el equipo no le dedica a la gente que ya está sentada."
+      },
+      {
+        "title": "Los clientes mandan notas de voz",
+        "body": "Así escribe la gente aquí — y un bot de botones no las entiende. O alguien las escucha una por una, o esos pedidos se quedan sin atender."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "cómo ayudamos",
+    "title": "Tres formas de quitarte el peso.",
+    "cards": [
+      {
+        "title": "El asistente de WhatsApp",
+        "body": "Conversa de verdad — nada de menús de botones. Consulta tu carta, arma el pedido, agenda la reserva, transcribe notas de voz y le pasa la conversación a tu equipo cuando hace falta.",
+        "href": "/productos/asistente-ia-whatsapp",
+        "linkLabel": "Ver el asistente de WhatsApp"
+      },
+      {
+        "title": "Un sitio web que también atiende",
+        "body": "Tu carta y tu marca en un sitio moderno y rápido, con un asistente integrado que responde a los visitantes — conectado al mismo cerebro que tu WhatsApp.",
+        "href": "/productos/sitios-web-con-ia",
+        "linkLabel": "Ver sitios web con IA"
+      },
+      {
+        "title": "Automatización detrás del mostrador",
+        "body": "Reportes de ventas, cuadres e inventario que se arman solos en lugar de robarle la noche al administrador. Empezamos por lo que más horas se come.",
+        "href": "/servicios/ia-y-automatizacion",
+        "linkLabel": "Ver IA y automatización"
+      }
+    ]
+  },
+  "note": {
+    "title": "Hablemos claro de los bots.",
+    "body": "Los bots de botones que ya probaste espantan clientes: nadie quiere navegar un menú numerado para pedir una hamburguesa. El nuestro es distinto — conversa, entiende lo que el cliente escribe o dicta, y ejecuta acciones reales sobre tus datos: la reserva queda creada, el pedido queda armado. Y no te vendemos un proyecto gigante: el asistente se monta con tu carta y tus políticas, lo pruebas con clientes reales y decides con resultados a la vista. Nosotros lo operamos; tú atiendes el restaurante."
+  },
+  "faq": {
+    "eyebrow": "preguntas frecuentes",
+    "title": "Lo que nos preguntan los restauranteros.",
+    "items": [
+      {
+        "q": "¿Y si el asistente se equivoca con un pedido?",
+        "a": "Confirma el pedido con el cliente antes de registrarlo, y lo que no sabe no lo inventa: lo escala a tu equipo con todo el historial a la vista. Además ves métricas de atención en el panel, así que los errores no se esconden."
+      },
+      {
+        "q": "¿Necesito cambiar mi número de WhatsApp?",
+        "a": "No. El asistente trabaja sobre la línea que tus clientes ya conocen, y tu equipo puede entrar a cualquier conversación cuando quiera. Lo que ya funciona, se queda."
+      },
+      {
+        "q": "Tengo varias sedes. ¿Sirve igual?",
+        "a": "Sí — soporta varias marcas o sedes con los datos de cada una separados de forma estricta. Cada sede responde con su carta, sus horarios y su disponibilidad."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Míralo respondiendo con tu carta.",
+    "subtitle": "Agenda una demo de 30 minutos y te mostramos el asistente funcionando con tu menú y tus políticas, sin compromiso.",
+    "buttonText": "Agenda una demo"
+  }
+}

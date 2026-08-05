@@ -1,0 +1,21 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "The challenge"
+  },
+  {
+    "name": "content",
+    "label": "Content (HTML paragraphs)",
+    "type": "text",
+    "default": "<p>…</p>",
+    "allow_new_line": true
+  }
+]

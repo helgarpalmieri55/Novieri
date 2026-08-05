@@ -248,6 +248,66 @@
   .legal-prose li + li {
     margin-top: 0.625rem;
   }
+
+  /* Blog posts and case-study narrative: legal-prose plus the h2 rhythm an
+     article needs, which legal pages render from their own section headings. */
+  .article-prose {
+    color: var(--color-ink-muted);
+  }
+  .article-prose > * + * {
+    margin-top: 1rem;
+  }
+  .article-prose h2 {
+    color: var(--color-ink);
+    font-size: var(--text-h3);
+    margin-top: 2.5rem;
+  }
+  .article-prose h3 {
+    color: var(--color-ink);
+    font-size: var(--text-lead);
+    margin-top: 1.75rem;
+  }
+  .article-prose a {
+    color: var(--color-plum);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .article-prose a:hover {
+    color: var(--color-gold-deep);
+  }
+  .article-prose strong {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+  .article-prose ul,
+  .article-prose ol {
+    margin-top: 1.25rem;
+    padding-left: 1.75rem;
+  }
+  .article-prose ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .article-prose ul > li {
+    position: relative;
+    padding-left: 1.75rem;
+  }
+  .article-prose ul > li::before {
+    content: "··";
+    position: absolute;
+    left: 0;
+    top: -0.05em;
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+  .article-prose ol {
+    list-style: decimal;
+  }
+  .article-prose li + li {
+    margin-top: 0.625rem;
+  }
 }
 
 /*

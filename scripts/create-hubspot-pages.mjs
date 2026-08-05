@@ -50,6 +50,15 @@ const ES_SLUGS = {
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
   pricing: "precios",
+  industries: "industrias",
+  "industries/bpo": "industrias/bpo",
+  "industries/hospitality": "industrias/hoteleria",
+  "industries/education": "industrias/educacion",
+  // industries/regulated is deliberately absent: PCI/SOC 2 pages sell to the
+  // US market only. The Colombian-only industries (restaurantes, pymes) are
+  // likewise not variants — they are created directly, in Spanish.
+  "case-studies": "casos-de-exito",
+  "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
   "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
@@ -154,6 +163,44 @@ const PAGES = [
     metaDescription: "The terms under which novieri.com may be used." },
 ];
 
+/**
+ * The industries and insights pages carry their metadata with their copy in
+ * content/, not here — one file per page, written once and read by both this
+ * script and the fill. A missing file just means that page is not created
+ * yet, which is how the section grows one approved page at a time.
+ */
+const readContent = (p) => {
+  try {
+    return JSON.parse(readFileSync(`content/${p}.json`, "utf8"));
+  } catch {
+    return null;
+  }
+};
+
+for (const s of ["bpo", "hospitality", "education", "regulated"]) {
+  const c = readContent(`industries/en-${s}`);
+  if (c) PAGES.push({ key: `ind-${s}`, template: "industry", slug: `industries/${s}`,
+    name: c.name, htmlTitle: c.htmlTitle, metaDescription: c.metaDescription });
+}
+// Colombia-only industries, born in Spanish: no English page exists to be a
+// variant of, so they are created directly with their language declared.
+for (const s of ["restaurantes", "pymes"]) {
+  const c = readContent(`industries/es-${s}`);
+  if (c) PAGES.push({ key: `ind-${s}`, template: "industry", slug: `industrias/${s}`,
+    name: c.name, htmlTitle: c.htmlTitle, metaDescription: c.metaDescription, language: "es" });
+}
+{
+  const ix = readContent("industries/en-index");
+  if (ix) PAGES.push({ key: "industries", template: "hub-index", slug: "industries",
+    name: "Industries", htmlTitle: ix.htmlTitle, metaDescription: ix.metaDescription });
+  const cs = readContent("case-studies/index");
+  if (cs) PAGES.push({ key: "case-studies", template: "hub-index", slug: "case-studies",
+    name: "Case studies", htmlTitle: cs.en.htmlTitle, metaDescription: cs.en.metaDescription });
+  const c1 = readContent("case-studies/restaurant-whatsapp");
+  if (c1) PAGES.push({ key: "cs-restaurant", template: "case-study", slug: "case-studies/restaurant-whatsapp-ai",
+    name: c1.en.name, htmlTitle: c1.en.htmlTitle, metaDescription: c1.en.metaDescription });
+}
+
 async function api(path, options = {}) {
   const res = await fetch(`https://api.hubapi.com${path}`, {
     ...options,
@@ -247,7 +294,16 @@ if (dump !== undefined) {
  */
 function esMeta() {
   const es = JSON.parse(readFileSync("messages/es.json", "utf8"));
+  const pick = (c) => (c ? { title: c.htmlTitle, description: c.metaDescription } : undefined);
+  const csIx = readContent("case-studies/index");
+  const cs1 = readContent("case-studies/restaurant-whatsapp");
   return {
+    industries: pick(readContent("industries/es-index")),
+    "industries/bpo": pick(readContent("industries/es-bpo")),
+    "industries/hospitality": pick(readContent("industries/es-hoteleria")),
+    "industries/education": pick(readContent("industries/es-educacion")),
+    "case-studies": pick(csIx?.es),
+    "case-studies/restaurant-whatsapp-ai": pick(cs1?.es),
     "": es.meta.home,
     services: es.meta.services,
     "services/ai-automation": es.meta.ai,
@@ -534,6 +590,7 @@ for (const p of plan) {
         metaDescription: p.metaDescription,
         domain: DOMAIN,
         state: "DRAFT",
+        ...(p.language ? { language: p.language } : {}),
       }),
     });
     console.log(`create  ${p.slug} — id ${made.id}`);

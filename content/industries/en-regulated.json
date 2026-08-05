@@ -1,0 +1,85 @@
+{
+  "slug": "regulated",
+  "lang": "en",
+  "name": "PCI DSS & SOC 2 companies",
+  "htmlTitle": "IT for PCI DSS & SOC 2 companies — Novieri",
+  "metaDescription": "SOC 2 and PCI DSS readiness led by people who have taken both programs to audit — gap assessment, remediation, and evidence, at nearshore rates.",
+  "hero": {
+    "eyebrow": "industries",
+    "title": "When your customers ask for SOC 2 or PCI DSS, the clock starts.",
+    "intro": "Somewhere between the security questionnaire and the signed contract, compliance stops being optional. We've led PCI DSS compliance and a SOC 2 program end to end inside a real operation — and we take companies from gap assessment to audit-ready with evidence that holds up."
+  },
+  "pains": {
+    "eyebrow": "the reality",
+    "title": "What compliance actually feels like from the inside.",
+    "items": [
+      {
+        "title": "Deals stall on the questionnaire",
+        "body": "The product is ready, the buyer is ready — and then procurement sends 200 security questions you can't answer honestly yet. Revenue waits on controls."
+      },
+      {
+        "title": "Evidence lives everywhere and nowhere",
+        "body": "The controls sort of exist, but the proof is scattered across inboxes, screenshots, and people's memories. Audit season becomes an archaeology project."
+      },
+      {
+        "title": "An annual PDF isn't a security program",
+        "body": "A vulnerability scan once a year satisfies nobody — not the auditor, and certainly not an attacker who scans you every day. Compliance frameworks expect a continuous cycle."
+      },
+      {
+        "title": "Nobody owns it",
+        "body": "Security is a slice of the CTO's week or a task passed around the team. Without a named owner, controls drift and findings reopen — and the auditor notices."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "how we help",
+    "title": "Three ways we take the load.",
+    "cards": [
+      {
+        "title": "Readiness, all the way to the audit",
+        "body": "Gap assessment against SOC 2 or PCI DSS, a remediation plan with owners and dates, and evidence support until you pass — plus a security lead on retainer if you need one.",
+        "href": "/services/cybersecurity-compliance",
+        "linkLabel": "See cybersecurity & compliance"
+      },
+      {
+        "title": "Vulnerability management that runs continuously",
+        "body": "Asset inventory, safe scanning, AI-assisted prioritization, and remediation followed from found to fixed to verified — with reports an auditor accepts.",
+        "href": "/products/vulnerability-management",
+        "linkLabel": "See vulnerability management"
+      },
+      {
+        "title": "Infrastructure that stays compliant",
+        "body": "Patching, tested backups, access management, and monitoring run day to day — because most audit findings are just operations nobody was doing.",
+        "href": "/services/managed-it",
+        "linkLabel": "See managed IT"
+      }
+    ]
+  },
+  "note": {
+    "title": "What we are — and what we're not.",
+    "body": "We are not auditors, and we don't issue certifications; the audit is always performed by an independent third party. What we do is get you there: our founder has led PCI DSS compliance and a SOC 2 program end to end inside a 24/7 operation, so we know which controls auditors actually probe and what evidence convinces them. We'd rather tell you now: readiness typically takes 3 to 6 months depending on your starting point — anyone promising a certificate in two weeks is selling you paper."
+  },
+  "faq": {
+    "eyebrow": "faq",
+    "title": "What compliance-driven companies ask us.",
+    "items": [
+      {
+        "q": "How long until we're audit-ready?",
+        "a": "Typically 3 to 6 months from gap assessment to audit-ready, depending on where you start. The initial assessment gives you an honest timeline within the first week — including the parts that will hurt."
+      },
+      {
+        "q": "Do you work with our auditor, or bring one?",
+        "a": "The auditor must be independent, so you choose them — we can point you to reputable options if you don't have one. We prepare your infrastructure, policies, and evidence, and we support you through the auditor's questions until the report is in hand."
+      },
+      {
+        "q": "What happens after we pass?",
+        "a": "Compliance is annual; controls are daily. Most clients keep us on to run the controls continuously — vulnerability management, evidence collection, access reviews — so the next audit is a formality instead of another project."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Find out what's between you and a clean audit.",
+    "subtitle": "A 30-minute call: tell us which framework your customers are asking for, and we'll tell you honestly what the path looks like from where you stand.",
+    "buttonText": "Book a call"
+  }
+}
