@@ -41,6 +41,7 @@ const ES_SLUGS = {
   "services/managed-it": "servicios/it-administrado",
   "services/cybersecurity-compliance": "servicios/ciberseguridad-y-cumplimiento",
   "services/custom-software": "servicios/desarrollo-a-medida",
+  "services/it-consulting": "servicios/consultoria-it",
   about: "nosotros",
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
@@ -239,6 +240,7 @@ const SERVICES = [
   ["managedIt", "services/managed-it"],
   ["security", "services/cybersecurity-compliance"],
   ["software", "services/custom-software"],
+  ["itConsulting", "services/it-consulting"],
 ];
 
 function serviceWidgets(ns) {
@@ -515,7 +517,7 @@ const HOME_SLOTS = {
   founders: "main-module-10",
   cta: "main-module-11",
 };
-const ACCENTS = ["text-plum", "text-teal", "text-gold-deep", "text-ink-muted"];
+const ACCENTS = ["text-plum", "text-teal", "text-gold-deep", "text-ink-muted", "text-plum-bright"];
 
 function homeWidgets() {
   const h = t.home;

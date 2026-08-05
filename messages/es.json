@@ -90,6 +90,10 @@
     "diagnostic": {
       "title": "Autodiagnóstico de tecnología — Novieri",
       "description": "Diez preguntas sobre tu operación y un informe en PDF con tu nivel, los riesgos que vemos y qué priorizar. Toma tres minutos."
+    },
+    "itConsulting": {
+      "title": "Consultoría IT — Novieri",
+      "description": "Decisiones de tecnología con alguien que ya tuvo que vivir con ellas: qué comprar, qué arreglar, cuánto cuesta de verdad y cuándo la respuesta es esperar."
     }
   },
   "nav": {
@@ -142,6 +146,15 @@
         "react",
         "fastapi",
         "node"
+      ]
+    },
+    "itConsulting": {
+      "name": "Consultoría IT",
+      "tagline": "Decide qué comprar, qué arreglar y qué dejar quieto.",
+      "tags": [
+        "decisiones",
+        "arquitectura",
+        "costos"
       ]
     }
   },
@@ -1917,5 +1930,79 @@
         ]
       }
     ]
+  },
+  "itConsulting": {
+    "hero": {
+      "eyebrow": "consultoría it",
+      "title": "Decide qué comprar, qué arreglar y qué dejar quieto.",
+      "promise": "La mayor parte del dinero que se pierde en tecnología se pierde antes de instalar nada: el sistema equivocado, licencias que nadie usa, un proveedor que te dejó amarrado. Miramos qué tienes, cuánto te cuesta y para dónde va, y te decimos qué hacer. Incluso cuando la respuesta es: todavía no."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "Un inventario honesto",
+          "body": "Qué tienes funcionando de verdad, cuánto cuesta cada cosa, qué está por vencerse y qué depende de una sola persona que mañana puede renunciar."
+        },
+        {
+          "title": "Qué comprar y qué no",
+          "body": "Leemos las cotizaciones contigo: qué incluye de verdad la licencia, cuánto va a costar en el tercer año y si la opción barata te deja amarrado."
+        },
+        {
+          "title": "La arquitectura, antes de construirla",
+          "body": "Decisiones que hoy son baratas y después salen caras: dónde viven los datos, qué se conecta con qué y qué pasa el día que necesites cambiar de proveedor."
+        },
+        {
+          "title": "Cuánto te cuesta de verdad tu tecnología",
+          "body": "Todo lo que pagas en un año, en una sola página, incluyendo lo que se renueva solo. Casi siempre aparece algo que dejaste de usar hace tiempo."
+        },
+        {
+          "title": "Listos para lo que viene",
+          "body": "Duplicar el equipo, abrir una sede, un cliente que empieza a pedir certificaciones. Te decimos qué tiene que cambiar antes de que se vuelva urgente."
+        },
+        {
+          "title": "Una segunda opinión",
+          "body": "Sobre una cotización, un proveedor o un proyecto que no va bien. A veces lo que necesitas es una hora con alguien que no tiene motivos para decirte lo que quieres oír."
+        }
+      ]
+    },
+    "how": {
+      "caption": "Te queda un documento, no una conversación que recuerdas a medias: qué encontramos, qué recomendamos, en qué orden y cuánto cuesta cada paso. Escrito para que se lo puedas entregar a cualquier proveedor — incluso a uno que no seamos nosotros."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "Una decisión",
+          "blurb": "Una sola pregunta, respondida bien, por un precio fijo: una cotización que revisar, un proveedor que comparar, una arquitectura que validar. Te queda una recomendación escrita que puedes ejecutar con quien quieras."
+        },
+        {
+          "name": "El panorama completo",
+          "blurb": "Todo lo que tienes, cuánto cuesta, dónde está el riesgo y un plan a doce meses con prioridades y presupuesto. El punto de partida cuando hace años nadie mira el conjunto."
+        },
+        {
+          "name": "Un CTO disponible",
+          "blurb": "Una cuota mensual fija para las decisiones que van saliendo: cotizaciones, proveedores, contrataciones, incidentes. La persona que una empresa grande tiene en nómina, por las horas que de verdad necesitas."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "¿En qué se diferencia del IT administrado?",
+          "a": "El IT administrado es que nosotros operemos tu tecnología. La consultoría es que te ayudemos a decidir sobre ella, incluso a decidir quedarte con el proveedor que ya tienes. Puedes contratar cualquiera de las dos sin la otra."
+        },
+        {
+          "q": "Ustedes también venden la implementación. ¿No es un conflicto?",
+          "a": "Lo sería si lo escondiéramos. La recomendación se escribe para sostenerse sola y para que se la entregues a cualquier proveedor, y dice claramente cuándo lo correcto es quedarte con lo que tienes o no contratar a nadie. Si queremos el trabajo de implementación, preferimos ganárnoslo con la recomendación."
+        },
+        {
+          "q": "Somos una empresa pequeña. ¿Esto es para nosotros?",
+          "a": "Sobre todo. Una empresa grande tiene a alguien cuyo trabajo es hacerse estas preguntas todo el día. Una empresa de treinta personas tiene a un dueño comparando cotizaciones a las once de la noche."
+        },
+        {
+          "q": "¿Con qué nos quedamos exactamente?",
+          "a": "Con un documento en español claro: qué tienes, cuánto cuesta, qué cambiaríamos, en qué orden y cuánto vale aproximadamente cada paso. No una presentación de diapositivas."
+        }
+      ]
+    }
   }
 }

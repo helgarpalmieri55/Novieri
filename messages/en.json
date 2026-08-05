@@ -90,6 +90,10 @@
     "diagnostic": {
       "title": "Technology Self-Diagnosis — Novieri",
       "description": "Ten questions about your operation and a PDF report with your level, the risks we see, and what to prioritise. Takes three minutes."
+    },
+    "itConsulting": {
+      "title": "IT consulting — Novieri",
+      "description": "Technology decisions made with someone who has had to live with them: what to buy, what to fix, what it really costs, and when the answer is to wait."
     }
   },
   "nav": {
@@ -142,6 +146,15 @@
         "react",
         "fastapi",
         "node"
+      ]
+    },
+    "itConsulting": {
+      "name": "IT consulting",
+      "tagline": "Decide what to buy, what to fix, and what to leave alone.",
+      "tags": [
+        "decisions",
+        "architecture",
+        "cost"
       ]
     }
   },
@@ -1917,5 +1930,79 @@
         ]
       }
     ]
+  },
+  "itConsulting": {
+    "hero": {
+      "eyebrow": "it consulting",
+      "title": "Decide what to buy, what to fix, and what to leave alone.",
+      "promise": "Most of the money lost on technology is lost before anything is installed — the wrong system, licences nobody uses, a supplier who has you locked in. We look at what you have, what it costs and where it is heading, and tell you what to do. Including the times the answer is: not yet."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "An honest inventory",
+          "body": "What you actually run, what each piece costs, what is about to expire, and what depends on one person who could resign tomorrow."
+        },
+        {
+          "title": "What to buy, and what not to",
+          "body": "We read the quotes with you: what the licence really includes, what it will cost in year three, and whether the cheaper option leaves you stuck."
+        },
+        {
+          "title": "The architecture, before you build it",
+          "body": "Decisions that are cheap now and expensive later: where the data lives, what talks to what, and what happens the day you need to change supplier."
+        },
+        {
+          "title": "What your technology really costs",
+          "body": "Everything you pay for in a year, on one page, including what renews on its own. Most companies find something here they stopped using."
+        },
+        {
+          "title": "Ready for what is coming",
+          "body": "Doubling the team, opening a branch, a client who starts asking for certifications. We tell you what has to change before it becomes urgent."
+        },
+        {
+          "title": "A second opinion",
+          "body": "On a quote, a supplier, or a project that is not going well. Sometimes what you need is an hour with someone who has no reason to tell you what you want to hear."
+        }
+      ]
+    },
+    "how": {
+      "caption": "You end up with a document, not a conversation you half remember: what we found, what we recommend, in what order, and what each step costs. Written so you can hand it to any supplier — including one that is not us."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "One decision",
+          "blurb": "A single question, answered properly, for a fixed price: a quote to review, a supplier to compare, an architecture to sanity-check. You get a written recommendation you can act on with whoever you like."
+        },
+        {
+          "name": "The whole picture",
+          "blurb": "Everything you run, what it costs, where the risk is, and a plan for the next twelve months with priorities and budget. The place to start when nobody has looked at the whole thing in years."
+        },
+        {
+          "name": "A CTO on call",
+          "blurb": "A fixed monthly fee for the decisions as they come up: quotes, suppliers, hires, incidents. The person a large company has on the payroll, for the hours you actually need."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "How is this different from managed IT?",
+          "a": "Managed IT is us running your technology. Consulting is us helping you decide about it — including deciding to keep the supplier you already have. You can buy either one without the other."
+        },
+        {
+          "q": "You also sell the implementation. Isn't that a conflict?",
+          "a": "It would be if we hid it. The recommendation is written to stand on its own and to be handed to any supplier, and it says plainly when the right move is to keep what you have or to hire nobody at all. If we want the implementation work, we would rather earn it on the recommendation."
+        },
+        {
+          "q": "We're a small company. Is this for us?",
+          "a": "Especially. A large company has someone whose job is to ask these questions all day. A company of thirty people has an owner comparing quotes at eleven at night."
+        },
+        {
+          "q": "What do we actually walk away with?",
+          "a": "A document in plain language: what you have, what it costs, what we would change, in what order, and roughly what each step is worth. Not a slide deck."
+        }
+      ]
+    }
   }
 }
