@@ -166,6 +166,7 @@ if (create) {
       const pageId = after.listing_page_id || after.listingPageId;
       console.log(`  listing_page_id=${pageId}  use_listing_page=${after.use_listing_page ?? after.useListingPage}`);
       if (pageId) {
+        let done = false;
         try {
           await api(`/cms/v3/pages/site-pages/${pageId}`, {
             method: "PATCH",
@@ -175,9 +176,42 @@ if (create) {
             method: "PATCH",
             body: JSON.stringify({ publishDate: new Date().toISOString(), state: "PUBLISHED" }),
           });
-          console.log(`  listing page ${pageId} retemplated and pushed live`);
+          console.log(`  listing page ${pageId} retemplated and pushed live (v3)`);
+          done = true;
         } catch (e) {
-          console.log(`  listing page ${pageId} patch failed: ${String(e.message).slice(0, 160)}`);
+          console.log(`  listing page ${pageId} v3 patch failed: ${String(e.message).slice(0, 120)}`);
+        }
+        // Listing pages predate the v3 pages API; the legacy content API is
+        // where they may actually live.
+        if (!done) {
+          try {
+            await api(`/content/api/v2/pages/${pageId}`, {
+              method: "PUT",
+              body: JSON.stringify({ template_path: `${TEMPLATES}/blog-listing.hubl.html` }),
+            });
+            await api(`/content/api/v2/pages/${pageId}/publish-action`, {
+              method: "POST",
+              body: JSON.stringify({ action: "schedule-publish" }),
+            });
+            console.log(`  listing page ${pageId} retemplated and pushed live (v2)`);
+            done = true;
+          } catch (e) {
+            console.log(`  listing page ${pageId} v2 put failed: ${String(e.message).slice(0, 120)}`);
+          }
+        }
+        // Last resort: detach the listing page so the blog falls back to
+        // listing_template_path — the mode the working English blog runs in.
+        if (!done) {
+          try {
+            await api(`/content/api/v2/blogs/${b.id}`, {
+              method: "PUT",
+              body: JSON.stringify({ listing_page_id: null }),
+            });
+            const check = await api(`/content/api/v2/blogs/${b.id}`);
+            console.log(`  listing page detached; listing_page_id now ${check.listing_page_id}`);
+          } catch (e) {
+            console.log(`  detach failed: ${String(e.message).slice(0, 160)}`);
+          }
         }
       }
     } catch (e) {
