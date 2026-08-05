@@ -185,6 +185,24 @@ for (const p of (await api(`/cms/v3/blogs/posts?${new URLSearchParams({ limit: "
   existing.set(p.slug, p);
 }
 
+// A published post must carry an author. The byline is the company — same
+// decision the post template made by not rendering an author card.
+let authorId;
+{
+  const authors = await api(`/cms/v3/blogs/authors?${new URLSearchParams({ limit: "100" })}`);
+  const found = (authors.results || []).find((a) => a.displayName === "Novieri" || a.name === "Novieri");
+  if (found) {
+    authorId = found.id;
+  } else {
+    const made = await api("/cms/v3/blogs/authors", {
+      method: "POST",
+      body: JSON.stringify({ displayName: "Novieri", fullName: "Novieri", email: "sales@novieri.com" }),
+    });
+    authorId = made.id;
+    console.log(`author  Novieri — id ${authorId}`);
+  }
+}
+
 /** Creates or updates one language's post; returns its id. */
 async function upsert(v, language) {
   const body = {
@@ -194,6 +212,7 @@ async function upsert(v, language) {
     postBody: v.body,
     metaDescription: v.metaDescription,
     htmlTitle: `${v.title} — Novieri`,
+    blogAuthorId: authorId,
     language,
     useFeaturedImage: false,
     publishDate: new Date().toISOString(),
