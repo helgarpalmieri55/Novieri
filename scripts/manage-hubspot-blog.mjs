@@ -235,6 +235,25 @@ if (create) {
   }
   await setTemplates(enBlog);
   await setTemplates(esBlog);
+  // The listing renders the blog's own title and description; without these
+  // the page ships an empty <title>.
+  const setMeta = async (b, meta) => {
+    if (!b) return;
+    try {
+      await api(`/content/api/v2/blogs/${b.id}`, { method: "PUT", body: JSON.stringify(meta) });
+      console.log(`meta set on blog ${b.id}: ${meta.html_title}`);
+    } catch (e) {
+      console.log(`meta put refused on ${b.id}: ${String(e.message).slice(0, 120)}`);
+    }
+  };
+  await setMeta(enBlog, {
+    html_title: "Insights — Novieri",
+    description: "Honest guides on managed IT, AI automation, security compliance, and nearshore teams — with real numbers.",
+  });
+  await setMeta(esBlog, {
+    html_title: "Insights — Novieri",
+    description: "Guías honestas sobre IT administrado, automatización con IA, cumplimiento y equipos nearshore — con números reales.",
+  });
   process.exit(0);
 }
 
