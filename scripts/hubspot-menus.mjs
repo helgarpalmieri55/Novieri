@@ -61,17 +61,22 @@ if (!stub) {
 // The list response carries no children. Writing the stub back would replace
 // the navigation with an empty one, so the full object is fetched first and
 // the result is read back and counted rather than trusted.
+//
+// The two responses do not share a shape: the list returns menus flat, and a
+// single menu nests its items under pages_tree.children. The guard below
+// caught that on the first run rather than blanking the navigation.
 const full = await api(`/content/api/v2/menus/${stub.id}`);
-if (!full.ok || !Array.isArray(full.body.children)) {
+const tree = full.body.pages_tree;
+if (!full.ok || !tree || !Array.isArray(tree.children)) {
   console.error(`could not read menu ${stub.id} in full — refusing to write`);
   console.error(JSON.stringify(full.body).slice(0, 300));
   process.exit(1);
 }
 
-const children = [...full.body.children];
+const children = [...tree.children];
 const before = children.length;
 if (children.some((c) => c.label === label)) {
-  console.log(`"${label}" is already in ${full.body.name} — nothing to do`);
+  console.log(`"${label}" is already in ${stub.name} — nothing to do`);
   process.exit(0);
 }
 
@@ -83,7 +88,7 @@ children.splice(at >= 0 ? at + 1 : children.length, 0, item);
 
 const saved = await api(`/content/api/v2/menus/${stub.id}`, {
   method: "PUT",
-  body: JSON.stringify({ ...full.body, children }),
+  body: JSON.stringify({ ...full.body, pages_tree: { ...tree, children } }),
 });
 if (!saved.ok) {
   console.error(`FAILED ${saved.status} ${JSON.stringify(saved.body).slice(0, 300)}`);
@@ -91,8 +96,8 @@ if (!saved.ok) {
 }
 
 const after = await api(`/content/api/v2/menus/${stub.id}`);
-const now = after.body.children || [];
-console.log(`${full.body.name}: ${before} items -> ${now.length}`);
+const now = after.body.pages_tree?.children || [];
+console.log(`${stub.name}: ${before} items -> ${now.length}`);
 console.log("  " + now.map((c) => c.label).join(" · "));
 if (now.length !== before + 1) {
   console.error("item count is not what it should be — check the menu in HubSpot");
