@@ -259,7 +259,7 @@ function esMeta() {
     contact: es.meta.contact,
     "self-diagnosis": es.meta.diagnostic,
     pricing: es.meta.pricing,
-    solutions: es.meta.solutions,
+    products: es.meta.solutions,
     "products/ai-virtual-assistant": es.meta.sol_aiAssistant,
     "products/whatsapp-ai-assistant": es.meta.sol_whatsapp,
     "products/visitor-intelligence": es.meta.sol_visitorIntel,
