@@ -82,11 +82,11 @@ jobs:
             # dispatch API refuses new mode values for a while after a push,
             # and the free-text slug input sails past that validation.
             blog-list)
-              if [ "${{ inputs.slug }}" = "create" ]; then
-                node scripts/manage-hubspot-blog.mjs --create
-              else
-                node scripts/manage-hubspot-blog.mjs --list
-              fi ;;
+              case "${{ inputs.slug }}" in
+                create) node scripts/manage-hubspot-blog.mjs --create ;;
+                tidy)   node scripts/manage-hubspot-blog.mjs --tidy ;;
+                *)      node scripts/manage-hubspot-blog.mjs --list ;;
+              esac ;;
             blog-create)   node scripts/manage-hubspot-blog.mjs --create ;;
             blog-sync)     node scripts/manage-hubspot-blog.mjs --sync ;;
             # Per-page copy from messages/*.json into each page's modules.

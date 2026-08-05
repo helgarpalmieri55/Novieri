@@ -146,8 +146,56 @@ if (create) {
   process.exit(0);
 }
 
+/**
+ * Repairs what the broken server-side filter left behind: Spanish posts
+ * stranded in the English blog, and duplicate posts from a sync that
+ * couldn't see the originals. Keeps the newest of each title per blog,
+ * deletes the rest, and says exactly what it did.
+ */
+if (args.includes("--tidy")) {
+  const all = await blogs();
+  const enBlog = all.find((b) => !b.language || b.language.startsWith("en"));
+  const esBlog = all.find((b) => b.language && b.language.startsWith("es"));
+  const posts = [];
+  let after;
+  for (let page = 0; page < 10; page += 1) {
+    const q = new URLSearchParams({ limit: "100", ...(after ? { after } : {}) });
+    const res = await api(`/cms/v3/blogs/posts?${q}`);
+    posts.push(...(res.results || []));
+    after = res.paging?.next?.after;
+    if (!after) break;
+  }
+  for (const p of posts) {
+    console.log(`post  ${p.id}  blog=${p.contentGroupId}  [${p.currentState || p.state}]  ${p.language || "?"}  /${p.slug}`);
+  }
+  const doomed = new Map();
+  if (esBlog && enBlog) {
+    for (const p of posts) {
+      if (String(p.contentGroupId) === String(enBlog.id) && (p.language || "").startsWith("es")) {
+        doomed.set(p.id, `es post in the en blog: /${p.slug}`);
+      }
+    }
+  }
+  const groups = new Map();
+  for (const p of posts) {
+    const key = `${p.contentGroupId}::${p.name}`;
+    (groups.get(key) || groups.set(key, []).get(key)).push(p);
+  }
+  for (const [, g] of groups) {
+    if (g.length < 2) continue;
+    g.sort((a, b) => Number(b.id) - Number(a.id));
+    for (const p of g.slice(1)) doomed.set(p.id, `duplicate of "${p.name}": /${p.slug}`);
+  }
+  console.log(`\n${doomed.size} post(s) to remove`);
+  for (const [id, why] of doomed) {
+    await api(`/cms/v3/blogs/posts/${id}`, { method: "DELETE" });
+    console.log(`delete  ${id} — ${why}`);
+  }
+  process.exit(0);
+}
+
 if (!sync) {
-  console.log("Nothing to do — pass --list, --create or --sync.");
+  console.log("Nothing to do — pass --list, --create, --tidy or --sync.");
   process.exit(0);
 }
 
@@ -180,17 +228,27 @@ if (dryRun) {
   process.exit(0);
 }
 
-/** slug -> post, per blog. A post's slug includes the blog's own prefix. */
-async function postsOf(b) {
-  const map = new Map();
-  if (!b) return map;
-  for (const p of (await api(`/cms/v3/blogs/posts?${new URLSearchParams({ limit: "100", contentGroupId: b.id })}`)).results || []) {
-    map.set(p.slug, p);
+// All posts, then grouped client-side. The listing's contentGroupId query
+// param is silently ignored on this portal — filtering server-side returned
+// nothing, which made the second sync duplicate every post instead of
+// updating it. Never trust a filter you haven't seen exclude something.
+async function allPosts() {
+  const out = [];
+  let after;
+  for (let page = 0; page < 10; page += 1) {
+    const q = new URLSearchParams({ limit: "100", ...(after ? { after } : {}) });
+    const res = await api(`/cms/v3/blogs/posts?${q}`);
+    out.push(...(res.results || []));
+    after = res.paging?.next?.after;
+    if (!after) break;
   }
-  return map;
+  return out;
 }
-const existingEn = await postsOf(enBlog);
-const existingEs = await postsOf(esBlog);
+const posts = await allPosts();
+const inBlog = (b) => (b ? posts.filter((p) => String(p.contentGroupId) === String(b.id)) : []);
+const bySlug = (list) => new Map(list.map((p) => [p.slug, p]));
+const existingEn = bySlug(inBlog(enBlog));
+const existingEs = bySlug(inBlog(esBlog));
 
 // A published post must carry an author. The byline is the company — same
 // decision the post template made by not rendering an author card.
