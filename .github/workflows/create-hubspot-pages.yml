@@ -29,6 +29,7 @@ on:
           - form-dump
           - form-setup
           - menus
+          - menus-add-solutions
           - widgets
           - create-all
       slug:
@@ -76,5 +77,11 @@ jobs:
             form-setup)    node scripts/hubspot-form-setup.mjs ;;
             # Probes whether the undocumented menus endpoint still answers.
             menus)         node scripts/hubspot-menus.mjs ;;
+            # Both site menus, next to Services. Idempotent: it skips a menu
+            # that already carries the item.
+            menus-add-solutions)
+              node scripts/hubspot-menus.mjs --menu=218450082987 --add='Solutions::/solutions'
+              node scripts/hubspot-menus.mjs --menu=165000725375 --add='Soluciones::/soluciones'
+              ;;
             widgets)       node scripts/hubspot-forms.mjs --widgets='${{ inputs.slug }}' ;;
           esac

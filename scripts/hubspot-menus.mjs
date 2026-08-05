@@ -8,7 +8,7 @@
  * Content > Navigation and this script's answer is how you know that.
  *
  *   node scripts/hubspot-menus.mjs                       # list
- *   node scripts/hubspot-menus.mjs --add="Solutions:/solutions" --menu=<id>
+ *   node scripts/hubspot-menus.mjs --add="Solutions::/solutions" --menu=<id>
  */
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
@@ -51,17 +51,50 @@ for (const m of menus) {
 
 if (!add) process.exit(0);
 
-const [label, url] = add.split(":");
-const menu = menus.find((m) => String(m.id) === String(menuId));
-if (!menu) {
+const [label, url] = add.split("::");
+const stub = menus.find((m) => String(m.id) === String(menuId));
+if (!stub) {
   console.error(`no menu with id ${menuId} — pick one from the list above`);
   process.exit(1);
 }
-// Appended rather than inserted: where it sits in the order is an editorial
-// choice, and moving it in the UI is one drag.
-const children = [...(menu.children || []), { label, url, type: "PAGE_LINK", children: [] }];
-const saved = await api(`/content/api/v2/menus/${menu.id}`, {
+
+// The list response carries no children. Writing the stub back would replace
+// the navigation with an empty one, so the full object is fetched first and
+// the result is read back and counted rather than trusted.
+const full = await api(`/content/api/v2/menus/${stub.id}`);
+if (!full.ok || !Array.isArray(full.body.children)) {
+  console.error(`could not read menu ${stub.id} in full — refusing to write`);
+  console.error(JSON.stringify(full.body).slice(0, 300));
+  process.exit(1);
+}
+
+const children = [...full.body.children];
+const before = children.length;
+if (children.some((c) => c.label === label)) {
+  console.log(`"${label}" is already in ${full.body.name} — nothing to do`);
+  process.exit(0);
+}
+
+// Next to Services rather than at the end: a product index belongs beside the
+// service index, not after Contact.
+const at = children.findIndex((c) => /^(services|servicios)$/i.test(c.label || ""));
+const item = { label, url, type: "PAGE_LINK", children: [] };
+children.splice(at >= 0 ? at + 1 : children.length, 0, item);
+
+const saved = await api(`/content/api/v2/menus/${stub.id}`, {
   method: "PUT",
-  body: JSON.stringify({ ...menu, children }),
+  body: JSON.stringify({ ...full.body, children }),
 });
-console.log(saved.ok ? `added "${label}" to ${menu.name}` : `FAILED ${saved.status} ${JSON.stringify(saved.body).slice(0, 300)}`);
+if (!saved.ok) {
+  console.error(`FAILED ${saved.status} ${JSON.stringify(saved.body).slice(0, 300)}`);
+  process.exit(1);
+}
+
+const after = await api(`/content/api/v2/menus/${stub.id}`);
+const now = after.body.children || [];
+console.log(`${full.body.name}: ${before} items -> ${now.length}`);
+console.log("  " + now.map((c) => c.label).join(" · "));
+if (now.length !== before + 1) {
+  console.error("item count is not what it should be — check the menu in HubSpot");
+  process.exit(1);
+}
