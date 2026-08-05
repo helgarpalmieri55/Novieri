@@ -1,0 +1,34 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Novieri — services index
+-->
+{#
+  The services index used to borrow the service template, which carries four
+  sections it has no copy for: a split-note, a package table and an FAQ. The
+  fill script wrote three of the seven slots and the other four rendered their
+  field defaults — English defaults, on the Spanish page too, complete with
+  three tiers all called "Pilot" and the same question asked four times.
+
+  So the index gets its own template with only the sections it actually has:
+  the hero, a card per service, and the call to action. Same three modules as
+  the solutions index, which is the same job.
+#}
+{% extends "./partials/base.hubl.html" %}
+{% block body %}
+  {% dnd_area "main" label="Page content" %}
+    {% dnd_section %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/page-hero" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pillar-cards" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/cta-band" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+{% endblock body %}

@@ -11,12 +11,17 @@
         <div class="card-hairline reveal flex flex-col p-8" style="--rd: {{ loop.index0 * 80 }}ms">
           <span class="idx-mono text-gold-deep">··0{{ loop.index }}</span>
           <h3 class="mt-3">{{ tier.tier_name }}</h3>
-          <p class="mt-2.5 grow text-small text-ink-muted">{{ tier.tier_blurb }}</p>
-          {% if module.link_label %}
-            <a href="{{ module.link_target.url.href }}" class="link-accent mt-6 text-small">{{ module.link_label }}</a>
-          {% endif %}
+          <p class="mt-2.5 text-small text-ink-muted">{{ tier.tier_blurb }}</p>
         </div>
       {% endfor %}
     </div>
+    {# One invitation under the row, not the same sentence three times. Three
+       identical links side by side read as a template rather than an offer,
+       and there is only one next step anyway. #}
+    {% if module.link_label %}
+      <a href="{{ module.link_target.url.href }}" class="link-accent reveal mt-8 inline-flex text-small" style="--rd: 240ms">
+        {{ module.link_label }}
+      </a>
+    {% endif %}
   </div>
 </section>

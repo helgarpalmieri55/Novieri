@@ -15,6 +15,7 @@
 {% set s_send = module.send_label %}
 {% set s_error = module.error_text %}
 {% set s_limit = module.limit_text %}
+{% set s_disclaimer = module.disclaimer %}
 {% if is_es %}
   {% if module.title_es %}{% set s_title = module.title_es %}{% endif %}
   {% if module.greeting_es %}{% set s_greeting = module.greeting_es %}{% endif %}
@@ -24,6 +25,7 @@
   {% if module.send_label_es %}{% set s_send = module.send_label_es %}{% endif %}
   {% if module.error_text_es %}{% set s_error = module.error_text_es %}{% endif %}
   {% if module.limit_text_es %}{% set s_limit = module.limit_text_es %}{% endif %}
+  {% if module.disclaimer_es %}{% set s_disclaimer = module.disclaimer_es %}{% endif %}
 {% endif %}
 
 <div
@@ -108,5 +110,11 @@
         </svg>
       </button>
     </form>
+    {# The one honest line every AI chat owes its visitor — that it is AI, that
+       it can be wrong, and that secrets don't belong here. A company selling
+       responsible AI cannot skip it on its own widget. #}
+    {% if s_disclaimer %}
+      <p class="border-t border-line px-4 py-2 text-caption leading-snug text-ink-faint">{{ s_disclaimer }}</p>
+    {% endif %}
   </div>
 </div>

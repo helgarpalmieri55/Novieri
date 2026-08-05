@@ -6,7 +6,7 @@
     },
     "services": {
       "title": "Services — Novieri",
-      "description": "AI & automation, managed IT, cybersecurity & compliance, and custom software. Four pillars, one enterprise standard."
+      "description": "AI & automation, managed IT, cybersecurity & compliance, custom software, and IT consulting. Five pillars, one enterprise standard."
     },
     "ai": {
       "title": "AI & automation — Novieri",
@@ -36,7 +36,7 @@
       "title": "Page not found — Novieri"
     },
     "solutions": {
-      "title": "Solutions — Novieri",
+      "title": "Products — Novieri",
       "description": "Products built and operated by Novieri: AI receptionist and assistants, IT management & RMM, monitoring, security, visitor intelligence, and AI e-commerce."
     },
     "sol_aiAssistant": {
@@ -68,7 +68,7 @@
       "description": "24/7 managed monitoring of networks, servers, databases, and internet links — operated by Novieri on its own platform."
     },
     "sol_sentinel": {
-      "title": "Sentinel — AI Vulnerability Management — Novieri",
+      "title": "AI Vulnerability Management — Novieri",
       "description": "Discover assets, detect vulnerabilities, prioritize with AI, and produce audit-ready reports — on your own infrastructure."
     },
     "sol_webDev": {
@@ -90,6 +90,14 @@
     "diagnostic": {
       "title": "Technology Self-Diagnosis — Novieri",
       "description": "Ten questions about your operation and a PDF report with your level, the risks we see, and what to prioritise. Takes three minutes."
+    },
+    "itConsulting": {
+      "title": "IT consulting — Novieri",
+      "description": "Technology decisions made with someone who has had to live with them: what to buy, what to fix, what it really costs, and when the answer is to wait."
+    },
+    "pricing": {
+      "title": "Pricing — Novieri",
+      "description": "Published price anchors for managed IT, AI & automation, cybersecurity, custom software, and IT consulting. Honest starting points — the exact number comes with a proposal."
     }
   },
   "nav": {
@@ -103,14 +111,14 @@
     "localeSwitcherLabel": "Language",
     "homeLink": "Novieri — home",
     "skipToContent": "Skip to content",
-    "solutions": "Solutions",
-    "solutionsMenuLabel": "See all solutions",
+    "solutions": "Products",
+    "solutionsMenuLabel": "See all products",
     "diagnostic": "Self-diagnosis"
   },
   "pillars": {
     "ai": {
       "name": "AI & automation",
-      "tagline": "Agents and automations that take repetitive work off your team's plate.",
+      "tagline": "Agents and automations that take repetitive work off your team.",
       "tags": [
         "agents",
         "chatbots",
@@ -143,10 +151,19 @@
         "fastapi",
         "node"
       ]
+    },
+    "itConsulting": {
+      "name": "IT consulting",
+      "tagline": "Decide what to buy, what to fix, and what to leave alone.",
+      "tags": [
+        "decisions",
+        "architecture",
+        "cost"
+      ]
     }
   },
   "common": {
-    "bookCall": "Book a call",
+    "bookCall": "Book a 30-minute call",
     "seeServices": "See services",
     "learnMore": "Learn more",
     "talkCase": "Let's talk about your case",
@@ -164,7 +181,7 @@
       "items": [
         {
           "value": "1000+",
-          "label": "users assisted as cto"
+          "label": "users supported in founder-led operations"
         },
         {
           "value": "PCI / SOC 2",
@@ -242,23 +259,23 @@
     },
     "services": {
       "eyebrow": "services",
-      "title": "Four pillars, one standard."
+      "title": "Five pillars, one standard."
     },
     "why": {
       "eyebrow": "why novieri",
       "title": "Nearshore premium: enterprise practices, your time zone, sensible rates.",
       "points": [
         {
-          "title": "Same clock as US East",
-          "body": "Zero time difference with New York. Standups, incidents, and calls happen inside your working day — not the morning after."
+          "title": "Aligned with US Eastern hours",
+          "body": "Our working day overlaps New York's almost hour for hour, all year. Standups, incidents, and calls happen inside your working day — not the morning after."
         },
         {
           "title": "Bilingual by default",
-          "body": "Native-level English and Spanish across the team. Requirements, documentation, and support without translation loss."
+          "body": "Founder-led service in fluent English and Spanish. Requirements, documentation, and support without translation loss."
         },
         {
           "title": "Enterprise practices, PCI & SOC 2 experience",
-          "body": "Monitoring, tested backups, managed security, and real process — run by a CTO who has led technology for operations of 1,000+ people, including PCI DSS compliance and a SOC 2 program end to end. The same standard, at a fraction of what the market charges for it."
+          "body": "Monitoring, tested backups, managed security, and real process — run by a CTO who has led technology for operations of 1,000+ people, including PCI DSS compliance and a SOC 2 program end to end. The same standard, without the multinational overhead."
         },
         {
           "title": "Senior-only delivery",
@@ -281,7 +298,7 @@
       "steps": [
         {
           "title": "Diagnosis",
-          "body": "We understand your operation, your infrastructure, and your risks before proposing anything."
+          "body": "We understand your operation, your systems and your risks before putting a formal proposal in front of you."
         },
         {
           "title": "Proposal",
@@ -299,20 +316,20 @@
     },
     "founders": {
       "eyebrow": "who we are",
-      "title": "A family-run firm with enterprise standards.",
-      "body": "Novieri is the fusion of its two founders' surnames: technology led by a CTO with 12+ years building and running production systems, and a commercial operation that actually answers you.",
+      "title": "Two founders, enterprise standards.",
+      "body": "Novieri is the fusion of its two founders' surnames: technology led by a CTO with more than twelve years building and running production systems, and a commercial side that actually answers you.",
       "link": "Read the story",
       "photoAlt": "Photo of Novieri's founders (pending)"
     },
     "cta": {
       "title": "Your company already needs a technology team. It doesn't need to hire one.",
-      "subtitle": "Tell us about your case in a 30-minute call, no strings attached.",
+      "subtitle": "In 30 minutes we hear your case, tell you honestly whether we're a fit, and recommend a first step. No sales deck.",
       "button": "Book a call"
     },
     "diagnose": {
       "eyebrow": "start here",
       "title": "Not sure where to start?",
-      "body": "Answer ten questions about your operation and we'll send back a diagnostic written for your case: the level you're at, the risks we see, and what we'd do first. It takes three minutes and commits you to nothing.",
+      "body": "Answer ten questions about your operation and you read the diagnostic at the end: the level you're at, the risks we see, and what we'd do first — written for your case, not a template. It commits you to nothing.",
       "button": "Self-diagnosis",
       "note": "3 minutes · PDF report · free"
     }
@@ -320,13 +337,13 @@
   "servicesIndex": {
     "eyebrow": "services",
     "title": "What we do",
-    "intro": "Four pillars that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, and everything needs software that fits your operation."
+    "intro": "Five services that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, software has to fit the operation — and someone has to decide which of those to do first."
   },
   "serviceCommon": {
     "whatTitle": "What we do",
     "howTitle": "How it looks",
     "packagesTitle": "Packages",
-    "packagesIntro": "We do not publish prices — no two operations are the same. These are the shapes the work usually takes; the number comes after we understand your case.",
+    "packagesIntro": "Every operation is different, so the price comes after we understand yours. These are the shapes the work usually takes.",
     "faqTitle": "Frequently asked questions",
     "ctaTitle": "Shall we talk about your case?",
     "ctaSubtitle": "A 30-minute call to understand your operation and tell you, frankly, whether we can help."
@@ -371,8 +388,8 @@
     "packages": {
       "tiers": [
         {
-          "name": "A two-week review",
-          "blurb": "Fixed price, two weeks. We follow how the work actually moves through your business, find what a machine could take over, and hand you a short list ordered by what it saves you. No commitment after it."
+          "name": "A two-week diagnostic",
+          "blurb": "Fixed price, two weeks. We look at how the work really moves through your business and find what a machine could take over. At the end you get a short list, ordered by what it saves you. No commitment afterwards."
         },
         {
           "name": "Your first automation",
@@ -492,7 +509,7 @@
         },
         {
           "title": "Proactive monitoring",
-          "body": "We watch disks, services, and backups 24/7; many failures get fixed before anyone notices."
+          "body": "Automated monitoring watches disks, services, and backups around the clock, with alerts handled within your plan's response times — many failures get fixed before anyone notices."
         }
       ]
     },
@@ -605,7 +622,7 @@
         },
         {
           "title": "Identity & email protection",
-          "body": "The entry point for 90% of attacks — phishing, compromised accounts, misconfigured access — closed."
+          "body": "Among the most common entry points for attacks — phishing, compromised accounts, misconfigured access — closed."
         },
         {
           "title": "Incident response",
@@ -640,7 +657,7 @@
       "items": [
         {
           "q": "Would anyone really attack a company my size?",
-          "a": "Mass attacks don't pick victims: they scan the internet and exploit whatever is open. SMBs are the most frequent target precisely because they tend to be less protected."
+          "a": "Mass attacks don't pick victims: they scan the internet and exploit whatever is open. Smaller companies get hit constantly precisely because they tend to have fewer defenses in place."
         },
         {
           "q": "How long does SOC 2 or PCI DSS readiness take?",
@@ -787,12 +804,12 @@
   "about": {
     "hero": {
       "eyebrow": "about",
-      "title": "Two surnames, one firm.",
-      "intro": "Novieri is born from the fusion of its two founders' surnames. It is, literally, a company with its own name: family-run in how it treats you, enterprise in its standards."
+      "title": "Two founders, and nobody in between.",
+      "intro": "Novieri is the two people who built it: the person who designs and runs the technology, and the person who owns the relationship. Family-run in how it treats you, enterprise in what it delivers."
     },
     "story": {
       "title": "The story",
-      "body": "After 10+ years leading technology for operations of more than 1,000 people (infrastructure, security, PCI DSS and SOC 2 compliance, and AI systems put to work on real production outcomes) and as many years owning client relationships in banking and at one of the world's largest CRM platforms, we kept seeing the same pattern: the enterprise standard exists, but it arrives with a multinational price tag. Novieri exists to close that gap: solutions and services built to the same standards we ran in corporate, at a fraction of what the market charges. This isn't a stripped-down tier for mid-sized companies; it's the same level of practice, delivered by our own team in Barranquilla, without the layers of middlemen that inflate the invoice."
+      "body": "After more than ten years running technology for operations of over a thousand people — infrastructure, security, PCI DSS and SOC 2 compliance, AI put to work on real results — the same pattern kept showing up: the enterprise standard exists, but it arrives with a multinational price tag, and nobody adapts it to a company of thirty or three hundred people. Novieri exists to close that gap. The same standards we ran in corporate, priced for a company of thirty or three hundred, with our own team in Barranquilla and no layers of middlemen inflating the invoice."
     },
     "founders": {
       "title": "The founders",
@@ -804,9 +821,9 @@
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Client relationships and delivery",
-        "bio": "More than ten years alongside clients, from the first conversation to the years after the sale: understanding how a business really runs, agreeing what is worth doing, and staying to see that it works. A business administration graduate. At Novieri she is the person you talk to — she scopes the case with you, keeps the follow-through honest, and makes sure what we deliver is actually used, not just installed.",
-        "photoAlt": "Sylvana Nova, co-founder, client relationships and delivery"
+        "role": "Commercial and client relationships",
+        "bio": "Commercial executive with more than ten years in front of clients. She understands how businesses actually run and is good at finding where it hurts — the bottleneck the owner has stopped noticing because they have worked around it for years. A business administration graduate. At Novieri that turns into the practical part: she scopes the case with you, keeps the follow-through honest, and makes sure what we deliver is used rather than just installed.",
+        "photoAlt": "Sylvana Nova, co-founder, commercial and client relationships"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
@@ -823,7 +840,7 @@
     "hero": {
       "eyebrow": "contact",
       "title": "Tell us about your case.",
-      "intro": "We reply the same business day. If you'd rather talk directly, book a call."
+      "intro": "A founder reads every message and replies the same business day — no ticket queue, no mailing list afterwards. If you'd rather talk directly, book a call."
     },
     "form": {
       "name": "Name",
@@ -838,6 +855,7 @@
         "managedIt": "Managed IT",
         "security": "Cybersecurity & compliance",
         "software": "Custom software",
+        "itConsulting": "IT consulting",
         "other": "Not sure yet / other"
       },
       "message": "Message",
@@ -878,7 +896,7 @@
     "legal": "© {year} {razonSocial} · NIT {nit}",
     "linkedinLabel": "Novieri on LinkedIn",
     "location": "Barranquilla, Colombia",
-    "solutionsTitle": "Solutions",
+    "solutionsTitle": "Products",
     "legalTitle": "Legal",
     "privacy": "Privacy policy",
     "cookies": "Cookie policy",
@@ -892,18 +910,18 @@
   },
   "solutions": {
     "index": {
-      "eyebrow": "solutions",
+      "eyebrow": "products",
       "title": "Products with our name on them.",
-      "intro": "We don't just implement other people's technology — we build our own products and operate them for our clients. Every solution was born from a real problem in a real operation, and carries the Novieri standard inside."
+      "intro": "We don't just implement other people's technology — we build our own products and operate them for our clients. Every product was born from a real problem in a real operation, and carries the Novieri standard inside."
     },
     "common": {
-      "eyebrow": "novieri solution",
+      "eyebrow": "novieri product",
       "featuresTitle": "What it does",
       "builtEyebrow": "how it's built",
       "poweredBadge": "powered by novieri",
       "poweredTitle": "The same team stands behind every product.",
-      "poweredBody": "Each solution is designed, built, and operated by the Novieri team — with the same enterprise practices as our services: security, monitoring, and continuous improvement. You're not buying software and getting left alone; you're buying a product with a team behind it.",
-      "seeSolution": "See solution",
+      "poweredBody": "Each product is designed, built, and operated by the Novieri team — with the same enterprise practices as our services: security, monitoring, and continuous improvement. You're not buying software and getting left alone; you're buying a product with a team behind it.",
+      "seeSolution": "See product",
       "demoCta": "Book a demo",
       "ctaTitle": "Want to see it running on your data?",
       "ctaSubtitle": "Book a 30-minute demo and we'll show it applied to your case, no strings attached."
@@ -1062,45 +1080,45 @@
       },
       "visitorIntel": {
         "name": "Website Visitor Intelligence",
-        "tagline": "Know which companies visit your site — qualified accounts in your inbox every morning.",
+        "tagline": "See which companies visit your website — the ones worth calling, in your inbox each morning.",
         "tags": [
           "b2b",
           "sales",
           "ai"
         ],
         "hero": {
-          "title": "Your site gets buyers who never write. Now they land in your inbox.",
-          "promise": "A self-hosted, first-party account-intelligence system: it identifies the company behind each visit, interprets the behavior with AI, scores it against your ideal customer profile, and emails your sales team a daily report of the accounts worth a call."
+          "title": "Most of the companies looking at your website never write to you.",
+          "promise": "This tells you who they were. It works out which company was behind each visit, reads what they looked at, and every morning sends your sales team a short list of the ones worth a call — with enough context to make it."
         },
         "features": [
           {
-            "title": "Company identification",
-            "body": "Resolves the company behind the visit and enriches it with industry, size, and executive contacts."
+            "title": "Which company was here",
+            "body": "It identifies the business behind the visit and fills in what you would otherwise have to look up: industry, size, and who to ask for."
           },
           {
-            "title": "AI analysis",
-            "body": "AI interprets the journey — pages, time, return visits — and writes an actionable brief for each account."
+            "title": "What they were interested in",
+            "body": "It reads the visit the way a salesperson would — which pages, how long, whether they came back — and writes a short brief for each company."
           },
           {
-            "title": "Scoring against your ICP",
-            "body": "Every account is scored against your ideal customer profile: your team calls the best fit first."
+            "title": "Ranked against your best clients",
+            "body": "You describe the kind of client you want. Every company that visits is scored against it, so your team starts with the closest fit instead of the newest."
           },
           {
-            "title": "Daily report to sales",
-            "body": "An email every morning with the qualified accounts — HTML, Excel, and PDF ready to work or import into the CRM."
+            "title": "One email, every morning",
+            "body": "The qualified list arrives before the day starts, ready to work from or to load into your CRM."
           },
           {
-            "title": "Contact-form funnel",
-            "body": "Measures who opens your contact form, how far they get, and where they abandon — without ever reading what they type."
+            "title": "Where people give up on your form",
+            "body": "It measures who opens your contact form, how far they get, and where they abandon it — without ever reading what they type."
           },
           {
-            "title": "Compliance by design",
-            "body": "First-party collection with consent, real-time privacy-signal honoring, raw IP discarded after lookup, and no session recording."
+            "title": "Built to respect privacy",
+            "body": "Data is collected first-party and with consent, privacy signals are honoured in real time, the raw IP address is discarded after the lookup, and nothing records the visitor's screen."
           }
         ],
         "built": {
           "title": "Sales intelligence, not surveillance.",
-          "body": "A dedicated collector, an enrichment pipeline (IP → company → firmographics → contacts), Claude analysis, an account dashboard, and a report scheduler — a self-hosted stack that runs on a single server, multi-site from birth."
+          "body": "A dedicated collector, an enrichment pipeline (IP → company → firmographics → contacts), Claude for the analysis, an account dashboard and a report scheduler — a self-hosted stack that runs on a single server and serves multiple sites from the first line of code."
         },
         "stack": [
           "typescript",
@@ -1264,46 +1282,46 @@
         ]
       },
       "sentinel": {
-        "name": "Sentinel — Vulnerability Management",
-        "tagline": "Discover, detect, prioritize with AI, and prove progress — on your own network.",
+        "name": "Vulnerability Management",
+        "tagline": "Find the weaknesses in your systems before someone else does — and prove you closed them.",
         "tags": [
           "security",
           "vulnerabilities",
           "ai"
         ],
         "hero": {
-          "title": "Know your vulnerabilities before someone else finds them.",
-          "promise": "A self-hosted vulnerability-management dashboard: it discovers the assets on your network, scans them with established engines in safe mode, joins findings with live threat intelligence, and uses AI to prioritize and explain — in plain language — what to fix first and how."
+          "title": "Know where you are exposed, before someone else finds out.",
+          "promise": "It looks over everything connected to your network, finds the weaknesses, and tells you in plain language which ones actually matter and how to fix them. When a client or an auditor asks what you did about it, you have the report."
         },
         "features": [
           {
-            "title": "Asset discovery",
-            "body": "A continuous inventory of what actually lives on your network — only within authorized scope, guaranteed in code."
+            "title": "A list of everything you have",
+            "body": "Most companies do not have one. It keeps a running inventory of every computer, server and device on your network, and only ever looks at what you have authorised."
           },
           {
-            "title": "Detection with proven engines",
-            "body": "Scanning with recognized open-source engines, always in safe mode: detection yes, intrusion never."
+            "title": "It checks without breaking anything",
+            "body": "The checks run in a mode that only looks — never pushes. Your systems keep working while it runs, including during business hours."
           },
           {
-            "title": "Live threat intelligence",
-            "body": "Every finding is joined with the official vulnerability and known-exploited catalogs, so you know what's genuinely urgent."
+            "title": "It knows what is being attacked right now",
+            "body": "Every weakness it finds is matched against the public catalogues of what criminals are actively exploiting, so urgent means urgent rather than theoretical."
           },
           {
-            "title": "AI prioritization",
-            "body": "AI triages findings, flags false positives, and drafts plain-language remediation plans — every analysis is audited."
+            "title": "It tells you what to fix first",
+            "body": "Instead of a list of two thousand items, you get the handful that matter, why they matter, and what to do — written to be read, not decoded."
           },
           {
-            "title": "Full remediation lifecycle",
-            "body": "From open to verified, with confirmation rescans, time-to-remediate metrics, and risk acceptances that expire."
+            "title": "It follows the fix through",
+            "body": "From found, to fixed, to checked again. If you decide to accept a risk instead of fixing it, that decision expires and comes back to you."
           },
           {
-            "title": "Audit-ready reports",
-            "body": "Executive, technical, and PCI and SOC 2 evidence reports generated with AI, exportable to PDF."
+            "title": "Reports an auditor accepts",
+            "body": "One report for the board, one for whoever does the work, and the evidence file a SOC 2 or PCI DSS auditor asks for."
           }
         ],
         "built": {
-          "title": "Defensive security with iron guardrails.",
-          "body": "Allowlisted authorized scope enforced default-deny, safe mode forced in code, server-side RBAC, MFA, an immutable audit log, and a hardened containerized deployment — backed by 200+ automated tests."
+          "title": "Defensive security, with the guardrails written into the code.",
+          "body": "Authorised scope is allowlisted and enforced default-deny, safe mode is forced in code rather than configured, and every action lands in an audit log that cannot be edited. Role-based access control and multi-factor authentication server-side, hardened containerised deployment, and a large automated test suite behind all of it."
         },
         "stack": [
           "fastapi",
@@ -1370,7 +1388,7 @@
     "title": "Sylvi · Novieri assistant",
     "open": "Open the chat with Sylvi",
     "close": "Close the chat",
-    "greeting": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, solutions or how we work.",
+    "greeting": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, products or how we work.",
     "placeholder": "Type your question…",
     "send": "Send",
     "error": "I couldn't answer right now. Try again, or write to us from the contact page.",
@@ -1669,7 +1687,7 @@
     },
     "gate": {
       "title": "Where should we send the report?",
-      "body": "We generate your diagnostic with AI from your answers and deliver it as a PDF. We use your details only to send you the report and, if you ask, to discuss your case.",
+      "body": "We generate your diagnostic with AI from your answers and deliver it as a PDF, usually within a minute. It's a guided self-assessment, not a formal security audit. We use your details only to send you the report and, if you ask, to discuss your case.",
       "name": "Name",
       "email": "Work email",
       "company": "Company",
@@ -1917,5 +1935,246 @@
         ]
       }
     ]
+  },
+  "itConsulting": {
+    "hero": {
+      "eyebrow": "it consulting",
+      "title": "Decide what to buy, what to fix, and what to leave alone.",
+      "promise": "Most of the money lost on technology is lost before anything is installed — the wrong system, licences nobody uses, a supplier who has you locked in. We look at what you have, what it costs and where it is heading, and tell you what to do. Including the times the answer is: not yet."
+    },
+    "what": {
+      "items": [
+        {
+          "title": "An honest inventory",
+          "body": "What you actually run, what each piece costs, what is about to expire, and what depends on one person who could resign tomorrow."
+        },
+        {
+          "title": "What to buy, and what not to",
+          "body": "We read the quotes with you: what the licence really includes, what it will cost in year three, and whether the cheaper option leaves you stuck."
+        },
+        {
+          "title": "The architecture, before you build it",
+          "body": "Decisions that are cheap now and expensive later: where the data lives, what talks to what, and what happens the day you need to change supplier."
+        },
+        {
+          "title": "What your technology really costs",
+          "body": "Everything you pay for in a year, on one page, including what renews on its own. Most companies find something here they stopped using."
+        },
+        {
+          "title": "Ready for what is coming",
+          "body": "Doubling the team, opening a branch, a client who starts asking for certifications. We tell you what has to change before it becomes urgent."
+        },
+        {
+          "title": "A second opinion",
+          "body": "On a quote, a supplier, or a project that is not going well. Sometimes what you need is an hour with someone who has no reason to tell you what you want to hear."
+        }
+      ]
+    },
+    "how": {
+      "caption": "You end up with a document, not a conversation you half remember: what we found, what we recommend, in what order, and what each step costs. Written so you can hand it to any supplier — including one that is not us."
+    },
+    "packages": {
+      "tiers": [
+        {
+          "name": "One decision",
+          "blurb": "A single question, answered properly, for a fixed price: a quote to review, a supplier to compare, an architecture to sanity-check. You get a written recommendation you can act on with whoever you like."
+        },
+        {
+          "name": "The whole picture",
+          "blurb": "Everything you run, what it costs, where the risk is, and a plan for the next twelve months with priorities and budget. The place to start when nobody has looked at the whole thing in years."
+        },
+        {
+          "name": "A CTO on call",
+          "blurb": "A fixed monthly fee for the decisions as they come up: quotes, suppliers, hires, incidents. The person a large company has on the payroll, for the hours you actually need."
+        }
+      ]
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "How is this different from managed IT?",
+          "a": "Managed IT is us running your technology. Consulting is us helping you decide about it — including deciding to keep the supplier you already have. You can buy either one without the other."
+        },
+        {
+          "q": "You also sell the implementation. Isn't that a conflict?",
+          "a": "It would be if we hid it. The recommendation is written to stand on its own and to be handed to any supplier, and it says plainly when the right move is to keep what you have or to hire nobody at all. If we want the implementation work, we would rather earn it on the recommendation."
+        },
+        {
+          "q": "We're a small company. Is this for us?",
+          "a": "Especially. A large company has someone whose job is to ask these questions all day. A company of thirty people has an owner comparing quotes at eleven at night."
+        },
+        {
+          "q": "What do we actually walk away with?",
+          "a": "A document in plain language: what you have, what it costs, what we would change, in what order, and roughly what each step is worth. Not a slide deck."
+        }
+      ]
+    }
+  },
+  "pricing": {
+    "hero": {
+      "eyebrow": "pricing",
+      "title": "Numbers you can plan with.",
+      "intro": "Most firms make you sit through a sales call before you hear a price. Here is ours up front: every figure below is a realistic range, not a quote — the exact number depends on what your business needs, and it comes with a proposal after we understand your operation. Prices show in dollars or Colombian pesos depending on where you're browsing from; switch below if we guessed wrong."
+    },
+    "toggleLabel": "prices in",
+    "groups": [
+      {
+        "name": "Managed IT",
+        "blurb": "Per user, per month — you can do the math for your team before you ever talk to us.",
+        "rows": [
+          {
+            "service": "Core",
+            "price_usd": "$99 – 115",
+            "price_cop": "$95.000 – 115.000",
+            "unit": "per user / month",
+            "note": "Helpdesk, monitoring, updates, and backups — the essentials, run properly."
+          },
+          {
+            "service": "Complete",
+            "price_usd": "$139 – 160",
+            "price_cop": "$145.000 – 170.000",
+            "unit": "per user / month",
+            "note": "Core plus managed security and Microsoft 365 administration. Most teams land here."
+          },
+          {
+            "service": "Premium",
+            "price_usd": "$189 – 220",
+            "price_cop": "$195.000 – 230.000",
+            "unit": "per user / month",
+            "note": "Complete plus compliance support and vCIO guidance, for teams with auditors to answer."
+          }
+        ],
+        "footnote": "Onboarding is one month of service, billed once at the start. Where you land inside each range depends on the size and needs of your operation."
+      },
+      {
+        "name": "AI & automation",
+        "blurb": "Start small on purpose: the assessment tells you where automation pays off before you commit to building anything.",
+        "rows": [
+          {
+            "service": "AI Opportunity Assessment",
+            "price_usd": "$1,500",
+            "price_cop": "$2.900.000",
+            "unit": "fixed · 2 weeks",
+            "note": "Credited toward your first project if you go ahead."
+          },
+          {
+            "service": "Automation pilot",
+            "price_usd": "$4,900 – 15,000",
+            "price_cop": "$9 – 18 millones",
+            "unit": "per project",
+            "note": "Where it lands depends on how many systems are involved."
+          },
+          {
+            "service": "AI Partner",
+            "price_usd": "$1,500 – 2,900",
+            "price_cop": "$2,9 – 5,9 millones",
+            "unit": "per month",
+            "note": "Ongoing improvement, monitoring, and governance of what we build."
+          },
+          {
+            "service": "WhatsApp bot for restaurants & hotels",
+            "price_usd": "",
+            "price_cop": "$2,9 – 3,5 millones",
+            "unit": "setup",
+            "note": "Orders, reservations, and after-hours service. Plus a monthly fee of $790.000 – 1.100.000 depending on scope."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "Cybersecurity & compliance",
+        "blurb": "Security priced by scope, not by fear.",
+        "rows": [
+          {
+            "service": "Security baseline",
+            "price_usd": "$4,500 – 7,500",
+            "price_cop": "$9 – 13 millones",
+            "unit": "per project",
+            "note": "The essentials audited and fixed: identity, email, endpoints, backups."
+          },
+          {
+            "service": "SOC 2 / PCI DSS readiness",
+            "price_usd": "$9,500 – 18,000",
+            "price_cop": "$18 – 32 millones",
+            "unit": "per project",
+            "note": "From gap assessment to audit-ready evidence. Compliance platform and auditor fees are separate."
+          },
+          {
+            "service": "Part-time security chief (vCISO)",
+            "price_usd": "$2,900 – 5,000",
+            "price_cop": "$3,9 – 5,5 millones",
+            "unit": "per month",
+            "note": "A senior security director, a few hours a month — instead of a full-time hire."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "Custom software",
+        "blurb": "Senior engineers, nearshore economics, your time zone.",
+        "rows": [
+          {
+            "service": "Senior development",
+            "price_usd": "$45 – 55",
+            "price_cop": "$110.000 – 140.000",
+            "unit": "per hour",
+            "note": "Blended senior rate. Comparable US senior rates commonly run well above this."
+          },
+          {
+            "service": "Discovery sprint",
+            "price_usd": "$2,900",
+            "price_cop": "$5.500.000",
+            "unit": "fixed",
+            "note": "Scope, architecture, and an honest build-vs-buy answer before you commit to a build."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "IT consulting",
+        "blurb": "Decisions, priced by the hour they take.",
+        "rows": [
+          {
+            "service": "Consulting / assessment",
+            "price_usd": "$150 – 200",
+            "price_cop": "$280.000 – 350.000",
+            "unit": "per hour",
+            "note": ""
+          },
+          {
+            "service": "Fractional CTO",
+            "price_usd": "$175 – 250",
+            "price_cop": "",
+            "unit": "per hour",
+            "note": "Ongoing technology leadership without the full-time hire."
+          }
+        ],
+        "footnote": ""
+      }
+    ],
+    "note": {
+      "title": "How to read these numbers",
+      "intro": "They are ranges, not a menu with hard rules. What moves a price: how many people and systems are involved, how much of the work is regulated, and how fast you need it. What never changes: the proposal states a number before any work starts, and the first call costs nothing."
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "Are these the final prices?",
+          "a": "No — they're honest ranges. Where your case lands inside one depends on what your business needs; after a 30-minute call we send a proposal with an exact number, and that number is the one that counts."
+        },
+        {
+          "q": "Why publish prices when most firms don't?",
+          "a": "So you can rule us in or out without a sales process. If these ranges are far from your budget, we've saved us both a call; if they fit, you arrive knowing roughly what to expect."
+        },
+        {
+          "q": "Is there a minimum engagement?",
+          "a": "Managed IT starts at 10 users in the US, or a minimum monthly contract of $1.900.000 COP in Colombia. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+        },
+        {
+          "q": "Why do I see pesos (or dollars)?",
+          "a": "The currency follows where you're browsing from: Colombia sees pesos, everywhere else sees dollars. Use the COP/USD switch at the top to see the other list."
+        }
+      ]
+    }
   }
 }

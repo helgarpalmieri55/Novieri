@@ -1,0 +1,50 @@
+{# One pillar's price anchors, in both currencies at once.
+
+   The currency follows the visitor's location, not the page's language — the
+   owner's rule, and the right one: a Spanish-speaking buyer in Miami budgets
+   in dollars, an English-speaking one in Bogotá in pesos. module.hubl.js
+   reads the timezone (America/Bogota → COP, anywhere else → USD), remembers a
+   manual choice, and shows one price per row. A row with no price in the
+   active currency disappears whole: the WhatsApp bot is priced for Colombia,
+   the fractional CTO for the US.
+
+   Every figure is a range or a floor, never a quote — the copy that feeds
+   this says so, because the exact number depends on the business and arrives
+   with the proposal. Five of these stack on the page, hence padding tighter
+   than section-pad. #}
+<section class="price-table py-[clamp(2.25rem,5vh,3.5rem)]">
+  <div class="container-site">
+    {% if module.show_toggle %}
+      <div class="reveal mb-8 flex items-center gap-3">
+        <span class="idx-mono lowercase text-ink-faint">{{ module.toggle_label }}</span>
+        <div class="inline-flex overflow-hidden rounded-full border border-line" role="group" aria-label="{{ module.toggle_label|escape_attr }}">
+          <button type="button" data-currency-pick="cop" class="px-3.5 py-1.5 text-caption font-medium text-ink-muted transition-colors">COP</button>
+          <button type="button" data-currency-pick="usd" class="border-l border-line px-3.5 py-1.5 text-caption font-medium text-ink-muted transition-colors">USD</button>
+        </div>
+      </div>
+    {% endif %}
+    <div class="reveal mb-7 max-w-2xl">
+      <h2>{{ module.title }}</h2>
+      {% if module.blurb %}<p class="mt-3 text-small text-ink-muted">{{ module.blurb }}</p>{% endif %}
+    </div>
+    <div class="reveal overflow-hidden rounded-2xl border border-line">
+      {% for row in module.rows %}
+        <div class="price-row grid gap-x-8 gap-y-1 px-6 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline{% if not loop.first %} border-t border-line{% endif %}"
+             data-has-usd="{{ 1 if row.price_usd else 0 }}" data-has-cop="{{ 1 if row.price_cop else 0 }}">
+          <div>
+            <h3 class="text-body font-medium">{{ row.service }}</h3>
+            {% if row.note %}<p class="mt-1 max-w-[52ch] text-caption text-ink-faint">{{ row.note }}</p>{% endif %}
+          </div>
+          <div class="sm:text-right">
+            {% if row.price_cop %}<span data-price="cop" class="hidden font-display text-h3 font-semibold text-ink">{{ row.price_cop }}</span>{% endif %}
+            {% if row.price_usd %}<span data-price="usd" class="hidden font-display text-h3 font-semibold text-ink">{{ row.price_usd }}</span>{% endif %}
+            {% if row.unit %}<span class="idx-mono ml-2 lowercase text-ink-faint">{{ row.unit }}</span>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if module.footnote %}
+      <p class="reveal mt-4 text-caption text-ink-faint">{{ module.footnote }}</p>
+    {% endif %}
+  </div>
+</section>

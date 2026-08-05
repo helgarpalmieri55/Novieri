@@ -32,13 +32,31 @@
   function render(text) {
     var safe = escapeHtml(text);
 
-    // Links and bare emails, before the inline styling so URLs with
-    // underscores or asterisks are already inside an href.
+    // Links first, and parked as placeholders while the rest runs. Otherwise
+    // the bare-URL pass below reaches inside an href it just wrote and the
+    // markup comes apart.
+    var parked = [];
+    function park(html) {
+      parked.push(html);
+      return "\u0000" + (parked.length - 1) + "\u0000";
+    }
+
+    // [text](/path) — how the model writes a link to one of our own pages.
+    // Only our own paths and http(s) are allowed through; anything else
+    // (javascript:, data:) is left as the plain text it came in as.
+    safe = safe.replace(/\[([^\]\n]+)\]\(([^)\s]+)\)/g, function (whole, text, href) {
+      if (/^\//.test(href)) return park('<a href="' + href + '">' + text + "</a>");
+      if (/^https?:\/\//i.test(href)) {
+        return park('<a href="' + href + '" target="_blank" rel="noopener noreferrer">' + text + "</a>");
+      }
+      return text;
+    });
+
     safe = safe.replace(/\bhttps?:\/\/[^\s<)]+[^\s<).,;:]/g, function (url) {
-      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + "</a>";
+      return park('<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + "</a>");
     });
     safe = safe.replace(/\b[\w.+-]+@[\w-]+\.[\w.]+\b/g, function (mail) {
-      return '<a href="mailto:' + mail + '">' + mail + "</a>";
+      return park('<a href="mailto:' + mail + '">' + mail + "</a>");
     });
 
     safe = safe.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
@@ -77,7 +95,9 @@
     }
     closeList();
 
-    return out.join("");
+    return out.join("").replace(/\u0000(\d+)\u0000/g, function (_, n) {
+      return parked[Number(n)];
+    });
   }
 
   document.querySelectorAll(".sylvi").forEach(function (root) {

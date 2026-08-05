@@ -1,0 +1,77 @@
+[
+  {
+    "name": "title",
+    "label": "Group title",
+    "type": "text",
+    "default": "Managed IT"
+  },
+  {
+    "name": "blurb",
+    "label": "Blurb",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  },
+  {
+    "name": "show_toggle",
+    "label": "Show the currency switch above this table",
+    "type": "boolean",
+    "default": false
+  },
+  {
+    "name": "toggle_label",
+    "label": "Currency switch label",
+    "type": "text",
+    "default": "Prices in"
+  },
+  {
+    "name": "rows",
+    "label": "Rows",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "service",
+        "label": "Service",
+        "type": "text",
+        "default": "Core"
+      },
+      {
+        "name": "price_usd",
+        "label": "Price (USD) — empty hides the row for USD viewers",
+        "type": "text",
+        "default": "$99 – 115"
+      },
+      {
+        "name": "price_cop",
+        "label": "Price (COP) — empty hides the row for COP viewers",
+        "type": "text",
+        "default": "$95.000 – 115.000"
+      },
+      {
+        "name": "unit",
+        "label": "Unit",
+        "type": "text",
+        "default": "per user / month"
+      },
+      {
+        "name": "note",
+        "label": "Note",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      }
+    ]
+  },
+  {
+    "name": "footnote",
+    "label": "Footnote",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  }
+]

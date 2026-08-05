@@ -1,0 +1,51 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Novieri — pricing
+-->
+{#
+  The pricing page the audit asked for: anchors a buyer can self-qualify
+  against, one table per pillar, and the honesty note that none of it is a
+  quote. The English page carries the US list in dollars and the Spanish page
+  the Colombian list in pesos — each language sells to a different market, so
+  they diverge by design and the fill script owns both.
+
+  Slots: hero(2), five price tables(3-7), split-note(8) for how to read the
+  numbers, faq(9), cta(10).
+#}
+{% extends "./partials/base.hubl.html" %}
+{% block body %}
+  {% dnd_area "main" label="Page content" %}
+    {% dnd_section %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/page-hero" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/price-table" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/price-table" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/price-table" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/price-table" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/price-table" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/split-note" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/faq-list" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/cta-band" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+{% endblock body %}

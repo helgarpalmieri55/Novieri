@@ -41,17 +41,26 @@ const ES_SLUGS = {
   "services/managed-it": "servicios/it-administrado",
   "services/cybersecurity-compliance": "servicios/ciberseguridad-y-cumplimiento",
   "services/custom-software": "servicios/desarrollo-a-medida",
+  "services/it-consulting": "servicios/consultoria-it",
   about: "nosotros",
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
+  pricing: "precios",
+  products: "productos",
+  "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
+  "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
+  "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
+  "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
+  "products/ventia": "productos/ventia",
+  "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
 };
 const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 
-/** Matches src/config/site.ts. Both are empty until the company is registered. */
-const VARS = { company: "Novieri", nit: "", email: "sales@novieri.com" };
+/** The NIT stays empty until registration completes; [[…]] blocks drop it cleanly. */
+const VARS = { company: "Novieri SAS", nit: "", email: "sales@novieri.com" };
 
 /**
  * Founder portraits.
@@ -66,12 +75,15 @@ const VARS = { company: "Novieri", nit: "", email: "sales@novieri.com" };
  * overwriting in place, so the repo stays the source of truth, the URL is
  * stable, and there is no file GUID to keep in step by hand.
  */
-const PHOTOS = { helgar: "helgar.jpg", sylvana: "sylvana.jpg" };
+// The logo rides along for the Organization JSON-LD in base.hubl.html, which
+// needs a URL that survives theme rebuilds.
+const PHOTOS = { helgar: "helgar.jpg", sylvana: "sylvana.jpg", logo: "novieri-isotipo-color-256px.png" };
 
 async function uploadPhoto(file) {
   const form = new FormData();
   const bytes = readFileSync(`hubspot/src/theme/novieri/images/${file}`);
-  form.set("file", new Blob([bytes], { type: "image/jpeg" }), file);
+  const type = file.endsWith(".png") ? "image/png" : "image/jpeg";
+  form.set("file", new Blob([bytes], { type }), file);
   form.set("folderPath", "/novieri");
   form.set("fileName", file);
   form.set(
@@ -188,6 +200,37 @@ const SERVICE_SLOTS = {
   faq: "main-module-6",       // faq-list
   cta: "main-module-7",       // cta-band
 };
+/**
+ * The published products, and where each one lives. Three of the nine written
+ * in messages/*.json are deliberately absent: the IT suite, the monitoring
+ * service and Matter Flow stay unpublished until they are wanted.
+ */
+const SOLUTIONS = [
+  ["aiAssistant", "products/ai-virtual-assistant"],
+  ["whatsapp", "products/whatsapp-ai-assistant"],
+  ["visitorIntel", "products/visitor-intelligence"],
+  ["sentinel", "products/vulnerability-management"],
+  ["ventia", "products/ventia"],
+  ["webDev", "products/ai-websites"],
+];
+
+/** Mirrors solution.hubl.html. */
+const SOLUTION_SLOTS = {
+  hero: "main-module-2",     // page-hero
+  what: "main-module-3",     // dot-list
+  built: "main-module-4",    // split-note
+  powered: "main-module-5",  // founders-band
+  cta: "main-module-6",      // cta-band
+};
+
+/** Mirrors solutions.hubl.html — and services-index.hubl.html, which is the
+    same three modules in the same order. */
+const SOLUTIONS_INDEX_SLOTS = {
+  hero: "main-module-2",   // page-hero
+  cards: "main-module-3",  // pillar-cards
+  cta: "main-module-4",    // cta-band
+};
+
 const ABOUT_SLOTS = {
   hero: "main-module-2",      // page-hero
   story: "main-module-3",     // founders-band
@@ -202,6 +245,7 @@ const SERVICES = [
   ["managedIt", "services/managed-it"],
   ["security", "services/cybersecurity-compliance"],
   ["software", "services/custom-software"],
+  ["itConsulting", "services/it-consulting"],
 ];
 
 function serviceWidgets(ns) {
@@ -257,11 +301,18 @@ function serviceWidgets(ns) {
   };
 }
 
-/** The services index reuses the service template, minus what it has no copy for. */
+/**
+ * The services index: hero, a card per service, call to action.
+ *
+ * It used to borrow the service template and fill three of its seven slots,
+ * which left a split-note, a package table and an FAQ showing their English
+ * field defaults on both language versions. It has its own template now, with
+ * only the sections it has copy for, so there is nothing left to fall back to.
+ */
 function servicesIndexWidgets() {
   const idx = t.servicesIndex;
   return {
-    [SERVICE_SLOTS.hero]: {
+    [SOLUTIONS_INDEX_SLOTS.hero]: {
       body: {
         eyebrow: idx.eyebrow,
         title: idx.title,
@@ -271,23 +322,199 @@ function servicesIndexWidgets() {
         seam: true,
       },
     },
-    [SERVICE_SLOTS.what]: {
+    [SOLUTIONS_INDEX_SLOTS.cards]: {
       body: {
-        title: "The four pillars",
-        intro: "",
-        tone: "light",
-        items: SERVICES.map(([key]) => ({
-          item_title: t.pillars[key].name,
-          item_body: t.pillars[key].tagline,
+        // Empty: the hero directly above already says what this page is, and a
+        // second heading between it and the cards only repeats it.
+        eyebrow: "",
+        title: "",
+        link_label: t.common.learnMore,
+        cards: SERVICES.map(([key, slug], n) => ({
+          card_name: t.pillars[key].name,
+          card_tagline: t.pillars[key].tagline,
+          card_tags: (t.pillars[key].tags || []).join(", "),
+          card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
+          card_colour: ACCENTS[n % ACCENTS.length],
         })),
       },
     },
-    [SERVICE_SLOTS.cta]: {
+    [SOLUTIONS_INDEX_SLOTS.cta]: {
       body: {
         eyebrow: NEXT_STEP,
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+      },
+    },
+  };
+}
+
+/** Mirrors pricing.hubl.html. */
+const PRICING_SLOTS = {
+  hero: "main-module-2",
+  tables: ["main-module-3", "main-module-4", "main-module-5", "main-module-6", "main-module-7"],
+  note: "main-module-8",
+  faq: "main-module-9",
+  cta: "main-module-10",
+};
+
+/**
+ * The pricing page. The two languages carry different price lists on purpose —
+ * USD for the US market on English, COP for Colombia on Spanish — so this
+ * reads whatever messages/<locale>.json says and asks no questions. The
+ * template has exactly five table slots and both files carry exactly five
+ * groups; the guard below turns a drift into a loud failure instead of a
+ * table quietly wearing another pillar's prices.
+ */
+function pricingWidgets() {
+  const p = t.pricing;
+  if (p.groups.length !== PRICING_SLOTS.tables.length) {
+    throw new Error(`pricing: ${p.groups.length} groups for ${PRICING_SLOTS.tables.length} table slots`);
+  }
+  return {
+    [PRICING_SLOTS.hero]: {
+      body: {
+        eyebrow: p.hero.eyebrow,
+        title: p.hero.title,
+        intro: p.hero.intro,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        seam: true,
+      },
+    },
+    ...Object.fromEntries(
+      p.groups.map((g, n) => [
+        PRICING_SLOTS.tables[n],
+        {
+          body: {
+            title: g.name,
+            blurb: g.blurb,
+            // The switch renders once, above the first table, and the module's
+            // JS drives every table on the page from it.
+            show_toggle: n === 0,
+            toggle_label: p.toggleLabel,
+            rows: g.rows.map((r) => ({
+              service: r.service,
+              price_usd: r.price_usd,
+              price_cop: r.price_cop,
+              unit: r.unit,
+              note: r.note,
+            })),
+            footnote: g.footnote,
+          },
+        },
+      ]),
+    ),
+    [PRICING_SLOTS.note]: {
+      body: { title: p.note.title, intro: p.note.intro, footnote: "", picture: { src: "", alt: "" } },
+    },
+    [PRICING_SLOTS.faq]: {
+      body: {
+        title: t.serviceCommon.faqTitle,
+        schema: true,
+        items: p.faq.items.map((q) => ({ question: q.q, answer: q.a })),
+      },
+    },
+    [PRICING_SLOTS.cta]: {
+      body: {
+        eyebrow: NEXT_STEP,
+        title: t.serviceCommon.ctaTitle,
+        subtitle: t.serviceCommon.ctaSubtitle,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+      },
+    },
+  };
+}
+
+function solutionWidgets(key) {
+  const p = t.solutions.items[key];
+  const c = t.solutions.common;
+  return {
+    [SOLUTION_SLOTS.hero]: {
+      body: {
+        eyebrow: c.eyebrow,
+        title: p.hero.title,
+        intro: p.hero.promise,
+        button_text: c.demoCta,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        seam: true,
+      },
+    },
+    [SOLUTION_SLOTS.what]: {
+      body: {
+        title: c.featuresTitle,
+        intro: "",
+        tone: "light",
+        items: p.features.map((f) => ({ item_title: f.title, item_body: f.body })),
+      },
+    },
+    // The engineering, kept below the part written for the buyer. The stack
+    // rides in the footnote, which is where the module puts its small print.
+    [SOLUTION_SLOTS.built]: {
+      body: {
+        title: p.built.title,
+        intro: p.built.body,
+        footnote: (p.stack || []).join(" ·· "),
+        picture: { src: "", alt: "" },
+      },
+    },
+    [SOLUTION_SLOTS.powered]: {
+      body: {
+        eyebrow: c.poweredBadge,
+        word_a: "nov",
+        word_b: "ieri",
+        intro: c.poweredBody,
+        cta_text: "",
+      },
+    },
+    [SOLUTION_SLOTS.cta]: {
+      body: {
+        eyebrow: NEXT_STEP,
+        title: c.ctaTitle,
+        subtitle: c.ctaSubtitle,
+        button_text: c.demoCta,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+      },
+    },
+  };
+}
+
+function solutionsIndexWidgets() {
+  const idx = t.solutions.index;
+  const c = t.solutions.common;
+  return {
+    [SOLUTIONS_INDEX_SLOTS.hero]: {
+      body: {
+        eyebrow: idx.eyebrow,
+        title: idx.title,
+        intro: idx.intro,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        seam: true,
+      },
+    },
+    [SOLUTIONS_INDEX_SLOTS.cards]: {
+      body: {
+        eyebrow: "",
+        title: "",
+        link_label: c.seeSolution,
+        cards: SOLUTIONS.map(([key, slug], n) => ({
+          card_name: t.solutions.items[key].name,
+          card_tagline: t.solutions.items[key].tagline,
+          card_tags: (t.solutions.items[key].tags || []).join(", "),
+          card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
+          card_colour: ACCENTS[n % ACCENTS.length],
+        })),
+      },
+    },
+    [SOLUTIONS_INDEX_SLOTS.cta]: {
+      body: {
+        eyebrow: NEXT_STEP,
+        title: c.ctaTitle,
+        subtitle: c.ctaSubtitle,
+        button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
       },
     },
@@ -308,7 +535,9 @@ function aboutWidgets() {
     },
     [ABOUT_SLOTS.story]: {
       body: {
-        eyebrow: "the story",
+        // The copy's own title, not a hardcoded English one — "the story"
+        // rendered above Spanish text on /nosotros for a month.
+        eyebrow: a.story.title.toLowerCase(),
         word_a: "nov",
         word_b: "ieri",
         intro: a.story.body,
@@ -318,14 +547,14 @@ function aboutWidgets() {
     [ABOUT_SLOTS.people]: {
       body: {
         title: a.founders.title,
-        linkedin_label: "LinkedIn profile",
+        linkedin_label: locale === "es" ? "Perfil de LinkedIn" : "LinkedIn profile",
         people: [
           {
             person_name: a.founders.helgar.name,
             person_role: a.founders.helgar.role,
             person_bio: a.founders.helgar.bio,
             person_initials: "HP",
-            person_linkedin: "",
+            person_linkedin: "https://www.linkedin.com/in/helgar-palmieri-82726b16a/",
             person_photo: {
               src: photoUrls.helgar || "",
               alt: a.founders.helgar.photoAlt,
@@ -338,7 +567,7 @@ function aboutWidgets() {
             person_role: a.founders.partner.role,
             person_bio: a.founders.partner.bio,
             person_initials: "SN",
-            person_linkedin: "",
+            person_linkedin: "https://www.linkedin.com/in/sylvananova-272303/",
             person_photo: {
               src: photoUrls.sylvana || "",
               alt: a.founders.partner.photoAlt,
@@ -385,7 +614,7 @@ const HOME_SLOTS = {
   founders: "main-module-10",
   cta: "main-module-11",
 };
-const ACCENTS = ["text-plum", "text-teal", "text-gold-deep", "text-ink-muted"];
+const ACCENTS = ["text-plum", "text-teal", "text-gold-deep", "text-ink-muted", "text-plum-bright"];
 
 function homeWidgets() {
   const h = t.home;
@@ -586,7 +815,10 @@ const PAGES = {
   [locale === "es" ? "es" : ""]: homeWidgets(),
   [slugFor("self-diagnosis")]: diagnosticWidgets(),
   [slugFor("services")]: servicesIndexWidgets(),
+  [slugFor("pricing")]: pricingWidgets(),
   ...Object.fromEntries(SERVICES.map(([ns, slug]) => [slugFor(slug), serviceWidgets(ns)])),
+  [slugFor("products")]: solutionsIndexWidgets(),
+  ...Object.fromEntries(SOLUTIONS.map(([key, slug]) => [slugFor(slug), solutionWidgets(key)])),
   [slugFor("about")]: aboutWidgets(),
   [slugFor(LEGAL_SLUGS.privacy)]: legalWidgets("privacy"),
   [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),

@@ -9,7 +9,7 @@
     "name": "title",
     "label": "Title",
     "type": "text",
-    "default": "Four pillars, one standard."
+    "default": "Five pillars, one standard."
   },
   {
     "name": "cards",

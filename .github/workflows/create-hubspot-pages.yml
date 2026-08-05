@@ -28,8 +28,12 @@ on:
           - forms-list
           - form-dump
           - form-setup
+          - menus
+          - menu-dump
           - widgets
           - create-all
+          - retemplate
+          - rename-products
       slug:
         description: "Slug to verify (verify mode only)"
         default: "about"
@@ -62,6 +66,13 @@ jobs:
             # 'all' publishes every page in the list; a slug publishes one.
             publish)       node scripts/create-hubspot-pages.mjs --publish='${{ inputs.slug }}' ;;
             create-all)    node scripts/create-hubspot-pages.mjs ;;
+            # Moves existing pages onto the template the script declares for
+            # them. Creation skips a slug that exists, so this is the only way
+            # a live page changes template without being deleted and rebuilt.
+            retemplate)    node scripts/create-hubspot-pages.mjs --retemplate ;;
+            # One-time: /solutions -> /products (and /soluciones -> /productos)
+            # with a 301 behind each old path. Safe to re-run.
+            rename-products) node scripts/create-hubspot-pages.mjs --rename-products ;;
             # Per-page copy from messages/*.json into each page's modules.
             fill-content)  node scripts/fill-hubspot-pages.mjs ;;
             fill-one)      node scripts/fill-hubspot-pages.mjs --only='${{ inputs.slug }}' ;;
@@ -73,5 +84,8 @@ jobs:
             form-dump)     node scripts/hubspot-forms.mjs --form='${{ inputs.slug }}' ;;
             # Consent copy, the language dropdown, and the Spanish twin.
             form-setup)    node scripts/hubspot-form-setup.mjs ;;
+            # Read-only: menu names and ids. Items are added in HubSpot's UI.
+            menus)         node scripts/hubspot-menus.mjs ;;
+            menu-dump)     node scripts/hubspot-menus.mjs --menu='${{ inputs.slug }}' ;;
             widgets)       node scripts/hubspot-forms.mjs --widgets='${{ inputs.slug }}' ;;
           esac

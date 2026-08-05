@@ -109,6 +109,41 @@ if (!TOKEN) {
   process.exit(1);
 }
 
+/**
+ * IT consulting became the fifth service after the forms were built, so the
+ * "What do you need?" dropdown stops one service short. The option has to
+ * exist in two places: on the contact property (an enumeration rejects values
+ * it does not know) and on each form's field. Property first, forms below.
+ */
+const IT_OPTION = { label: EN_MESSAGES.contact.form.serviceOptions.itConsulting, value: "it_consulting" };
+const OTHER_LABEL = EN_MESSAGES.contact.form.serviceOptions.other;
+
+const prop = await api("/crm/v3/properties/contacts/novieri_service_interest").catch(() => null);
+if (prop && !prop.options.some((o) => o.value === IT_OPTION.value)) {
+  const options = [...prop.options];
+  const at = options.findIndex((o) => o.label === OTHER_LABEL);
+  options.splice(at === -1 ? options.length : at, 0, { ...IT_OPTION, hidden: false, description: "" });
+  options.forEach((o, n) => (o.displayOrder = n));
+  if (!dryRun) {
+    await api("/crm/v3/properties/contacts/novieri_service_interest", {
+      method: "PATCH",
+      body: JSON.stringify({ options }),
+    });
+  }
+  console.log(`${dryRun ? "would add" : "added"}  "${IT_OPTION.label}" to the novieri_service_interest property`);
+}
+
+/** Splices the IT consulting option into a form's service dropdown, before "other". */
+function ensureItOption(f) {
+  if (f.name !== "novieri_service_interest" || !Array.isArray(f.options)) return;
+  if (f.options.some((o) => o.value === IT_OPTION.value)) return;
+  const at = f.options.findIndex((o) => o.label === OTHER_LABEL);
+  const like = f.options[0] || {};
+  const option = { ...like, ...IT_OPTION, description: "" };
+  f.options.splice(at === -1 ? f.options.length : at, 0, option);
+  f.options.forEach((o, n) => (o.displayOrder = n));
+}
+
 const all = await api(`/marketing/v3/forms?${new URLSearchParams({ limit: "100" })}`);
 const enStub = (all.results || []).find((f) => f.name === EN_FORM);
 if (!enStub) {
@@ -134,6 +169,7 @@ const enPatch = {
 };
 eachField(enPatch, (f) => {
   if (f.name === "hs_language") f.options = LANGUAGE_OPTIONS;
+  ensureItOption(f);
 });
 
 // --- Spanish: the same form, in Spanish ------------------------------------
@@ -167,6 +203,9 @@ const esBody = {
 };
 eachField(esBody, (f) => {
   if (f.name === "hs_language") f.options = LANGUAGE_OPTIONS;
+  // Before the relabel below, so the new option's English label is
+  // in place for OPTION_LABELS to translate.
+  ensureItOption(f);
   // A translated label over an English dropdown is worse than neither.
   if (Array.isArray(f.options)) {
     f.options = f.options.map((o) => (OPTION_LABELS[o.label] ? { ...o, label: OPTION_LABELS[o.label] } : o));

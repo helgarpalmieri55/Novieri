@@ -1,11 +1,19 @@
 {# The four service pillars, as cards. Each card is a group in the editor. #}
 <section class="section-pad">
   <div class="container-site">
-    <div class="reveal mb-[clamp(2.5rem,6vh,4rem)] max-w-2xl">
-      <span class="eyebrow">{{ module.eyebrow }}</span>
-      <h2 class="mt-4">{{ module.title }}</h2>
-    </div>
-    <div class="grid grid-cols-1 gap-4.5 sm:grid-cols-2 xl:grid-cols-4">
+    {# Both empty on the solutions index, and an empty heading block still
+       drew its eyebrow marker — a stray "··" floating above the cards. #}
+    {% if module.eyebrow or module.title %}
+      <div class="reveal mb-[clamp(2.5rem,6vh,4rem)] max-w-2xl">
+        {% if module.eyebrow %}<span class="eyebrow">{{ module.eyebrow }}</span>{% endif %}
+        {% if module.title %}<h2 class="mt-4">{{ module.title }}</h2>{% endif %}
+      </div>
+    {% endif %}
+    {# Three across, not four. There are five pillars now and five cards in a
+       four-column grid leave one stranded on its own row; 3 + 2 reads as a
+       deliberate arrangement instead of an accident. The solutions index has
+       six, which fills two rows of three exactly. #}
+    <div class="grid grid-cols-1 gap-4.5 sm:grid-cols-2 xl:grid-cols-3">
       {% for card in module.cards %}
         <a href="{{ card.card_link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7" style="--rd: {{ loop.index0 * 70 }}ms">
           <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.card_colour }}">··</span>
