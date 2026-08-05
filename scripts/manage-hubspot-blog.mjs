@@ -168,16 +168,26 @@ if (args.includes("--tidy")) {
   for (const p of posts) {
     console.log(`post  ${p.id}  blog=${p.contentGroupId}  [${p.currentState || p.state}]  ${p.language || "?"}  /${p.slug}`);
   }
+  // The repo's topic files are the ground truth for which slug belongs to
+  // which language — the posts' own language field lies (the first sync
+  // stamped Spanish posts "en"), so it decides nothing here.
+  const topics = readdirSync("content/insights")
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => JSON.parse(readFileSync(`content/insights/${f}`, "utf8")));
+  const enSlugs = new Set(topics.map((t) => t.en.slug));
+  const esSlugs = new Set(topics.map((t) => t.es.slug));
+  const tail = (p) => p.slug.split("/").pop();
+  const inEn = (p) => String(p.contentGroupId) === String(enBlog?.id);
+
   const doomed = new Map();
   if (esBlog && enBlog) {
     for (const p of posts) {
-      if (String(p.contentGroupId) === String(enBlog.id) && (p.language || "").startsWith("es")) {
-        doomed.set(p.id, `es post in the en blog: /${p.slug}`);
-      }
+      if (inEn(p) && esSlugs.has(tail(p))) doomed.set(p.id, `Spanish post stranded in the English blog: /${p.slug}`);
     }
   }
   const groups = new Map();
   for (const p of posts) {
+    if (doomed.has(p.id)) continue;
     const key = `${p.contentGroupId}::${p.name}`;
     (groups.get(key) || groups.set(key, []).get(key)).push(p);
   }
@@ -190,6 +200,26 @@ if (args.includes("--tidy")) {
   for (const [id, why] of doomed) {
     await api(`/cms/v3/blogs/posts/${id}`, { method: "DELETE" });
     console.log(`delete  ${id} — ${why}`);
+  }
+
+  // De-dup keeps the newest post, and the newest is sometimes the one HubSpot
+  // suffixed "-1" to dodge the very duplicate we just removed. With the twin
+  // gone the clean slug is free again.
+  const taken = new Set(posts.filter((p) => !doomed.has(p.id)).map((p) => p.slug));
+  for (const p of posts) {
+    if (doomed.has(p.id)) continue;
+    const m = p.slug.match(/^(.*)-\d+$/);
+    if (!m) continue;
+    const base = m[1];
+    if (!enSlugs.has(base.split("/").pop()) && !esSlugs.has(base.split("/").pop())) continue;
+    if (taken.has(base)) continue;
+    await api(`/cms/v3/blogs/posts/${p.id}`, { method: "PATCH", body: JSON.stringify({ slug: base }) });
+    await api(`/cms/v3/blogs/posts/${p.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ publishDate: new Date().toISOString(), state: "PUBLISHED" }),
+    });
+    taken.add(base);
+    console.log(`reslug  ${p.id}  /${p.slug} -> /${base}`);
   }
   process.exit(0);
 }
@@ -246,7 +276,9 @@ async function allPosts() {
 }
 const posts = await allPosts();
 const inBlog = (b) => (b ? posts.filter((p) => String(p.contentGroupId) === String(b.id)) : []);
-const bySlug = (list) => new Map(list.map((p) => [p.slug, p]));
+// Stored slugs carry the blog's root ("insights/foo"); the topic files hold
+// only the tail. Keying by tail is what lets an upsert find its own post.
+const bySlug = (list) => new Map(list.map((p) => [p.slug.split("/").pop(), p]));
 const existingEn = bySlug(inBlog(enBlog));
 const existingEs = bySlug(inBlog(esBlog));
 
