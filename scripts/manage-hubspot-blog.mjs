@@ -147,6 +147,8 @@ if (create) {
       console.log(`v3 template patch refused on ${b.id}: ${String(e.message).slice(0, 120)}`);
     }
     try {
+      const before = await api(`/content/api/v2/blogs/${b.id}`);
+      console.log(`  before: item=${before.item_template_path}  listing=${before.listing_template_path}`);
       await api(`/content/api/v2/blogs/${b.id}`, {
         method: "PUT",
         body: JSON.stringify({
@@ -154,7 +156,9 @@ if (create) {
           listing_template_path: `${TEMPLATES}/blog-listing.hubl.html`,
         }),
       });
-      console.log(`templates set on blog ${b.id} (v2)`);
+      // Trust nothing that returns 200: read the stored values back.
+      const after = await api(`/content/api/v2/blogs/${b.id}`);
+      console.log(`  after:  item=${after.item_template_path}  listing=${after.listing_template_path}`);
     } catch (e) {
       console.log(`v2 template put refused on ${b.id}: ${String(e.message).slice(0, 160)}`);
     }
