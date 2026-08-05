@@ -406,7 +406,7 @@ function solutionsIndexWidgets() {
         cards: SOLUTIONS.map(([key, slug], n) => ({
           card_name: t.solutions.items[key].name,
           card_tagline: t.solutions.items[key].tagline,
-          card_tags: (t.solutions.items[key].tags || []).join(" · "),
+          card_tags: (t.solutions.items[key].tags || []).join(", "),
           card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
           card_colour: ACCENTS[n % ACCENTS.length],
         })),
