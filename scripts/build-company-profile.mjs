@@ -31,12 +31,12 @@ const services = (m, label) =>
  * page, so she is told not to invent a URL for them.
  */
 const SOLUTION_PATHS = {
-  aiAssistant: { es: "/soluciones/asistente-virtual-ia", en: "/solutions/ai-virtual-assistant" },
-  whatsapp: { es: "/soluciones/asistente-ia-whatsapp", en: "/solutions/whatsapp-ai-assistant" },
-  visitorIntel: { es: "/soluciones/inteligencia-de-visitantes", en: "/solutions/visitor-intelligence" },
-  sentinel: { es: "/soluciones/gestion-de-vulnerabilidades", en: "/solutions/vulnerability-management" },
-  ventia: { es: "/soluciones/ventia", en: "/solutions/ventia" },
-  webDev: { es: "/soluciones/sitios-web-con-ia", en: "/solutions/ai-websites" },
+  aiAssistant: { es: "/productos/asistente-virtual-ia", en: "/products/ai-virtual-assistant" },
+  whatsapp: { es: "/productos/asistente-ia-whatsapp", en: "/products/whatsapp-ai-assistant" },
+  visitorIntel: { es: "/productos/inteligencia-de-visitantes", en: "/products/visitor-intelligence" },
+  sentinel: { es: "/productos/gestion-de-vulnerabilidades", en: "/products/vulnerability-management" },
+  ventia: { es: "/productos/ventia", en: "/products/ventia" },
+  webDev: { es: "/productos/sitios-web-con-ia", en: "/products/ai-websites" },
 };
 
 const solutions = (m, label, lang) =>

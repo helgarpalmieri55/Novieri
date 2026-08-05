@@ -46,13 +46,13 @@ const ES_SLUGS = {
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
   pricing: "precios",
-  solutions: "soluciones",
-  "solutions/ai-virtual-assistant": "soluciones/asistente-virtual-ia",
-  "solutions/whatsapp-ai-assistant": "soluciones/asistente-ia-whatsapp",
-  "solutions/visitor-intelligence": "soluciones/inteligencia-de-visitantes",
-  "solutions/vulnerability-management": "soluciones/gestion-de-vulnerabilidades",
-  "solutions/ventia": "soluciones/ventia",
-  "solutions/ai-websites": "soluciones/sitios-web-con-ia",
+  products: "productos",
+  "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
+  "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
+  "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
+  "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
+  "products/ventia": "productos/ventia",
+  "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
@@ -206,12 +206,12 @@ const SERVICE_SLOTS = {
  * service and Matter Flow stay unpublished until they are wanted.
  */
 const SOLUTIONS = [
-  ["aiAssistant", "solutions/ai-virtual-assistant"],
-  ["whatsapp", "solutions/whatsapp-ai-assistant"],
-  ["visitorIntel", "solutions/visitor-intelligence"],
-  ["sentinel", "solutions/vulnerability-management"],
-  ["ventia", "solutions/ventia"],
-  ["webDev", "solutions/ai-websites"],
+  ["aiAssistant", "products/ai-virtual-assistant"],
+  ["whatsapp", "products/whatsapp-ai-assistant"],
+  ["visitorIntel", "products/visitor-intelligence"],
+  ["sentinel", "products/vulnerability-management"],
+  ["ventia", "products/ventia"],
+  ["webDev", "products/ai-websites"],
 ];
 
 /** Mirrors solution.hubl.html. */
@@ -807,7 +807,7 @@ const PAGES = {
   [slugFor("services")]: servicesIndexWidgets(),
   [slugFor("pricing")]: pricingWidgets(),
   ...Object.fromEntries(SERVICES.map(([ns, slug]) => [slugFor(slug), serviceWidgets(ns)])),
-  [slugFor("solutions")]: solutionsIndexWidgets(),
+  [slugFor("products")]: solutionsIndexWidgets(),
   ...Object.fromEntries(SOLUTIONS.map(([key, slug]) => [slugFor(slug), solutionWidgets(key)])),
   [slugFor("about")]: aboutWidgets(),
   [slugFor(LEGAL_SLUGS.privacy)]: legalWidgets("privacy"),

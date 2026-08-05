@@ -33,6 +33,7 @@ on:
           - widgets
           - create-all
           - retemplate
+          - rename-products
       slug:
         description: "Slug to verify (verify mode only)"
         default: "about"
@@ -69,6 +70,9 @@ jobs:
             # them. Creation skips a slug that exists, so this is the only way
             # a live page changes template without being deleted and rebuilt.
             retemplate)    node scripts/create-hubspot-pages.mjs --retemplate ;;
+            # One-time: /solutions -> /products (and /soluciones -> /productos)
+            # with a 301 behind each old path. Safe to re-run.
+            rename-products) node scripts/create-hubspot-pages.mjs --rename-products ;;
             # Per-page copy from messages/*.json into each page's modules.
             fill-content)  node scripts/fill-hubspot-pages.mjs ;;
             fill-one)      node scripts/fill-hubspot-pages.mjs --only='${{ inputs.slug }}' ;;

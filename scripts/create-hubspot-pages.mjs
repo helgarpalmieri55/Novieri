@@ -32,6 +32,7 @@ const dump = args.find((a) => a.startsWith("--dump="))?.slice("--dump=".length);
 const publish = (args.find((a) => a.startsWith("--publish=")) || "").split("=")[1];
 const variants = args.includes("--language-variants");
 const retemplate = args.includes("--retemplate");
+const renameProducts = args.includes("--rename-products");
 
 /**
  * The Spanish slugs, from src/i18n/pathnames.json. The home page is "es"
@@ -49,13 +50,13 @@ const ES_SLUGS = {
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
   pricing: "precios",
-  solutions: "soluciones",
-  "solutions/ai-virtual-assistant": "soluciones/asistente-virtual-ia",
-  "solutions/whatsapp-ai-assistant": "soluciones/asistente-ia-whatsapp",
-  "solutions/visitor-intelligence": "soluciones/inteligencia-de-visitantes",
-  "solutions/vulnerability-management": "soluciones/gestion-de-vulnerabilidades",
-  "solutions/ventia": "soluciones/ventia",
-  "solutions/ai-websites": "soluciones/sitios-web-con-ia",
+  products: "productos",
+  "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
+  "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
+  "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
+  "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
+  "products/ventia": "productos/ventia",
+  "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
@@ -99,31 +100,31 @@ const PAGES = [
     name: "Pricing",
     htmlTitle: "Pricing — Novieri",
     metaDescription: "Published price anchors for managed IT, AI & automation, cybersecurity, custom software, and IT consulting. Honest starting points — the exact number comes with a proposal." },
-  { key: "solutions", template: "solutions", slug: "solutions",
-    name: "Solutions",
-    htmlTitle: "Solutions — Novieri",
+  { key: "solutions", template: "solutions", slug: "products",
+    name: "Products",
+    htmlTitle: "Products — Novieri",
     metaDescription: "Products Novieri builds and operates: an AI receptionist, a WhatsApp assistant, vulnerability management, visitor intelligence, e-commerce, and websites with AI inside." },
-  { key: "sol-receptionist", template: "solution", slug: "solutions/ai-virtual-assistant",
+  { key: "sol-receptionist", template: "solution", slug: "products/ai-virtual-assistant",
     name: "AI Virtual Receptionist",
     htmlTitle: "AI Virtual Receptionist — Novieri",
     metaDescription: "An AI receptionist that answers your sales line in a natural voice, captures the caller into your CRM, and books the meeting when nobody is in." },
-  { key: "sol-whatsapp", template: "solution", slug: "solutions/whatsapp-ai-assistant",
+  { key: "sol-whatsapp", template: "solution", slug: "products/whatsapp-ai-assistant",
     name: "WhatsApp AI Assistant",
     htmlTitle: "WhatsApp AI Assistant — Novieri",
     metaDescription: "A WhatsApp assistant for restaurants and hotels that genuinely converses, takes orders and reservations, and hands over to your team when it should." },
-  { key: "sol-visitor", template: "solution", slug: "solutions/visitor-intelligence",
+  { key: "sol-visitor", template: "solution", slug: "products/visitor-intelligence",
     name: "Website Visitor Intelligence",
     htmlTitle: "Website Visitor Intelligence — Novieri",
     metaDescription: "See which companies visit your website and get the ones worth calling in your inbox every morning, ranked against your best clients." },
-  { key: "sol-sentinel", template: "solution", slug: "solutions/vulnerability-management",
+  { key: "sol-sentinel", template: "solution", slug: "products/vulnerability-management",
     name: "Vulnerability Management",
     htmlTitle: "Vulnerability management — Novieri",
     metaDescription: "Find the weaknesses in your systems before someone else does, know which ones actually matter, and hold the evidence an auditor asks for." },
-  { key: "sol-ventia", template: "solution", slug: "solutions/ventia",
+  { key: "sol-ventia", template: "solution", slug: "products/ventia",
     name: "Ventia — AI E-commerce",
     htmlTitle: "Ventia — AI e-commerce — Novieri",
     metaDescription: "Novieri's e-commerce platform: complete online stores with an AI salesperson inside, and several brands on one foundation." },
-  { key: "sol-websites", template: "solution", slug: "solutions/ai-websites",
+  { key: "sol-websites", template: "solution", slug: "products/ai-websites",
     name: "AI-powered Websites",
     htmlTitle: "AI-powered websites — Novieri",
     metaDescription: "Commercial websites, bilingual and fast, with the AI we run in production working inside them." },
@@ -259,12 +260,12 @@ function esMeta() {
     "self-diagnosis": es.meta.diagnostic,
     pricing: es.meta.pricing,
     solutions: es.meta.solutions,
-    "solutions/ai-virtual-assistant": es.meta.sol_aiAssistant,
-    "solutions/whatsapp-ai-assistant": es.meta.sol_whatsapp,
-    "solutions/visitor-intelligence": es.meta.sol_visitorIntel,
-    "solutions/vulnerability-management": es.meta.sol_sentinel,
-    "solutions/ventia": es.meta.sol_ventia,
-    "solutions/ai-websites": es.meta.sol_webDev,
+    "products/ai-virtual-assistant": es.meta.sol_aiAssistant,
+    "products/whatsapp-ai-assistant": es.meta.sol_whatsapp,
+    "products/visitor-intelligence": es.meta.sol_visitorIntel,
+    "products/vulnerability-management": es.meta.sol_sentinel,
+    "products/ventia": es.meta.sol_ventia,
+    "products/ai-websites": es.meta.sol_webDev,
   };
 }
 
@@ -359,6 +360,75 @@ if (retemplate) {
     console.log(`sync    ${page.slug} — ${Object.keys(patch).join(", ")}`);
   }
   console.log("\nRe-fill and re-publish each page touched; a draft change does not reach the live page.");
+  process.exit(0);
+}
+
+/**
+ * Moves the product pages from /solutions and /soluciones to /products and
+ * /productos, leaving a 301 behind each old path.
+ *
+ * One-time, run while the section is barely indexed — the only moment a URL
+ * change is nearly free. The order matters: pages move first, redirects are
+ * created after, so a redirect never fights a live page for the same path.
+ * Re-running is safe: a page already moved is skipped, and a redirect that
+ * already exists comes back 409 and is reported, not fatal.
+ */
+if (renameProducts) {
+  const TAILS = [
+    "", "ai-virtual-assistant", "whatsapp-ai-assistant", "visitor-intelligence",
+    "vulnerability-management", "ventia", "ai-websites",
+  ];
+  const ES_TAILS = [
+    "", "asistente-virtual-ia", "asistente-ia-whatsapp", "inteligencia-de-visitantes",
+    "gestion-de-vulnerabilidades", "ventia", "sitios-web-con-ia",
+  ];
+  const moves = [
+    ...TAILS.map((t) => [t ? `solutions/${t}` : "solutions", t ? `products/${t}` : "products"]),
+    ...ES_TAILS.map((t) => [t ? `soluciones/${t}` : "soluciones", t ? `productos/${t}` : "productos"]),
+  ];
+
+  const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
+  const bySlug = new Map((listed.results || []).map((p) => [p.slug, p]));
+
+  for (const [from, to] of moves) {
+    const page = bySlug.get(from);
+    if (!page) {
+      console.log(bySlug.has(to) ? `moved   ${to} — already there` : `skip    ${from} — no page at either path`);
+      continue;
+    }
+    await api(`/cms/v3/pages/site-pages/${page.id}`, { method: "PATCH", body: JSON.stringify({ slug: to }) });
+    // A draft slug is not a live slug until the page is pushed live again.
+    await api(`/cms/v3/pages/site-pages/${page.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ publishDate: new Date().toISOString(), state: "PUBLISHED" }),
+    });
+    console.log(`move    /${from} -> /${to}`);
+  }
+
+  for (const [from, to] of moves) {
+    try {
+      await api("/cms/v3/url-redirects/", {
+        method: "POST",
+        body: JSON.stringify({
+          routePrefix: `/${from}`,
+          destination: `/${to}`,
+          redirectStyle: 301,
+          isOnlyAfterNotFound: false,
+          isMatchFullUrl: false,
+          isMatchQueryString: false,
+          isPattern: false,
+          isTrailingSlashOptional: true,
+          isProtocolAgnostic: true,
+        }),
+      });
+      console.log(`301     /${from} -> /${to}`);
+    } catch (e) {
+      console.log(`301?    /${from} — ${String(e.message).slice(0, 120)}`);
+    }
+  }
+
+  console.log("\nNow re-run fill-content and es-fill so stored links point at the new paths,");
+  console.log("and rename the two menu items in Content > Navigation.");
   process.exit(0);
 }
 

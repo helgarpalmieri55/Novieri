@@ -36,7 +36,7 @@
       "title": "Page not found — Novieri"
     },
     "solutions": {
-      "title": "Solutions — Novieri",
+      "title": "Products — Novieri",
       "description": "Products built and operated by Novieri: AI receptionist and assistants, IT management & RMM, monitoring, security, visitor intelligence, and AI e-commerce."
     },
     "sol_aiAssistant": {
@@ -111,8 +111,8 @@
     "localeSwitcherLabel": "Language",
     "homeLink": "Novieri — home",
     "skipToContent": "Skip to content",
-    "solutions": "Solutions",
-    "solutionsMenuLabel": "See all solutions",
+    "solutions": "Products",
+    "solutionsMenuLabel": "See all products",
     "diagnostic": "Self-diagnosis"
   },
   "pillars": {
@@ -896,7 +896,7 @@
     "legal": "© {year} {razonSocial} · NIT {nit}",
     "linkedinLabel": "Novieri on LinkedIn",
     "location": "Barranquilla, Colombia",
-    "solutionsTitle": "Solutions",
+    "solutionsTitle": "Products",
     "legalTitle": "Legal",
     "privacy": "Privacy policy",
     "cookies": "Cookie policy",
@@ -910,18 +910,18 @@
   },
   "solutions": {
     "index": {
-      "eyebrow": "solutions",
+      "eyebrow": "products",
       "title": "Products with our name on them.",
-      "intro": "We don't just implement other people's technology — we build our own products and operate them for our clients. Every solution was born from a real problem in a real operation, and carries the Novieri standard inside."
+      "intro": "We don't just implement other people's technology — we build our own products and operate them for our clients. Every product was born from a real problem in a real operation, and carries the Novieri standard inside."
     },
     "common": {
-      "eyebrow": "novieri solution",
+      "eyebrow": "novieri product",
       "featuresTitle": "What it does",
       "builtEyebrow": "how it's built",
       "poweredBadge": "powered by novieri",
       "poweredTitle": "The same team stands behind every product.",
-      "poweredBody": "Each solution is designed, built, and operated by the Novieri team — with the same enterprise practices as our services: security, monitoring, and continuous improvement. You're not buying software and getting left alone; you're buying a product with a team behind it.",
-      "seeSolution": "See solution",
+      "poweredBody": "Each product is designed, built, and operated by the Novieri team — with the same enterprise practices as our services: security, monitoring, and continuous improvement. You're not buying software and getting left alone; you're buying a product with a team behind it.",
+      "seeSolution": "See product",
       "demoCta": "Book a demo",
       "ctaTitle": "Want to see it running on your data?",
       "ctaSubtitle": "Book a 30-minute demo and we'll show it applied to your case, no strings attached."
@@ -1388,7 +1388,7 @@
     "title": "Sylvi · Novieri assistant",
     "open": "Open the chat with Sylvi",
     "close": "Close the chat",
-    "greeting": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, solutions or how we work.",
+    "greeting": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, products or how we work.",
     "placeholder": "Type your question…",
     "send": "Send",
     "error": "I couldn't answer right now. Try again, or write to us from the contact page.",
