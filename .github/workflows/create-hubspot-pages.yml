@@ -29,6 +29,7 @@ on:
           - form-dump
           - form-setup
           - menus
+          - menu-dump
           - widgets
           - create-all
       slug:
@@ -76,5 +77,6 @@ jobs:
             form-setup)    node scripts/hubspot-form-setup.mjs ;;
             # Read-only: menu names and ids. Items are added in HubSpot's UI.
             menus)         node scripts/hubspot-menus.mjs ;;
+            menu-dump)     node scripts/hubspot-menus.mjs --menu='${{ inputs.slug }}' ;;
             widgets)       node scripts/hubspot-forms.mjs --widgets='${{ inputs.slug }}' ;;
           esac

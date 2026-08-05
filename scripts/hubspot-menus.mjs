@@ -15,6 +15,7 @@
  *   node scripts/hubspot-menus.mjs
  */
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
+const only = process.argv.slice(2).find((a) => a.startsWith("--menu="))?.slice("--menu=".length);
 
 async function api(path, options = {}) {
   const res = await fetch(`https://api.hubapi.com${path}`, {
@@ -46,8 +47,16 @@ if (!listed.ok) {
 
 const menus = listed.body.objects || listed.body.results || [];
 for (const m of menus) {
-  const top = (m.children || []).map((c) => c.label).join(" · ");
-  console.log(`${m.id}  ${m.name}\n   ${top}`);
+  if (only && String(m.id) !== only) continue;
+  console.log(`${m.id}  ${m.name}`);
+  // The list response has no children; a single menu nests them under
+  // pages_tree. Printed so a menu with the wrong labels can be seen from here
+  // rather than clicked through in HubSpot.
+  const full = await api(`/content/api/v2/menus/${m.id}`);
+  for (const c of full.body?.pages_tree?.children || full.body?.body?.pages_tree?.children || []) {
+    console.log(`     ${c.label}  ->  ${c.url || "(page " + c.page_id + ")"}`);
+    for (const g of c.children || []) console.log(`        ${g.label}  ->  ${g.url || "(page " + g.page_id + ")"}`);
+  }
 }
 
 console.log("\nItems are added in HubSpot: Content > Navigation.");
