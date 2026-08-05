@@ -45,11 +45,17 @@
       } %}
       {% for column in module.columns %}
         {% set col_title = column.column_title %}
+        {# The key is lowercased into its own variable first. Written inline,
+           es_titles[column.column_title|lower] parses as
+           (es_titles[column.column_title])|lower — the filter binds looser
+           than the subscript — so it looked up "Services", missed, and fell
+           back to English on every Spanish page. #}
+        {% set title_key = column.column_title|lower|trim %}
         {% if is_es %}
           {% if column.column_title_es %}
             {% set col_title = column.column_title_es %}
-          {% elif es_titles[column.column_title|lower] %}
-            {% set col_title = es_titles[column.column_title|lower] %}
+          {% elif es_titles[title_key] %}
+            {% set col_title = es_titles[title_key] %}
           {% endif %}
         {% endif %}
         <nav class="footer-links" aria-label="{{ col_title|escape_attr }}">
