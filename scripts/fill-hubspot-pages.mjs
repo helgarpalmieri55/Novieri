@@ -57,7 +57,7 @@ const ES_SLUGS = {
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
   "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
   "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
-  "products/ventia": "productos/ventia",
+  "products/ai-ecommerce": "productos/ecommerce-ia",
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
@@ -216,7 +216,7 @@ const SOLUTIONS = [
   ["whatsapp", "products/whatsapp-ai-assistant"],
   ["visitorIntel", "products/visitor-intelligence"],
   ["sentinel", "products/vulnerability-management"],
-  ["ventia", "products/ventia"],
+  ["ventia", "products/ai-ecommerce"],
   ["webDev", "products/ai-websites"],
 ];
 

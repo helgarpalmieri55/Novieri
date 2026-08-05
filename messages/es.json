@@ -56,7 +56,7 @@
       "description": "Identifica las empresas que visitan tu sitio, interpreta su comportamiento con IA y entrega cuentas calificadas a tu equipo comercial cada día."
     },
     "sol_ventia": {
-      "title": "Ventia — E-commerce con agente de ventas IA — Novieri",
+      "title": "E-commerce con agente de ventas IA — Novieri",
       "description": "Plataforma de comercio electrónico multi-tienda con un agente de ventas de IA integrado. Construida y operada por Novieri."
     },
     "sol_matterFlow": {
@@ -1129,7 +1129,7 @@
         ]
       },
       "ventia": {
-        "name": "Ventia — E-commerce con IA",
+        "name": "E-commerce con IA",
         "tagline": "Comercio electrónico multi-tienda con un agente de ventas de IA integrado.",
         "tags": [
           "e-commerce",
@@ -1138,7 +1138,7 @@
         ],
         "hero": {
           "title": "Una plataforma de ventas con un vendedor de IA adentro.",
-          "promise": "Ventia es la plataforma de e-commerce de Novieri: tiendas en línea completas — catálogo, carrito, pagos — con un agente de ventas de IA que atiende a cada visitante, y una arquitectura multi-tienda que permite lanzar varias marcas sobre la misma base."
+          "promise": "La plataforma de e-commerce de Novieri: tiendas en línea completas — catálogo, carrito, pagos — con un agente de ventas de IA que atiende a cada visitante, y una arquitectura multi-tienda que permite lanzar varias marcas sobre la misma base."
         },
         "features": [
           {

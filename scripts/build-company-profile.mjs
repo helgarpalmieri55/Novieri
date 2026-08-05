@@ -35,7 +35,7 @@ const SOLUTION_PATHS = {
   whatsapp: { es: "/productos/asistente-ia-whatsapp", en: "/products/whatsapp-ai-assistant" },
   visitorIntel: { es: "/productos/inteligencia-de-visitantes", en: "/products/visitor-intelligence" },
   sentinel: { es: "/productos/gestion-de-vulnerabilidades", en: "/products/vulnerability-management" },
-  ventia: { es: "/productos/ventia", en: "/products/ventia" },
+  ventia: { es: "/productos/ecommerce-ia", en: "/products/ai-ecommerce" },
   webDev: { es: "/productos/sitios-web-con-ia", en: "/products/ai-websites" },
 };
 

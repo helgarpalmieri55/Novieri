@@ -64,7 +64,7 @@ const ES_SLUGS = {
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
   "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
   "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
-  "products/ventia": "productos/ventia",
+  "products/ai-ecommerce": "productos/ecommerce-ia",
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
@@ -129,9 +129,9 @@ const PAGES = [
     name: "Vulnerability Management",
     htmlTitle: "Vulnerability management — Novieri",
     metaDescription: "Find the weaknesses in your systems before someone else does, know which ones actually matter, and hold the evidence an auditor asks for." },
-  { key: "sol-ventia", template: "solution", slug: "products/ventia",
-    name: "Ventia — AI E-commerce",
-    htmlTitle: "Ventia — AI e-commerce — Novieri",
+  { key: "sol-ventia", template: "solution", slug: "products/ai-ecommerce",
+    name: "AI E-commerce",
+    htmlTitle: "E-commerce with an AI sales agent — Novieri",
     metaDescription: "Novieri's e-commerce platform: complete online stores with an AI salesperson inside, and several brands on one foundation." },
   { key: "sol-websites", template: "solution", slug: "products/ai-websites",
     name: "AI-powered Websites",
@@ -320,7 +320,7 @@ function esMeta() {
     "products/whatsapp-ai-assistant": es.meta.sol_whatsapp,
     "products/visitor-intelligence": es.meta.sol_visitorIntel,
     "products/vulnerability-management": es.meta.sol_sentinel,
-    "products/ventia": es.meta.sol_ventia,
+    "products/ai-ecommerce": es.meta.sol_ventia,
     "products/ai-websites": es.meta.sol_webDev,
   };
 }
@@ -441,6 +441,10 @@ if (renameProducts) {
   const moves = [
     ...TAILS.map((t) => [t ? `solutions/${t}` : "solutions", t ? `products/${t}` : "products"]),
     ...ES_TAILS.map((t) => [t ? `soluciones/${t}` : "soluciones", t ? `productos/${t}` : "productos"]),
+    // Round two: the product formerly named Ventia goes by what it is. A page
+    // already moved is skipped, so re-running the whole list stays safe.
+    ["products/ventia", "products/ai-ecommerce"],
+    ["productos/ventia", "productos/ecommerce-ia"],
   ];
 
   const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);

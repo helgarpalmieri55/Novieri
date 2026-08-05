@@ -56,7 +56,7 @@
       "description": "Identify the companies visiting your site, interpret their behavior with AI, and deliver qualified accounts to your sales team daily."
     },
     "sol_ventia": {
-      "title": "Ventia — E-commerce with an AI sales agent — Novieri",
+      "title": "E-commerce with an AI sales agent — Novieri",
       "description": "A multi-store e-commerce platform with a built-in AI sales agent. Built and operated by Novieri."
     },
     "sol_matterFlow": {
@@ -1129,7 +1129,7 @@
         ]
       },
       "ventia": {
-        "name": "Ventia — AI E-commerce",
+        "name": "AI E-commerce",
         "tagline": "Multi-store e-commerce with a built-in AI sales agent.",
         "tags": [
           "e-commerce",
@@ -1138,7 +1138,7 @@
         ],
         "hero": {
           "title": "A sales platform with an AI salesperson inside.",
-          "promise": "Ventia is Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI sales agent that attends every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
+          "promise": "Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI sales agent that attends every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
         },
         "features": [
           {
