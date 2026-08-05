@@ -390,7 +390,17 @@ function pricingWidgets() {
           body: {
             title: g.name,
             blurb: g.blurb,
-            rows: g.rows.map((r) => ({ service: r.service, price: r.price, unit: r.unit, note: r.note })),
+            // The switch renders once, above the first table, and the module's
+            // JS drives every table on the page from it.
+            show_toggle: n === 0,
+            toggle_label: p.toggleLabel,
+            rows: g.rows.map((r) => ({
+              service: r.service,
+              price_usd: r.price_usd,
+              price_cop: r.price_cop,
+              unit: r.unit,
+              note: r.note,
+            })),
             footnote: g.footnote,
           },
         },

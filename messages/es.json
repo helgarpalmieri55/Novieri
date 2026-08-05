@@ -2014,33 +2014,37 @@
     "hero": {
       "eyebrow": "precios",
       "title": "Números con los que puedes planear.",
-      "intro": "La mayoría de las firmas te hacen pasar por una llamada de ventas antes de decirte un precio. Aquí está el nuestro de entrada: cada cifra es un punto de partida realista, no una cotización — el número exacto llega con la propuesta, después de entender tu operación. Los precios para Estados Unidos están en la versión en inglés de esta página. Valores antes de IVA."
+      "intro": "La mayoría de las firmas te hacen pasar por una llamada de ventas antes de decirte un precio. Aquí está el nuestro de entrada: cada cifra es un rango realista, no una cotización — el valor exacto depende de lo que tu negocio necesita, y llega con la propuesta, después de entender tu operación. Los precios se muestran en pesos o en dólares según el lugar desde donde nos visitas; puedes cambiarlos abajo. Valores antes de IVA."
     },
+    "toggleLabel": "precios en",
     "groups": [
       {
         "name": "IT administrado",
-        "blurb": "Por usuario, al mes — puedes hacer la cuenta para tu equipo antes de hablar con nosotros. Contrato mínimo de $1.900.000/mes.",
+        "blurb": "Por usuario, al mes — puedes hacer la cuenta para tu equipo antes de hablar con nosotros.",
         "rows": [
           {
             "service": "Esencial",
-            "price": "desde $95.000",
+            "price_usd": "$99 – 115",
+            "price_cop": "$95.000 – 115.000",
             "unit": "por usuario / mes",
             "note": "Soporte, monitoreo, actualizaciones y copias de seguridad — lo esencial, bien hecho."
           },
           {
             "service": "Completo",
-            "price": "$145.000",
+            "price_usd": "$139 – 160",
+            "price_cop": "$145.000 – 170.000",
             "unit": "por usuario / mes",
             "note": "Esencial más seguridad administrada y administración de Microsoft 365. La mayoría de los equipos queda aquí."
           },
           {
             "service": "Premium",
-            "price": "$195.000",
+            "price_usd": "$189 – 220",
+            "price_cop": "$195.000 – 230.000",
             "unit": "por usuario / mes",
-            "note": "Completo más apoyo de cumplimiento y guía vCIO, para equipos que responden ante auditores."
+            "note": "Completo más apoyo de cumplimiento y guía tecnológica de dirección, para equipos que responden ante auditores."
           }
         ],
-        "footnote": "La implementación inicial equivale a un mes de servicio y se factura una sola vez. Valores en pesos colombianos, antes de IVA."
+        "footnote": "La implementación inicial equivale a un mes de servicio y se factura una sola vez. En qué punto del rango queda tu caso depende del tamaño y las necesidades de tu operación."
       },
       {
         "name": "IA y automatización",
@@ -2048,27 +2052,31 @@
         "rows": [
           {
             "service": "Diagnóstico IA",
-            "price": "$2.900.000",
-            "unit": "precio fijo",
+            "price_usd": "$1,500",
+            "price_cop": "$2.900.000",
+            "unit": "precio fijo · 2 semanas",
             "note": "Abonable a tu primer proyecto si sigues adelante."
           },
           {
             "service": "Piloto de automatización",
-            "price": "$9 a $18 millones",
+            "price_usd": "$4,900 – 15,000",
+            "price_cop": "$9 – 18 millones",
             "unit": "por proyecto",
-            "note": "El valor depende de los sistemas involucrados."
+            "note": "El punto del rango depende de cuántos sistemas están involucrados."
           },
           {
-            "service": "Retainer IA",
-            "price": "$2,9 a $5,9 millones",
+            "service": "Plan mensual de IA",
+            "price_usd": "$1,500 – 2,900",
+            "price_cop": "$2,9 – 5,9 millones",
             "unit": "mensual",
-            "note": "Mejora continua, monitoreo y gobierno de lo que construimos."
+            "note": "Mejora continua, monitoreo y gobierno de lo que construimos, por una mensualidad fija."
           },
           {
-            "service": "Bot de WhatsApp",
-            "price": "desde $2.900.000",
-            "unit": "implementación · $790.000/mes",
-            "note": "Para restaurantes y hoteles: pedidos, reservas y atención fuera de horario."
+            "service": "Bot de WhatsApp para restaurantes y hoteles",
+            "price_usd": "",
+            "price_cop": "$2,9 – 3,5 millones",
+            "unit": "implementación",
+            "note": "Pedidos, reservas y atención fuera de horario. Más una mensualidad de $790.000 a $1.100.000 según el alcance."
           }
         ],
         "footnote": ""
@@ -2079,21 +2087,24 @@
         "rows": [
           {
             "service": "Línea base de seguridad",
-            "price": "$9.000.000",
+            "price_usd": "$4,500 – 7,500",
+            "price_cop": "$9 – 13 millones",
             "unit": "por proyecto",
             "note": "Lo esencial auditado y corregido: identidad, correo, equipos y copias de seguridad."
           },
           {
             "service": "Preparación ISO 27001 / SOC 2",
-            "price": "$18 a $32 millones",
+            "price_usd": "$9,500 – 18,000",
+            "price_cop": "$18 – 32 millones",
             "unit": "por proyecto",
             "note": "Del diagnóstico de brechas a la evidencia lista para auditoría. La plataforma y el auditor se pagan aparte."
           },
           {
-            "service": "vCISO",
-            "price": "$3.900.000",
+            "service": "Director de seguridad externo",
+            "price_usd": "$2,900 – 5,000",
+            "price_cop": "$3,9 – 5,5 millones",
             "unit": "mensual",
-            "note": "Liderazgo de seguridad por retainer, sin contratar un cargo de tiempo completo."
+            "note": "Un director de seguridad con experiencia, dedicado unas horas al mes a tu empresa — sin contratar el cargo de tiempo completo."
           }
         ],
         "footnote": ""
@@ -2103,14 +2114,16 @@
         "blurb": "Ingenieros senior, en tu zona horaria.",
         "rows": [
           {
-            "service": "Hora senior",
-            "price": "$120.000",
+            "service": "Hora de ingeniería senior",
+            "price_usd": "$45 – 55",
+            "price_cop": "$110.000 – 140.000",
             "unit": "por hora",
             "note": "Como referencia, la hora de fábrica de software se licita oficialmente desde $105.000 + IVA."
           },
           {
             "service": "Sprint de descubrimiento",
-            "price": "$5.500.000",
+            "price_usd": "$2,900",
+            "price_cop": "$5.500.000",
             "unit": "precio fijo",
             "note": "Alcance, arquitectura y una respuesta honesta de construir vs. comprar antes de comprometerte."
           }
@@ -2123,9 +2136,17 @@
         "rows": [
           {
             "service": "Consultoría / assessment",
-            "price": "$280.000",
+            "price_usd": "$150 – 200",
+            "price_cop": "$280.000 – 350.000",
             "unit": "por hora",
             "note": ""
+          },
+          {
+            "service": "CTO por horas",
+            "price_usd": "$175 – 250",
+            "price_cop": "",
+            "unit": "por hora",
+            "note": "Liderazgo tecnológico continuo, unas horas al mes, sin contratar el cargo de tiempo completo."
           }
         ],
         "footnote": ""
@@ -2133,25 +2154,25 @@
     ],
     "note": {
       "title": "Cómo leer estos números",
-      "intro": "Son puntos de referencia, no un menú con reglas duras. Lo que mueve un precio: cuántas personas y sistemas están involucrados, cuánto del trabajo es regulado y qué tan rápido lo necesitas. Lo que nunca cambia: la propuesta fija un número antes de empezar, y la primera llamada no cuesta nada."
+      "intro": "Son rangos, no un menú con reglas duras. Lo que mueve un precio: cuántas personas y sistemas están involucrados, cuánto del trabajo es regulado y qué tan rápido lo necesitas. Lo que nunca cambia: la propuesta fija un número antes de empezar, y la primera llamada no cuesta nada."
     },
     "faq": {
       "items": [
         {
           "q": "¿Son precios finales?",
-          "a": "No — son puntos de partida honestos. Después de una llamada de 30 minutos enviamos una propuesta con un número exacto para tu caso, y ese es el que vale."
+          "a": "No — son rangos honestos. En qué punto queda tu caso depende de lo que tu negocio necesita; después de una llamada de 30 minutos enviamos una propuesta con un número exacto, y ese es el que vale."
         },
         {
           "q": "¿Por qué publican precios si casi nadie lo hace?",
-          "a": "Para que puedas considerarnos o descartarnos sin pasar por un proceso de ventas. Si las cifras están lejos de tu presupuesto, nos ahorramos la llamada; si encajan, llegas sabiendo qué esperar."
+          "a": "Para que puedas considerarnos o descartarnos sin pasar por un proceso de ventas. Si los rangos están lejos de tu presupuesto, nos ahorramos la llamada; si encajan, llegas sabiendo qué esperar."
         },
         {
           "q": "¿Los precios incluyen IVA?",
           "a": "No, son valores antes de IVA. En la propuesta te decimos el valor total según aplique para tu caso."
         },
         {
-          "q": "¿Hay un mínimo de contrato?",
-          "a": "IT administrado tiene un contrato mínimo de $1.900.000 al mes. Los proyectos se cotizan a precio fijo después de definir el alcance."
+          "q": "¿Por qué veo pesos (o dólares)?",
+          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Con el selector COP/USD de arriba puedes ver la otra lista."
         }
       ]
     }
