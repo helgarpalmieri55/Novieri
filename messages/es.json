@@ -94,6 +94,10 @@
     "itConsulting": {
       "title": "Consultoría IT — Novieri",
       "description": "Decisiones de tecnología con alguien que ya tuvo que vivir con ellas: qué comprar, qué arreglar, cuánto cuesta de verdad y cuándo la respuesta es esperar."
+    },
+    "pricing": {
+      "title": "Precios — Novieri",
+      "description": "Precios de referencia publicados para IT administrado, IA y automatización, ciberseguridad, desarrollo a medida y consultoría IT. Puntos de partida honestos — el número exacto llega con la propuesta."
     }
   },
   "nav": {
@@ -2002,6 +2006,152 @@
         {
           "q": "¿Con qué nos quedamos exactamente?",
           "a": "Con un documento en español claro: qué tienes, cuánto cuesta, qué cambiaríamos, en qué orden y cuánto vale aproximadamente cada paso. No una presentación de diapositivas."
+        }
+      ]
+    }
+  },
+  "pricing": {
+    "hero": {
+      "eyebrow": "precios",
+      "title": "Números con los que puedes planear.",
+      "intro": "La mayoría de las firmas te hacen pasar por una llamada de ventas antes de decirte un precio. Aquí está el nuestro de entrada: cada cifra es un punto de partida realista, no una cotización — el número exacto llega con la propuesta, después de entender tu operación. Los precios para Estados Unidos están en la versión en inglés de esta página. Valores antes de IVA."
+    },
+    "groups": [
+      {
+        "name": "IT administrado",
+        "blurb": "Por usuario, al mes — puedes hacer la cuenta para tu equipo antes de hablar con nosotros. Contrato mínimo de $1.900.000/mes.",
+        "rows": [
+          {
+            "service": "Esencial",
+            "price": "desde $95.000",
+            "unit": "por usuario / mes",
+            "note": "Soporte, monitoreo, actualizaciones y copias de seguridad — lo esencial, bien hecho."
+          },
+          {
+            "service": "Completo",
+            "price": "$145.000",
+            "unit": "por usuario / mes",
+            "note": "Esencial más seguridad administrada y administración de Microsoft 365. La mayoría de los equipos queda aquí."
+          },
+          {
+            "service": "Premium",
+            "price": "$195.000",
+            "unit": "por usuario / mes",
+            "note": "Completo más apoyo de cumplimiento y guía vCIO, para equipos que responden ante auditores."
+          }
+        ],
+        "footnote": "La implementación inicial equivale a un mes de servicio y se factura una sola vez. Valores en pesos colombianos, antes de IVA."
+      },
+      {
+        "name": "IA y automatización",
+        "blurb": "Empieza pequeño a propósito: el diagnóstico te dice dónde la automatización genera retorno antes de comprometerte a construir.",
+        "rows": [
+          {
+            "service": "Diagnóstico IA",
+            "price": "$2.900.000",
+            "unit": "precio fijo",
+            "note": "Abonable a tu primer proyecto si sigues adelante."
+          },
+          {
+            "service": "Piloto de automatización",
+            "price": "$9 a $18 millones",
+            "unit": "por proyecto",
+            "note": "El valor depende de los sistemas involucrados."
+          },
+          {
+            "service": "Retainer IA",
+            "price": "$2,9 a $5,9 millones",
+            "unit": "mensual",
+            "note": "Mejora continua, monitoreo y gobierno de lo que construimos."
+          },
+          {
+            "service": "Bot de WhatsApp",
+            "price": "desde $2.900.000",
+            "unit": "implementación · $790.000/mes",
+            "note": "Para restaurantes y hoteles: pedidos, reservas y atención fuera de horario."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "Ciberseguridad y cumplimiento",
+        "blurb": "Seguridad cotizada por alcance, no por miedo.",
+        "rows": [
+          {
+            "service": "Línea base de seguridad",
+            "price": "$9.000.000",
+            "unit": "por proyecto",
+            "note": "Lo esencial auditado y corregido: identidad, correo, equipos y copias de seguridad."
+          },
+          {
+            "service": "Preparación ISO 27001 / SOC 2",
+            "price": "$18 a $32 millones",
+            "unit": "por proyecto",
+            "note": "Del diagnóstico de brechas a la evidencia lista para auditoría. La plataforma y el auditor se pagan aparte."
+          },
+          {
+            "service": "vCISO",
+            "price": "$3.900.000",
+            "unit": "mensual",
+            "note": "Liderazgo de seguridad por retainer, sin contratar un cargo de tiempo completo."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "Desarrollo a medida",
+        "blurb": "Ingenieros senior, en tu zona horaria.",
+        "rows": [
+          {
+            "service": "Hora senior",
+            "price": "$120.000",
+            "unit": "por hora",
+            "note": "Como referencia, la hora de fábrica de software se licita oficialmente desde $105.000 + IVA."
+          },
+          {
+            "service": "Sprint de descubrimiento",
+            "price": "$5.500.000",
+            "unit": "precio fijo",
+            "note": "Alcance, arquitectura y una respuesta honesta de construir vs. comprar antes de comprometerte."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "Consultoría IT",
+        "blurb": "Decisiones, cobradas por la hora que toman.",
+        "rows": [
+          {
+            "service": "Consultoría / assessment",
+            "price": "$280.000",
+            "unit": "por hora",
+            "note": ""
+          }
+        ],
+        "footnote": ""
+      }
+    ],
+    "note": {
+      "title": "Cómo leer estos números",
+      "intro": "Son puntos de referencia, no un menú con reglas duras. Lo que mueve un precio: cuántas personas y sistemas están involucrados, cuánto del trabajo es regulado y qué tan rápido lo necesitas. Lo que nunca cambia: la propuesta fija un número antes de empezar, y la primera llamada no cuesta nada."
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "¿Son precios finales?",
+          "a": "No — son puntos de partida honestos. Después de una llamada de 30 minutos enviamos una propuesta con un número exacto para tu caso, y ese es el que vale."
+        },
+        {
+          "q": "¿Por qué publican precios si casi nadie lo hace?",
+          "a": "Para que puedas considerarnos o descartarnos sin pasar por un proceso de ventas. Si las cifras están lejos de tu presupuesto, nos ahorramos la llamada; si encajan, llegas sabiendo qué esperar."
+        },
+        {
+          "q": "¿Los precios incluyen IVA?",
+          "a": "No, son valores antes de IVA. En la propuesta te decimos el valor total según aplique para tu caso."
+        },
+        {
+          "q": "¿Hay un mínimo de contrato?",
+          "a": "IT administrado tiene un contrato mínimo de $1.900.000 al mes. Los proyectos se cotizan a precio fijo después de definir el alcance."
         }
       ]
     }

@@ -94,6 +94,10 @@
     "itConsulting": {
       "title": "IT consulting — Novieri",
       "description": "Technology decisions made with someone who has had to live with them: what to buy, what to fix, what it really costs, and when the answer is to wait."
+    },
+    "pricing": {
+      "title": "Pricing — Novieri",
+      "description": "Published price anchors for managed IT, AI & automation, cybersecurity, custom software, and IT consulting. Honest starting points — the exact number comes with a proposal."
     }
   },
   "nav": {
@@ -2002,6 +2006,152 @@
         {
           "q": "What do we actually walk away with?",
           "a": "A document in plain language: what you have, what it costs, what we would change, in what order, and roughly what each step is worth. Not a slide deck."
+        }
+      ]
+    }
+  },
+  "pricing": {
+    "hero": {
+      "eyebrow": "pricing",
+      "title": "Numbers you can plan with.",
+      "intro": "Most firms make you sit through a sales call before you hear a price. Here is ours up front: every figure below is a realistic starting point, not a quote — the exact number comes with a proposal, after we understand your operation. Prices for Colombia are on the Spanish version of this page."
+    },
+    "groups": [
+      {
+        "name": "Managed IT",
+        "blurb": "Per user, per month — you can do the math for your team before you ever talk to us. Minimum 10 users.",
+        "rows": [
+          {
+            "service": "Core",
+            "price": "from $99",
+            "unit": "per user / month",
+            "note": "Helpdesk, monitoring, updates, and backups — the essentials, run properly."
+          },
+          {
+            "service": "Complete",
+            "price": "$139",
+            "unit": "per user / month",
+            "note": "Core plus managed security and Microsoft 365 administration. Most teams land here."
+          },
+          {
+            "service": "Premium",
+            "price": "$189",
+            "unit": "per user / month",
+            "note": "Complete plus compliance support and vCIO guidance, for teams with auditors to answer."
+          }
+        ],
+        "footnote": "Onboarding is one month of service, billed once at the start. Prices in USD."
+      },
+      {
+        "name": "AI & automation",
+        "blurb": "Start small on purpose: the assessment tells you where automation pays off before you commit to building anything.",
+        "rows": [
+          {
+            "service": "AI Opportunity Assessment",
+            "price": "$1,500",
+            "unit": "fixed · 2 weeks",
+            "note": "Credited toward your first project if you go ahead."
+          },
+          {
+            "service": "Automation pilot",
+            "price": "from $4,900",
+            "unit": "per project",
+            "note": "Most pilots land between $5,000 and $15,000, depending on the systems involved."
+          },
+          {
+            "service": "AI Partner retainer",
+            "price": "$1,500–2,900",
+            "unit": "per month",
+            "note": "Ongoing improvement, monitoring, and governance of what we build."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "Cybersecurity & compliance",
+        "blurb": "Security priced by scope, not by fear.",
+        "rows": [
+          {
+            "service": "Security baseline",
+            "price": "from $4,500",
+            "unit": "per project",
+            "note": "The essentials audited and fixed: identity, email, endpoints, backups."
+          },
+          {
+            "service": "SOC 2 / PCI DSS readiness",
+            "price": "$9,500–18,000",
+            "unit": "per project",
+            "note": "From gap assessment to audit-ready evidence. Compliance platform and CPA audit fees are separate."
+          },
+          {
+            "service": "vCISO",
+            "price": "from $2,900",
+            "unit": "per month",
+            "note": "Security leadership on a retainer instead of a full-time hire."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "Custom software",
+        "blurb": "Senior engineers, nearshore economics, your time zone.",
+        "rows": [
+          {
+            "service": "Senior development",
+            "price": "$45–55",
+            "unit": "per hour",
+            "note": "Blended senior rate. Comparable US senior rates commonly run well above this."
+          },
+          {
+            "service": "Discovery sprint",
+            "price": "$2,900",
+            "unit": "fixed",
+            "note": "Scope, architecture, and an honest build-vs-buy answer before you commit to a build."
+          }
+        ],
+        "footnote": ""
+      },
+      {
+        "name": "IT consulting",
+        "blurb": "Decisions, priced by the hour they take.",
+        "rows": [
+          {
+            "service": "Consulting / assessment",
+            "price": "$150",
+            "unit": "per hour",
+            "note": ""
+          },
+          {
+            "service": "Fractional CTO",
+            "price": "from $185",
+            "unit": "per hour, on retainer",
+            "note": "Ongoing technology leadership without the full-time hire."
+          }
+        ],
+        "footnote": ""
+      }
+    ],
+    "note": {
+      "title": "How to read these numbers",
+      "intro": "They are anchors, not a menu with hard rules. What moves a price: how many people and systems are involved, how much of the work is regulated, and how fast you need it. What never changes: the proposal states a number before any work starts, and the first call costs nothing."
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "Are these the final prices?",
+          "a": "No — they're honest starting points. After a 30-minute call we send a proposal with an exact number for your case, and that number is the one that counts."
+        },
+        {
+          "q": "Why publish prices when most firms don't?",
+          "a": "So you can rule us in or out without a sales process. If these anchors are far from your budget, we've saved us both a call; if they fit, you arrive knowing roughly what to expect."
+        },
+        {
+          "q": "Is there a minimum engagement?",
+          "a": "Managed IT starts at 10 users. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+        },
+        {
+          "q": "What about prices for Colombia?",
+          "a": "The Spanish version of this page carries the Colombian price list in pesos — the same services, priced for the local market."
         }
       ]
     }

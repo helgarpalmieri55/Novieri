@@ -1,0 +1,59 @@
+[
+  {
+    "name": "title",
+    "label": "Group title",
+    "type": "text",
+    "default": "Managed IT"
+  },
+  {
+    "name": "blurb",
+    "label": "Blurb",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  },
+  {
+    "name": "rows",
+    "label": "Rows",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "service",
+        "label": "Service",
+        "type": "text",
+        "default": "Core"
+      },
+      {
+        "name": "price",
+        "label": "Price",
+        "type": "text",
+        "default": "from $99"
+      },
+      {
+        "name": "unit",
+        "label": "Unit",
+        "type": "text",
+        "default": "per user / month"
+      },
+      {
+        "name": "note",
+        "label": "Note",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      }
+    ]
+  },
+  {
+    "name": "footnote",
+    "label": "Footnote",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  }
+]

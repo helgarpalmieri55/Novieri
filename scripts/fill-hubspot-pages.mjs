@@ -45,6 +45,7 @@ const ES_SLUGS = {
   about: "nosotros",
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
+  pricing: "precios",
   solutions: "soluciones",
   "solutions/ai-virtual-assistant": "soluciones/asistente-virtual-ia",
   "solutions/whatsapp-ai-assistant": "soluciones/asistente-ia-whatsapp",
@@ -58,8 +59,8 @@ const ES_SLUGS = {
 };
 const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 
-/** Matches src/config/site.ts. Both are empty until the company is registered. */
-const VARS = { company: "Novieri", nit: "", email: "sales@novieri.com" };
+/** The NIT stays empty until registration completes; [[…]] blocks drop it cleanly. */
+const VARS = { company: "Novieri SAS", nit: "", email: "sales@novieri.com" };
 
 /**
  * Founder portraits.
@@ -349,6 +350,74 @@ function servicesIndexWidgets() {
   };
 }
 
+/** Mirrors pricing.hubl.html. */
+const PRICING_SLOTS = {
+  hero: "main-module-2",
+  tables: ["main-module-3", "main-module-4", "main-module-5", "main-module-6", "main-module-7"],
+  note: "main-module-8",
+  faq: "main-module-9",
+  cta: "main-module-10",
+};
+
+/**
+ * The pricing page. The two languages carry different price lists on purpose —
+ * USD for the US market on English, COP for Colombia on Spanish — so this
+ * reads whatever messages/<locale>.json says and asks no questions. The
+ * template has exactly five table slots and both files carry exactly five
+ * groups; the guard below turns a drift into a loud failure instead of a
+ * table quietly wearing another pillar's prices.
+ */
+function pricingWidgets() {
+  const p = t.pricing;
+  if (p.groups.length !== PRICING_SLOTS.tables.length) {
+    throw new Error(`pricing: ${p.groups.length} groups for ${PRICING_SLOTS.tables.length} table slots`);
+  }
+  return {
+    [PRICING_SLOTS.hero]: {
+      body: {
+        eyebrow: p.hero.eyebrow,
+        title: p.hero.title,
+        intro: p.hero.intro,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        seam: true,
+      },
+    },
+    ...Object.fromEntries(
+      p.groups.map((g, n) => [
+        PRICING_SLOTS.tables[n],
+        {
+          body: {
+            title: g.name,
+            blurb: g.blurb,
+            rows: g.rows.map((r) => ({ service: r.service, price: r.price, unit: r.unit, note: r.note })),
+            footnote: g.footnote,
+          },
+        },
+      ]),
+    ),
+    [PRICING_SLOTS.note]: {
+      body: { title: p.note.title, intro: p.note.intro, footnote: "", picture: { src: "", alt: "" } },
+    },
+    [PRICING_SLOTS.faq]: {
+      body: {
+        title: t.serviceCommon.faqTitle,
+        schema: true,
+        items: p.faq.items.map((q) => ({ question: q.q, answer: q.a })),
+      },
+    },
+    [PRICING_SLOTS.cta]: {
+      body: {
+        eyebrow: NEXT_STEP,
+        title: t.serviceCommon.ctaTitle,
+        subtitle: t.serviceCommon.ctaSubtitle,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+      },
+    },
+  };
+}
+
 function solutionWidgets(key) {
   const p = t.solutions.items[key];
   const c = t.solutions.common;
@@ -475,7 +544,7 @@ function aboutWidgets() {
             person_role: a.founders.helgar.role,
             person_bio: a.founders.helgar.bio,
             person_initials: "HP",
-            person_linkedin: "",
+            person_linkedin: "https://www.linkedin.com/in/helgar-palmieri-82726b16a/",
             person_photo: {
               src: photoUrls.helgar || "",
               alt: a.founders.helgar.photoAlt,
@@ -488,7 +557,7 @@ function aboutWidgets() {
             person_role: a.founders.partner.role,
             person_bio: a.founders.partner.bio,
             person_initials: "SN",
-            person_linkedin: "",
+            person_linkedin: "https://www.linkedin.com/in/sylvananova-272303/",
             person_photo: {
               src: photoUrls.sylvana || "",
               alt: a.founders.partner.photoAlt,
@@ -736,6 +805,7 @@ const PAGES = {
   [locale === "es" ? "es" : ""]: homeWidgets(),
   [slugFor("self-diagnosis")]: diagnosticWidgets(),
   [slugFor("services")]: servicesIndexWidgets(),
+  [slugFor("pricing")]: pricingWidgets(),
   ...Object.fromEntries(SERVICES.map(([ns, slug]) => [slugFor(slug), serviceWidgets(ns)])),
   [slugFor("solutions")]: solutionsIndexWidgets(),
   ...Object.fromEntries(SOLUTIONS.map(([key, slug]) => [slugFor(slug), solutionWidgets(key)])),

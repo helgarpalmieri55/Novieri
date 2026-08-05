@@ -1,0 +1,30 @@
+{# One pillar's price anchors. Anchors, deliberately: the copy that feeds this
+   module says "from" and gives ranges, because the real number comes after the
+   first call — the table exists so a buyer can self-qualify, not to be a
+   contract. Five of these stack on the pricing page, so the padding is tighter
+   than section-pad or the page turns into a scroll marathon. #}
+<section class="py-[clamp(2.25rem,5vh,3.5rem)]">
+  <div class="container-site">
+    <div class="reveal mb-7 max-w-2xl">
+      <h2>{{ module.title }}</h2>
+      {% if module.blurb %}<p class="mt-3 text-small text-ink-muted">{{ module.blurb }}</p>{% endif %}
+    </div>
+    <div class="reveal overflow-hidden rounded-2xl border border-line">
+      {% for row in module.rows %}
+        <div class="grid gap-x-8 gap-y-1 px-6 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline{% if not loop.first %} border-t border-line{% endif %}">
+          <div>
+            <h3 class="text-body font-medium">{{ row.service }}</h3>
+            {% if row.note %}<p class="mt-1 max-w-[52ch] text-caption text-ink-faint">{{ row.note }}</p>{% endif %}
+          </div>
+          <div class="sm:text-right">
+            <span class="font-display text-h3 font-semibold text-ink">{{ row.price }}</span>
+            {% if row.unit %}<span class="idx-mono ml-2 lowercase text-ink-faint">{{ row.unit }}</span>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if module.footnote %}
+      <p class="reveal mt-4 text-caption text-ink-faint">{{ module.footnote }}</p>
+    {% endif %}
+  </div>
+</section>
