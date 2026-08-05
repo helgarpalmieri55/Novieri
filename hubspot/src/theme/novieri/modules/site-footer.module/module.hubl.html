@@ -35,27 +35,27 @@
 
       {# The Spanish column titles are a field an editor has to remember to
          fill, and it was not filled — so a Spanish page carried "Services",
-         "About", "Contact" under Spanish links. This is a last resort for the
-         handful of words these columns actually use, not a translator: an
-         unrecognised title still falls back to the English one. #}
-      {% set es_titles = {
-        "services": "servicios", "solutions": "soluciones", "about": "nosotros",
-        "company": "empresa", "contact": "contacto", "legal": "legal",
-        "products": "productos", "resources": "recursos"
-      } %}
+         "About", "Contact" over Spanish links.
+
+         Written as a dictionary lookup this failed twice in a row and I could
+         not tell you which HubL rule it broke. An if-chain is longer and it
+         works, which is the trade at this point. Anything not listed keeps its
+         English title. #}
       {% for column in module.columns %}
         {% set col_title = column.column_title %}
-        {# The key is lowercased into its own variable first. Written inline,
-           es_titles[column.column_title|lower] parses as
-           (es_titles[column.column_title])|lower — the filter binds looser
-           than the subscript — so it looked up "Services", missed, and fell
-           back to English on every Spanish page. #}
-        {% set title_key = column.column_title|lower|trim %}
         {% if is_es %}
           {% if column.column_title_es %}
             {% set col_title = column.column_title_es %}
-          {% elif es_titles[title_key] %}
-            {% set col_title = es_titles[title_key] %}
+          {% else %}
+            {% set key = column.column_title|lower|trim %}
+            {% if key == "services" %}{% set col_title = "servicios" %}
+            {% elif key == "solutions" %}{% set col_title = "soluciones" %}
+            {% elif key == "products" %}{% set col_title = "productos" %}
+            {% elif key == "about" %}{% set col_title = "nosotros" %}
+            {% elif key == "company" %}{% set col_title = "empresa" %}
+            {% elif key == "contact" %}{% set col_title = "contacto" %}
+            {% elif key == "resources" %}{% set col_title = "recursos" %}
+            {% endif %}
           {% endif %}
         {% endif %}
         <nav class="footer-links" aria-label="{{ col_title|escape_attr }}">
