@@ -23,12 +23,30 @@ const en = JSON.parse(readFileSync(join(ROOT, "messages/en.json"), "utf8"));
 const services = (m, label) =>
   `${label}:\n` + Object.values(m.pillars).map((p) => `- ${p.name}: ${p.tagline}`).join("\n");
 
-const solutions = (m, label) =>
+/**
+ * The six products with a page on the site, and the path to each. Sylvi was
+ * naming these in conversation with nowhere to send anyone; now she can link.
+ * The other three in messages/*.json — the IT suite, the monitoring service
+ * and Matter Flow — are real and she may still discuss them, but they have no
+ * page, so she is told not to invent a URL for them.
+ */
+const SOLUTION_PATHS = {
+  aiAssistant: { es: "/soluciones/asistente-virtual-ia", en: "/solutions/ai-virtual-assistant" },
+  whatsapp: { es: "/soluciones/asistente-ia-whatsapp", en: "/solutions/whatsapp-ai-assistant" },
+  visitorIntel: { es: "/soluciones/inteligencia-de-visitantes", en: "/solutions/visitor-intelligence" },
+  sentinel: { es: "/soluciones/gestion-de-vulnerabilidades", en: "/solutions/vulnerability-management" },
+  ventia: { es: "/soluciones/ventia", en: "/solutions/ventia" },
+  webDev: { es: "/soluciones/sitios-web-con-ia", en: "/solutions/ai-websites" },
+};
+
+const solutions = (m, label, lang) =>
   `${label}:\n` +
-  Object.values(m.solutions.items)
-    .map((s) => {
+  Object.entries(m.solutions.items)
+    .map(([key, s]) => {
       const features = s.features.map((f) => f.title).join("; ");
-      return `- ${s.name}: ${s.tagline}\n  ${s.hero.promise}\n  Capacidades/Features: ${features}`;
+      const path = SOLUTION_PATHS[key]?.[lang];
+      const where = path ? `\n  Página/Page: ${path}` : "\n  (sin página propia / no page of its own — describe it, do not link)";
+      return `- ${s.name}: ${s.tagline}${where}\n  ${s.hero.promise}\n  Capacidades/Features: ${features}`;
     })
     .join("\n");
 
@@ -52,9 +70,9 @@ const text = [
   services(es, "## Servicios (ES)"),
   services(en, "## Services (EN)"),
   "",
-  solutions(es, "## Soluciones propias / Products (ES)"),
+  solutions(es, "## Soluciones propias / Products (ES)", "es"),
   "",
-  solutions(en, "## Solutions / Products (EN)"),
+  solutions(en, "## Solutions / Products (EN)", "en"),
   "",
   "## Cómo trabajamos / How we work",
   how.join("\n"),
@@ -66,6 +84,8 @@ const text = [
   // The routes are HubSpot's, not the old Next.js export's — Sylvi was sending
   // people to /en/contact, which does not exist here.
   "- Página de contacto / contact page: /contacto (ES) · /contact (EN).",
+  "- Índice de productos / products index: /soluciones (ES) · /solutions (EN).",
+  "- Cuando menciones un producto que tiene página, enlaza la ruta que aparece arriba. Si no tiene página, descríbelo y ofrece la llamada — nunca inventes una URL.",
   "- Agenda directa de 30 minutos con los fundadores / direct 30-minute booking:",
   `  ${meetingsUrl}`,
   "- Cuando alguien pida agendar una llamada, dale ese enlace directamente: es una agenda pública, se reserva sin intermediarios. No digas que la reserva la hace una persona.",
