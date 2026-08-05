@@ -294,6 +294,13 @@ English one (a HubSpot form has a single language, so /contacto needs its own).
 Rename the account in HubSpot's settings as well, or the next form made there
 inherits the same text.
 
+Navigation menus are edited in HubSpot, not from here. `/content/api/v2/menus`
+is unlisted and undocumented; it answers and `scripts/hubspot-menus.mjs` will
+print the six menus and their ids, but its GET wraps the tree in one envelope
+shape and its PUT wants another, with nothing to say which. A wrong write
+replaces the live navigation with an empty menu, so the script stays read-only
+and menu items go in through Content > Navigation.
+
 A PATCH of a page's `widgets` **replaces** the map — it does not merge. So one
 script owns a page's content and writes all of it: `fill-hubspot-pages.mjs`,
 form included. A second writer costs you the first one's work, silently, and
