@@ -159,6 +159,27 @@ if (create) {
       // Trust nothing that returns 200: read the stored values back.
       const after = await api(`/content/api/v2/blogs/${b.id}`);
       console.log(`  after:  item=${after.item_template_path}  listing=${after.listing_template_path}`);
+      // A modern blog renders its root through a listing PAGE, and that page
+      // has its own templatePath — which is where "Missing Template at Path:
+      // basic/blog-listing-page.html" actually comes from. The blog-level
+      // listing_template_path above is scenery until this page is moved too.
+      const pageId = after.listing_page_id || after.listingPageId;
+      console.log(`  listing_page_id=${pageId}  use_listing_page=${after.use_listing_page ?? after.useListingPage}`);
+      if (pageId) {
+        try {
+          await api(`/cms/v3/pages/site-pages/${pageId}`, {
+            method: "PATCH",
+            body: JSON.stringify({ templatePath: `${TEMPLATES}/blog-listing.hubl.html` }),
+          });
+          await api(`/cms/v3/pages/site-pages/${pageId}`, {
+            method: "PATCH",
+            body: JSON.stringify({ publishDate: new Date().toISOString(), state: "PUBLISHED" }),
+          });
+          console.log(`  listing page ${pageId} retemplated and pushed live`);
+        } catch (e) {
+          console.log(`  listing page ${pageId} patch failed: ${String(e.message).slice(0, 160)}`);
+        }
+      }
     } catch (e) {
       console.log(`v2 template put refused on ${b.id}: ${String(e.message).slice(0, 160)}`);
     }
