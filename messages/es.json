@@ -1,12 +1,12 @@
 {
   "meta": {
     "home": {
-      "title": "Novieri — Tecnología enterprise con IA en el centro",
-      "description": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación. Tecnología enterprise para tu empresa, sin montar un departamento de IT."
+      "title": "Novieri — Tecnología de nivel corporativo con IA en el centro",
+      "description": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación. Tecnología de nivel corporativo para tu empresa, sin montar un departamento de IT."
     },
     "services": {
       "title": "Servicios — Novieri",
-      "description": "IA y automatización, IT administrado, ciberseguridad y cumplimiento, y desarrollo a medida. Cuatro pilares, un mismo estándar enterprise."
+      "description": "IA y automatización, IT administrado, ciberseguridad y cumplimiento, y desarrollo a medida. Cuatro pilares, un mismo estándar."
     },
     "ai": {
       "title": "IA y automatización — Novieri",
@@ -14,11 +14,11 @@
     },
     "managedIt": {
       "title": "IT administrado — Novieri",
-      "description": "Soporte, Microsoft 365, redes, firewall y backups administrados por ingenieros senior. Tu departamento de IT, sin tener que montarlo."
+      "description": "Soporte, Microsoft 365, redes, firewall y copias de seguridad administradas por ingenieros con experiencia. Tu departamento de IT, sin tener que montarlo."
     },
     "security": {
       "title": "Ciberseguridad y cumplimiento — Novieri",
-      "description": "Protección de infraestructura, gestión de vulnerabilidades y preparación SOC 2 / PCI DSS. Seguridad de verdad, con evidencia."
+      "description": "Protección de tu infraestructura, gestión de vulnerabilidades y preparación para auditorías SOC 2 y PCI DSS, con informes que un auditor acepta."
     },
     "software": {
       "title": "Desarrollo a medida — Novieri",
@@ -26,7 +26,7 @@
     },
     "about": {
       "title": "Nosotros — Novieri",
-      "description": "Novieri es la fusión de dos apellidos: una empresa familiar con estándares enterprise, desde Barranquilla para Colombia y Estados Unidos."
+      "description": "Los dos fundadores de Novieri, y por qué existe: estándares de empresa grande al alcance de una empresa mediana, desde Barranquilla para Colombia y Estados Unidos."
     },
     "contact": {
       "title": "Contacto — Novieri",
@@ -41,7 +41,7 @@
     },
     "sol_aiAssistant": {
       "title": "Recepcionista Virtual de IA — Novieri",
-      "description": "Un recepcionista de IA que contesta cada llamada: responde con tu información, captura leads en el CRM, transfiere a tu equipo y agenda reuniones."
+      "description": "Un recepcionista de IA que contesta cada llamada: responde con la información de tu empresa, guarda los datos del interesado en tu CRM, transfiere a tu equipo y agenda reuniones."
     },
     "sol_whatsapp": {
       "title": "Asistente de IA para WhatsApp — Novieri",
@@ -49,7 +49,7 @@
     },
     "sol_itSuite": {
       "title": "Suite de Gestión IT y RMM — Novieri",
-      "description": "Plataforma de gestión de endpoints: inventario, parches, control remoto, logs de seguridad, respaldo y documentación IT con un solo agente."
+      "description": "Plataforma de gestión de equipos: inventario, parches, control remoto, logs de seguridad, respaldo y documentación IT con un solo agente."
     },
     "sol_visitorIntel": {
       "title": "Inteligencia de Visitantes Web — Novieri",
@@ -61,14 +61,14 @@
     },
     "sol_matterFlow": {
       "title": "Matter Flow — Plataforma de observabilidad — Novieri",
-      "description": "Plataforma multi-tenant de monitoreo de redes, rutas de ISP y sistemas: colector on-prem, agente liviano, métricas, alertas y tableros en vivo."
+      "description": "Plataforma con los datos de cada cliente separados de monitoreo de redes, rutas de ISP y sistemas: colector on-prem, agente liviano, métricas, alertas y tableros en vivo."
     },
     "sol_monitoring": {
       "title": "Monitoreo de Redes y Sistemas — Novieri",
       "description": "Monitoreo administrado 24/7 de redes, servidores, bases de datos y enlaces de internet — operado por Novieri sobre su propia plataforma."
     },
     "sol_sentinel": {
-      "title": "Sentinel — Gestión de vulnerabilidades con IA — Novieri",
+      "title": "Gestión de vulnerabilidades con IA — Novieri",
       "description": "Descubre activos, detecta vulnerabilidades, prioriza con IA y genera reportes listos para auditoría — en tu propia infraestructura."
     },
     "sol_webDev": {
@@ -110,7 +110,7 @@
   "pillars": {
     "ai": {
       "name": "IA y automatización",
-      "tagline": "Agentes y automatizaciones que quitan trabajo repetitivo de la mesa.",
+      "tagline": "Agentes y automatizaciones que le quitan trabajo repetitivo a tu equipo.",
       "tags": [
         "agentes",
         "chatbots",
@@ -123,7 +123,7 @@
       "tags": [
         "soporte",
         "microsoft 365",
-        "backups"
+        "copias de seguridad"
       ]
     },
     "security": {
@@ -156,7 +156,7 @@
   },
   "home": {
     "hero": {
-      "titleA": "Tecnología enterprise,",
+      "titleA": "Tecnología de nivel corporativo,",
       "titleB": "con IA en el centro.",
       "subtitle": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación — para que tu empresa crezca sin un departamento de IT propio."
     },
@@ -164,7 +164,7 @@
       "items": [
         {
           "value": "1000+",
-          "label": "usuarios asistidos como cto"
+          "label": "usuarios con soporte a cargo en operaciones que dirigimos"
         },
         {
           "value": "PCI / SOC 2",
@@ -246,23 +246,23 @@
     },
     "why": {
       "eyebrow": "por qué novieri",
-      "title": "Tecnología de nivel corporativo, sin el costo de un departamento interno.",
+      "title": "Tecnología de empresa grande, sin el costo de un departamento interno.",
       "points": [
         {
           "title": "Atención directa con los fundadores",
-          "body": "Hablas con quien diseña y opera tu tecnología, no con un vendedor. Sin intermediarios, sin tickets que nadie lee."
+          "body": "Hablas con quien diseña y opera tu tecnología, no con un vendedor. Sin intermediarios y sin casos que se quedan esperando respuesta."
         },
         {
           "title": "Prácticas de empresa grande",
-          "body": "Monitoreo, backups probados, seguridad gestionada y procesos reales — los mismos estándares que exige una operación de más de 1.000 personas."
+          "body": "Monitoreo, copias de seguridad que sí se prueban, seguridad administrada y procesos de verdad: los mismos estándares que exige una operación de más de mil personas."
         },
         {
           "title": "IA aplicada a tu operación",
-          "body": "No vendemos moda: identificamos qué procesos de tu empresa sí se benefician de automatización y lo demostramos con un piloto."
+          "body": "No vendemos moda: identificamos qué procesos de tu empresa sí ganan algo con la automatización, y lo demostramos con una prueba antes de que te comprometas."
         },
         {
           "title": "Costo predecible",
-          "body": "Planes mensuales claros por puesto o por equipo, a una fracción de lo que cuesta ese mismo estándar en el mercado. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
+          "body": "Planes mensuales claros, por persona o por equipo, a una fracción de lo que cuesta ese mismo estándar en el mercado. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
         }
       ],
       "stat": {
@@ -281,7 +281,7 @@
       "steps": [
         {
           "title": "Diagnóstico",
-          "body": "Entendemos tu operación, tu infraestructura y tus riesgos antes de proponer nada."
+          "body": "Entendemos tu operación, tus sistemas y tus riesgos antes de hacerte una propuesta formal."
         },
         {
           "title": "Propuesta",
@@ -299,8 +299,8 @@
     },
     "founders": {
       "eyebrow": "quiénes somos",
-      "title": "Una empresa familiar con estándares enterprise.",
-      "body": "Novieri es la fusión de los apellidos de sus dos fundadores: tecnología dirigida por un CTO con más de 12 años construyendo y operando sistemas en producción, y una operación comercial que te responde de verdad.",
+      "title": "Dos fundadores, estándares de empresa grande.",
+      "body": "Novieri es la unión de los apellidos de sus dos fundadores: la tecnología la dirige un CTO con más de doce años construyendo y operando sistemas en producción, y del lado comercial hay alguien que sí te responde.",
       "link": "Conoce la historia",
       "photoAlt": "Foto de los fundadores de Novieri (pendiente)"
     },
@@ -326,7 +326,7 @@
     "whatTitle": "Qué hacemos",
     "howTitle": "Cómo se ve",
     "packagesTitle": "Paquetes",
-    "packagesIntro": "No publicamos precios: no hay dos operaciones iguales. Estas son las formas que suele tomar el trabajo; el número sale después de entender tu caso.",
+    "packagesIntro": "Cada operación es distinta, así que el precio sale después de entender la tuya. Estas son las formas que suele tomar el trabajo.",
     "faqTitle": "Preguntas frecuentes",
     "ctaTitle": "¿Hablamos de tu caso?",
     "ctaSubtitle": "Una llamada de 30 minutos para entender tu operación y decirte, con franqueza, si podemos ayudar."
@@ -371,8 +371,8 @@
     "packages": {
       "tiers": [
         {
-          "name": "Revisión de dos semanas",
-          "blurb": "Precio fijo, dos semanas. Miramos cómo se mueve el trabajo de verdad en tu negocio, encontramos qué puede hacer una máquina y te entregamos una lista corta, ordenada por lo que te ahorra. Sin compromiso después."
+          "name": "Diagnóstico de dos semanas",
+          "blurb": "Precio fijo, dos semanas. Miramos cómo se mueve de verdad el trabajo en tu negocio y encontramos qué puede hacer una máquina. Al final te entregamos una lista corta, ordenada por lo que te ahorra. Sin compromiso después."
         },
         {
           "name": "Tu primera automatización",
@@ -466,7 +466,7 @@
     "hero": {
       "eyebrow": "it administrado",
       "title": "Tu departamento de IT, sin tener que montarlo.",
-      "promise": "Soporte que responde, computadores que funcionan, backups que sí restauran y una red que no se cae. Administramos tu tecnología con los estándares de una empresa grande, por una fracción del costo de un equipo interno."
+      "promise": "Soporte que sí responde, computadores que funcionan, copias de seguridad que de verdad restauran y una red que no se cae. Administramos tu tecnología con los estándares de una empresa grande, por una fracción de lo que cuesta un equipo interno."
     },
     "what": {
       "items": [
@@ -483,7 +483,7 @@
           "body": "Diseño, instalación y administración de tu red y firewall (FortiGate), con VPN segura para trabajo remoto."
         },
         {
-          "title": "Backups y continuidad",
+          "title": "Copias de seguridad y continuidad",
           "body": "Copias automáticas de servidores y equipos críticos, probadas con restauraciones reales — no solo con luces verdes."
         },
         {
@@ -580,7 +580,7 @@
         "med-lt-07 reinició y volvió en línea",
         "flota al día · 0 pendientes"
       ],
-      "footer": "monitoreo 24/7 · parches automáticos · backups verificados"
+      "footer": "monitoreo 24/7 · actualizaciones automáticas · copias de seguridad verificadas"
     }
   },
   "security": {
@@ -666,7 +666,7 @@
         "cifrado en reposo y tránsito",
         "gestión de vulnerabilidades",
         "plan de respuesta a incidentes",
-        "evidencia de restauración de backups",
+        "evidencia de restauración de copias de seguridad",
         "concientización del equipo"
       ],
       "status": {
@@ -787,26 +787,26 @@
   "about": {
     "hero": {
       "eyebrow": "nosotros",
-      "title": "Dos apellidos, una empresa.",
-      "intro": "Novieri nace de la fusión de los apellidos de sus dos fundadores. Es, literalmente, una empresa con nombre propio: familiar en el trato, enterprise en los estándares."
+      "title": "Dos fundadores, y nadie en el medio.",
+      "intro": "Novieri son las dos personas que la construyeron: quien diseña y opera la tecnología, y quien lleva la relación con el cliente. Familiar en el trato, enterprise en los estándares."
     },
     "story": {
       "title": "La historia",
-      "body": "Después de más de 10 años dirigiendo tecnología para operaciones de más de 1.000 personas (infraestructura, seguridad, cumplimiento PCI DSS y SOC 2, y sistemas de IA puestos a producir resultados) y de otros tantos al frente de la relación con clientes en banca y en una de las plataformas de CRM más grandes del mundo, vimos siempre el mismo patrón: el estándar enterprise existe, pero llega con precio de multinacional. Novieri nace para cerrar esa brecha: soluciones y servicios con los mismos estándares que operábamos en corporativo, a una fracción de lo que cuestan en el mercado. No es una versión recortada para empresas medianas; es el mismo nivel de práctica, con equipo propio en Barranquilla y sin capas de intermediarios que inflan la factura."
+      "body": "Después de más de diez años dirigiendo tecnología para operaciones de más de mil personas —infraestructura, seguridad, cumplimiento PCI DSS y SOC 2, e inteligencia artificial puesta a producir resultados reales— siempre aparecía el mismo patrón: el estándar de las grandes empresas existe, pero llega con precio de multinacional, y nadie lo ajusta a una empresa de treinta o de trescientas personas. Novieri existe para cerrar esa brecha: los mismos estándares que operábamos en el mundo corporativo, a una fracción de lo que cobra el mercado, con equipo propio en Barranquilla y sin capas de intermediarios que inflan la factura."
     },
     "founders": {
       "title": "Los fundadores",
       "helgar": {
         "name": "Helgar Palmieri",
         "role": "Tecnología y entrega",
-        "bio": "Arquitecto de soluciones e ingeniero de IA con más de 12 años construyendo sistemas en producción. Hoy es CTO de un BPO multinacional 24/7, donde diseña y programa personalmente el stack de IA e integraciones: copilotos internos, RAG, automatización de flujos y productos full-stack. Antes lideró IT en un call center con cumplimiento PCI DSS. MBA.",
+        "bio": "Arquitecto de soluciones e ingeniero de IA con más de doce años construyendo sistemas que funcionan en producción. Hoy es CTO de una operación multinacional que atiende 24/7, donde diseña y programa él mismo los sistemas de inteligencia artificial y las integraciones: asistentes internos, búsqueda sobre los documentos de la empresa, automatización de procesos y aplicaciones completas. Antes dirigió la tecnología de un call center con cumplimiento PCI DSS. MBA.",
         "photoAlt": "Helgar Palmieri, cofundador, tecnología y entrega"
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Relación con clientes y acompañamiento",
-        "bio": "Más de diez años al lado de clientes, desde la primera conversación hasta los años que siguen a la venta: entender cómo funciona de verdad un negocio, acordar qué vale la pena hacer y quedarse a ver que funcione. Administradora de empresas. En Novieri es la persona con la que hablas — arma el caso contigo, hace el seguimiento de frente y se asegura de que lo entregado se use, no que solo quede instalado.",
-        "photoAlt": "Sylvana Nova, cofundadora, relación con clientes y acompañamiento"
+        "role": "Comercial y relación con clientes",
+        "bio": "Ejecutiva comercial con más de diez años al frente de clientes. Entiende cómo funcionan los negocios y es buena encontrando dónde duele: ese cuello de botella que el dueño ya ni nota porque lleva años trabajando alrededor de él. Administradora de empresas. En Novieri eso se traduce en lo práctico: arma el caso contigo, hace el seguimiento de frente y se asegura de que lo que entregamos se use, no que solo quede instalado.",
+        "photoAlt": "Sylvana Nova, cofundadora, comercial y relación con clientes"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
@@ -902,7 +902,7 @@
       "builtEyebrow": "cómo está construido",
       "poweredBadge": "powered by novieri",
       "poweredTitle": "Detrás de cada producto está el mismo equipo.",
-      "poweredBody": "Cada solución la diseña, construye y opera el equipo de Novieri — con las mismas prácticas enterprise de nuestros servicios: seguridad, monitoreo y mejora continua. No compras un software y quedas solo: compras un producto con un equipo detrás.",
+      "poweredBody": "Cada solución la diseña, construye y opera el equipo de Novieri, con las mismas prácticas de nuestros servicios: seguridad, monitoreo y mejora continua. No compras un software y quedas solo; compras un producto con un equipo detrás.",
       "seeSolution": "Ver solución",
       "demoCta": "Agenda una demo",
       "ctaTitle": "¿Quieres verlo funcionando con tus datos?",
@@ -911,7 +911,7 @@
     "items": {
       "aiAssistant": {
         "name": "Recepcionista Virtual de IA",
-        "tagline": "Contesta cada llamada, captura el lead y agenda la reunión — con voz natural.",
+        "tagline": "Contesta cada llamada, guarda los datos del interesado y agenda la reunión — con voz natural.",
         "tags": [
           "voz",
           "llamadas",
@@ -924,14 +924,14 @@
         "features": [
           {
             "title": "Contesta todas las llamadas",
-            "body": "Cada llamada entrante es atendida al instante, en horario laboral o a medianoche — se acabaron los buzones llenos y los leads perdidos."
+            "body": "Cada llamada que entra se atiende al instante, en horario de oficina o a medianoche. Se acabaron los buzones llenos y los clientes que llamaron una vez y no volvieron."
           },
           {
             "title": "Responde con tu conocimiento",
             "body": "Su base de conocimiento se construye desde tu propio sitio web y tus datos, y se actualiza automáticamente cada semana."
           },
           {
-            "title": "Captura leads en tu CRM",
+            "title": "Guarda los datos en tu CRM",
             "body": "Nombre, empresa, interés y teléfono quedan registrados en HubSpot con la transcripción de la llamada como actividad."
           },
           {
@@ -999,7 +999,7 @@
         ],
         "built": {
           "title": "Un producto real, en producción.",
-          "body": "Plataforma SaaS multi-tenant: capa de WhatsApp sobre Evolution API y la API oficial de WhatsApp Business, agente con Claude de Anthropic y tool-use, RAG sobre PostgreSQL con pgvector, colas en Redis y panel en React — con pruebas de aislamiento de datos entre clientes incluidas."
+          "body": "Una plataforma que atiende a varios clientes con los datos de cada uno separados: la capa de WhatsApp sobre Evolution API y la API oficial de WhatsApp Business, un agente con Claude de Anthropic que ejecuta acciones, búsqueda sobre tus documentos en PostgreSQL con pgvector, colas en Redis y panel en React."
         },
         "stack": [
           "whatsapp api",
@@ -1015,17 +1015,17 @@
         "tagline": "Inventario, parches, control remoto y respaldo — un solo agente, un solo panel.",
         "tags": [
           "rmm",
-          "endpoints",
+          "equipos",
           "soc 2"
         ],
         "hero": {
           "title": "Todo tu parque tecnológico, gobernado desde un panel.",
-          "promise": "Una plataforma modular de gestión de endpoints en la categoría de NinjaOne o Endpoint Central: un agente liviano en cada computador y servidor entrega inventario, parcheo, control remoto, despliegue de software, respaldo y evidencia de seguridad — con una arquitectura de seguridad poco común en su categoría."
+          "promise": "Una plataforma modular de gestión de equipos en la categoría de NinjaOne o Endpoint Central: un agente liviano en cada computador y servidor entrega inventario, parcheo, control remoto, despliegue de software, respaldo y evidencia de seguridad — con una arquitectura de seguridad poco común en su categoría."
         },
         "features": [
           {
             "title": "Inventario con historial",
-            "body": "Hardware y software de cada endpoint, con historial de cambios, grupos dinámicos de equipos, búsqueda de software en toda la flota y exportes CSV."
+            "body": "Hardware y software de cada equipo, con historial de cambios, grupos dinámicos de equipos, búsqueda de software en toda la flota y exportes CSV."
           },
           {
             "title": "Parcheo multi-OS",
@@ -1150,7 +1150,7 @@
         ],
         "built": {
           "title": "Construida como producto, no como plantilla.",
-          "body": "Monorepo Turborepo: storefront y panel en Next.js 15, API en NestJS, datos en PostgreSQL con Prisma y cliente con aislamiento por tienda, Redis y despliegue en contenedores — desarrollo propio de Novieri de punta a punta."
+          "body": "Un solo repositorio con todo: tienda y panel en Next.js 15, API en NestJS, datos en PostgreSQL con Prisma y separación por tienda, Redis y despliegue en contenedores — desarrollo propio de Novieri de principio a fin."
         },
         "stack": [
           "next.js 15",
@@ -1167,11 +1167,11 @@
         "tags": [
           "observabilidad",
           "plataforma",
-          "multi-tenant"
+          "con los datos de cada cliente separados"
         ],
         "hero": {
           "title": "La plataforma que ve tu infraestructura completa.",
-          "promise": "Matter Flow es la plataforma de observabilidad de Novieri: un plano de control en la nube, un colector de red para lo que la nube no alcanza y un agente liviano en tus hosts. Dispositivos de red, calidad de enlaces de internet, métricas, alertas y tableros en vivo — multi-tenant desde su primera línea de código."
+          "promise": "Matter Flow es la plataforma de observabilidad de Novieri: un plano de control en la nube, un colector de red para lo que la nube no alcanza y un agente liviano en tus hosts. Dispositivos de red, calidad de enlaces de internet, métricas, alertas y tableros en vivo — con los datos de cada cliente separados desde su primera línea de código."
         },
         "features": [
           {
@@ -1196,7 +1196,7 @@
           },
           {
             "title": "Multi-tenant de verdad",
-            "body": "Cada métrica y cada fila llevan su tenant; cada endpoint nuevo se prueba contra fugas entre clientes antes de existir."
+            "body": "Cada métrica y cada fila llevan su tenant; cada equipo nuevo se prueba contra fugas entre clientes antes de existir."
           }
         ],
         "built": {
@@ -1264,8 +1264,8 @@
         ]
       },
       "sentinel": {
-        "name": "Sentinel — Gestión de Vulnerabilidades",
-        "tagline": "Encuentra los huecos de tus sistemas antes que otro — y demuestra que los cerraste.",
+        "name": "Gestión de vulnerabilidades",
+        "tagline": "Encuentra las debilidades de tus sistemas antes que otro — y demuestra que las cerraste.",
         "tags": [
           "seguridad",
           "vulnerabilidades",
@@ -1354,7 +1354,7 @@
         ],
         "built": {
           "title": "El mismo estándar de este sitio.",
-          "body": "Next.js y React con internacionalización real, integraciones de IA con Claude, despliegue en la nube y monitoreo — construido por el mismo equipo que desarrolla nuestros productos."
+          "body": "Next.js y React con dos idiomas de verdad, integraciones de IA con Claude, despliegue en la nube y monitoreo — construido por el mismo equipo que desarrolla nuestros productos."
         },
         "stack": [
           "next.js",
@@ -1764,10 +1764,10 @@
       },
       {
         "id": "backups",
-        "q": "¿Cómo están tus backups?",
+        "q": "¿Cómo están tus copias de seguridad?",
         "options": [
           {
-            "v": "No tenemos backups formales",
+            "v": "No tenemos copias de seguridad formales",
             "w": 0
           },
           {

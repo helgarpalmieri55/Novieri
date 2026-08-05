@@ -102,7 +102,7 @@ const PAGES = [
     htmlTitle: "Website Visitor Intelligence — Novieri",
     metaDescription: "See which companies visit your website and get the ones worth calling in your inbox every morning, ranked against your best clients." },
   { key: "sol-sentinel", template: "solution", slug: "solutions/vulnerability-management",
-    name: "Sentinel — Vulnerability Management",
+    name: "Vulnerability Management",
     htmlTitle: "Vulnerability management — Novieri",
     metaDescription: "Find the weaknesses in your systems before someone else does, know which ones actually matter, and hold the evidence an auditor asks for." },
   { key: "sol-ventia", template: "solution", slug: "solutions/ventia",

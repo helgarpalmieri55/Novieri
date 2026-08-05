@@ -68,7 +68,7 @@
       "description": "24/7 managed monitoring of networks, servers, databases, and internet links — operated by Novieri on its own platform."
     },
     "sol_sentinel": {
-      "title": "Sentinel — AI Vulnerability Management — Novieri",
+      "title": "AI Vulnerability Management — Novieri",
       "description": "Discover assets, detect vulnerabilities, prioritize with AI, and produce audit-ready reports — on your own infrastructure."
     },
     "sol_webDev": {
@@ -110,7 +110,7 @@
   "pillars": {
     "ai": {
       "name": "AI & automation",
-      "tagline": "Agents and automations that take repetitive work off your team's plate.",
+      "tagline": "Agents and automations that take repetitive work off your team.",
       "tags": [
         "agents",
         "chatbots",
@@ -164,7 +164,7 @@
       "items": [
         {
           "value": "1000+",
-          "label": "users assisted as cto"
+          "label": "users supported in operations we have run"
         },
         {
           "value": "PCI / SOC 2",
@@ -281,7 +281,7 @@
       "steps": [
         {
           "title": "Diagnosis",
-          "body": "We understand your operation, your infrastructure, and your risks before proposing anything."
+          "body": "We understand your operation, your systems and your risks before putting a formal proposal in front of you."
         },
         {
           "title": "Proposal",
@@ -299,8 +299,8 @@
     },
     "founders": {
       "eyebrow": "who we are",
-      "title": "A family-run firm with enterprise standards.",
-      "body": "Novieri is the fusion of its two founders' surnames: technology led by a CTO with 12+ years building and running production systems, and a commercial operation that actually answers you.",
+      "title": "Two founders, enterprise standards.",
+      "body": "Novieri is the fusion of its two founders' surnames: technology led by a CTO with more than twelve years building and running production systems, and a commercial side that actually answers you.",
       "link": "Read the story",
       "photoAlt": "Photo of Novieri's founders (pending)"
     },
@@ -326,7 +326,7 @@
     "whatTitle": "What we do",
     "howTitle": "How it looks",
     "packagesTitle": "Packages",
-    "packagesIntro": "We do not publish prices — no two operations are the same. These are the shapes the work usually takes; the number comes after we understand your case.",
+    "packagesIntro": "Every operation is different, so the price comes after we understand yours. These are the shapes the work usually takes.",
     "faqTitle": "Frequently asked questions",
     "ctaTitle": "Shall we talk about your case?",
     "ctaSubtitle": "A 30-minute call to understand your operation and tell you, frankly, whether we can help."
@@ -371,8 +371,8 @@
     "packages": {
       "tiers": [
         {
-          "name": "A two-week review",
-          "blurb": "Fixed price, two weeks. We follow how the work actually moves through your business, find what a machine could take over, and hand you a short list ordered by what it saves you. No commitment after it."
+          "name": "A two-week diagnostic",
+          "blurb": "Fixed price, two weeks. We look at how the work really moves through your business and find what a machine could take over. At the end you get a short list, ordered by what it saves you. No commitment afterwards."
         },
         {
           "name": "Your first automation",
@@ -787,12 +787,12 @@
   "about": {
     "hero": {
       "eyebrow": "about",
-      "title": "Two surnames, one firm.",
-      "intro": "Novieri is born from the fusion of its two founders' surnames. It is, literally, a company with its own name: family-run in how it treats you, enterprise in its standards."
+      "title": "Two founders, and nobody in between.",
+      "intro": "Novieri is the two people who built it: the person who designs and runs the technology, and the person who owns the relationship. Family-run in how it treats you, enterprise in what it delivers."
     },
     "story": {
       "title": "The story",
-      "body": "After 10+ years leading technology for operations of more than 1,000 people (infrastructure, security, PCI DSS and SOC 2 compliance, and AI systems put to work on real production outcomes) and as many years owning client relationships in banking and at one of the world's largest CRM platforms, we kept seeing the same pattern: the enterprise standard exists, but it arrives with a multinational price tag. Novieri exists to close that gap: solutions and services built to the same standards we ran in corporate, at a fraction of what the market charges. This isn't a stripped-down tier for mid-sized companies; it's the same level of practice, delivered by our own team in Barranquilla, without the layers of middlemen that inflate the invoice."
+      "body": "After more than ten years running technology for operations of over a thousand people — infrastructure, security, PCI DSS and SOC 2 compliance, AI put to work on real results — the same pattern kept showing up: the enterprise standard exists, but it arrives with a multinational price tag, and nobody adapts it to a company of thirty or three hundred people. Novieri exists to close that gap. The same standards we ran in corporate, at a fraction of what the market charges, with our own team in Barranquilla and no layers of middlemen inflating the invoice."
     },
     "founders": {
       "title": "The founders",
@@ -804,9 +804,9 @@
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Client relationships and delivery",
-        "bio": "More than ten years alongside clients, from the first conversation to the years after the sale: understanding how a business really runs, agreeing what is worth doing, and staying to see that it works. A business administration graduate. At Novieri she is the person you talk to — she scopes the case with you, keeps the follow-through honest, and makes sure what we deliver is actually used, not just installed.",
-        "photoAlt": "Sylvana Nova, co-founder, client relationships and delivery"
+        "role": "Commercial and client relationships",
+        "bio": "Commercial executive with more than ten years in front of clients. She understands how businesses actually run and is good at finding where it hurts — the bottleneck the owner has stopped noticing because they have worked around it for years. A business administration graduate. At Novieri that turns into the practical part: she scopes the case with you, keeps the follow-through honest, and makes sure what we deliver is used rather than just installed.",
+        "photoAlt": "Sylvana Nova, co-founder, commercial and client relationships"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
@@ -1264,8 +1264,8 @@
         ]
       },
       "sentinel": {
-        "name": "Sentinel — Vulnerability Management",
-        "tagline": "Find the holes in your systems before someone else does — and prove you closed them.",
+        "name": "Vulnerability Management",
+        "tagline": "Find the weaknesses in your systems before someone else does — and prove you closed them.",
         "tags": [
           "security",
           "vulnerabilities",
