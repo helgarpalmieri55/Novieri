@@ -28,6 +28,7 @@ on:
           - forms-list
           - form-dump
           - form-setup
+          - menus
           - widgets
           - create-all
       slug:
@@ -73,5 +74,7 @@ jobs:
             form-dump)     node scripts/hubspot-forms.mjs --form='${{ inputs.slug }}' ;;
             # Consent copy, the language dropdown, and the Spanish twin.
             form-setup)    node scripts/hubspot-form-setup.mjs ;;
+            # Probes whether the undocumented menus endpoint still answers.
+            menus)         node scripts/hubspot-menus.mjs ;;
             widgets)       node scripts/hubspot-forms.mjs --widgets='${{ inputs.slug }}' ;;
           esac
