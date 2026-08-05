@@ -33,9 +33,32 @@
         <p class="mt-4 max-w-[34ch] text-small text-ink-muted">{{ f_description }}</p>
       </div>
 
+      {# The Spanish column title is a field somebody has to remember to fill,
+         and on two of the four columns nobody did — so a Spanish page carried
+         "·· explore" and "·· services" over Spanish links while legal and
+         contacto, whose Spanish fields are set, read correctly.
+
+         This is a safety net for the handful of words these columns use, not
+         a translator: a title that is not listed keeps its English text, and
+         a filled Spanish field always wins. #}
       {% for column in module.columns %}
         {% set col_title = column.column_title %}
-        {% if is_es and column.column_title_es %}{% set col_title = column.column_title_es %}{% endif %}
+        {% if is_es %}
+          {% if column.column_title_es %}
+            {% set col_title = column.column_title_es %}
+          {% else %}
+            {% set key = column.column_title|lower|trim %}
+            {% if key == "explore" %}{% set col_title = "explorar" %}
+            {% elif key == "services" %}{% set col_title = "servicios" %}
+            {% elif key == "solutions" %}{% set col_title = "soluciones" %}
+            {% elif key == "products" %}{% set col_title = "productos" %}
+            {% elif key == "about" %}{% set col_title = "nosotros" %}
+            {% elif key == "company" %}{% set col_title = "empresa" %}
+            {% elif key == "contact" %}{% set col_title = "contacto" %}
+            {% elif key == "resources" %}{% set col_title = "recursos" %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
         <nav class="footer-links" aria-label="{{ col_title|escape_attr }}">
           <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ col_title }}</h2>
           {# menu(), not {% menu %}, and per language — see site-header. #}
