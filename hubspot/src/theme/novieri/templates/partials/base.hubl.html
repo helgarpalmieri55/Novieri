@@ -24,6 +24,36 @@
         if (c !== "all" && c !== "necessary") document.documentElement.classList.add("needs-consent");
       } catch (e) {}
     </script>
+    {#
+      Who Novieri is, in the vocabulary answer engines read. Facts only —
+      every value here also appears in the visible copy; nothing is claimed
+      to a crawler that a visitor can't see. FAQ markup is separate, emitted
+      by the faq-list module next to the questions it describes.
+    #}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://www.novieri.com/#organization",
+        "name": "Novieri",
+        "url": "https://www.novieri.com/",
+        "logo": "https://45528787.fs1.hubspotusercontent-na1.net/hubfs/45528787/novieri/novieri-isotipo-color-256px.png",
+        "email": "sales@novieri.com",
+        "description": {% if html_lang == "es" %}"Automatizamos procesos, administramos infraestructura y protegemos operaciones — servicios de IA, IT administrado, ciberseguridad, desarrollo a medida y consultoría IT desde Barranquilla, para Colombia y Estados Unidos."{% else %}"AI & automation, managed IT, cybersecurity & compliance, custom software, and IT consulting — delivered from Barranquilla, Colombia for companies in Colombia and the United States."{% endif %},
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Barranquilla",
+          "addressRegion": "Atlántico",
+          "addressCountry": "CO"
+        },
+        "areaServed": ["CO", "US"],
+        "knowsLanguage": ["es", "en"],
+        "founder": [
+          { "@type": "Person", "name": "Helgar Palmieri", "jobTitle": "Co-founder — Technology & delivery" },
+          { "@type": "Person", "name": "Sylvana Nova", "jobTitle": "Co-founder — Commercial & client relationships" }
+        ]
+      }
+    </script>
     {{ standard_header_includes }}
   </head>
 

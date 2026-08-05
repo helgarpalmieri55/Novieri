@@ -159,7 +159,7 @@
     }
   },
   "common": {
-    "bookCall": "Book a call",
+    "bookCall": "Book a 30-minute call",
     "seeServices": "See services",
     "learnMore": "Learn more",
     "talkCase": "Let's talk about your case",
@@ -177,7 +177,7 @@
       "items": [
         {
           "value": "1000+",
-          "label": "users supported in operations we have run"
+          "label": "users supported in founder-led operations"
         },
         {
           "value": "PCI / SOC 2",
@@ -262,16 +262,16 @@
       "title": "Nearshore premium: enterprise practices, your time zone, sensible rates.",
       "points": [
         {
-          "title": "Same clock as US East",
-          "body": "Zero time difference with New York. Standups, incidents, and calls happen inside your working day — not the morning after."
+          "title": "Aligned with US Eastern hours",
+          "body": "Our working day overlaps New York's almost hour for hour, all year. Standups, incidents, and calls happen inside your working day — not the morning after."
         },
         {
           "title": "Bilingual by default",
-          "body": "Native-level English and Spanish across the team. Requirements, documentation, and support without translation loss."
+          "body": "Founder-led service in fluent English and Spanish. Requirements, documentation, and support without translation loss."
         },
         {
           "title": "Enterprise practices, PCI & SOC 2 experience",
-          "body": "Monitoring, tested backups, managed security, and real process — run by a CTO who has led technology for operations of 1,000+ people, including PCI DSS compliance and a SOC 2 program end to end. The same standard, at a fraction of what the market charges for it."
+          "body": "Monitoring, tested backups, managed security, and real process — run by a CTO who has led technology for operations of 1,000+ people, including PCI DSS compliance and a SOC 2 program end to end. The same standard, without the multinational overhead."
         },
         {
           "title": "Senior-only delivery",
@@ -319,7 +319,7 @@
     },
     "cta": {
       "title": "Your company already needs a technology team. It doesn't need to hire one.",
-      "subtitle": "Tell us about your case in a 30-minute call, no strings attached.",
+      "subtitle": "In 30 minutes we hear your case, tell you honestly whether we're a fit, and recommend a first step. No sales deck.",
       "button": "Book a call"
     },
     "diagnose": {
@@ -505,7 +505,7 @@
         },
         {
           "title": "Proactive monitoring",
-          "body": "We watch disks, services, and backups 24/7; many failures get fixed before anyone notices."
+          "body": "Automated monitoring watches disks, services, and backups around the clock, with alerts handled within your plan's response times — many failures get fixed before anyone notices."
         }
       ]
     },
@@ -618,7 +618,7 @@
         },
         {
           "title": "Identity & email protection",
-          "body": "The entry point for 90% of attacks — phishing, compromised accounts, misconfigured access — closed."
+          "body": "Among the most common entry points for attacks — phishing, compromised accounts, misconfigured access — closed."
         },
         {
           "title": "Incident response",
@@ -653,7 +653,7 @@
       "items": [
         {
           "q": "Would anyone really attack a company my size?",
-          "a": "Mass attacks don't pick victims: they scan the internet and exploit whatever is open. SMBs are the most frequent target precisely because they tend to be less protected."
+          "a": "Mass attacks don't pick victims: they scan the internet and exploit whatever is open. Smaller companies get hit constantly precisely because they tend to have fewer defenses in place."
         },
         {
           "q": "How long does SOC 2 or PCI DSS readiness take?",
@@ -805,7 +805,7 @@
     },
     "story": {
       "title": "The story",
-      "body": "After more than ten years running technology for operations of over a thousand people — infrastructure, security, PCI DSS and SOC 2 compliance, AI put to work on real results — the same pattern kept showing up: the enterprise standard exists, but it arrives with a multinational price tag, and nobody adapts it to a company of thirty or three hundred people. Novieri exists to close that gap. The same standards we ran in corporate, at a fraction of what the market charges, with our own team in Barranquilla and no layers of middlemen inflating the invoice."
+      "body": "After more than ten years running technology for operations of over a thousand people — infrastructure, security, PCI DSS and SOC 2 compliance, AI put to work on real results — the same pattern kept showing up: the enterprise standard exists, but it arrives with a multinational price tag, and nobody adapts it to a company of thirty or three hundred people. Novieri exists to close that gap. The same standards we ran in corporate, priced for a company of thirty or three hundred, with our own team in Barranquilla and no layers of middlemen inflating the invoice."
     },
     "founders": {
       "title": "The founders",
@@ -836,7 +836,7 @@
     "hero": {
       "eyebrow": "contact",
       "title": "Tell us about your case.",
-      "intro": "We reply the same business day. If you'd rather talk directly, book a call."
+      "intro": "A founder reads every message and replies the same business day — no ticket queue, no mailing list afterwards. If you'd rather talk directly, book a call."
     },
     "form": {
       "name": "Name",
@@ -851,6 +851,7 @@
         "managedIt": "Managed IT",
         "security": "Cybersecurity & compliance",
         "software": "Custom software",
+        "itConsulting": "IT consulting",
         "other": "Not sure yet / other"
       },
       "message": "Message",
@@ -1682,7 +1683,7 @@
     },
     "gate": {
       "title": "Where should we send the report?",
-      "body": "We generate your diagnostic with AI from your answers and deliver it as a PDF. We use your details only to send you the report and, if you ask, to discuss your case.",
+      "body": "We generate your diagnostic with AI from your answers and deliver it as a PDF, usually within a minute. It's a guided self-assessment, not a formal security audit. We use your details only to send you the report and, if you ask, to discuss your case.",
       "name": "Name",
       "email": "Work email",
       "company": "Company",

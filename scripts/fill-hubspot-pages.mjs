@@ -74,12 +74,15 @@ const VARS = { company: "Novieri", nit: "", email: "sales@novieri.com" };
  * overwriting in place, so the repo stays the source of truth, the URL is
  * stable, and there is no file GUID to keep in step by hand.
  */
-const PHOTOS = { helgar: "helgar.jpg", sylvana: "sylvana.jpg" };
+// The logo rides along for the Organization JSON-LD in base.hubl.html, which
+// needs a URL that survives theme rebuilds.
+const PHOTOS = { helgar: "helgar.jpg", sylvana: "sylvana.jpg", logo: "novieri-isotipo-color-256px.png" };
 
 async function uploadPhoto(file) {
   const form = new FormData();
   const bytes = readFileSync(`hubspot/src/theme/novieri/images/${file}`);
-  form.set("file", new Blob([bytes], { type: "image/jpeg" }), file);
+  const type = file.endsWith(".png") ? "image/png" : "image/jpeg";
+  form.set("file", new Blob([bytes], { type }), file);
   form.set("folderPath", "/novieri");
   form.set("fileName", file);
   form.set(
@@ -453,7 +456,9 @@ function aboutWidgets() {
     },
     [ABOUT_SLOTS.story]: {
       body: {
-        eyebrow: "the story",
+        // The copy's own title, not a hardcoded English one — "the story"
+        // rendered above Spanish text on /nosotros for a month.
+        eyebrow: a.story.title.toLowerCase(),
         word_a: "nov",
         word_b: "ieri",
         intro: a.story.body,
@@ -463,7 +468,7 @@ function aboutWidgets() {
     [ABOUT_SLOTS.people]: {
       body: {
         title: a.founders.title,
-        linkedin_label: "LinkedIn profile",
+        linkedin_label: locale === "es" ? "Perfil de LinkedIn" : "LinkedIn profile",
         people: [
           {
             person_name: a.founders.helgar.name,

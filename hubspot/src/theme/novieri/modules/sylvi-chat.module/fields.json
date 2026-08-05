@@ -19,13 +19,13 @@
     "name": "title",
     "label": "Panel title",
     "type": "text",
-    "default": "Sylvi · Novieri assistant"
+    "default": "Sylvi · Novieri AI assistant"
   },
   {
     "name": "title_es",
     "label": "Panel title (Spanish)",
     "type": "text",
-    "default": "Sylvi · asistente de Novieri"
+    "default": "Sylvi · asistente IA de Novieri"
   },
   {
     "name": "greeting",
@@ -40,6 +40,18 @@
     "type": "text",
     "default": "Hola, soy Sylvi. Cuéntame qué está frenando tu operación y te digo si somos las personas indicadas para resolverlo.",
     "allow_new_line": true
+  },
+  {
+    "name": "disclaimer",
+    "label": "AI disclosure line",
+    "type": "text",
+    "default": "AI answers — they can be wrong. Don't share passwords or payment details here."
+  },
+  {
+    "name": "disclaimer_es",
+    "label": "AI disclosure line (Spanish)",
+    "type": "text",
+    "default": "Respuestas generadas por IA — pueden fallar. No compartas contraseñas ni datos de pago por aquí."
   },
   {
     "name": "starters",

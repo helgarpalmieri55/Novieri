@@ -117,7 +117,9 @@
           </svg>
         </a>
       {% endif %}
-      <span class="uppercase">{{ html_lang }} · Barranquilla</span>
+      {# Was "{{ html_lang }} · Barranquilla", which printed "es · Barranquilla"
+         and read as a leaked locale variable next to the copyright. #}
+      <span>Barranquilla, Colombia</span>
     </div>
   </div>
 </footer>

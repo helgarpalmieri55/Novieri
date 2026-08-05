@@ -159,7 +159,7 @@
     }
   },
   "common": {
-    "bookCall": "Agenda una llamada",
+    "bookCall": "Agenda una llamada de 30 minutos",
     "seeServices": "Ver servicios",
     "learnMore": "Conocer más",
     "talkCase": "Hablemos de tu caso",
@@ -177,7 +177,7 @@
       "items": [
         {
           "value": "1000+",
-          "label": "usuarios con soporte a cargo en operaciones que dirigimos"
+          "label": "usuarios atendidos en operaciones dirigidas por los fundadores"
         },
         {
           "value": "PCI / SOC 2",
@@ -275,7 +275,7 @@
         },
         {
           "title": "Costo predecible",
-          "body": "Planes mensuales claros, por persona o por equipo, a una fracción de lo que cuesta ese mismo estándar en el mercado. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
+          "body": "Planes mensuales claros, por persona o por equipo, sin el sobrecosto de una multinacional. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
         }
       ],
       "stat": {
@@ -319,7 +319,7 @@
     },
     "cta": {
       "title": "Tu empresa ya necesita un equipo de tecnología. No necesita contratarlo.",
-      "subtitle": "Cuéntanos tu caso en una llamada de 30 minutos, sin compromiso.",
+      "subtitle": "En 30 minutos escuchamos tu caso, te decimos con franqueza si somos los indicados y te recomendamos un primer paso. Sin presentación de ventas.",
       "button": "Agenda una llamada"
     },
     "diagnose": {
@@ -347,14 +347,14 @@
   "ai": {
     "hero": {
       "eyebrow": "ia y automatización",
-      "title": "Agentes y automatizaciones que quitan trabajo repetitivo de la mesa.",
+      "title": "Agentes y automatizaciones que liberan a tu equipo del trabajo repetitivo.",
       "promise": "La mayoría de las empresas no necesita \"más IA\": necesita saber qué procesos automatizar primero y ver uno funcionando de punta a punta. Eso es exactamente lo que hacemos — con un diagnóstico honesto, un piloto medible y, si tiene sentido, una operación continua."
     },
     "what": {
       "items": [
         {
           "title": "Evaluación de oportunidades de IA",
-          "body": "Diagnóstico de 2 semanas: mapeamos tus procesos y priorizamos dónde la automatización paga de verdad."
+          "body": "Diagnóstico de 2 semanas: mapeamos tus procesos y priorizamos dónde la automatización genera un retorno real."
         },
         {
           "title": "Agentes de IA",
@@ -385,7 +385,7 @@
       "tiers": [
         {
           "name": "Diagnóstico de dos semanas",
-          "blurb": "Precio fijo, dos semanas. Miramos cómo se mueve de verdad el trabajo en tu negocio y encontramos qué puede hacer una máquina. Al final te entregamos una lista corta, ordenada por lo que te ahorra. Sin compromiso después."
+          "blurb": "Precio fijo, dos semanas. Miramos cómo se mueve de verdad el trabajo en tu negocio y encontramos qué tareas puede asumir la automatización. Al final te entregamos una lista corta, ordenada por lo que te ahorra. Sin compromiso después."
         },
         {
           "name": "Tu primera automatización",
@@ -505,7 +505,7 @@
         },
         {
           "title": "Monitoreo proactivo",
-          "body": "Vigilamos discos, servicios y respaldos 24/7; muchas fallas se corrigen antes de que alguien las note."
+          "body": "El monitoreo automático vigila discos, servicios y respaldos las 24 horas, y las alertas se atienden según los tiempos de tu plan — muchas fallas se corrigen antes de que alguien las note."
         }
       ]
     },
@@ -535,7 +535,7 @@
           "a": "Cada plan tiene tiempos de respuesta acordados por escrito según la severidad. Un equipo caído no espera lo mismo que una impresora; lo urgente se atiende en minutos, no en días."
         },
         {
-          "q": "Ya tengo \"el sobrino que sabe de sistemas\". ¿Por qué cambiar?",
+          "q": "Ya tengo a alguien que me ayuda cuando algo falla. ¿Qué cambia con un servicio administrado?",
           "a": "Porque tu operación depende de que esa persona esté disponible, documente y sepa de seguridad. Nosotros dejamos todo documentado, monitoreado y con respaldo de un equipo — y respondemos con un acuerdo de servicio, no con favores."
         },
         {
@@ -618,7 +618,7 @@
         },
         {
           "title": "Protección de identidad y correo",
-          "body": "La puerta de entrada del 90 % de los ataques: phishing, cuentas comprometidas y accesos mal configurados, cerrada."
+          "body": "Una de las puertas de entrada más comunes de los ataques: phishing, cuentas comprometidas y accesos mal configurados, cerrada."
         },
         {
           "title": "Respuesta a incidentes",
@@ -653,7 +653,7 @@
       "items": [
         {
           "q": "¿De verdad alguien atacaría a una empresa de mi tamaño?",
-          "a": "Los ataques masivos no eligen víctimas: escanean internet y explotan lo que esté abierto. Las pymes son el objetivo más frecuente precisamente porque suelen estar menos protegidas."
+          "a": "Los ataques masivos no eligen víctimas: escanean internet y explotan lo que esté abierto. Las empresas más pequeñas reciben ataques todo el tiempo precisamente porque suelen tener menos defensas."
         },
         {
           "q": "¿Cuánto toma estar listo para SOC 2 o PCI DSS?",
@@ -805,7 +805,7 @@
     },
     "story": {
       "title": "La historia",
-      "body": "Después de más de diez años dirigiendo tecnología para operaciones de más de mil personas —infraestructura, seguridad, cumplimiento PCI DSS y SOC 2, e inteligencia artificial puesta a producir resultados reales— siempre aparecía el mismo patrón: el estándar de las grandes empresas existe, pero llega con precio de multinacional, y nadie lo ajusta a una empresa de treinta o de trescientas personas. Novieri existe para cerrar esa brecha: los mismos estándares que operábamos en el mundo corporativo, a una fracción de lo que cobra el mercado, con equipo propio en Barranquilla y sin capas de intermediarios que inflan la factura."
+      "body": "Después de más de diez años dirigiendo tecnología para operaciones de más de mil personas —infraestructura, seguridad, cumplimiento PCI DSS y SOC 2, e inteligencia artificial puesta a producir resultados reales— siempre aparecía el mismo patrón: el estándar de las grandes empresas existe, pero llega con precio de multinacional, y nadie lo ajusta a una empresa de treinta o de trescientas personas. Novieri existe para cerrar esa brecha: los mismos estándares que operábamos en el mundo corporativo, a un precio pensado para una empresa de treinta o de trescientas personas, con equipo propio en Barranquilla y sin capas de intermediarios que inflan la factura."
     },
     "founders": {
       "title": "Los fundadores",
@@ -836,7 +836,7 @@
     "hero": {
       "eyebrow": "contacto",
       "title": "Cuéntanos tu caso.",
-      "intro": "Respondemos el mismo día hábil. Si prefieres hablar directo, agenda una llamada o escríbenos por WhatsApp."
+      "intro": "Un fundador lee cada mensaje y responde el mismo día hábil — sin fila de tiquetes ni correos de mercadeo después. Si prefieres hablar directo, agenda una llamada o escríbenos por WhatsApp."
     },
     "form": {
       "name": "Nombre",
@@ -851,6 +851,7 @@
         "managedIt": "IT administrado",
         "security": "Ciberseguridad y cumplimiento",
         "software": "Desarrollo a medida",
+        "itConsulting": "Consultoría IT",
         "other": "Aún no lo sé / otro"
       },
       "message": "Mensaje",
@@ -1682,7 +1683,7 @@
     },
     "gate": {
       "title": "¿A dónde te enviamos el informe?",
-      "body": "Generamos tu diagnóstico con IA a partir de tus respuestas y te lo entregamos en PDF. Usamos tus datos solo para enviarte el informe y, si lo pides, conversar tu caso.",
+      "body": "Generamos tu diagnóstico con IA a partir de tus respuestas y te lo entregamos en PDF, normalmente en menos de un minuto. Es una autoevaluación guiada, no una auditoría formal de seguridad. Usamos tus datos solo para enviarte el informe y, si lo pides, conversar tu caso.",
       "name": "Nombre",
       "email": "Correo corporativo",
       "company": "Empresa",
