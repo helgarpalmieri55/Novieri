@@ -1,5 +1,8 @@
-{# The four service pillars, as cards. Each card is a group in the editor. #}
-<section class="section-pad">
+{# The four service pillars, as cards. Each card is a group in the editor.
+   `dark` turns the section into a black band: headings and eyebrow go light
+   by inheriting from dark-s, and the white cards read as the point of the
+   section instead of furniture on it. #}
+<section class="{% if module.dark %}dark-s {% endif %}section-pad">
   <div class="container-site">
     {# Both empty on the solutions index, and an empty heading block still
        drew its eyebrow marker — a stray "··" floating above the cards. #}

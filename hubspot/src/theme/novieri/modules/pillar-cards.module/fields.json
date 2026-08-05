@@ -1,5 +1,11 @@
 [
   {
+    "name": "dark",
+    "label": "Dark band (black background, light heading)",
+    "type": "boolean",
+    "default": false
+  },
+  {
     "name": "eyebrow",
     "label": "Eyebrow",
     "type": "text",

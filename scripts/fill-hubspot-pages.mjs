@@ -663,6 +663,7 @@ function homeWidgets() {
     },
     [HOME_SLOTS.segments]: {
       body: {
+        dark: true,
         eyebrow: h.segments.eyebrow,
         title: h.segments.title,
         link_label: h.segments.linkLabel,
