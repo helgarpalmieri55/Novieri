@@ -105,49 +105,45 @@ if (list) {
  * Blog remains, and every other mode here works the same either way.
  */
 if (create) {
-  const already = await blogs();
-  if (already.length) {
-    console.log(`A blog already exists — nothing to create:`);
-    for (const b of already) console.log(`  ${b.id}  ${b.name}  ${b.url}`);
-    process.exit(0);
-  }
   const TEMPLATES = "@projects/Novieri website/novieri_theme/templates";
-  try {
-    const made = await api("/cms/v3/blogs/settings", {
-      method: "POST",
-      body: JSON.stringify({
-        name: "Insights",
-        slug: "insights",
-        language: "en",
-        itemTemplatePath: `${TEMPLATES}/blog-post.hubl.html`,
-        listingTemplatePath: `${TEMPLATES}/blog-listing.hubl.html`,
-      }),
-    });
-    console.log(`created blog ${made.id} (${made.name}) — ${made.absoluteUrl || made.rootUrl || ""}`);
-    process.exit(0);
-  } catch (e) {
-    console.log(`v3 create refused: ${String(e.message).slice(0, 200)}`);
-  }
-  try {
-    const made = await api("/content/api/v2/blogs", {
-      method: "POST",
-      body: JSON.stringify({
-        name: "Insights",
-        slug: "insights",
-        language: "en",
-        item_template_path: `${TEMPLATES}/blog-post.hubl.html`,
-        listing_template_path: `${TEMPLATES}/blog-listing.hubl.html`,
-      }),
-    });
+  // The v3 settings endpoint refuses POST (405); the legacy v2 one is the
+  // path that actually created this portal's blog. Idempotent by language:
+  // whichever half of the pair exists is left alone.
+  const makeBlog = async (body) => {
+    const made = await api("/content/api/v2/blogs", { method: "POST", body: JSON.stringify(body) });
     console.log(`created blog ${made.id} (${made.name}) — ${made.absolute_url || ""}`);
-    process.exit(0);
-  } catch (e) {
-    console.log(`v2 create refused: ${String(e.message).slice(0, 200)}`);
-    console.log("\nThe API will not create a blog on this portal. Two minutes in the UI:");
-    console.log("Settings > Content > Blog > Create blog — name it Insights, URL /insights,");
-    console.log("and pick the 'Novieri — blog post' and 'Novieri — blog listing' templates.");
-    process.exit(1);
+    return { id: String(made.id), url: made.absolute_url || "" };
+  };
+  const all = await blogs();
+  let enBlog = all.find((b) => !b.language || b.language.startsWith("en"));
+  let esBlog = all.find((b) => b.language && b.language.startsWith("es"));
+
+  if (enBlog) {
+    console.log(`en blog exists: ${enBlog.id}  ${enBlog.url}`);
+  } else {
+    enBlog = await makeBlog({
+      name: "Insights",
+      slug: "insights",
+      language: "en",
+      item_template_path: `${TEMPLATES}/blog-post.hubl.html`,
+      listing_template_path: `${TEMPLATES}/blog-listing.hubl.html`,
+    });
   }
+  if (esBlog) {
+    console.log(`es blog exists: ${esBlog.id}  ${esBlog.url}`);
+  } else {
+    // Declared a translation of the English blog, which is what lets posts
+    // join language groups — the missing piece the first sync tripped on.
+    esBlog = await makeBlog({
+      name: "Insights (ES)",
+      slug: "es/insights",
+      language: "es",
+      translated_from_id: Number(enBlog.id),
+      item_template_path: `${TEMPLATES}/blog-post.hubl.html`,
+      listing_template_path: `${TEMPLATES}/blog-listing.hubl.html`,
+    });
+  }
+  process.exit(0);
 }
 
 if (!sync) {
@@ -161,15 +157,19 @@ console.log(`${topics.length} topic(s) in content/insights\n`);
 
 const all = await blogs();
 if (!all.length) {
-  console.error("No blogs in the portal. Create one in Settings > Website > Blog, then re-run.");
+  console.error("No blogs in the portal — run --create first.");
   process.exit(1);
 }
-const blog = blogIdArg ? all.find((b) => b.id === blogIdArg) : all[0];
-if (!blog) {
-  console.error(`No blog with id ${blogIdArg}. --list shows what exists.`);
+// One blog per language: English posts to the English blog, Spanish to the
+// Spanish one, which is what gives each language its own listing page.
+const enBlog = blogIdArg ? all.find((b) => b.id === blogIdArg) : all.find((b) => !b.language || b.language.startsWith("en"));
+const esBlog = all.find((b) => b.language && b.language.startsWith("es"));
+if (!enBlog) {
+  console.error("No English blog found. --list shows what exists.");
   process.exit(1);
 }
-console.log(`Writing into blog ${blog.id} (${blog.name}, ${blog.url})\n`);
+console.log(`en -> blog ${enBlog.id} (${enBlog.url})`);
+console.log(esBlog ? `es -> blog ${esBlog.id} (${esBlog.url})\n` : "es -> NO SPANISH BLOG — run --create first; Spanish posts will land in the English blog\n");
 
 if (dryRun) {
   for (const t of topics) {
@@ -180,10 +180,17 @@ if (dryRun) {
   process.exit(0);
 }
 
-const existing = new Map();
-for (const p of (await api(`/cms/v3/blogs/posts?${new URLSearchParams({ limit: "100", contentGroupId: blog.id })}`)).results || []) {
-  existing.set(p.slug, p);
+/** slug -> post, per blog. A post's slug includes the blog's own prefix. */
+async function postsOf(b) {
+  const map = new Map();
+  if (!b) return map;
+  for (const p of (await api(`/cms/v3/blogs/posts?${new URLSearchParams({ limit: "100", contentGroupId: b.id })}`)).results || []) {
+    map.set(p.slug, p);
+  }
+  return map;
 }
+const existingEn = await postsOf(enBlog);
+const existingEs = await postsOf(esBlog);
 
 // A published post must carry an author. The byline is the company — same
 // decision the post template made by not rendering an author card.
@@ -203,8 +210,10 @@ let authorId;
   }
 }
 
-/** Creates or updates one language's post; returns its id. */
+/** Creates or updates one language's post in its language's blog; returns its id. */
 async function upsert(v, language) {
+  const blog = language === "es" && esBlog ? esBlog : enBlog;
+  const existing = language === "es" && esBlog ? existingEs : existingEn;
   const body = {
     name: v.title,
     slug: v.slug,
@@ -244,6 +253,14 @@ async function upsert(v, language) {
 
 for (const t of topics) {
   const enId = await upsert(t.en, "en");
+  // The first sync ran before the Spanish blog existed, so its Spanish posts
+  // landed in the English blog; they move by cleanup, not by leaving both.
+  if (esBlog && existingEn.has(t.es.slug)) {
+    const stray = existingEn.get(t.es.slug);
+    await api(`/cms/v3/blogs/posts/${stray.id}`, { method: "DELETE" });
+    existingEn.delete(t.es.slug);
+    console.log(`clean   /${t.es.slug} — removed from the English blog`);
+  }
   const esId = await upsert(t.es, "es");
   // Same story as the pages: the pair has to be declared a language group or
   // the switcher and hreflang treat them as strangers.
