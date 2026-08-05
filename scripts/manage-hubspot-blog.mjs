@@ -22,6 +22,7 @@ import { readFileSync, readdirSync } from "node:fs";
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
 const list = args.includes("--list");
+const create = args.includes("--create");
 const sync = args.includes("--sync");
 const dryRun = args.includes("--dry-run");
 const blogIdArg = (args.find((a) => a.startsWith("--blog-id=")) || "").split("=")[1];
@@ -96,8 +97,61 @@ if (list) {
   process.exit(0);
 }
 
+/**
+ * Tries to create the Insights blog through the API. HubSpot's docs treat
+ * blog creation as a Settings-UI act, but the endpoints exist in the OpenAPI
+ * spec — so this attempts v3 and falls back to v2, logging exactly what the
+ * portal said. If both refuse, the two-minute path in Settings > Content >
+ * Blog remains, and every other mode here works the same either way.
+ */
+if (create) {
+  const already = await blogs();
+  if (already.length) {
+    console.log(`A blog already exists — nothing to create:`);
+    for (const b of already) console.log(`  ${b.id}  ${b.name}  ${b.url}`);
+    process.exit(0);
+  }
+  const TEMPLATES = "@projects/Novieri website/novieri_theme/templates";
+  try {
+    const made = await api("/cms/v3/blogs/settings", {
+      method: "POST",
+      body: JSON.stringify({
+        name: "Insights",
+        slug: "insights",
+        language: "en",
+        itemTemplatePath: `${TEMPLATES}/blog-post.hubl.html`,
+        listingTemplatePath: `${TEMPLATES}/blog-listing.hubl.html`,
+      }),
+    });
+    console.log(`created blog ${made.id} (${made.name}) — ${made.absoluteUrl || made.rootUrl || ""}`);
+    process.exit(0);
+  } catch (e) {
+    console.log(`v3 create refused: ${String(e.message).slice(0, 200)}`);
+  }
+  try {
+    const made = await api("/content/api/v2/blogs", {
+      method: "POST",
+      body: JSON.stringify({
+        name: "Insights",
+        slug: "insights",
+        language: "en",
+        item_template_path: `${TEMPLATES}/blog-post.hubl.html`,
+        listing_template_path: `${TEMPLATES}/blog-listing.hubl.html`,
+      }),
+    });
+    console.log(`created blog ${made.id} (${made.name}) — ${made.absolute_url || ""}`);
+    process.exit(0);
+  } catch (e) {
+    console.log(`v2 create refused: ${String(e.message).slice(0, 200)}`);
+    console.log("\nThe API will not create a blog on this portal. Two minutes in the UI:");
+    console.log("Settings > Content > Blog > Create blog — name it Insights, URL /insights,");
+    console.log("and pick the 'Novieri — blog post' and 'Novieri — blog listing' templates.");
+    process.exit(1);
+  }
+}
+
 if (!sync) {
-  console.log("Nothing to do — pass --list or --sync.");
+  console.log("Nothing to do — pass --list, --create or --sync.");
   process.exit(0);
 }
 
