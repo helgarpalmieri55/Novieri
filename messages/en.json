@@ -1062,45 +1062,45 @@
       },
       "visitorIntel": {
         "name": "Website Visitor Intelligence",
-        "tagline": "Know which companies visit your site — qualified accounts in your inbox every morning.",
+        "tagline": "See which companies visit your website — the ones worth calling, in your inbox each morning.",
         "tags": [
           "b2b",
           "sales",
           "ai"
         ],
         "hero": {
-          "title": "Your site gets buyers who never write. Now they land in your inbox.",
-          "promise": "A self-hosted, first-party account-intelligence system: it identifies the company behind each visit, interprets the behavior with AI, scores it against your ideal customer profile, and emails your sales team a daily report of the accounts worth a call."
+          "title": "Most of the companies looking at your website never write to you.",
+          "promise": "This tells you who they were. It works out which company was behind each visit, reads what they looked at, and every morning sends your sales team a short list of the ones worth a call — with enough context to make it."
         },
         "features": [
           {
-            "title": "Company identification",
-            "body": "Resolves the company behind the visit and enriches it with industry, size, and executive contacts."
+            "title": "Which company was here",
+            "body": "It identifies the business behind the visit and fills in what you would otherwise have to look up: industry, size, and who to ask for."
           },
           {
-            "title": "AI analysis",
-            "body": "AI interprets the journey — pages, time, return visits — and writes an actionable brief for each account."
+            "title": "What they were interested in",
+            "body": "It reads the visit the way a salesperson would — which pages, how long, whether they came back — and writes a short brief for each company."
           },
           {
-            "title": "Scoring against your ICP",
-            "body": "Every account is scored against your ideal customer profile: your team calls the best fit first."
+            "title": "Ranked against your best clients",
+            "body": "You describe the kind of client you want. Every company that visits is scored against it, so your team starts with the closest fit instead of the newest."
           },
           {
-            "title": "Daily report to sales",
-            "body": "An email every morning with the qualified accounts — HTML, Excel, and PDF ready to work or import into the CRM."
+            "title": "One email, every morning",
+            "body": "The qualified list arrives before the day starts, ready to work from or to load into your CRM."
           },
           {
-            "title": "Contact-form funnel",
-            "body": "Measures who opens your contact form, how far they get, and where they abandon — without ever reading what they type."
+            "title": "Where people give up on your form",
+            "body": "It measures who opens your contact form, how far they get, and where they abandon it — without ever reading what they type."
           },
           {
-            "title": "Compliance by design",
-            "body": "First-party collection with consent, real-time privacy-signal honoring, raw IP discarded after lookup, and no session recording."
+            "title": "Built to respect privacy",
+            "body": "Data is collected first-party and with consent, privacy signals are honoured in real time, the raw IP address is discarded after the lookup, and nothing records the visitor's screen."
           }
         ],
         "built": {
           "title": "Sales intelligence, not surveillance.",
-          "body": "A dedicated collector, an enrichment pipeline (IP → company → firmographics → contacts), Claude analysis, an account dashboard, and a report scheduler — a self-hosted stack that runs on a single server, multi-site from birth."
+          "body": "A dedicated collector, an enrichment pipeline (IP → company → firmographics → contacts), Claude for the analysis, an account dashboard and a report scheduler — a self-hosted stack that runs on a single server and serves multiple sites from the first line of code."
         },
         "stack": [
           "typescript",
@@ -1265,45 +1265,45 @@
       },
       "sentinel": {
         "name": "Sentinel — Vulnerability Management",
-        "tagline": "Discover, detect, prioritize with AI, and prove progress — on your own network.",
+        "tagline": "Find the holes in your systems before someone else does — and prove you closed them.",
         "tags": [
           "security",
           "vulnerabilities",
           "ai"
         ],
         "hero": {
-          "title": "Know your vulnerabilities before someone else finds them.",
-          "promise": "A self-hosted vulnerability-management dashboard: it discovers the assets on your network, scans them with established engines in safe mode, joins findings with live threat intelligence, and uses AI to prioritize and explain — in plain language — what to fix first and how."
+          "title": "Know where you are exposed, before someone else finds out.",
+          "promise": "It looks over everything connected to your network, finds the weaknesses, and tells you in plain language which ones actually matter and how to fix them. When a client or an auditor asks what you did about it, you have the report."
         },
         "features": [
           {
-            "title": "Asset discovery",
-            "body": "A continuous inventory of what actually lives on your network — only within authorized scope, guaranteed in code."
+            "title": "A list of everything you have",
+            "body": "Most companies do not have one. It keeps a running inventory of every computer, server and device on your network, and only ever looks at what you have authorised."
           },
           {
-            "title": "Detection with proven engines",
-            "body": "Scanning with recognized open-source engines, always in safe mode: detection yes, intrusion never."
+            "title": "It checks without breaking anything",
+            "body": "The checks run in a mode that only looks — never pushes. Your systems keep working while it runs, including during business hours."
           },
           {
-            "title": "Live threat intelligence",
-            "body": "Every finding is joined with the official vulnerability and known-exploited catalogs, so you know what's genuinely urgent."
+            "title": "It knows what is being attacked right now",
+            "body": "Every weakness it finds is matched against the public catalogues of what criminals are actively exploiting, so urgent means urgent rather than theoretical."
           },
           {
-            "title": "AI prioritization",
-            "body": "AI triages findings, flags false positives, and drafts plain-language remediation plans — every analysis is audited."
+            "title": "It tells you what to fix first",
+            "body": "Instead of a list of two thousand items, you get the handful that matter, why they matter, and what to do — written to be read, not decoded."
           },
           {
-            "title": "Full remediation lifecycle",
-            "body": "From open to verified, with confirmation rescans, time-to-remediate metrics, and risk acceptances that expire."
+            "title": "It follows the fix through",
+            "body": "From found, to fixed, to checked again. If you decide to accept a risk instead of fixing it, that decision expires and comes back to you."
           },
           {
-            "title": "Audit-ready reports",
-            "body": "Executive, technical, and PCI and SOC 2 evidence reports generated with AI, exportable to PDF."
+            "title": "Reports an auditor accepts",
+            "body": "One report for the board, one for whoever does the work, and the evidence file a SOC 2 or PCI DSS auditor asks for."
           }
         ],
         "built": {
-          "title": "Defensive security with iron guardrails.",
-          "body": "Allowlisted authorized scope enforced default-deny, safe mode forced in code, server-side RBAC, MFA, an immutable audit log, and a hardened containerized deployment — backed by 200+ automated tests."
+          "title": "Defensive security, with the guardrails written into the code.",
+          "body": "Authorised scope is allowlisted and enforced default-deny, safe mode is forced in code rather than configured, and every action lands in an audit log that cannot be edited. Role-based access control and multi-factor authentication server-side, hardened containerised deployment, and a large automated test suite behind all of it."
         },
         "stack": [
           "fastapi",

@@ -1062,45 +1062,45 @@
       },
       "visitorIntel": {
         "name": "Inteligencia de Visitantes Web",
-        "tagline": "Sabe qué empresas visitan tu sitio y recibe las cuentas calificadas cada mañana.",
+        "tagline": "Mira qué empresas visitan tu sitio — las que vale la pena llamar, en tu correo cada mañana.",
         "tags": [
           "b2b",
           "ventas",
           "ia"
         ],
         "hero": {
-          "title": "Tu sitio recibe compradores que nunca escriben. Ahora llegan a tu correo.",
-          "promise": "Un sistema de inteligencia de cuentas, propio y auto-alojado: identifica la empresa detrás de cada visita, interpreta su comportamiento con IA, la califica contra tu cliente ideal y envía a tu equipo comercial un reporte diario con las cuentas que valen una llamada."
+          "title": "La mayoría de las empresas que miran tu sitio nunca te escriben.",
+          "promise": "Esto te dice quiénes eran. Deduce qué empresa estuvo detrás de cada visita, lee qué miraron y cada mañana le manda a tu equipo comercial una lista corta de las que vale la pena llamar — con el contexto suficiente para hacerlo."
         },
         "features": [
           {
-            "title": "Identificación de empresas",
-            "body": "Resuelve la empresa detrás de la visita y la enriquece con industria, tamaño y contactos ejecutivos."
+            "title": "Qué empresa estuvo aquí",
+            "body": "Identifica el negocio detrás de la visita y completa lo que tendrías que buscar tú: sector, tamaño y a quién preguntar."
           },
           {
-            "title": "Análisis con IA",
-            "body": "La IA interpreta el recorrido — páginas, tiempos, regresos — y redacta un resumen accionable de cada cuenta."
+            "title": "Qué les interesó",
+            "body": "Lee la visita como la leería un vendedor —qué páginas, cuánto tiempo, si volvieron— y escribe un resumen corto de cada empresa."
           },
           {
-            "title": "Calificación contra tu ICP",
-            "body": "Cada cuenta se puntúa contra tu perfil de cliente ideal: tu equipo llama primero a quien más encaja."
+            "title": "Ordenadas según tus mejores clientes",
+            "body": "Tú describes el tipo de cliente que quieres. Cada empresa que entra se califica contra eso, así tu equipo empieza por la que más se parece y no por la más reciente."
           },
           {
-            "title": "Reporte diario a ventas",
-            "body": "Un correo cada mañana con las cuentas calificadas — HTML, Excel y PDF listos para trabajar o importar al CRM."
+            "title": "Un correo, cada mañana",
+            "body": "La lista calificada llega antes de que arranque el día, lista para trabajarla o para cargarla al CRM."
           },
           {
-            "title": "Embudo del formulario",
-            "body": "Mide quién abre tu formulario de contacto, hasta dónde llega y dónde abandona — sin leer jamás lo que escriben."
+            "title": "Dónde abandonan tu formulario",
+            "body": "Mide quién abre tu formulario de contacto, hasta dónde llega y dónde lo deja — sin leer nunca lo que escribe."
           },
           {
-            "title": "Cumplimiento por diseño",
-            "body": "Recolección first-party con consentimiento, respeto de señales de privacidad en tiempo real, IP descartada tras la consulta y sin grabación de sesiones."
+            "title": "Hecho para respetar la privacidad",
+            "body": "Los datos se recogen de primera mano y con consentimiento, las señales de privacidad se respetan en tiempo real, la IP cruda se descarta después de la consulta y nada graba la pantalla del visitante."
           }
         ],
         "built": {
           "title": "Inteligencia comercial, no vigilancia.",
-          "body": "Colector propio, cola de enriquecimiento (IP → empresa → firmografía → contactos), análisis con Claude, tablero de cuentas y programador de reportes — todo en un stack auto-alojado que corre en un solo servidor, multi-sitio de nacimiento."
+          "body": "Un recolector propio, una cadena de enriquecimiento (IP → empresa → datos de firma → contactos), Claude para el análisis, un tablero de cuentas y un programador de informes — todo autoalojado, corriendo en un solo servidor y sirviendo varios sitios desde la primera línea de código."
         },
         "stack": [
           "typescript",
@@ -1265,45 +1265,45 @@
       },
       "sentinel": {
         "name": "Sentinel — Gestión de Vulnerabilidades",
-        "tagline": "Descubre, detecta, prioriza con IA y demuestra el avance — en tu propia red.",
+        "tagline": "Encuentra los huecos de tus sistemas antes que otro — y demuestra que los cerraste.",
         "tags": [
           "seguridad",
           "vulnerabilidades",
           "ia"
         ],
         "hero": {
-          "title": "Conoce tus vulnerabilidades antes de que otro las encuentre.",
-          "promise": "Un tablero de gestión de vulnerabilidades auto-alojado: descubre los activos de tu red, los escanea con motores reconocidos en modo seguro, cruza los hallazgos con inteligencia de amenazas viva y usa IA para priorizarlos y explicar — en lenguaje claro — qué arreglar primero y cómo."
+          "title": "Sabe por dónde estás expuesto antes de que lo descubra alguien más.",
+          "promise": "Revisa todo lo que está conectado a tu red, encuentra las debilidades y te dice en español claro cuáles importan de verdad y cómo se arreglan. Cuando un cliente o un auditor pregunte qué hiciste al respecto, tienes el informe."
         },
         "features": [
           {
-            "title": "Descubrimiento de activos",
-            "body": "Inventario continuo de lo que realmente vive en tu red — solo dentro del alcance autorizado, garantizado por código."
+            "title": "Una lista de todo lo que tienes",
+            "body": "Casi ninguna empresa la tiene. Mantiene un inventario al día de cada computador, servidor y equipo en tu red, y solo mira lo que tú autorizaste."
           },
           {
-            "title": "Detección con motores probados",
-            "body": "Escaneo con motores open-source reconocidos, siempre en modo seguro: detección sí, intrusión jamás."
+            "title": "Revisa sin romper nada",
+            "body": "Las revisiones corren en un modo que solo observa, nunca fuerza. Tus sistemas siguen trabajando mientras corre, incluso en horario de oficina."
           },
           {
-            "title": "Inteligencia de amenazas viva",
-            "body": "Cada hallazgo se cruza con los catálogos oficiales de vulnerabilidades y explotación activa para saber qué es urgente de verdad."
+            "title": "Sabe qué están atacando hoy",
+            "body": "Cada debilidad se cruza con los catálogos públicos de lo que los delincuentes están explotando ahora, para que urgente signifique urgente y no teórico."
           },
           {
-            "title": "Priorización con IA",
-            "body": "La IA hace triage de los hallazgos, descarta falsos positivos y redacta planes de remediación en lenguaje claro — cada análisis queda auditado."
+            "title": "Te dice qué arreglar primero",
+            "body": "En vez de una lista de dos mil ítems, recibes los pocos que importan, por qué importan y qué hacer — escrito para leerse, no para descifrarse."
           },
           {
-            "title": "Ciclo de remediación completo",
-            "body": "De abierto a verificado, con re-escaneo de confirmación, métricas de tiempo de corrección y aceptaciones de riesgo con vencimiento."
+            "title": "Le hace seguimiento al arreglo",
+            "body": "De encontrado, a corregido, a verificado. Y si decides aceptar un riesgo en vez de arreglarlo, esa decisión vence y vuelve a tus manos."
           },
           {
-            "title": "Reportes listos para auditoría",
-            "body": "Informes ejecutivos, técnicos y de evidencia PCI y SOC 2 generados con IA, exportables a PDF."
+            "title": "Informes que un auditor acepta",
+            "body": "Uno para la junta, uno para quien hace el trabajo, y el archivo de evidencias que pide un auditor de SOC 2 o PCI DSS."
           }
         ],
         "built": {
-          "title": "Seguridad defensiva con barandas de hierro.",
-          "body": "Alcance autorizado por lista blanca aplicado por defecto-denegar, modo seguro forzado en código, RBAC del lado del servidor, MFA, bitácora inmutable y despliegue endurecido en contenedores — más de 200 pruebas automatizadas lo respaldan."
+          "title": "Seguridad defensiva, con los límites escritos en el código.",
+          "body": "El alcance autorizado va en lista blanca y se aplica negando por defecto, el modo seguro está forzado en el código y no configurado, y cada acción queda en una bitácora que no se puede editar. Control de acceso por roles y doble factor del lado del servidor, despliegue endurecido en contenedores, y una batería amplia de pruebas automatizadas detrás de todo."
         },
         "stack": [
           "fastapi",

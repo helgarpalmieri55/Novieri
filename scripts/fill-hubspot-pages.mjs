@@ -44,6 +44,13 @@ const ES_SLUGS = {
   about: "nosotros",
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
+  solutions: "soluciones",
+  "solutions/ai-virtual-assistant": "soluciones/asistente-virtual-ia",
+  "solutions/whatsapp-ai-assistant": "soluciones/asistente-ia-whatsapp",
+  "solutions/visitor-intelligence": "soluciones/inteligencia-de-visitantes",
+  "solutions/vulnerability-management": "soluciones/gestion-de-vulnerabilidades",
+  "solutions/ventia": "soluciones/ventia",
+  "solutions/ai-websites": "soluciones/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
@@ -188,6 +195,36 @@ const SERVICE_SLOTS = {
   faq: "main-module-6",       // faq-list
   cta: "main-module-7",       // cta-band
 };
+/**
+ * The published products, and where each one lives. Three of the nine written
+ * in messages/*.json are deliberately absent: the IT suite, the monitoring
+ * service and Matter Flow stay unpublished until they are wanted.
+ */
+const SOLUTIONS = [
+  ["aiAssistant", "solutions/ai-virtual-assistant"],
+  ["whatsapp", "solutions/whatsapp-ai-assistant"],
+  ["visitorIntel", "solutions/visitor-intelligence"],
+  ["sentinel", "solutions/vulnerability-management"],
+  ["ventia", "solutions/ventia"],
+  ["webDev", "solutions/ai-websites"],
+];
+
+/** Mirrors solution.hubl.html. */
+const SOLUTION_SLOTS = {
+  hero: "main-module-2",     // page-hero
+  what: "main-module-3",     // dot-list
+  built: "main-module-4",    // split-note
+  powered: "main-module-5",  // founders-band
+  cta: "main-module-6",      // cta-band
+};
+
+/** Mirrors solutions.hubl.html. */
+const SOLUTIONS_INDEX_SLOTS = {
+  hero: "main-module-2",   // page-hero
+  cards: "main-module-3",  // pillar-cards
+  cta: "main-module-4",    // cta-band
+};
+
 const ABOUT_SLOTS = {
   hero: "main-module-2",      // page-hero
   story: "main-module-3",     // founders-band
@@ -288,6 +325,99 @@ function servicesIndexWidgets() {
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+      },
+    },
+  };
+}
+
+function solutionWidgets(key) {
+  const p = t.solutions.items[key];
+  const c = t.solutions.common;
+  return {
+    [SOLUTION_SLOTS.hero]: {
+      body: {
+        eyebrow: c.eyebrow,
+        title: p.hero.title,
+        intro: p.hero.promise,
+        button_text: c.demoCta,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        seam: true,
+      },
+    },
+    [SOLUTION_SLOTS.what]: {
+      body: {
+        title: c.featuresTitle,
+        intro: "",
+        tone: "light",
+        items: p.features.map((f) => ({ item_title: f.title, item_body: f.body })),
+      },
+    },
+    // The engineering, kept below the part written for the buyer. The stack
+    // rides in the footnote, which is where the module puts its small print.
+    [SOLUTION_SLOTS.built]: {
+      body: {
+        title: p.built.title,
+        intro: p.built.body,
+        footnote: (p.stack || []).join(" ·· "),
+        picture: { src: "", alt: "" },
+      },
+    },
+    [SOLUTION_SLOTS.powered]: {
+      body: {
+        eyebrow: c.poweredBadge,
+        word_a: "nov",
+        word_b: "ieri",
+        intro: c.poweredBody,
+        cta_text: "",
+      },
+    },
+    [SOLUTION_SLOTS.cta]: {
+      body: {
+        eyebrow: NEXT_STEP,
+        title: c.ctaTitle,
+        subtitle: c.ctaSubtitle,
+        button_text: c.demoCta,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+      },
+    },
+  };
+}
+
+function solutionsIndexWidgets() {
+  const idx = t.solutions.index;
+  const c = t.solutions.common;
+  return {
+    [SOLUTIONS_INDEX_SLOTS.hero]: {
+      body: {
+        eyebrow: idx.eyebrow,
+        title: idx.title,
+        intro: idx.intro,
+        button_text: t.common.bookCall,
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        seam: true,
+      },
+    },
+    [SOLUTIONS_INDEX_SLOTS.cards]: {
+      body: {
+        eyebrow: "",
+        title: "",
+        link_label: c.seeSolution,
+        cards: SOLUTIONS.map(([key, slug], n) => ({
+          card_name: t.solutions.items[key].name,
+          card_tagline: t.solutions.items[key].tagline,
+          card_tags: (t.solutions.items[key].tags || []).join(" · "),
+          card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
+          card_colour: ACCENTS[n % ACCENTS.length],
+        })),
+      },
+    },
+    [SOLUTIONS_INDEX_SLOTS.cta]: {
+      body: {
+        eyebrow: NEXT_STEP,
+        title: c.ctaTitle,
+        subtitle: c.ctaSubtitle,
+        button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
       },
     },
@@ -587,6 +717,8 @@ const PAGES = {
   [slugFor("self-diagnosis")]: diagnosticWidgets(),
   [slugFor("services")]: servicesIndexWidgets(),
   ...Object.fromEntries(SERVICES.map(([ns, slug]) => [slugFor(slug), serviceWidgets(ns)])),
+  [slugFor("solutions")]: solutionsIndexWidgets(),
+  ...Object.fromEntries(SOLUTIONS.map(([key, slug]) => [slugFor(slug), solutionWidgets(key)])),
   [slugFor("about")]: aboutWidgets(),
   [slugFor(LEGAL_SLUGS.privacy)]: legalWidgets("privacy"),
   [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),

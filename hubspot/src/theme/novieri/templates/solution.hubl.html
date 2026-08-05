@@ -1,0 +1,43 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Novieri — solution
+-->
+{#
+  A product page. Deliberately a different shape from the service template:
+  a service is scoped and packaged, a product is a thing that already exists,
+  so this leads with what it does for you, then how it is built, then who
+  stands behind it.
+
+  The order matters and is mirrored by SOLUTION_SLOTS in
+  scripts/fill-hubspot-pages.mjs. Reorder here and reorder there, or every
+  page fills its sections with the next one's copy.
+
+  Plain language above, engineering below: the hero and the feature list are
+  written for whoever signs the invoice, and the "how it's built" band is
+  where mTLS and audit logs are allowed to live.
+#}
+{% extends "./partials/base.hubl.html" %}
+{% block body %}
+  {% dnd_area "main" label="Page content" %}
+    {% dnd_section %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/page-hero" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/dot-list" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/split-note" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/founders-band" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/cta-band" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+{% endblock body %}
