@@ -73,7 +73,7 @@ const PAGES = [
   { key: "services", template: "services-index", slug: "services",
     name: "Services",
     htmlTitle: "Services — Novieri",
-    metaDescription: "AI & automation, managed IT, cybersecurity & compliance, and custom software. Four pillars, one enterprise standard." },
+    metaDescription: "AI & automation, managed IT, cybersecurity & compliance, custom software, and IT consulting. Five pillars, one enterprise standard." },
   { key: "ai", template: "service", slug: "services/ai-automation",
     name: "AI & automation",
     htmlTitle: "AI & automation — Novieri",
@@ -235,9 +235,13 @@ if (dump !== undefined) {
  * Home is included here — unlike creation, a variant cannot take the root slug
  * by accident.
  */
-if (variants) {
+/**
+ * The Spanish title and description for each English slug. Read lazily —
+ * every mode but the two that need it can run without touching the file.
+ */
+function esMeta() {
   const es = JSON.parse(readFileSync("messages/es.json", "utf8"));
-  const META = {
+  return {
     "": es.meta.home,
     services: es.meta.services,
     "services/ai-automation": es.meta.ai,
@@ -256,6 +260,10 @@ if (variants) {
     "solutions/ventia": es.meta.sol_ventia,
     "solutions/ai-websites": es.meta.sol_webDev,
   };
+}
+
+if (variants) {
+  const META = esMeta();
   const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
   const pages = listed.results || [];
   const bySlug = new Map(pages.map((p) => [p.slug, p]));
@@ -316,23 +324,35 @@ if (variants) {
  * sections behind the same main-module-N.
  */
 if (retemplate) {
+  const ES = esMeta();
   const wanted = new Map();
   for (const p of PAGES.filter((x) => !only || x.key === only)) {
     const path = `${THEME}/${p.template}.hubl.html`;
-    wanted.set(p.slug, path);
-    if (ES_SLUGS[p.slug]) wanted.set(ES_SLUGS[p.slug], path);
+    wanted.set(p.slug, { path, title: p.htmlTitle, description: p.metaDescription });
+    // The title and description follow the same way. They are only written at
+    // creation, so a page whose copy has since changed — the services index
+    // said "four pillars" long after there were five — keeps advertising the
+    // old one to search engines with nothing in the fill script to correct it.
+    const es = ES[p.slug];
+    if (ES_SLUGS[p.slug]) {
+      wanted.set(ES_SLUGS[p.slug], { path, title: es?.title, description: es?.description });
+    }
   }
   const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
   for (const page of listed.results || []) {
     const want = wanted.get(page.slug);
-    if (!want || page.templatePath === want) continue;
-    await api(`/cms/v3/pages/site-pages/${page.id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ templatePath: want }),
-    });
-    console.log(`move    ${page.slug} — ${page.templatePath} -> ${want}`);
+    if (!want) continue;
+    const patch = {};
+    if (page.templatePath !== want.path) patch.templatePath = want.path;
+    if (want.title && page.htmlTitle !== want.title) patch.htmlTitle = want.title;
+    if (want.description && page.metaDescription !== want.description) {
+      patch.metaDescription = want.description;
+    }
+    if (!Object.keys(patch).length) continue;
+    await api(`/cms/v3/pages/site-pages/${page.id}`, { method: "PATCH", body: JSON.stringify(patch) });
+    console.log(`sync    ${page.slug} — ${Object.keys(patch).join(", ")}`);
   }
-  console.log("\nRe-fill and re-publish each moved page; its old content is under the new template's slots.");
+  console.log("\nRe-fill and re-publish each page touched; a draft change does not reach the live page.");
   process.exit(0);
 }
 
