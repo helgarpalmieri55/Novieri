@@ -31,6 +31,7 @@ const verify = (args.find((a) => a.startsWith("--verify=")) || "").split("=")[1]
 const dump = args.find((a) => a.startsWith("--dump="))?.slice("--dump=".length);
 const publish = (args.find((a) => a.startsWith("--publish=")) || "").split("=")[1];
 const variants = args.includes("--language-variants");
+const retemplate = args.includes("--retemplate");
 
 /**
  * The Spanish slugs, from src/i18n/pathnames.json. The home page is "es"
@@ -66,7 +67,10 @@ const ES_SLUGS = {
  * makes it the homepage — not something to risk to a script.
  */
 const PAGES = [
-  { key: "services", template: "service", slug: "services",
+  // Not the service template: the index has a hero, its cards and a call to
+  // action, and borrowing the service template meant a split-note, a package
+  // table and an FAQ it had no copy for rendered their English defaults.
+  { key: "services", template: "services-index", slug: "services",
     name: "Services",
     htmlTitle: "Services — Novieri",
     metaDescription: "AI & automation, managed IT, cybersecurity & compliance, and custom software. Four pillars, one enterprise standard." },
@@ -240,8 +244,17 @@ if (variants) {
     "services/managed-it": es.meta.managedIt,
     "services/cybersecurity-compliance": es.meta.security,
     "services/custom-software": es.meta.software,
+    "services/it-consulting": es.meta.itConsulting,
     about: es.meta.about,
     contact: es.meta.contact,
+    "self-diagnosis": es.meta.diagnostic,
+    solutions: es.meta.solutions,
+    "solutions/ai-virtual-assistant": es.meta.sol_aiAssistant,
+    "solutions/whatsapp-ai-assistant": es.meta.sol_whatsapp,
+    "solutions/visitor-intelligence": es.meta.sol_visitorIntel,
+    "solutions/vulnerability-management": es.meta.sol_sentinel,
+    "solutions/ventia": es.meta.sol_ventia,
+    "solutions/ai-websites": es.meta.sol_webDev,
   };
   const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
   const pages = listed.results || [];
@@ -287,6 +300,40 @@ if (variants) {
     }
   }
   process.exit(process.exitCode || 0);
+}
+
+/**
+ * Moves every page onto the template PAGES declares for it, English and
+ * Spanish alike.
+ *
+ * Creation skips a slug that already exists, which is right — it must not
+ * clobber edits — but it also means a page created against one template stays
+ * there forever. The services index needed to move off the service template,
+ * and the only alternative was deleting a published page and rebuilding it.
+ *
+ * Content is not touched here; run fill-hubspot-pages.mjs afterwards, because
+ * the widget names are positional and a different template means different
+ * sections behind the same main-module-N.
+ */
+if (retemplate) {
+  const wanted = new Map();
+  for (const p of PAGES.filter((x) => !only || x.key === only)) {
+    const path = `${THEME}/${p.template}.hubl.html`;
+    wanted.set(p.slug, path);
+    if (ES_SLUGS[p.slug]) wanted.set(ES_SLUGS[p.slug], path);
+  }
+  const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
+  for (const page of listed.results || []) {
+    const want = wanted.get(page.slug);
+    if (!want || page.templatePath === want) continue;
+    await api(`/cms/v3/pages/site-pages/${page.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ templatePath: want }),
+    });
+    console.log(`move    ${page.slug} — ${page.templatePath} -> ${want}`);
+  }
+  console.log("\nRe-fill and re-publish each moved page; its old content is under the new template's slots.");
+  process.exit(0);
 }
 
 /**

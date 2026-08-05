@@ -219,7 +219,8 @@ const SOLUTION_SLOTS = {
   cta: "main-module-6",      // cta-band
 };
 
-/** Mirrors solutions.hubl.html. */
+/** Mirrors solutions.hubl.html — and services-index.hubl.html, which is the
+    same three modules in the same order. */
 const SOLUTIONS_INDEX_SLOTS = {
   hero: "main-module-2",   // page-hero
   cards: "main-module-3",  // pillar-cards
@@ -296,11 +297,18 @@ function serviceWidgets(ns) {
   };
 }
 
-/** The services index reuses the service template, minus what it has no copy for. */
+/**
+ * The services index: hero, a card per service, call to action.
+ *
+ * It used to borrow the service template and fill three of its seven slots,
+ * which left a split-note, a package table and an FAQ showing their English
+ * field defaults on both language versions. It has its own template now, with
+ * only the sections it has copy for, so there is nothing left to fall back to.
+ */
 function servicesIndexWidgets() {
   const idx = t.servicesIndex;
   return {
-    [SERVICE_SLOTS.hero]: {
+    [SOLUTIONS_INDEX_SLOTS.hero]: {
       body: {
         eyebrow: idx.eyebrow,
         title: idx.title,
@@ -310,18 +318,23 @@ function servicesIndexWidgets() {
         seam: true,
       },
     },
-    [SERVICE_SLOTS.what]: {
+    [SOLUTIONS_INDEX_SLOTS.cards]: {
       body: {
-        title: "The four pillars",
-        intro: "",
-        tone: "light",
-        items: SERVICES.map(([key]) => ({
-          item_title: t.pillars[key].name,
-          item_body: t.pillars[key].tagline,
+        // Empty: the hero directly above already says what this page is, and a
+        // second heading between it and the cards only repeats it.
+        eyebrow: "",
+        title: "",
+        link_label: t.common.learnMore,
+        cards: SERVICES.map(([key, slug], n) => ({
+          card_name: t.pillars[key].name,
+          card_tagline: t.pillars[key].tagline,
+          card_tags: (t.pillars[key].tags || []).join(", "),
+          card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
+          card_colour: ACCENTS[n % ACCENTS.length],
         })),
       },
     },
-    [SERVICE_SLOTS.cta]: {
+    [SOLUTIONS_INDEX_SLOTS.cta]: {
       body: {
         eyebrow: NEXT_STEP,
         title: t.serviceCommon.ctaTitle,

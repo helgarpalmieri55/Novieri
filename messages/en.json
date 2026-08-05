@@ -6,7 +6,7 @@
     },
     "services": {
       "title": "Services — Novieri",
-      "description": "AI & automation, managed IT, cybersecurity & compliance, and custom software. Four pillars, one enterprise standard."
+      "description": "AI & automation, managed IT, cybersecurity & compliance, custom software, and IT consulting. Five pillars, one enterprise standard."
     },
     "ai": {
       "title": "AI & automation — Novieri",
@@ -255,7 +255,7 @@
     },
     "services": {
       "eyebrow": "services",
-      "title": "Four pillars, one standard."
+      "title": "Five pillars, one standard."
     },
     "why": {
       "eyebrow": "why novieri",
@@ -325,7 +325,7 @@
     "diagnose": {
       "eyebrow": "start here",
       "title": "Not sure where to start?",
-      "body": "Answer ten questions about your operation and we'll send back a diagnostic written for your case: the level you're at, the risks we see, and what we'd do first. It takes three minutes and commits you to nothing.",
+      "body": "Answer ten questions about your operation and you read the diagnostic at the end: the level you're at, the risks we see, and what we'd do first — written for your case, not a template. It commits you to nothing.",
       "button": "Self-diagnosis",
       "note": "3 minutes · PDF report · free"
     }
@@ -333,7 +333,7 @@
   "servicesIndex": {
     "eyebrow": "services",
     "title": "What we do",
-    "intro": "Four pillars that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, and everything needs software that fits your operation."
+    "intro": "Five services that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, software has to fit the operation — and someone has to decide which of those to do first."
   },
   "serviceCommon": {
     "whatTitle": "What we do",

@@ -32,6 +32,7 @@ on:
           - menu-dump
           - widgets
           - create-all
+          - retemplate
       slug:
         description: "Slug to verify (verify mode only)"
         default: "about"
@@ -64,6 +65,10 @@ jobs:
             # 'all' publishes every page in the list; a slug publishes one.
             publish)       node scripts/create-hubspot-pages.mjs --publish='${{ inputs.slug }}' ;;
             create-all)    node scripts/create-hubspot-pages.mjs ;;
+            # Moves existing pages onto the template the script declares for
+            # them. Creation skips a slug that exists, so this is the only way
+            # a live page changes template without being deleted and rebuilt.
+            retemplate)    node scripts/create-hubspot-pages.mjs --retemplate ;;
             # Per-page copy from messages/*.json into each page's modules.
             fill-content)  node scripts/fill-hubspot-pages.mjs ;;
             fill-one)      node scripts/fill-hubspot-pages.mjs --only='${{ inputs.slug }}' ;;

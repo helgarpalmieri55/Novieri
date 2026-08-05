@@ -9,7 +9,7 @@
     "name": "title",
     "label": "Title",
     "type": "text",
-    "default": "Four pillars, one team."
+    "default": "Five pillars, one team."
   },
   {
     "name": "intro",

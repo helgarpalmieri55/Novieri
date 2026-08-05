@@ -6,7 +6,7 @@
     },
     "services": {
       "title": "Servicios — Novieri",
-      "description": "IA y automatización, IT administrado, ciberseguridad y cumplimiento, y desarrollo a medida. Cuatro pilares, un mismo estándar."
+      "description": "IA y automatización, IT administrado, ciberseguridad y cumplimiento, desarrollo a medida y consultoría IT. Cinco pilares, un mismo estándar."
     },
     "ai": {
       "title": "IA y automatización — Novieri",
@@ -255,7 +255,7 @@
     },
     "services": {
       "eyebrow": "servicios",
-      "title": "Cuatro pilares, un mismo estándar."
+      "title": "Cinco pilares, un mismo estándar."
     },
     "why": {
       "eyebrow": "por qué novieri",
@@ -325,7 +325,7 @@
     "diagnose": {
       "eyebrow": "empieza por aquí",
       "title": "¿No sabes por dónde empezar?",
-      "body": "Responde diez preguntas sobre tu operación y te devolvemos un diagnóstico escrito para tu caso: en qué nivel estás, qué riesgos vemos y qué haríamos primero. Toma tres minutos y no compromete a nada.",
+      "body": "Responde diez preguntas sobre tu operación y al terminar lees el diagnóstico: en qué nivel estás, qué riesgos vemos y qué haríamos primero — escrito para tu caso, no una plantilla. No compromete a nada.",
       "button": "Autodiagnóstico",
       "note": "3 minutos · informe en PDF · sin costo"
     }
@@ -333,7 +333,7 @@
   "servicesIndex": {
     "eyebrow": "servicios",
     "title": "Lo que hacemos",
-    "intro": "Cuatro pilares que se refuerzan entre sí: la automatización necesita infraestructura sana, la infraestructura necesita seguridad, y todo necesita software que se ajuste a tu operación."
+    "intro": "Cinco servicios que se refuerzan entre sí: la automatización necesita infraestructura sana, la infraestructura necesita seguridad, el software tiene que ajustarse a la operación, y alguien tiene que decidir cuál de esas cosas va primero."
   },
   "serviceCommon": {
     "whatTitle": "Qué hacemos",
