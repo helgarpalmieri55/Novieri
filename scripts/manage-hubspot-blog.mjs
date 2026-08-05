@@ -129,6 +129,37 @@ if (create) {
       listing_template_path: `${TEMPLATES}/blog-listing.hubl.html`,
     });
   }
+  // The v2 create quietly ignored the template paths for the Spanish blog
+  // and left it on a default that does not exist ("Missing Template" at its
+  // root). Setting the templates is therefore its own idempotent step, run
+  // for both blogs every time.
+  const setTemplates = async (b) => {
+    if (!b) return;
+    const v3Body = {
+      itemTemplatePath: `${TEMPLATES}/blog-post.hubl.html`,
+      listingTemplatePath: `${TEMPLATES}/blog-listing.hubl.html`,
+    };
+    try {
+      await api(`/cms/v3/blogs/settings/${b.id}`, { method: "PATCH", body: JSON.stringify(v3Body) });
+      console.log(`templates set on blog ${b.id} (v3)`);
+      return;
+    } catch (e) {
+      console.log(`v3 template patch refused on ${b.id}: ${String(e.message).slice(0, 120)}`);
+    }
+    try {
+      await api(`/content/api/v2/blogs/${b.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          item_template_path: `${TEMPLATES}/blog-post.hubl.html`,
+          listing_template_path: `${TEMPLATES}/blog-listing.hubl.html`,
+        }),
+      });
+      console.log(`templates set on blog ${b.id} (v2)`);
+    } catch (e) {
+      console.log(`v2 template put refused on ${b.id}: ${String(e.message).slice(0, 160)}`);
+    }
+  };
+
   if (esBlog) {
     console.log(`es blog exists: ${esBlog.id}  ${esBlog.url}`);
   } else {
@@ -143,6 +174,8 @@ if (create) {
       listing_template_path: `${TEMPLATES}/blog-listing.hubl.html`,
     });
   }
+  await setTemplates(enBlog);
+  await setTemplates(esBlog);
   process.exit(0);
 }
 
