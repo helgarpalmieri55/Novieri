@@ -608,17 +608,21 @@ function aboutWidgets() {
  * Home, in template order. The Spanish home is a clone of the English one, so
  * without this it would render English from the field defaults.
  */
+// The audit's §11 order: identity, trust bar, who-we-help, outcomes, proof,
+// service model, demo, process, founders, diagnostic, close.
 const HOME_SLOTS = {
   hero: "main-module-2",
   stats: "main-module-3",
-  pillars: "main-module-4",
-  diagnose: "main-module-5",
-  chat: "main-module-6",
-  why: "main-module-7",
-  quotes: "main-module-8",
-  how: "main-module-9",
-  founders: "main-module-10",
-  cta: "main-module-11",
+  segments: "main-module-4",
+  why: "main-module-5",
+  quotes: "main-module-6",
+  caseStudy: "main-module-7",
+  pillars: "main-module-8",
+  chat: "main-module-9",
+  how: "main-module-10",
+  founders: "main-module-11",
+  diagnose: "main-module-12",
+  cta: "main-module-13",
 };
 const ACCENTS = ["text-plum", "text-teal", "text-gold-deep", "text-ink-muted", "text-plum-bright"];
 
@@ -646,11 +650,34 @@ function homeWidgets() {
     },
     [HOME_SLOTS.stats]: {
       body: {
+        footnote: h.proof.disclosure || "",
         stats: h.proof.items.map((s, i) => ({
           value: s.value,
           stat_label: s.label,
           colour: ACCENTS[i % 3],
         })),
+      },
+    },
+    [HOME_SLOTS.segments]: {
+      body: {
+        eyebrow: h.segments.eyebrow,
+        title: h.segments.title,
+        link_label: h.segments.linkLabel,
+        cards: h.segments.cards.map((c, i) => ({
+          card_name: c.title,
+          card_tagline: c.body,
+          card_colour: ACCENTS[i % ACCENTS.length],
+          card_link: { url: { type: "CONTENT", href: c.href } },
+        })),
+      },
+    },
+    [HOME_SLOTS.caseStudy]: {
+      body: {
+        eyebrow: h.caseStudy.eyebrow,
+        title: h.caseStudy.title,
+        subtitle: h.caseStudy.subtitle,
+        button_text: h.caseStudy.button,
+        button_link: { url: { type: "CONTENT", href: h.caseStudy.href } },
       },
     },
     [HOME_SLOTS.pillars]: {

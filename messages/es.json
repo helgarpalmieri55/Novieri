@@ -173,9 +173,9 @@
   },
   "home": {
     "hero": {
-      "titleA": "Tecnología de nivel corporativo,",
-      "titleB": "con IA en el centro.",
-      "subtitle": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación — para que tu empresa crezca sin un departamento de IT propio."
+      "titleA": "Tu equipo de tecnología",
+      "titleB": "y automatización, sin montarlo.",
+      "subtitle": "Operamos, protegemos y mejoramos la tecnología de tu empresa — y automatizamos el trabajo repetitivo que frena a tu equipo. Atención directa de los fundadores, para Colombia y Estados Unidos."
     },
     "proof": {
       "items": [
@@ -191,7 +191,8 @@
           "value": "2",
           "label": "fundadores, cero intermediarios"
         }
-      ]
+      ],
+      "disclosure": "La experiencia incluye trabajo liderado por los fundadores de Novieri en sus roles actuales y anteriores de dirección tecnológica."
     },
     "liveChat": {
       "eyebrow": "ia en producción",
@@ -202,7 +203,7 @@
         "name": "Marisquería La Bahía",
         "status": "en línea · responde al instante"
       },
-      "badge": "DEMO",
+      "badge": "demo ilustrativa",
       "inputHint": "Escribe un mensaje",
       "entries": [
         {
@@ -258,28 +259,28 @@
       "ctaService": "Ver IA y automatización"
     },
     "services": {
-      "eyebrow": "servicios",
-      "title": "Cinco pilares, un mismo estándar."
+      "eyebrow": "un solo modelo",
+      "title": "Un equipo que opera, protege, automatiza y construye."
     },
     "why": {
       "eyebrow": "por qué novieri",
-      "title": "Tecnología de empresa grande, sin el costo de un departamento interno.",
+      "title": "Qué cambia cuando nos encargamos.",
       "points": [
         {
-          "title": "Atención directa con los fundadores",
-          "body": "Hablas con quien diseña y opera tu tecnología, no con un vendedor. Sin intermediarios y sin casos que se quedan esperando respuesta."
+          "title": "Menos caídas",
+          "body": "Monitoreo que detecta los problemas a tiempo, copias de seguridad que sí restauran y alguien que responde cuando algo falla."
         },
         {
-          "title": "Prácticas de empresa grande",
-          "body": "Monitoreo, copias de seguridad que sí se prueban, seguridad administrada y procesos de verdad: los mismos estándares que exige una operación de más de mil personas."
+          "title": "Horas recuperadas, cada semana",
+          "body": "Agentes y automatizaciones asumen el trabajo repetitivo — responder, registrar, agendar, transcribir — y tu equipo hace el trabajo que solo tu equipo puede hacer."
         },
         {
-          "title": "IA aplicada a tu operación",
-          "body": "No vendemos moda: identificamos qué procesos de tu empresa sí ganan algo con la automatización, y lo demostramos con una prueba antes de que te comprometas."
+          "title": "Seguridad que puedes demostrar",
+          "body": "Endurecimiento, protección administrada y la evidencia que pide un auditor o un cliente grande — con experiencia PCI DSS y SOC 2."
         },
         {
-          "title": "Costo predecible",
-          "body": "Planes mensuales claros, por persona o por equipo, sin el sobrecosto de una multinacional. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
+          "title": "Un solo equipo en vez de cinco proveedores",
+          "body": "IT, seguridad, automatización y software bajo un mismo techo y un mismo estándar, con los fundadores en las llamadas."
         }
       ],
       "stat": {
@@ -332,6 +333,45 @@
       "body": "Responde diez preguntas sobre tu operación y al terminar lees el diagnóstico: en qué nivel estás, qué riesgos vemos y qué haríamos primero — escrito para tu caso, no una plantilla. No compromete a nada.",
       "button": "Autodiagnóstico",
       "note": "3 minutos · informe en PDF · sin costo"
+    },
+    "segments": {
+      "eyebrow": "a quién ayudamos",
+      "title": "Hecho para operaciones como la tuya.",
+      "linkLabel": "Mira cómo ayudamos",
+      "cards": [
+        {
+          "title": "Pymes",
+          "body": "Tu empresa ya depende de la tecnología. Nosotros respondemos por ella, sin que montes un departamento.",
+          "href": "/industrias/pymes"
+        },
+        {
+          "title": "Restaurantes",
+          "body": "Tu WhatsApp atiende solo, conectado a tu software, incluso en hora pico.",
+          "href": "/industrias/restaurantes"
+        },
+        {
+          "title": "BPOs y contact centers",
+          "body": "Puestos, SLAs y auditorías de clientes — operados por gente que dirige un contact center hoy.",
+          "href": "/industrias/bpo"
+        },
+        {
+          "title": "Hotelería",
+          "body": "El huésped pregunta a las 11 de la noche y alguien responde: reservas y atención 24/7.",
+          "href": "/industrias/hoteleria"
+        },
+        {
+          "title": "Educación",
+          "body": "Cientos de equipos y plataformas, casi nadie en sistemas. Nosotros somos sistemas.",
+          "href": "/industrias/educacion"
+        }
+      ]
+    },
+    "caseStudy": {
+      "eyebrow": "resultados reales",
+      "title": "Un restaurante de 10 empleados automatizó su WhatsApp — el dueño reporta 20% más ventas.",
+      "subtitle": "Cliente real, anónimo por acuerdo. Mira qué se construyó, cómo se conecta con su software y qué cambió en el día a día.",
+      "button": "Ver el caso de éxito",
+      "href": "/casos-de-exito/restaurante-whatsapp-ia"
     }
   },
   "servicesIndex": {

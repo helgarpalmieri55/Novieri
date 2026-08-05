@@ -173,9 +173,9 @@
   },
   "home": {
     "hero": {
-      "titleA": "AI-first IT solutions,",
-      "titleB": "with a nearshore edge.",
-      "subtitle": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates."
+      "titleA": "Your outsourced technology",
+      "titleB": "and automation team.",
+      "subtitle": "We run, secure, and improve your company's technology — and automate the repetitive work slowing your team down. Founder-led delivery in English and Spanish, for companies in Colombia and the United States."
     },
     "proof": {
       "items": [
@@ -191,7 +191,8 @@
           "value": "2",
           "label": "founders, zero middlemen"
         }
-      ]
+      ],
+      "disclosure": "Experience includes work led by Novieri's founders in current and previous technology leadership roles."
     },
     "liveChat": {
       "eyebrow": "ai in production",
@@ -202,7 +203,7 @@
         "name": "Marisquería La Bahía",
         "status": "online · replies instantly"
       },
-      "badge": "DEMO",
+      "badge": "illustrative demo",
       "inputHint": "Type a message",
       "entries": [
         {
@@ -258,28 +259,28 @@
       "ctaService": "See AI & automation"
     },
     "services": {
-      "eyebrow": "services",
-      "title": "Five pillars, one standard."
+      "eyebrow": "one operating model",
+      "title": "One team that runs, secures, automates, and builds."
     },
     "why": {
       "eyebrow": "why novieri",
-      "title": "Nearshore premium: enterprise practices, your time zone, sensible rates.",
+      "title": "What changes when we take over.",
       "points": [
         {
-          "title": "Aligned with US Eastern hours",
-          "body": "Our working day overlaps New York's almost hour for hour, all year. Standups, incidents, and calls happen inside your working day — not the morning after."
+          "title": "Less downtime",
+          "body": "Monitoring that catches problems early, backups that actually restore, and someone accountable when something breaks."
         },
         {
-          "title": "Bilingual by default",
-          "body": "Founder-led service in fluent English and Spanish. Requirements, documentation, and support without translation loss."
+          "title": "Hours back, every week",
+          "body": "Agents and automations take over the repetitive work — answering, capturing, scheduling, re-typing — so your team does the work only they can do."
         },
         {
-          "title": "Enterprise practices, PCI & SOC 2 experience",
-          "body": "Monitoring, tested backups, managed security, and real process — run by a CTO who has led technology for operations of 1,000+ people, including PCI DSS compliance and a SOC 2 program end to end. The same standard, without the multinational overhead."
+          "title": "Security you can show, not just claim",
+          "body": "Hardening, managed protection, and the evidence trail an auditor or enterprise customer asks for — PCI DSS and SOC 2 experience included."
         },
         {
-          "title": "Senior-only delivery",
-          "body": "You work directly with the founders who design and operate your systems. No juniors learning on your dime, no account managers in between."
+          "title": "One team instead of five vendors",
+          "body": "IT, security, automation, and software under one roof and one standard, with the founders on the calls."
         }
       ],
       "stat": {
@@ -332,6 +333,40 @@
       "body": "Answer ten questions about your operation and you read the diagnostic at the end: the level you're at, the risks we see, and what we'd do first — written for your case, not a template. It commits you to nothing.",
       "button": "Self-diagnosis",
       "note": "3 minutes · PDF report · free"
+    },
+    "segments": {
+      "eyebrow": "who we help",
+      "title": "Built for operations like yours.",
+      "linkLabel": "See how we help",
+      "cards": [
+        {
+          "title": "BPOs & contact centers",
+          "body": "Seats, SLAs, and client audits — run by people who run a contact-center floor today.",
+          "href": "/industries/bpo"
+        },
+        {
+          "title": "PCI DSS & SOC 2 companies",
+          "body": "Your customers are asking for compliance. We get you audit-ready, with evidence.",
+          "href": "/industries/regulated"
+        },
+        {
+          "title": "Hotels & restaurants",
+          "body": "Every guest answered — WhatsApp, bookings, and orders handled around the clock.",
+          "href": "/industries/hospitality"
+        },
+        {
+          "title": "Schools & universities",
+          "body": "Big device fleets, small IT teams, and no room for downtime on a school day.",
+          "href": "/industries/education"
+        }
+      ]
+    },
+    "caseStudy": {
+      "eyebrow": "real results",
+      "title": "A 10-person restaurant automated its WhatsApp — the owner reports 20% more sales.",
+      "subtitle": "Real client, anonymous by agreement. Read what was built, how it connects to their software, and what changed day to day.",
+      "button": "Read the case study",
+      "href": "/case-studies/restaurant-whatsapp-ai"
     }
   },
   "servicesIndex": {

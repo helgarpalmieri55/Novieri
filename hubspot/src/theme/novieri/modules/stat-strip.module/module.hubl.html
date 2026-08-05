@@ -8,4 +8,11 @@
       </div>
     {% endfor %}
   </div>
+  {% if module.footnote %}
+    {# The audit's ask: the numbers stay, but a reader can see whose numbers
+       they are — founder track record, not yet a Novieri client list. #}
+    <div class="container-site pb-4">
+      <p class="idx-mono text-ink-faint">{{ module.footnote }}</p>
+    </div>
+  {% endif %}
 </div>
