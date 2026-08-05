@@ -49,6 +49,7 @@ const ES_SLUGS = {
   about: "nosotros",
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
+  "self-diagnosis/sample-report": "autodiagnostico/informe-de-ejemplo",
   pricing: "precios",
   industries: "industrias",
   "industries/bpo": "industrias/bpo",
@@ -199,6 +200,9 @@ for (const s of ["restaurantes", "pymes"]) {
   const c1 = readContent("case-studies/restaurant-whatsapp");
   if (c1) PAGES.push({ key: "cs-restaurant", template: "case-study", slug: "case-studies/restaurant-whatsapp-ai",
     name: c1.en.name, htmlTitle: c1.en.htmlTitle, metaDescription: c1.en.metaDescription });
+  const sr = readContent("diagnostic/sample-report");
+  if (sr) PAGES.push({ key: "sample-report", template: "case-study", slug: "self-diagnosis/sample-report",
+    name: sr.en.name, htmlTitle: sr.en.htmlTitle, metaDescription: sr.en.metaDescription });
 }
 
 async function api(path, options = {}) {
@@ -304,6 +308,7 @@ function esMeta() {
     "industries/education": pick(readContent("industries/es-educacion")),
     "case-studies": pick(csIx?.es),
     "case-studies/restaurant-whatsapp-ai": pick(cs1?.es),
+    "self-diagnosis/sample-report": pick(readContent("diagnostic/sample-report")?.es),
     "": es.meta.home,
     services: es.meta.services,
     "services/ai-automation": es.meta.ai,

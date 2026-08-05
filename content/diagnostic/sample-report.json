@@ -1,0 +1,120 @@
+{
+  "en": {
+    "slug": "self-diagnosis/sample-report",
+    "name": "Sample diagnostic report",
+    "htmlTitle": "Sample technology diagnostic report — Novieri",
+    "metaDescription": "What the free self-diagnosis delivers: a sample report for a 45-person distribution company — maturity level, risks flagged, and what to fix first.",
+    "hero": {
+      "eyebrow": "sample report",
+      "title": "What your diagnostic report looks like.",
+      "intro": "An illustrative example of the report you receive — not a real client. To show what the ten questions produce, we ran the diagnostic for a plausible case: a 45-person distribution company where technology grew faster than anyone planned it. Your report is written the same way, from your own answers."
+    },
+    "stats": [
+      {
+        "value": "Developing",
+        "label": "maturity level in this example"
+      },
+      {
+        "value": "3",
+        "label": "risks flagged for immediate attention"
+      },
+      {
+        "value": "4",
+        "label": "first moves, in priority order"
+      }
+    ],
+    "challenge": {
+      "title": "The snapshot",
+      "body": "<p>The example company's answers draw a familiar picture: 45 people, one internal person running technology alongside another job, and an inventory of devices and access that lives partially in a spreadsheet. Backups exist but have never been restored, multi-factor authentication covers only some of the team, and updates get applied when something breaks. No incident in the last year — which the report treats as good luck to build on, not as evidence of safety.</p><p>The same answers also show where money is leaking quietly: several hours a week, in more than one area, go to repetitive manual work — orders received by email and re-typed into the inventory system. That combination of open security basics plus visible manual load is what places the company at the Developing level: the operation works, but it depends on nothing going wrong.</p>"
+    },
+    "solution": {
+      "title": "What we'd do first",
+      "body": "<p>The order matters more than the list. First come the moves that close the biggest risks for the least money: turning on multi-factor authentication everywhere, then proving the backups real with an actual restore. Both are measured in days, not months, and either one can be the difference between an incident and a catastrophe. Next comes a monthly patch cadence, because \"when something breaks\" is how known vulnerabilities stay open for months.</p><p>Only then does the report turn to efficiency: the order re-typing is the clearest automation candidate, because the hours are visible and the process is repetitive. That sequencing is deliberate — automating on top of weak security basics builds speed on sand. Close the risks that could stop the business first; then invest in what makes it faster.</p>"
+    },
+    "results": {
+      "title": "The prioritized list",
+      "items": [
+        {
+          "title": "MFA on email and critical systems — everyone",
+          "body": "The single cheapest risk reduction available: a compromised password stops being a compromised company. Days of work, not weeks."
+        },
+        {
+          "title": "A backup you have actually restored",
+          "body": "A backup that has never been restored is a hope, not a plan. One scheduled test restore turns it into something the business can lean on."
+        },
+        {
+          "title": "A monthly patch cadence",
+          "body": "A fixed update window replaces \"when something breaks\" — so known vulnerabilities get closed on a schedule instead of staying open indefinitely."
+        },
+        {
+          "title": "One automation candidate: order entry",
+          "body": "Orders re-typed from email into the inventory system are hours every week and a steady source of errors — the obvious first place automation pays for itself."
+        }
+      ]
+    },
+    "cta": {
+      "title": "See where your company stands.",
+      "subtitle": "Ten questions, about five minutes, free — a guided self-assessment written for your case, not a formal audit.",
+      "buttonText": "Get your free technology diagnosis"
+    }
+  },
+  "es": {
+    "slug": "autodiagnostico/informe-de-ejemplo",
+    "name": "Informe de diagnóstico de ejemplo",
+    "htmlTitle": "Informe de diagnóstico tecnológico de ejemplo — Novieri",
+    "metaDescription": "Lo que entrega el autodiagnóstico gratis: un informe de ejemplo para una distribuidora de 45 empleados — nivel, riesgos y qué arreglar primero.",
+    "hero": {
+      "eyebrow": "informe de ejemplo",
+      "title": "Así se ve el informe de tu diagnóstico.",
+      "intro": "Un ejemplo ilustrativo del informe que recibes — no es un cliente real. Para mostrar qué producen las diez preguntas, corrimos el diagnóstico para un caso plausible: una distribuidora de 45 empleados donde la tecnología creció más rápido de lo que nadie la planeó. Tu informe se escribe igual, a partir de tus propias respuestas."
+    },
+    "stats": [
+      {
+        "value": "En desarrollo",
+        "label": "nivel de madurez en este ejemplo"
+      },
+      {
+        "value": "3",
+        "label": "riesgos marcados para atención inmediata"
+      },
+      {
+        "value": "4",
+        "label": "primeros pasos, en orden de prioridad"
+      }
+    ],
+    "challenge": {
+      "title": "La foto",
+      "body": "<p>Las respuestas de la empresa del ejemplo dibujan un panorama conocido: 45 personas, una persona interna que lleva la tecnología además de su otro trabajo, y un inventario de equipos y accesos que vive a medias en una hoja de cálculo. Las copias de seguridad existen pero nunca se han restaurado, la autenticación multifactor cubre solo a una parte del equipo, y las actualizaciones se aplican cuando algo falla. Ningún incidente en el último año — que el informe trata como buena suerte para aprovechar, no como prueba de seguridad.</p><p>Las mismas respuestas muestran por dónde se fuga la plata sin hacer ruido: varias horas a la semana, en más de un área, se van en trabajo manual repetitivo — pedidos que llegan por correo y se vuelven a digitar en el sistema de inventario. Esa combinación de básicos de seguridad pendientes más carga manual visible es lo que ubica a la empresa en el nivel En desarrollo: la operación funciona, pero depende de que nada salga mal.</p>"
+    },
+    "solution": {
+      "title": "Qué haríamos primero",
+      "body": "<p>El orden importa más que la lista. Primero van los pasos que cierran los riesgos más grandes con la menor plata: activar la autenticación multifactor en todas partes y después demostrar que las copias de seguridad son reales con una restauración de verdad. Ambos se miden en días, no en meses, y cualquiera de los dos puede ser la diferencia entre un incidente y una catástrofe. Luego viene una cadencia mensual de actualizaciones, porque \"cuando algo falla\" es la forma en que las vulnerabilidades conocidas se quedan abiertas por meses.</p><p>Solo entonces el informe pasa a la eficiencia: la digitación repetida de pedidos es el candidato de automatización más claro, porque las horas son visibles y el proceso es repetitivo. Esa secuencia es deliberada — automatizar sobre básicos de seguridad débiles es construir velocidad sobre arena. Primero se cierran los riesgos que pueden parar el negocio; después se invierte en lo que lo hace más rápido.</p>"
+    },
+    "results": {
+      "title": "La lista priorizada",
+      "items": [
+        {
+          "title": "MFA en correo y sistemas críticos — para todos",
+          "body": "La reducción de riesgo más barata que existe: una contraseña comprometida deja de ser una empresa comprometida. Días de trabajo, no semanas."
+        },
+        {
+          "title": "Una copia de seguridad que de verdad restauraste",
+          "body": "Una copia que nunca se ha restaurado es una esperanza, no un plan. Una restauración de prueba programada la convierte en algo en lo que el negocio puede apoyarse."
+        },
+        {
+          "title": "Una cadencia mensual de actualizaciones",
+          "body": "Una ventana fija de actualización reemplaza el \"cuando algo falla\" — para que las vulnerabilidades conocidas se cierren con calendario y no se queden abiertas indefinidamente."
+        },
+        {
+          "title": "Un candidato de automatización: la entrada de pedidos",
+          "body": "Los pedidos que se repiten a mano del correo al sistema de inventario son horas cada semana y una fuente constante de errores — el primer lugar obvio donde la automatización se paga sola."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Mira dónde está parada tu empresa.",
+      "subtitle": "Diez preguntas, unos cinco minutos, gratis — una autoevaluación guiada escrita para tu caso, no una auditoría formal.",
+      "buttonText": "Recibe tu diagnóstico tecnológico gratis"
+    }
+  }
+}

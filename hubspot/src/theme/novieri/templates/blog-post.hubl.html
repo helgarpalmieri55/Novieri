@@ -23,8 +23,35 @@
           {{ content.publish_date|datetimeformat("%b %e, %Y") }}
           {% if content.tag_list %} · {% for tag in content.tag_list %}{{ tag.name }}{% if not loop.last %} · {% endif %}{% endfor %}{% endif %}
         </p>
+        {# The audit's author entity: a person with a role and a profile,
+           not a logo. Name comes from the post's author; the role and link
+           are his — this is a founder-written blog. #}
+        <p class="reveal mt-2 text-caption text-ink-muted" style="--rd: 160ms">
+          {% if content.language and "es" in content.language|string %}Por{% else %}By{% endif %}
+          <a href="https://www.linkedin.com/in/helgar-palmieri-82726b16a/" rel="author" class="font-medium text-ink underline decoration-line underline-offset-2 hover:text-plum">{{ content.blog_post_author.display_name || "Helgar Palmieri" }}</a>
+          · Co-founder, Technology &amp; delivery
+        </p>
       </div>
     </header>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": {{ content.name|escapejson }},
+        "description": {{ content.meta_description|escapejson }},
+        "datePublished": "{{ content.publish_date|datetimeformat("%Y-%m-%d") }}",
+        "dateModified": "{{ content.updated|datetimeformat("%Y-%m-%d") }}",
+        "inLanguage": "{{ content.language or "en" }}",
+        "mainEntityOfPage": {{ content.absolute_url|escapejson }},
+        "author": {
+          "@type": "Person",
+          "name": "Helgar Palmieri",
+          "jobTitle": "Co-founder — Technology & delivery",
+          "sameAs": "https://www.linkedin.com/in/helgar-palmieri-82726b16a/"
+        },
+        "publisher": { "@type": "Organization", "name": "Novieri", "url": "https://www.novieri.com" }
+      }
+    </script>
     <div class="container-site pb-[clamp(3rem,8vh,6rem)]">
       <div class="article-prose max-w-[68ch]">{{ content.post_body }}</div>
       <p class="mt-12">

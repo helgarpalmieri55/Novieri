@@ -393,21 +393,42 @@ const bySlug = (list) => new Map(list.map((p) => [p.slug.split("/").pop(), p]));
 const existingEn = bySlug(inBlog(enBlog));
 const existingEs = bySlug(inBlog(esBlog));
 
-// A published post must carry an author. The byline is the company — same
-// decision the post template made by not rendering an author card.
+// A published post must carry an author, and the audit wants a person, not
+// a logo: the byline is Helgar Palmieri. The first sync created a company
+// author, so that one is renamed rather than orphaned.
+const AUTHOR = "Helgar Palmieri";
 let authorId;
 {
   const authors = await api(`/cms/v3/blogs/authors?${new URLSearchParams({ limit: "100" })}`);
-  const found = (authors.results || []).find((a) => a.displayName === "Novieri" || a.name === "Novieri");
+  const all2 = authors.results || [];
+  let found = all2.find((a) => a.displayName === AUTHOR || a.fullName === AUTHOR);
+  const legacy = all2.find((a) => a.displayName === "Novieri" || a.fullName === "Novieri");
+  if (!found && legacy) {
+    await api(`/cms/v3/blogs/authors/${legacy.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        displayName: AUTHOR,
+        fullName: AUTHOR,
+        linkedin: "https://www.linkedin.com/in/helgar-palmieri-82726b16a/",
+      }),
+    });
+    found = legacy;
+    console.log(`author  renamed Novieri -> ${AUTHOR} (id ${legacy.id})`);
+  }
   if (found) {
     authorId = found.id;
   } else {
     const made = await api("/cms/v3/blogs/authors", {
       method: "POST",
-      body: JSON.stringify({ displayName: "Novieri", fullName: "Novieri", email: "sales@novieri.com" }),
+      body: JSON.stringify({
+        displayName: AUTHOR,
+        fullName: AUTHOR,
+        email: "sales@novieri.com",
+        linkedin: "https://www.linkedin.com/in/helgar-palmieri-82726b16a/",
+      }),
     });
     authorId = made.id;
-    console.log(`author  Novieri — id ${authorId}`);
+    console.log(`author  ${AUTHOR} — id ${authorId}`);
   }
 }
 

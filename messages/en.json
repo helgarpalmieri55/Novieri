@@ -163,7 +163,7 @@
     }
   },
   "common": {
-    "bookCall": "Book a 30-minute call",
+    "bookCall": "Book a 30-minute consultation",
     "seeServices": "See services",
     "learnMore": "Learn more",
     "talkCase": "Let's talk about your case",
@@ -331,7 +331,7 @@
       "eyebrow": "start here",
       "title": "Not sure where to start?",
       "body": "Answer ten questions about your operation and you read the diagnostic at the end: the level you're at, the risks we see, and what we'd do first — written for your case, not a template. It commits you to nothing.",
-      "button": "Self-diagnosis",
+      "button": "Get your free technology diagnosis",
       "note": "3 minutes · PDF report · free"
     },
     "segments": {
@@ -512,7 +512,8 @@
     "demoLabels": {
       "whatsapp": "WhatsApp · restaurant",
       "web": "Site chat · hotel"
-    }
+    },
+    "ctaButton": "Map your first automation"
   },
   "managedIt": {
     "hero": {
@@ -633,7 +634,8 @@
         "fleet current · 0 pending"
       ],
       "footer": "24/7 monitoring · automatic patching · verified backups"
-    }
+    },
+    "ctaButton": "Request an IT health check"
   },
   "security": {
     "hero": {
@@ -733,7 +735,8 @@
         "test restore verified",
         "audit-ready · no open findings"
       ]
-    }
+    },
+    "ctaButton": "Assess your audit readiness"
   },
   "software": {
     "hero": {
@@ -834,7 +837,8 @@
         "tests": "tests",
         "review": "reviewed by a person"
       }
-    }
+    },
+    "ctaButton": "Scope your application"
   },
   "about": {
     "hero": {
@@ -1969,7 +1973,8 @@
           }
         ]
       }
-    ]
+    ],
+    "sampleLabel": "See a sample report"
   },
   "itConsulting": {
     "hero": {
@@ -2043,7 +2048,8 @@
           "a": "A document in plain language: what you have, what it costs, what we would change, in what order, and roughly what each step is worth. Not a slide deck."
         }
       ]
-    }
+    },
+    "ctaButton": "Ask your first question"
   },
   "pricing": {
     "hero": {

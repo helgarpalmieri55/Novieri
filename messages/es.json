@@ -163,7 +163,7 @@
     }
   },
   "common": {
-    "bookCall": "Agenda una llamada de 30 minutos",
+    "bookCall": "Agenda una consulta de 30 minutos",
     "seeServices": "Ver servicios",
     "learnMore": "Conocer más",
     "talkCase": "Hablemos de tu caso",
@@ -331,7 +331,7 @@
       "eyebrow": "empieza por aquí",
       "title": "¿No sabes por dónde empezar?",
       "body": "Responde diez preguntas sobre tu operación y al terminar lees el diagnóstico: en qué nivel estás, qué riesgos vemos y qué haríamos primero — escrito para tu caso, no una plantilla. No compromete a nada.",
-      "button": "Autodiagnóstico",
+      "button": "Recibe tu diagnóstico tecnológico gratis",
       "note": "3 minutos · informe en PDF · sin costo"
     },
     "segments": {
@@ -517,7 +517,8 @@
     "demoLabels": {
       "whatsapp": "WhatsApp · restaurante",
       "web": "Chat del sitio · hotel"
-    }
+    },
+    "ctaButton": "Mapea tu primera automatización"
   },
   "managedIt": {
     "hero": {
@@ -638,7 +639,8 @@
         "flota al día · 0 pendientes"
       ],
       "footer": "monitoreo 24/7 · actualizaciones automáticas · copias de seguridad verificadas"
-    }
+    },
+    "ctaButton": "Pide un chequeo de tu IT"
   },
   "security": {
     "hero": {
@@ -738,7 +740,8 @@
         "restauración de prueba verificada",
         "listo para auditoría · sin hallazgos abiertos"
       ]
-    }
+    },
+    "ctaButton": "Evalúa tu preparación para auditoría"
   },
   "software": {
     "hero": {
@@ -839,7 +842,8 @@
         "tests": "pruebas",
         "review": "revisado por una persona"
       }
-    }
+    },
+    "ctaButton": "Dimensiona tu aplicación"
   },
   "about": {
     "hero": {
@@ -1974,7 +1978,8 @@
           }
         ]
       }
-    ]
+    ],
+    "sampleLabel": "Mira un informe de ejemplo"
   },
   "itConsulting": {
     "hero": {
@@ -2048,7 +2053,8 @@
           "a": "Con un documento en español claro: qué tienes, cuánto cuesta, qué cambiaríamos, en qué orden y cuánto vale aproximadamente cada paso. No una presentación de diapositivas."
         }
       ]
-    }
+    },
+    "ctaButton": "Haz la primera pregunta"
   },
   "pricing": {
     "hero": {

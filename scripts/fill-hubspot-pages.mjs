@@ -45,6 +45,7 @@ const ES_SLUGS = {
   about: "nosotros",
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
+  "self-diagnosis/sample-report": "autodiagnostico/informe-de-ejemplo",
   pricing: "precios",
   industries: "industrias",
   "industries/bpo": "industrias/bpo",
@@ -300,7 +301,9 @@ function serviceWidgets(ns) {
         eyebrow: NEXT_STEP,
         title: c.ctaTitle,
         subtitle: c.ctaSubtitle,
-        button_text: t.common.bookCall,
+        // Each service asks for its own next step — "assess your audit
+        // readiness" converts a security reader that "book a call" loses.
+        button_text: s.ctaButton || t.common.bookCall,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
       },
     },
@@ -766,7 +769,10 @@ function diagnosticWidgets() {
         eyebrow: t.diagnostic.eyebrow,
         title: t.diagnostic.title,
         intro: t.diagnostic.intro,
-        button_text: "",
+        // The audit's ask: show what the report looks like before asking
+        // ten questions and an email for it.
+        button_text: d.sampleLabel || "",
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("self-diagnosis/sample-report")}` } },
         seam: true,
       },
     },
@@ -859,13 +865,13 @@ const readContent = (p) => {
 const heroOf = (c) => ({
   body: { eyebrow: c.hero.eyebrow, title: c.hero.title, intro: c.hero.intro, button_text: "", seam: true },
 });
-const ctaOf = (c) => ({
+const ctaOf = (c, href) => ({
   body: {
     eyebrow: "",
     title: c.cta.title,
     subtitle: c.cta.subtitle,
     button_text: c.cta.buttonText,
-    button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+    button_link: { url: { type: "CONTENT", href: href || `/${slugFor("contact")}` } },
   },
 });
 const cardsOf = (cards, linkLabel) => ({
@@ -926,7 +932,10 @@ function hubIndexWidgets(c) {
 }
 
 // case-study template: hero, stats, challenge, solution, results, cta.
-function caseStudyWidgets(c) {
+// The sample diagnostic report borrows the same shape — a report and a case
+// study are both "situation, action, prioritized outcome" — with its CTA
+// pointed at the diagnostic instead of the contact page.
+function caseStudyWidgets(c, ctaHref) {
   return {
     "main-module-2": heroOf(c),
     "main-module-3": { body: { stats: c.stats.map((s) => ({ value: s.value, stat_label: s.label })) } },
@@ -939,7 +948,7 @@ function caseStudyWidgets(c) {
         items: c.results.items.map((i) => ({ item_title: i.title, item_body: i.body })),
       },
     },
-    "main-module-7": ctaOf(c),
+    "main-module-7": ctaOf(c, ctaHref),
   };
 }
 
@@ -963,6 +972,8 @@ function contentPages() {
     if (cx) out["casos-de-exito"] = hubIndexWidgets(cx.es);
     const c1 = readContent("case-studies/restaurant-whatsapp");
     if (c1) out["casos-de-exito/restaurante-whatsapp-ia"] = caseStudyWidgets(c1.es);
+    const sr = readContent("diagnostic/sample-report");
+    if (sr) out["autodiagnostico/informe-de-ejemplo"] = caseStudyWidgets(sr.es, "/autodiagnostico");
   } else {
     for (const s of ["bpo", "hospitality", "education", "regulated"]) {
       const c = readContent(`industries/en-${s}`);
@@ -974,6 +985,8 @@ function contentPages() {
     if (cx) out["case-studies"] = hubIndexWidgets(cx.en);
     const c1 = readContent("case-studies/restaurant-whatsapp");
     if (c1) out["case-studies/restaurant-whatsapp-ai"] = caseStudyWidgets(c1.en);
+    const sr = readContent("diagnostic/sample-report");
+    if (sr) out["self-diagnosis/sample-report"] = caseStudyWidgets(sr.en, "/self-diagnosis");
   }
   return out;
 }
