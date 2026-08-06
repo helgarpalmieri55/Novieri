@@ -10,6 +10,7 @@
       <div class="reveal mb-[clamp(2.5rem,6vh,4rem)] max-w-2xl">
         {% if module.eyebrow %}<span class="eyebrow">{{ module.eyebrow }}</span>{% endif %}
         {% if module.title %}<h2 class="mt-4">{{ module.title }}</h2>{% endif %}
+        {% if module.intro %}<p class="mt-4 max-w-[56ch] text-ink-muted{% if module.dark %} text-on-dark-muted{% endif %}">{{ module.intro }}</p>{% endif %}
       </div>
     {% endif %}
     {# Three across, not four. There are five pillars now and five cards in a
@@ -28,7 +29,7 @@
             {% endfor %}
           </span>
           <span class="mt-1 inline-flex items-center gap-1.5 text-small font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
-            {{ module.link_label }} <span aria-hidden="true">→</span>
+            {{ card.card_link_label or module.link_label }} <span aria-hidden="true">→</span>
           </span>
         </a>
       {% endfor %}

@@ -68,6 +68,12 @@ const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 
 /** The NIT stays empty until registration completes; [[…]] blocks drop it cleanly. */
 const VARS = { company: "Novieri SAS", nit: "", email: "sales@novieri.com" };
+/**
+ * The legal pages route data-subject requests to a dedicated address per
+ * language — governance the review asked for, and a mailbox that now exists.
+ * Everything commercial keeps sales@.
+ */
+const LEGAL_VARS = { ...VARS, email: locale === "es" ? "privacidad@novieri.com" : "privacy@novieri.com" };
 
 /**
  * Founder portraits.
@@ -121,11 +127,13 @@ async function uploadPhoto(file) {
  * Ported from LegalPageTemplate.tsx, where the same copy is rendered.
  */
 function interpolate(text) {
-  const fill = (s) => s.replace(/\{(\w+)\}/g, (m, key) => VARS[key] ?? m);
+  // Only legal copy interpolates, so {email} resolves to the language's
+  // dedicated privacy address, not the sales inbox.
+  const fill = (s) => s.replace(/\{(\w+)\}/g, (m, key) => LEGAL_VARS[key] ?? m);
   return fill(
     text.replace(/\[\[(.+?)\]\]/g, (_, inner) => {
       const keys = [...inner.matchAll(/\{(\w+)\}/g)].map((m) => m[1]);
-      return keys.every((k) => (VARS[k] ?? "") !== "") ? inner : "";
+      return keys.every((k) => (LEGAL_VARS[k] ?? "") !== "") ? inner : "";
     }),
   );
 }
@@ -183,7 +191,7 @@ function legalWidgets(doc) {
         })),
         questions_title: c.questionsTitle,
         questions_body: interpolate(c.questionsBody),
-        questions_email: VARS.email,
+        questions_email: LEGAL_VARS.email,
       },
     },
   };
@@ -299,7 +307,7 @@ function serviceWidgets(ns) {
     [SERVICE_SLOTS.cta]: {
       body: {
         eyebrow: NEXT_STEP,
-        title: c.ctaTitle,
+        title: s.ctaTitle || c.ctaTitle,
         subtitle: c.ctaSubtitle,
         // Each service asks for its own next step — "assess your audit
         // readiness" converts a security reader that "book a call" loses.
@@ -481,7 +489,7 @@ function solutionWidgets(key) {
     [SOLUTION_SLOTS.cta]: {
       body: {
         eyebrow: NEXT_STEP,
-        title: c.ctaTitle,
+        title: s.ctaTitle || c.ctaTitle,
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
@@ -521,7 +529,7 @@ function solutionsIndexWidgets() {
     [SOLUTIONS_INDEX_SLOTS.cta]: {
       body: {
         eyebrow: NEXT_STEP,
-        title: c.ctaTitle,
+        title: s.ctaTitle || c.ctaTitle,
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
@@ -668,12 +676,14 @@ function homeWidgets() {
         dark: true,
         eyebrow: h.segments.eyebrow,
         title: h.segments.title,
+        intro: h.segments.intro || "",
         link_label: h.segments.linkLabel,
         cards: h.segments.cards.map((c, i) => ({
           card_name: c.title,
           card_tagline: c.body,
           card_colour: ACCENTS[i % ACCENTS.length],
           card_link: { url: { type: "CONTENT", href: c.href } },
+          card_link_label: c.linkLabel || "",
         })),
       },
     },
@@ -892,6 +902,7 @@ const cardsOf = (cards, linkLabel) => ({
       card_name: k.title,
       card_tagline: k.body,
       card_link: { url: { type: "CONTENT", href: k.href } },
+      card_link_label: k.linkLabel || "",
     })),
     link_label: linkLabel,
   },
@@ -916,6 +927,7 @@ function industryWidgets(c) {
           card_name: k.title,
           card_tagline: k.body,
           card_link: { url: { type: "CONTENT", href: k.href } },
+          card_link_label: k.linkLabel || "",
         })),
         link_label: c.help.cards[0]?.linkLabel || "",
       },

@@ -45,4 +45,17 @@
   document.querySelectorAll(".cookie-reject").forEach(function (b) {
     b.addEventListener("click", function () { decide("necessary"); });
   });
+
+  // The footer's "Configurar cookies" link: forget the stored choice and
+  // raise the banner again, right where the visitor is standing.
+  document.querySelectorAll("[data-cookie-settings]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      try {
+        localStorage.removeItem(KEY);
+      } catch (e) {}
+      document.documentElement.classList.add("needs-consent");
+      var banner = document.querySelector(".cookie-banner");
+      if (banner) banner.scrollIntoView({ block: "end", behavior: "smooth" });
+    });
+  });
 })();

@@ -342,24 +342,29 @@
         {
           "title": "BPOs & contact centers",
           "body": "Seats, SLAs, and client audits — run by people who run a contact-center floor today.",
-          "href": "/industries/bpo"
+          "href": "/industries/bpo",
+          "linkLabel": "See BPO solutions"
         },
         {
           "title": "PCI DSS & SOC 2 companies",
           "body": "Your customers are asking for compliance. We get you audit-ready, with evidence.",
-          "href": "/industries/regulated"
+          "href": "/industries/regulated",
+          "linkLabel": "See compliance solutions"
         },
         {
           "title": "Hotels & restaurants",
           "body": "Every guest answered — WhatsApp, bookings, and orders handled around the clock.",
-          "href": "/industries/hospitality"
+          "href": "/industries/hospitality",
+          "linkLabel": "See hospitality solutions"
         },
         {
           "title": "Schools & universities",
           "body": "Big device fleets, small IT teams, and no room for downtime on a school day.",
-          "href": "/industries/education"
+          "href": "/industries/education",
+          "linkLabel": "See education solutions"
         }
-      ]
+      ],
+      "intro": "We don't start from a tool. We start from what's costing you time, putting the operation at risk, or holding growth back."
     },
     "caseStudy": {
       "eyebrow": "real results",
@@ -513,7 +518,8 @@
       "whatsapp": "WhatsApp · restaurant",
       "web": "Site chat · hotel"
     },
-    "ctaButton": "Map your first automation"
+    "ctaButton": "Map your first automation",
+    "ctaTitle": "Tell us which task you want to stop repeating"
   },
   "managedIt": {
     "hero": {
@@ -635,7 +641,8 @@
       ],
       "footer": "24/7 monitoring · automatic patching · verified backups"
     },
-    "ctaButton": "Request an IT health check"
+    "ctaButton": "Request an IT health check",
+    "ctaTitle": "Review the current state of your technology"
   },
   "security": {
     "hero": {
@@ -736,7 +743,8 @@
         "audit-ready · no open findings"
       ]
     },
-    "ctaButton": "Assess your audit readiness"
+    "ctaButton": "Assess your audit readiness",
+    "ctaTitle": "Find out what you should fix first"
   },
   "software": {
     "hero": {
@@ -838,7 +846,8 @@
         "review": "reviewed by a person"
       }
     },
-    "ctaButton": "Scope your application"
+    "ctaButton": "Scope your application",
+    "ctaTitle": "Tell us which tool is missing"
   },
   "about": {
     "hero": {
@@ -2054,7 +2063,8 @@
         }
       ]
     },
-    "ctaButton": "Ask your first question"
+    "ctaButton": "Ask your first question",
+    "ctaTitle": "Make the decision with more information"
   },
   "pricing": {
     "hero": {

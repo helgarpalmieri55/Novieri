@@ -55,7 +55,18 @@
     </script>
     <div class="container-site pb-[clamp(3rem,8vh,6rem)]">
       <div class="article-prose max-w-[68ch]">{{ content.post_body }}</div>
-      <p class="mt-12">
+      {# The review's end-of-article ask: a reader who finished has a next
+         step that names their situation, not another generic button. #}
+      <aside class="mt-14 max-w-[68ch] rounded-2xl border border-line p-8">
+        <h2 class="text-h3">{% if is_es %}¿Necesitas aplicar esto a tu empresa?{% else %}Need to apply this to your company?{% endif %}</h2>
+        <p class="mt-3 text-small text-ink-muted">
+          {% if is_es %}En una llamada de 30 minutos revisamos tu caso y te decimos cuál sería el primer paso más razonable.{% else %}In a 30-minute call we review your case and tell you the most sensible first step.{% endif %}
+        </p>
+        <a href="{% if is_es %}/contacto{% else %}/contact{% endif %}" class="mt-5 inline-flex items-center gap-1.5 text-small font-medium text-plum hover:text-gold-deep">
+          {% if is_es %}Agenda una conversación{% else %}Book a conversation{% endif %} <span aria-hidden="true">→</span>
+        </a>
+      </aside>
+      <p class="mt-10">
         <a href="{{ group.absolute_url }}" class="idx-mono lowercase text-plum hover:text-gold-deep">&larr; {{ group.public_title || "insights" }}</a>
       </p>
     </div>

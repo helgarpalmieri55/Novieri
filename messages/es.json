@@ -342,29 +342,35 @@
         {
           "title": "Pymes",
           "body": "Un responsable claro para el soporte, Microsoft 365, los equipos, la red, las copias de seguridad y las decisiones de tecnología.",
-          "href": "/industrias/pymes"
+          "href": "/industrias/pymes",
+          "linkLabel": "Ver soluciones para pymes"
         },
         {
           "title": "Restaurantes",
           "body": "Pedidos, reservas y preguntas atendidos por WhatsApp, incluso cuando el salón está lleno y el equipo no puede responder.",
-          "href": "/industrias/restaurantes"
+          "href": "/industrias/restaurantes",
+          "linkLabel": "Ver soluciones para restaurantes"
         },
         {
           "title": "BPO y centros de contacto",
           "body": "Infraestructura, seguridad, cumplimiento y automatización para operaciones con acuerdos de servicio, auditorías y atención 24/7.",
-          "href": "/industrias/bpo"
+          "href": "/industrias/bpo",
+          "linkLabel": "Ver soluciones para BPO"
         },
         {
           "title": "Hoteles",
           "body": "Atención bilingüe a cualquier hora, más reservas directas y una operación tecnológica que no depende de una sola persona.",
-          "href": "/industrias/hoteleria"
+          "href": "/industrias/hoteleria",
+          "linkLabel": "Ver soluciones para hoteles"
         },
         {
           "title": "Colegios y universidades",
           "body": "Soporte para equipos, redes, plataformas, docentes y administrativos, con protección adecuada para la información de estudiantes y familias.",
-          "href": "/industrias/educacion"
+          "href": "/industrias/educacion",
+          "linkLabel": "Ver soluciones para educación"
         }
-      ]
+      ],
+      "intro": "No empezamos por una herramienta. Empezamos por lo que hoy te quita tiempo, pone la operación en riesgo o frena el crecimiento."
     },
     "caseStudy": {
       "eyebrow": "resultado real",
@@ -518,7 +524,8 @@
       "whatsapp": "WhatsApp · restaurante",
       "web": "Chat del sitio · hotel"
     },
-    "ctaButton": "Mapea tu primera automatización"
+    "ctaButton": "Mapea tu primera automatización",
+    "ctaTitle": "Cuéntanos qué tarea quieres dejar de repetir"
   },
   "managedIt": {
     "hero": {
@@ -640,7 +647,8 @@
       ],
       "footer": "monitoreo 24/7 · actualizaciones automáticas · copias de seguridad verificadas"
     },
-    "ctaButton": "Solicita una revisión inicial de tu TI"
+    "ctaButton": "Solicita una revisión inicial de tu TI",
+    "ctaTitle": "Revisa el estado actual de tu tecnología"
   },
   "security": {
     "hero": {
@@ -741,7 +749,8 @@
         "listo para auditoría · sin hallazgos abiertos"
       ]
     },
-    "ctaButton": "Evalúa tu nivel de seguridad"
+    "ctaButton": "Evalúa tu nivel de seguridad",
+    "ctaTitle": "Conoce qué deberías corregir primero"
   },
   "software": {
     "hero": {
@@ -843,7 +852,8 @@
         "review": "revisado por una persona"
       }
     },
-    "ctaButton": "Define el alcance de tu proyecto"
+    "ctaButton": "Define el alcance de tu proyecto",
+    "ctaTitle": "Cuéntanos qué herramienta hace falta"
   },
   "about": {
     "hero": {
@@ -2059,7 +2069,8 @@
         }
       ]
     },
-    "ctaButton": "Haz tu primera pregunta"
+    "ctaButton": "Haz tu primera pregunta",
+    "ctaTitle": "Toma la decisión con más información"
   },
   "pricing": {
     "hero": {
