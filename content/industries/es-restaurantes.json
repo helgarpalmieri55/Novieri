@@ -2,12 +2,12 @@
   "slug": "restaurantes",
   "lang": "es",
   "name": "Restaurantes",
-  "htmlTitle": "IA e IT para restaurantes — Novieri",
-  "metaDescription": "Un asistente de IA que atiende tu WhatsApp: toma pedidos y reservas, entiende notas de voz y responde en segundos, operado por Novieri desde Barranquilla.",
+  "htmlTitle": "Tecnología e IA para restaurantes — Novieri",
+  "metaDescription": "Un asistente de IA que atiende tu WhatsApp: registra pedidos y reservas, entiende notas de voz y responde en segundos, operado por Novieri desde Barranquilla.",
   "hero": {
-    "eyebrow": "industrias",
-    "title": "Tu WhatsApp atiende solo, incluso en hora pico.",
-    "intro": "En Colombia el restaurante se atiende por WhatsApp — y justo cuando más escriben es cuando nadie puede contestar. Operamos un asistente de IA que conversa de verdad: toma el pedido, agenda la reserva, entiende notas de voz y responde en segundos."
+    "eyebrow": "para quién trabajamos",
+    "title": "Responde pedidos y reservas por WhatsApp, incluso en hora pico.",
+    "intro": "Cuando el salón está lleno y la cocina está ocupada, el asistente responde preguntas, entiende notas de voz, registra pedidos y reservas y entrega las excepciones a tu equipo."
   },
   "pains": {
     "eyebrow": "la realidad",
@@ -27,7 +27,7 @@
       },
       {
         "title": "Los clientes mandan notas de voz",
-        "body": "Así escribe la gente aquí — y un bot de botones no las entiende. O alguien las escucha una por una, o esos pedidos se quedan sin atender."
+        "body": "Las notas de voz son una parte natural de la conversación en Colombia — y un bot de botones no las entiende. O alguien las escucha una por una, o esos pedidos se quedan sin atender."
       }
     ]
   },
@@ -36,20 +36,20 @@
     "title": "Tres formas de quitarte el peso.",
     "cards": [
       {
-        "title": "El asistente de WhatsApp",
+        "title": "Asistente para WhatsApp",
         "body": "Conversa de verdad — nada de menús de botones. Consulta tu carta, arma el pedido, agenda la reserva, transcribe notas de voz y le pasa la conversación a tu equipo cuando hace falta.",
         "href": "/productos/asistente-ia-whatsapp",
-        "linkLabel": "Ver el asistente de WhatsApp"
+        "linkLabel": "Ver el asistente para WhatsApp"
       },
       {
-        "title": "Un sitio web que también atiende",
-        "body": "Tu carta y tu marca en un sitio moderno y rápido, con un asistente integrado que responde a los visitantes — conectado al mismo cerebro que tu WhatsApp.",
+        "title": "Sitios web inteligentes",
+        "body": "Tu carta y tu marca en un sitio moderno y rápido, con un asistente integrado que responde a los visitantes — conectado a la misma información que tu WhatsApp.",
         "href": "/productos/sitios-web-con-ia",
-        "linkLabel": "Ver sitios web con IA"
+        "linkLabel": "Ver sitios web inteligentes"
       },
       {
-        "title": "Automatización detrás del mostrador",
-        "body": "Reportes de ventas, cuadres e inventario que se arman solos en lugar de robarle la noche al administrador. Empezamos por lo que más horas se come.",
+        "title": "IA y automatización",
+        "body": "Reportes de ventas, cuadres e inventario que se arman solos en lugar de robarle la noche al administrador. Empezamos por lo que más horas consume.",
         "href": "/servicios/ia-y-automatizacion",
         "linkLabel": "Ver IA y automatización"
       }
@@ -61,11 +61,11 @@
   },
   "faq": {
     "eyebrow": "preguntas frecuentes",
-    "title": "Lo que nos preguntan los restauranteros.",
+    "title": "Lo que preguntan los dueños y administradores de restaurantes.",
     "items": [
       {
         "q": "¿Y si el asistente se equivoca con un pedido?",
-        "a": "Confirma el pedido con el cliente antes de registrarlo, y lo que no sabe no lo inventa: lo escala a tu equipo con todo el historial a la vista. Además ves métricas de atención en el panel, así que los errores no se esconden."
+        "a": "Confirma el pedido con el cliente antes de registrarlo, y lo que no sabe no lo inventa: lo entrega a tu equipo con todo el historial a la vista. Además ves métricas de atención en el panel, así que los errores no se esconden."
       },
       {
         "q": "¿Necesito cambiar mi número de WhatsApp?",
@@ -78,8 +78,8 @@
     ]
   },
   "cta": {
-    "title": "Míralo respondiendo con tu carta.",
+    "title": "Pruébalo con tu propia carta.",
     "subtitle": "Agenda una demo de 30 minutos y te mostramos el asistente funcionando con tu menú y tus políticas, sin compromiso.",
-    "buttonText": "Agenda una demo"
+    "buttonText": "Mira el asistente respondiendo con tu carta"
   }
 }

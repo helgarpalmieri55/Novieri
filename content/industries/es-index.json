@@ -1,47 +1,47 @@
 {
   "slug": "industrias",
   "lang": "es",
-  "htmlTitle": "Industrias — Novieri",
-  "metaDescription": "IT e IA para BPO, restaurantes, hotelería, pymes y educación en Colombia — equipo senior en Barranquilla, automatización práctica y precios claros.",
+  "htmlTitle": "Para quién trabajamos — Novieri",
+  "metaDescription": "TI administrada, IA y seguridad para pymes, restaurantes, hoteles, colegios y universidades y BPO en Colombia — atención directa de los fundadores desde Barranquilla.",
   "hero": {
-    "eyebrow": "industrias",
-    "title": "Hablamos tu industria, no solo nuestra tecnología.",
-    "intro": "Los mismos cinco servicios aterrizan distinto en un contact center que en un restaurante. Estas son las industrias donde ya conocemos el terreno: los sistemas, los puntos de dolor y qué conviene resolver primero."
+    "eyebrow": "para quién trabajamos",
+    "title": "Tecnología pensada para operaciones como la tuya.",
+    "intro": "No empezamos por una herramienta. Empezamos por lo que hoy te quita tiempo, pone la operación en riesgo o frena el crecimiento."
   },
   "cards": [
     {
-      "title": "BPO y contact centers",
-      "body": "IT y cumplimiento de fundadores que dirigen la tecnología de un BPO multinacional 24/7 — caídas, auditorías de clientes y rotación, manejadas por gente que las vive.",
+      "title": "BPO y centros de contacto",
+      "body": "Infraestructura, seguridad, cumplimiento y automatización para operaciones con acuerdos de servicio, auditorías y atención 24/7.",
       "href": "/industrias/bpo",
-      "linkLabel": "IT para BPO"
+      "linkLabel": "Ver soluciones para BPO"
     },
     {
       "title": "Restaurantes",
-      "body": "Un asistente de IA que atiende tu WhatsApp: toma pedidos y reservas, entiende notas de voz y responde en segundos, incluso en hora pico.",
+      "body": "Pedidos, reservas y preguntas atendidos por WhatsApp, incluso cuando el salón está lleno y el equipo no puede responder.",
       "href": "/industrias/restaurantes",
-      "linkLabel": "IA para restaurantes"
+      "linkLabel": "Ver soluciones para restaurantes"
     },
     {
-      "title": "Hotelería",
-      "body": "Asistentes que responden a tus huéspedes 24/7 en español e inglés, empujan la reserva directa e IT que sostiene la operación del hotel.",
+      "title": "Hoteles",
+      "body": "Atención bilingüe a cualquier hora, más reservas directas y una operación tecnológica que no depende de una sola persona.",
       "href": "/industrias/hoteleria",
-      "linkLabel": "IA e IT para hoteles"
+      "linkLabel": "Ver soluciones para hoteles"
     },
     {
       "title": "Pymes",
-      "body": "Tu departamento de IT sin tener que montarlo: soporte que responde, copias que sí restauran y automatización que devuelve horas — con precios publicados.",
+      "body": "Un responsable claro para el soporte, Microsoft 365, los equipos, la red, las copias de seguridad y las decisiones de tecnología.",
       "href": "/industrias/pymes",
-      "linkLabel": "IT para pymes"
+      "linkLabel": "Ver soluciones para pymes"
     },
     {
-      "title": "Educación",
-      "body": "IT administrado, seguridad para datos de estudiantes y automatización para la secretaría — a la medida del presupuesto y del calendario académico.",
+      "title": "Colegios y universidades",
+      "body": "Soporte para equipos, redes, plataformas, docentes y administrativos, con protección adecuada para la información de estudiantes y familias.",
       "href": "/industrias/educacion",
-      "linkLabel": "IT para educación"
+      "linkLabel": "Ver soluciones para educación"
     }
   ],
   "cta": {
-    "title": "¿No ves tu industria? Cuéntanos de ella.",
+    "title": "¿No ves una operación como la tuya? Cuéntanos de ella.",
     "subtitle": "Una llamada de 30 minutos basta para saber si entendemos tu operación lo suficiente para ayudar — y te lo decimos con franqueza en cualquier caso.",
     "buttonText": "Agenda una llamada"
   }

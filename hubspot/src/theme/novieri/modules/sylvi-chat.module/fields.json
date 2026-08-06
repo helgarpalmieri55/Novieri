@@ -25,7 +25,7 @@
     "name": "title_es",
     "label": "Panel title (Spanish)",
     "type": "text",
-    "default": "Sylvi · asistente IA de Novieri"
+    "default": "Sylvi · asistente virtual con IA"
   },
   {
     "name": "greeting",
@@ -38,7 +38,7 @@
     "name": "greeting_es",
     "label": "Greeting (Spanish)",
     "type": "text",
-    "default": "Hola, soy Sylvi. Cuéntame qué está frenando tu operación y te digo si somos las personas indicadas para resolverlo.",
+    "default": "Hola. Cuéntame qué quieres mejorar o qué problema está afectando tu operación. Te orientaré sobre el servicio, producto o primer paso que podría tener más sentido.",
     "allow_new_line": true
   },
   {
@@ -51,7 +51,7 @@
     "name": "disclaimer_es",
     "label": "AI disclosure line (Spanish)",
     "type": "text",
-    "default": "Respuestas generadas por IA — pueden fallar. No compartas contraseñas ni datos de pago por aquí."
+    "default": "Las respuestas son orientativas y pueden contener errores. No compartas contraseñas, datos de pago ni información confidencial."
   },
   {
     "name": "starters",
@@ -65,16 +65,20 @@
     "help_text": "Shown as chips under the greeting until the visitor writes something. Keep them short. One row per question, each with both languages.",
     "default": [
       {
-        "question": "What could you automate for us?",
-        "question_es": "¿Qué nos podrían automatizar?"
+        "question": "Automate our WhatsApp",
+        "question_es": "Quiero automatizar WhatsApp"
       },
       {
-        "question": "How does managed IT work?",
-        "question_es": "¿Cómo funciona el IT administrado?"
+        "question": "IT support for my company",
+        "question_es": "Necesito soporte para mi empresa"
       },
       {
-        "question": "What does a project cost?",
-        "question_es": "¿Cuánto cuesta un proyecto?"
+        "question": "Show me pricing",
+        "question_es": "Quiero revisar precios"
+      },
+      {
+        "question": "Talk to a person",
+        "question_es": "Hablar con una persona"
       }
     ],
     "children": [
@@ -102,7 +106,7 @@
     "name": "placeholder_es",
     "label": "Input placeholder (Spanish)",
     "type": "text",
-    "default": "Escribe tu pregunta…"
+    "default": "Escribe tu pregunta o describe el problema…"
   },
   {
     "name": "open_label",

@@ -60,16 +60,16 @@
     "slug": "restaurante-whatsapp-ia",
     "name": "Restaurante con IA en WhatsApp",
     "htmlTitle": "Caso de éxito: un restaurante de 10 empleados automatiza WhatsApp — Novieri",
-    "metaDescription": "Un restaurante de 10 empleados puso a trabajar nuestro asistente de IA para WhatsApp: respuestas en segundos, 24/7, y ventas un 20 % arriba según el dueño.",
+    "metaDescription": "Un restaurante de 10 empleados puso a trabajar nuestro asistente de IA para WhatsApp: respuestas en segundos, 24/7, y un aumento aproximado del 20 % en ventas, según reporta el dueño.",
     "hero": {
       "eyebrow": "caso de éxito",
-      "title": "El restaurante que dejó de perder ventas por WhatsApp.",
-      "intro": "Un restaurante de 10 empleados perdía ventas porque las respuestas por WhatsApp tardaban — y mantenerse al día exigía tener a alguien pendiente del teléfono todo el día. El asistente de IA para WhatsApp de Novieri, conectado en tiempo real con el software de gestión del restaurante, hoy responde en segundos a cualquier hora. El dueño reporta ventas alrededor de un 20 % arriba."
+      "title": "El restaurante que dejó de perder conversaciones de venta por WhatsApp.",
+      "intro": "Un restaurante de 10 empleados perdía conversaciones de venta porque las respuestas por WhatsApp tardaban — y mantenerse al día exigía tener a una persona prácticamente dedicada a vigilar el teléfono durante toda la jornada. El asistente de IA para WhatsApp de Novieri, conectado en tiempo real con el software de gestión del restaurante, hoy responde en segundos a cualquier hora. El dueño reporta un aumento aproximado del 20 % en ventas."
     },
     "stats": [
       {
         "value": "+20 %",
-        "label": "en ventas, según reporta el dueño"
+        "label": "Aumento aproximado reportado por el dueño"
       },
       {
         "value": "segundos",
@@ -77,12 +77,12 @@
       },
       {
         "value": "24/7",
-        "label": "el asistente atiende, de día y de noche"
+        "label": "Horario de atención automatizada"
       }
     ],
     "challenge": {
       "title": "Respuestas lentas, ventas perdidas",
-      "body": "<p>Los pedidos y las reservas llegaban por WhatsApp, pero responder dependía de quien pudiera agarrar el teléfono entre mesa y mesa. Justo cuando el restaurante se llenaba — y los mensajes se acumulaban — las respuestas se demoraban, y algunos clientes sencillamente dejaban de esperar. El dueño sabía que en ese vacío se estaban perdiendo ventas.</p><p>La solución provisional era peor: en un equipo de diez personas, alguien tenía que estar pendiente de WhatsApp todo el día. Un par de manos completo amarrado a un teléfono — y aun así nadie garantizaba una respuesta rápida de noche o en plena hora pico.</p>"
+      "body": "<p>Los pedidos y las reservas llegaban por WhatsApp, pero responder dependía de quien pudiera agarrar el teléfono entre mesa y mesa. Justo cuando el restaurante se llenaba — y los mensajes se acumulaban — las respuestas se demoraban, y algunos clientes sencillamente dejaban de esperar. El dueño sabía que en ese vacío se estaban perdiendo ventas.</p><p>La solución provisional era peor: en un equipo de diez personas, alguien tenía que estar pendiente de WhatsApp todo el día. Una persona prácticamente dedicada a vigilar el teléfono durante toda la jornada — y aun así nadie garantizaba una respuesta rápida de noche o en plena hora pico.</p>"
     },
     "solution": {
       "title": "Un asistente que responde — y actúa",
@@ -92,8 +92,8 @@
       "title": "Qué cambió",
       "items": [
         {
-          "title": "Ventas un 20 % arriba",
-          "body": "El dueño reporta alrededor de un 20 % más de ventas desde que el asistente entró en operación: pedidos que antes morían esperando respuesta ahora se atienden y quedan registrados."
+          "title": "Aumento aproximado del 20 % en ventas",
+          "body": "El dueño reporta un aumento aproximado del 20 % en ventas desde que el asistente entró en operación: pedidos que antes morían esperando respuesta ahora se atienden y quedan registrados."
         },
         {
           "title": "Respuestas en segundos, a toda hora",
@@ -106,11 +106,11 @@
       ]
     },
     "cta": {
-      "title": "¿También pierdes ventas por WhatsApp?",
+      "title": "¿También pierdes conversaciones de venta por WhatsApp?",
       "subtitle": "Agenda una demo de 30 minutos y te mostramos el asistente funcionando en un caso como el tuyo, sin compromiso.",
       "buttonText": "Agenda una demo"
     },
     "productHref": "/productos/asistente-ia-whatsapp",
-    "productLinkLabel": "Ver el Asistente de IA para WhatsApp"
+    "productLinkLabel": "Ver el asistente para WhatsApp"
   }
 }

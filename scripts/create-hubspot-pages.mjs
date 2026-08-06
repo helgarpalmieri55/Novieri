@@ -326,6 +326,10 @@ function esMeta() {
     "products/visitor-intelligence": es.meta.sol_visitorIntel,
     "products/vulnerability-management": es.meta.sol_sentinel,
     "products/ai-ecommerce": es.meta.sol_ventia,
+    // The legal pages were the last ES titles still in English.
+    "legal/privacy-policy": es.meta.legalPrivacy,
+    "legal/cookie-policy": es.meta.legalCookies,
+    "legal/terms-of-use": es.meta.legalTerms,
     "products/ai-websites": es.meta.sol_webDev,
   };
 }

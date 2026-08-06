@@ -1,13 +1,13 @@
 {
   "slug": "educacion",
   "lang": "es",
-  "name": "Educación",
-  "htmlTitle": "IT para colegios y educación — Novieri",
-  "metaDescription": "IT administrado, seguridad y automatización para colegios e institutos: equipo senior en Barranquilla, a la medida de un presupuesto educativo.",
+  "name": "Colegios y universidades",
+  "htmlTitle": "Tecnología e IA para colegios y universidades — Novieri",
+  "metaDescription": "TI administrada, seguridad y automatización para colegios y universidades: soporte para docentes y administrativos, a la medida de un presupuesto educativo.",
   "hero": {
-    "eyebrow": "industrias",
-    "title": "Cientos de equipos, plataformas y familias — y casi nadie en sistemas.",
-    "intro": "Un colegio o un instituto hoy corre sobre tecnología: salas de cómputo, plataformas académicas, comunicación con las familias. Casi siempre con una sola persona de sistemas, o ninguna. Le ponemos a tu institución un equipo senior, a la medida de un presupuesto educativo."
+    "eyebrow": "para quién trabajamos",
+    "title": "Un equipo de tecnología para toda la institución, sin ampliar la planta.",
+    "intro": "Administramos equipos, cuentas, redes, plataformas y copias de seguridad; apoyamos a docentes y administrativos; y protegemos la información de estudiantes y familias."
   },
   "pains": {
     "eyebrow": "la realidad",
@@ -26,7 +26,7 @@
         "body": "Requisitos, fechas, pagos, estado de la matrícula. Las mismas preguntas por WhatsApp y por teléfono, cientos de veces, mientras el trabajo de fondo espera."
       },
       {
-        "title": "Datos de menores, defensas de oficina",
+        "title": "Información sensible, protecciones insuficientes",
         "body": "Notas, historiales y datos de familias son información sensible protegida por ley, y suele estar detrás de contraseñas compartidas y copias que nadie prueba."
       }
     ]
@@ -36,20 +36,20 @@
     "title": "Tres formas de quitarte el peso.",
     "cards": [
       {
-        "title": "Tu área de sistemas, administrada",
-        "body": "Soporte para docentes y administrativos, gestión de equipos y cuentas, red y wifi, copias probadas y monitoreo — un área de IT sin tener que contratarla.",
+        "title": "TI administrada",
+        "body": "Soporte para docentes y administrativos, gestión de equipos y cuentas, red y wifi, copias probadas y monitoreo — un área de TI sin tener que contratarla.",
         "href": "/servicios/it-administrado",
-        "linkLabel": "Ver IT administrado"
+        "linkLabel": "Ver TI administrada"
       },
       {
-        "title": "Automatización para la secretaría",
-        "body": "Asistentes que responden las preguntas de siempre con la información de tu institución, y automatizaciones para matrículas, certificados y reportes. Horas devueltas cada semana.",
+        "title": "IA y automatización",
+        "body": "Asistentes que responden las preguntas de siempre con la información de tu institución, y automatizaciones para matrículas, certificados y reportes. Horas recuperadas cada semana.",
         "href": "/servicios/ia-y-automatizacion",
         "linkLabel": "Ver IA y automatización"
       },
       {
-        "title": "Seguridad para datos que no son tuyos",
-        "body": "MFA, accesos con privilegios mínimos, gestión de vulnerabilidades y copias con restauraciones reales — la base para custodiar datos de menores como corresponde.",
+        "title": "Ciberseguridad y cumplimiento",
+        "body": "Autenticación multifactor (MFA), accesos con privilegios mínimos, gestión de vulnerabilidades y copias con restauraciones reales — la base para custodiar la información de estudiantes y familias como corresponde.",
         "href": "/servicios/ciberseguridad-y-cumplimiento",
         "linkLabel": "Ver ciberseguridad y cumplimiento"
       }
@@ -79,7 +79,7 @@
   },
   "cta": {
     "title": "Revisemos tu institución antes de que empiece el próximo semestre.",
-    "subtitle": "Una llamada de 30 minutos para entender tu operación y decirte con franqueza qué arreglaríamos primero — y qué puede esperar.",
-    "buttonText": "Agenda una llamada"
+    "subtitle": "Una llamada de 30 minutos para entender tu operación y decirte con franqueza qué corregiríamos primero — y qué puede esperar.",
+    "buttonText": "Revisa la tecnología de tu institución"
   }
 }

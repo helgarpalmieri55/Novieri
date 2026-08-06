@@ -1741,7 +1741,11 @@
       "download": "Download PDF",
       "again": "Start over",
       "cta": "Book a 30-minute call",
-      "emailed": "We've emailed you a copy too."
+      "emailed": "We've emailed you a copy too.",
+      "strengths": "What you already have",
+      "risks": "Risks we see",
+      "priorities": "What we'd do first",
+      "print": "Save as PDF"
     },
     "errors": {
       "required": "Pick an option to continue.",
@@ -1974,7 +1978,8 @@
         ]
       }
     ],
-    "sampleLabel": "See a sample report"
+    "sampleLabel": "See a sample report",
+    "noScript": "The diagnostic needs JavaScript. Write to sales@novieri.com and we'll go through the questions with you."
   },
   "itConsulting": {
     "hero": {

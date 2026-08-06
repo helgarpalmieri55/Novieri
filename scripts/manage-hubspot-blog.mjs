@@ -251,8 +251,9 @@ if (create) {
     description: "Honest guides on managed IT, AI automation, security compliance, and nearshore teams — with real numbers.",
   });
   await setMeta(esBlog, {
-    html_title: "Insights — Novieri",
-    description: "Guías honestas sobre IT administrado, automatización con IA, cumplimiento y equipos nearshore — con números reales.",
+    name: "Guías y recursos",
+    html_title: "Guías y recursos — Novieri",
+    description: "Explicamos costos, riesgos, alternativas y criterios de decisión sobre TI administrada, IA, seguridad, cumplimiento y desarrollo de software. Sin exageraciones y con ejemplos prácticos.",
   });
   process.exit(0);
 }

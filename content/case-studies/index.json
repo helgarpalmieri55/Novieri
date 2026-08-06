@@ -25,16 +25,16 @@
   "es": {
     "slug": "casos-de-exito",
     "htmlTitle": "Casos de éxito — Novieri",
-    "metaDescription": "Proyectos reales de Novieri y lo que cambiaron, contados sin adornos. Nuestros clientes permanecen anónimos, salvo que ellos decidan lo contrario.",
+    "metaDescription": "Proyectos reales de Novieri: el problema inicial, lo que se implementó y los resultados observados. Algunos clientes permanecen anónimos por acuerdo; cuando eso ocurre, lo indicamos expresamente.",
     "hero": {
-      "eyebrow": "insights",
-      "title": "Cómo se ve cuando funciona.",
-      "intro": "Proyectos reales, con números reales, contados sin adornos. Nuestros clientes permanecen anónimos, salvo que ellos decidan lo contrario — los resultados son suyos, y el nombre también."
+      "eyebrow": "casos de éxito",
+      "title": "Resultados reales, con el contexto completo.",
+      "intro": "Proyectos reales explicados con el problema inicial, lo que se implementó, el tiempo de puesta en marcha y los resultados observados. Algunos clientes permanecen anónimos por acuerdo; cuando eso ocurre, lo indicamos expresamente."
     },
     "cards": [
       {
         "title": "Un restaurante de 10 empleados automatiza WhatsApp",
-        "body": "Las respuestas lentas por WhatsApp costaban ventas y amarraban a alguien al teléfono todo el día. Con el asistente de IA de Novieri conectado al software del restaurante, las respuestas salen en segundos — y el dueño reporta ventas un 20 % arriba.",
+        "body": "Las respuestas lentas por WhatsApp costaban conversaciones de venta y exigían tener a una persona prácticamente dedicada a vigilar el teléfono durante toda la jornada. Con el asistente de IA de Novieri conectado al software del restaurante, las respuestas salen en segundos — y el dueño reporta un aumento aproximado del 20 % en ventas.",
         "href": "/casos-de-exito/restaurante-whatsapp-ia",
         "linkLabel": "Leer el caso de éxito"
       }

@@ -25,7 +25,7 @@
       {% for post in contents %}
         <a href="{{ post.absolute_url }}"
            class="group grid gap-x-8 gap-y-1 px-6 py-6 transition-colors hover:bg-mist sm:grid-cols-[auto_1fr] sm:items-baseline{% if not loop.first %} border-t border-line{% endif %}">
-          <span class="idx-mono lowercase text-ink-faint sm:w-28">{{ post.publish_date|datetimeformat("%b %e, %Y") }}</span>
+          <span class="idx-mono lowercase text-ink-faint sm:w-28">{% if post.language and "es" in post.language|string %}{{ post.publish_date|format_datetime("d MMM yyyy", "America/Bogota", "es") }}{% else %}{{ post.publish_date|datetimeformat("%b %e, %Y") }}{% endif %}</span>
           <span>
             <span class="block text-lead font-medium text-ink group-hover:text-plum">{{ post.name }}</span>
             {% if post.meta_description %}

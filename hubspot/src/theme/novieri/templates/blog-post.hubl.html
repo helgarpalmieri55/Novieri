@@ -19,17 +19,18 @@
           <a href="{{ group.absolute_url }}" class="hover:text-plum">{{ group.public_title || "insights" }}</a>
         </p>
         <h1 class="reveal mt-3 max-w-[24ch]" style="--rd: 60ms">{{ content.name }}</h1>
+        {% set is_es = content.language and "es" in content.language|string %}
         <p class="reveal idx-mono mt-6 lowercase text-ink-faint" style="--rd: 120ms">
-          {{ content.publish_date|datetimeformat("%b %e, %Y") }}
+          {% if is_es %}{{ content.publish_date|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}{{ content.publish_date|datetimeformat("%b %e, %Y") }}{% endif %}
           {% if content.tag_list %} · {% for tag in content.tag_list %}{{ tag.name }}{% if not loop.last %} · {% endif %}{% endfor %}{% endif %}
         </p>
         {# The audit's author entity: a person with a role and a profile,
            not a logo. Name comes from the post's author; the role and link
            are his — this is a founder-written blog. #}
         <p class="reveal mt-2 text-caption text-ink-muted" style="--rd: 160ms">
-          {% if content.language and "es" in content.language|string %}Por{% else %}By{% endif %}
+          {% if is_es %}Por{% else %}By{% endif %}
           <a href="https://www.linkedin.com/in/helgar-palmieri-82726b16a/" rel="author" class="font-medium text-ink underline decoration-line underline-offset-2 hover:text-plum">{{ content.blog_post_author.display_name || "Helgar Palmieri" }}</a>
-          · Co-founder, Technology &amp; delivery
+          {% if is_es %}· Cofundador y director de tecnología{% else %}· Co-founder, Technology &amp; delivery{% endif %}
         </p>
       </div>
     </header>

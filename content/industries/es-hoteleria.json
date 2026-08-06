@@ -1,13 +1,13 @@
 {
   "slug": "hoteleria",
   "lang": "es",
-  "name": "Hotelería",
-  "htmlTitle": "IA e IT para hoteles — Novieri",
-  "metaDescription": "Asistentes de IA que responden a tus huéspedes 24/7 en español e inglés, más reserva directa e IT administrado para hoteles. Desde Barranquilla.",
+  "name": "Hoteles",
+  "htmlTitle": "Tecnología e IA para hoteles — Novieri",
+  "metaDescription": "Asistentes de IA que responden a tus huéspedes 24/7 en español e inglés, más reserva directa y TI administrada para hoteles. Desde Barranquilla.",
   "hero": {
-    "eyebrow": "industrias",
-    "title": "El huésped pregunta a las 11 de la noche. Alguien tiene que responder.",
-    "intro": "Las consultas llegan a toda hora, en español y en inglés, y recepción no da abasto. Operamos asistentes de IA que responden en segundos por WhatsApp y en tu sitio web, empujan la reserva directa y escalan a tu equipo cuando hace falta."
+    "eyebrow": "para quién trabajamos",
+    "title": "Atiende cada consulta y convierte más conversaciones en reservas directas.",
+    "intro": "Tus huéspedes escriben a cualquier hora, en español y en inglés. El asistente responde dudas, consulta disponibilidad, orienta hacia la reserva directa y entrega a recepción los casos que necesitan atención humana."
   },
   "pains": {
     "eyebrow": "la realidad",
@@ -36,28 +36,28 @@
     "title": "Tres formas de quitarte el peso.",
     "cards": [
       {
-        "title": "El asistente de WhatsApp",
-        "body": "Responde disponibilidad, tarifas y políticas con tu propia información, gestiona la reserva, entiende notas de voz y atiende en español e inglés — 24/7, y escala a recepción cuando hace falta.",
+        "title": "Asistente para WhatsApp",
+        "body": "Responde disponibilidad, tarifas y políticas con tu propia información, gestiona la reserva, entiende notas de voz y atiende en español e inglés — 24/7, y entrega a recepción los casos que lo requieren.",
         "href": "/productos/asistente-ia-whatsapp",
-        "linkLabel": "Ver el asistente de WhatsApp"
+        "linkLabel": "Ver el asistente para WhatsApp"
       },
       {
-        "title": "Un sitio que convierte en reserva directa",
+        "title": "Sitios web inteligentes",
         "body": "Tu sitio web moderno, bilingüe y rápido, con un asistente integrado que resuelve dudas al momento y lleva al huésped hasta el enlace de reserva — sin comisión de por medio.",
         "href": "/productos/sitios-web-con-ia",
-        "linkLabel": "Ver sitios web con IA"
+        "linkLabel": "Ver sitios web inteligentes"
       },
       {
-        "title": "IT que sostiene la operación",
-        "body": "Red, wifi, equipos, copias de seguridad probadas y monitoreo administrados por ingenieros senior — para que la tecnología del hotel no dependa de la suerte.",
+        "title": "TI administrada",
+        "body": "Red, wifi, equipos, copias de seguridad probadas y monitoreo administrados por un equipo con experiencia — para que la tecnología del hotel no dependa de una sola persona.",
         "href": "/servicios/it-administrado",
-        "linkLabel": "Ver IT administrado"
+        "linkLabel": "Ver TI administrada"
       }
     ]
   },
   "note": {
     "title": "La demo de nuestro sitio no es un dibujo.",
-    "body": "El chat de hotel que mostramos en novieri.com es el producto real que construimos y operamos: verifica disponibilidad, anota el check-out tarde, manda el enlace de reserva y escala a recepción cuando toca. Es bilingüe de nacimiento, porque el equipo que lo construye vive en los dos idiomas. Y como lo operamos nosotros, no compras un software para quedarte solo con él: si el asistente necesita aprender algo nuevo de tu hotel, se le enseña — y sigue funcionando."
+    "body": "El chat de hotel que mostramos en novieri.com es el producto real que construimos y operamos: verifica disponibilidad, anota el check-out tarde, manda el enlace de reserva y entrega el caso a recepción cuando corresponde. Es bilingüe desde el inicio, porque el equipo que lo construye vive en los dos idiomas. Y como lo operamos nosotros, no compras un software para quedarte solo con él: si el asistente necesita aprender algo nuevo de tu hotel, se le enseña — y sigue funcionando."
   },
   "faq": {
     "eyebrow": "preguntas frecuentes",
@@ -69,17 +69,17 @@
       },
       {
         "q": "¿Los huéspedes no prefieren hablar con una persona?",
-        "a": "Para lo importante, sí — y por eso el asistente escala a recepción con todo el historial cuando la conversación lo amerita. Pero para disponibilidad, tarifas y preguntas de siempre, lo que el huésped prefiere es una respuesta en segundos, a cualquier hora."
+        "a": "Para lo importante, sí — y por eso el asistente entrega la conversación a recepción con todo el historial cuando el caso lo amerita. Pero para disponibilidad, tarifas y preguntas de siempre, lo que el huésped prefiere es una respuesta en segundos, a cualquier hora."
       },
       {
         "q": "Soy un hotel independiente, no una cadena. ¿Esto es para mí?",
-        "a": "Sí. El asistente está pensado para operaciones independientes y el IT administrado arranca con lo que ya tienes — no cambiamos nada solo por cambiar. Si manejas varias propiedades, también: cada una con sus datos separados."
+        "a": "Sí. El asistente está pensado para operaciones independientes y la TI administrada arranca con lo que ya tienes — no cambiamos nada solo por cambiar. Si manejas varias propiedades, también: cada una con sus datos separados."
       }
     ]
   },
   "cta": {
     "title": "Míralo respondiendo por tu hotel.",
     "subtitle": "Agenda una demo de 30 minutos y te mostramos el asistente con tus habitaciones, tus tarifas y tus políticas, sin compromiso.",
-    "buttonText": "Agenda una demo"
+    "buttonText": "Mira cómo atendería las consultas de tu hotel"
   }
 }

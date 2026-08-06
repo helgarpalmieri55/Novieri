@@ -591,7 +591,9 @@ function aboutWidgets() {
       body: {
         title: a.location.title,
         intro: a.location.body,
-        footnote: "barranquilla ·· gmt-5 ·· es / en",
+        footnote: locale === "es"
+          ? "Barranquilla · Colombia · español e inglés · horario compatible con EE. UU."
+          : "Barranquilla · Colombia · English & Spanish · US Eastern-compatible hours",
         picture: { src: "", alt: "" },
       },
     },
@@ -803,6 +805,13 @@ function diagnosticWidgets() {
         gate_submit: d.gate.submit,
         gate_sending: d.gate.sending,
         result_title: d.result.title,
+        // These four rendered their English defaults on both languages until
+        // the review caught them — the fill simply never mapped them.
+        result_strengths: d.result.strengths,
+        result_risks: d.result.risks,
+        result_priorities: d.result.priorities,
+        result_print: d.result.print,
+        no_script: d.noScript,
         result_cta: d.result.cta,
         result_cta_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
         result_emailed: d.result.emailed,
