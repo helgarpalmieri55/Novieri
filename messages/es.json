@@ -715,7 +715,7 @@
         },
         {
           "q": "¿Ustedes emiten la certificación?",
-          "a": "No — la auditoría la hace siempre un tercero independiente. Nosotros preparamos tu infraestructura, tus políticas y tu evidencia para que llegues a esa auditoría a pasar, no a descubrir problemas."
+          "a": "No — la auditoría la hace siempre un tercero independiente. Nosotros preparamos tu infraestructura, tus políticas y tu evidencia para que la auditoría independiente empiece con menos sorpresas y con controles claramente documentados."
         },
         {
           "q": "¿Esto no es carísimo?",
@@ -1017,6 +1017,10 @@
           {
             "title": "Rutas alternativas ante fallas",
             "body": "Cada integración viaja firmada y verificada, y si una integración no está disponible, el sistema activa una ruta alternativa y registra el incidente. Las transcripciones y las métricas quedan disponibles para tu equipo."
+          },
+          {
+            "title": "Consentimiento anunciado desde el inicio",
+            "body": "Cada llamada empieza avisando que puede ser grabada y transcrita — un diseño pensado para normas de consentimiento estrictas, como las de Florida, y para la ley colombiana. Las transcripciones quedan en el CRM y se depuran automáticamente según el plazo definido."
           }
         ],
         "built": {
@@ -1029,7 +1033,27 @@
           "fastapi",
           "hubspot",
           "microsoft bookings"
-        ]
+        ],
+        "demo": {
+          "eyebrow": "escúchala",
+          "title": "Escucha una llamada antes de agendar la tuya.",
+          "intro": "Dos conversaciones simuladas: la recepcionista atendiendo un restaurante, en español y en inglés. Fíjate en lo primero que hace — avisar que la llamada puede ser grabada y transcrita.",
+          "items": [
+            {
+              "label": "Español — una reserva para cenar",
+              "file": "es",
+              "transcriptLabel": "Leer la transcripción",
+              "transcript": "Recepcionista: Gracias por llamar a Casa Marina. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola, ¿tienen mesa para cuatro este sábado, como a las ocho?\nRecepcionista: Déjame revisar... el sábado tengo disponible a las ocho y quince o a las ocho y cuarenta y cinco. ¿Cuál te sirve más?\nCliente: A las ocho y quince, perfecto. Ah, y una persona del grupo es alérgica a los mariscos. ¿La cocina puede con eso?\nRecepcionista: Claro que sí — dejo anotada la alergia a los mariscos en la reserva. ¿Me regalas un nombre y un celular para la confirmación?\nCliente: Claro: Andrés Movilla, tres cero cero, siete uno cuatro, veintidós, treinta y uno.\nRecepcionista: Listo, Andrés — mesa para cuatro, el sábado a las ocho y quince, con la alergia anotada. Te llega la confirmación por mensaje de texto. ¿Algo más?\nCliente: No, eso es todo. ¡Muchas gracias!\nRecepcionista: Con mucho gusto — nos vemos el sábado."
+            },
+            {
+              "label": "Inglés — a dinner reservation",
+              "file": "en",
+              "transcriptLabel": "Leer la transcripción",
+              "transcript": "Receptionist: Thank you for calling Casa Marina. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you tonight?\nCaller: Hi — do you have a table for four this Saturday, around eight?\nReceptionist: Let me check... on Saturday I have eight fifteen or eight forty-five available. Which works better for you?\nCaller: Eight fifteen is great. Oh — and one of us has a shellfish allergy. Can the kitchen handle that?\nReceptionist: Absolutely — I'll note the shellfish allergy on the reservation so the kitchen sees it. May I have a name and a mobile number for the confirmation?\nCaller: Sure — Sam Rivera, five five five, zero one four two.\nReceptionist: Perfect, Sam — table for four, Saturday at eight fifteen, shellfish allergy noted. You'll get a text confirmation in a moment. Anything else I can help with?\nCaller: No, that's everything. Thanks!\nReceptionist: Our pleasure — see you Saturday."
+            }
+          ],
+          "footnote": "Son conversaciones simuladas con voces de IA para demostración — no grabaciones de llamadas reales de clientes. Casa Marina es un restaurante ficticio."
+        }
       },
       "whatsapp": {
         "name": "Asistente para WhatsApp",

@@ -233,9 +233,10 @@ const SOLUTIONS = [
 const SOLUTION_SLOTS = {
   hero: "main-module-2",     // page-hero
   what: "main-module-3",     // dot-list
-  built: "main-module-4",    // split-note
-  powered: "main-module-5",  // founders-band
-  cta: "main-module-6",      // cta-band
+  demo: "main-module-4",     // audio-demo (renders only when given items)
+  built: "main-module-5",    // split-note
+  powered: "main-module-6",  // founders-band
+  cta: "main-module-7",      // cta-band
 };
 
 /** Mirrors solutions.hubl.html — and services-index.hubl.html, which is the
@@ -465,6 +466,22 @@ function solutionWidgets(key) {
         intro: "",
         tone: "light",
         items: p.features.map((f) => ({ item_title: f.title, item_body: f.body })),
+      },
+    },
+    // Only products with a `demo` block get playable audio; for the rest the
+    // module receives no items and renders nothing.
+    [SOLUTION_SLOTS.demo]: {
+      body: {
+        eyebrow: p.demo?.eyebrow || "",
+        title: p.demo?.title || "",
+        intro: p.demo?.intro || "",
+        items: (p.demo?.items || []).map((i) => ({
+          item_label: i.label,
+          item_file: i.file,
+          item_transcript: i.transcript || "",
+          item_transcript_label: i.transcriptLabel || "",
+        })),
+        footnote: p.demo?.footnote || "",
       },
     },
     // The engineering, kept below the part written for the buyer. The stack
