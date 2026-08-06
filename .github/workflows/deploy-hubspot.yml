@@ -102,6 +102,12 @@ jobs:
         run: |
           set -euo pipefail
           hs project validate --use-env
+          # The demo recordings go to the File Manager, not the theme: the
+          # theme file system accepts only web assets and silently drops
+          # .mp3, which left the audio-demo module rendering src="". The
+          # File Manager serves them at /hubfs/audio/<name>.mp3, which is
+          # what the module hardcodes.
+          hs filemanager upload files/audio audio --use-env
           # --force skips every confirmation prompt. Without it the CLI waits
           # on stdin, gets nothing on a runner, and either uploads nothing or —
           # when a component has been deleted — fails the whole deploy with

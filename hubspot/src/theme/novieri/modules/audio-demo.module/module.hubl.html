@@ -8,7 +8,12 @@
    that moves while the call plays, and a seekable progress bar. The native
    <audio controls> ships in the markup and is the no-JS experience — the
    script swaps it for the styled one, so nothing depends on JS to be
-   playable. get_asset_url only takes literal paths, so each recording the
+   playable.
+
+   The recordings live in the File Manager (/hubfs/audio), NOT in the theme:
+   HubSpot's theme file system accepts only web assets and silently drops
+   .mp3 on upload — the section rendered with src="" until the files moved.
+   The deploy workflow uploads hubspot/files/audio there. Each recording the
    module can play is a branch here, chosen by a field; the legacy en/es
    values map to the restaurant files they used to name.
 
@@ -25,17 +30,17 @@
     <div class="grid gap-5 sm:grid-cols-2">
       {% for item in module.items %}
         {% if item.item_file == "es" or item.item_file == "restaurant-es" %}
-          {% set src = get_asset_url("../../audio/receptionist-demo-restaurant-es.mp3") %}
+          {% set src = "/hubfs/audio/receptionist-demo-restaurant-es.mp3" %}
         {% elif item.item_file == "hotel-en" %}
-          {% set src = get_asset_url("../../audio/receptionist-demo-hotel-en.mp3") %}
+          {% set src = "/hubfs/audio/receptionist-demo-hotel-en.mp3" %}
         {% elif item.item_file == "hotel-es" %}
-          {% set src = get_asset_url("../../audio/receptionist-demo-hotel-es.mp3") %}
+          {% set src = "/hubfs/audio/receptionist-demo-hotel-es.mp3" %}
         {% elif item.item_file == "business-en" %}
-          {% set src = get_asset_url("../../audio/receptionist-demo-business-en.mp3") %}
+          {% set src = "/hubfs/audio/receptionist-demo-business-en.mp3" %}
         {% elif item.item_file == "business-es" %}
-          {% set src = get_asset_url("../../audio/receptionist-demo-business-es.mp3") %}
+          {% set src = "/hubfs/audio/receptionist-demo-business-es.mp3" %}
         {% else %}
-          {% set src = get_asset_url("../../audio/receptionist-demo-restaurant-en.mp3") %}
+          {% set src = "/hubfs/audio/receptionist-demo-restaurant-en.mp3" %}
         {% endif %}
         <div class="ad-card reveal rounded-2xl border border-line p-6">
           <div class="flex items-center gap-4">
