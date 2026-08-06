@@ -21,7 +21,9 @@
       {% for card in module.cards %}
         <a href="{{ card.card_link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7" style="--rd: {{ loop.index0 * 70 }}ms">
           <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.card_colour }}">··</span>
-          <h3>{{ card.card_name }}</h3>
+          {# Explicit ink: on the dark band the section's light text colour
+             inherits into the white card and the title all but vanishes. #}
+          <h3 class="text-ink">{{ card.card_name }}</h3>
           <p class="grow text-small text-ink-muted">{{ card.card_tagline }}</p>
           <span class="flex flex-wrap gap-1.5">
             {% for tag in card.card_tags|split(",") %}
