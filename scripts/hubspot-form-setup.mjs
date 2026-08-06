@@ -226,20 +226,28 @@ const TEAM_OPTIONS = [
   { label: "21–50", value: "21_50" },
   { label: "50+", value: "50_plus" },
 ];
-const teamProp = await api(`/crm/v3/properties/contacts/${TEAM_PROP}`).catch(() => null);
+let teamProp = await api(`/crm/v3/properties/contacts/${TEAM_PROP}`).catch(() => null);
 if (!teamProp && !dryRun) {
-  await api("/crm/v3/properties/contacts", {
-    method: "POST",
-    body: JSON.stringify({
-      name: TEAM_PROP,
-      label: "People affected (website form)",
-      groupName: "contactinformation",
-      type: "enumeration",
-      fieldType: "select",
-      options: TEAM_OPTIONS.map((o, n) => ({ ...o, description: "", displayOrder: n, hidden: false })),
-    }),
-  });
-  console.log(`created contact property ${TEAM_PROP}`);
+  try {
+    teamProp = await api("/crm/v3/properties/contacts", {
+      method: "POST",
+      body: JSON.stringify({
+        name: TEAM_PROP,
+        label: "People affected (website form)",
+        groupName: "contactinformation",
+        type: "enumeration",
+        fieldType: "select",
+        options: TEAM_OPTIONS.map((o, n) => ({ ...o, description: "", displayOrder: n, hidden: false })),
+      }),
+    });
+    console.log(`created contact property ${TEAM_PROP}`);
+  } catch (e) {
+    // The private app can edit forms but not mint contact properties. The
+    // phone field rides on a default property and ships regardless; this one
+    // waits for the scope rather than failing the whole run.
+    console.log(`cannot create ${TEAM_PROP}: ${String(e.message).slice(0, 120)}`);
+    console.log("add the crm.schemas.contacts.write scope to the private app and re-run to get the team-size field.");
+  }
 }
 
 function hasField(patch, name) {
@@ -270,7 +278,7 @@ const fieldDefs = (lang) => [
     hidden: false,
     fieldType: "phone",
   },
-  {
+  ...(teamProp ? [{
     objectTypeId: "0-1",
     name: TEAM_PROP,
     label: lang === "es" ? "¿Cuántas personas están afectadas?" : "How many people are affected?",
@@ -278,7 +286,7 @@ const fieldDefs = (lang) => [
     hidden: false,
     fieldType: "dropdown",
     options: TEAM_OPTIONS.map((o, n) => ({ ...o, description: "", displayOrder: n })),
-  },
+  }] : []),
 ];
 insertFields(enPatch, fieldDefs("en"));
 insertFields(esBody, fieldDefs("es"));
