@@ -43,7 +43,7 @@
       },
       {
         "title": "Vulnerability management that runs continuously",
-        "body": "Asset inventory, safe scanning, AI-assisted prioritization, and remediation followed from found to fixed to verified — with reports an auditor accepts.",
+        "body": "Asset inventory, safe scanning, AI-assisted prioritization, and remediation followed from found to fixed to verified — with reports designed to support SOC 2 and PCI DSS evidence collection.",
         "href": "/products/vulnerability-management",
         "linkLabel": "See vulnerability management"
       },

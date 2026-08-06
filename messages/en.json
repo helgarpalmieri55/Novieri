@@ -30,7 +30,7 @@
     },
     "contact": {
       "title": "Contact — Novieri",
-      "description": "Tell us about your case or book a call directly with the founders. Barranquilla, Colombia — working US Eastern hours."
+      "description": "Tell us about your case or book a call directly with the founders. Barranquilla, Colombia — Eastern Time coverage."
     },
     "notFound": {
       "title": "Page not found — Novieri"
@@ -89,7 +89,7 @@
     },
     "diagnostic": {
       "title": "Technology Self-Diagnosis — Novieri",
-      "description": "Ten questions about your operation and a PDF report with your level, the risks we see, and what to prioritise. Takes three minutes."
+      "description": "Ten questions about your operation and a PDF report with your level, the risks we see, and what to prioritize. Takes three minutes."
     },
     "itConsulting": {
       "title": "IT consulting — Novieri",
@@ -385,7 +385,7 @@
     "packagesTitle": "Packages",
     "packagesIntro": "Every operation is different, so the price comes after we understand yours. These are the shapes the work usually takes.",
     "faqTitle": "Frequently asked questions",
-    "ctaTitle": "Shall we talk about your case?",
+    "ctaTitle": "Let’s talk about your goals.",
     "ctaSubtitle": "A 30-minute call to understand your operation and tell you, frankly, whether we can help."
   },
   "ai": {
@@ -405,7 +405,7 @@
           "body": "Assistants that read email, classify requests, draft responses, and execute tasks inside your systems."
         },
         {
-          "title": "Chatbots on your knowledge",
+          "title": "Knowledge-grounded AI assistants",
           "body": "Customer and internal support with answers grounded in your documents and policies — not made up."
         },
         {
@@ -429,7 +429,7 @@
       "tiers": [
         {
           "name": "A two-week diagnostic",
-          "blurb": "Fixed price, two weeks. We look at how the work really moves through your business and find what a machine could take over. At the end you get a short list, ordered by what it saves you. No commitment afterwards."
+          "blurb": "Fixed price, two weeks. We look at how the work really moves through your business and identify repetitive tasks that can be automated safely. At the end you get a short list, ordered by what it saves you. No commitment afterwards."
         },
         {
           "name": "Your first automation",
@@ -525,7 +525,7 @@
     "hero": {
       "eyebrow": "managed it",
       "title": "Your IT department, without having to build one.",
-      "promise": "Support that answers, computers that work, backups that actually restore, and a network that stays up. We run your technology to big-company standards, at a fraction of the cost of an internal team."
+      "promise": "Support that answers, computers that work, backups that actually restore, and a network that stays up. We run your technology to big-company standards, at a predictable monthly cost, without the overhead of building a full internal department."
     },
     "what": {
       "items": [
@@ -581,7 +581,7 @@
           "a": "Every plan has response times agreed in writing by severity. A down workstation doesn't wait like a printer does; urgent issues get attention in minutes, not days."
         },
         {
-          "q": "We already have someone who \"knows computers\". Why change?",
+          "q": "We already have someone who helps when technology breaks. What changes with managed IT?",
           "a": "Because your operation depends on that person being available, documenting things, and knowing security. We leave everything documented, monitored, and backed by a team — and we answer under a service agreement, not as a favor."
         },
         {
@@ -590,7 +590,7 @@
         },
         {
           "q": "Do you work with US-based teams?",
-          "a": "Yes — that's the point of being in Barranquilla: we operate on US Eastern hours with native bilingual communication, at nearshore rates. Remote-first, with the same standards a US MSP would offer."
+          "a": "Yes — that's the point of being in Barranquilla: we operate on Eastern Time with native bilingual communication, at nearshore rates. Remote-first, with the same standards a US MSP would offer."
         }
       ]
     },
@@ -662,7 +662,7 @@
         },
         {
           "title": "SOC 2 / PCI DSS readiness",
-          "body": "Gap assessment, remediation plan, and evidence support until you pass the audit."
+          "body": "Gap assessment, remediation plan, and evidence preparation and support throughout the independent audit process."
         },
         {
           "title": "Identity & email protection",
@@ -709,11 +709,11 @@
         },
         {
           "q": "Do you issue the certification?",
-          "a": "No — the audit is always performed by an independent third party. We prepare your infrastructure, policies, and evidence so you walk into that audit to pass it, not to discover problems."
+          "a": "No — the audit is always performed by an independent third party. We prepare your infrastructure, policies, and evidence so the independent audit begins with fewer surprises and clearly documented controls."
         },
         {
           "q": "Isn't this expensive?",
-          "a": "It costs a fraction of what an incident does: the ransom, the days down, the customers lost. We start with the baseline — the essentials done right — and grow from there based on your actual risk."
+          "a": "We begin with the highest-priority controls — the essentials done right — and scale the engagement according to your actual risk, customer requirements, and budget."
         }
       ]
     },
@@ -776,12 +776,12 @@
         },
         {
           "title": "Operation & evolution",
-          "body": "We don't deliver and disappear: we monitor, fix, and evolve the software on a a set number of hours each month."
+          "body": "We don't deliver and disappear: we monitor, fix, and evolve the software on a set number of hours each month."
         }
       ]
     },
     "how": {
-      "caption": "How we build: a person sets the goal, an orchestrator decomposes it and delegates to specialised agents working in parallel, and nothing merges without human approval."
+      "caption": "How we build: a person sets the goal, an orchestrator decomposes it and delegates to specialized agents working in parallel, and nothing is released without human review."
     },
     "packages": {
       "tiers": [
@@ -853,7 +853,7 @@
     "hero": {
       "eyebrow": "about",
       "title": "Two founders, and nobody in between.",
-      "intro": "Novieri is the two people who built it: the person who designs and runs the technology, and the person who owns the relationship. Family-run in how it treats you, enterprise in what it delivers."
+      "intro": "Novieri is the two people who built it: the person who designs and runs the technology, and the person who owns the relationship. Founder-led service, enterprise-grade execution."
     },
     "story": {
       "title": "The story",
@@ -870,14 +870,14 @@
       "partner": {
         "name": "Sylvana Nova",
         "role": "Co-founder · Commercial Strategy & Client Experience",
-        "bio": "Business administrator and commercial leader with more than ten years of experience working directly with clients. At Novieri, she turns operational needs into clear priorities, strong business cases, and realistic plans of action.\nSylvana supports each engagement from the initial conversation through implementation and adoption, connecting the client's needs with practical, measurable, and sustainable results.",
+        "bio": "Business strategist and client experience leader with more than ten years of experience working directly with clients. At Novieri, she turns operational needs into clear priorities, strong business cases, and realistic plans of action.\nSylvana supports each engagement from the initial conversation through implementation and adoption, connecting the client's needs with practical, measurable, and sustainable results.",
         "photoAlt": "Sylvana Nova, co-founder, commercial and client relationships"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
     "location": {
       "title": "From Barranquilla, for two markets",
-      "body": "Barranquilla gives us something uncommon: the same time zone as the US East Coast, costs that allow fair rates, and a technical talent pool that grows every year. That's how we can serve a local SMB in the morning and a client in New York in the afternoon — same team, same standard."
+      "body": "Barranquilla gives us something uncommon: full working-day overlap with the US East Coast — the same time in winter, one hour behind during daylight saving — costs that allow fair rates, and a technical talent pool that grows every year. That's how we can serve a local SMB in the morning and a client in New York in the afternoon — same team, same standard."
     },
     "cta": {
       "title": "Let's work together.",
@@ -917,7 +917,7 @@
         "email": "Please enter a valid email.",
         "message": "Even one line helps."
       },
-      "consentNote": "By submitting this form you authorise the processing of your data under our privacy policy."
+      "consentNote": "By submitting this form you authorize the processing of your data under our privacy policy."
     },
     "booking": {
       "title": "Prefer to just book a time?",
@@ -928,7 +928,7 @@
     "aside": {
       "whatsappLabel": "Message us on WhatsApp",
       "emailLabel": "Or by email",
-      "location": "Barranquilla, Colombia · Working US Eastern hours"
+      "location": "Barranquilla, Colombia · Eastern Time coverage"
     }
   },
   "whatsapp": {
@@ -984,13 +984,13 @@
           "crm"
         ],
         "hero": {
-          "title": "No call goes unanswered again.",
+          "title": "Answer more calls — day, night, and during peak demand.",
           "promise": "An AI receptionist that picks up your sales line in seconds, in a natural voice: it answers questions from your company's information, captures the caller's details into your CRM, warm-transfers to your team during business hours, and books meetings when nobody's in."
         },
         "features": [
           {
             "title": "Answers every call",
-            "body": "Every inbound call is attended instantly, during business hours or at midnight — no more full voicemail boxes and lost leads."
+            "body": "Calls are answered within seconds, during business hours or at midnight — no more full voicemail boxes and lost leads."
           },
           {
             "title": "Answers from your knowledge",
@@ -1010,7 +1010,7 @@
           },
           {
             "title": "Secure by design",
-            "body": "Every integration call is signed and verified, transcripts are purged automatically, and failures degrade gracefully — the conversation never drops."
+            "body": "Every integration call is signed and verified, transcripts are purged automatically, and integration failures follow a defined fallback and escalation path."
           }
         ],
         "built": {
@@ -1186,7 +1186,7 @@
         ],
         "hero": {
           "title": "A sales platform with an AI salesperson inside.",
-          "promise": "Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI sales agent that attends every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
+          "promise": "Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI shopping assistant that helps every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
         },
         "features": [
           {
@@ -1198,7 +1198,7 @@
             "body": "A fast storefront with catalog, variants, cart, and checkout — the solid base of a serious sales operation."
           },
           {
-            "title": "Multi-store by birth",
+            "title": "Built for multiple brands",
             "body": "Several brands or stores on one platform, each with isolated data and its own visual identity — down to the typography."
           },
           {
@@ -1206,11 +1206,11 @@
             "body": "Products, orders, and customers managed from a dedicated admin application."
           },
           {
-            "title": "Pluggable payments",
+            "title": "Flexible payment integrations",
             "body": "A swappable payment-provider architecture, ready to adapt to each market's payment methods."
           },
           {
-            "title": "Engineering that holds",
+            "title": "Production-ready architecture",
             "body": "A TypeScript monorepo with a dedicated API, a typed database schema, and automated tests against real databases."
           }
         ],
@@ -1344,15 +1344,15 @@
         "features": [
           {
             "title": "A list of everything you have",
-            "body": "Most companies do not have one. It keeps a running inventory of every computer, server and device on your network, and only ever looks at what you have authorised."
+            "body": "Most companies do not have one. It keeps a running inventory of every computer, server and device on your network, and only ever looks at what you have authorized."
           },
           {
-            "title": "It checks without breaking anything",
-            "body": "The checks run in a mode that only looks — never pushes. Your systems keep working while it runs, including during business hours."
+            "title": "Non-intrusive by default",
+            "body": "Authorized assets are scanned with non-intrusive settings by default — active testing is separately approved. Your systems keep working while it runs, including during business hours."
           },
           {
             "title": "It knows what is being attacked right now",
-            "body": "Every weakness it finds is matched against the public catalogues of what criminals are actively exploiting, so urgent means urgent rather than theoretical."
+            "body": "Every weakness it finds is matched against the public catalogs of what criminals are actively exploiting, so urgent means urgent rather than theoretical."
           },
           {
             "title": "It tells you what to fix first",
@@ -1363,13 +1363,13 @@
             "body": "From found, to fixed, to checked again. If you decide to accept a risk instead of fixing it, that decision expires and comes back to you."
           },
           {
-            "title": "Reports an auditor accepts",
-            "body": "One report for the board, one for whoever does the work, and the evidence file a SOC 2 or PCI DSS auditor asks for."
+            "title": "Evidence-ready reporting",
+            "body": "One report for the board, one for whoever does the work, and reports designed to support SOC 2 and PCI DSS evidence collection."
           }
         ],
         "built": {
           "title": "Defensive security, with the guardrails written into the code.",
-          "body": "Authorised scope is allowlisted and enforced default-deny, safe mode is forced in code rather than configured, and every action lands in an audit log that cannot be edited. Role-based access control and multi-factor authentication server-side, hardened containerised deployment, and a large automated test suite behind all of it."
+          "body": "Authorized scope is allowlisted and enforced default-deny, safe mode is forced in code rather than configured, and every action lands in an audit log that cannot be edited. Role-based access control and multi-factor authentication server-side, hardened containerized deployment, and a large automated test suite behind all of it."
         },
         "stack": [
           "fastapi",
@@ -1390,7 +1390,7 @@
         ],
         "hero": {
           "title": "A site that doesn't just look good. It works.",
-          "promise": "We design and build commercial websites with the AI features we already run in production: assistants that attend your visitors, search that understands questions, bilingual content, and visitor intelligence wired in — all with the design and speed standard you're seeing on this very page."
+          "promise": "We design and build commercial websites with the AI features we already run in production: AI assistants that help and engage your visitors, search that understands questions, bilingual content, and visitor intelligence wired in — all with the design and speed standard you're seeing on this very page."
         },
         "features": [
           {
@@ -1402,8 +1402,8 @@
             "body": "An assistant trained on your information attends visitors on your site — and can connect to WhatsApp or your phone line."
           },
           {
-            "title": "Bilingual by birth",
-            "body": "Spanish and English with localized URLs and international SEO done right — like this site."
+            "title": "Built for English and Spanish",
+            "body": "Spanish and English with localized URLs, hreflang annotations, and clean canonical structure built in."
           },
           {
             "title": "Visitor intelligence",
@@ -1591,7 +1591,7 @@
             "Strictly necessary: we store your cookie decision in your browser's local storage (key “novieri-consent”) so we don't ask again on every visit. It does not identify individuals and is not shared with third parties.",
             "Analytics and measurement: if you accept them, we activate a web analytics tool that tells us how many people visit the site and which pages they read, in aggregate. We use it to improve the content, not to profile people.",
             "CRM and attribution (HubSpot): if you accept, we load HubSpot's script, which sets the __hstc, hubspotutk, __hssc, and __hssrc cookies. They recognise your browser between visits and link the form you submit to the pages you read beforehand, so we know which content was useful. If you reject them, the forms still work — they simply arrive without that history.",
-            "Form security (Google reCAPTCHA): when you start typing in the contact form or the self-diagnosis we load reCAPTCHA v3, which analyses session behaviour to tell people from bots and may set Google cookies. It is a strictly necessary security measure that keeps those forms usable; without it we cannot keep them working. Google's Privacy Policy and Terms of Service apply.",
+            "Form security (Google reCAPTCHA): when you start typing in the contact form or the self-diagnosis we load reCAPTCHA v3, which analyzes session behavior to tell people from bots and may set Google cookies. It is a strictly necessary security measure that keeps those forms usable; without it we cannot keep them working. Google's Privacy Policy and Terms of Service apply.",
             "Third-party functional: when you open meeting scheduling or the WhatsApp chat, the relevant provider may set its own cookies in your browser, subject to its policies.",
             "Advertising: we do not use advertising or cross-site tracking cookies."
           ]
@@ -1731,7 +1731,7 @@
     },
     "preview": {
       "title": "Your preliminary level",
-      "body": "This is the quick calculation from your answers. The full report analyses each point and prioritises what to do first."
+      "body": "This is the quick calculation from your answers. The full report analyzes each point and prioritizes what to do first."
     },
     "gate": {
       "title": "Where should we send the report?",
@@ -1762,7 +1762,7 @@
       "name": "Enter your name.",
       "email": "Enter a valid email.",
       "company": "Enter your company name.",
-      "consent": "We need your authorisation to send you the report.",
+      "consent": "We need your authorization to send you the report.",
       "failed": "We couldn't generate the report right now. Write to {email} and we'll send it over.",
       "notConfigured": "The automatic diagnostic isn't available right now. Write to {email} and we'll go through it with you."
     },
@@ -1995,7 +1995,7 @@
     "hero": {
       "eyebrow": "it consulting",
       "title": "Decide what to buy, what to fix, and what to leave alone.",
-      "promise": "Most of the money lost on technology is lost before anything is installed — the wrong system, licences nobody uses, a supplier who has you locked in. We look at what you have, what it costs and where it is heading, and tell you what to do. Including the times the answer is: not yet."
+      "promise": "Most of the money lost on technology is lost before anything is installed — the wrong system, licenses nobody uses, a supplier who has you locked in. We look at what you have, what it costs and where it is heading, and tell you what to do. Including the times the answer is: not yet."
     },
     "what": {
       "items": [
@@ -2005,7 +2005,7 @@
         },
         {
           "title": "What to buy, and what not to",
-          "body": "We read the quotes with you: what the licence really includes, what it will cost in year three, and whether the cheaper option leaves you stuck."
+          "body": "We read the quotes with you: what the license really includes, what it will cost in year three, and whether the cheaper option leaves you stuck."
         },
         {
           "title": "The architecture, before you build it",
@@ -2082,21 +2082,21 @@
           {
             "service": "Core",
             "price_usd": "$99 – 115",
-            "price_cop": "$95.000 – 115.000",
+            "price_cop": "COP 95,000 – 115,000",
             "unit": "per user / month",
             "note": "Helpdesk, monitoring, updates, and backups — the essentials, run properly."
           },
           {
             "service": "Complete",
             "price_usd": "$139 – 160",
-            "price_cop": "$145.000 – 170.000",
+            "price_cop": "COP 145,000 – 170,000",
             "unit": "per user / month",
             "note": "Core plus managed security and Microsoft 365 administration. Most teams land here."
           },
           {
             "service": "Premium",
             "price_usd": "$189 – 220",
-            "price_cop": "$195.000 – 230.000",
+            "price_cop": "COP 195,000 – 230,000",
             "unit": "per user / month",
             "note": "Complete plus compliance support and vCIO guidance, for teams with auditors to answer."
           }
@@ -2110,30 +2110,30 @@
           {
             "service": "AI Opportunity Assessment",
             "price_usd": "$1,500",
-            "price_cop": "$2.900.000",
+            "price_cop": "COP 2,900,000",
             "unit": "fixed · 2 weeks",
             "note": "Credited toward your first project if you go ahead."
           },
           {
             "service": "Automation pilot",
             "price_usd": "$4,900 – 15,000",
-            "price_cop": "$9 – 18 millones",
+            "price_cop": "COP 9 – 18 million",
             "unit": "per project",
             "note": "Where it lands depends on how many systems are involved."
           },
           {
             "service": "AI Partner",
             "price_usd": "$1,500 – 2,900",
-            "price_cop": "$2,9 – 5,9 millones",
+            "price_cop": "COP 2.9 – 5.9 million",
             "unit": "per month",
             "note": "Ongoing improvement, monitoring, and governance of what we build."
           },
           {
             "service": "WhatsApp bot for restaurants & hotels",
             "price_usd": "",
-            "price_cop": "$2,9 – 3,5 millones",
+            "price_cop": "COP 2.9 – 3.5 million",
             "unit": "setup",
-            "note": "Orders, reservations, and after-hours service. Plus a monthly fee of $790.000 – 1.100.000 depending on scope."
+            "note": "Orders, reservations, and after-hours service. Plus a monthly fee of COP 790,000 – 1,100,000 depending on scope."
           }
         ],
         "footnote": ""
@@ -2145,21 +2145,21 @@
           {
             "service": "Security baseline",
             "price_usd": "$4,500 – 7,500",
-            "price_cop": "$9 – 13 millones",
+            "price_cop": "COP 9 – 13 million",
             "unit": "per project",
             "note": "The essentials audited and fixed: identity, email, endpoints, backups."
           },
           {
             "service": "SOC 2 / PCI DSS readiness",
             "price_usd": "$9,500 – 18,000",
-            "price_cop": "$18 – 32 millones",
+            "price_cop": "COP 18 – 32 million",
             "unit": "per project",
             "note": "From gap assessment to audit-ready evidence. Compliance platform and auditor fees are separate."
           },
           {
             "service": "Part-time security chief (vCISO)",
             "price_usd": "$2,900 – 5,000",
-            "price_cop": "$3,9 – 5,5 millones",
+            "price_cop": "COP 3.9 – 5.5 million",
             "unit": "per month",
             "note": "A senior security director, a few hours a month — instead of a full-time hire."
           }
@@ -2173,14 +2173,14 @@
           {
             "service": "Senior development",
             "price_usd": "$45 – 55",
-            "price_cop": "$110.000 – 140.000",
+            "price_cop": "COP 110,000 – 140,000",
             "unit": "per hour",
             "note": "Blended senior rate. Comparable US senior rates commonly run well above this."
           },
           {
             "service": "Discovery sprint",
             "price_usd": "$2,900",
-            "price_cop": "$5.500.000",
+            "price_cop": "COP 5,500,000",
             "unit": "fixed",
             "note": "Scope, architecture, and an honest build-vs-buy answer before you commit to a build."
           }
@@ -2194,7 +2194,7 @@
           {
             "service": "Consulting / assessment",
             "price_usd": "$150 – 200",
-            "price_cop": "$280.000 – 350.000",
+            "price_cop": "COP 280,000 – 350,000",
             "unit": "per hour",
             "note": ""
           },
@@ -2225,7 +2225,7 @@
         },
         {
           "q": "Is there a minimum engagement?",
-          "a": "Managed IT starts at 10 users in the US, or a minimum monthly contract of $1.900.000 COP in Colombia. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+          "a": "Managed IT starts at 10 users in the US, or a minimum monthly contract of COP 1,900,000 in Colombia. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
         },
         {
           "q": "Why do I see pesos (or dollars)?",
