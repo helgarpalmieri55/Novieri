@@ -863,14 +863,14 @@
       "title": "The founders",
       "helgar": {
         "name": "Helgar Palmieri",
-        "role": "Technology & delivery",
-        "bio": "Solutions architect and AI engineer with 12+ years shipping production systems. Today CTO of a 24/7 multinational BPO, where he personally architects and writes the AI and integration stack: internal copilots, RAG tooling, workflow automation, and full-stack products. Previously led IT for a PCI DSS-compliant call center. MBA.",
+        "role": "Co-founder · Technology & Delivery",
+        "bio": "Solutions architect and AI engineer with more than twelve years of experience designing and operating mission-critical production systems. He has led technology for high-availability multinational operations, with expertise spanning infrastructure, automation, application development, PCI DSS, and SOC 2.\nAt Novieri, Helgar leads the architecture, security, and technical delivery of every solution. He also serves as CTO of a multinational operation and holds an MBA.",
         "photoAlt": "Helgar Palmieri, co-founder, technology and delivery"
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Commercial and client relationships",
-        "bio": "Commercial executive with more than ten years in front of clients. She understands how businesses actually run and is good at finding where it hurts — the bottleneck the owner has stopped noticing because they have worked around it for years. A business administration graduate. At Novieri that turns into the practical part: she scopes the case with you, keeps the follow-through honest, and makes sure what we deliver is used rather than just installed.",
+        "role": "Co-founder · Commercial Strategy & Client Experience",
+        "bio": "Business administrator and commercial leader with more than ten years of experience working directly with clients. At Novieri, she turns operational needs into clear priorities, strong business cases, and realistic plans of action.\nSylvana supports each engagement from the initial conversation through implementation and adoption, connecting the client's needs with practical, measurable, and sustainable results.",
         "photoAlt": "Sylvana Nova, co-founder, commercial and client relationships"
       },
       "linkedinLabel": "LinkedIn: {name}"

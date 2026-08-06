@@ -869,14 +869,14 @@
       "title": "Los fundadores",
       "helgar": {
         "name": "Helgar Palmieri",
-        "role": "Cofundador · Tecnología y entrega",
-        "bio": "Arquitecto de soluciones e ingeniero de IA con más de doce años construyendo y operando sistemas en producción. Su experiencia incluye liderazgo tecnológico en operaciones multinacionales 24/7, infraestructura, automatización, aplicaciones, PCI DSS y SOC 2; actualmente es CTO de una operación multinacional que atiende 24/7. En Novieri lidera arquitectura, seguridad, desarrollo y entrega técnica. MBA.",
+        "role": "Cofundador · Tecnología y ejecución",
+        "bio": "Arquitecto de soluciones e ingeniero de inteligencia artificial con más de doce años de experiencia diseñando, implementando y operando sistemas críticos en producción. Ha liderado tecnología en operaciones multinacionales de alta disponibilidad, con experiencia en infraestructura, automatización, desarrollo de aplicaciones y programas de cumplimiento como PCI DSS y SOC 2.\nEn Novieri lidera la arquitectura, la seguridad y la ejecución técnica de cada solución, desde el diseño inicial hasta su puesta en producción. Actualmente también se desempeña como CTO de una operación multinacional y cuenta con un MBA.",
         "photoAlt": "Helgar Palmieri, cofundador, tecnología y entrega"
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Cofundadora · Estrategia comercial y relación con clientes",
-        "bio": "Administradora de empresas y ejecutiva comercial con más de diez años de experiencia trabajando directamente con clientes. En Novieri convierte problemas operativos en casos de negocio, coordina el seguimiento y se asegura de que cada solución sea entendida, adoptada y utilizada. Es el punto de continuidad entre la necesidad inicial y el resultado entregado.",
+        "role": "Cofundadora · Estrategia comercial y experiencia del cliente",
+        "bio": "Administradora de empresas y líder comercial con más de diez años de experiencia trabajando directamente con clientes y desarrollando relaciones de largo plazo. En Novieri transforma necesidades operativas en prioridades claras, casos de negocio y planes de acción realistas.\nAcompaña a cada cliente desde la conversación inicial hasta la implementación, asegurándose de que la solución sea comprendida, adoptada y alineada con los resultados esperados. Es el vínculo entre la necesidad del negocio y la solución que finalmente se entrega.",
         "photoAlt": "Sylvana Nova, cofundadora, comercial y relación con clientes"
       },
       "linkedinLabel": "LinkedIn: {name}"
