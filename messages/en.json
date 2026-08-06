@@ -591,6 +591,10 @@
         {
           "q": "Do you work with US-based teams?",
           "a": "Yes — that's the point of being in Barranquilla: we operate on Eastern Time with native bilingual communication, at nearshore rates. Remote-first, with the same standards a US MSP would offer."
+        },
+        {
+          "q": "Can you come onsite?",
+          "a": "Not today — the service is fully remote, and we say so rather than promise trucks we don't have. Support, Microsoft 365, security, monitoring, and backups are all resolved remotely; when something needs physical hands — plugging in a replacement device, swapping a cable — we guide someone on your side step by step. If your operation depends on frequent onsite visits, we're honest about it: we're not the right fit yet."
         }
       ]
     },
@@ -2125,7 +2129,7 @@
             "note": "Complete plus compliance support and vCIO guidance, for teams with auditors to answer."
           }
         ],
-        "footnote": "Onboarding is one month of service, billed once at the start. Where you land inside each range depends on the size and needs of your operation."
+        "footnote": "Onboarding is one month of service, billed once at the start. Where you land inside each range depends on the size and needs of your operation. What moves the price inside a range: users, devices, locations, servers, support hours, security tooling, and compliance requirements."
       },
       {
         "name": "AI & automation",
@@ -2160,7 +2164,7 @@
             "note": "Orders, reservations, and after-hours service. Plus a monthly fee of COP 790,000 – 1,100,000 depending on scope."
           }
         ],
-        "footnote": ""
+        "footnote": "What moves the price: how many systems are involved, monthly volume, human-review requirements, data sensitivity, and voice or messaging usage."
       },
       {
         "name": "Cybersecurity & compliance",
@@ -2188,7 +2192,7 @@
             "note": "A senior security director, a few hours a month — instead of a full-time hire."
           }
         ],
-        "footnote": ""
+        "footnote": "What moves the price: the framework, the scope, how many systems are involved, which controls already exist, and how much evidence is already in place."
       },
       {
         "name": "Custom software",
@@ -2209,7 +2213,7 @@
             "note": "Scope, architecture, and an honest build-vs-buy answer before you commit to a build."
           }
         ],
-        "footnote": ""
+        "footnote": "What moves the price: user roles, workflows, integrations, data migration, and reporting needs."
       },
       {
         "name": "IT consulting",
@@ -2230,7 +2234,7 @@
             "note": "Ongoing technology leadership without the full-time hire."
           }
         ],
-        "footnote": ""
+        "footnote": "What moves the price: how many decisions are on the table and how much of your current setup we need to review to answer them properly."
       }
     ],
     "note": {
@@ -2254,6 +2258,14 @@
         {
           "q": "Why do I see pesos (or dollars)?",
           "a": "The currency follows where you're browsing from: Colombia sees pesos, everywhere else sees dollars. Use the COP/USD switch at the top to see the other list."
+        },
+        {
+          "q": "How do the engagement models compare?",
+          "a": "Assessments and discovery sprints are fixed-price and run one to two weeks. Pilots are fixed-price projects of roughly three to six weeks. Managed IT is per user per month, billed monthly. Software builds are quoted as fixed milestones or hourly. Advisory (fractional CTO, vCISO) is hourly or a monthly retainer. Every model states its number in the proposal before work starts."
+        },
+        {
+          "q": "We're in the US — who do we actually contract with?",
+          "a": "With Novieri S.A.S., our company in Colombia — the same way US businesses routinely work with overseas vendors. Proposals and invoices for US clients are in US dollars, and we provide the standard tax documentation a US accounting team asks of a foreign vendor (a W-8BEN-E form). Currency, terms, ownership, and data handling are all stated in the proposal before any work starts."
         }
       ]
     }

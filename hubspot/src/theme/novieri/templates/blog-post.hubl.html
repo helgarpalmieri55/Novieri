@@ -22,6 +22,11 @@
         {% set is_es = content.language and "es" in content.language|string %}
         <p class="reveal idx-mono mt-6 lowercase text-ink-faint" style="--rd: 120ms">
           {% if is_es %}{{ content.publish_date|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}{{ content.publish_date|datetimeformat("%b %e, %Y") }}{% endif %}
+          {# A revision worth republishing is a revision worth dating — the
+             review asked for honest update dates, not backdated history. #}
+          {% if content.updated and content.updated|datetimeformat("%Y-%m-%d") != content.publish_date|datetimeformat("%Y-%m-%d") %}
+            · {% if is_es %}actualizado el {{ content.updated|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}updated {{ content.updated|datetimeformat("%b %e, %Y") }}{% endif %}
+          {% endif %}
           {% if content.tag_list %} · {% for tag in content.tag_list %}{{ tag.name }}{% if not loop.last %} · {% endif %}{% endfor %}{% endif %}
         </p>
         {# The audit's author entity: a person with a role and a profile,
@@ -51,6 +56,16 @@
           "sameAs": "https://www.linkedin.com/in/helgar-palmieri-82726b16a/"
         },
         "publisher": { "@type": "Organization", "name": "Novieri", "url": "https://www.novieri.com" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": {{ (group.public_title || "Insights")|escapejson }}, "item": {{ group.absolute_url|escapejson }} },
+          { "@type": "ListItem", "position": 2, "name": {{ content.name|escapejson }}, "item": {{ content.absolute_url|escapejson }} }
+        ]
       }
     </script>
     <div class="container-site pb-[clamp(3rem,8vh,6rem)]">

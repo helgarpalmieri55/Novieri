@@ -2131,7 +2131,7 @@
             "note": "El plan completo, más revisiones de seguridad, evidencia y dirección tecnológica para empresas con exigencias de clientes o auditores."
           }
         ],
-        "footnote": "La implementación inicial equivale a un mes de servicio y se factura una sola vez. En qué punto del rango queda tu caso depende del tamaño y las necesidades de tu operación."
+        "footnote": "La implementación inicial equivale a un mes de servicio y se factura una sola vez. En qué punto del rango queda tu caso depende del tamaño y las necesidades de tu operación. Qué mueve el precio dentro del rango: cantidad de usuarios y equipos, sedes, servidores, horario de soporte, herramientas de seguridad y exigencias de cumplimiento."
       },
       {
         "name": "IA y automatización",
@@ -2166,7 +2166,7 @@
             "note": "Configuración, integración, contenido inicial, pruebas y puesta en marcha. La operación mensual depende del volumen y las funciones contratadas."
           }
         ],
-        "footnote": ""
+        "footnote": "Qué mueve el precio: cuántos sistemas participan, el volumen mensual, cuánta revisión humana se requiere, la sensibilidad de los datos y el uso de voz o mensajería."
       },
       {
         "name": "Ciberseguridad y cumplimiento",
@@ -2194,7 +2194,7 @@
             "note": "Acompañamiento de seguridad con experiencia, unas horas al mes, sin contratar el cargo de tiempo completo."
           }
         ],
-        "footnote": ""
+        "footnote": "Qué mueve el precio: el estándar, el alcance, cuántos sistemas participan, qué controles ya existen y cuánta evidencia ya está organizada."
       },
       {
         "name": "Desarrollo de software",
@@ -2215,7 +2215,7 @@
             "note": "Proceso de precio fijo para entender el problema, validar la solución, definir arquitectura, prioridades, riesgos y presupuesto."
           }
         ],
-        "footnote": ""
+        "footnote": "Qué mueve el precio: los roles de usuario, los flujos de trabajo, las integraciones, la migración de datos y los reportes que necesitas."
       },
       {
         "name": "Consultoría tecnológica",
@@ -2236,7 +2236,7 @@
             "note": "Acompañamiento recurrente para decisiones de proveedores, arquitectura, costos, seguridad y proyectos, sin contratar un cargo de tiempo completo."
           }
         ],
-        "footnote": ""
+        "footnote": "Qué mueve el precio: cuántas decisiones hay sobre la mesa y cuánto de tu infraestructura actual hay que revisar para responderlas bien."
       }
     ],
     "note": {
@@ -2260,6 +2260,10 @@
         {
           "q": "¿Por qué veo pesos (o dólares)?",
           "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Con el selector COP/USD de arriba puedes ver la otra lista. Todos los valores se muestran antes de IVA."
+        },
+        {
+          "q": "¿Cómo se comparan los modelos de contratación?",
+          "a": "Las evaluaciones y los sprints de descubrimiento son de precio fijo y toman una o dos semanas. Los pilotos son proyectos de precio fijo de unas tres a seis semanas. La TI administrada se cobra por usuario al mes. El software se cotiza por hitos fijos o por hora, y la asesoría (CTO fraccional, vCISO) por hora o con una mensualidad. En todos los casos, la propuesta dice el número antes de empezar."
         }
       ]
     }

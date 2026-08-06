@@ -19,6 +19,33 @@
 #}
 {% extends "./partials/base.hubl.html" %}
 {% block body %}
+  {# Same entity pair as the service template, anchored at the products
+     section. Typed as Service rather than Product on purpose: these are
+     operated offerings without a standalone price/offer, and Product markup
+     without offers draws merchant-listing warnings. #}
+  {% set is_es = content.language and "es" in content.language|string %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": {{ content.name|escapejson }},
+      "description": {{ content.meta_description|escapejson }},
+      "url": {{ content.absolute_url|escapejson }},
+      "inLanguage": "{{ content.language or "en" }}",
+      "provider": { "@id": "https://www.novieri.com/#organization" },
+      "areaServed": ["CO", "US"]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": {% if is_es %}"Productos"{% else %}"Products"{% endif %}, "item": "https://www.novieri.com/{% if is_es %}productos{% else %}products{% endif %}" },
+        { "@type": "ListItem", "position": 2, "name": {{ content.name|escapejson }}, "item": {{ content.absolute_url|escapejson }} }
+      ]
+    }
+  </script>
   {% dnd_area "main" label="Page content" %}
     {% dnd_section %}
       {% dnd_column %}
