@@ -1035,17 +1035,29 @@
         "demo": {
           "eyebrow": "hear it",
           "title": "Hear a call before you book one.",
-          "intro": "Two simulated conversations: the receptionist answering for a restaurant, in English and in Spanish. Notice the first thing it does — tell the caller the call may be recorded and transcribed.",
+          "intro": "Three simulated conversations — a restaurant, a hotel, and a professional-services firm — plus one in Spanish. Notice the first thing the receptionist does on every call: tell the caller it may be recorded and transcribed.",
           "items": [
             {
-              "label": "English — a dinner reservation",
-              "file": "en",
+              "label": "Restaurant — a dinner reservation",
+              "file": "restaurant-en",
               "transcriptLabel": "Read the transcript",
               "transcript": "Receptionist: Thank you for calling Casa Marina. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you tonight?\nCaller: Hi — do you have a table for four this Saturday, around eight?\nReceptionist: Let me check... on Saturday I have eight fifteen or eight forty-five available. Which works better for you?\nCaller: Eight fifteen is great. Oh — and one of us has a shellfish allergy. Can the kitchen handle that?\nReceptionist: Absolutely — I'll note the shellfish allergy on the reservation so the kitchen sees it. May I have a name and a mobile number for the confirmation?\nCaller: Sure — Sam Rivera, five five five, zero one four two.\nReceptionist: Perfect, Sam — table for four, Saturday at eight fifteen, shellfish allergy noted. You'll get a text confirmation in a moment. Anything else I can help with?\nCaller: No, that's everything. Thanks!\nReceptionist: Our pleasure — see you Saturday."
             },
             {
-              "label": "Spanish — una reserva para cenar",
-              "file": "es",
+              "label": "Hotel — a room booking",
+              "file": "hotel-en",
+              "transcriptLabel": "Read the transcript",
+              "transcript": "Receptionist: Thank you for calling Hotel Costa Azul. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you?\nCaller: Hi — I'd like a room for two, next Friday to Sunday. Do you have anything available?\nReceptionist: Let me check... for those dates I have a king room with ocean view, or a double garden room. Would you like to hear the rates?\nCaller: The ocean view — how much is it?\nReceptionist: The king ocean view is one eighty-nine a night, breakfast included. Shall I hold it for you?\nCaller: Yes, please. Could we also get an early check-in? Our flight lands at nine in the morning.\nReceptionist: I'll note the early check-in request — the front desk confirms it the day before, and I'll flag your arrival time. May I have a name and a mobile number for the reservation?\nCaller: Dana Whitfield — five five five, zero one nine eight.\nReceptionist: All set, Dana — king ocean view, Friday to Sunday, two guests, breakfast included, early check-in requested. Your confirmation is on its way by text. Anything else?\nCaller: That's everything, thank you!\nReceptionist: Wonderful — we'll see you Friday."
+            },
+            {
+              "label": "Business services — a new-client inquiry",
+              "file": "business-en",
+              "transcriptLabel": "Read the transcript",
+              "transcript": "Receptionist: Thank you for calling Meridian Advisors. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you today?\nCaller: Hi — I run a small logistics company, and I'm looking for help with our bookkeeping. Is that something you do?\nReceptionist: It is — monthly bookkeeping, payroll, and tax filings are the core of what the team does. So I can point you to the right person: roughly how many employees do you have?\nCaller: Twelve. And we'd want payroll too.\nReceptionist: Perfect — that's exactly the kind of engagement our advisors scope on a short intro call. I can book you fifteen minutes with one of them; how does tomorrow at ten or Thursday at two look?\nCaller: Thursday at two works.\nReceptionist: Great. May I have your name, your company, and the best number to reach you?\nCaller: Marcus Webb, Webb Logistics — five five five, zero one seven three.\nReceptionist: Thank you, Marcus — Thursday at two with one of our advisors, and I've noted bookkeeping and payroll for a twelve-person logistics company. You'll get a calendar invitation shortly. Anything else?\nCaller: No, that's great. Thanks.\nReceptionist: Our pleasure — talk to you Thursday."
+            },
+            {
+              "label": "In Spanish — the same receptionist, other language",
+              "file": "restaurant-es",
               "transcriptLabel": "Read the transcript",
               "transcript": "Recepcionista: Gracias por llamar a Casa Marina. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola, ¿tienen mesa para cuatro este sábado, como a las ocho?\nRecepcionista: Déjame revisar... el sábado tengo disponible a las ocho y quince o a las ocho y cuarenta y cinco. ¿Cuál te sirve más?\nCliente: A las ocho y quince, perfecto. Ah, y una persona del grupo es alérgica a los mariscos. ¿La cocina puede con eso?\nRecepcionista: Claro que sí — dejo anotada la alergia a los mariscos en la reserva. ¿Me regalas un nombre y un celular para la confirmación?\nCliente: Claro: Andrés Movilla, tres cero cero, siete uno cuatro, veintidós, treinta y uno.\nRecepcionista: Listo, Andrés — mesa para cuatro, el sábado a las ocho y quince, con la alergia anotada. Te llega la confirmación por mensaje de texto. ¿Algo más?\nCliente: No, eso es todo. ¡Muchas gracias!\nRecepcionista: Con mucho gusto — nos vemos el sábado."
             }

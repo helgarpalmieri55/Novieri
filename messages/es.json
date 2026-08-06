@@ -1037,17 +1037,29 @@
         "demo": {
           "eyebrow": "escúchala",
           "title": "Escucha una llamada antes de agendar la tuya.",
-          "intro": "Dos conversaciones simuladas: la recepcionista atendiendo un restaurante, en español y en inglés. Fíjate en lo primero que hace — avisar que la llamada puede ser grabada y transcrita.",
+          "intro": "Tres conversaciones simuladas — un restaurante, un hotel y una firma de servicios profesionales — más una en inglés. Fíjate en lo primero que hace la recepcionista en cada llamada: avisar que puede ser grabada y transcrita.",
           "items": [
             {
-              "label": "Español — una reserva para cenar",
-              "file": "es",
+              "label": "Restaurante — una reserva para cenar",
+              "file": "restaurant-es",
               "transcriptLabel": "Leer la transcripción",
               "transcript": "Recepcionista: Gracias por llamar a Casa Marina. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola, ¿tienen mesa para cuatro este sábado, como a las ocho?\nRecepcionista: Déjame revisar... el sábado tengo disponible a las ocho y quince o a las ocho y cuarenta y cinco. ¿Cuál te sirve más?\nCliente: A las ocho y quince, perfecto. Ah, y una persona del grupo es alérgica a los mariscos. ¿La cocina puede con eso?\nRecepcionista: Claro que sí — dejo anotada la alergia a los mariscos en la reserva. ¿Me regalas un nombre y un celular para la confirmación?\nCliente: Claro: Andrés Movilla, tres cero cero, siete uno cuatro, veintidós, treinta y uno.\nRecepcionista: Listo, Andrés — mesa para cuatro, el sábado a las ocho y quince, con la alergia anotada. Te llega la confirmación por mensaje de texto. ¿Algo más?\nCliente: No, eso es todo. ¡Muchas gracias!\nRecepcionista: Con mucho gusto — nos vemos el sábado."
             },
             {
-              "label": "Inglés — a dinner reservation",
-              "file": "en",
+              "label": "Hotel — una reserva de habitación",
+              "file": "hotel-es",
+              "transcriptLabel": "Leer la transcripción",
+              "transcript": "Recepcionista: Gracias por llamar al Hotel Costa Azul. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola, quiero una habitación para dos, del viernes al domingo. ¿Tienen disponibilidad?\nRecepcionista: Déjame revisar... para esas fechas tengo una habitación king con vista al mar, o una doble con vista al jardín. ¿Te cuento las tarifas?\nCliente: La de vista al mar, ¿en cuánto sale?\nRecepcionista: La king con vista al mar está en seiscientos cincuenta mil por noche, con desayuno incluido. ¿Te la reservo?\nCliente: Sí, por favor. Ah, ¿y se puede un check-in temprano? Llegamos como a las nueve de la mañana.\nRecepcionista: Dejo anotada la solicitud de entrada temprana — recepción la confirma un día antes, y dejo registrada tu hora de llegada. ¿Me regalas un nombre y un celular para la reserva?\nCliente: Diana Cervantes — tres cero cero, cuarenta y dos, quince, setenta y seis.\nRecepcionista: Listo, Diana — king con vista al mar, de viernes a domingo, dos personas, desayuno incluido y entrada temprana solicitada. Te llega la confirmación por mensaje de texto. ¿Algo más?\nCliente: No, eso es todo, ¡gracias!\nRecepcionista: Con mucho gusto — nos vemos el viernes."
+            },
+            {
+              "label": "Servicios profesionales — un cliente interesado",
+              "file": "business-es",
+              "transcriptLabel": "Leer la transcripción",
+              "transcript": "Recepcionista: Gracias por llamar a Meridian Asesores. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola — tengo una empresa pequeña de logística y necesito ayuda con la contabilidad. ¿Ustedes manejan eso?\nRecepcionista: Claro que sí — contabilidad mensual, nómina y declaraciones son el corazón de lo que hace el equipo. Para dirigirte con la persona indicada: ¿más o menos cuántos empleados tienen?\nCliente: Doce. Y también nos interesaría la nómina.\nRecepcionista: Perfecto — eso es justo lo que nuestros asesores alcanzan a dimensionar en una llamada corta. Te puedo agendar quince minutos con uno de ellos; ¿te sirve mañana a las diez o el jueves a las dos?\nCliente: El jueves a las dos me sirve.\nRecepcionista: Listo. ¿Me regalas tu nombre, el de la empresa y un número para contactarte?\nCliente: Marcos Vélez, Logística Vélez — tres uno cinco, cero dos, cuarenta y uno, noventa y ocho.\nRecepcionista: Gracias, Marcos — el jueves a las dos con uno de nuestros asesores, y dejo anotado contabilidad y nómina para una empresa de logística de doce personas. Te llega la invitación al calendario en un momento. ¿Algo más?\nCliente: No, así está perfecto. Gracias.\nRecepcionista: Con mucho gusto — hablamos el jueves."
+            },
+            {
+              "label": "En inglés — la misma recepcionista, otro idioma",
+              "file": "restaurant-en",
               "transcriptLabel": "Leer la transcripción",
               "transcript": "Receptionist: Thank you for calling Casa Marina. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you tonight?\nCaller: Hi — do you have a table for four this Saturday, around eight?\nReceptionist: Let me check... on Saturday I have eight fifteen or eight forty-five available. Which works better for you?\nCaller: Eight fifteen is great. Oh — and one of us has a shellfish allergy. Can the kitchen handle that?\nReceptionist: Absolutely — I'll note the shellfish allergy on the reservation so the kitchen sees it. May I have a name and a mobile number for the confirmation?\nCaller: Sure — Sam Rivera, five five five, zero one four two.\nReceptionist: Perfect, Sam — table for four, Saturday at eight fifteen, shellfish allergy noted. You'll get a text confirmation in a moment. Anything else I can help with?\nCaller: No, that's everything. Thanks!\nReceptionist: Our pleasure — see you Saturday."
             }

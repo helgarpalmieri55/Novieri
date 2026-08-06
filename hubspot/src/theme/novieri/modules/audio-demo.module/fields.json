@@ -24,7 +24,7 @@
     "type": "group",
     "occurrence": {
       "min": 0,
-      "max": 4,
+      "max": 6,
       "default": 0
     },
     "children": [
@@ -39,10 +39,14 @@
         "label": "Recording",
         "type": "choice",
         "choices": [
-          ["en", "English demo"],
-          ["es", "Spanish demo"]
+          ["restaurant-en", "Restaurant — English"],
+          ["restaurant-es", "Restaurant — Spanish"],
+          ["hotel-en", "Hotel — English"],
+          ["hotel-es", "Hotel — Spanish"],
+          ["business-en", "Business services — English"],
+          ["business-es", "Business services — Spanish"]
         ],
-        "default": "en"
+        "default": "restaurant-en"
       },
       {
         "name": "item_transcript",

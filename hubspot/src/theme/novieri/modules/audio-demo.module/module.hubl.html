@@ -2,8 +2,15 @@
    buyer expects to hear a call before booking one. The recordings live in the
    theme (audio/), voiced with AI as simulated conversations; the footnote
    says so, because passing them off as real customer calls would undo the
-   trust the demo exists to build. get_asset_url only takes literal paths, so
-   each recording the module can play is a branch here, chosen by a field.
+   trust the demo exists to build.
+
+   The player is custom (module.hubl.js): a plum play button, an equalizer
+   that moves while the call plays, and a seekable progress bar. The native
+   <audio controls> ships in the markup and is the no-JS experience — the
+   script swaps it for the styled one, so nothing depends on JS to be
+   playable. get_asset_url only takes literal paths, so each recording the
+   module can play is a branch here, chosen by a field; the legacy en/es
+   values map to the restaurant files they used to name.
 
    Empty items = no output at all: the module sits in the solution template
    for every product, but only pages the fill script gives demos to show it. #}
@@ -17,14 +24,33 @@
     </div>
     <div class="grid gap-5 sm:grid-cols-2">
       {% for item in module.items %}
-        {% if item.item_file == "es" %}
-          {% set src = get_asset_url("../../audio/receptionist-demo-es.mp3") %}
+        {% if item.item_file == "es" or item.item_file == "restaurant-es" %}
+          {% set src = get_asset_url("../../audio/receptionist-demo-restaurant-es.mp3") %}
+        {% elif item.item_file == "hotel-en" %}
+          {% set src = get_asset_url("../../audio/receptionist-demo-hotel-en.mp3") %}
+        {% elif item.item_file == "hotel-es" %}
+          {% set src = get_asset_url("../../audio/receptionist-demo-hotel-es.mp3") %}
+        {% elif item.item_file == "business-en" %}
+          {% set src = get_asset_url("../../audio/receptionist-demo-business-en.mp3") %}
+        {% elif item.item_file == "business-es" %}
+          {% set src = get_asset_url("../../audio/receptionist-demo-business-es.mp3") %}
         {% else %}
-          {% set src = get_asset_url("../../audio/receptionist-demo-en.mp3") %}
+          {% set src = get_asset_url("../../audio/receptionist-demo-restaurant-en.mp3") %}
         {% endif %}
-        <div class="reveal rounded-2xl border border-line p-6">
-          <h3 class="text-body font-medium">{{ item.item_label }}</h3>
-          <audio controls preload="none" class="mt-4 w-full" src="{{ src }}"></audio>
+        <div class="ad-card reveal rounded-2xl border border-line p-6">
+          <div class="flex items-center gap-4">
+            <button type="button" class="ad-toggle hidden" aria-label="{{ item.item_label|escape_attr }}">
+              <svg class="ad-icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4c0 .6.65.97 1.17.66l8.4-5.2a.78.78 0 0 0 0-1.32l-8.4-5.2A.78.78 0 0 0 4.5 2.8Z" fill="currentColor"/></svg>
+              <svg class="ad-icon-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h2.6v11H4zM9.4 2.5H12v11H9.4z" fill="currentColor"/></svg>
+            </button>
+            <div class="min-w-0 flex-1">
+              <h3 class="truncate text-body font-medium">{{ item.item_label }}</h3>
+              <div class="ad-eq mt-1.5" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <span class="ad-time idx-mono hidden text-ink-faint">0:00</span>
+          </div>
+          <div class="ad-track mt-4 hidden" role="presentation"><div class="ad-fill"></div></div>
+          <audio controls preload="metadata" class="mt-4 w-full" src="{{ src }}"></audio>
           {% if item.item_transcript %}
             <details class="mt-4">
               <summary class="cursor-pointer text-caption font-medium text-ink-muted">{{ item.item_transcript_label }}</summary>
