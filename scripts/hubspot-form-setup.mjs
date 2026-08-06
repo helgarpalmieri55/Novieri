@@ -119,7 +119,10 @@ const IT_OPTION = { label: EN_MESSAGES.contact.form.serviceOptions.itConsulting,
 const OTHER_LABEL = EN_MESSAGES.contact.form.serviceOptions.other;
 
 const prop = await api("/crm/v3/properties/contacts/novieri_service_interest").catch(() => null);
-if (prop && !prop.options.some((o) => o.value === IT_OPTION.value)) {
+// The wider scope revealed this property is a plain string — the dropdown's
+// options live on the FORM, not the property. Only an enumeration takes an
+// options patch; a string one 400s the whole run.
+if (prop && prop.type === "enumeration" && !prop.options.some((o) => o.value === IT_OPTION.value)) {
   const options = [...prop.options];
   const at = options.findIndex((o) => o.label === OTHER_LABEL);
   options.splice(at === -1 ? options.length : at, 0, { ...IT_OPTION, hidden: false, description: "" });
