@@ -146,7 +146,26 @@
     display: inline-flex;
     align-items: center;
   }
+  /* .globe_class is not the globe glyph — it is the wrapper that CONTAINS the
+     link list, styled by HubSpot as a hover-to-open globe button. It must stay
+     visible (display:none here takes the whole switcher with it); instead the
+     button chrome is stripped so only the list inside shows. */
   .lang-toggle .globe_class {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    background-image: none !important;
+    cursor: default !important;
+  }
+  .lang-toggle .globe_class::before,
+  .lang-toggle .globe_class::after {
+    content: none !important;
     display: none !important;
   }
   .lang-toggle .lang_list_class {
