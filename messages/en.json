@@ -1740,10 +1740,11 @@
       "email": "Work email",
       "company": "Company",
       "phone": "Phone (optional)",
-      "consent": "I authorise the processing of my data under the privacy policy.",
+      "consent": "I authorize the processing of my data to generate and send me the diagnostic.",
       "submit": "Generate my diagnostic",
       "sending": "Analysing your answers…",
-      "privacy": "Read the privacy policy"
+      "privacy": "Read the privacy policy",
+      "optIn": "I'd also like a founder to contact me to discuss the result. (optional)"
     },
     "result": {
       "title": "Your diagnostic is ready",

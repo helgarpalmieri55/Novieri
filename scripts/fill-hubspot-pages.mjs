@@ -810,6 +810,7 @@ function diagnosticWidgets() {
         gate_email: d.gate.email,
         gate_phone: d.gate.phone,
         gate_consent: d.gate.consent,
+        gate_optin: d.gate.optIn,
         gate_privacy: d.gate.privacy,
         gate_privacy_link: { url: { type: "CONTENT", href: `/${slugFor(LEGAL_SLUGS.privacy)}` } },
         gate_submit: d.gate.submit,

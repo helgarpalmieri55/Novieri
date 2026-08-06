@@ -253,6 +253,32 @@ if (!teamProp && !dryRun) {
   }
 }
 
+// The diagnostic's optional "a founder may contact me" checkbox lands on
+// this property; the serverless function sends it only when ticked.
+const FOLLOWUP_PROP = "novieri_diagnostic_followup";
+const followupProp = await api(`/crm/v3/properties/contacts/${FOLLOWUP_PROP}`).catch(() => null);
+if (!followupProp && !dryRun) {
+  try {
+    await api("/crm/v3/properties/contacts", {
+      method: "POST",
+      body: JSON.stringify({
+        name: FOLLOWUP_PROP,
+        label: "Diagnostic: founder follow-up requested",
+        groupName: "contactinformation",
+        type: "enumeration",
+        fieldType: "booleancheckbox",
+        options: [
+          { label: "Yes", value: "true", description: "", displayOrder: 0, hidden: false },
+          { label: "No", value: "false", description: "", displayOrder: 1, hidden: false },
+        ],
+      }),
+    });
+    console.log(`created contact property ${FOLLOWUP_PROP}`);
+  } catch (e) {
+    console.log(`cannot create ${FOLLOWUP_PROP}: ${String(e.message).slice(0, 120)}`);
+  }
+}
+
 function hasField(patch, name) {
   let found = false;
   eachField(patch, (f) => { if (f.name === name) found = true; });

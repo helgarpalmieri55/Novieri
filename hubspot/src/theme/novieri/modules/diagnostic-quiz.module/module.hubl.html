@@ -109,6 +109,16 @@
       </label>
       <p class="mt-1.5 text-caption text-[#b3261e]" data-error="consent" hidden>{{ module.error_consent }}</p>
 
+      {# The review's consent split: delivering the report and being called
+         about it are different permissions. This one is optional, starts
+         unchecked, and failing to tick it blocks nothing. #}
+      {% if module.gate_optin %}
+        <label class="mt-3 flex items-start gap-2.5 text-small text-ink-muted">
+          <input type="checkbox" name="followup" class="mt-1 h-4 w-4 flex-none accent-[#4f3461]" />
+          <span data-optin-text>{{ module.gate_optin }}</span>
+        </label>
+      {% endif %}
+
       <button type="submit" class="btn btn-primary mt-7 w-full disabled:opacity-60"
               data-submit data-idle="{{ module.gate_submit }}" data-busy="{{ module.gate_sending }}">
         {{ module.gate_submit }}

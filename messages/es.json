@@ -1749,7 +1749,8 @@
       "consent": "Autorizo el tratamiento de mis datos para generar y enviarme el diagnóstico, conforme a la Política de tratamiento de datos personales.",
       "submit": "Generar mi diagnóstico",
       "sending": "Analizando tus respuestas…",
-      "privacy": "Ver política de privacidad"
+      "privacy": "Ver política de privacidad",
+      "optIn": "Quiero que un fundador me contacte para conversar sobre el resultado. (opcional)"
     },
     "result": {
       "title": "Tu diagnóstico está listo",
