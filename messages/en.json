@@ -2111,9 +2111,8 @@
     "hero": {
       "eyebrow": "pricing",
       "title": "Numbers you can plan with.",
-      "intro": "Most firms make you sit through a sales call before you hear a price. Here is ours up front: every figure below is a realistic range, not a quote — the exact number depends on what your business needs, and it comes with a proposal after we understand your operation. Prices show in dollars or Colombian pesos depending on where you're browsing from; switch below if we guessed wrong."
+      "intro": "Most firms make you sit through a sales call before you hear a price. Here is ours up front: every figure below is a realistic range, not a quote — the exact number depends on what your business needs, and it comes with a proposal after we understand your operation. Prices show in US dollars or Colombian pesos depending on where you're browsing from."
     },
-    "toggleLabel": "prices in",
     "groups": [
       {
         "name": "Managed IT",
@@ -2269,7 +2268,7 @@
         },
         {
           "q": "Why do I see pesos (or dollars)?",
-          "a": "The currency follows where you're browsing from: Colombia sees pesos, everywhere else sees dollars. Use the COP/USD switch at the top to see the other list."
+          "a": "The currency follows where you're browsing from: Colombia sees pesos, everywhere else sees dollars."
         },
         {
           "q": "How do the engagement models compare?",

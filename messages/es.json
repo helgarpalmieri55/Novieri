@@ -2113,9 +2113,8 @@
     "hero": {
       "eyebrow": "precios",
       "title": "Rangos claros para saber si encajamos antes de hablar.",
-      "intro": "No necesitas pasar por una presentación de ventas para saber si Novieri está dentro de tu presupuesto. Estos valores son rangos de referencia, no cotizaciones finales. El precio exacto depende del tamaño de tu operación, los sistemas involucrados, el riesgo y el alcance, y queda definido por escrito antes de empezar. Precios antes de IVA · selecciona COP o USD · licencias, consumo de plataformas y auditorías externas se indican por separado cuando apliquen."
+      "intro": "No necesitas pasar por una presentación de ventas para saber si Novieri está dentro de tu presupuesto. Estos valores son rangos de referencia, no cotizaciones finales. El precio exacto depende del tamaño de tu operación, los sistemas involucrados, el riesgo y el alcance, y queda definido por escrito antes de empezar. Precios antes de IVA · licencias, consumo de plataformas y auditorías externas se indican por separado cuando apliquen."
     },
-    "toggleLabel": "Ver precios en",
     "groups": [
       {
         "name": "TI administrada",
@@ -2271,7 +2270,7 @@
         },
         {
           "q": "¿Por qué veo pesos (o dólares)?",
-          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Con el selector COP/USD de arriba puedes ver la otra lista. Todos los valores se muestran antes de IVA."
+          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Todos los valores se muestran antes de IVA."
         },
         {
           "q": "¿Cómo se comparan los modelos de contratación?",
