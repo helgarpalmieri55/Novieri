@@ -56,6 +56,11 @@
             {% elif key == "company" %}{% set col_title = "empresa" %}
             {% elif key == "contact" %}{% set col_title = "contacto" %}
             {% elif key == "resources" %}{% set col_title = "recursos" %}
+            {% elif key == "industries" %}{% set col_title = "para quién trabajamos" %}
+            {% elif key == "insights" %}{% set col_title = "guías y recursos" %}
+            {% elif key == "pricing" %}{% set col_title = "precios" %}
+            {% elif key == "custom software" %}{% set col_title = "desarrollo de software" %}
+            {% elif key == "case studies" %}{% set col_title = "casos de éxito" %}
             {% endif %}
           {% endif %}
         {% endif %}
@@ -88,6 +93,14 @@
             {% for link in legal_links %}
               <li><a href="{{ link.url }}" class="transition-colors hover:text-ink">{{ link.label }}</a></li>
             {% endfor %}
+            {# The cookie policy promises this control exists; a promise in a
+               legal document is the one kind the footer must keep. Clearing
+               the stored choice re-raises the banner on the spot. #}
+            <li>
+              <button type="button" data-cookie-settings class="transition-colors hover:text-ink">
+                {% if is_es %}Configurar cookies{% else %}Cookie settings{% endif %}
+              </button>
+            </li>
           </ul>
         </nav>
       {% endif %}

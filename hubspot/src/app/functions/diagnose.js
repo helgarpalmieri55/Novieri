@@ -434,6 +434,10 @@ exports.main = async (context = {}, sendResponse) => {
     novieri_diagnostic_score: String(pct),
     novieri_diagnostic_level: level,
     novieri_diagnostic_headline: report.headline,
+    // The optional second checkbox: whether a founder may call about the
+    // result. Empty when unchecked, so the field is dropped rather than
+    // recording a refusal as data.
+    novieri_diagnostic_followup: body.followUp === true ? "true" : "",
   };
   answers.forEach((a, i) => {
     fields[`novieri_diag_q${i + 1}`] = a.answer;
@@ -444,7 +448,7 @@ exports.main = async (context = {}, sendResponse) => {
     pageUri: body.pageUri,
     pageName: body.pageName,
     ipAddress: ip,
-  }, cleanText(body.consentText || ""));
+  }, cleanText([body.consentText || "", body.followUp === true ? body.followUpText || "" : ""].filter(Boolean).join(" · ")));
 
   return respond(sendResponse, 200, { report });
 };

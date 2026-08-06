@@ -1,0 +1,85 @@
+{
+  "slug": "bpo",
+  "lang": "es",
+  "name": "BPO y centros de contacto",
+  "htmlTitle": "Tecnología e IA para BPO y centros de contacto — Novieri",
+  "metaDescription": "TI administrada, seguridad y cumplimiento para BPO y contact centers: experiencia real dirigiendo la tecnología de una operación multinacional 24/7, con preparación PCI DSS y SOC 2.",
+  "hero": {
+    "eyebrow": "para quién trabajamos",
+    "title": "Tecnología y cumplimiento para operaciones que no se detienen.",
+    "intro": "Nuestro equipo conoce los puestos, las campañas, los acuerdos de nivel de servicio (SLA), las altas y bajas, los cuestionarios de clientes y la presión de una operación 24/7. Aplicamos esa experiencia a infraestructura, seguridad, cumplimiento y automatización."
+  },
+  "pains": {
+    "eyebrow": "la realidad",
+    "title": "Lo que no deja dormir a una operación de centro de contacto.",
+    "items": [
+      {
+        "title": "La caída se mide en puestos",
+        "body": "Cuando se cae la red o una aplicación crítica, cada minuto son agentes parados y SLA incumplidos frente a tu cliente. No hay hora tranquila para fallar."
+      },
+      {
+        "title": "Tus clientes te auditan a ti",
+        "body": "Los clientes internacionales mandan cuestionarios de seguridad y exigen evidencia PCI DSS o SOC 2 antes de firmar — y después. Una respuesta floja te cuesta la cuenta."
+      },
+      {
+        "title": "Altas y bajas todas las semanas",
+        "body": "La rotación de agentes significa crear y revocar cuentas, equipos y accesos sin parar. Hecho a mano, es lento al entrar y peligroso al salir."
+      },
+      {
+        "title": "Operas 24/7 con soporte de oficina",
+        "body": "La campaña corre de noche y los fines de semana, pero el proveedor de TI no. Un caso abierto un sábado a las 3 de la mañana no puede esperar al lunes."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "cómo ayudamos",
+    "title": "Tres formas de quitarte el peso.",
+    "cards": [
+      {
+        "title": "TI administrada",
+        "body": "Mesa de ayuda, Microsoft 365, red y firewall, actualizaciones y monitoreo — con el estándar que exige una operación de mil puestos y tiempos de respuesta por escrito.",
+        "href": "/servicios/it-administrado",
+        "linkLabel": "Ver TI administrada"
+      },
+      {
+        "title": "Ciberseguridad y cumplimiento",
+        "body": "Preparación PCI DSS y SOC 2 dirigida por alguien que llevó ambos programas de punta a punta dentro de un centro de contacto real: brechas, remediación y evidencia preparada para apoyar una auditoría.",
+        "href": "/servicios/ciberseguridad-y-cumplimiento",
+        "linkLabel": "Ver ciberseguridad y cumplimiento"
+      },
+      {
+        "title": "IA y automatización",
+        "body": "Automatizar el muestreo de calidad, el papeleo de ingreso de agentes, los reportes y el soporte interno — el trabajo repetitivo alrededor de las llamadas, no un adorno encima.",
+        "href": "/servicios/ia-y-automatizacion",
+        "linkLabel": "Ver IA y automatización"
+      }
+    ]
+  },
+  "note": {
+    "title": "Tu industria no nos la tienen que explicar.",
+    "body": "La mayoría de los proveedores de TI ha leído sobre centros de contacto. Nuestro fundador es el CTO de uno: un BPO multinacional que atiende 24/7, donde ha dirigido el cumplimiento PCI DSS y un programa SOC 2 de punta a punta, en operaciones de más de mil personas. Sabemos lo que se siente una auditoría de cliente, lo que cuesta un marcador caído y por qué la baja de un agente importa tanto como el alta. Te ahorras la etapa de educar al proveedor."
+  },
+  "faq": {
+    "eyebrow": "preguntas frecuentes",
+    "title": "Lo que nos preguntan los operadores de BPO.",
+    "items": [
+      {
+        "q": "Mis clientes mandan cuestionarios de seguridad larguísimos. ¿Me ayudan a responderlos?",
+        "a": "Sí — y más importante: te ayudamos a que las respuestas sean verdad. Fortalecemos la infraestructura, montamos los controles y la evidencia, y el cuestionario pasa a describir lo que de verdad haces, no a ser un ejercicio de redacción creativa."
+      },
+      {
+        "q": "¿De verdad cubren el horario de mi operación?",
+        "a": "El monitoreo automático vigila tu infraestructura las 24 horas y las alertas se atienden según los tiempos acordados en tu plan. La severidad manda: una sede caída se atiende en minutos, no al siguiente día hábil."
+      },
+      {
+        "q": "Ya tengo un equipo interno de TI. ¿Ustedes lo reemplazan?",
+        "a": "No necesariamente. En muchos BPO tomamos una capa definida — seguridad y cumplimiento, monitoreo o la base de infraestructura — para que tu equipo se concentre en las campañas. Donde todavía no hay equipo, el equipo somos nosotros. El diagnóstico dice cuál modelo te sirve."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Cuéntanos cómo es tu operación.",
+    "subtitle": "Una llamada de 30 minutos con los fundadores: trae tus puestos, lo que te exigen tus clientes y lo que hoy te duele, y te decimos con franqueza qué haríamos primero.",
+    "buttonText": "Habla con alguien que conoce una operación como la tuya"
+  }
+}

@@ -31,7 +31,11 @@
               {% endif %}
             </div>
             <p class="idx-mono mt-1 lowercase text-gold-deep">·· {{ person.person_role }}</p>
-            <p class="mt-3 text-small text-ink-muted">{{ person.person_bio }}</p>
+            {# A bio can be more than one paragraph; each newline-separated
+               block gets its own <p> instead of running together. #}
+            {% for para in person.person_bio|split("\n") %}
+              {% if para|trim %}<p class="mt-3 text-small text-ink-muted">{{ para }}</p>{% endif %}
+            {% endfor %}
           </div>
         </div>
       {% endfor %}

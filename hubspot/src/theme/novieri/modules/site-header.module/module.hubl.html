@@ -10,7 +10,9 @@
     href="#main"
     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
   >
-    {{ module.label_skip }}
+    {# One global module, two languages: the field can hold only one value,
+       so the Spanish pages localize it here. #}
+    {% if "es" in html_lang|string %}Saltar al contenido{% else %}{{ module.label_skip }}{% endif %}
   </a>
 
   <div class="container-site flex h-[84px] items-center gap-6">
@@ -116,7 +118,11 @@
     </button>
   </div>
 
-  <div class="site-mobile-nav hidden border-t border-line bg-white px-5 py-6 md:hidden">
+  {# The menu lives inside a sticky header, so once it grows past the screen
+     there is nothing to scroll — the overflow is simply cut off. Capped at the
+     viewport minus the header bar, scrolling inside itself instead. dvh, not
+     vh: on phones the URL bar collapses and vh lies about the space left. #}
+  <div class="site-mobile-nav hidden max-h-[calc(100dvh-85px)] overflow-y-auto overscroll-contain border-t border-line bg-white px-5 py-6 md:hidden">
     <div class="grid gap-1">
       {% for item in nav_items %}
         <a href="{{ item.url }}" class="py-2 text-body font-medium text-ink">{{ item.label }}</a>

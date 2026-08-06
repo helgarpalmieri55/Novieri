@@ -151,6 +151,10 @@
         body: JSON.stringify({
           locale: locale,
           consentText: root.querySelector("[data-consent-text]").textContent.trim(),
+          followUp: !!data.get("followup"),
+          followUpText: data.get("followup") && root.querySelector("[data-optin-text]")
+            ? root.querySelector("[data-optin-text]").textContent.trim()
+            : "",
           hutk: (document.cookie.match(/hubspotutk=([^;]+)/) || [])[1] || "",
           pageUri: location.href,
           pageName: document.title,

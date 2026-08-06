@@ -45,13 +45,20 @@ const ES_SLUGS = {
   about: "nosotros",
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
+  "self-diagnosis/sample-report": "autodiagnostico/informe-de-ejemplo",
   pricing: "precios",
+  industries: "industrias",
+  "industries/bpo": "industrias/bpo",
+  "industries/hospitality": "industrias/hoteleria",
+  "industries/education": "industrias/educacion",
+  "case-studies": "casos-de-exito",
+  "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
   "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
   "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
   "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
-  "products/ventia": "productos/ventia",
+  "products/ai-ecommerce": "productos/ecommerce-ia",
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
@@ -61,6 +68,12 @@ const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 
 /** The NIT stays empty until registration completes; [[…]] blocks drop it cleanly. */
 const VARS = { company: "Novieri SAS", nit: "", email: "sales@novieri.com" };
+/**
+ * The legal pages route data-subject requests to a dedicated address per
+ * language — governance the review asked for, and a mailbox that now exists.
+ * Everything commercial keeps sales@.
+ */
+const LEGAL_VARS = { ...VARS, email: locale === "es" ? "privacidad@novieri.com" : "privacy@novieri.com" };
 
 /**
  * Founder portraits.
@@ -114,11 +127,13 @@ async function uploadPhoto(file) {
  * Ported from LegalPageTemplate.tsx, where the same copy is rendered.
  */
 function interpolate(text) {
-  const fill = (s) => s.replace(/\{(\w+)\}/g, (m, key) => VARS[key] ?? m);
+  // Only legal copy interpolates, so {email} resolves to the language's
+  // dedicated privacy address, not the sales inbox.
+  const fill = (s) => s.replace(/\{(\w+)\}/g, (m, key) => LEGAL_VARS[key] ?? m);
   return fill(
     text.replace(/\[\[(.+?)\]\]/g, (_, inner) => {
       const keys = [...inner.matchAll(/\{(\w+)\}/g)].map((m) => m[1]);
-      return keys.every((k) => (VARS[k] ?? "") !== "") ? inner : "";
+      return keys.every((k) => (LEGAL_VARS[k] ?? "") !== "") ? inner : "";
     }),
   );
 }
@@ -176,7 +191,7 @@ function legalWidgets(doc) {
         })),
         questions_title: c.questionsTitle,
         questions_body: interpolate(c.questionsBody),
-        questions_email: VARS.email,
+        questions_email: LEGAL_VARS.email,
       },
     },
   };
@@ -210,7 +225,7 @@ const SOLUTIONS = [
   ["whatsapp", "products/whatsapp-ai-assistant"],
   ["visitorIntel", "products/visitor-intelligence"],
   ["sentinel", "products/vulnerability-management"],
-  ["ventia", "products/ventia"],
+  ["ventia", "products/ai-ecommerce"],
   ["webDev", "products/ai-websites"],
 ];
 
@@ -292,9 +307,11 @@ function serviceWidgets(ns) {
     [SERVICE_SLOTS.cta]: {
       body: {
         eyebrow: NEXT_STEP,
-        title: c.ctaTitle,
+        title: s.ctaTitle || c.ctaTitle,
         subtitle: c.ctaSubtitle,
-        button_text: t.common.bookCall,
+        // Each service asks for its own next step — "assess your audit
+        // readiness" converts a security reader that "book a call" loses.
+        button_text: s.ctaButton || t.common.bookCall,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
       },
     },
@@ -582,7 +599,9 @@ function aboutWidgets() {
       body: {
         title: a.location.title,
         intro: a.location.body,
-        footnote: "barranquilla ·· gmt-5 ·· es / en",
+        footnote: locale === "es"
+          ? "Barranquilla · Colombia · español e inglés · horario compatible con EE. UU."
+          : "Barranquilla · Colombia · English & Spanish · US Eastern-compatible hours",
         picture: { src: "", alt: "" },
       },
     },
@@ -602,17 +621,21 @@ function aboutWidgets() {
  * Home, in template order. The Spanish home is a clone of the English one, so
  * without this it would render English from the field defaults.
  */
+// The audit's §11 order: identity, trust bar, who-we-help, outcomes, proof,
+// service model, demo, process, founders, diagnostic, close.
 const HOME_SLOTS = {
   hero: "main-module-2",
   stats: "main-module-3",
-  pillars: "main-module-4",
-  diagnose: "main-module-5",
-  chat: "main-module-6",
-  why: "main-module-7",
-  quotes: "main-module-8",
-  how: "main-module-9",
-  founders: "main-module-10",
-  cta: "main-module-11",
+  segments: "main-module-4",
+  why: "main-module-5",
+  quotes: "main-module-6",
+  caseStudy: "main-module-7",
+  pillars: "main-module-8",
+  chat: "main-module-9",
+  how: "main-module-10",
+  founders: "main-module-11",
+  diagnose: "main-module-12",
+  cta: "main-module-13",
 };
 const ACCENTS = ["text-plum", "text-teal", "text-gold-deep", "text-ink-muted", "text-plum-bright"];
 
@@ -640,11 +663,37 @@ function homeWidgets() {
     },
     [HOME_SLOTS.stats]: {
       body: {
+        footnote: h.proof.disclosure || "",
         stats: h.proof.items.map((s, i) => ({
           value: s.value,
           stat_label: s.label,
           colour: ACCENTS[i % 3],
         })),
+      },
+    },
+    [HOME_SLOTS.segments]: {
+      body: {
+        dark: true,
+        eyebrow: h.segments.eyebrow,
+        title: h.segments.title,
+        intro: h.segments.intro || "",
+        link_label: h.segments.linkLabel,
+        cards: h.segments.cards.map((c, i) => ({
+          card_name: c.title,
+          card_tagline: c.body,
+          card_colour: ACCENTS[i % ACCENTS.length],
+          card_link: { url: { type: "CONTENT", href: c.href } },
+          card_link_label: c.linkLabel || "",
+        })),
+      },
+    },
+    [HOME_SLOTS.caseStudy]: {
+      body: {
+        eyebrow: h.caseStudy.eyebrow,
+        title: h.caseStudy.title,
+        subtitle: h.caseStudy.subtitle,
+        button_text: h.caseStudy.button,
+        button_link: { url: { type: "CONTENT", href: h.caseStudy.href } },
       },
     },
     [HOME_SLOTS.pillars]: {
@@ -733,7 +782,10 @@ function diagnosticWidgets() {
         eyebrow: t.diagnostic.eyebrow,
         title: t.diagnostic.title,
         intro: t.diagnostic.intro,
-        button_text: "",
+        // The audit's ask: show what the report looks like before asking
+        // ten questions and an email for it.
+        button_text: d.sampleLabel || "",
+        button_link: { url: { type: "CONTENT", href: `/${slugFor("self-diagnosis/sample-report")}` } },
         seam: true,
       },
     },
@@ -758,11 +810,19 @@ function diagnosticWidgets() {
         gate_email: d.gate.email,
         gate_phone: d.gate.phone,
         gate_consent: d.gate.consent,
+        gate_optin: d.gate.optIn,
         gate_privacy: d.gate.privacy,
         gate_privacy_link: { url: { type: "CONTENT", href: `/${slugFor(LEGAL_SLUGS.privacy)}` } },
         gate_submit: d.gate.submit,
         gate_sending: d.gate.sending,
         result_title: d.result.title,
+        // These four rendered their English defaults on both languages until
+        // the review caught them — the fill simply never mapped them.
+        result_strengths: d.result.strengths,
+        result_risks: d.result.risks,
+        result_priorities: d.result.priorities,
+        result_print: d.result.print,
+        no_script: d.noScript,
         result_cta: d.result.cta,
         result_cta_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
         result_emailed: d.result.emailed,
@@ -810,8 +870,153 @@ if (!dryRun && (!only || only === slugFor("contact"))) {
   console.log(`form   ${CONTACT_FORM} -> ${contactFormGuid}`);
 }
 
+/**
+ * The industries and insights pages: copy lives in content/, one file per
+ * page per language, written by whoever drafts it and read verbatim here.
+ * Slot numbers mirror the module order each template declares.
+ */
+const readContent = (p) => {
+  try {
+    return JSON.parse(readFileSync(`content/${p}.json`, "utf8"));
+  } catch {
+    return null;
+  }
+};
+
+const heroOf = (c) => ({
+  body: { eyebrow: c.hero.eyebrow, title: c.hero.title, intro: c.hero.intro, button_text: "", seam: true },
+});
+const ctaOf = (c, href) => ({
+  body: {
+    eyebrow: "",
+    title: c.cta.title,
+    subtitle: c.cta.subtitle,
+    button_text: c.cta.buttonText,
+    button_link: { url: { type: "CONTENT", href: href || `/${slugFor("contact")}` } },
+  },
+});
+const cardsOf = (cards, linkLabel) => ({
+  body: {
+    eyebrow: "",
+    title: "",
+    cards: cards.map((k) => ({
+      card_name: k.title,
+      card_tagline: k.body,
+      card_link: { url: { type: "CONTENT", href: k.href } },
+      card_link_label: k.linkLabel || "",
+    })),
+    link_label: linkLabel,
+  },
+});
+
+// industry template: hero, pains, help, note, faq, cta.
+function industryWidgets(c) {
+  return {
+    "main-module-2": heroOf(c),
+    "main-module-3": {
+      body: {
+        title: c.pains.title,
+        intro: "",
+        items: c.pains.items.map((i) => ({ item_title: i.title, item_body: i.body })),
+      },
+    },
+    "main-module-4": {
+      body: {
+        eyebrow: c.help.eyebrow,
+        title: c.help.title,
+        cards: c.help.cards.map((k) => ({
+          card_name: k.title,
+          card_tagline: k.body,
+          card_link: { url: { type: "CONTENT", href: k.href } },
+          card_link_label: k.linkLabel || "",
+        })),
+        link_label: c.help.cards[0]?.linkLabel || "",
+      },
+    },
+    "main-module-5": { body: { title: c.note.title, intro: c.note.body, footnote: "" } },
+    "main-module-6": {
+      body: {
+        title: c.faq.title,
+        items: c.faq.items.map((i) => ({ question: i.q, answer: i.a })),
+        schema: true,
+      },
+    },
+    "main-module-7": ctaOf(c),
+  };
+}
+
+// hub-index template: hero, cards, cta.
+function hubIndexWidgets(c) {
+  return {
+    "main-module-2": heroOf(c),
+    "main-module-3": cardsOf(c.cards, c.cards[0]?.linkLabel || ""),
+    "main-module-4": ctaOf(c),
+  };
+}
+
+// case-study template: hero, stats, challenge, solution, results, cta.
+// The sample diagnostic report borrows the same shape — a report and a case
+// study are both "situation, action, prioritized outcome" — with its CTA
+// pointed at the diagnostic instead of the contact page.
+function caseStudyWidgets(c, ctaHref) {
+  return {
+    "main-module-2": heroOf(c),
+    "main-module-3": { body: { stats: c.stats.map((s) => ({ value: s.value, stat_label: s.label })) } },
+    "main-module-4": { body: { eyebrow: "", title: c.challenge.title, content: c.challenge.body } },
+    "main-module-5": { body: { eyebrow: "", title: c.solution.title, content: c.solution.body } },
+    "main-module-6": {
+      body: {
+        title: c.results.title,
+        intro: "",
+        items: c.results.items.map((i) => ({ item_title: i.title, item_body: i.body })),
+      },
+    },
+    "main-module-7": ctaOf(c, ctaHref),
+  };
+}
+
+/** slug -> widgets, for whichever content files exist in this checkout. */
+function contentPages() {
+  const out = {};
+  if (locale === "es") {
+    for (const [file, slug] of [
+      ["industries/es-bpo", "industrias/bpo"],
+      ["industries/es-hoteleria", "industrias/hoteleria"],
+      ["industries/es-educacion", "industrias/educacion"],
+      ["industries/es-restaurantes", "industrias/restaurantes"],
+      ["industries/es-pymes", "industrias/pymes"],
+    ]) {
+      const c = readContent(file);
+      if (c) out[slug] = industryWidgets(c);
+    }
+    const ix = readContent("industries/es-index");
+    if (ix) out["industrias"] = hubIndexWidgets(ix);
+    const cx = readContent("case-studies/index");
+    if (cx) out["casos-de-exito"] = hubIndexWidgets(cx.es);
+    const c1 = readContent("case-studies/restaurant-whatsapp");
+    if (c1) out["casos-de-exito/restaurante-whatsapp-ia"] = caseStudyWidgets(c1.es);
+    const sr = readContent("diagnostic/sample-report");
+    if (sr) out["autodiagnostico/informe-de-ejemplo"] = caseStudyWidgets(sr.es, "/autodiagnostico");
+  } else {
+    for (const s of ["bpo", "hospitality", "education", "regulated"]) {
+      const c = readContent(`industries/en-${s}`);
+      if (c) out[`industries/${s}`] = industryWidgets(c);
+    }
+    const ix = readContent("industries/en-index");
+    if (ix) out["industries"] = hubIndexWidgets(ix);
+    const cx = readContent("case-studies/index");
+    if (cx) out["case-studies"] = hubIndexWidgets(cx.en);
+    const c1 = readContent("case-studies/restaurant-whatsapp");
+    if (c1) out["case-studies/restaurant-whatsapp-ai"] = caseStudyWidgets(c1.en);
+    const sr = readContent("diagnostic/sample-report");
+    if (sr) out["self-diagnosis/sample-report"] = caseStudyWidgets(sr.en, "/self-diagnosis");
+  }
+  return out;
+}
+
 /** slug -> the widgets to write. */
 const PAGES = {
+  ...contentPages(),
   [locale === "es" ? "es" : ""]: homeWidgets(),
   [slugFor("self-diagnosis")]: diagnosticWidgets(),
   [slugFor("services")]: servicesIndexWidgets(),

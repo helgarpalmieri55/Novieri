@@ -56,7 +56,7 @@
       "description": "Identify the companies visiting your site, interpret their behavior with AI, and deliver qualified accounts to your sales team daily."
     },
     "sol_ventia": {
-      "title": "Ventia — E-commerce with an AI sales agent — Novieri",
+      "title": "E-commerce with an AI sales agent — Novieri",
       "description": "A multi-store e-commerce platform with a built-in AI sales agent. Built and operated by Novieri."
     },
     "sol_matterFlow": {
@@ -163,7 +163,7 @@
     }
   },
   "common": {
-    "bookCall": "Book a 30-minute call",
+    "bookCall": "Book a 30-minute consultation",
     "seeServices": "See services",
     "learnMore": "Learn more",
     "talkCase": "Let's talk about your case",
@@ -173,9 +173,9 @@
   },
   "home": {
     "hero": {
-      "titleA": "AI-first IT solutions,",
-      "titleB": "with a nearshore edge.",
-      "subtitle": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates."
+      "titleA": "Your outsourced technology team",
+      "titleB": "— with AI built in.",
+      "subtitle": "We run, secure and improve your company's technology while building AI solutions that eliminate repetitive work, streamline operations and help your team grow. Founder-led delivery in English and Spanish for companies across Colombia and the United States."
     },
     "proof": {
       "items": [
@@ -191,7 +191,8 @@
           "value": "2",
           "label": "founders, zero middlemen"
         }
-      ]
+      ],
+      "disclosure": "Experience includes work led by Novieri's founders in current and previous technology leadership roles."
     },
     "liveChat": {
       "eyebrow": "ai in production",
@@ -202,7 +203,7 @@
         "name": "Marisquería La Bahía",
         "status": "online · replies instantly"
       },
-      "badge": "DEMO",
+      "badge": "illustrative demo",
       "inputHint": "Type a message",
       "entries": [
         {
@@ -258,28 +259,28 @@
       "ctaService": "See AI & automation"
     },
     "services": {
-      "eyebrow": "services",
-      "title": "Five pillars, one standard."
+      "eyebrow": "one operating model",
+      "title": "One team that runs, secures, automates, and builds."
     },
     "why": {
       "eyebrow": "why novieri",
-      "title": "Nearshore premium: enterprise practices, your time zone, sensible rates.",
+      "title": "What changes when we take over.",
       "points": [
         {
-          "title": "Aligned with US Eastern hours",
-          "body": "Our working day overlaps New York's almost hour for hour, all year. Standups, incidents, and calls happen inside your working day — not the morning after."
+          "title": "Less downtime",
+          "body": "Monitoring that catches problems early, backups that actually restore, and someone accountable when something breaks."
         },
         {
-          "title": "Bilingual by default",
-          "body": "Founder-led service in fluent English and Spanish. Requirements, documentation, and support without translation loss."
+          "title": "Hours back, every week",
+          "body": "Agents and automations take over the repetitive work — answering, capturing, scheduling, re-typing — so your team does the work only they can do."
         },
         {
-          "title": "Enterprise practices, PCI & SOC 2 experience",
-          "body": "Monitoring, tested backups, managed security, and real process — run by a CTO who has led technology for operations of 1,000+ people, including PCI DSS compliance and a SOC 2 program end to end. The same standard, without the multinational overhead."
+          "title": "Security you can show, not just claim",
+          "body": "Hardening, managed protection, and the evidence trail an auditor or enterprise customer asks for — PCI DSS and SOC 2 experience included."
         },
         {
-          "title": "Senior-only delivery",
-          "body": "You work directly with the founders who design and operate your systems. No juniors learning on your dime, no account managers in between."
+          "title": "One team instead of five vendors",
+          "body": "IT, security, automation, and software under one roof and one standard, with the founders on the calls."
         }
       ],
       "stat": {
@@ -330,8 +331,47 @@
       "eyebrow": "start here",
       "title": "Not sure where to start?",
       "body": "Answer ten questions about your operation and you read the diagnostic at the end: the level you're at, the risks we see, and what we'd do first — written for your case, not a template. It commits you to nothing.",
-      "button": "Self-diagnosis",
+      "button": "Get your free technology diagnosis",
       "note": "3 minutes · PDF report · free"
+    },
+    "segments": {
+      "eyebrow": "who we help",
+      "title": "Built for operations like yours.",
+      "linkLabel": "See how we help",
+      "cards": [
+        {
+          "title": "BPOs & contact centers",
+          "body": "Seats, SLAs, and client audits — run by people who run a contact-center floor today.",
+          "href": "/industries/bpo",
+          "linkLabel": "See BPO solutions"
+        },
+        {
+          "title": "PCI DSS & SOC 2 companies",
+          "body": "Your customers are asking for compliance. We get you audit-ready, with evidence.",
+          "href": "/industries/regulated",
+          "linkLabel": "See compliance solutions"
+        },
+        {
+          "title": "Hotels & restaurants",
+          "body": "Every guest answered — WhatsApp, bookings, and orders handled around the clock.",
+          "href": "/industries/hospitality",
+          "linkLabel": "See hospitality solutions"
+        },
+        {
+          "title": "Schools & universities",
+          "body": "Big device fleets, small IT teams, and no room for downtime on a school day.",
+          "href": "/industries/education",
+          "linkLabel": "See education solutions"
+        }
+      ],
+      "intro": "We don't start from a tool. We start from what's costing you time, putting the operation at risk, or holding growth back."
+    },
+    "caseStudy": {
+      "eyebrow": "real results",
+      "title": "A 10-person restaurant automated its WhatsApp — the owner reports 20% more sales.",
+      "subtitle": "Real client, anonymous by agreement. Read what was built, how it connects to their software, and what changed day to day.",
+      "button": "Read the case study",
+      "href": "/case-studies/restaurant-whatsapp-ai"
     }
   },
   "servicesIndex": {
@@ -477,7 +517,9 @@
     "demoLabels": {
       "whatsapp": "WhatsApp · restaurant",
       "web": "Site chat · hotel"
-    }
+    },
+    "ctaButton": "Map your first automation",
+    "ctaTitle": "Tell us which task you want to stop repeating"
   },
   "managedIt": {
     "hero": {
@@ -598,7 +640,9 @@
         "fleet current · 0 pending"
       ],
       "footer": "24/7 monitoring · automatic patching · verified backups"
-    }
+    },
+    "ctaButton": "Request an IT health check",
+    "ctaTitle": "Review the current state of your technology"
   },
   "security": {
     "hero": {
@@ -698,7 +742,9 @@
         "test restore verified",
         "audit-ready · no open findings"
       ]
-    }
+    },
+    "ctaButton": "Assess your audit readiness",
+    "ctaTitle": "Find out what you should fix first"
   },
   "software": {
     "hero": {
@@ -799,7 +845,9 @@
         "tests": "tests",
         "review": "reviewed by a person"
       }
-    }
+    },
+    "ctaButton": "Scope your application",
+    "ctaTitle": "Tell us which tool is missing"
   },
   "about": {
     "hero": {
@@ -815,14 +863,14 @@
       "title": "The founders",
       "helgar": {
         "name": "Helgar Palmieri",
-        "role": "Technology & delivery",
-        "bio": "Solutions architect and AI engineer with 12+ years shipping production systems. Today CTO of a 24/7 multinational BPO, where he personally architects and writes the AI and integration stack: internal copilots, RAG tooling, workflow automation, and full-stack products. Previously led IT for a PCI DSS-compliant call center. MBA.",
+        "role": "Co-founder · Technology & Delivery",
+        "bio": "Solutions architect and AI engineer with more than twelve years of experience designing and operating mission-critical production systems. He has led technology for high-availability multinational operations, with expertise spanning infrastructure, automation, application development, PCI DSS, and SOC 2.\nAt Novieri, Helgar leads the architecture, security, and technical delivery of every solution. He also serves as CTO of a multinational operation and holds an MBA.",
         "photoAlt": "Helgar Palmieri, co-founder, technology and delivery"
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Commercial and client relationships",
-        "bio": "Commercial executive with more than ten years in front of clients. She understands how businesses actually run and is good at finding where it hurts — the bottleneck the owner has stopped noticing because they have worked around it for years. A business administration graduate. At Novieri that turns into the practical part: she scopes the case with you, keeps the follow-through honest, and makes sure what we deliver is used rather than just installed.",
+        "role": "Co-founder · Commercial Strategy & Client Experience",
+        "bio": "Business administrator and commercial leader with more than ten years of experience working directly with clients. At Novieri, she turns operational needs into clear priorities, strong business cases, and realistic plans of action.\nSylvana supports each engagement from the initial conversation through implementation and adoption, connecting the client's needs with practical, measurable, and sustainable results.",
         "photoAlt": "Sylvana Nova, co-founder, commercial and client relationships"
       },
       "linkedinLabel": "LinkedIn: {name}"
@@ -1129,7 +1177,7 @@
         ]
       },
       "ventia": {
-        "name": "Ventia — AI E-commerce",
+        "name": "AI E-commerce",
         "tagline": "Multi-store e-commerce with a built-in AI sales agent.",
         "tags": [
           "e-commerce",
@@ -1138,7 +1186,7 @@
         ],
         "hero": {
           "title": "A sales platform with an AI salesperson inside.",
-          "promise": "Ventia is Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI sales agent that attends every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
+          "promise": "Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI sales agent that attends every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
         },
         "features": [
           {
@@ -1692,17 +1740,22 @@
       "email": "Work email",
       "company": "Company",
       "phone": "Phone (optional)",
-      "consent": "I authorise the processing of my data under the privacy policy.",
+      "consent": "I authorize the processing of my data to generate and send me the diagnostic.",
       "submit": "Generate my diagnostic",
       "sending": "Analysing your answers…",
-      "privacy": "Read the privacy policy"
+      "privacy": "Read the privacy policy",
+      "optIn": "I'd also like a founder to contact me to discuss the result. (optional)"
     },
     "result": {
       "title": "Your diagnostic is ready",
       "download": "Download PDF",
       "again": "Start over",
       "cta": "Book a 30-minute call",
-      "emailed": "We've emailed you a copy too."
+      "emailed": "We've emailed you a copy too.",
+      "strengths": "What you already have",
+      "risks": "Risks we see",
+      "priorities": "What we'd do first",
+      "print": "Save as PDF"
     },
     "errors": {
       "required": "Pick an option to continue.",
@@ -1934,7 +1987,9 @@
           }
         ]
       }
-    ]
+    ],
+    "sampleLabel": "See a sample report",
+    "noScript": "The diagnostic needs JavaScript. Write to sales@novieri.com and we'll go through the questions with you."
   },
   "itConsulting": {
     "hero": {
@@ -2008,7 +2063,9 @@
           "a": "A document in plain language: what you have, what it costs, what we would change, in what order, and roughly what each step is worth. Not a slide deck."
         }
       ]
-    }
+    },
+    "ctaButton": "Ask your first question",
+    "ctaTitle": "Make the decision with more information"
   },
   "pricing": {
     "hero": {

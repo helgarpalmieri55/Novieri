@@ -66,6 +66,14 @@
         <p class="text-small font-medium leading-tight">{{ s_title }}</p>
         <p class="idx-mono mt-0.5 lowercase text-on-dark-faint">·· novieri</p>
       </div>
+      {# The launcher sits under the panel on small screens; a close that is
+         where every other window keeps it costs nothing to find. #}
+      <button type="button" class="sylvi-close ml-auto flex h-8 w-8 flex-none items-center justify-center rounded-full text-on-dark-muted transition-colors hover:bg-white/10 hover:text-white"
+              aria-label="{{ s_close|escape_attr }}">
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M2 2l10 10M12 2L2 12" />
+        </svg>
+      </button>
     </div>
 
     <div class="sylvi-log flex-1 overflow-y-auto px-4 py-4">

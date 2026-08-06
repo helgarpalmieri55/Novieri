@@ -1,0 +1,48 @@
+{
+  "slug": "industrias",
+  "lang": "es",
+  "htmlTitle": "Para quién trabajamos — Novieri",
+  "metaDescription": "TI administrada, IA y seguridad para pymes, restaurantes, hoteles, colegios y universidades y BPO en Colombia — atención directa de los fundadores desde Barranquilla.",
+  "hero": {
+    "eyebrow": "para quién trabajamos",
+    "title": "Tecnología pensada para operaciones como la tuya.",
+    "intro": "No empezamos por una herramienta. Empezamos por lo que hoy te quita tiempo, pone la operación en riesgo o frena el crecimiento."
+  },
+  "cards": [
+    {
+      "title": "BPO y centros de contacto",
+      "body": "Infraestructura, seguridad, cumplimiento y automatización para operaciones con acuerdos de servicio, auditorías y atención 24/7.",
+      "href": "/industrias/bpo",
+      "linkLabel": "Ver soluciones para BPO"
+    },
+    {
+      "title": "Restaurantes",
+      "body": "Pedidos, reservas y preguntas atendidos por WhatsApp, incluso cuando el salón está lleno y el equipo no puede responder.",
+      "href": "/industrias/restaurantes",
+      "linkLabel": "Ver soluciones para restaurantes"
+    },
+    {
+      "title": "Hoteles",
+      "body": "Atención bilingüe a cualquier hora, más reservas directas y una operación tecnológica que no depende de una sola persona.",
+      "href": "/industrias/hoteleria",
+      "linkLabel": "Ver soluciones para hoteles"
+    },
+    {
+      "title": "Pymes",
+      "body": "Un responsable claro para el soporte, Microsoft 365, los equipos, la red, las copias de seguridad y las decisiones de tecnología.",
+      "href": "/industrias/pymes",
+      "linkLabel": "Ver soluciones para pymes"
+    },
+    {
+      "title": "Colegios y universidades",
+      "body": "Soporte para equipos, redes, plataformas, docentes y administrativos, con protección adecuada para la información de estudiantes y familias.",
+      "href": "/industrias/educacion",
+      "linkLabel": "Ver soluciones para educación"
+    }
+  ],
+  "cta": {
+    "title": "¿No ves una operación como la tuya? Cuéntanos de ella.",
+    "subtitle": "Una llamada de 30 minutos basta para saber si entendemos tu operación lo suficiente para ayudar — y te lo decimos con franqueza en cualquier caso.",
+    "buttonText": "Agenda una llamada"
+  }
+}

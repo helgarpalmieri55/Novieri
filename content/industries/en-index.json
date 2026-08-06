@@ -1,0 +1,42 @@
+{
+  "slug": "industries",
+  "lang": "en",
+  "htmlTitle": "Industries — Novieri",
+  "metaDescription": "IT and AI for BPOs, hospitality, education, and PCI / SOC 2 companies — senior nearshore delivery on US Eastern hours, from Barranquilla.",
+  "hero": {
+    "eyebrow": "industries",
+    "title": "We speak your industry, not just our stack.",
+    "intro": "The same five services land differently in a contact center than in a hotel. These are the industries where we already know the terrain — the systems, the pressure points, and what actually pays off first."
+  },
+  "cards": [
+    {
+      "title": "BPOs & contact centers",
+      "body": "IT and compliance from founders who run technology for a 24/7 multinational BPO — downtime, client audits, and agent churn handled by people who live them.",
+      "href": "/industries/bpo",
+      "linkLabel": "IT for BPOs"
+    },
+    {
+      "title": "Hotels & restaurants",
+      "body": "AI assistants that answer calls and messages in English and Spanish, book and take orders in seconds, and managed IT that keeps service running.",
+      "href": "/industries/hospitality",
+      "linkLabel": "IT for hospitality"
+    },
+    {
+      "title": "Education",
+      "body": "Managed IT, student-data security, and front-office automation for schools and education companies — senior engineers at rates a school budget can carry.",
+      "href": "/industries/education",
+      "linkLabel": "IT for education"
+    },
+    {
+      "title": "PCI DSS & SOC 2 companies",
+      "body": "From gap assessment to audit-ready, led by people who have taken both programs end to end — with continuous vulnerability management behind it.",
+      "href": "/industries/regulated",
+      "linkLabel": "IT for regulated companies"
+    }
+  ],
+  "cta": {
+    "title": "Don't see your industry? Tell us about it.",
+    "subtitle": "A 30-minute call is enough to know whether we understand your operation well enough to help — and we'll say so either way.",
+    "buttonText": "Book a call"
+  }
+}

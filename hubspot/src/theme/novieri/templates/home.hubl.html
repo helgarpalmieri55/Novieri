@@ -3,6 +3,17 @@
   isAvailableForNewContent: true
   label: Novieri — home
 -->
+{#
+  The audit's §11 order: say who you are, prove it, let the visitor find
+  themselves, show what changes, show evidence, and only then explain the
+  machinery. Segmentation cards come before the service model because a buyer
+  recognises their industry faster than a service taxonomy; the case-study
+  band sits with the testimonials so the proof reads as one section even
+  while the quotes are still being collected.
+
+  Order is mirrored by HOME_SLOTS in scripts/fill-hubspot-pages.mjs —
+  reorder here and reorder there, or every section wears its neighbour's copy.
+#}
 {% extends "./partials/base.hubl.html" %}
 {% block body %}
   {% dnd_area "main" label="Page content" %}
@@ -18,23 +29,28 @@
           {% dnd_module path="../modules/pillar-cards" %}{% end_dnd_module %}
         {% end_dnd_row %}
         {% dnd_row %}
-          {% dnd_module path="../modules/diagnostic-band" %}{% end_dnd_module %}
+          {% dnd_module path="../modules/why-points" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/testimonials" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/cta-band" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pillar-cards" %}{% end_dnd_module %}
         {% end_dnd_row %}
         {% dnd_row %}
           {% dnd_module path="../modules/chat-demo" %}{% end_dnd_module %}
-        {% end_dnd_row %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/why-points" %}{% end_dnd_module %}
-        {% end_dnd_row %}
-        {# Ships empty on purpose: no quotes, no section. #}
-        {% dnd_row %}
-          {% dnd_module path="../modules/testimonials" %}{% end_dnd_module %}
         {% end_dnd_row %}
         {% dnd_row %}
           {% dnd_module path="../modules/how-steps" %}{% end_dnd_module %}
         {% end_dnd_row %}
         {% dnd_row %}
           {% dnd_module path="../modules/founders-band" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/diagnostic-band" %}{% end_dnd_module %}
         {% end_dnd_row %}
         {% dnd_row %}
           {% dnd_module path="../modules/cta-band" %}{% end_dnd_module %}

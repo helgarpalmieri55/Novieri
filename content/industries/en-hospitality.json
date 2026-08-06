@@ -1,0 +1,85 @@
+{
+  "slug": "hospitality",
+  "lang": "en",
+  "name": "Hotels & restaurants",
+  "htmlTitle": "IT & AI for hotels and restaurants — Novieri",
+  "metaDescription": "AI assistants that answer calls and messages in English and Spanish, plus managed IT for hotels and restaurants — nearshore rates, US Eastern hours.",
+  "hero": {
+    "eyebrow": "industries",
+    "title": "Every guest answered, even the ones who call at midnight.",
+    "intro": "Guests don't inquire on your schedule — they call during dinner rush and message at 11 PM. We build and operate AI assistants that answer in seconds, in English and Spanish, and we keep the technology behind your property running."
+  },
+  "pains": {
+    "eyebrow": "the reality",
+    "title": "What hospitality operators deal with every day.",
+    "items": [
+      {
+        "title": "Missed calls are missed revenue",
+        "body": "A caller who hits voicemail books somewhere else. Nobody calls a restaurant or a hotel twice — the inquiry and the booking walk together."
+      },
+      {
+        "title": "The front desk can't do two jobs",
+        "body": "The same person checking in a guest is answering the phone and the messages. Something always waits, and it's usually the future guest."
+      },
+      {
+        "title": "Spanish-speaking guests get worse service",
+        "body": "A large share of US hospitality demand speaks Spanish, but few properties can answer it well. Every mistranslated exchange is friction at the exact moment of the sale."
+      },
+      {
+        "title": "Nobody owns the technology",
+        "body": "Wi-Fi, the POS, the booking engine, the printers — when something breaks mid-service there's no IT person, just whoever is least busy and a support line on hold."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "how we help",
+    "title": "Three ways we take the load.",
+    "cards": [
+      {
+        "title": "A WhatsApp assistant that really converses",
+        "body": "Built for restaurants and hotels: it takes orders and reservations, understands voice notes, answers from your own information, and hands off to your team when it matters.",
+        "href": "/products/whatsapp-ai-assistant",
+        "linkLabel": "See the WhatsApp assistant"
+      },
+      {
+        "title": "A receptionist that answers every call",
+        "body": "An AI receptionist in a natural voice: answers instantly, responds from your property's information, captures the lead, and books when nobody can pick up.",
+        "href": "/products/ai-virtual-assistant",
+        "linkLabel": "See the AI receptionist"
+      },
+      {
+        "title": "IT that keeps service running",
+        "body": "Network, Wi-Fi, endpoints, and backups managed by senior engineers — so the systems behind check-in and checkout don't depend on luck.",
+        "href": "/services/managed-it",
+        "linkLabel": "See managed IT"
+      }
+    ]
+  },
+  "note": {
+    "title": "The demo on our homepage is not a mockup.",
+    "body": "The WhatsApp assistant we show on novieri.com is the actual product we build and operate for restaurants and hotels — conversation, voice notes, bookings written into the system, handoff to a person when it matters. We're also natively bilingual: your Spanish-speaking guests get the same quality of answer as everyone else, because the team behind the assistant lives in both languages. And because we operate it, you're not buying software and getting left alone."
+  },
+  "faq": {
+    "eyebrow": "faq",
+    "title": "What hospitality operators ask us.",
+    "items": [
+      {
+        "q": "Will guests know they're talking to a bot — and hate it?",
+        "a": "They'll usually know, and they won't mind, because it actually helps: no button menus, no scripts — it understands what they wrote or said and does the thing, in seconds. The moment a conversation needs a person, it hands off with the full history in view."
+      },
+      {
+        "q": "Does it work with our booking or ordering system?",
+        "a": "The assistant performs real actions on your data — checking availability, creating the booking, building the order — and we integrate with your existing systems through their APIs. In the first call we'll tell you honestly what connects cleanly and what needs a workaround."
+      },
+      {
+        "q": "We're one property, not a chain. Is this for us?",
+        "a": "Yes. The assistant is priced for independent operations, and managed IT starts from what you already have — nothing gets replaced just to fit our stack. Multi-location groups are supported too, with strict data separation between properties."
+      }
+    ]
+  },
+  "cta": {
+    "title": "See it answering your guests' actual questions.",
+    "subtitle": "Book a 30-minute demo and we'll show the assistant running on your menu, your rooms, your policies — no strings attached.",
+    "buttonText": "Book a demo"
+  }
+}

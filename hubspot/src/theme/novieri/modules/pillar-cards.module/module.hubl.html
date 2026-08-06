@@ -1,5 +1,8 @@
-{# The four service pillars, as cards. Each card is a group in the editor. #}
-<section class="section-pad">
+{# The four service pillars, as cards. Each card is a group in the editor.
+   `dark` turns the section into a black band: headings and eyebrow go light
+   by inheriting from dark-s, and the white cards read as the point of the
+   section instead of furniture on it. #}
+<section class="{% if module.dark %}dark-s {% endif %}section-pad">
   <div class="container-site">
     {# Both empty on the solutions index, and an empty heading block still
        drew its eyebrow marker — a stray "··" floating above the cards. #}
@@ -7,6 +10,7 @@
       <div class="reveal mb-[clamp(2.5rem,6vh,4rem)] max-w-2xl">
         {% if module.eyebrow %}<span class="eyebrow">{{ module.eyebrow }}</span>{% endif %}
         {% if module.title %}<h2 class="mt-4">{{ module.title }}</h2>{% endif %}
+        {% if module.intro %}<p class="mt-4 max-w-[56ch] text-ink-muted{% if module.dark %} text-on-dark-muted{% endif %}">{{ module.intro }}</p>{% endif %}
       </div>
     {% endif %}
     {# Three across, not four. There are five pillars now and five cards in a
@@ -17,7 +21,9 @@
       {% for card in module.cards %}
         <a href="{{ card.card_link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7" style="--rd: {{ loop.index0 * 70 }}ms">
           <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.card_colour }}">··</span>
-          <h3>{{ card.card_name }}</h3>
+          {# Explicit ink: on the dark band the section's light text colour
+             inherits into the white card and the title all but vanishes. #}
+          <h3 class="text-ink">{{ card.card_name }}</h3>
           <p class="grow text-small text-ink-muted">{{ card.card_tagline }}</p>
           <span class="flex flex-wrap gap-1.5">
             {% for tag in card.card_tags|split(",") %}
@@ -25,7 +31,7 @@
             {% endfor %}
           </span>
           <span class="mt-1 inline-flex items-center gap-1.5 text-small font-medium text-plum transition-[gap] duration-200 group-hover:gap-3">
-            {{ module.link_label }} <span aria-hidden="true">→</span>
+            {{ card.card_link_label or module.link_label }} <span aria-hidden="true">→</span>
           </span>
         </a>
       {% endfor %}

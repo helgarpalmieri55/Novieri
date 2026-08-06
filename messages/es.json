@@ -1,63 +1,63 @@
 {
   "meta": {
     "home": {
-      "title": "Novieri — Tecnología de nivel corporativo con IA en el centro",
-      "description": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación. Tecnología de nivel corporativo para tu empresa, sin montar un departamento de IT."
+      "title": "Servicios de TI, IA y ciberseguridad en Barranquilla | Novieri",
+      "description": "Administramos tu tecnología, fortalecemos la seguridad y automatizamos procesos con IA. Atención directa desde Barranquilla."
     },
     "services": {
       "title": "Servicios — Novieri",
-      "description": "IA y automatización, IT administrado, ciberseguridad y cumplimiento, desarrollo a medida y consultoría IT. Cinco pilares, un mismo estándar."
+      "description": "IA y automatización, TI administrada, ciberseguridad y cumplimiento, desarrollo de software y consultoría tecnológica. Cinco pilares, un mismo estándar."
     },
     "ai": {
-      "title": "IA y automatización — Novieri",
-      "description": "Agentes, chatbots y automatización de procesos con un diagnóstico claro de dónde la IA sí genera valor en tu operación."
+      "title": "Automatización con IA para empresas en Colombia | Novieri",
+      "description": "Identificamos, construimos y operamos automatizaciones que reducen trabajo repetitivo y se integran con tus sistemas."
     },
     "managedIt": {
-      "title": "IT administrado — Novieri",
-      "description": "Soporte, Microsoft 365, redes, firewall y copias de seguridad administradas por ingenieros con experiencia. Tu departamento de IT, sin tener que montarlo."
+      "title": "TI administrada y soporte empresarial en Barranquilla | Novieri",
+      "description": "Soporte, Microsoft 365, redes, copias de seguridad, monitoreo y seguridad por un valor mensual predecible."
     },
     "security": {
-      "title": "Ciberseguridad y cumplimiento — Novieri",
-      "description": "Protección de tu infraestructura, gestión de vulnerabilidades y preparación para auditorías SOC 2 y PCI DSS, con informes que un auditor acepta."
+      "title": "Ciberseguridad, SOC 2 y PCI DSS en Colombia | Novieri",
+      "description": "Fortalecemos tu operación, gestionamos vulnerabilidades y te preparamos para SOC 2, PCI DSS e ISO 27001."
     },
     "software": {
-      "title": "Desarrollo a medida — Novieri",
-      "description": "Aplicaciones web, APIs e integraciones en React, FastAPI y Node. Software que se ajusta a tu operación, no al revés."
+      "title": "Desarrollo de software a medida en Barranquilla | Novieri",
+      "description": "Aplicaciones, portales e integraciones construidos alrededor de tu operación, con soporte y evolución continua."
     },
     "about": {
-      "title": "Nosotros — Novieri",
-      "description": "Los dos fundadores de Novieri, y por qué existe: estándares de empresa grande al alcance de una empresa mediana, desde Barranquilla para Colombia y Estados Unidos."
+      "title": "Novieri: tecnología e IA desde Barranquilla",
+      "description": "Conoce a los fundadores y la experiencia detrás de nuestros servicios de tecnología, seguridad, IA y software."
     },
     "contact": {
-      "title": "Contacto — Novieri",
-      "description": "Cuéntanos tu caso o agenda una llamada directa con los fundadores. Barranquilla, Colombia — atendemos EE. UU. en horario del este."
+      "title": "Contacta a Novieri | Consulta tecnológica",
+      "description": "Cuéntanos qué está afectando tu operación o agenda una llamada de 30 minutos directamente con los fundadores."
     },
     "notFound": {
       "title": "Página no encontrada — Novieri"
     },
     "solutions": {
       "title": "Productos — Novieri",
-      "description": "Productos construidos y operados por Novieri: asistentes de IA, gestión IT y RMM, monitoreo, seguridad e inteligencia de visitantes."
+      "description": "Productos construidos y operados por Novieri: asistentes de IA, gestión de TI y RMM, monitoreo, seguridad e inteligencia de visitantes."
     },
     "sol_aiAssistant": {
-      "title": "Recepcionista Virtual de IA — Novieri",
-      "description": "Un recepcionista de IA que contesta cada llamada: responde con la información de tu empresa, guarda los datos del interesado en tu CRM, transfiere a tu equipo y agenda reuniones."
+      "title": "Recepcionista virtual con IA para empresas | Novieri",
+      "description": "Atiende llamadas, responde preguntas, registra oportunidades, agenda reuniones y transfiere con contexto."
     },
     "sol_whatsapp": {
-      "title": "Asistente de IA para WhatsApp — Novieri",
-      "description": "Agente conversacional real por WhatsApp para restaurantes y hoteles: toma pedidos, gestiona reservas, responde con tu información y escala a humanos."
+      "title": "Asistente de WhatsApp con IA para restaurantes y hoteles",
+      "description": "Automatiza preguntas, pedidos y reservas por WhatsApp, entiende notas de voz y entrega los casos complejos a tu equipo."
     },
     "sol_itSuite": {
-      "title": "Suite de Gestión IT y RMM — Novieri",
-      "description": "Plataforma de gestión de equipos: inventario, parches, control remoto, logs de seguridad, respaldo y documentación IT con un solo agente."
+      "title": "Suite de gestión de TI y RMM — Novieri",
+      "description": "Plataforma de gestión de equipos: inventario, parches, control remoto, logs de seguridad, respaldo y documentación de TI con un solo agente."
     },
     "sol_visitorIntel": {
-      "title": "Inteligencia de Visitantes Web — Novieri",
-      "description": "Identifica las empresas que visitan tu sitio, interpreta su comportamiento con IA y entrega cuentas calificadas a tu equipo comercial cada día."
+      "title": "Identificación de empresas visitantes B2B | Novieri",
+      "description": "Detecta empresas que visitan tu sitio, analiza su interés y prioriza oportunidades para tu equipo comercial."
     },
     "sol_ventia": {
-      "title": "Ventia — E-commerce con agente de ventas IA — Novieri",
-      "description": "Plataforma de comercio electrónico multi-tienda con un agente de ventas de IA integrado. Construida y operada por Novieri."
+      "title": "Tienda en línea inteligente — Novieri",
+      "description": "Plataforma de comercio electrónico para una o varias marcas, con un asistente de ventas de IA integrado. Construida y operada por Novieri."
     },
     "sol_matterFlow": {
       "title": "Matter Flow — Plataforma de observabilidad — Novieri",
@@ -68,15 +68,15 @@
       "description": "Monitoreo administrado 24/7 de redes, servidores, bases de datos y enlaces de internet — operado por Novieri sobre su propia plataforma."
     },
     "sol_sentinel": {
-      "title": "Gestión de vulnerabilidades con IA — Novieri",
-      "description": "Descubre activos, detecta vulnerabilidades, prioriza con IA y genera reportes listos para auditoría — en tu propia infraestructura."
+      "title": "Gestión de vulnerabilidades para empresas | Novieri",
+      "description": "Identifica, prioriza y da seguimiento a vulnerabilidades con evidencia útil para seguridad y cumplimiento."
     },
     "sol_webDev": {
-      "title": "Sitios web con IA — Novieri",
-      "description": "Desarrollo de sitios web modernos con funcionalidades de IA integradas: asistentes, búsqueda inteligente y contenido bilingüe."
+      "title": "Sitios web inteligentes para empresas | Novieri",
+      "description": "Sitios rápidos, bilingües y personalizados con asistentes de IA, analítica, formularios e integraciones."
     },
     "legalPrivacy": {
-      "title": "Política de privacidad — Novieri",
+      "title": "Política de tratamiento de datos personales — Novieri",
       "description": "Cómo Novieri trata, protege y conserva tus datos personales, y cómo ejercer tus derechos según la Ley 1581 de 2012."
     },
     "legalCookies": {
@@ -88,16 +88,16 @@
       "description": "Condiciones de acceso y uso del sitio novieri.com: propiedad intelectual, responsabilidad y ley aplicable en Colombia."
     },
     "diagnostic": {
-      "title": "Autodiagnóstico de tecnología — Novieri",
-      "description": "Diez preguntas sobre tu operación y un informe en PDF con tu nivel, los riesgos que vemos y qué priorizar. Toma tres minutos."
+      "title": "Diagnóstico tecnológico en 3 minutos — Novieri",
+      "description": "Diez preguntas sobre tu operación y un informe en PDF con tus fortalezas, los riesgos que vemos y qué priorizaríamos. Toma tres minutos."
     },
     "itConsulting": {
-      "title": "Consultoría IT — Novieri",
-      "description": "Decisiones de tecnología con alguien que ya tuvo que vivir con ellas: qué comprar, qué arreglar, cuánto cuesta de verdad y cuándo la respuesta es esperar."
+      "title": "Consultoría tecnológica para empresas | Novieri",
+      "description": "Decide qué comprar, qué corregir y qué conservar con una evaluación clara de costos, riesgos y prioridades."
     },
     "pricing": {
-      "title": "Precios — Novieri",
-      "description": "Precios de referencia publicados para IT administrado, IA y automatización, ciberseguridad, desarrollo a medida y consultoría IT. Puntos de partida honestos — el número exacto llega con la propuesta."
+      "title": "Precios de TI, IA y desarrollo de software | Novieri",
+      "description": "Consulta rangos en COP y USD para TI administrada, automatización, ciberseguridad, software y consultoría."
     }
   },
   "nav": {
@@ -126,8 +126,8 @@
       ]
     },
     "managedIt": {
-      "name": "IT administrado",
-      "tagline": "Tu departamento de IT, sin tener que montarlo.",
+      "name": "TI administrada",
+      "tagline": "Tu área de tecnología, sin tener que contratarla.",
       "tags": [
         "soporte",
         "microsoft 365",
@@ -144,8 +144,8 @@
       ]
     },
     "software": {
-      "name": "Desarrollo a medida",
-      "tagline": "Software que se ajusta a tu operación, no al revés.",
+      "name": "Desarrollo de software",
+      "tagline": "Software que se adapta a tu operación, no al revés.",
       "tags": [
         "react",
         "fastapi",
@@ -153,8 +153,8 @@
       ]
     },
     "itConsulting": {
-      "name": "Consultoría IT",
-      "tagline": "Decide qué comprar, qué arreglar y qué dejar quieto.",
+      "name": "Consultoría tecnológica",
+      "tagline": "Decide qué comprar, qué corregir y qué dejar quieto.",
       "tags": [
         "decisiones",
         "arquitectura",
@@ -173,36 +173,37 @@
   },
   "home": {
     "hero": {
-      "titleA": "Tecnología de nivel corporativo,",
-      "titleB": "con IA en el centro.",
-      "subtitle": "Automatizamos procesos, administramos tu infraestructura y protegemos tu operación — para que tu empresa crezca sin un departamento de IT propio."
+      "titleA": "Tu equipo de tecnología,",
+      "titleB": "con IA integrada.",
+      "subtitle": "Administramos y protegemos la tecnología de tu empresa, automatizamos el trabajo repetitivo y construimos las herramientas que tu operación necesita. Trabajo liderado directamente por los fundadores, desde Barranquilla, para empresas en Colombia y Estados Unidos."
     },
     "proof": {
       "items": [
         {
-          "value": "1000+",
-          "label": "usuarios atendidos en operaciones dirigidas por los fundadores"
+          "value": "+1.000 usuarios",
+          "label": "Experiencia dirigiendo operaciones tecnológicas"
         },
         {
-          "value": "PCI / SOC 2",
-          "label": "programas dirigidos de punta a punta"
+          "value": "PCI DSS y SOC 2",
+          "label": "Programas liderados de principio a fin"
         },
         {
-          "value": "2",
-          "label": "fundadores, cero intermediarios"
+          "value": "2 fundadores",
+          "label": "Trato directo, sin capas comerciales"
         }
-      ]
+      ],
+      "disclosure": "La experiencia incluye trabajos liderados por los fundadores de Novieri en la empresa y en roles actuales y anteriores de dirección tecnológica."
     },
     "liveChat": {
-      "eyebrow": "ia en producción",
-      "title": "Mientras lees esto, nuestros agentes están atendiendo.",
-      "body": "Esto no es una promesa: es el asistente de WhatsApp que operamos para restaurantes y hoteles. Entiende notas de voz, responde en segundos, crea la reserva en el sistema y escala a una persona solo cuando hace falta.",
-      "cta": "Ver asistente de WhatsApp",
+      "eyebrow": "ia en funcionamiento",
+      "title": "Mira cómo funciona un asistente de IA en WhatsApp.",
+      "body": "El asistente entiende mensajes y notas de voz, consulta la información autorizada, registra pedidos o reservas y entrega la conversación a una persona cuando el caso lo requiere.",
+      "cta": "Ver el asistente para WhatsApp",
       "header": {
         "name": "Marisquería La Bahía",
         "status": "en línea · responde al instante"
       },
-      "badge": "DEMO",
+      "badge": "Demostración ilustrativa · producto e integraciones reales",
       "inputHint": "Escribe un mensaje",
       "entries": [
         {
@@ -258,28 +259,28 @@
       "ctaService": "Ver IA y automatización"
     },
     "services": {
-      "eyebrow": "servicios",
-      "title": "Cinco pilares, un mismo estándar."
+      "eyebrow": "cómo ayudamos",
+      "title": "Una sola relación para operar, proteger, automatizar y construir."
     },
     "why": {
-      "eyebrow": "por qué novieri",
-      "title": "Tecnología de empresa grande, sin el costo de un departamento interno.",
+      "eyebrow": "lo que mejora",
+      "title": "Qué cambia cuando nos hacemos responsables.",
       "points": [
         {
-          "title": "Atención directa con los fundadores",
-          "body": "Hablas con quien diseña y opera tu tecnología, no con un vendedor. Sin intermediarios y sin casos que se quedan esperando respuesta."
+          "title": "Menos interrupciones",
+          "body": "Monitoreamos los sistemas, probamos las copias de seguridad y atendemos los problemas según su nivel de urgencia, antes de que una falla menor se convierta en una parada."
         },
         {
-          "title": "Prácticas de empresa grande",
-          "body": "Monitoreo, copias de seguridad que sí se prueban, seguridad administrada y procesos de verdad: los mismos estándares que exige una operación de más de mil personas."
+          "title": "Horas recuperadas cada semana",
+          "body": "Automatizamos respuestas, registros, agendas, reportes y movimientos de información para que tu equipo deje de repetir tareas que una herramienta puede ejecutar."
         },
         {
-          "title": "IA aplicada a tu operación",
-          "body": "No vendemos moda: identificamos qué procesos de tu empresa sí ganan algo con la automatización, y lo demostramos con una prueba antes de que te comprometas."
+          "title": "Seguridad que puedes demostrar",
+          "body": "Fortalecemos identidades, equipos, correo y redes, y organizamos la evidencia que solicitan clientes, auditores y socios comerciales."
         },
         {
-          "title": "Costo predecible",
-          "body": "Planes mensuales claros, por persona o por equipo, sin el sobrecosto de una multinacional. Sabes cuánto cuesta tu tecnología antes de que llegue la factura."
+          "title": "Un solo equipo responsable",
+          "body": "TI, seguridad, automatización, software y consultoría bajo una misma relación, con los fundadores involucrados en las decisiones importantes."
         }
       ],
       "stat": {
@@ -294,44 +295,89 @@
     },
     "how": {
       "eyebrow": "cómo trabajamos",
-      "title": "Un proceso simple, de diagnóstico a mejora continua.",
+      "title": "Empezamos pequeño, medimos y avanzamos con evidencia.",
       "steps": [
         {
           "title": "Diagnóstico",
-          "body": "Entendemos tu operación, tus sistemas y tus riesgos antes de hacerte una propuesta formal."
+          "body": "Entendemos tu operación, tus sistemas, tus riesgos y el resultado que quieres conseguir."
         },
         {
           "title": "Propuesta",
-          "body": "Alcance concreto, entregables definidos y un precio claro. Sin letra pequeña."
+          "body": "Recibes un alcance concreto, entregables definidos, responsabilidades, tiempos y precio. Sin costos ocultos."
         },
         {
           "title": "Implementación",
-          "body": "Ejecutamos con fechas y responsables, y te mostramos el avance en cada hito."
+          "body": "Trabajamos por etapas, con fechas y responsables, y te mostramos avances que puedes probar."
         },
         {
-          "title": "Operación y mejora continua",
-          "body": "Monitoreamos, mantenemos y proponemos mejoras cada trimestre. La tecnología no se queda quieta."
+          "title": "Operación y mejora",
+          "body": "Monitoreamos lo implementado, atendemos ajustes y revisamos nuevas oportunidades de mejora periódicamente."
         }
       ]
     },
     "founders": {
-      "eyebrow": "quiénes somos",
-      "title": "Dos fundadores, estándares de empresa grande.",
-      "body": "Novieri es la unión de los apellidos de sus dos fundadores: la tecnología la dirige un CTO con más de doce años construyendo y operando sistemas en producción, y del lado comercial hay alguien que sí te responde.",
-      "link": "Conoce la historia",
+      "eyebrow": "quién responde",
+      "title": "Dos fundadores. Un responsable claro en cada etapa.",
+      "body": "Novieri une experiencia en tecnología, operaciones y relaciones con clientes. La arquitectura y la entrega técnica las lidera uno de los fundadores; el seguimiento comercial y la adopción con el cliente, la otra. No compras una solución y quedas buscando quién responde.",
+      "link": "Conoce a los fundadores",
       "photoAlt": "Foto de los fundadores de Novieri (pendiente)"
     },
     "cta": {
-      "title": "Tu empresa ya necesita un equipo de tecnología. No necesita contratarlo.",
-      "subtitle": "En 30 minutos escuchamos tu caso, te decimos con franqueza si somos los indicados y te recomendamos un primer paso. Sin presentación de ventas.",
+      "title": "Cuéntanos qué está frenando tu operación.",
+      "subtitle": "En una llamada de 30 minutos escuchamos tu caso, te decimos con franqueza si podemos ayudar y recomendamos un primer paso. Sin presentación comercial y sin compromiso.",
       "button": "Agenda una llamada"
     },
     "diagnose": {
       "eyebrow": "empieza por aquí",
-      "title": "¿No sabes por dónde empezar?",
-      "body": "Responde diez preguntas sobre tu operación y al terminar lees el diagnóstico: en qué nivel estás, qué riesgos vemos y qué haríamos primero — escrito para tu caso, no una plantilla. No compromete a nada.",
-      "button": "Autodiagnóstico",
-      "note": "3 minutos · informe en PDF · sin costo"
+      "title": "¿No sabes qué servicio necesitas?",
+      "body": "Responde diez preguntas sobre soporte, seguridad, continuidad, cumplimiento y automatización. Al terminar recibirás un diagnóstico personalizado con tus fortalezas, los riesgos que vemos y las primeras acciones que priorizaríamos.",
+      "button": "Recibe tu diagnóstico gratuito",
+      "note": "3 minutos · resultado inmediato · informe en PDF · sin costo"
+    },
+    "segments": {
+      "eyebrow": "para quién trabajamos",
+      "title": "Tecnología pensada para operaciones como la tuya.",
+      "linkLabel": "Ver soluciones",
+      "cards": [
+        {
+          "title": "Pymes",
+          "body": "Un responsable claro para el soporte, Microsoft 365, los equipos, la red, las copias de seguridad y las decisiones de tecnología.",
+          "href": "/industrias/pymes",
+          "linkLabel": "Ver soluciones para pymes"
+        },
+        {
+          "title": "Restaurantes",
+          "body": "Pedidos, reservas y preguntas atendidos por WhatsApp, incluso cuando el salón está lleno y el equipo no puede responder.",
+          "href": "/industrias/restaurantes",
+          "linkLabel": "Ver soluciones para restaurantes"
+        },
+        {
+          "title": "BPO y centros de contacto",
+          "body": "Infraestructura, seguridad, cumplimiento y automatización para operaciones con acuerdos de servicio, auditorías y atención 24/7.",
+          "href": "/industrias/bpo",
+          "linkLabel": "Ver soluciones para BPO"
+        },
+        {
+          "title": "Hoteles",
+          "body": "Atención bilingüe a cualquier hora, más reservas directas y una operación tecnológica que no depende de una sola persona.",
+          "href": "/industrias/hoteleria",
+          "linkLabel": "Ver soluciones para hoteles"
+        },
+        {
+          "title": "Colegios y universidades",
+          "body": "Soporte para equipos, redes, plataformas, docentes y administrativos, con protección adecuada para la información de estudiantes y familias.",
+          "href": "/industrias/educacion",
+          "linkLabel": "Ver soluciones para educación"
+        }
+      ],
+      "intro": "No empezamos por una herramienta. Empezamos por lo que hoy te quita tiempo, pone la operación en riesgo o frena el crecimiento."
+    },
+    "caseStudy": {
+      "eyebrow": "resultado real",
+      "title": "Un restaurante automatizó su WhatsApp y el dueño reportó un aumento aproximado del 20 % en ventas.",
+      "subtitle": "El asistente responde en segundos, consulta la información del restaurante, registra pedidos y reservas y entrega la conversación al equipo cuando necesita intervención humana. El cliente permanece anónimo por acuerdo; en el caso de éxito explicamos el contexto, la implementación y cómo se reportó el resultado.",
+      "button": "Ver el caso de éxito",
+      "href": "/casos-de-exito/restaurante-whatsapp-ia"
     }
   },
   "servicesIndex": {
@@ -351,34 +397,34 @@
   "ai": {
     "hero": {
       "eyebrow": "ia y automatización",
-      "title": "Agentes y automatizaciones que liberan a tu equipo del trabajo repetitivo.",
-      "promise": "La mayoría de las empresas no necesita \"más IA\": necesita saber qué procesos automatizar primero y ver uno funcionando de punta a punta. Eso es exactamente lo que hacemos — con un diagnóstico honesto, un piloto medible y, si tiene sentido, una operación continua."
+      "title": "Automatiza el trabajo repetitivo sin perder el control.",
+      "promise": "Identificamos los procesos donde la IA puede generar un retorno real, construimos una primera automatización medible y la conectamos con las herramientas que tu empresa ya utiliza. Empiezas con un caso concreto, no con un proyecto interminable."
     },
     "what": {
       "items": [
         {
-          "title": "Evaluación de oportunidades de IA",
-          "body": "Diagnóstico de 2 semanas: mapeamos tus procesos y priorizamos dónde la automatización genera un retorno real."
+          "title": "Diagnóstico de oportunidades",
+          "body": "Mapeamos cómo se mueve el trabajo, calculamos el tiempo invertido y priorizamos los casos con mejor relación entre impacto, costo y riesgo."
         },
         {
-          "title": "Agentes de IA",
-          "body": "Asistentes que leen correos, clasifican solicitudes, preparan respuestas y ejecutan tareas dentro de tus sistemas."
+          "title": "Agentes que ejecutan tareas",
+          "body": "Leen solicitudes, clasifican información, preparan respuestas y realizan acciones autorizadas dentro de tus sistemas."
         },
         {
-          "title": "Chatbots con tu conocimiento",
-          "body": "Atención a clientes y equipos internos con respuestas basadas en tus documentos y políticas, no inventadas."
+          "title": "Asistentes basados en tu información",
+          "body": "Responden utilizando tus documentos, políticas y datos aprobados. Cuando no tienen suficiente información, lo indican o entregan el caso a una persona."
         },
         {
-          "title": "Automatización de procesos",
-          "body": "Flujos entre tus herramientas — facturación, CRM, inventario, reportes — sin copiar y pegar entre pantallas."
+          "title": "Integraciones entre sistemas",
+          "body": "Conectamos correo, CRM, ERP, facturación, inventario y otras herramientas para reducir registros duplicados y movimientos manuales."
         },
         {
-          "title": "Integración con tus sistemas",
-          "body": "Conectamos la IA con Microsoft 365, Odoo, HubSpot o tu ERP mediante APIs, con permisos y auditoría."
+          "title": "Controles y aprobación humana",
+          "body": "Definimos qué puede hacer la automatización por sí sola, qué necesita aprobación y cómo se registran las acciones para poder revisarlas."
         },
         {
-          "title": "Medición y control",
-          "body": "Cada automatización se entrega con métricas de uso, costo y tasa de error. Si no se puede medir, no se entrega."
+          "title": "Métricas y mejora continua",
+          "body": "Medimos uso, tiempo recuperado, costo, errores y excepciones para saber si la automatización está generando el resultado esperado."
         }
       ]
     },
@@ -388,16 +434,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "Diagnóstico de dos semanas",
-          "blurb": "Precio fijo, dos semanas. Miramos cómo se mueve de verdad el trabajo en tu negocio y encontramos qué tareas puede asumir la automatización. Al final te entregamos una lista corta, ordenada por lo que te ahorra. Sin compromiso después."
+          "name": "Diagnóstico y priorización",
+          "blurb": "Durante dos semanas observamos el proceso, calculamos el impacto y te entregamos una lista corta de oportunidades priorizadas, con alcance y estimación de inversión."
         },
         {
-          "name": "Tu primera automatización",
-          "blurb": "Tomamos una sola tarea —normalmente la que más horas se come— y se la pasamos al software, de principio a fin, funcionando de verdad. Ves las horas que te devuelve antes de decidir algo más grande."
+          "name": "Piloto medible",
+          "blurb": "Automatizamos un proceso específico de principio a fin y medimos el resultado antes de que decidas ampliar el proyecto."
         },
         {
-          "name": "Nosotros lo operamos",
-          "blurb": "Una cuota mensual fija: construimos, operamos y seguimos mejorando tus automatizaciones. Las cosas cambian, y nadie tiene que volver a negociar un proyecto cada vez que pasa."
+          "name": "Operación y mejora continua",
+          "blurb": "Mantenemos, monitoreamos y mejoramos las automatizaciones por una mensualidad acordada, sin cotizar un proyecto nuevo para cada ajuste."
         }
       ]
     },
@@ -477,58 +523,60 @@
     "demoLabels": {
       "whatsapp": "WhatsApp · restaurante",
       "web": "Chat del sitio · hotel"
-    }
+    },
+    "ctaButton": "Mapea tu primera automatización",
+    "ctaTitle": "Cuéntanos qué tarea quieres dejar de repetir"
   },
   "managedIt": {
     "hero": {
-      "eyebrow": "it administrado",
-      "title": "Tu departamento de IT, sin tener que montarlo.",
-      "promise": "Soporte que sí responde, computadores que funcionan, copias de seguridad que de verdad restauran y una red que no se cae. Administramos tu tecnología con los estándares de una empresa grande, por una fracción de lo que cuesta un equipo interno."
+      "eyebrow": "ti administrada",
+      "title": "Tu área de tecnología, sin tener que contratarla.",
+      "promise": "Soporte que responde, equipos actualizados, Microsoft 365 bien administrado, copias de seguridad probadas y una red diseñada para reducir interrupciones. Nos hacemos responsables de la operación diaria de tu tecnología por un valor mensual predecible."
     },
     "what": {
       "items": [
         {
-          "title": "Mesa de ayuda",
-          "body": "Soporte remoto para tu equipo, con tiempos de respuesta acordados y seguimiento de cada caso hasta cerrarlo."
+          "title": "Soporte a usuarios",
+          "body": "Soporte remoto para tu equipo, con tiempos de respuesta acordados por escrito y seguimiento de cada caso hasta cerrarlo."
         },
         {
-          "title": "Microsoft 365",
-          "body": "Correo, Teams, SharePoint y licencias administradas: altas, bajas, seguridad y buenas prácticas desde el día uno."
+          "title": "Administración de Microsoft 365",
+          "body": "Correo, Teams, SharePoint y licencias administradas: altas, bajas, seguridad y buenas prácticas desde el primer día."
         },
         {
-          "title": "Redes y firewall",
-          "body": "Diseño, instalación y administración de tu red y firewall (FortiGate), con VPN segura para trabajo remoto."
+          "title": "Redes, wifi y firewall",
+          "body": "Diseño, instalación y administración de tu red, wifi y firewall, con VPN segura para el trabajo remoto."
         },
         {
           "title": "Copias de seguridad y continuidad",
-          "body": "Copias automáticas de servidores y equipos críticos, probadas con restauraciones reales — no solo con luces verdes."
+          "body": "Copias automáticas de servidores y equipos críticos, probadas con restauraciones reales, no solo con luces verdes."
         },
         {
-          "title": "Parcheo y mantenimiento",
-          "body": "Actualizaciones de sistemas y aplicaciones aplicadas a tiempo, antes de que una vulnerabilidad vieja se vuelva un incidente."
+          "title": "Actualizaciones y mantenimiento",
+          "body": "Actualizaciones de sistemas y aplicaciones aplicadas a tiempo, antes de que una vulnerabilidad conocida se convierta en un incidente."
         },
         {
           "title": "Monitoreo proactivo",
-          "body": "El monitoreo automático vigila discos, servicios y respaldos las 24 horas, y las alertas se atienden según los tiempos de tu plan — muchas fallas se corrigen antes de que alguien las note."
+          "body": "El monitoreo automático vigila discos, servicios y respaldos las 24 horas, y las alertas se atienden según los tiempos de tu plan; muchas fallas se corrigen antes de que alguien las note."
         }
       ]
     },
     "how": {
-      "caption": "Tu flota en vivo: el agente reporta, la plataforma actúa sola donde puede —limpiezas, parches, reinicios— y solo te escribimos cuando hace falta una decisión."
+      "caption": "Ves el estado de tus equipos, actualizaciones, copias de seguridad y alertas en un solo lugar. Automatizamos las tareas seguras y repetibles, y te contactamos cuando hace falta una decisión o una intervención física."
     },
     "packages": {
       "tiers": [
         {
           "name": "Esencial",
-          "blurb": "Alguien a quien llamar cuando algo se daña, tu Microsoft 365 atendido y las actualizaciones al día antes de que se vuelvan un problema. Precio fijo por persona, al mes."
+          "blurb": "Soporte a usuarios, inventario, mantenimiento, actualizaciones y administración básica de Microsoft 365."
         },
         {
           "name": "Completo",
-          "blurb": "Todo lo anterior, más tu red y tu firewall administrados, copias de seguridad que sí se prueban y un plan escrito para volver a operar. Para un negocio que no se puede dar el lujo de un día caído."
+          "blurb": "Todo lo anterior, más seguridad administrada, copias de seguridad probadas, red y firewall, documentación y un plan de continuidad."
         },
         {
-          "name": "Avanzado",
-          "blurb": "Suma monitoreo permanente para ver los problemas antes que tú, tus sistemas asegurados con un estándar claro y un plan cada trimestre que revisas con los fundadores."
+          "name": "Cumplimiento",
+          "blurb": "El plan completo, más acompañamiento de seguridad, evidencia, revisiones periódicas y dirección tecnológica para empresas que responden ante clientes o auditores."
         }
       ]
     },
@@ -536,7 +584,7 @@
       "items": [
         {
           "q": "¿Qué tan rápido responden un caso?",
-          "a": "Cada plan tiene tiempos de respuesta acordados por escrito según la severidad. Un equipo caído no espera lo mismo que una impresora; lo urgente se atiende en minutos, no en días."
+          "a": "Cada plan define por escrito los tiempos de primera respuesta según la severidad. Una interrupción general tiene prioridad sobre un caso individual, y el tiempo exacto depende del nivel de servicio contratado."
         },
         {
           "q": "Ya tengo a alguien que me ayuda cuando algo falla. ¿Qué cambia con un servicio administrado?",
@@ -598,13 +646,15 @@
         "flota al día · 0 pendientes"
       ],
       "footer": "monitoreo 24/7 · actualizaciones automáticas · copias de seguridad verificadas"
-    }
+    },
+    "ctaButton": "Solicita una revisión inicial de tu TI",
+    "ctaTitle": "Revisa el estado actual de tu tecnología"
   },
   "security": {
     "hero": {
       "eyebrow": "ciberseguridad y cumplimiento",
-      "title": "Seguridad de verdad y un camino claro a SOC 2 / PCI DSS.",
-      "promise": "Ni miedo ni checklists vacíos: endurecemos tu infraestructura, gestionamos vulnerabilidades de forma continua y, si tus clientes exigen certificaciones, te llevamos hasta la auditoría con evidencia real."
+      "title": "Protege tu operación y llega preparado a una auditoría.",
+      "promise": "Fortalecemos identidades, equipos, correo, servidores y redes; gestionamos vulnerabilidades de manera continua; y organizamos los controles y la evidencia que exigen clientes, auditores y estándares como SOC 2, PCI DSS e ISO 27001."
     },
     "what": {
       "items": [
@@ -617,12 +667,12 @@
           "body": "Escaneo periódico, priorización por riesgo real y remediación verificada — un ciclo continuo, no un PDF anual."
         },
         {
-          "title": "Preparación SOC 2 / PCI DSS",
-          "body": "Análisis de brechas, plan de remediación y acompañamiento en evidencias hasta que pasas la auditoría."
+          "title": "Preparación para SOC 2, PCI DSS e ISO 27001",
+          "body": "Identificamos brechas, definimos un plan de corrección, implementamos los controles que estén dentro de nuestro alcance y organizamos la evidencia para que llegues preparado al proceso de auditoría."
         },
         {
           "title": "Protección de identidad y correo",
-          "body": "Una de las puertas de entrada más comunes de los ataques: phishing, cuentas comprometidas y accesos mal configurados, cerrada."
+          "body": "Phishing, cuentas comprometidas y accesos mal configurados son de las puertas de entrada más comunes. Fortalecemos la identidad y el correo para reducir ese riesgo."
         },
         {
           "title": "Respuesta a incidentes",
@@ -640,16 +690,16 @@
     "packages": {
       "tiers": [
         {
-          "name": "Revisión de seguridad",
-          "blurb": "Buscamos por dónde podría entrar alguien —tus sistemas, tu red, tus cuentas—, cerramos lo fácil y te entregamos un informe corto, en español claro, con qué arreglar primero."
+          "name": "Línea base de seguridad",
+          "blurb": "Revisamos identidades, correo, equipos, copias de seguridad, accesos y configuraciones principales. Corregimos lo urgente y entregamos un plan priorizado en lenguaje claro."
         },
         {
-          "name": "Listos para una auditoría",
-          "blurb": "Para cuando un cliente, un banco o una franquicia de tarjetas empieza a pedirte certificaciones. Te decimos qué te falta frente a SOC 2 o PCI DSS, lo arreglamos contigo y te acompañamos hasta la auditoría."
+          "name": "Preparación para auditoría",
+          "blurb": "Evaluamos el estado frente al estándar, acompañamos la remediación y organizamos políticas, controles y evidencia. El auditor o certificador independiente se contrata por separado."
         },
         {
-          "name": "Un responsable de seguridad, sin el sueldo",
-          "blurb": "Alguien que responde por la seguridad todos los meses: vigila los riesgos, define qué es prioritario y te rinde cuentas. El cargo que una empresa grande llena con una contratación de planta."
+          "name": "Dirección de seguridad externa",
+          "blurb": "Seguimiento mensual de riesgos, prioridades, proveedores, incidentes y cumplimiento, sin contratar un cargo de tiempo completo."
         }
       ]
     },
@@ -669,7 +719,7 @@
         },
         {
           "q": "¿Esto no es carísimo?",
-          "a": "Cuesta una fracción de lo que cuesta un incidente: el rescate, los días parados y los clientes perdidos. Empezamos por la línea base — lo esencial bien hecho — y creces desde ahí según tu riesgo real."
+          "a": "La inversión debe ser proporcional al riesgo y a las exigencias de tu negocio. Empezamos por los controles esenciales, explicamos qué reduce cada uno y avanzamos por etapas según prioridad y presupuesto."
         }
       ]
     },
@@ -698,58 +748,60 @@
         "restauración de prueba verificada",
         "listo para auditoría · sin hallazgos abiertos"
       ]
-    }
+    },
+    "ctaButton": "Evalúa tu nivel de seguridad",
+    "ctaTitle": "Conoce qué deberías corregir primero"
   },
   "software": {
     "hero": {
-      "eyebrow": "desarrollo a medida",
-      "title": "Software que se ajusta a tu operación, no al revés.",
-      "promise": "Cuando la hoja de cálculo ya no da más y el software genérico te obliga a trabajar como él quiere, construimos la herramienta exacta: aplicaciones web, APIs e integraciones que hablan con lo que ya usas."
+      "eyebrow": "desarrollo de software",
+      "title": "Software que se adapta a tu operación.",
+      "promise": "Cuando una hoja de cálculo ya no alcanza, tus sistemas no se hablan o una herramienta genérica obliga a tu equipo a trabajar de la forma equivocada, construimos la pieza que falta: aplicaciones, portales, integraciones y automatizaciones conectadas con lo que ya utilizas."
     },
     "what": {
       "items": [
         {
-          "title": "Aplicaciones web",
-          "body": "Portales internos, paneles de operación y herramientas de cliente construidos en React y Next.js, rápidos y fáciles de usar."
+          "title": "Aplicaciones y portales web",
+          "body": "Herramientas internas, paneles operativos y portales para clientes diseñados alrededor del trabajo real de tu equipo."
         },
         {
           "title": "APIs y backends",
-          "body": "Servicios en FastAPI y Node: sólidos, documentados y listos para crecer con tu operación."
+          "body": "Servicios y APIs sólidos, documentados y listos para crecer con tu operación."
         },
         {
           "title": "Integraciones",
-          "body": "Tus sistemas hablando entre sí — ERP, CRM, facturación, logística — sin cuadres manuales en Excel."
+          "body": "Conectamos ERP, CRM, facturación, inventario, logística y otras plataformas para reducir doble digitación y errores."
         },
         {
-          "title": "Modernización de sistemas",
-          "body": "Ese sistema viejo del que todos dependen y nadie quiere tocar: lo migramos por partes, sin detener la operación."
+          "title": "Modernización",
+          "body": "Renovamos sistemas antiguos por etapas para reducir el riesgo y evitar una interrupción innecesaria de la operación."
         },
         {
-          "title": "Software con IA integrada",
-          "body": "Búsqueda inteligente, clasificación automática o asistentes dentro de tu propia herramienta, donde aportan valor."
+          "title": "IA dentro de tus herramientas",
+          "body": "Incorporamos búsqueda, clasificación, asistentes y automatización donde aportan una mejora concreta."
         },
         {
           "title": "Operación y evolución",
-          "body": "No entregamos y desaparecemos: monitoreamos, corregimos y evolucionamos el software con una cuota mensual de horas."
+          "body": "Monitoreamos, corregimos y mejoramos el software después de su lanzamiento."
         }
       ]
     },
     "how": {
-      "caption": "Así construimos: una persona define el objetivo, un orquestador lo descompone y delega en agentes especializados que trabajan en paralelo, y nada se mezcla sin aprobación humana."
+      "caption": "Trabajamos en ciclos cortos. Al final de cada etapa ves y pruebas una parte funcional, revisamos lo aprendido y confirmamos el siguiente tramo. El avance se demuestra con software que puedes usar, no solo con informes."
     },
     "packages": {
       "tiers": [
         {
-          "name": "Primero el plan",
-          "blurb": "Precio fijo. Entendemos el problema, armamos una versión inicial que puedes usar y te entregamos un plan con alcance y costo. Después decides, sabiendo exactamente qué estás comprando."
+          "name": "Descubrimiento y prototipo",
+          "blurb": "Entendemos el proceso, validamos la solución y entregamos alcance, arquitectura, prioridades y presupuesto antes de comprometer la construcción completa."
         },
         {
-          "name": "La construcción",
-          "blurb": "Un alcance acordado, construido en tramos de dos semanas. Al final de cada uno usas lo que ya existe: avance que puedes tocar, no un informe de avance."
+          "name": "Construcción por etapas",
+          "blurb": "Desarrollamos en ciclos de dos semanas, con demostraciones funcionales y decisiones de alcance visibles."
         },
         {
-          "name": "Soporte y mejoras",
-          "blurb": "Una cantidad de horas al mes para operar, corregir y ampliar lo que construimos, con las mismas personas que lo construyeron. Sin entregarle tu sistema a un desconocido."
+          "name": "Soporte y evolución",
+          "blurb": "Reservas una capacidad mensual para operación, correcciones, mejoras y nuevas funciones con el equipo que conoce el sistema."
         }
       ]
     },
@@ -799,48 +851,50 @@
         "tests": "pruebas",
         "review": "revisado por una persona"
       }
-    }
+    },
+    "ctaButton": "Define el alcance de tu proyecto",
+    "ctaTitle": "Cuéntanos qué herramienta hace falta"
   },
   "about": {
     "hero": {
       "eyebrow": "nosotros",
-      "title": "Dos fundadores, y nadie en el medio.",
-      "intro": "Novieri son las dos personas que la construyeron: quien diseña y opera la tecnología, y quien lleva la relación con el cliente. Familiar en el trato, enterprise en los estándares."
+      "title": "Dos fundadores. Un equipo responsable de principio a fin.",
+      "intro": "Novieri nació de la unión de dos apellidos y dos responsabilidades: diseñar y operar tecnología que funcione, y acompañar al cliente hasta que esa tecnología produzca un resultado. Cercanos en el trato, rigurosos en la ejecución."
     },
     "story": {
       "title": "La historia",
-      "body": "Después de más de diez años dirigiendo tecnología para operaciones de más de mil personas —infraestructura, seguridad, cumplimiento PCI DSS y SOC 2, e inteligencia artificial puesta a producir resultados reales— siempre aparecía el mismo patrón: el estándar de las grandes empresas existe, pero llega con precio de multinacional, y nadie lo ajusta a una empresa de treinta o de trescientas personas. Novieri existe para cerrar esa brecha: los mismos estándares que operábamos en el mundo corporativo, a un precio pensado para una empresa de treinta o de trescientas personas, con equipo propio en Barranquilla y sin capas de intermediarios que inflan la factura."
+      "body": "Durante más de una década vimos el mismo problema: muchas empresas ya dependen completamente de la tecnología, pero todavía no necesitan —o no pueden justificar— un departamento interno con todas las especialidades. Novieri existe para cerrar esa brecha. Aplicamos prácticas de operaciones de mayor escala —monitoreo, seguridad, documentación, continuidad, automatización y mejora constante— en un modelo adecuado para empresas pequeñas y medianas. El trabajo se lidera desde Barranquilla y combina atención local con capacidad para operar en español e inglés."
     },
     "founders": {
       "title": "Los fundadores",
       "helgar": {
         "name": "Helgar Palmieri",
-        "role": "Tecnología y entrega",
-        "bio": "Arquitecto de soluciones e ingeniero de IA con más de doce años construyendo sistemas que funcionan en producción. Hoy es CTO de una operación multinacional que atiende 24/7, donde diseña y programa él mismo los sistemas de inteligencia artificial y las integraciones: asistentes internos, búsqueda sobre los documentos de la empresa, automatización de procesos y aplicaciones completas. Antes dirigió la tecnología de un call center con cumplimiento PCI DSS. MBA.",
+        "role": "Cofundador · Tecnología y ejecución",
+        "bio": "Arquitecto de soluciones e ingeniero de inteligencia artificial con más de doce años de experiencia diseñando, implementando y operando sistemas críticos en producción. Ha liderado tecnología en operaciones multinacionales de alta disponibilidad, con experiencia en infraestructura, automatización, desarrollo de aplicaciones y programas de cumplimiento como PCI DSS y SOC 2.\nEn Novieri lidera la arquitectura, la seguridad y la ejecución técnica de cada solución, desde el diseño inicial hasta su puesta en producción. Actualmente también se desempeña como CTO de una operación multinacional y cuenta con un MBA.",
         "photoAlt": "Helgar Palmieri, cofundador, tecnología y entrega"
       },
       "partner": {
         "name": "Sylvana Nova",
-        "role": "Comercial y relación con clientes",
-        "bio": "Ejecutiva comercial con más de diez años al frente de clientes. Entiende cómo funcionan los negocios y es buena encontrando dónde duele: ese cuello de botella que el dueño ya ni nota porque lleva años trabajando alrededor de él. Administradora de empresas. En Novieri eso se traduce en lo práctico: arma el caso contigo, hace el seguimiento de frente y se asegura de que lo que entregamos se use, no que solo quede instalado.",
+        "role": "Cofundadora · Estrategia comercial y experiencia del cliente",
+        "bio": "Administradora de empresas y líder comercial con más de diez años de experiencia trabajando directamente con clientes y desarrollando relaciones de largo plazo. En Novieri transforma necesidades operativas en prioridades claras, casos de negocio y planes de acción realistas.\nAcompaña a cada cliente desde la conversación inicial hasta la implementación, asegurándose de que la solución sea comprendida, adoptada y alineada con los resultados esperados. Es el vínculo entre la necesidad del negocio y la solución que finalmente se entrega.",
         "photoAlt": "Sylvana Nova, cofundadora, comercial y relación con clientes"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
     "location": {
-      "title": "Desde Barranquilla, para dos mercados",
-      "body": "Barranquilla nos da algo poco común: el mismo huso horario que la costa este de Estados Unidos, costos que permiten tarifas justas y un talento técnico que crece cada año. Por eso podemos atender a una pyme barranquillera por la mañana y a un cliente en Nueva York por la tarde — con el mismo equipo y el mismo estándar."
+      "title": "Desde Barranquilla, para Colombia y Estados Unidos",
+      "body": "Trabajamos en español e inglés y en horarios prácticamente iguales a los de la costa este de Estados Unidos, con una diferencia máxima de una hora durante el año. Para los clientes de Barranquilla combinamos operación remota con visitas en sitio cuando la infraestructura o el proyecto lo requiere."
     },
     "cta": {
-      "title": "Trabajemos juntos.",
+      "title": "Conversa directamente con los fundadores.",
       "subtitle": "Una llamada corta basta para saber si somos el equipo que necesitas."
     }
   },
   "contact": {
     "hero": {
       "eyebrow": "contacto",
-      "title": "Cuéntanos tu caso.",
-      "intro": "Un fundador lee cada mensaje y responde el mismo día hábil — sin fila de tiquetes ni correos de mercadeo después. Si prefieres hablar directo, agenda una llamada o escríbenos por WhatsApp."
+      "title": "Cuéntanos qué necesitas resolver.",
+      "intro": "Describe el problema en tus propias palabras. No necesitas saber qué servicio pedir ni preparar un documento técnico. Uno de los fundadores revisará tu mensaje y responderá dentro de un día hábil."
     },
     "form": {
       "name": "Nombre",
@@ -852,17 +906,17 @@
       "service": "¿Qué necesitas?",
       "serviceOptions": {
         "ai": "IA y automatización",
-        "managedIt": "IT administrado",
+        "managedIt": "TI administrada",
         "security": "Ciberseguridad y cumplimiento",
-        "software": "Desarrollo a medida",
-        "itConsulting": "Consultoría IT",
+        "software": "Desarrollo de software",
+        "itConsulting": "Consultoría tecnológica",
         "other": "Aún no lo sé / otro"
       },
       "message": "Mensaje",
-      "messagePlaceholder": "Cuéntanos qué está pasando y qué te gustaría lograr",
-      "submit": "Enviar mensaje",
+      "messagePlaceholder": "Cuéntanos qué ocurre hoy, qué has intentado y qué resultado te gustaría conseguir. No incluyas contraseñas ni información confidencial.",
+      "submit": "Enviar mi consulta",
       "sending": "Enviando…",
-      "success": "Recibido. Te respondemos el mismo día hábil.",
+      "success": "Recibimos tu mensaje. Uno de los fundadores lo revisará y te responderá dentro de un día hábil. También puedes agendar directamente mientras tanto.",
       "error": "No pudimos enviar el mensaje. Intenta de nuevo o escríbenos directo a {email}.",
       "validation": {
         "name": "Escribe tu nombre.",
@@ -872,15 +926,15 @@
       "consentNote": "Al enviar este formulario autorizas el tratamiento de tus datos conforme a nuestra política de privacidad."
     },
     "booking": {
-      "title": "¿Prefieres agendar directo?",
-      "body": "Elige un espacio de 30 minutos con los fundadores. Sin compromiso.",
+      "title": "¿Prefieres escoger la hora de una vez?",
+      "body": "Reserva una conversación de 30 minutos. Escuchamos tu caso, te decimos si encajamos y recomendamos un primer paso. Sin presentación comercial.",
       "fallback": "El calendario en línea estará disponible pronto. Mientras tanto, escríbenos a {email} y coordinamos por correo.",
       "button": "Abrir el calendario"
     },
     "aside": {
       "whatsappLabel": "Escríbenos por WhatsApp",
-      "emailLabel": "O por correo",
-      "location": "Barranquilla, Colombia · Atendemos EE. UU. en horario del este"
+      "emailLabel": "Envíanos un correo",
+      "location": "Barranquilla, Colombia · Atendemos clientes de EE. UU. en horarios compatibles con la costa este"
     }
   },
   "whatsapp": {
@@ -888,7 +942,7 @@
     "greeting": "Hola, vengo del sitio de Novieri y quiero hablar sobre mi empresa."
   },
   "footer": {
-    "description": "Soluciones de IT con inteligencia artificial en el centro, desde Barranquilla para Colombia y Estados Unidos.",
+    "description": "Tecnología, seguridad y automatización con IA desde Barranquilla, para empresas en Colombia y Estados Unidos.",
     "servicesTitle": "Servicios",
     "companyTitle": "Empresa",
     "contactTitle": "Contacto",
@@ -928,41 +982,41 @@
     },
     "items": {
       "aiAssistant": {
-        "name": "Recepcionista Virtual de IA",
-        "tagline": "Contesta cada llamada, guarda los datos del interesado y agenda la reunión — con voz natural.",
+        "name": "Recepcionista virtual",
+        "tagline": "Reduce las llamadas que quedan sin respuesta: contesta, registra y agenda con voz natural.",
         "tags": [
           "voz",
           "llamadas",
           "crm"
         ],
         "hero": {
-          "title": "Ninguna llamada vuelve a perderse.",
-          "promise": "Un recepcionista de IA que contesta tu línea comercial en segundos, con voz natural: responde preguntas con la información de tu empresa, captura los datos del interesado en tu CRM, transfiere en caliente a tu equipo en horario laboral y agenda reuniones cuando ya no hay nadie."
+          "title": "Reduce las llamadas perdidas y atiende fuera de horario.",
+          "promise": "La recepcionista virtual contesta tu línea comercial, responde preguntas con la información autorizada, registra datos en el CRM, agenda reuniones y transfiere la llamada a una persona cuando hace falta."
         },
         "features": [
           {
-            "title": "Contesta todas las llamadas",
-            "body": "Cada llamada que entra se atiende al instante, en horario de oficina o a medianoche. Se acabaron los buzones llenos y los clientes que llamaron una vez y no volvieron."
+            "title": "Atención inmediata",
+            "body": "Cada llamada que entra se atiende en segundos, en horario de oficina o fuera de él, con voz natural."
           },
           {
-            "title": "Responde con tu conocimiento",
-            "body": "Su base de conocimiento se construye desde tu propio sitio web y tus datos, y se actualiza automáticamente cada semana."
+            "title": "Respuestas con tu información",
+            "body": "Su base de conocimiento se construye a partir de tu sitio web y tus datos autorizados, y se actualiza automáticamente cada semana."
           },
           {
-            "title": "Guarda los datos en tu CRM",
-            "body": "Nombre, empresa, interés y teléfono quedan registrados en HubSpot con la transcripción de la llamada como actividad."
+            "title": "Registro de oportunidades",
+            "body": "Nombre, empresa, interés y teléfono quedan registrados en tu CRM, con la transcripción de la llamada como actividad."
           },
           {
-            "title": "Transferencia en caliente",
-            "body": "En horario laboral, detecta cuándo la llamada merece a un humano y la transfiere a tu equipo comercial con contexto."
+            "title": "Transferencia con contexto",
+            "body": "En horario laboral detecta cuándo la llamada necesita a una persona y la transfiere a tu equipo con el contexto completo."
           },
           {
             "title": "Agenda fuera de horario",
-            "body": "Cuando tu equipo no está, ofrece y reserva una reunión en el calendario real del equipo, con confirmación por correo."
+            "body": "Cuando tu equipo no está disponible, ofrece y reserva una reunión en el calendario real del equipo, con confirmación por correo."
           },
           {
-            "title": "Seguro por diseño",
-            "body": "Cada integración viaja firmada y verificada, las transcripciones se depuran automáticamente y las fallas degradan con elegancia — la conversación nunca se cae."
+            "title": "Rutas alternativas ante fallas",
+            "body": "Cada integración viaja firmada y verificada, y si una integración no está disponible, el sistema activa una ruta alternativa y registra el incidente. Las transcripciones y las métricas quedan disponibles para tu equipo."
           }
         ],
         "built": {
@@ -978,46 +1032,46 @@
         ]
       },
       "whatsapp": {
-        "name": "Asistente de IA para WhatsApp",
-        "tagline": "Un agente conversacional real que toma pedidos y reservas por WhatsApp.",
+        "name": "Asistente para WhatsApp",
+        "tagline": "Atiende pedidos, reservas y preguntas por WhatsApp, con entrega a tu equipo cuando hace falta.",
         "tags": [
           "whatsapp",
           "restaurantes",
           "hoteles"
         ],
         "hero": {
-          "title": "Tu WhatsApp atiende, vende y reserva. Solo.",
-          "promise": "Diseñado para restaurantes y hoteles: un agente de IA que conversa de verdad — nada de menús de botones. Consulta tu menú o tus servicios, toma pedidos, gestiona reservas, responde preguntas con tu propia información y pasa la conversación a tu equipo cuando hace falta."
+          "title": "Atiende pedidos, reservas y preguntas por WhatsApp, incluso en hora pico.",
+          "promise": "El asistente conversa con tus clientes, entiende mensajes y notas de voz, consulta la información autorizada, registra pedidos o reservas y entrega el caso a tu equipo cuando necesita una persona."
         },
         "features": [
           {
-            "title": "Conversación real, no botones",
-            "body": "Entiende lo que el cliente escribe — o dicta: las notas de voz se transcriben automáticamente, porque así escriben los clientes en Colombia."
+            "title": "Conversaciones naturales",
+            "body": "Conversa de verdad, sin menús de botones: entiende lo que el cliente escribe y responde en segundos."
           },
           {
-            "title": "Toma pedidos y reservas",
-            "body": "Consulta el menú o los servicios, arma el pedido, agenda la reserva y lo registra — acciones reales sobre tus datos, no solo respuestas."
+            "title": "Mensajes y notas de voz",
+            "body": "Las notas de voz se transcriben automáticamente, porque las notas de voz son una parte natural de la conversación en Colombia."
           },
           {
-            "title": "Responde con tu información",
-            "body": "Precios, horarios, políticas y disponibilidad salen de tu propia base de conocimiento; lo que no sabe, lo escala."
+            "title": "Pedidos y reservas",
+            "body": "Consulta el menú o los servicios, arma el pedido, agenda la reserva y lo registra: acciones reales sobre tus datos, no solo respuestas."
           },
           {
-            "title": "Traspaso a humanos",
-            "body": "Detecta cuándo interviene una persona y marca la conversación para tu equipo, con todo el historial a la vista."
+            "title": "Respuestas con tu información",
+            "body": "Precios, horarios, políticas y disponibilidad salen de tu propia base de conocimiento; lo que no sabe, lo entrega a tu equipo."
           },
           {
-            "title": "Panel de administración",
-            "body": "Puesta en marcha, contenido del bot y métricas de atención en un panel web propio: tú controlas lo que el asistente sabe y hace."
+            "title": "Entrega a una persona",
+            "body": "Detecta cuándo debe intervenir una persona y marca la conversación para tu equipo, con todo el historial a la vista."
           },
           {
-            "title": "Bilingüe y multi-sede",
-            "body": "Atiende en español e inglés y soporta varias marcas o sedes con aislamiento estricto de datos entre cada una."
+            "title": "Varias sedes e idiomas",
+            "body": "Atiende en español e inglés y soporta varias marcas o sedes con los datos de cada una separados. Un panel de administración muestra el contenido del asistente y las métricas de atención."
           }
         ],
         "built": {
           "title": "Un producto real, en producción.",
-          "body": "Una plataforma que atiende a varios clientes con los datos de cada uno separados: la capa de WhatsApp sobre Evolution API y la API oficial de WhatsApp Business, un agente con Claude de Anthropic que ejecuta acciones, búsqueda sobre tus documentos en PostgreSQL con pgvector, colas en Redis y panel en React."
+          "body": "Una plataforma que atiende a varios clientes con los datos de cada uno separados: una capa de integración con WhatsApp adecuada a cada caso, un agente con Claude de Anthropic que ejecuta acciones, búsqueda sobre tus documentos en PostgreSQL con pgvector, colas en Redis y panel en React."
         },
         "stack": [
           "whatsapp api",
@@ -1029,7 +1083,7 @@
         ]
       },
       "itSuite": {
-        "name": "Suite de Gestión IT y RMM",
+        "name": "Suite de gestión de TI y RMM",
         "tagline": "Inventario, parches, control remoto y respaldo — un solo agente, un solo panel.",
         "tags": [
           "rmm",
@@ -1062,7 +1116,7 @@
             "body": "Secretos cifrados por sobre (AES-256-GCM), descifrados solo al usarse, con retiro auditado y razón obligatoria."
           },
           {
-            "title": "Documentación IT viva",
+            "title": "Documentación de TI viva",
             "body": "Runbooks versionados y registros tipados de redes, servicios y proveedores, vinculados a los activos reales."
           }
         ],
@@ -1079,40 +1133,40 @@
         ]
       },
       "visitorIntel": {
-        "name": "Inteligencia de Visitantes Web",
-        "tagline": "Mira qué empresas visitan tu sitio — las que vale la pena llamar, en tu correo cada mañana.",
+        "name": "Inteligencia de visitantes B2B",
+        "tagline": "Detecta empresas que visitan tu sitio y prioriza las oportunidades que vale la pena trabajar.",
         "tags": [
           "b2b",
           "ventas",
           "ia"
         ],
         "hero": {
-          "title": "La mayoría de las empresas que miran tu sitio nunca te escriben.",
-          "promise": "Esto te dice quiénes eran. Deduce qué empresa estuvo detrás de cada visita, lee qué miraron y cada mañana le manda a tu equipo comercial una lista corta de las que vale la pena llamar — con el contexto suficiente para hacerlo."
+          "title": "Convierte las visitas de empresas en oportunidades comerciales.",
+          "promise": "Cuando las señales disponibles lo permiten, la plataforma identifica la empresa asociada a una visita, analiza qué contenido consultó y prioriza las cuentas que más se parecen a tu cliente ideal. La identificación no cubre todas las visitas y no revela la identidad personal de cada visitante."
         },
         "features": [
           {
-            "title": "Qué empresa estuvo aquí",
-            "body": "Identifica el negocio detrás de la visita y completa lo que tendrías que buscar tú: sector, tamaño y a quién preguntar."
+            "title": "Empresas detectadas",
+            "body": "Identifica la empresa asociada a una visita y completa el contexto: sector, tamaño y a quién contactar. La disponibilidad y precisión dependen de las señales técnicas permitidas, así que podrás detectar parte de las empresas que visitan tu sitio."
           },
           {
-            "title": "Qué les interesó",
-            "body": "Lee la visita como la leería un vendedor —qué páginas, cuánto tiempo, si volvieron— y escribe un resumen corto de cada empresa."
+            "title": "Intereses y comportamiento",
+            "body": "Analiza la visita como la leería un vendedor —qué páginas consultó, cuánto tiempo y si volvió— y escribe un resumen corto de cada empresa."
           },
           {
-            "title": "Ordenadas según tus mejores clientes",
-            "body": "Tú describes el tipo de cliente que quieres. Cada empresa que entra se califica contra eso, así tu equipo empieza por la que más se parece y no por la más reciente."
+            "title": "Priorización según tu cliente ideal",
+            "body": "Describes el tipo de cliente que buscas y cada empresa detectada se califica frente a ese perfil, para que tu equipo empiece por la que más se parece."
           },
           {
-            "title": "Un correo, cada mañana",
-            "body": "La lista calificada llega antes de que arranque el día, lista para trabajarla o para cargarla al CRM."
+            "title": "Resumen comercial diario",
+            "body": "Cada mañana tu equipo recibe una lista corta y calificada de cuentas, lista para trabajarla o para cargarla al CRM."
           },
           {
-            "title": "Dónde abandonan tu formulario",
-            "body": "Mide quién abre tu formulario de contacto, hasta dónde llega y dónde lo deja — sin leer nunca lo que escribe."
+            "title": "Medición de formularios",
+            "body": "Mide quién abre tu formulario de contacto, hasta dónde llega y dónde lo abandona, sin leer nunca lo que escribe."
           },
           {
-            "title": "Hecho para respetar la privacidad",
+            "title": "Privacidad incorporada",
             "body": "Los datos se recogen de primera mano y con consentimiento, las señales de privacidad se respetan en tiempo real, la IP cruda se descarta después de la consulta y nada graba la pantalla del visitante."
           }
         ],
@@ -1129,41 +1183,41 @@
         ]
       },
       "ventia": {
-        "name": "Ventia — E-commerce con IA",
-        "tagline": "Comercio electrónico multi-tienda con un agente de ventas de IA integrado.",
+        "name": "Tienda en línea inteligente",
+        "tagline": "Comercio electrónico para una o varias marcas, con un asistente de ventas de IA integrado.",
         "tags": [
-          "e-commerce",
-          "agente ia",
-          "multi-tienda"
+          "comercio electrónico",
+          "asistente de ia",
+          "varias marcas"
         ],
         "hero": {
-          "title": "Una plataforma de ventas con un vendedor de IA adentro.",
-          "promise": "Ventia es la plataforma de e-commerce de Novieri: tiendas en línea completas — catálogo, carrito, pagos — con un agente de ventas de IA que atiende a cada visitante, y una arquitectura multi-tienda que permite lanzar varias marcas sobre la misma base."
+          "title": "Una tienda en línea que también sabe vender.",
+          "promise": "Catálogo, carrito, pagos y administración, con un asistente de IA que responde preguntas, recomienda productos y acompaña al cliente durante la compra. La plataforma puede operar una o varias marcas sobre la misma base."
         },
         "features": [
           {
-            "title": "Agente de ventas de IA",
-            "body": "Un vendedor conversacional dentro de la tienda: orienta, recomienda y acompaña la compra de principio a fin."
+            "title": "Asistente de ventas integrado",
+            "body": "Un asistente conversacional dentro de la tienda: responde preguntas, recomienda productos y acompaña la compra de principio a fin."
           },
           {
-            "title": "Tienda completa",
-            "body": "Storefront rápido con catálogo, variantes, carrito y checkout — la base sólida de una operación de venta seria."
+            "title": "Catálogo, carrito y pagos",
+            "body": "Una tienda rápida con catálogo, variantes, carrito y pago en línea: la base de una operación de venta seria."
           },
           {
-            "title": "Multi-tienda de nacimiento",
-            "body": "Varias marcas o tiendas sobre una misma plataforma, cada una con sus datos aislados y su propia identidad visual — hasta la tipografía."
+            "title": "Varias marcas en una plataforma",
+            "body": "Preparada para varias marcas desde el inicio: cada tienda con sus datos aislados y su propia identidad visual, hasta la tipografía."
           },
           {
-            "title": "Panel del comerciante",
+            "title": "Panel de administración",
             "body": "Productos, pedidos y clientes gestionados desde un panel de administración dedicado."
           },
           {
-            "title": "Pagos conectables",
-            "body": "Arquitectura de proveedores de pago intercambiables, lista para adaptarse a los medios de pago de cada mercado."
+            "title": "Integraciones con pagos y logística",
+            "body": "Medios de pago integrables y conexiones con logística, con una arquitectura lista para adaptarse a cada mercado."
           },
           {
-            "title": "Ingeniería que aguanta",
-            "body": "Monorepo TypeScript con API dedicada, base de datos con esquema tipado y pruebas automatizadas contra bases reales."
+            "title": "Alojamiento, seguridad y mejoras",
+            "body": "Operamos la plataforma con alojamiento, seguridad, monitoreo y mejoras continuas, sobre una arquitectura preparada para crecer."
           }
         ],
         "built": {
@@ -1283,40 +1337,40 @@
       },
       "sentinel": {
         "name": "Gestión de vulnerabilidades",
-        "tagline": "Encuentra las debilidades de tus sistemas antes que otro — y demuestra que las cerraste.",
+        "tagline": "Encuentra las debilidades de tus sistemas antes que otro, y demuestra que las corregiste.",
         "tags": [
           "seguridad",
           "vulnerabilidades",
           "ia"
         ],
         "hero": {
-          "title": "Sabe por dónde estás expuesto antes de que lo descubra alguien más.",
-          "promise": "Revisa todo lo que está conectado a tu red, encuentra las debilidades y te dice en español claro cuáles importan de verdad y cómo se arreglan. Cuando un cliente o un auditor pregunte qué hiciste al respecto, tienes el informe."
+          "title": "Descubre dónde está expuesta tu empresa y qué corregir primero.",
+          "promise": "Revisamos los activos que autorices, identificamos vulnerabilidades y las priorizamos según su impacto, exposición y evidencia de explotación. Recibes un plan comprensible y seguimiento hasta verificar las correcciones."
         },
         "features": [
           {
-            "title": "Una lista de todo lo que tienes",
-            "body": "Casi ninguna empresa la tiene. Mantiene un inventario al día de cada computador, servidor y equipo en tu red, y solo mira lo que tú autorizaste."
+            "title": "Inventario de activos autorizados",
+            "body": "Mantiene un inventario al día de los computadores, servidores y equipos de tu red. Solo revisamos sistemas y activos expresamente autorizados."
           },
           {
-            "title": "Revisa sin romper nada",
-            "body": "Las revisiones corren en un modo que solo observa, nunca fuerza. Tus sistemas siguen trabajando mientras corre, incluso en horario de oficina."
+            "title": "Revisiones no destructivas",
+            "body": "Las revisiones corren en un modo que solo observa. Las evaluaciones estándar no incluyen pruebas destructivas, y tus sistemas siguen trabajando mientras corren."
           },
           {
-            "title": "Sabe qué están atacando hoy",
-            "body": "Cada debilidad se cruza con los catálogos públicos de lo que los delincuentes están explotando ahora, para que urgente signifique urgente y no teórico."
+            "title": "Priorización por riesgo real",
+            "body": "Cada vulnerabilidad se cruza con los catálogos públicos de explotación activa y se prioriza por impacto y exposición, para que urgente signifique urgente."
           },
           {
-            "title": "Te dice qué arreglar primero",
-            "body": "En vez de una lista de dos mil ítems, recibes los pocos que importan, por qué importan y qué hacer — escrito para leerse, no para descifrarse."
+            "title": "Plan de corrección",
+            "body": "En vez de una lista de dos mil ítems, recibes los pocos que importan, por qué importan y qué hacer, escrito en lenguaje claro."
           },
           {
-            "title": "Le hace seguimiento al arreglo",
-            "body": "De encontrado, a corregido, a verificado. Y si decides aceptar un riesgo en vez de arreglarlo, esa decisión vence y vuelve a tus manos."
+            "title": "Verificación de remediación",
+            "body": "De encontrado, a corregido, a verificado. Si decides aceptar un riesgo en vez de corregirlo, esa decisión vence y vuelve a revisarse."
           },
           {
-            "title": "Informes que un auditor acepta",
-            "body": "Uno para la junta, uno para quien hace el trabajo, y el archivo de evidencias que pide un auditor de SOC 2 o PCI DSS."
+            "title": "Evidencia para cumplimiento",
+            "body": "Informes preparados para apoyar auditorías: uno para la dirección, uno para quien ejecuta el trabajo y el archivo de evidencia para procesos como SOC 2 o PCI DSS."
           }
         ],
         "built": {
@@ -1333,41 +1387,41 @@
         ]
       },
       "webDev": {
-        "name": "Sitios Web con IA",
-        "tagline": "Tu sitio comercial, moderno y bilingüe — con IA trabajando adentro.",
+        "name": "Sitios web inteligentes",
+        "tagline": "Tu sitio comercial, moderno y bilingüe, con IA trabajando adentro.",
         "tags": [
           "web",
           "ia",
           "bilingüe"
         ],
         "hero": {
-          "title": "Un sitio que no solo se ve bien: trabaja.",
-          "promise": "Diseñamos y construimos sitios web comerciales con las funcionalidades de IA que ya operamos en producción: asistentes que atienden a tus visitantes, búsqueda que entiende preguntas, contenido bilingüe y la inteligencia de visitantes conectada — todo con el estándar de diseño y velocidad que estás viendo en esta misma página."
+          "title": "Un sitio web que informa, atiende y convierte.",
+          "promise": "Diseñamos sitios rápidos, bilingües y hechos para tu marca, con asistentes de IA, formularios confiables, analítica e integraciones que convierten una visita en una conversación comercial."
         },
         "features": [
           {
-            "title": "Diseño a medida, no plantilla",
-            "body": "Identidad, tipografía y movimiento diseñados para tu marca, con el nivel de artesanía de este sitio."
+            "title": "Diseño a medida",
+            "body": "Identidad, tipografía y movimiento diseñados para tu marca, no una plantilla genérica."
           },
           {
-            "title": "Asistente de IA integrado",
-            "body": "Un asistente entrenado con tu información atiende a los visitantes en tu sitio — y puede conectarse con WhatsApp o tu línea telefónica."
+            "title": "Asistente integrado",
+            "body": "Un asistente entrenado con tu información atiende a los visitantes del sitio, y puede conectarse con WhatsApp o tu línea telefónica."
           },
           {
-            "title": "Bilingüe de nacimiento",
-            "body": "Español e inglés con URLs localizadas y SEO internacional bien hecho — como este sitio."
+            "title": "Español e inglés desde el inicio",
+            "body": "Bilingüe desde el inicio, con URLs localizadas y SEO internacional bien hecho."
           },
           {
-            "title": "Inteligencia de visitantes",
-            "body": "Conexión nativa con nuestra plataforma de visitor intelligence: sabrás qué empresas te visitan desde el día uno."
+            "title": "Analítica e inteligencia comercial",
+            "body": "Analítica ligera y conexión con nuestra plataforma de inteligencia de visitantes: podrás detectar parte de las empresas que visitan tu sitio."
           },
           {
-            "title": "Rápido y medible",
-            "body": "Arquitectura moderna con puntajes de rendimiento altos, analítica ligera y formularios que sí entregan."
+            "title": "Formularios y conversiones medibles",
+            "body": "Formularios monitoreados para que cada solicitud llegue correctamente, con métricas de conversión que puedes revisar."
           },
           {
-            "title": "Operado, no abandonado",
-            "body": "Alojamiento, seguridad, cambios y mejoras continuas bajo la misma cuota mensual — el sitio evoluciona contigo."
+            "title": "Alojamiento, seguridad y evolución",
+            "body": "Alojamiento, seguridad, cambios y mejoras continuas bajo la misma mensualidad: el sitio evoluciona contigo."
           }
         ],
         "built": {
@@ -1385,11 +1439,11 @@
     }
   },
   "chat": {
-    "title": "Sylvi · asistente de Novieri",
+    "title": "Sylvi · asistente virtual con IA",
     "open": "Abrir el chat con Sylvi",
     "close": "Cerrar el chat",
-    "greeting": "Hola, soy Sylvi, la asistente de IA de Novieri. Pregúntame lo que quieras sobre nuestros servicios, productos o cómo trabajamos.",
-    "placeholder": "Escribe tu pregunta…",
+    "greeting": "Hola. Cuéntame qué quieres mejorar o qué problema está afectando tu operación. Te orientaré sobre el servicio, producto o primer paso que podría tener más sentido.",
+    "placeholder": "Escribe tu pregunta o describe el problema…",
     "send": "Enviar",
     "error": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto.",
     "limit": "Has alcanzado el límite de mensajes por ahora. Escríbenos desde la página de contacto y te responde una persona."
@@ -1590,10 +1644,10 @@
         {
           "h": "3. Uso permitido",
           "p": [
-            "Puedes consultar, descargar y compartir el contenido del sitio para fines informativos, personales o de evaluación comercial, siempre que respetes la integridad del contenido y su atribución a Novieri."
+            "Puedes consultar, descargar y compartir el contenido del sitio para fines informativos, personales o de evaluación comercial, siempre que respetes la integridad del contenido y su atribución a Novieri. Al usar el sitio te comprometes a no:"
           ],
           "p2": [
-            "Al usar el sitio te comprometes a no:"
+            "Novieri puede suspender o restringir el acceso al sitio cuando se incumplan estas condiciones, sin perjuicio de las acciones legales que correspondan."
           ],
           "ul": [
             "Alterar, interferir o intentar acceder sin autorización al sitio, sus servidores o sus sistemas asociados.",
@@ -1669,8 +1723,8 @@
   },
   "diagnostic": {
     "eyebrow": "diagnóstico",
-    "title": "Diagnóstico de tecnología en 3 minutos.",
-    "intro": "Diez preguntas sobre cómo está tu operación hoy: administración, seguridad, cumplimiento y automatización. Al terminar recibes un informe con tu nivel, los riesgos que vemos y qué haríamos primero — escrito para tu caso, no una plantilla.",
+    "title": "Diagnóstico tecnológico en 3 minutos.",
+    "intro": "Responde diez preguntas sobre soporte, seguridad, continuidad, cumplimiento y automatización. Al terminar recibirás una evaluación inicial con tus fortalezas, los riesgos que vemos y las acciones que priorizaríamos.",
     "progress": "Pregunta {n} de {total}",
     "back": "Anterior",
     "next": "Siguiente",
@@ -1687,22 +1741,27 @@
     },
     "gate": {
       "title": "¿A dónde te enviamos el informe?",
-      "body": "Generamos tu diagnóstico con IA a partir de tus respuestas y te lo entregamos en PDF, normalmente en menos de un minuto. Es una autoevaluación guiada, no una auditoría formal de seguridad. Usamos tus datos solo para enviarte el informe y, si lo pides, conversar tu caso.",
+      "body": "Generamos tu diagnóstico con IA a partir de tus respuestas y te lo entregamos en PDF, normalmente en menos de un minuto. Es una autoevaluación orientativa, no una auditoría formal de seguridad ni una certificación. Usamos tus datos solo para enviarte el informe y, si lo pides, conversar sobre el resultado.",
       "name": "Nombre",
-      "email": "Correo corporativo",
+      "email": "Correo de trabajo",
       "company": "Empresa",
       "phone": "Teléfono (opcional)",
-      "consent": "Autorizo el tratamiento de mis datos conforme a la política de privacidad.",
+      "consent": "Autorizo el tratamiento de mis datos para generar y enviarme el diagnóstico, conforme a la Política de tratamiento de datos personales.",
       "submit": "Generar mi diagnóstico",
       "sending": "Analizando tus respuestas…",
-      "privacy": "Ver política de privacidad"
+      "privacy": "Ver política de privacidad",
+      "optIn": "Quiero que un fundador me contacte para conversar sobre el resultado. (opcional)"
     },
     "result": {
       "title": "Tu diagnóstico está listo",
-      "download": "Descargar PDF",
-      "again": "Responder de nuevo",
+      "download": "Guardar como PDF",
+      "again": "Volver a responder",
       "cta": "Agenda una llamada de 30 minutos",
-      "emailed": "También te lo enviamos por correo."
+      "emailed": "También te lo enviamos por correo.",
+      "strengths": "Lo que ya tienes bien",
+      "risks": "Riesgos que identificamos",
+      "priorities": "Qué haríamos primero",
+      "print": "Guardar como PDF"
     },
     "errors": {
       "required": "Selecciona una opción para continuar.",
@@ -1753,7 +1812,7 @@
             "w": 2
           },
           {
-            "v": "Un equipo de IT propio",
+            "v": "Un equipo interno de TI",
             "w": 3
           }
         ]
@@ -1789,7 +1848,7 @@
             "w": 0
           },
           {
-            "v": "Existen, pero nunca los hemos restaurado",
+            "v": "Tenemos copias, pero nunca hemos probado una restauración.",
             "w": 1
           },
           {
@@ -1934,13 +1993,15 @@
           }
         ]
       }
-    ]
+    ],
+    "sampleLabel": "Mira un informe de ejemplo",
+    "noScript": "Este diagnóstico necesita JavaScript para funcionar. Puedes activarlo en tu navegador o escribirnos a sales@novieri.com y revisaremos las preguntas contigo."
   },
   "itConsulting": {
     "hero": {
-      "eyebrow": "consultoría it",
-      "title": "Decide qué comprar, qué arreglar y qué dejar quieto.",
-      "promise": "La mayor parte del dinero que se pierde en tecnología se pierde antes de instalar nada: el sistema equivocado, licencias que nadie usa, un proveedor que te dejó amarrado. Miramos qué tienes, cuánto te cuesta y para dónde va, y te decimos qué hacer. Incluso cuando la respuesta es: todavía no."
+      "eyebrow": "consultoría tecnológica",
+      "title": "Decide qué comprar, qué corregir y qué dejar quieto.",
+      "promise": "Muchas empresas pagan licencias que no usan, dependen de un proveedor que nadie sabe evaluar o toman decisiones técnicas sin una visión completa del costo. Revisamos lo que tienes, identificamos riesgos y te entregamos una recomendación que puedes ejecutar con nosotros o con cualquier otro proveedor."
     },
     "what": {
       "items": [
@@ -1976,24 +2037,24 @@
     "packages": {
       "tiers": [
         {
-          "name": "Una decisión",
-          "blurb": "Una sola pregunta, respondida bien, por un precio fijo: una cotización que revisar, un proveedor que comparar, una arquitectura que validar. Te queda una recomendación escrita que puedes ejecutar con quien quieras."
+          "name": "Segunda opinión",
+          "blurb": "Revisamos una cotización, una arquitectura, un contrato o un proyecto que no avanza y te entregamos una recomendación escrita."
         },
         {
-          "name": "El panorama completo",
-          "blurb": "Todo lo que tienes, cuánto cuesta, dónde está el riesgo y un plan a doce meses con prioridades y presupuesto. El punto de partida cuando hace años nadie mira el conjunto."
+          "name": "Mapa tecnológico y plan de 12 meses",
+          "blurb": "Inventario, costos, riesgos, dependencias y una hoja de ruta priorizada con presupuesto estimado."
         },
         {
-          "name": "Un CTO disponible",
-          "blurb": "Una cuota mensual fija para las decisiones que van saliendo: cotizaciones, proveedores, contrataciones, incidentes. La persona que una empresa grande tiene en nómina, por las horas que de verdad necesitas."
+          "name": "Dirección tecnológica externa",
+          "blurb": "Acompañamiento mensual para evaluar proveedores, inversiones, proyectos, contrataciones y decisiones de arquitectura."
         }
       ]
     },
     "faq": {
       "items": [
         {
-          "q": "¿En qué se diferencia del IT administrado?",
-          "a": "El IT administrado es que nosotros operemos tu tecnología. La consultoría es que te ayudemos a decidir sobre ella, incluso a decidir quedarte con el proveedor que ya tienes. Puedes contratar cualquiera de las dos sin la otra."
+          "q": "¿En qué se diferencia de la TI administrada?",
+          "a": "La TI administrada es que nosotros operemos tu tecnología. La consultoría es que te ayudemos a decidir sobre ella, incluso a decidir quedarte con el proveedor que ya tienes. Puedes contratar cualquiera de las dos sin la otra."
         },
         {
           "q": "Ustedes también venden la implementación. ¿No es un conflicto?",
@@ -2008,40 +2069,42 @@
           "a": "Con un documento en español claro: qué tienes, cuánto cuesta, qué cambiaríamos, en qué orden y cuánto vale aproximadamente cada paso. No una presentación de diapositivas."
         }
       ]
-    }
+    },
+    "ctaButton": "Haz tu primera pregunta",
+    "ctaTitle": "Toma la decisión con más información"
   },
   "pricing": {
     "hero": {
       "eyebrow": "precios",
-      "title": "Números con los que puedes planear.",
-      "intro": "La mayoría de las firmas te hacen pasar por una llamada de ventas antes de decirte un precio. Aquí está el nuestro de entrada: cada cifra es un rango realista, no una cotización — el valor exacto depende de lo que tu negocio necesita, y llega con la propuesta, después de entender tu operación. Los precios se muestran en pesos o en dólares según el lugar desde donde nos visitas; puedes cambiarlos abajo. Valores antes de IVA."
+      "title": "Rangos claros para saber si encajamos antes de hablar.",
+      "intro": "No necesitas pasar por una presentación de ventas para saber si Novieri está dentro de tu presupuesto. Estos valores son rangos de referencia, no cotizaciones finales. El precio exacto depende del tamaño de tu operación, los sistemas involucrados, el riesgo y el alcance, y queda definido por escrito antes de empezar. Precios antes de IVA · selecciona COP o USD · licencias, consumo de plataformas y auditorías externas se indican por separado cuando apliquen."
     },
-    "toggleLabel": "precios en",
+    "toggleLabel": "Ver precios en",
     "groups": [
       {
-        "name": "IT administrado",
-        "blurb": "Por usuario, al mes — puedes hacer la cuenta para tu equipo antes de hablar con nosotros.",
+        "name": "TI administrada",
+        "blurb": "Precio mensual por usuario. Multiplica el rango por el tamaño de tu equipo para estimar la inversión antes de hablar con nosotros.",
         "rows": [
           {
             "service": "Esencial",
             "price_usd": "$99 – 115",
             "price_cop": "$95.000 – 115.000",
-            "unit": "por usuario / mes",
-            "note": "Soporte, monitoreo, actualizaciones y copias de seguridad — lo esencial, bien hecho."
+            "unit": "por usuario al mes",
+            "note": "Soporte, inventario, actualizaciones, mantenimiento y administración básica."
           },
           {
             "service": "Completo",
             "price_usd": "$139 – 160",
             "price_cop": "$145.000 – 170.000",
-            "unit": "por usuario / mes",
-            "note": "Esencial más seguridad administrada y administración de Microsoft 365. La mayoría de los equipos queda aquí."
+            "unit": "por usuario al mes",
+            "note": "El plan esencial, más Microsoft 365, seguridad administrada, copias de seguridad y continuidad."
           },
           {
-            "service": "Premium",
+            "service": "Cumplimiento",
             "price_usd": "$189 – 220",
             "price_cop": "$195.000 – 230.000",
-            "unit": "por usuario / mes",
-            "note": "Completo más apoyo de cumplimiento y guía tecnológica de dirección, para equipos que responden ante auditores."
+            "unit": "por usuario al mes",
+            "note": "El plan completo, más revisiones de seguridad, evidencia y dirección tecnológica para empresas con exigencias de clientes o auditores."
           }
         ],
         "footnote": "La implementación inicial equivale a un mes de servicio y se factura una sola vez. En qué punto del rango queda tu caso depende del tamaño y las necesidades de tu operación."
@@ -2051,11 +2114,11 @@
         "blurb": "Empieza pequeño a propósito: el diagnóstico te dice dónde la automatización genera retorno antes de comprometerte a construir.",
         "rows": [
           {
-            "service": "Diagnóstico IA",
+            "service": "Diagnóstico de automatización e IA",
             "price_usd": "$1,500",
             "price_cop": "$2.900.000",
             "unit": "precio fijo · 2 semanas",
-            "note": "Abonable a tu primer proyecto si sigues adelante."
+            "note": "Dos semanas para mapear procesos, priorizar oportunidades y definir el primer caso de uso. El valor se abona al proyecto si decides continuar."
           },
           {
             "service": "Piloto de automatización",
@@ -2072,11 +2135,11 @@
             "note": "Mejora continua, monitoreo y gobierno de lo que construimos, por una mensualidad fija."
           },
           {
-            "service": "Bot de WhatsApp para restaurantes y hoteles",
+            "service": "Asistente para WhatsApp",
             "price_usd": "",
             "price_cop": "$2,9 – 3,5 millones",
             "unit": "implementación",
-            "note": "Pedidos, reservas y atención fuera de horario. Más una mensualidad de $790.000 a $1.100.000 según el alcance."
+            "note": "Configuración, integración, contenido inicial, pruebas y puesta en marcha. La operación mensual depende del volumen y las funciones contratadas."
           }
         ],
         "footnote": ""
@@ -2093,86 +2156,86 @@
             "note": "Lo esencial auditado y corregido: identidad, correo, equipos y copias de seguridad."
           },
           {
-            "service": "Preparación ISO 27001 / SOC 2",
+            "service": "Preparación para SOC 2, PCI DSS o ISO 27001",
             "price_usd": "$9,500 – 18,000",
             "price_cop": "$18 – 32 millones",
             "unit": "por proyecto",
-            "note": "Del diagnóstico de brechas a la evidencia lista para auditoría. La plataforma y el auditor se pagan aparte."
+            "note": "Del análisis de brechas a la remediación y organización de evidencia. Las plataformas especializadas y el auditor independiente se cotizan por separado."
           },
           {
-            "service": "Director de seguridad externo",
+            "service": "Dirección de seguridad externa",
             "price_usd": "$2,900 – 5,000",
             "price_cop": "$3,9 – 5,5 millones",
             "unit": "mensual",
-            "note": "Un director de seguridad con experiencia, dedicado unas horas al mes a tu empresa — sin contratar el cargo de tiempo completo."
+            "note": "Acompañamiento de seguridad con experiencia, unas horas al mes, sin contratar el cargo de tiempo completo."
           }
         ],
         "footnote": ""
       },
       {
-        "name": "Desarrollo a medida",
-        "blurb": "Ingenieros senior, en tu zona horaria.",
+        "name": "Desarrollo de software",
+        "blurb": "Ingenieros senior, en horarios compatibles con Colombia y EE. UU.",
         "rows": [
           {
             "service": "Hora de ingeniería senior",
             "price_usd": "$45 – 55",
             "price_cop": "$110.000 – 140.000",
             "unit": "por hora",
-            "note": "Como referencia, la hora de fábrica de software se licita oficialmente desde $105.000 + IVA."
+            "note": "Trabajo de arquitectura, desarrollo, integración, pruebas o revisión técnica realizado por un perfil senior. El alcance y la estimación de horas se acuerdan antes de empezar."
           },
           {
-            "service": "Sprint de descubrimiento",
+            "service": "Descubrimiento y alcance",
             "price_usd": "$2,900",
             "price_cop": "$5.500.000",
             "unit": "precio fijo",
-            "note": "Alcance, arquitectura y una respuesta honesta de construir vs. comprar antes de comprometerte."
+            "note": "Proceso de precio fijo para entender el problema, validar la solución, definir arquitectura, prioridades, riesgos y presupuesto."
           }
         ],
         "footnote": ""
       },
       {
-        "name": "Consultoría IT",
+        "name": "Consultoría tecnológica",
         "blurb": "Decisiones, cobradas por la hora que toman.",
         "rows": [
           {
-            "service": "Consultoría / assessment",
+            "service": "Evaluación tecnológica",
             "price_usd": "$150 – 200",
             "price_cop": "$280.000 – 350.000",
             "unit": "por hora",
             "note": ""
           },
           {
-            "service": "CTO por horas",
+            "service": "Dirección tecnológica externa",
             "price_usd": "$175 – 250",
             "price_cop": "",
             "unit": "por hora",
-            "note": "Liderazgo tecnológico continuo, unas horas al mes, sin contratar el cargo de tiempo completo."
+            "note": "Acompañamiento recurrente para decisiones de proveedores, arquitectura, costos, seguridad y proyectos, sin contratar un cargo de tiempo completo."
           }
         ],
         "footnote": ""
       }
     ],
     "note": {
-      "title": "Cómo leer estos números",
-      "intro": "Son rangos, no un menú con reglas duras. Lo que mueve un precio: cuántas personas y sistemas están involucrados, cuánto del trabajo es regulado y qué tan rápido lo necesitas. Lo que nunca cambia: la propuesta fija un número antes de empezar, y la primera llamada no cuesta nada."
+      "title": "Cómo interpretar los rangos",
+      "intro": "El tamaño de tu equipo es solo una parte. También influyen el número de sedes, sistemas e integraciones, la información regulada, el horario de atención y la velocidad del proyecto. La propuesta final fija el alcance, las exclusiones, el cronograma y el valor antes de iniciar."
     },
     "faq": {
       "items": [
         {
           "q": "¿Son precios finales?",
-          "a": "No — son rangos honestos. En qué punto queda tu caso depende de lo que tu negocio necesita; después de una llamada de 30 minutos enviamos una propuesta con un número exacto, y ese es el que vale."
+          "a": "Son rangos de referencia. Después de entender tu caso, enviamos una propuesta con el alcance, los supuestos y el valor exacto. Ese es el precio que se utiliza para contratar."
         },
         {
-          "q": "¿Por qué publican precios si casi nadie lo hace?",
-          "a": "Para que puedas considerarnos o descartarnos sin pasar por un proceso de ventas. Si los rangos están lejos de tu presupuesto, nos ahorramos la llamada; si encajan, llegas sabiendo qué esperar."
+          "q": "¿Qué podría cobrarse por separado?",
+          "a": "Depende del servicio. Licencias, consumo de plataformas, equipos, desplazamientos especiales y auditorías independientes se muestran como conceptos separados cuando apliquen. Nunca deberían aparecer por primera vez en la factura."
         },
         {
-          "q": "¿Los precios incluyen IVA?",
-          "a": "No, son valores antes de IVA. En la propuesta te decimos el valor total según aplique para tu caso."
+          "q": "¿Por qué publican los precios?",
+          "a": "Para que puedas saber si estamos dentro de tu presupuesto antes de invertir tiempo en reuniones. La transparencia también hace más fácil comparar propuestas."
         },
         {
           "q": "¿Por qué veo pesos (o dólares)?",
-          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Con el selector COP/USD de arriba puedes ver la otra lista."
+          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Con el selector COP/USD de arriba puedes ver la otra lista. Todos los valores se muestran antes de IVA."
         }
       ]
     }

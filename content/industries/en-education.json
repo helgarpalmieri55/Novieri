@@ -1,0 +1,85 @@
+{
+  "slug": "education",
+  "lang": "en",
+  "name": "Education",
+  "htmlTitle": "IT for schools & education — Novieri",
+  "metaDescription": "Managed IT, security, and practical automation for schools and education companies — senior engineers at nearshore rates, on US Eastern hours.",
+  "hero": {
+    "eyebrow": "industries",
+    "title": "Big fleets, small teams, no room for downtime on a school day.",
+    "intro": "Education runs on technology now — devices, learning platforms, family communication — usually on a lean team and a leaner budget. We give schools and education companies a senior IT operation at rates a tuition-driven budget can carry."
+  },
+  "pains": {
+    "eyebrow": "the reality",
+    "title": "What education IT is actually up against.",
+    "items": [
+      {
+        "title": "One person, hundreds of devices",
+        "body": "A single coordinator — or a teacher with a side duty — managing laptops, projectors, accounts, and Wi-Fi for an entire campus. Everything works until the day it doesn't."
+      },
+      {
+        "title": "Schools are a ransomware target",
+        "body": "Attackers go where defenses are thin and data is sensitive, and education fits both. Student records are exactly the kind of data you cannot afford to lose or leak."
+      },
+      {
+        "title": "Everything peaks at once",
+        "body": "Enrollment, the first week of classes, report-card season: the moments when families and staff need systems most are the moments they're most likely to buckle."
+      },
+      {
+        "title": "Repetitive questions bury the office",
+        "body": "Schedules, requirements, payments, enrollment status — the front office answers the same questions hundreds of times while actual work waits."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "how we help",
+    "title": "Three ways we take the load.",
+    "cards": [
+      {
+        "title": "Your IT department, managed",
+        "body": "Helpdesk for staff, device and account management, network and Wi-Fi, tested backups, and monitoring — an IT operation without hiring one.",
+        "href": "/services/managed-it",
+        "linkLabel": "See managed IT"
+      },
+      {
+        "title": "Security that protects student data",
+        "body": "Hardening, MFA, vulnerability management, and backups proven with real restores — the baseline that keeps an incident from becoming a headline.",
+        "href": "/services/cybersecurity-compliance",
+        "linkLabel": "See cybersecurity & compliance"
+      },
+      {
+        "title": "Automation for the front office",
+        "body": "Assistants that answer routine family questions from your own information and automations for enrollment paperwork and reporting — hours back, every week.",
+        "href": "/services/ai-automation",
+        "linkLabel": "See AI & automation"
+      }
+    ]
+  },
+  "note": {
+    "title": "Straight talk about education budgets.",
+    "body": "We know education doesn't buy technology the way a bank does: budgets are annual, tight, and scrutinized. That's precisely where nearshore works in your favor — senior engineers at rates that fit a school's numbers, with published price anchors so you can plan before you ever talk to us. We'll also tell you what not to buy: plenty of schools are paying for licenses and tools nobody uses, and cutting those often funds the things that matter."
+  },
+  "faq": {
+    "eyebrow": "faq",
+    "title": "What education leaders ask us.",
+    "items": [
+      {
+        "q": "We already have an IT coordinator. Where do you fit?",
+        "a": "Alongside them, usually. We take the layers that are hard to staff — monitoring, security, backups, escalations — and leave your coordinator free for the classroom-facing work. They also stop being the single point of failure for the whole campus."
+      },
+      {
+        "q": "How do you handle student data?",
+        "a": "As the sensitive data it is: least-privilege access, MFA, encryption, and clear agreements about what data goes where. For AI features, we define from day one which data may leave your systems and which may not, and we use business accounts with no-training agreements."
+      },
+      {
+        "q": "Can big changes happen without disrupting classes?",
+        "a": "Yes — that's mostly scheduling discipline. Disruptive work goes into breaks and after-hours windows, changes are staged and reversible, and the school calendar drives the project plan, not the other way around."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Let's look at your campus before the next school year does.",
+    "subtitle": "A 30-minute call to understand your setup and tell you frankly what we'd fix first — and what can wait.",
+    "buttonText": "Book a call"
+  }
+}

@@ -49,13 +49,23 @@ const ES_SLUGS = {
   about: "nosotros",
   contact: "contacto",
   "self-diagnosis": "autodiagnostico",
+  "self-diagnosis/sample-report": "autodiagnostico/informe-de-ejemplo",
   pricing: "precios",
+  industries: "industrias",
+  "industries/bpo": "industrias/bpo",
+  "industries/hospitality": "industrias/hoteleria",
+  "industries/education": "industrias/educacion",
+  // industries/regulated is deliberately absent: PCI/SOC 2 pages sell to the
+  // US market only. The Colombian-only industries (restaurantes, pymes) are
+  // likewise not variants — they are created directly, in Spanish.
+  "case-studies": "casos-de-exito",
+  "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
   "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
   "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
   "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
-  "products/ventia": "productos/ventia",
+  "products/ai-ecommerce": "productos/ecommerce-ia",
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/cookie-policy": "legal/politica-de-cookies",
@@ -120,9 +130,9 @@ const PAGES = [
     name: "Vulnerability Management",
     htmlTitle: "Vulnerability management — Novieri",
     metaDescription: "Find the weaknesses in your systems before someone else does, know which ones actually matter, and hold the evidence an auditor asks for." },
-  { key: "sol-ventia", template: "solution", slug: "products/ventia",
-    name: "Ventia — AI E-commerce",
-    htmlTitle: "Ventia — AI e-commerce — Novieri",
+  { key: "sol-ventia", template: "solution", slug: "products/ai-ecommerce",
+    name: "AI E-commerce",
+    htmlTitle: "E-commerce with an AI sales agent — Novieri",
     metaDescription: "Novieri's e-commerce platform: complete online stores with an AI salesperson inside, and several brands on one foundation." },
   { key: "sol-websites", template: "solution", slug: "products/ai-websites",
     name: "AI-powered Websites",
@@ -153,6 +163,47 @@ const PAGES = [
     htmlTitle: "Terms of use — Novieri",
     metaDescription: "The terms under which novieri.com may be used." },
 ];
+
+/**
+ * The industries and insights pages carry their metadata with their copy in
+ * content/, not here — one file per page, written once and read by both this
+ * script and the fill. A missing file just means that page is not created
+ * yet, which is how the section grows one approved page at a time.
+ */
+const readContent = (p) => {
+  try {
+    return JSON.parse(readFileSync(`content/${p}.json`, "utf8"));
+  } catch {
+    return null;
+  }
+};
+
+for (const s of ["bpo", "hospitality", "education", "regulated"]) {
+  const c = readContent(`industries/en-${s}`);
+  if (c) PAGES.push({ key: `ind-${s}`, template: "industry", slug: `industries/${s}`,
+    name: c.name, htmlTitle: c.htmlTitle, metaDescription: c.metaDescription });
+}
+// Colombia-only industries, born in Spanish: no English page exists to be a
+// variant of, so they are created directly with their language declared.
+for (const s of ["restaurantes", "pymes"]) {
+  const c = readContent(`industries/es-${s}`);
+  if (c) PAGES.push({ key: `ind-${s}`, template: "industry", slug: `industrias/${s}`,
+    name: c.name, htmlTitle: c.htmlTitle, metaDescription: c.metaDescription, language: "es" });
+}
+{
+  const ix = readContent("industries/en-index");
+  if (ix) PAGES.push({ key: "industries", template: "hub-index", slug: "industries",
+    name: "Industries", htmlTitle: ix.htmlTitle, metaDescription: ix.metaDescription });
+  const cs = readContent("case-studies/index");
+  if (cs) PAGES.push({ key: "case-studies", template: "hub-index", slug: "case-studies",
+    name: "Case studies", htmlTitle: cs.en.htmlTitle, metaDescription: cs.en.metaDescription });
+  const c1 = readContent("case-studies/restaurant-whatsapp");
+  if (c1) PAGES.push({ key: "cs-restaurant", template: "case-study", slug: "case-studies/restaurant-whatsapp-ai",
+    name: c1.en.name, htmlTitle: c1.en.htmlTitle, metaDescription: c1.en.metaDescription });
+  const sr = readContent("diagnostic/sample-report");
+  if (sr) PAGES.push({ key: "sample-report", template: "case-study", slug: "self-diagnosis/sample-report",
+    name: sr.en.name, htmlTitle: sr.en.htmlTitle, metaDescription: sr.en.metaDescription });
+}
 
 async function api(path, options = {}) {
   const res = await fetch(`https://api.hubapi.com${path}`, {
@@ -247,7 +298,17 @@ if (dump !== undefined) {
  */
 function esMeta() {
   const es = JSON.parse(readFileSync("messages/es.json", "utf8"));
+  const pick = (c) => (c ? { title: c.htmlTitle, description: c.metaDescription } : undefined);
+  const csIx = readContent("case-studies/index");
+  const cs1 = readContent("case-studies/restaurant-whatsapp");
   return {
+    industries: pick(readContent("industries/es-index")),
+    "industries/bpo": pick(readContent("industries/es-bpo")),
+    "industries/hospitality": pick(readContent("industries/es-hoteleria")),
+    "industries/education": pick(readContent("industries/es-educacion")),
+    "case-studies": pick(csIx?.es),
+    "case-studies/restaurant-whatsapp-ai": pick(cs1?.es),
+    "self-diagnosis/sample-report": pick(readContent("diagnostic/sample-report")?.es),
     "": es.meta.home,
     services: es.meta.services,
     "services/ai-automation": es.meta.ai,
@@ -259,12 +320,16 @@ function esMeta() {
     contact: es.meta.contact,
     "self-diagnosis": es.meta.diagnostic,
     pricing: es.meta.pricing,
-    solutions: es.meta.solutions,
+    products: es.meta.solutions,
     "products/ai-virtual-assistant": es.meta.sol_aiAssistant,
     "products/whatsapp-ai-assistant": es.meta.sol_whatsapp,
     "products/visitor-intelligence": es.meta.sol_visitorIntel,
     "products/vulnerability-management": es.meta.sol_sentinel,
-    "products/ventia": es.meta.sol_ventia,
+    "products/ai-ecommerce": es.meta.sol_ventia,
+    // The legal pages were the last ES titles still in English.
+    "legal/privacy-policy": es.meta.legalPrivacy,
+    "legal/cookie-policy": es.meta.legalCookies,
+    "legal/terms-of-use": es.meta.legalTerms,
     "products/ai-websites": es.meta.sol_webDev,
   };
 }
@@ -385,6 +450,10 @@ if (renameProducts) {
   const moves = [
     ...TAILS.map((t) => [t ? `solutions/${t}` : "solutions", t ? `products/${t}` : "products"]),
     ...ES_TAILS.map((t) => [t ? `soluciones/${t}` : "soluciones", t ? `productos/${t}` : "productos"]),
+    // Round two: the product formerly named Ventia goes by what it is. A page
+    // already moved is skipped, so re-running the whole list stays safe.
+    ["products/ventia", "products/ai-ecommerce"],
+    ["productos/ventia", "productos/ecommerce-ia"],
   ];
 
   const listed = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
@@ -534,6 +603,7 @@ for (const p of plan) {
         metaDescription: p.metaDescription,
         domain: DOMAIN,
         state: "DRAFT",
+        ...(p.language ? { language: p.language } : {}),
       }),
     });
     console.log(`create  ${p.slug} — id ${made.id}`);

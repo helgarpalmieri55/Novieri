@@ -379,6 +379,12 @@
     "allow_new_line": true
   },
   {
+    "name": "gate_optin",
+    "label": "Optional follow-up checkbox label",
+    "type": "text",
+    "default": "I'd also like a founder to contact me to discuss the result. (optional)"
+  },
+  {
     "name": "gate_privacy",
     "label": "Privacy link label",
     "type": "text",

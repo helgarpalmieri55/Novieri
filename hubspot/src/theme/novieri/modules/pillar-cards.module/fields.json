@@ -1,5 +1,11 @@
 [
   {
+    "name": "dark",
+    "label": "Dark band (black background, light heading)",
+    "type": "boolean",
+    "default": false
+  },
+  {
     "name": "eyebrow",
     "label": "Eyebrow",
     "type": "text",
@@ -10,6 +16,13 @@
     "label": "Title",
     "type": "text",
     "default": "Five pillars, one standard."
+  },
+  {
+    "name": "intro",
+    "label": "Intro under the title",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
   },
   {
     "name": "cards",
@@ -75,6 +88,12 @@
             "Ink"
           ]
         ]
+      },
+      {
+        "name": "card_link_label",
+        "label": "Link label for this card (falls back to the shared one)",
+        "type": "text",
+        "default": ""
       }
     ],
     "default": [

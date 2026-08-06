@@ -119,7 +119,10 @@ const IT_OPTION = { label: EN_MESSAGES.contact.form.serviceOptions.itConsulting,
 const OTHER_LABEL = EN_MESSAGES.contact.form.serviceOptions.other;
 
 const prop = await api("/crm/v3/properties/contacts/novieri_service_interest").catch(() => null);
-if (prop && !prop.options.some((o) => o.value === IT_OPTION.value)) {
+// The wider scope revealed this property is a plain string — the dropdown's
+// options live on the FORM, not the property. Only an enumeration takes an
+// options patch; a string one 400s the whole run.
+if (prop && prop.type === "enumeration" && !prop.options.some((o) => o.value === IT_OPTION.value)) {
   const options = [...prop.options];
   const at = options.findIndex((o) => o.label === OTHER_LABEL);
   options.splice(at === -1 ? options.length : at, 0, { ...IT_OPTION, hidden: false, description: "" });
@@ -215,6 +218,107 @@ eachField(esBody, (f) => {
   f.label = es.label;
   if (es.placeholder) f.placeholder = es.placeholder;
 });
+
+// --- The review's two missing fields: an optional phone/WhatsApp and a
+// team-size qualifier. The property comes first — an enumeration field on a
+// form is rejected unless the contact property already knows its options.
+const TEAM_PROP = "novieri_people_affected";
+const TEAM_OPTIONS = [
+  { label: "1–5", value: "1_5" },
+  { label: "6–20", value: "6_20" },
+  { label: "21–50", value: "21_50" },
+  { label: "50+", value: "50_plus" },
+];
+let teamProp = await api(`/crm/v3/properties/contacts/${TEAM_PROP}`).catch(() => null);
+if (!teamProp && !dryRun) {
+  try {
+    teamProp = await api("/crm/v3/properties/contacts", {
+      method: "POST",
+      body: JSON.stringify({
+        name: TEAM_PROP,
+        label: "People affected (website form)",
+        groupName: "contactinformation",
+        type: "enumeration",
+        fieldType: "select",
+        options: TEAM_OPTIONS.map((o, n) => ({ ...o, description: "", displayOrder: n, hidden: false })),
+      }),
+    });
+    console.log(`created contact property ${TEAM_PROP}`);
+  } catch (e) {
+    // The private app can edit forms but not mint contact properties. The
+    // phone field rides on a default property and ships regardless; this one
+    // waits for the scope rather than failing the whole run.
+    console.log(`cannot create ${TEAM_PROP}: ${String(e.message).slice(0, 120)}`);
+    console.log("add the crm.schemas.contacts.write scope to the private app and re-run to get the team-size field.");
+  }
+}
+
+// The diagnostic's optional "a founder may contact me" checkbox lands on
+// this property; the serverless function sends it only when ticked.
+const FOLLOWUP_PROP = "novieri_diagnostic_followup";
+const followupProp = await api(`/crm/v3/properties/contacts/${FOLLOWUP_PROP}`).catch(() => null);
+if (!followupProp && !dryRun) {
+  try {
+    await api("/crm/v3/properties/contacts", {
+      method: "POST",
+      body: JSON.stringify({
+        name: FOLLOWUP_PROP,
+        label: "Diagnostic: founder follow-up requested",
+        groupName: "contactinformation",
+        type: "enumeration",
+        fieldType: "booleancheckbox",
+        options: [
+          { label: "Yes", value: "true", description: "", displayOrder: 0, hidden: false },
+          { label: "No", value: "false", description: "", displayOrder: 1, hidden: false },
+        ],
+      }),
+    });
+    console.log(`created contact property ${FOLLOWUP_PROP}`);
+  } catch (e) {
+    console.log(`cannot create ${FOLLOWUP_PROP}: ${String(e.message).slice(0, 120)}`);
+  }
+}
+
+function hasField(patch, name) {
+  let found = false;
+  eachField(patch, (f) => { if (f.name === name) found = true; });
+  return found;
+}
+/** Inserts single-field groups before the service dropdown, cloning an
+    existing group's shape so HubSpot recognises the structure. */
+function insertFields(patch, defs) {
+  const groups = patch.fieldGroups;
+  const template = groups.find((g) => (g.fields || []).length === 1) || groups[0];
+  let at = groups.findIndex((g) => (g.fields || []).some((f) => f.name === "novieri_service_interest"));
+  if (at === -1) at = groups.length;
+  for (const d of defs) {
+    if (hasField(patch, d.name)) continue;
+    groups.splice(at, 0, { ...template, fields: [d] });
+    at += 1;
+    console.log(`  field + ${d.name} — "${d.label}"`);
+  }
+}
+const fieldDefs = (lang) => [
+  {
+    objectTypeId: "0-1",
+    name: "phone",
+    label: lang === "es" ? "Teléfono o WhatsApp (opcional)" : "Phone or WhatsApp (optional)",
+    required: false,
+    hidden: false,
+    fieldType: "phone",
+  },
+  ...(teamProp ? [{
+    objectTypeId: "0-1",
+    name: TEAM_PROP,
+    label: lang === "es" ? "¿Cuántas personas están afectadas?" : "How many people are affected?",
+    required: false,
+    hidden: false,
+    fieldType: "dropdown",
+    options: TEAM_OPTIONS.map((o, n) => ({ ...o, description: "", displayOrder: n })),
+  }] : []),
+];
+insertFields(enPatch, fieldDefs("en"));
+insertFields(esBody, fieldDefs("es"));
 
 if (dryRun) {
   console.log(`patch  ${EN_FORM} (${en.id}) — submit "${EN.submit}", ${LANGUAGE_OPTIONS.length} languages, consent rewritten`);

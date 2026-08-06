@@ -160,14 +160,28 @@
       scrollDown();
     }
 
-    toggle.addEventListener("click", function () {
-      var open = panel.classList.toggle("hidden") === false;
+    function setOpen(open) {
+      panel.classList.toggle("hidden", !open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? toggle.dataset.closeLabel : toggle.dataset.openLabel);
       iconOpen.classList.toggle("hidden", open);
       iconClose.classList.toggle("hidden", !open);
       if (open) input.focus();
+    }
+
+    toggle.addEventListener("click", function () {
+      setOpen(panel.classList.contains("hidden"));
     });
+
+    // The X in the panel's own header — same state change as the launcher,
+    // so the launcher's icon and aria stay truthful.
+    var closeBtn = root.querySelector(".sylvi-close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        setOpen(false);
+        toggle.focus();
+      });
+    }
 
     input.addEventListener("input", function () {
       send.disabled = busy || input.value.trim().length === 0;

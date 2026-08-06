@@ -1,5 +1,11 @@
 [
   {
+    "name": "footnote",
+    "label": "Disclosure line under the stats",
+    "type": "text",
+    "default": ""
+  },
+  {
     "name": "stats",
     "label": "Stats",
     "type": "group",
