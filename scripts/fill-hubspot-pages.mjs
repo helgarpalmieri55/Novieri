@@ -529,7 +529,7 @@ function solutionsIndexWidgets() {
     [SOLUTIONS_INDEX_SLOTS.cta]: {
       body: {
         eyebrow: NEXT_STEP,
-        title: s.ctaTitle || c.ctaTitle,
+        title: c.ctaTitle,
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
