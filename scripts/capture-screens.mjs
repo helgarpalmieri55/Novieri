@@ -12,8 +12,12 @@
  */
 import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
 
-const OUT = "/home/user/Novieri/hubspot/files/screens";
+// Relative to this file, not to a machine: the first run of this on a runner
+// tried to create a directory under the path it had on the author's box.
+const OUT = resolve(dirname(fileURLToPath(import.meta.url)), "../hubspot/files/screens");
 mkdirSync(OUT, { recursive: true });
 
 // Consent is set before the first paint so the cookie banner is not in the
