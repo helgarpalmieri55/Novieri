@@ -169,6 +169,16 @@ const OTHER = {
 /** The one string with no home in messages/*.json. */
 const NEXT_STEP = { en: "next step", es: "siguiente paso" }[locale] || "next step";
 
+/**
+ * The second action on every closing band that has a price to point at. The
+ * review asked for a consistent primary/secondary pair and for pricing to be
+ * reachable from the pages that raise the question, which is the same fix.
+ */
+const PRICING_CTA = {
+  secondary_text: t.common.seePricing,
+  secondary_link: { url: { type: "CONTENT", href: `/${slugFor("pricing")}` } },
+};
+
 function legalWidgets(doc) {
   const c = t.legal.common;
   return {
@@ -317,6 +327,7 @@ function serviceWidgets(ns) {
         // readiness" converts a security reader that "book a call" loses.
         button_text: s.ctaButton || t.common.bookCall,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        ...PRICING_CTA,
       },
     },
   };
@@ -509,6 +520,7 @@ function solutionWidgets(key) {
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        ...PRICING_CTA,
       },
     },
   };
@@ -549,6 +561,7 @@ function solutionsIndexWidgets() {
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        ...PRICING_CTA,
       },
     },
   };
@@ -909,6 +922,7 @@ const ctaOf = (c, href) => ({
     subtitle: c.cta.subtitle,
     button_text: c.cta.buttonText,
     button_link: { url: { type: "CONTENT", href: href || `/${slugFor("contact")}` } },
+    ...PRICING_CTA,
   },
 });
 const cardsOf = (cards, linkLabel) => ({

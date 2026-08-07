@@ -85,5 +85,20 @@
         <a href="{{ group.absolute_url }}" class="idx-mono lowercase text-plum hover:text-gold-deep">&larr; {{ group.public_title || "insights" }}</a>
       </p>
     </div>
+    {# Someone who just read a whole article on managed IT or SOC 2 is the
+       reader most likely to want their own situation assessed — the review
+       asked for the diagnostic to be surfaced where the educational content
+       is, not only on the home page. Blog posts take no per-page fill, so the
+       copy is passed here rather than written into every post. #}
+    <div class="mt-16">
+      {% module "post_diagnostic" path="../modules/diagnostic-band",
+        eyebrow=is_es and "empieza por aquí" or "start here",
+        title=is_es and "¿Y cómo está tu operación?" or "So how does your own operation look?",
+        intro=is_es and "Responde diez preguntas sobre tu empresa y recibes el diagnóstico: en qué nivel estás, los riesgos que vemos y qué haríamos primero — escrito para tu caso, no una plantilla. No te compromete a nada." or "Answer ten questions about your business and you get the diagnostic: the level you are at, the risks we see, and what we would do first — written for your case, not a template. It commits you to nothing.",
+        button_text=is_es and "Haz tu diagnóstico gratis" or "Get your free technology diagnosis",
+        button_link={"url": {"type": "CONTENT", "href": is_es and "/autodiagnostico" or "/self-diagnosis"}},
+        note=is_es and "3 minutos · informe en PDF · gratis" or "3 minutes · PDF report · free"
+      %}{% end_module %}
+    </div>
   </article>
 {% endblock body %}

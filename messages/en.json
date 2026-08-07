@@ -169,7 +169,8 @@
     "talkCase": "Let's talk about your case",
     "whatsappCta": "Message us on WhatsApp",
     "goHome": "Back to home",
-    "recaptchaNotice": "This site is protected by reCAPTCHA and the Google <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms> apply."
+    "recaptchaNotice": "This site is protected by reCAPTCHA and the Google <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms> apply.",
+    "seePricing": "See pricing"
   },
   "home": {
     "hero": {

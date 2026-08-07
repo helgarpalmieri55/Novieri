@@ -70,6 +70,24 @@
       }
     </script>
     {{ standard_header_includes }}
+    {#
+      HubSpot emits the en/es alternates from the language group; what it does
+      not emit is x-default, the entry Google reads when a visitor matches
+      neither language. English is the catch-all here: it is what a searcher in
+      any third country should land on.
+
+      The language codes stay plain "en" and "es", not "es-CO". Narrowing the
+      Spanish page to Colombia would tell Google to hold it back from
+      Spanish-speaking searchers everywhere else — including South Florida,
+      which is exactly the market this site is being pointed at.
+    #}
+    {% if html_lang == "es" %}
+      {% if content.translations and content.translations.en and content.translations.en.url %}
+        <link rel="alternate" hreflang="x-default" href="{{ content.translations.en.url }}" />
+      {% endif %}
+    {% else %}
+      <link rel="alternate" hreflang="x-default" href="{{ page_meta.canonical_url }}" />
+    {% endif %}
   </head>
 
   <body class="{{ builtin_body_classes }}">

@@ -34,5 +34,24 @@
         "href": "/contact"
       }
     }
+  },
+  {
+    "name": "secondary_text",
+    "label": "Secondary link text",
+    "type": "text",
+    "default": "",
+    "help_text": "The quieter second action beside the button \u2014 usually pricing. Empty renders nothing."
+  },
+  {
+    "name": "secondary_link",
+    "label": "Secondary link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": ""
+      },
+      "open_in_new_tab": false
+    }
   }
 ]

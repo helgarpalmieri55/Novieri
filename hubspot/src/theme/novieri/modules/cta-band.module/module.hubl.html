@@ -5,8 +5,19 @@
     <p class="reveal eyebrow eyebrow-on-dark">{{ module.eyebrow }}</p>
     <h2 class="reveal mt-4 max-w-[18ch] text-[clamp(2.125rem,4.8vw,3.625rem)]">{{ module.title }}</h2>
     <p class="reveal mt-4 max-w-[52ch] text-lead text-on-dark-muted" style="--rd: 80ms">{{ module.subtitle }}</p>
+    {# One primary action, one quiet second one — the same pair on every page
+       that has a price to point at. A reader who is not ready to book still
+       has somewhere to go, and it is the page that answers "what does this
+       cost", which is what they were about to leave and look for. #}
     {% if module.button_text %}
-      <a href="{{ module.button_link.url.href }}" class="btn btn-white reveal mt-9" style="--rd: 160ms">{{ module.button_text }}</a>
+      <div class="reveal mt-9 flex flex-wrap items-center gap-x-7 gap-y-4" style="--rd: 160ms">
+        <a href="{{ module.button_link.url.href }}" class="btn btn-white">{{ module.button_text }}</a>
+        {% if module.secondary_text and module.secondary_link.url.href %}
+          <a href="{{ module.secondary_link.url.href }}" class="inline-flex items-center gap-1.5 text-small font-medium text-on-dark underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white">
+            {{ module.secondary_text }} <span aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+      </div>
     {% endif %}
   </div>
 </section>

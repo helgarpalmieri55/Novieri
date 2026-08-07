@@ -173,7 +173,8 @@
     "talkCase": "Hablemos de tu caso",
     "whatsappCta": "Escríbenos por WhatsApp",
     "goHome": "Volver al inicio",
-    "recaptchaNotice": "Este sitio está protegido por reCAPTCHA y aplican la <privacy>Política de Privacidad</privacy> y los <terms>Términos del Servicio</terms> de Google."
+    "recaptchaNotice": "Este sitio está protegido por reCAPTCHA y aplican la <privacy>Política de Privacidad</privacy> y los <terms>Términos del Servicio</terms> de Google.",
+    "seePricing": "Ver precios"
   },
   "home": {
     "hero": {
