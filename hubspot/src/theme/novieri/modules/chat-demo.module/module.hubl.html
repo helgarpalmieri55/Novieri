@@ -42,6 +42,12 @@
   } %}
 {% endif %}
 
+{# No conversation, no section. The module now sits in the product template
+   for every product, and without this guard each of them rendered the chat
+   frame with nothing inside it and nothing to click — a dead widget on five
+   pages. The home page and the chatbot product supply entries; everyone else
+   gets silence. #}
+{% if module.entries %}
 <section class="dark-s relative overflow-hidden">
   <div aria-hidden="true" class="seam absolute inset-x-0 top-0"></div>
   <div class="container-site section-pad grid items-center gap-[clamp(2.5rem,5vw,5rem)] lg:grid-cols-[5fr_6fr]">
@@ -178,3 +184,4 @@
     </div>
   </div>
 </section>
+{% endif %}
