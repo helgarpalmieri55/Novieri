@@ -46,12 +46,43 @@ on:
 jobs:
   pages:
     runs-on: ubuntu-latest
+    # Needed only by the temporary capture steps, which push what they shoot.
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # TEMPORARY. capture-screens.yml is the real home for this, but GitHub
+      # only registers a workflow once it exists on the default branch, so it
+      # cannot be dispatched from a feature branch. This rides the free-text
+      # slug input — the same trick the blog modes below use, for the same
+      # reason — and comes out the moment capture-screens.yml is on main.
+      - name: Capture the site screenshots
+        if: inputs.slug == 'capture-screens'
+        run: |
+          set -euo pipefail
+          npm ci
+          npm i -D playwright --no-save
+          npx playwright install --with-deps chromium
+          node scripts/capture-screens.mjs
+          ls -la hubspot/files/screens
+      - name: Commit the captures
+        if: inputs.slug == 'capture-screens'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add hubspot/files/screens
+          if git diff --cached --quiet; then
+            echo "No change in the captures."
+            exit 0
+          fi
+          git commit -m "Capture the site screenshots for the AI-powered Websites page"
+          git push origin HEAD:${GITHUB_REF_NAME}
       - name: Create the pages
+        if: inputs.slug != 'capture-screens'
         env:
           HUBSPOT_PRIVATE_APP_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
           HUBSPOT_SITE_DOMAIN: ${{ inputs.domain }}
