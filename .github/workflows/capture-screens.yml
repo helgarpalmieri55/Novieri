@@ -1,0 +1,56 @@
+name: Capture site screenshots
+
+# Shoots the live site for the AI-powered Websites product page, whose demo
+# should be the real thing rather than a mockup — that product is this site.
+#
+# It runs here rather than anywhere else because a runner has direct network:
+# the same script cannot reach novieri.com from a sandboxed agent, where the
+# outbound proxy resets Chromium's TLS.
+#
+# Manual, and it commits what it captures, so the repo stays the source of
+# truth and the HubSpot deploy uploads the files like any other asset.
+
+on:
+  workflow_dispatch:
+    inputs:
+      push:
+        description: "Commit the captures back to the branch"
+        type: boolean
+        default: true
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Not a build dependency: nothing else in the repo needs a browser, so
+      # Playwright is installed for this job only.
+      - name: Install Playwright and Chromium
+        run: |
+          npm i -D playwright --no-save
+          npx playwright install --with-deps chromium
+      - name: Capture
+        run: node scripts/capture-screens.mjs
+      - name: Show what came out
+        run: ls -la hubspot/files/screens
+      - name: Commit the captures
+        if: inputs.push
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add hubspot/files/screens
+          # A rerun that produces byte-identical images should not make a commit.
+          if git diff --cached --quiet; then
+            echo "No change in the captures."
+            exit 0
+          fi
+          git commit -m "Recapture the site screenshots for the AI-powered Websites page"
+          git push origin HEAD:${GITHUB_REF_NAME}

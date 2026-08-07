@@ -108,6 +108,12 @@ jobs:
           # File Manager serves them at /hubfs/audio/<name>.mp3, which is
           # what the module hardcodes.
           hs filemanager upload files/audio audio --use-env
+          # The site screenshots, when the capture workflow has produced any.
+          if [ -n "$(ls -A hubspot/files/screens 2>/dev/null || ls -A files/screens 2>/dev/null)" ]; then
+            hs filemanager upload files/screens screens --use-env
+          else
+            echo "No screenshots yet — skipping."
+          fi
           # --force skips every confirmation prompt. Without it the CLI waits
           # on stdin, gets nothing on a runner, and either uploads nothing or —
           # when a component has been deleted — fails the whole deploy with

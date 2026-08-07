@@ -248,9 +248,10 @@ const SOLUTION_SLOTS = {
   what: "main-module-3",     // dot-list
   demo: "main-module-4",     // audio-demo (renders only when given items)
   chat: "main-module-5",     // chat-demo (renders only when given entries)
-  built: "main-module-6",    // split-note
-  powered: "main-module-7",  // founders-band
-  cta: "main-module-8",      // cta-band
+  screens: "main-module-6",  // screens (renders only when given captures)
+  built: "main-module-7",    // split-note
+  powered: "main-module-8",  // founders-band
+  cta: "main-module-9",      // cta-band
 };
 
 /** Mirrors solutions.hubl.html — and services-index.hubl.html, which is the
@@ -520,6 +521,21 @@ function solutionWidgets(key) {
         })),
         input_hint: p.chatDemo?.inputHint || "",
         capabilities: (p.chatDemo?.foot || []).map((c) => ({ capability: c })),
+      },
+    },
+    // Screenshots of the live site, for the product that is the live site.
+    [SOLUTION_SLOTS.screens]: {
+      body: {
+        eyebrow: p.screens?.eyebrow || "",
+        title: p.screens?.title || "",
+        intro: p.screens?.intro || "",
+        footnote: p.screens?.footnote || "",
+        items: (p.screens?.items || []).map((s) => ({
+          item_file: s.file,
+          item_frame: s.frame,
+          item_label: s.label,
+          item_caption: s.caption,
+        })),
       },
     },
     // Only products with a `demo` block get playable audio; for the rest the

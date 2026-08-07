@@ -1626,7 +1626,33 @@
           "tailwind",
           "claude",
           "vercel"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "the demo is the site",
+          "title": "You're looking at it.",
+          "intro": "novieri.com runs on this platform — the same components, the same bilingual routing, the same assistant in the corner. So rather than show you a mockup, here it is: one build, two languages, two screen sizes.",
+          "items": [
+            {
+              "file": "site-home-desktop",
+              "frame": "desktop",
+              "label": "home · english · desktop",
+              "caption": "The home page as a visitor outside Colombia gets it: prices in dollars, the offers that apply to their market, English throughout."
+            },
+            {
+              "file": "site-home-mobile-es",
+              "frame": "phone",
+              "label": "inicio · español · teléfono",
+              "caption": "The same build on a phone in Spanish, for a visitor in Colombia — different language, different currency, different offers, one codebase."
+            },
+            {
+              "file": "site-products-desktop",
+              "frame": "desktop",
+              "label": "products · english · desktop",
+              "caption": "An inner page: the same layout system, filled from content rather than rebuilt by hand."
+            }
+          ],
+          "footnote": "These are captures of the live site, taken automatically and refreshed when it changes — not renders or concept art."
+        }
       }
     }
   },

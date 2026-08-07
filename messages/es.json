@@ -1636,7 +1636,33 @@
           "tailwind",
           "claude",
           "vercel"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "la demo es el sitio",
+          "title": "Lo estás viendo.",
+          "intro": "novieri.com corre sobre esta plataforma: los mismos componentes, el mismo ruteo bilingüe, la misma asistente en la esquina. Así que en vez de mostrarte un mockup, aquí está: un solo desarrollo, dos idiomas, dos tamaños de pantalla.",
+          "items": [
+            {
+              "file": "site-home-desktop",
+              "frame": "desktop",
+              "label": "inicio · inglés · escritorio",
+              "caption": "La página de inicio como la ve alguien fuera de Colombia: precios en dólares, la oferta que aplica a su mercado, todo en inglés."
+            },
+            {
+              "file": "site-home-mobile-es",
+              "frame": "phone",
+              "label": "inicio · español · teléfono",
+              "caption": "El mismo desarrollo en un teléfono y en español, para alguien en Colombia: otro idioma, otra moneda, otra oferta, un solo código."
+            },
+            {
+              "file": "site-products-desktop",
+              "frame": "desktop",
+              "label": "productos · inglés · escritorio",
+              "caption": "Una página interna: el mismo sistema de diseño, llenado desde el contenido en lugar de rehecho a mano."
+            }
+          ],
+          "footnote": "Son capturas del sitio en vivo, tomadas automáticamente y actualizadas cuando el sitio cambia — no son renders ni bocetos."
+        }
       }
     }
   },
