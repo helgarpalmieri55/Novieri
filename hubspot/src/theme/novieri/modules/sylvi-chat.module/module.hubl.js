@@ -221,7 +221,13 @@
         method: "POST",
         credentials: "omit",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: messages, locale: root.dataset.lang }),
+        body: JSON.stringify({
+          messages: messages,
+          locale: root.dataset.lang,
+          // Which market the visitor is in, not which language they read.
+          // base.hubl.html stamps this before first paint.
+          region: document.documentElement.getAttribute("data-region") || "intl",
+        }),
       })
         .then(function (res) {
           if (res.status === 429) {

@@ -629,19 +629,33 @@
       "items": [
         {
           "q": "¿Qué tan rápido responden un caso?",
-          "a": "Cada plan define por escrito los tiempos de primera respuesta según la severidad. Una interrupción general tiene prioridad sobre un caso individual, y el tiempo exacto depende del nivel de servicio contratado."
+          "a": "Cada plan define por escrito los tiempos de primera respuesta según la severidad. Una interrupción general tiene prioridad sobre un caso individual, y el tiempo exacto depende del nivel de servicio contratado.",
+          "market": ""
         },
         {
           "q": "Ya tengo a alguien que me ayuda cuando algo falla. ¿Qué cambia con un servicio administrado?",
-          "a": "Porque tu operación depende de que esa persona esté disponible, documente y sepa de seguridad. Nosotros dejamos todo documentado, monitoreado y con respaldo de un equipo — y respondemos con un acuerdo de servicio, no con favores."
+          "a": "Porque tu operación depende de que esa persona esté disponible, documente y sepa de seguridad. Nosotros dejamos todo documentado, monitoreado y con respaldo de un equipo — y respondemos con un acuerdo de servicio, no con favores.",
+          "market": ""
         },
         {
           "q": "¿Tengo que cambiar mis equipos o licencias actuales?",
-          "a": "No de entrada. Empezamos con un diagnóstico de lo que tienes; lo que funciona se queda. Las inversiones se proponen con prioridad y presupuesto, y las decides tú."
+          "a": "No de entrada. Empezamos con un diagnóstico de lo que tienes; lo que funciona se queda. Las inversiones se proponen con prioridad y presupuesto, y las decides tú.",
+          "market": ""
         },
         {
-          "q": "¿Atienden en sitio en Barranquilla?",
+          "q": "¿Trabajan con equipos en Estados Unidos?",
+          "market": "intl",
+          "a": "Sí — para eso sirve estar en Barranquilla: trabajamos en horario del Este con comunicación bilingüe nativa y tarifas nearshore. Remoto primero, con los mismos estándares que ofrecería un proveedor estadounidense."
+        },
+        {
+          "q": "¿Atienden en sitio?",
+          "market": "co",
           "a": "Sí. La operación diaria es remota — así resolvemos más rápido — y agendamos visitas en sitio cuando el caso lo requiere: cableado, instalaciones, cambios de red."
+        },
+        {
+          "q": "¿Atienden en sitio?",
+          "market": "intl",
+          "a": "Hoy no. En Estados Unidos el servicio es totalmente remoto, y preferimos decirlo a prometer camionetas que no tenemos. Soporte, Microsoft 365, seguridad, monitoreo y copias de seguridad se resuelven en remoto; cuando algo necesita manos físicas, guiamos paso a paso a alguien de tu equipo. Si tu operación depende de visitas frecuentes, todavía no somos la opción correcta."
         }
       ]
     },
@@ -2357,23 +2371,43 @@
       "items": [
         {
           "q": "¿Son precios finales?",
-          "a": "Son rangos de referencia. Después de entender tu caso, enviamos una propuesta con el alcance, los supuestos y el valor exacto. Ese es el precio que se utiliza para contratar."
-        },
-        {
-          "q": "¿Qué podría cobrarse por separado?",
-          "a": "Depende del servicio. Licencias, consumo de plataformas, equipos, desplazamientos especiales y auditorías independientes se muestran como conceptos separados cuando apliquen. Nunca deberían aparecer por primera vez en la factura."
+          "a": "Son rangos de referencia. Después de entender tu caso, enviamos una propuesta con el alcance, los supuestos y el valor exacto. Ese es el precio que se utiliza para contratar.",
+          "market": ""
         },
         {
           "q": "¿Por qué publican los precios?",
-          "a": "Para que puedas saber si estamos dentro de tu presupuesto antes de invertir tiempo en reuniones. La transparencia también hace más fácil comparar propuestas."
+          "a": "Para que puedas saber si estamos dentro de tu presupuesto antes de invertir tiempo en reuniones. La transparencia también hace más fácil comparar propuestas.",
+          "market": ""
         },
         {
           "q": "¿Por qué veo pesos (o dólares)?",
-          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Todos los valores se muestran antes de IVA."
+          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Todos los valores se muestran antes de IVA.",
+          "market": ""
         },
         {
           "q": "¿Cómo se comparan los modelos de contratación?",
-          "a": "Las evaluaciones y los sprints de descubrimiento son de precio fijo y toman una o dos semanas. Los pilotos son proyectos de precio fijo de unas tres a seis semanas. La TI administrada se cobra por usuario al mes. El software se cotiza por hitos fijos o por hora, y la asesoría (CTO fraccional, vCISO) por hora o con una mensualidad. En todos los casos, la propuesta dice el número antes de empezar."
+          "a": "Las evaluaciones y los sprints de descubrimiento son de precio fijo y toman una o dos semanas. Los pilotos son proyectos de precio fijo de unas tres a seis semanas. La TI administrada se cobra por usuario al mes. El software se cotiza por hitos fijos o por hora, y la asesoría (CTO fraccional, vCISO) por hora o con una mensualidad. En todos los casos, la propuesta dice el número antes de empezar.",
+          "market": ""
+        },
+        {
+          "q": "¿Hay un mínimo de contratación?",
+          "market": "co",
+          "a": "La TI administrada parte de un contrato mensual mínimo de COP 1.900.000. Los proyectos se cotizan a precio fijo después del alcance, y las evaluaciones son de precio fijo desde el inicio."
+        },
+        {
+          "q": "¿Hay un mínimo de contratación?",
+          "market": "intl",
+          "a": "La TI administrada parte de 10 usuarios. Los proyectos se cotizan a precio fijo después del alcance, y las evaluaciones son de precio fijo desde el inicio."
+        },
+        {
+          "q": "¿Con quién firmamos el contrato?",
+          "market": "intl",
+          "a": "Con Novieri S.A.S., nuestra empresa en Colombia — igual que cualquier empresa estadounidense trabaja habitualmente con proveedores del exterior. Las propuestas y facturas para clientes en Estados Unidos van en dólares, y entregamos la documentación tributaria estándar que pide un área contable estadounidense a un proveedor extranjero (el formulario W-8BEN-E). Moneda, términos, propiedad y manejo de datos quedan escritos en la propuesta antes de empezar."
+        },
+        {
+          "q": "¿Qué podría cobrarse por separado?",
+          "market": "co",
+          "a": "Depende del servicio. Licencias, consumo de plataformas, equipos, desplazamientos especiales y auditorías independientes se muestran como conceptos separados cuando apliquen. Nunca deberían aparecer por primera vez en la factura."
         }
       ]
     }

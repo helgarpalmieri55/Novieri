@@ -315,7 +315,7 @@ function serviceWidgets(ns) {
       body: {
         title: c.faqTitle,
         schema: true,
-        items: s.faq.items.map((q) => ({ question: q.q, answer: q.a })),
+        items: s.faq.items.map((q) => ({ question: q.q, answer: q.a, market: q.market || "" })),
       },
     },
     [SERVICE_SLOTS.cta]: {
@@ -461,7 +461,7 @@ function pricingWidgets() {
       body: {
         title: t.serviceCommon.faqTitle,
         schema: true,
-        items: p.faq.items.map((q) => ({ question: q.q, answer: q.a })),
+        items: p.faq.items.map((q) => ({ question: q.q, answer: q.a, market: q.market || "" })),
       },
     },
     [PRICING_SLOTS.cta]: {
@@ -987,7 +987,7 @@ function industryWidgets(c) {
     "main-module-6": {
       body: {
         title: c.faq.title,
-        items: c.faq.items.map((i) => ({ question: i.q, answer: i.a })),
+        items: c.faq.items.map((i) => ({ question: i.q, answer: i.a, market: i.market || "" })),
         schema: true,
       },
     },

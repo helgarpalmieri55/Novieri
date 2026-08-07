@@ -157,7 +157,7 @@
     "name": "co_only_match",
     "label": "Colombia-only cards \u2014 URL fragment",
     "type": "text",
-    "default": "whatsapp",
-    "help_text": "Any card whose link contains this fragment is shown only to visitors in Colombia. Leave empty to show every card everywhere."
+    "default": "whatsapp, restaurantes, pymes",
+    "help_text": "Comma-separated URL fragments, up to four. Anything whose link contains one is shown only to visitors in Colombia \u2014 the offers that are not sold to the US market."
   }
 ]

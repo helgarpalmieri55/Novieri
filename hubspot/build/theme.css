@@ -87,7 +87,8 @@
      base.hubl.html stamps data-region before first paint, so nothing flashes
      in and out. The page itself stays live and indexed — it is a real product
      for the market it serves, just not one every visitor is shown. */
-  [data-region="intl"] [data-region-only="co"] {
+  [data-region="intl"] [data-region-only="co"],
+  [data-region="co"] [data-region-only="intl"] {
     display: none !important;
   }
   .sylvi-reply > * + * {

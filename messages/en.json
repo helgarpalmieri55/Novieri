@@ -619,23 +619,33 @@
       "items": [
         {
           "q": "How fast do you respond?",
-          "a": "Every plan has response times agreed in writing by severity. A down workstation doesn't wait like a printer does; urgent issues get attention in minutes, not days."
+          "a": "Every plan has response times agreed in writing by severity. A down workstation doesn't wait like a printer does; urgent issues get attention in minutes, not days.",
+          "market": ""
         },
         {
           "q": "We already have someone who helps when technology breaks. What changes with managed IT?",
-          "a": "Because your operation depends on that person being available, documenting things, and knowing security. We leave everything documented, monitored, and backed by a team — and we answer under a service agreement, not as a favor."
+          "a": "Because your operation depends on that person being available, documenting things, and knowing security. We leave everything documented, monitored, and backed by a team — and we answer under a service agreement, not as a favor.",
+          "market": ""
         },
         {
           "q": "Do I have to replace my current equipment or licenses?",
-          "a": "Not up front. We start with a diagnostic of what you have; what works, stays. Investments are proposed with priority and budget, and you make the call."
+          "a": "Not up front. We start with a diagnostic of what you have; what works, stays. Investments are proposed with priority and budget, and you make the call.",
+          "market": ""
         },
         {
           "q": "Do you work with US-based teams?",
+          "market": "intl",
           "a": "Yes — that's the point of being in Barranquilla: we operate on Eastern Time with native bilingual communication, at nearshore rates. Remote-first, with the same standards a US MSP would offer."
         },
         {
           "q": "Can you come onsite?",
-          "a": "Not today — the service is fully remote, and we say so rather than promise trucks we don't have. Support, Microsoft 365, security, monitoring, and backups are all resolved remotely; when something needs physical hands — plugging in a replacement device, swapping a cable — we guide someone on your side step by step. If your operation depends on frequent onsite visits, we're honest about it: we're not the right fit yet."
+          "market": "co",
+          "a": "Yes. Day-to-day work is remote — that resolves things faster — and we schedule onsite visits when the job needs hands: cabling, installations, network changes."
+        },
+        {
+          "q": "Can you come onsite?",
+          "market": "intl",
+          "a": "Not today. In the United States the service is fully remote, and we say so rather than promise trucks we don't have. Support, Microsoft 365, security, monitoring and backups are all resolved remotely; when something needs physical hands we guide someone on your side through it step by step. If your operation depends on frequent onsite visits, we are not the right fit yet."
         }
       ]
     },
@@ -2351,27 +2361,43 @@
       "items": [
         {
           "q": "Are these the final prices?",
-          "a": "No — they're honest ranges. Where your case lands inside one depends on what your business needs; after a 30-minute call we send a proposal with an exact number, and that number is the one that counts."
+          "a": "No — they're honest ranges. Where your case lands inside one depends on what your business needs; after a 30-minute call we send a proposal with an exact number, and that number is the one that counts.",
+          "market": ""
         },
         {
           "q": "Why publish prices when most firms don't?",
-          "a": "So you can rule us in or out without a sales process. If these ranges are far from your budget, we've saved us both a call; if they fit, you arrive knowing roughly what to expect."
-        },
-        {
-          "q": "Is there a minimum engagement?",
-          "a": "Managed IT starts at 10 users in the US, or a minimum monthly contract of COP 1,900,000 in Colombia. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+          "a": "So you can rule us in or out without a sales process. If these ranges are far from your budget, we've saved us both a call; if they fit, you arrive knowing roughly what to expect.",
+          "market": ""
         },
         {
           "q": "Why do I see pesos (or dollars)?",
-          "a": "The currency follows where you're browsing from: Colombia sees pesos, everywhere else sees dollars."
+          "a": "The currency follows where you're browsing from: Colombia sees pesos, everywhere else sees dollars.",
+          "market": ""
         },
         {
           "q": "How do the engagement models compare?",
-          "a": "Assessments and discovery sprints are fixed-price and run one to two weeks. Pilots are fixed-price projects of roughly three to six weeks. Managed IT is per user per month, billed monthly. Software builds are quoted as fixed milestones or hourly. Advisory (fractional CTO, vCISO) is hourly or a monthly retainer. Every model states its number in the proposal before work starts."
+          "a": "Assessments and discovery sprints are fixed-price and run one to two weeks. Pilots are fixed-price projects of roughly three to six weeks. Managed IT is per user per month, billed monthly. Software builds are quoted as fixed milestones or hourly. Advisory (fractional CTO, vCISO) is hourly or a monthly retainer. Every model states its number in the proposal before work starts.",
+          "market": ""
         },
         {
-          "q": "We're in the US — who do we actually contract with?",
+          "q": "Is there a minimum engagement?",
+          "market": "co",
+          "a": "Managed IT starts at a minimum monthly contract of COP 1,900,000. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+        },
+        {
+          "q": "Is there a minimum engagement?",
+          "market": "intl",
+          "a": "Managed IT starts at 10 users. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+        },
+        {
+          "q": "Who do we actually contract with?",
+          "market": "intl",
           "a": "With Novieri S.A.S., our company in Colombia — the same way US businesses routinely work with overseas vendors. Proposals and invoices for US clients are in US dollars, and we provide the standard tax documentation a US accounting team asks of a foreign vendor (a W-8BEN-E form). Currency, terms, ownership, and data handling are all stated in the proposal before any work starts."
+        },
+        {
+          "q": "What might be charged separately?",
+          "market": "co",
+          "a": "Published ranges are before VAT. Licenses, platform usage, hardware, special travel and independent audits appear as separate line items when they apply."
         }
       ]
     }

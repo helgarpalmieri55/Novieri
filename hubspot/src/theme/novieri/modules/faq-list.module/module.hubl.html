@@ -5,7 +5,11 @@
     {% if module.title %}<h2 class="reveal mb-[clamp(2rem,4vh,3rem)]">{{ module.title }}</h2>{% endif %}
     <div class="reveal divide-y divide-line border-y border-line" style="--rd: 80ms">
       {% for item in module.items %}
-        <details class="group py-1">
+        {# A question whose honest answer depends on where the visitor is —
+           onsite support, how the contract is signed — carries a market and
+           renders only there. The other language says the same thing; the
+           market decides which answer is true, not the language. #}
+        <details class="group py-1"{% if item.market %} data-region-only="{{ item.market }}"{% endif %}>
           <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-4 text-body font-medium marker:hidden [&::-webkit-details-marker]:hidden">
             {{ item.question }}
             <span aria-hidden="true" class="text-h3 font-normal leading-none text-plum transition-transform duration-300 group-open:rotate-45">+</span>
@@ -23,7 +27,14 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
+        {# Colombia-only questions are left out on purpose: structured data has
+           to describe what the reader is shown, and a crawler resolves to the
+           international market like any visitor outside Colombia. #}
+        {% set listed = [] %}
         {% for item in module.items %}
+          {% if item.market != "co" %}{% do listed.append(item) %}{% endif %}
+        {% endfor %}
+        {% for item in listed %}
           {
             "@type": "Question",
             "name": "{{ item.question|escapejson }}",
