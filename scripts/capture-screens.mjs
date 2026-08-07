@@ -11,7 +11,7 @@
  * Output lands in hubspot/files/screens and is uploaded by the deploy.
  */
 import { chromium } from "playwright";
-import { mkdirSync } from "node:fs";
+import { existsSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
@@ -33,12 +33,21 @@ const shots = [
   { name: "site-products-desktop", url: "https://www.novieri.com/products", w: 1440, h: 900, region: "intl" },
 ];
 
-// Outbound traffic leaves through the sandbox's agent proxy, and its CA is on
-// the system store — so Chromium is pointed at the proxy rather than having
-// certificate checking turned off.
+// Nothing below assumes a particular machine.
+//
+// A CI runner installs its own Chromium and Playwright knows where it is; a
+// sandbox that ships one pre-installed does not, and points PLAYWRIGHT_BROWSERS_PATH
+// at it. Take that path only when something is actually there, otherwise let
+// Playwright resolve its own — hardcoding the sandbox's copy is what broke the
+// first two runs here.
+const preinstalled = process.env.PLAYWRIGHT_BROWSERS_PATH
+  ? `${process.env.PLAYWRIGHT_BROWSERS_PATH}/chromium`
+  : "";
+// A proxy is likewise environment-specific: present in a sandbox, absent on a
+// runner with direct network.
 const proxy = process.env.HTTPS_PROXY || process.env.https_proxy;
 const browser = await chromium.launch({
-  executablePath: "/opt/pw-browsers/chromium",
+  ...(preinstalled && existsSync(preinstalled) ? { executablePath: preinstalled } : {}),
   ...(proxy ? { proxy: { server: proxy } } : {}),
   args: ["--no-sandbox", ...(proxy ? [`--proxy-server=${proxy}`] : [])],
 });
