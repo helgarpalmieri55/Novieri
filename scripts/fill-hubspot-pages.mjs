@@ -231,13 +231,6 @@ const SOLUTIONS = [
   ["webDev", "products/ai-websites"],
 ];
 
-/**
- * Products sold in Colombia and not offered to the US market. Their card on
- * the products index is tagged for that market and disappears everywhere
- * else; the matching menu link is tagged by the header module.
- */
-const CO_ONLY = new Set(["whatsapp"]);
-
 /** Mirrors solution.hubl.html. */
 const SOLUTION_SLOTS = {
   hero: "main-module-2",     // page-hero
@@ -362,7 +355,6 @@ function servicesIndexWidgets() {
           card_tags: (t.pillars[key].tags || []).join(", "),
           card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
           card_colour: ACCENTS[n % ACCENTS.length],
-          card_region: CO_ONLY.has(key) ? "co" : "all",
         })),
       },
     },

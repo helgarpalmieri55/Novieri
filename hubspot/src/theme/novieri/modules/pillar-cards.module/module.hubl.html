@@ -19,10 +19,14 @@
        six, which fills two rows of three exactly. #}
     <div class="grid grid-cols-1 gap-4.5 sm:grid-cols-2 xl:grid-cols-3">
       {% for card in module.cards %}
-        {# A card marked for one market disappears in the others — the theme
-           stylesheet acts on data-region-only, and base.hubl.html decides the
-           region before first paint. #}
-        <a href="{{ card.card_link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7"{% if card.card_region and card.card_region != "all" %} data-region-only="{{ card.card_region }}"{% endif %} style="--rd: {{ loop.index0 * 70 }}ms">
+        {# A card for one market disappears in the others: the theme stylesheet
+           acts on data-region-only and base.hubl.html decides the region before
+           first paint. The market is read from the card's own link rather than
+           a per-card field — HubSpot drops unknown keys from a repeater's
+           children on write, so a per-card value never survived the round trip,
+           while this field's default does the job with nothing to write. #}
+        {% set card_href = card.card_link.url.href %}
+        <a href="{{ card_href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7"{% if module.co_only_match and module.co_only_match in card_href %} data-region-only="co"{% endif %} style="--rd: {{ loop.index0 * 70 }}ms">
           <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.card_colour }}">··</span>
           {# Explicit ink: on the dark band the section's light text colour
              inherits into the white card and the title all but vanishes. #}
