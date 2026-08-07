@@ -14,6 +14,12 @@
  *                                          ^        ^        ^
  *                                          input    basename left,top,right,bottom
  *
+ * Anything that must not be published — a product wordmark the site does not
+ * use, an account email belonging to a real person — is painted out with the
+ * colour sampled next to it, before the crop:
+ *
+ *   … 0,0.1,1,0.9 --mask 0.01,0.03,0.22,0.09 --mask 0.72,0.03,0.99,0.08
+ *
  * Output lands in hubspot/files/screens, which the deploy uploads.
  */
 import { execFileSync } from "node:child_process";
@@ -21,7 +27,12 @@ import { existsSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
-const [src, name, box] = process.argv.slice(2);
+const argv = process.argv.slice(2);
+const masks = [];
+for (let i = argv.length - 2; i >= 0; i--) {
+  if (argv[i] === "--mask") masks.push(argv[i + 1]), argv.splice(i, 2);
+}
+const [src, name, box] = argv;
 if (!src || !name || !box) {
   console.error("usage: node scripts/crop-product-screens.mjs <source.png> <out-name> <left,top,right,bottom as 0-1>");
   process.exit(1);
@@ -42,10 +53,33 @@ if ([l, t, r, b].some((n) => !Number.isFinite(n) || n < 0 || n > 1) || l >= r ||
 
 // Pillow does the pixel work; keeping it out of the repo's dependencies since
 // this runs by hand when new screens arrive.
+const maskPy = masks
+  .map((m) => {
+    const [ml, mt, mr, mb] = m.split(",").map(Number);
+    if ([ml, mt, mr, mb].some((n) => !Number.isFinite(n))) {
+      console.error(`Bad --mask ${m}`);
+      process.exit(1);
+    }
+    return `paint(${ml}, ${mt}, ${mr}, ${mb})`;
+  })
+  .join("\n");
+
 const py = `
-from PIL import Image
-im = Image.open(${JSON.stringify(src)})
+from PIL import Image, ImageDraw
+im = Image.open(${JSON.stringify(src)}).convert("RGB")
 w, h = im.size
+draw = ImageDraw.Draw(im)
+
+def paint(l, t, r, b):
+    """Cover a region with the colour just beneath it, so the patch reads as
+    empty chrome rather than as a rectangle somebody drew over something."""
+    x0, y0, x1, y1 = int(w*l), int(h*t), int(w*r), int(h*b)
+    sample_y = min(h - 1, y1 + max(2, (y1 - y0) // 4))
+    sample_x = min(w - 1, x0 + (x1 - x0) // 2)
+    draw.rectangle([x0, y0, x1, y1], fill=im.getpixel((sample_x, sample_y)))
+
+${maskPy}
+
 box = (int(w*${l}), int(h*${t}), int(w*${r}), int(h*${b}))
 out = im.crop(box)
 # A screenshot wider than 2400px buys nothing on a page that is 1200 at most.
