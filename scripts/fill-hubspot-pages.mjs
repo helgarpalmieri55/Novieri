@@ -51,6 +51,7 @@ const ES_SLUGS = {
   "industries/bpo": "industrias/bpo",
   "industries/hospitality": "industrias/hoteleria",
   "industries/education": "industrias/educacion",
+  "industries/regulated": "industrias/pci-dss-soc-2",
   "case-studies": "casos-de-exito",
   "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
@@ -998,6 +999,7 @@ function contentPages() {
       ["industries/es-bpo", "industrias/bpo"],
       ["industries/es-hoteleria", "industrias/hoteleria"],
       ["industries/es-educacion", "industrias/educacion"],
+      ["industries/es-regulated", "industrias/pci-dss-soc-2"],
       ["industries/es-restaurantes", "industrias/restaurantes"],
       ["industries/es-pymes", "industrias/pymes"],
     ]) {

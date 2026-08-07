@@ -55,9 +55,11 @@ const ES_SLUGS = {
   "industries/bpo": "industrias/bpo",
   "industries/hospitality": "industrias/hoteleria",
   "industries/education": "industrias/educacion",
-  // industries/regulated is deliberately absent: PCI/SOC 2 pages sell to the
-  // US market only. The Colombian-only industries (restaurantes, pymes) are
-  // likewise not variants — they are created directly, in Spanish.
+  // Colombian software, BPO and payment companies are asked for SOC 2 and PCI
+  // DSS by the customers they sell to, so this one is a variant like the rest.
+  // The Colombian-only industries (restaurantes, pymes) are not variants —
+  // they are created directly, in Spanish.
+  "industries/regulated": "industrias/pci-dss-soc-2",
   "case-studies": "casos-de-exito",
   "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
@@ -311,6 +313,7 @@ function esMeta() {
     "industries/bpo": pick(readContent("industries/es-bpo")),
     "industries/hospitality": pick(readContent("industries/es-hoteleria")),
     "industries/education": pick(readContent("industries/es-educacion")),
+    "industries/regulated": pick(readContent("industries/es-regulated")),
     "case-studies": pick(csIx?.es),
     "case-studies/restaurant-whatsapp-ai": pick(cs1?.es),
     "self-diagnosis/sample-report": pick(readContent("diagnostic/sample-report")?.es),

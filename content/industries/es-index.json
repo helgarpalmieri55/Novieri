@@ -38,6 +38,12 @@
       "body": "Soporte para equipos, redes, plataformas, docentes y administrativos, con protección adecuada para la información de estudiantes y familias.",
       "href": "/industrias/educacion",
       "linkLabel": "Ver soluciones para educación"
+    },
+    {
+      "title": "Empresas con PCI DSS y SOC 2",
+      "body": "Preparación para auditoría, gestión de vulnerabilidades y evidencia organizada para quienes venden a clientes que exigen cumplimiento.",
+      "href": "/industrias/pci-dss-soc-2",
+      "linkLabel": "Ver soluciones para cumplimiento"
     }
   ],
   "cta": {
