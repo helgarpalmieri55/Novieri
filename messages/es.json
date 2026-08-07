@@ -43,6 +43,10 @@
       "title": "Recepcionista virtual con IA para empresas | Novieri",
       "description": "Atiende llamadas, responde preguntas, registra oportunidades, agenda reuniones y transfiere con contexto."
     },
+    "sol_siteChat": {
+      "title": "Chatbot web con IA — Novieri",
+      "description": "Una asistente de IA para tu sitio que responde con la información de tu negocio, dice que es una IA y le pasa a tu equipo las conversaciones que valen — la misma que está en esta página."
+    },
     "sol_whatsapp": {
       "title": "Asistente de WhatsApp con IA para restaurantes y hoteles",
       "description": "Automatiza preguntas, pedidos y reservas por WhatsApp, entiende notas de voz y entrega los casos complejos a tu equipo."
