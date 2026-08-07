@@ -1,0 +1,68 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "intro",
+    "label": "Intro",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  },
+  {
+    "name": "items",
+    "label": "Captures",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 4,
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "item_file",
+        "label": "File name",
+        "type": "text",
+        "default": "",
+        "help_text": "The file's name without .png, as produced by scripts/capture-screens.mjs — for example site-home-desktop. It is served from /hubfs/screens/."
+      },
+      {
+        "name": "item_frame",
+        "label": "Frame",
+        "type": "text",
+        "default": "desktop",
+        "help_text": "desktop or phone — only changes the frame drawn around the capture."
+      },
+      {
+        "name": "item_label",
+        "label": "Label",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "name": "item_caption",
+        "label": "Caption",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      }
+    ],
+    "help_text": "Empty renders nothing, so the section only appears on a page that has captures."
+  },
+  {
+    "name": "footnote",
+    "label": "Footnote",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  }
+]

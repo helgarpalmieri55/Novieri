@@ -19,6 +19,33 @@
 #}
 {% extends "./partials/base.hubl.html" %}
 {% block body %}
+  {# Same entity pair as the service template, anchored at the products
+     section. Typed as Service rather than Product on purpose: these are
+     operated offerings without a standalone price/offer, and Product markup
+     without offers draws merchant-listing warnings. #}
+  {% set is_es = content.language and "es" in content.language|string %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": {{ content.name|escapejson }},
+      "description": {{ content.meta_description|escapejson }},
+      "url": {{ content.absolute_url|escapejson }},
+      "inLanguage": "{{ content.language or "en" }}",
+      "provider": { "@id": "https://www.novieri.com/#organization" },
+      "areaServed": ["CO", "US"]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": {% if is_es %}"Productos"{% else %}"Products"{% endif %}, "item": "https://www.novieri.com/{% if is_es %}productos{% else %}products{% endif %}" },
+        { "@type": "ListItem", "position": 2, "name": {{ content.name|escapejson }}, "item": {{ content.absolute_url|escapejson }} }
+      ]
+    }
+  </script>
   {% dnd_area "main" label="Page content" %}
     {% dnd_section %}
       {% dnd_column %}
@@ -27,6 +54,19 @@
         {% end_dnd_row %}
         {% dnd_row %}
           {% dnd_module path="../modules/dot-list" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/audio-demo" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {# Renders nothing unless a product is given a conversation, the same
+           way the audio demo stays silent without recordings. #}
+        {% dnd_row %}
+          {% dnd_module path="../modules/chat-demo" %}{% end_dnd_module %}
+        {% end_dnd_row %}
+        {# Captures of the live site — silent on every product but the one
+           whose demo the site itself is. #}
+        {% dnd_row %}
+          {% dnd_module path="../modules/screens" %}{% end_dnd_module %}
         {% end_dnd_row %}
         {% dnd_row %}
           {% dnd_module path="../modules/split-note" %}{% end_dnd_module %}

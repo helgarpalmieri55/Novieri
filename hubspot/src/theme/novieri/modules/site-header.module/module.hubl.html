@@ -56,11 +56,15 @@
       {% if module.cta_text_short_es %}{% set cta_text_short = module.cta_text_short_es %}{% endif %}
       {% if module.cta_link_es.url.href %}{% set cta_href = module.cta_link_es.url.href %}{% endif %}
     {% endif %}
+    {# One product is sold in Colombia and not offered to the US market. Its
+       menu link is tagged here and hidden by the theme stylesheet everywhere
+       except Colombia; the fragment matches both languages' slugs. #}
+    {% set co_frags = module.co_only_match|split(",") %}
     {% set nav_items = menu(nav_menu, "site_root").children %}
     <nav class="site-nav hidden items-center gap-6 md:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
       {% for item in nav_items %}
         <div class="group relative">
-          <a href="{{ item.url }}"
+          <a href="{{ item.url }}"{% if co_frags|length > 0 and co_frags[0]|trim and co_frags[0]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 1 and co_frags[1]|trim and co_frags[1]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 2 and co_frags[2]|trim and co_frags[2]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 3 and co_frags[3]|trim and co_frags[3]|trim in item.url %} data-region-only="co"{% endif %}
              class="flex items-center gap-1.5 text-small font-medium text-ink-muted transition-colors hover:text-ink{% if item.activeBranch %} text-ink{% endif %}">
             {{ item.label }}
             {% if item.children %}
@@ -73,7 +77,7 @@
             <div class="invisible absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-4 opacity-0 transition-[opacity,visibility] duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div class="grid gap-0.5 rounded-2xl border border-line bg-white p-2 shadow-[0_8px_40px_rgba(22,18,29,0.10)]">
                 {% for child in item.children %}
-                  <a href="{{ child.url }}" class="rounded-xl px-3.5 py-2.5 text-small text-ink-muted transition-colors hover:bg-plum-wash hover:text-ink">{{ child.label }}</a>
+                  <a href="{{ child.url }}"{% if co_frags|length > 0 and co_frags[0]|trim and co_frags[0]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 1 and co_frags[1]|trim and co_frags[1]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 2 and co_frags[2]|trim and co_frags[2]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 3 and co_frags[3]|trim and co_frags[3]|trim in child.url %} data-region-only="co"{% endif %} class="rounded-xl px-3.5 py-2.5 text-small text-ink-muted transition-colors hover:bg-plum-wash hover:text-ink">{{ child.label }}</a>
                 {% endfor %}
               </div>
             </div>
@@ -123,12 +127,38 @@
      viewport minus the header bar, scrolling inside itself instead. dvh, not
      vh: on phones the URL bar collapses and vh lies about the space left. #}
   <div class="site-mobile-nav hidden max-h-[calc(100dvh-85px)] overflow-y-auto overscroll-contain border-t border-line bg-white px-5 py-6 md:hidden">
+    {# Sections arrive collapsed. Every submenu used to render expanded, and
+       with five services, six products, and four industries the menu was a
+       wall of thirty links; now the parent is the link and the chevron opens
+       its children, one section at a time. #}
     <div class="grid gap-1">
       {% for item in nav_items %}
-        <a href="{{ item.url }}" class="py-2 text-body font-medium text-ink">{{ item.label }}</a>
-        {% for child in item.children %}
-          <a href="{{ child.url }}" class="py-1.5 pl-4 text-small text-ink-muted">{{ child.label }}</a>
-        {% endfor %}
+        {% if item.children %}
+          <div class="mnav-group">
+            <div class="flex items-center justify-between gap-3">
+              <a href="{{ item.url }}" class="flex-1 py-2 text-body font-medium text-ink">{{ item.label }}</a>
+              <button
+                type="button"
+                class="mnav-toggle flex h-10 w-10 flex-none items-center justify-center rounded-lg text-ink-muted"
+                aria-expanded="false"
+                aria-label="{{ item.label|escape_attr }}"
+              >
+                <svg aria-hidden="true" width="11" height="8" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="mnav-chev transition-transform duration-200">
+                  <path d="M1 1.5 4.5 5 8 1.5" />
+                </svg>
+              </button>
+            </div>
+            <div class="mnav-children hidden pb-2">
+              <div class="grid gap-1">
+                {% for child in item.children %}
+                  <a href="{{ child.url }}"{% if co_frags|length > 0 and co_frags[0]|trim and co_frags[0]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 1 and co_frags[1]|trim and co_frags[1]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 2 and co_frags[2]|trim and co_frags[2]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 3 and co_frags[3]|trim and co_frags[3]|trim in child.url %} data-region-only="co"{% endif %} class="py-1.5 pl-4 text-small text-ink-muted">{{ child.label }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <a href="{{ item.url }}"{% if co_frags|length > 0 and co_frags[0]|trim and co_frags[0]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 1 and co_frags[1]|trim and co_frags[1]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 2 and co_frags[2]|trim and co_frags[2]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 3 and co_frags[3]|trim and co_frags[3]|trim in item.url %} data-region-only="co"{% endif %} class="py-2 text-body font-medium text-ink">{{ item.label }}</a>
+        {% endif %}
       {% endfor %}
     </div>
     <div class="mt-6 border-t border-line pt-5">

@@ -25,13 +25,13 @@
   },
   {
     "name": "menu",
-    "label": "Navigation menu — English",
+    "label": "Navigation menu \u2014 English",
     "type": "menu",
     "help_text": "Edited in Settings > Content > Navigation menus."
   },
   {
     "name": "menu_es",
-    "label": "Navigation menu — Spanish",
+    "label": "Navigation menu \u2014 Spanish",
     "type": "menu",
     "help_text": "Used on pages whose language is Spanish. Falls back to the English menu when empty."
   },
@@ -94,7 +94,7 @@
     "name": "label_home",
     "label": "Home link (screen readers)",
     "type": "text",
-    "default": "Novieri — home"
+    "default": "Novieri \u2014 home"
   },
   {
     "name": "label_open_menu",
@@ -113,5 +113,12 @@
     "label": "Language switcher",
     "type": "text",
     "default": "Language"
+  },
+  {
+    "name": "co_only_match",
+    "label": "Colombia-only menu links \u2014 URL fragment",
+    "type": "text",
+    "default": "whatsapp, restaurantes, pymes",
+    "help_text": "Comma-separated URL fragments, up to four. Anything whose link contains one is shown only to visitors in Colombia \u2014 the offers that are not sold to the US market."
   }
 ]

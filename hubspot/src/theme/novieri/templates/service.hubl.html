@@ -10,6 +10,32 @@
 #}
 {% extends "./partials/base.hubl.html" %}
 {% block body %}
+  {# Service + breadcrumb entities for search engines. The breadcrumb starts
+     at the section, not the home page, because the section paths are the
+     ones this repo actually controls in both languages. #}
+  {% set is_es = content.language and "es" in content.language|string %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": {{ content.name|escapejson }},
+      "description": {{ content.meta_description|escapejson }},
+      "url": {{ content.absolute_url|escapejson }},
+      "inLanguage": "{{ content.language or "en" }}",
+      "provider": { "@id": "https://www.novieri.com/#organization" },
+      "areaServed": ["CO", "US"]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": {% if is_es %}"Servicios"{% else %}"Services"{% endif %}, "item": "https://www.novieri.com/{% if is_es %}servicios{% else %}services{% endif %}" },
+        { "@type": "ListItem", "position": 2, "name": {{ content.name|escapejson }}, "item": {{ content.absolute_url|escapejson }} }
+      ]
+    }
+  </script>
   {% dnd_area "main" label="Page content" %}
     {% dnd_section %}
       {% dnd_column %}

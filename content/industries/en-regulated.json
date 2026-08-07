@@ -37,13 +37,13 @@
     "cards": [
       {
         "title": "Readiness, all the way to the audit",
-        "body": "Gap assessment against SOC 2 or PCI DSS, a remediation plan with owners and dates, and evidence support until you pass — plus a security lead on retainer if you need one.",
+        "body": "Gap assessment against SOC 2 or PCI DSS, a remediation plan with owners and dates, and evidence preparation and support throughout the independent audit process — plus a security lead on retainer if you need one.",
         "href": "/services/cybersecurity-compliance",
         "linkLabel": "See cybersecurity & compliance"
       },
       {
         "title": "Vulnerability management that runs continuously",
-        "body": "Asset inventory, safe scanning, AI-assisted prioritization, and remediation followed from found to fixed to verified — with reports an auditor accepts.",
+        "body": "Asset inventory, safe scanning, AI-assisted prioritization, and remediation followed from found to fixed to verified — with reports designed to support SOC 2 and PCI DSS evidence collection.",
         "href": "/products/vulnerability-management",
         "linkLabel": "See vulnerability management"
       },
@@ -70,6 +70,10 @@
       {
         "q": "Do you work with our auditor, or bring one?",
         "a": "The auditor must be independent, so you choose them — we can point you to reputable options if you don't have one. We prepare your infrastructure, policies, and evidence, and we support you through the auditor's questions until the report is in hand."
+      },
+      {
+        "q": "Does this apply if we sell from Colombia into the United States?",
+        "a": "That is the most common case we see. SOC 2 is not a law in either country — it is what your enterprise customer requires before signing, and they increasingly require it of software, BPO, and service providers operating from Colombia. PCI DSS applies to anyone who processes, transmits, or stores cardholder data, wherever they are."
       },
       {
         "q": "What happens after we pass?",

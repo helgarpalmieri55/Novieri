@@ -43,6 +43,10 @@
       "title": "Recepcionista virtual con IA para empresas | Novieri",
       "description": "Atiende llamadas, responde preguntas, registra oportunidades, agenda reuniones y transfiere con contexto."
     },
+    "sol_siteChat": {
+      "title": "Chatbot web con IA — Novieri",
+      "description": "Una asistente de IA para tu sitio que responde con la información de tu negocio, dice que es una IA y le pasa a tu equipo las conversaciones que valen — la misma que está en esta página."
+    },
     "sol_whatsapp": {
       "title": "Asistente de WhatsApp con IA para restaurantes y hoteles",
       "description": "Automatiza preguntas, pedidos y reservas por WhatsApp, entiende notas de voz y entrega los casos complejos a tu equipo."
@@ -169,7 +173,8 @@
     "talkCase": "Hablemos de tu caso",
     "whatsappCta": "Escríbenos por WhatsApp",
     "goHome": "Volver al inicio",
-    "recaptchaNotice": "Este sitio está protegido por reCAPTCHA y aplican la <privacy>Política de Privacidad</privacy> y los <terms>Términos del Servicio</terms> de Google."
+    "recaptchaNotice": "Este sitio está protegido por reCAPTCHA y aplican la <privacy>Política de Privacidad</privacy> y los <terms>Términos del Servicio</terms> de Google.",
+    "seePricing": "Ver precios"
   },
   "home": {
     "hero": {
@@ -383,7 +388,47 @@
   "servicesIndex": {
     "eyebrow": "servicios",
     "title": "Lo que hacemos",
-    "intro": "Cinco servicios que se refuerzan entre sí: la automatización necesita infraestructura sana, la infraestructura necesita seguridad, el software tiene que ajustarse a la operación, y alguien tiene que decidir cuál de esas cosas va primero."
+    "intro": "Cinco servicios que se refuerzan entre sí: la automatización necesita infraestructura sana, la infraestructura necesita seguridad, el software tiene que ajustarse a la operación, y alguien tiene que decidir cuál de esas cosas va primero.",
+    "selector": {
+      "eyebrow": "¿cuál de estas eres tú?",
+      "title": "Tú conoces el problema. Nosotros le ponemos el nombre al servicio.",
+      "intro": "La mayoría llega sabiendo qué le duele, no cuál de cinco servicios lo resuelve. Elige la frase que se parece a tu mes.",
+      "question": "lo más parecido a tu situación",
+      "linkLabel": "Ver el servicio",
+      "footnote": "Si dos de estas te suenan, es normal y casi siempre es un solo proyecto — dilo en la llamada y lo dimensionamos junto.",
+      "options": [
+        {
+          "label": "Las cosas se dañan y no hay a quién llamar.",
+          "service": "TI administrada",
+          "answer": "Una mesa de ayuda que contesta, equipos actualizados, copias de seguridad que de verdad restauran y una red que alguien está vigilando. Empezamos por inventariar lo que tienes y arreglar lo que ya está roto, y de ahí lo operamos mes a mes.",
+          "slug": "services/managed-it"
+        },
+        {
+          "label": "Mi equipo vuelve a escribir lo mismo todo el día.",
+          "service": "IA y automatización",
+          "answer": "Arrancamos con una evaluación de precio fijo que encuentra dónde la automatización sí paga en tu operación — y pilotamos la de mejor retorno, con una persona aprobando el resultado hasta que la tasa de error diga otra cosa.",
+          "slug": "services/ai-automation"
+        },
+        {
+          "label": "Un cliente nos está pidiendo SOC 2 o PCI DSS.",
+          "service": "Ciberseguridad y cumplimiento",
+          "answer": "Análisis de brechas contra el estándar que te nombró tu cliente, un plan de remediación con responsables y fechas, y la evidencia organizada antes de que llegue el auditor independiente. Normalmente de tres a seis meses desde donde empiezan la mayoría.",
+          "slug": "services/cybersecurity-compliance"
+        },
+        {
+          "label": "El software que necesitamos no existe en el mercado.",
+          "service": "Desarrollo a medida",
+          "answer": "Primero un sprint de descubrimiento, con una respuesta honesta de construir o comprar al final — incluidas las veces en que la respuesta es comprar algo que ya existe. Si construimos, el código y el repositorio son tuyos desde el primer día.",
+          "slug": "services/custom-software"
+        },
+        {
+          "label": "Tengo que tomar una decisión y no tengo a quién preguntarle.",
+          "service": "Consultoría y CTO por horas",
+          "answer": "Alguien con experiencia para pensarlo contigo — qué comprar, qué arreglar, qué dejar quieto — y una recomendación escrita que le puedes entregar a cualquier proveedor, incluso a uno que no seamos nosotros.",
+          "slug": "services/it-consulting"
+        }
+      ]
+    }
   },
   "serviceCommon": {
     "whatTitle": "Qué hacemos",
@@ -584,19 +629,33 @@
       "items": [
         {
           "q": "¿Qué tan rápido responden un caso?",
-          "a": "Cada plan define por escrito los tiempos de primera respuesta según la severidad. Una interrupción general tiene prioridad sobre un caso individual, y el tiempo exacto depende del nivel de servicio contratado."
+          "a": "Cada plan define por escrito los tiempos de primera respuesta según la severidad. Una interrupción general tiene prioridad sobre un caso individual, y el tiempo exacto depende del nivel de servicio contratado.",
+          "market": ""
         },
         {
           "q": "Ya tengo a alguien que me ayuda cuando algo falla. ¿Qué cambia con un servicio administrado?",
-          "a": "Porque tu operación depende de que esa persona esté disponible, documente y sepa de seguridad. Nosotros dejamos todo documentado, monitoreado y con respaldo de un equipo — y respondemos con un acuerdo de servicio, no con favores."
+          "a": "Porque tu operación depende de que esa persona esté disponible, documente y sepa de seguridad. Nosotros dejamos todo documentado, monitoreado y con respaldo de un equipo — y respondemos con un acuerdo de servicio, no con favores.",
+          "market": ""
         },
         {
           "q": "¿Tengo que cambiar mis equipos o licencias actuales?",
-          "a": "No de entrada. Empezamos con un diagnóstico de lo que tienes; lo que funciona se queda. Las inversiones se proponen con prioridad y presupuesto, y las decides tú."
+          "a": "No de entrada. Empezamos con un diagnóstico de lo que tienes; lo que funciona se queda. Las inversiones se proponen con prioridad y presupuesto, y las decides tú.",
+          "market": ""
         },
         {
-          "q": "¿Atienden en sitio en Barranquilla?",
+          "q": "¿Trabajan con equipos en Estados Unidos?",
+          "market": "intl",
+          "a": "Sí — para eso sirve estar en Barranquilla: trabajamos en horario del Este con comunicación bilingüe nativa y tarifas nearshore. Remoto primero, con los mismos estándares que ofrecería un proveedor estadounidense."
+        },
+        {
+          "q": "¿Atienden en sitio?",
+          "market": "co",
           "a": "Sí. La operación diaria es remota — así resolvemos más rápido — y agendamos visitas en sitio cuando el caso lo requiere: cableado, instalaciones, cambios de red."
+        },
+        {
+          "q": "¿Atienden en sitio?",
+          "market": "intl",
+          "a": "Hoy no. En Estados Unidos el servicio es totalmente remoto, y preferimos decirlo a prometer camionetas que no tenemos. Soporte, Microsoft 365, seguridad, monitoreo y copias de seguridad se resuelven en remoto; cuando algo necesita manos físicas, guiamos paso a paso a alguien de tu equipo. Si tu operación depende de visitas frecuentes, todavía no somos la opción correcta."
         }
       ]
     },
@@ -715,7 +774,7 @@
         },
         {
           "q": "¿Ustedes emiten la certificación?",
-          "a": "No — la auditoría la hace siempre un tercero independiente. Nosotros preparamos tu infraestructura, tus políticas y tu evidencia para que llegues a esa auditoría a pasar, no a descubrir problemas."
+          "a": "No — la auditoría la hace siempre un tercero independiente. Nosotros preparamos tu infraestructura, tus políticas y tu evidencia para que la auditoría independiente empiece con menos sorpresas y con controles claramente documentados."
         },
         {
           "q": "¿Esto no es carísimo?",
@@ -1017,6 +1076,10 @@
           {
             "title": "Rutas alternativas ante fallas",
             "body": "Cada integración viaja firmada y verificada, y si una integración no está disponible, el sistema activa una ruta alternativa y registra el incidente. Las transcripciones y las métricas quedan disponibles para tu equipo."
+          },
+          {
+            "title": "Consentimiento anunciado desde el inicio",
+            "body": "Cada llamada empieza avisando que puede ser grabada y transcrita — un diseño pensado para normas de consentimiento estrictas, como las de Florida, y para la ley colombiana. Las transcripciones quedan en el CRM y se depuran automáticamente según el plazo definido."
           }
         ],
         "built": {
@@ -1029,7 +1092,146 @@
           "fastapi",
           "hubspot",
           "microsoft bookings"
-        ]
+        ],
+        "demo": {
+          "eyebrow": "escúchala",
+          "title": "Escucha una llamada antes de agendar la tuya.",
+          "intro": "Tres conversaciones simuladas — un restaurante, un hotel y una firma de servicios profesionales — más una en inglés. Fíjate en lo primero que hace la recepcionista en cada llamada: avisar que puede ser grabada y transcrita.",
+          "items": [
+            {
+              "label": "Restaurante — una reserva para cenar",
+              "file": "restaurant-es",
+              "transcriptLabel": "Leer la transcripción",
+              "transcript": "Recepcionista: Gracias por llamar a Casa Marina. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola, ¿tienen mesa para cuatro este sábado, como a las ocho?\nRecepcionista: Déjame revisar... el sábado tengo disponible a las ocho y quince o a las ocho y cuarenta y cinco. ¿Cuál te sirve más?\nCliente: A las ocho y quince, perfecto. Ah, y una persona del grupo es alérgica a los mariscos. ¿La cocina puede con eso?\nRecepcionista: Claro que sí — dejo anotada la alergia a los mariscos en la reserva. ¿Me regalas un nombre y un celular para la confirmación?\nCliente: Claro: Andrés Movilla, tres cero cero, siete uno cuatro, veintidós, treinta y uno.\nRecepcionista: Listo, Andrés — mesa para cuatro, el sábado a las ocho y quince, con la alergia anotada. Te llega la confirmación por mensaje de texto. ¿Algo más?\nCliente: No, eso es todo. ¡Muchas gracias!\nRecepcionista: Con mucho gusto — nos vemos el sábado."
+            },
+            {
+              "label": "Hotel — una reserva de habitación",
+              "file": "hotel-es",
+              "transcriptLabel": "Leer la transcripción",
+              "transcript": "Recepcionista: Gracias por llamar al Hotel Costa Azul. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola, quiero una habitación para dos, del viernes al domingo. ¿Tienen disponibilidad?\nRecepcionista: Déjame revisar... para esas fechas tengo una habitación king con vista al mar, o una doble con vista al jardín. ¿Te cuento las tarifas?\nCliente: La de vista al mar, ¿en cuánto sale?\nRecepcionista: La king con vista al mar está en seiscientos cincuenta mil por noche, con desayuno incluido. ¿Te la reservo?\nCliente: Sí, por favor. Ah, ¿y se puede un check-in temprano? Llegamos como a las nueve de la mañana.\nRecepcionista: Dejo anotada la solicitud de entrada temprana — recepción la confirma un día antes, y dejo registrada tu hora de llegada. ¿Me regalas un nombre y un celular para la reserva?\nCliente: Diana Cervantes — tres cero cero, cuarenta y dos, quince, setenta y seis.\nRecepcionista: Listo, Diana — king con vista al mar, de viernes a domingo, dos personas, desayuno incluido y entrada temprana solicitada. Te llega la confirmación por mensaje de texto. ¿Algo más?\nCliente: No, eso es todo, ¡gracias!\nRecepcionista: Con mucho gusto — nos vemos el viernes."
+            },
+            {
+              "label": "Servicios profesionales — un cliente interesado",
+              "file": "business-es",
+              "transcriptLabel": "Leer la transcripción",
+              "transcript": "Recepcionista: Gracias por llamar a Meridian Asesores. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola — tengo una empresa pequeña de logística y necesito ayuda con la contabilidad. ¿Ustedes manejan eso?\nRecepcionista: Claro que sí — contabilidad mensual, nómina y declaraciones son el corazón de lo que hace el equipo. Para dirigirte con la persona indicada: ¿más o menos cuántos empleados tienen?\nCliente: Doce. Y también nos interesaría la nómina.\nRecepcionista: Perfecto — eso es justo lo que nuestros asesores alcanzan a dimensionar en una llamada corta. Te puedo agendar quince minutos con uno de ellos; ¿te sirve mañana a las diez o el jueves a las dos?\nCliente: El jueves a las dos me sirve.\nRecepcionista: Listo. ¿Me regalas tu nombre, el de la empresa y un número para contactarte?\nCliente: Marcos Vélez, Logística Vélez — tres uno cinco, cero dos, cuarenta y uno, noventa y ocho.\nRecepcionista: Gracias, Marcos — el jueves a las dos con uno de nuestros asesores, y dejo anotado contabilidad y nómina para una empresa de logística de doce personas. Te llega la invitación al calendario en un momento. ¿Algo más?\nCliente: No, así está perfecto. Gracias.\nRecepcionista: Con mucho gusto — hablamos el jueves."
+            },
+            {
+              "label": "En inglés — la misma recepcionista, otro idioma",
+              "file": "restaurant-en",
+              "transcriptLabel": "Leer la transcripción",
+              "transcript": "Receptionist: Thank you for calling Casa Marina. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you tonight?\nCaller: Hi — do you have a table for four this Saturday, around eight?\nReceptionist: Let me check... on Saturday I have eight fifteen or eight forty-five available. Which works better for you?\nCaller: Eight fifteen is great. Oh — and one of us has a shellfish allergy. Can the kitchen handle that?\nReceptionist: Absolutely — I'll note the shellfish allergy on the reservation so the kitchen sees it. May I have a name and a mobile number for the confirmation?\nCaller: Sure — Sam Rivera, five five five, zero one four two.\nReceptionist: Perfect, Sam — table for four, Saturday at eight fifteen, shellfish allergy noted. You'll get a text confirmation in a moment. Anything else I can help with?\nCaller: No, that's everything. Thanks!\nReceptionist: Our pleasure — see you Saturday."
+            }
+          ],
+          "footnote": "Son conversaciones simuladas con voces de IA para demostración — no grabaciones de llamadas reales de clientes. Casa Marina es un restaurante ficticio."
+        }
+      },
+      "siteChat": {
+        "name": "Chatbot web con IA",
+        "tagline": "La asistente que está en la esquina de esta página: responde con la información de tu negocio y te pasa las conversaciones que valen la pena.",
+        "tags": [
+          "ia",
+          "leads",
+          "bilingüe"
+        ],
+        "hero": {
+          "title": "La asistente de esta página, trabajando para tu negocio.",
+          "promise": "Sylvi responde preguntas en novieri.com a cualquier hora — con nuestra información publicada, en español o en inglés — y le pasa la conversación a una persona cuando hace falta. La misma asistente, alimentada con tu negocio en lugar del nuestro, es la que instalamos en tu sitio. Pruébala antes de seguir leyendo: está en la esquina de esta página."
+        },
+        "features": [
+          {
+            "title": "Responde con tu negocio, no con internet",
+            "body": "Su base de conocimiento se arma con las páginas que publicas y los documentos que autorizas. Cuando la respuesta no está ahí, lo dice en lugar de inventarla: sin precios imaginados ni servicios que no ofreces."
+          },
+          {
+            "title": "Dice que es una IA",
+            "body": "Se presenta como una asistente automática en vez de hacerse pasar por alguien de tu equipo, y remite a una persona real apenas alguien la pide."
+          },
+          {
+            "title": "Un idioma por conversación",
+            "body": "Español e inglés, cambiando por completo cuando el visitante cambia — no una respuesta que empieza en un idioma y termina en el otro."
+          },
+          {
+            "title": "Convierte preguntas en oportunidades reales",
+            "body": "Hace una sola pregunta útil a la vez — qué hace el negocio, qué es lo que de verdad está fallando — y ofrece tu enlace de agenda o tu correo cuando ya sabe lo suficiente para que valga tu tiempo. Sin un formulario entre el visitante y su respuesta."
+          },
+          {
+            "title": "Sabe cuándo pasar la conversación",
+            "body": "Cuando no está segura, lo dice y ofrece una persona en lugar de adivinar. Lo urgente va directo a alguien del equipo, no se diagnostica en un chat."
+          },
+          {
+            "title": "Trata cada mensaje como texto no confiable",
+            "body": "Lo que escribe el visitante nunca se sigue como instrucción: no adopta otra personalidad, no revela cómo está configurada ni repite información confidencial, sin importar cómo se lo pidan."
+          },
+          {
+            "title": "No recibe datos sensibles",
+            "body": "Si alguien empieza a escribir una contraseña o un número de tarjeta, lo detiene y lleva la conversación a un canal privado."
+          }
+        ],
+        "built": {
+          "title": "Construida como software de producción, no como un widget.",
+          "body": "Claude corre detrás de funciones serverless en tu propio dominio, así que no hay una plataforma de chat de terceros entre tú y las conversaciones de tus visitantes. La base de conocimiento se compila con tu contenido autorizado en el momento de la publicación, lo que evita que la asistente se aleje de lo que realmente publicas. Los límites por visitante y un tope diario mantienen el costo predecible, las solicitudes solo se aceptan desde tu propio sitio, y todo el comportamiento anterior queda escrito en reglas que apruebas antes de salir a producción."
+        },
+        "stack": [
+          "claude",
+          "serverless",
+          "límites de uso",
+          "es/en",
+          "hubspot"
+        ],
+        "chatDemo": {
+          "eyebrow": "míralo responder",
+          "title": "La misma asistente, en el sitio de un cliente.",
+          "body": "Una conversación como las que Sylvi tiene todos los días. Fíjate en lo que hace cuando no sabe algo: lo dice y ofrece una persona, en lugar de inventarse la respuesta.",
+          "header": {
+            "name": "Asistente",
+            "status": "en línea · responde en segundos"
+          },
+          "badge": "asistente con IA",
+          "inputHint": "Pregunta lo que quieras sobre la empresa…",
+          "foot": [
+            "responde con tu propio contenido",
+            "dice cuándo no está segura",
+            "pasa la conversación a una persona"
+          ],
+          "entries": [
+            {
+              "from": "guest",
+              "text": "hola, ¿eres una persona real?",
+              "t": "10:14 a. m."
+            },
+            {
+              "from": "bot",
+              "text": "No — soy la asistente de este sitio y soy automática. Puedo responder preguntas sobre lo que hace el equipo, y te paso con una persona cuando prefieras.",
+              "t": "10:14 a. m."
+            },
+            {
+              "from": "guest",
+              "text": "listo. ¿cuánto cuesta la TI administrada para 25 personas?",
+              "t": "10:15 a. m."
+            },
+            {
+              "from": "bot",
+              "text": "Los rangos publicados van de **COP 95.000 a 115.000 por usuario al mes** en lo esencial, y de **145.000 a 170.000** con seguridad administrada y Microsoft 365 incluidos — así que para 25 personas serían entre 2,4 y 4,3 millones al mes según el plan. Dónde caes depende de equipos, servidores y qué tan regulado es tu negocio. El número exacto llega en una propuesta escrita.",
+              "t": "10:15 a. m."
+            },
+            {
+              "from": "guest",
+              "text": "¿tienen un informe SOC 2 que le pueda mandar a mi área de seguridad?",
+              "t": "10:16 a. m."
+            },
+            {
+              "from": "bot",
+              "text": "Prefiero no adivinar en esa: es de las preguntas que debería responder un fundador y no yo. Dos caminos: le paso tu consulta por correo, o tomas media hora en su calendario. ¿Cuál prefieres?",
+              "t": "10:16 a. m."
+            },
+            {
+              "kind": "action",
+              "text": "Conversación resumida y enviada al equipo — empresa, necesidad y contacto quedaron registrados.",
+              "t": "10:17 a. m."
+            }
+          ]
+        }
       },
       "whatsapp": {
         "name": "Asistente para WhatsApp",
@@ -1384,7 +1586,33 @@
           "postgresql",
           "celery · redis",
           "react"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "la interfaz",
+          "title": "Así se ve operarla.",
+          "intro": "Tres vistas de la plataforma: el tablero de exposición, la cola de escaneos y los hallazgos priorizados — el ciclo que lleva una vulnerabilidad de encontrada a corregida y verificada.",
+          "items": [
+            {
+              "file": "vuln-dashboard",
+              "frame": "desktop",
+              "label": "tablero",
+              "caption": "Puntaje de exposición, hallazgos abiertos, activos monitoreados y tiempo promedio de remediación — los números que pide una junta, con la tendencia detrás."
+            },
+            {
+              "file": "vuln-scans",
+              "frame": "desktop",
+              "label": "escaneos",
+              "caption": "Qué está corriendo, qué terminó y qué está programado. Descubrimiento de hosts, vulnerabilidades, aplicaciones web y auditoría de configuración sobre el alcance que autorizaste."
+            },
+            {
+              "file": "vuln-findings",
+              "frame": "desktop",
+              "label": "hallazgos",
+              "caption": "Cada hallazgo con su activo, severidad y puntaje de riesgo — ordenados para empezar por donde está el riesgo real, no por donde arranca la lista de CVE."
+            }
+          ],
+          "footnote": "Son maquetas de la interfaz con datos de ejemplo, no el entorno de un cliente: los hallazgos, nombres de activos y puntajes son ilustrativos. Lo que reporte tu propio tablero depende del alcance que autorices y de lo que encuentren los escaneos."
+        }
       },
       "webDev": {
         "name": "Sitios web inteligentes",
@@ -1434,7 +1662,33 @@
           "tailwind",
           "claude",
           "vercel"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "la demo es el sitio",
+          "title": "Lo estás viendo.",
+          "intro": "novieri.com corre sobre esta plataforma: los mismos componentes, el mismo ruteo bilingüe, la misma asistente en la esquina. Así que en vez de mostrarte un mockup, aquí está: un solo desarrollo, dos idiomas, dos tamaños de pantalla.",
+          "items": [
+            {
+              "file": "site-home-desktop",
+              "frame": "desktop",
+              "label": "inicio · inglés · escritorio",
+              "caption": "La página de inicio como la ve alguien fuera de Colombia: precios en dólares, la oferta que aplica a su mercado, todo en inglés."
+            },
+            {
+              "file": "site-home-mobile-es",
+              "frame": "phone",
+              "label": "inicio · español · teléfono",
+              "caption": "El mismo desarrollo en un teléfono y en español, para alguien en Colombia: otro idioma, otra moneda, otra oferta, un solo código."
+            },
+            {
+              "file": "site-products-desktop",
+              "frame": "desktop",
+              "label": "productos · inglés · escritorio",
+              "caption": "Una página interna: el mismo sistema de diseño, llenado desde el contenido en lugar de rehecho a mano."
+            }
+          ],
+          "footnote": "Son capturas del sitio en vivo, tomadas automáticamente y actualizadas cuando el sitio cambia — no son renders ni bocetos."
+        }
       }
     }
   },
@@ -2077,9 +2331,8 @@
     "hero": {
       "eyebrow": "precios",
       "title": "Rangos claros para saber si encajamos antes de hablar.",
-      "intro": "No necesitas pasar por una presentación de ventas para saber si Novieri está dentro de tu presupuesto. Estos valores son rangos de referencia, no cotizaciones finales. El precio exacto depende del tamaño de tu operación, los sistemas involucrados, el riesgo y el alcance, y queda definido por escrito antes de empezar. Precios antes de IVA · selecciona COP o USD · licencias, consumo de plataformas y auditorías externas se indican por separado cuando apliquen."
+      "intro": "No necesitas pasar por una presentación de ventas para saber si Novieri está dentro de tu presupuesto. Estos valores son rangos de referencia, no cotizaciones finales. El precio exacto depende del tamaño de tu operación, los sistemas involucrados, el riesgo y el alcance, y queda definido por escrito antes de empezar. Precios antes de IVA · licencias, consumo de plataformas y auditorías externas se indican por separado cuando apliquen."
     },
-    "toggleLabel": "Ver precios en",
     "groups": [
       {
         "name": "TI administrada",
@@ -2107,7 +2360,7 @@
             "note": "El plan completo, más revisiones de seguridad, evidencia y dirección tecnológica para empresas con exigencias de clientes o auditores."
           }
         ],
-        "footnote": "La implementación inicial equivale a un mes de servicio y se factura una sola vez. En qué punto del rango queda tu caso depende del tamaño y las necesidades de tu operación."
+        "footnote": "La implementación inicial equivale a un mes de servicio y se factura una sola vez. En qué punto del rango queda tu caso depende del tamaño y las necesidades de tu operación. Qué mueve el precio dentro del rango: cantidad de usuarios y equipos, sedes, servidores, horario de soporte, herramientas de seguridad y exigencias de cumplimiento."
       },
       {
         "name": "IA y automatización",
@@ -2142,7 +2395,7 @@
             "note": "Configuración, integración, contenido inicial, pruebas y puesta en marcha. La operación mensual depende del volumen y las funciones contratadas."
           }
         ],
-        "footnote": ""
+        "footnote": "Qué mueve el precio: cuántos sistemas participan, el volumen mensual, cuánta revisión humana se requiere, la sensibilidad de los datos y el uso de voz o mensajería."
       },
       {
         "name": "Ciberseguridad y cumplimiento",
@@ -2170,7 +2423,7 @@
             "note": "Acompañamiento de seguridad con experiencia, unas horas al mes, sin contratar el cargo de tiempo completo."
           }
         ],
-        "footnote": ""
+        "footnote": "Qué mueve el precio: el estándar, el alcance, cuántos sistemas participan, qué controles ya existen y cuánta evidencia ya está organizada."
       },
       {
         "name": "Desarrollo de software",
@@ -2191,7 +2444,7 @@
             "note": "Proceso de precio fijo para entender el problema, validar la solución, definir arquitectura, prioridades, riesgos y presupuesto."
           }
         ],
-        "footnote": ""
+        "footnote": "Qué mueve el precio: los roles de usuario, los flujos de trabajo, las integraciones, la migración de datos y los reportes que necesitas."
       },
       {
         "name": "Consultoría tecnológica",
@@ -2212,7 +2465,7 @@
             "note": "Acompañamiento recurrente para decisiones de proveedores, arquitectura, costos, seguridad y proyectos, sin contratar un cargo de tiempo completo."
           }
         ],
-        "footnote": ""
+        "footnote": "Qué mueve el precio: cuántas decisiones hay sobre la mesa y cuánto de tu infraestructura actual hay que revisar para responderlas bien."
       }
     ],
     "note": {
@@ -2223,19 +2476,43 @@
       "items": [
         {
           "q": "¿Son precios finales?",
-          "a": "Son rangos de referencia. Después de entender tu caso, enviamos una propuesta con el alcance, los supuestos y el valor exacto. Ese es el precio que se utiliza para contratar."
-        },
-        {
-          "q": "¿Qué podría cobrarse por separado?",
-          "a": "Depende del servicio. Licencias, consumo de plataformas, equipos, desplazamientos especiales y auditorías independientes se muestran como conceptos separados cuando apliquen. Nunca deberían aparecer por primera vez en la factura."
+          "a": "Son rangos de referencia. Después de entender tu caso, enviamos una propuesta con el alcance, los supuestos y el valor exacto. Ese es el precio que se utiliza para contratar.",
+          "market": ""
         },
         {
           "q": "¿Por qué publican los precios?",
-          "a": "Para que puedas saber si estamos dentro de tu presupuesto antes de invertir tiempo en reuniones. La transparencia también hace más fácil comparar propuestas."
+          "a": "Para que puedas saber si estamos dentro de tu presupuesto antes de invertir tiempo en reuniones. La transparencia también hace más fácil comparar propuestas.",
+          "market": ""
         },
         {
           "q": "¿Por qué veo pesos (o dólares)?",
-          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Con el selector COP/USD de arriba puedes ver la otra lista. Todos los valores se muestran antes de IVA."
+          "a": "La moneda sigue el lugar desde donde nos visitas: en Colombia ves pesos y en el resto del mundo dólares. Todos los valores se muestran antes de IVA.",
+          "market": ""
+        },
+        {
+          "q": "¿Cómo se comparan los modelos de contratación?",
+          "a": "Las evaluaciones y los sprints de descubrimiento son de precio fijo y toman una o dos semanas. Los pilotos son proyectos de precio fijo de unas tres a seis semanas. La TI administrada se cobra por usuario al mes. El software se cotiza por hitos fijos o por hora, y la asesoría (CTO fraccional, vCISO) por hora o con una mensualidad. En todos los casos, la propuesta dice el número antes de empezar.",
+          "market": ""
+        },
+        {
+          "q": "¿Hay un mínimo de contratación?",
+          "market": "co",
+          "a": "La TI administrada parte de un contrato mensual mínimo de COP 1.900.000. Los proyectos se cotizan a precio fijo después del alcance, y las evaluaciones son de precio fijo desde el inicio."
+        },
+        {
+          "q": "¿Hay un mínimo de contratación?",
+          "market": "intl",
+          "a": "La TI administrada parte de 10 usuarios. Los proyectos se cotizan a precio fijo después del alcance, y las evaluaciones son de precio fijo desde el inicio."
+        },
+        {
+          "q": "¿Con quién firmamos el contrato?",
+          "market": "intl",
+          "a": "Con Novieri S.A.S., nuestra empresa en Colombia — igual que cualquier empresa estadounidense trabaja habitualmente con proveedores del exterior. Las propuestas y facturas para clientes en Estados Unidos van en dólares, y entregamos la documentación tributaria estándar que pide un área contable estadounidense a un proveedor extranjero (el formulario W-8BEN-E). Moneda, términos, propiedad y manejo de datos quedan escritos en la propuesta antes de empezar."
+        },
+        {
+          "q": "¿Qué podría cobrarse por separado?",
+          "market": "co",
+          "a": "Depende del servicio. Licencias, consumo de plataformas, equipos, desplazamientos especiales y auditorías independientes se muestran como conceptos separados cuando apliquen. Nunca deberían aparecer por primera vez en la factura."
         }
       ]
     }

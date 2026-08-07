@@ -1,0 +1,89 @@
+{
+  "slug": "pci-dss-soc-2",
+  "lang": "es",
+  "name": "Empresas con PCI DSS y SOC 2",
+  "htmlTitle": "TI para empresas con PCI DSS y SOC 2 — Novieri",
+  "metaDescription": "Preparación para SOC 2 y PCI DSS liderada por quienes han llevado ambos programas hasta la auditoría: análisis de brechas, remediación y evidencia organizada.",
+  "hero": {
+    "eyebrow": "para quién trabajamos",
+    "title": "Cuando tu cliente pide SOC 2 o PCI DSS, empieza el reloj.",
+    "intro": "En algún punto entre el cuestionario de seguridad y el contrato firmado, el cumplimiento deja de ser opcional. Hemos liderado el cumplimiento de PCI DSS y un programa SOC 2 de principio a fin dentro de una operación real, y llevamos empresas del análisis de brechas hasta estar listas para auditoría, con evidencia que se sostiene."
+  },
+  "pains": {
+    "eyebrow": "la realidad",
+    "title": "Cómo se siente el cumplimiento desde adentro.",
+    "items": [
+      {
+        "title": "El negocio se frena en el cuestionario",
+        "body": "El producto está listo, el cliente está listo — y entonces llegan 200 preguntas de seguridad que todavía no puedes responder con honestidad. Los ingresos quedan esperando controles."
+      },
+      {
+        "title": "La evidencia está en todas partes y en ninguna",
+        "body": "Los controles más o menos existen, pero la prueba está repartida entre correos, capturas de pantalla y la memoria de la gente. La temporada de auditoría se vuelve un trabajo de arqueología."
+      },
+      {
+        "title": "Un PDF anual no es un programa de seguridad",
+        "body": "Un escaneo de vulnerabilidades una vez al año no convence a nadie: ni al auditor, ni mucho menos a quien te escanea todos los días. Los estándares esperan un ciclo continuo."
+      },
+      {
+        "title": "Nadie es el responsable",
+        "body": "La seguridad es un pedazo de la semana del líder técnico o una tarea que rota por el equipo. Sin un responsable con nombre, los controles se aflojan y los hallazgos se reabren — y el auditor lo nota."
+      }
+    ]
+  },
+  "help": {
+    "eyebrow": "cómo ayudamos",
+    "title": "Tres formas de quitarte la carga.",
+    "cards": [
+      {
+        "title": "Preparación, hasta el día de la auditoría",
+        "body": "Análisis de brechas contra SOC 2 o PCI DSS, un plan de remediación con responsables y fechas, y preparación y acompañamiento de la evidencia durante todo el proceso de auditoría independiente — más un líder de seguridad por horas si lo necesitas.",
+        "href": "/servicios/ciberseguridad-y-cumplimiento",
+        "linkLabel": "Ver ciberseguridad y cumplimiento"
+      },
+      {
+        "title": "Gestión de vulnerabilidades que corre siempre",
+        "body": "Inventario de activos, escaneo seguro, priorización asistida por IA y remediación seguida desde que se encuentra hasta que se verifica — con informes pensados para apoyar la recolección de evidencia de SOC 2 y PCI DSS.",
+        "href": "/productos/gestion-de-vulnerabilidades",
+        "linkLabel": "Ver gestión de vulnerabilidades"
+      },
+      {
+        "title": "Infraestructura que se mantiene en cumplimiento",
+        "body": "Actualizaciones, copias de seguridad probadas, gestión de accesos y monitoreo, hechos todos los días — porque la mayoría de los hallazgos de auditoría son operación que nadie estaba haciendo.",
+        "href": "/servicios/it-administrado",
+        "linkLabel": "Ver TI administrada"
+      }
+    ]
+  },
+  "note": {
+    "title": "Qué somos — y qué no.",
+    "body": "No somos auditores y no emitimos certificaciones: la auditoría siempre la hace un tercero independiente. Lo que hacemos es llevarte hasta allá. Nuestro fundador ha liderado el cumplimiento de PCI DSS y un programa SOC 2 de principio a fin dentro de una operación 24/7, así que sabemos qué controles revisa de verdad un auditor y qué evidencia lo convence. Preferimos decírtelo desde ahora: la preparación suele tomar entre 3 y 6 meses según tu punto de partida, y quien te prometa un certificado en dos semanas te está vendiendo papel."
+  },
+  "faq": {
+    "eyebrow": "preguntas frecuentes",
+    "title": "Lo que nos preguntan las empresas con exigencias de cumplimiento.",
+    "items": [
+      {
+        "q": "¿Cuánto tardamos en estar listos para la auditoría?",
+        "a": "Normalmente entre 3 y 6 meses desde el análisis de brechas hasta estar listos, según dónde empieces. La evaluación inicial te da un cronograma honesto en la primera semana, incluidas las partes que van a doler."
+      },
+      {
+        "q": "¿Trabajan con nuestro auditor o traen uno?",
+        "a": "El auditor debe ser independiente, así que lo eliges tú — si no tienes uno, te podemos señalar opciones con buena reputación. Nosotros preparamos tu infraestructura, tus políticas y tu evidencia, y te acompañamos durante las preguntas del auditor hasta que el informe esté en tus manos."
+      },
+      {
+        "q": "¿Esto aplica si vendemos desde Colombia a clientes en Estados Unidos?",
+        "a": "Es justo el caso más común que vemos. SOC 2 no es una norma colombiana ni estadounidense que te obligue por ley: es lo que tu cliente corporativo exige antes de firmar, y cada vez lo exige más a proveedores de software, BPO y servicios que operan desde Colombia. PCI DSS aplica a cualquiera que procese, transmita o almacene datos de tarjetas, sin importar el país."
+      },
+      {
+        "q": "¿Qué pasa después de pasar la auditoría?",
+        "a": "El cumplimiento es anual; los controles son diarios. La mayoría de los clientes nos deja operando los controles de forma continua — gestión de vulnerabilidades, recolección de evidencia, revisiones de acceso — para que la siguiente auditoría sea un trámite y no otro proyecto."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Descubre qué hay entre tu operación y una auditoría limpia.",
+    "subtitle": "Una llamada de 30 minutos: cuéntanos qué estándar te está pidiendo tu cliente y te decimos con honestidad cómo se ve el camino desde donde estás hoy.",
+    "buttonText": "Agenda una llamada"
+  }
+}

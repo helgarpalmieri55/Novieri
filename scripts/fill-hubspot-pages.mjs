@@ -51,10 +51,12 @@ const ES_SLUGS = {
   "industries/bpo": "industrias/bpo",
   "industries/hospitality": "industrias/hoteleria",
   "industries/education": "industrias/educacion",
+  "industries/regulated": "industrias/pci-dss-soc-2",
   "case-studies": "casos-de-exito",
   "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
   "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
+  "products/ai-website-chatbot": "productos/chatbot-web-ia",
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
   "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
   "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
@@ -167,6 +169,16 @@ const OTHER = {
 /** The one string with no home in messages/*.json. */
 const NEXT_STEP = { en: "next step", es: "siguiente paso" }[locale] || "next step";
 
+/**
+ * The second action on every closing band that has a price to point at. The
+ * review asked for a consistent primary/secondary pair and for pricing to be
+ * reachable from the pages that raise the question, which is the same fix.
+ */
+const PRICING_CTA = {
+  secondary_text: t.common.seePricing,
+  secondary_link: { url: { type: "CONTENT", href: `/${slugFor("pricing")}` } },
+};
+
 function legalWidgets(doc) {
   const c = t.legal.common;
   return {
@@ -222,6 +234,7 @@ const SERVICE_SLOTS = {
  */
 const SOLUTIONS = [
   ["aiAssistant", "products/ai-virtual-assistant"],
+  ["siteChat", "products/ai-website-chatbot"],
   ["whatsapp", "products/whatsapp-ai-assistant"],
   ["visitorIntel", "products/visitor-intelligence"],
   ["sentinel", "products/vulnerability-management"],
@@ -233,9 +246,12 @@ const SOLUTIONS = [
 const SOLUTION_SLOTS = {
   hero: "main-module-2",     // page-hero
   what: "main-module-3",     // dot-list
-  built: "main-module-4",    // split-note
-  powered: "main-module-5",  // founders-band
-  cta: "main-module-6",      // cta-band
+  demo: "main-module-4",     // audio-demo (renders only when given items)
+  chat: "main-module-5",     // chat-demo (renders only when given entries)
+  screens: "main-module-6",  // screens (renders only when given captures)
+  built: "main-module-7",    // split-note
+  powered: "main-module-8",  // founders-band
+  cta: "main-module-9",      // cta-band
 };
 
 /** Mirrors solutions.hubl.html — and services-index.hubl.html, which is the
@@ -301,7 +317,7 @@ function serviceWidgets(ns) {
       body: {
         title: c.faqTitle,
         schema: true,
-        items: s.faq.items.map((q) => ({ question: q.q, answer: q.a })),
+        items: s.faq.items.map((q) => ({ question: q.q, answer: q.a, market: q.market || "" })),
       },
     },
     [SERVICE_SLOTS.cta]: {
@@ -313,6 +329,7 @@ function serviceWidgets(ns) {
         // readiness" converts a security reader that "book a call" loses.
         button_text: s.ctaButton || t.common.bookCall,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        ...PRICING_CTA,
       },
     },
   };
@@ -355,13 +372,33 @@ function servicesIndexWidgets() {
         })),
       },
     },
-    [SOLUTIONS_INDEX_SLOTS.cta]: {
+    // services-index.hubl.html only: the selector sits between the cards and
+    // the closing band, so this page's CTA is one slot further down than the
+    // products index, which has no selector.
+    "main-module-4": {
+      body: {
+        eyebrow: idx.selector.eyebrow,
+        title: idx.selector.title,
+        intro: idx.selector.intro,
+        question: idx.selector.question,
+        link_label: idx.selector.linkLabel,
+        footnote: idx.selector.footnote,
+        options: idx.selector.options.map((o) => ({
+          option_label: o.label,
+          option_service: o.service,
+          option_answer: o.answer,
+          option_link: { url: { type: "CONTENT", href: `/${slugFor(o.slug)}` } },
+        })),
+      },
+    },
+    "main-module-5": {
       body: {
         eyebrow: NEXT_STEP,
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        ...PRICING_CTA,
       },
     },
   };
@@ -407,10 +444,6 @@ function pricingWidgets() {
           body: {
             title: g.name,
             blurb: g.blurb,
-            // The switch renders once, above the first table, and the module's
-            // JS drives every table on the page from it.
-            show_toggle: n === 0,
-            toggle_label: p.toggleLabel,
             rows: g.rows.map((r) => ({
               service: r.service,
               price_usd: r.price_usd,
@@ -430,7 +463,7 @@ function pricingWidgets() {
       body: {
         title: t.serviceCommon.faqTitle,
         schema: true,
-        items: p.faq.items.map((q) => ({ question: q.q, answer: q.a })),
+        items: p.faq.items.map((q) => ({ question: q.q, answer: q.a, market: q.market || "" })),
       },
     },
     [PRICING_SLOTS.cta]: {
@@ -467,6 +500,60 @@ function solutionWidgets(key) {
         items: p.features.map((f) => ({ item_title: f.title, item_body: f.body })),
       },
     },
+    // A product gets a conversation only if its copy carries one; the module
+    // renders nothing otherwise.
+    [SOLUTION_SLOTS.chat]: {
+      body: {
+        eyebrow: p.chatDemo?.eyebrow || "",
+        title: p.chatDemo?.title || "",
+        intro: p.chatDemo?.body || "",
+        cta_text: "",
+        channel: "web",
+        chat_name: p.chatDemo?.header?.name || "",
+        chat_status: p.chatDemo?.header?.status || "",
+        badge: p.chatDemo?.badge || "",
+        entries: (p.chatDemo?.entries || []).map((e) => ({
+          row_kind: e.kind || e.from,
+          message: e.text || "",
+          caption: e.label || "",
+          duration: e.duration || "",
+          sent_at: e.t || "",
+        })),
+        input_hint: p.chatDemo?.inputHint || "",
+        capabilities: (p.chatDemo?.foot || []).map((c) => ({ capability: c })),
+      },
+    },
+    // Screenshots of the live site, for the product that is the live site.
+    [SOLUTION_SLOTS.screens]: {
+      body: {
+        eyebrow: p.screens?.eyebrow || "",
+        title: p.screens?.title || "",
+        intro: p.screens?.intro || "",
+        footnote: p.screens?.footnote || "",
+        items: (p.screens?.items || []).map((s) => ({
+          item_file: s.file,
+          item_frame: s.frame,
+          item_label: s.label,
+          item_caption: s.caption,
+        })),
+      },
+    },
+    // Only products with a `demo` block get playable audio; for the rest the
+    // module receives no items and renders nothing.
+    [SOLUTION_SLOTS.demo]: {
+      body: {
+        eyebrow: p.demo?.eyebrow || "",
+        title: p.demo?.title || "",
+        intro: p.demo?.intro || "",
+        items: (p.demo?.items || []).map((i) => ({
+          item_label: i.label,
+          item_file: i.file,
+          item_transcript: i.transcript || "",
+          item_transcript_label: i.transcriptLabel || "",
+        })),
+        footnote: p.demo?.footnote || "",
+      },
+    },
     // The engineering, kept below the part written for the buyer. The stack
     // rides in the footnote, which is where the module puts its small print.
     [SOLUTION_SLOTS.built]: {
@@ -493,6 +580,7 @@ function solutionWidgets(key) {
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        ...PRICING_CTA,
       },
     },
   };
@@ -533,6 +621,7 @@ function solutionsIndexWidgets() {
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        ...PRICING_CTA,
       },
     },
   };
@@ -893,6 +982,7 @@ const ctaOf = (c, href) => ({
     subtitle: c.cta.subtitle,
     button_text: c.cta.buttonText,
     button_link: { url: { type: "CONTENT", href: href || `/${slugFor("contact")}` } },
+    ...PRICING_CTA,
   },
 });
 const cardsOf = (cards, linkLabel) => ({
@@ -937,7 +1027,7 @@ function industryWidgets(c) {
     "main-module-6": {
       body: {
         title: c.faq.title,
-        items: c.faq.items.map((i) => ({ question: i.q, answer: i.a })),
+        items: c.faq.items.map((i) => ({ question: i.q, answer: i.a, market: i.market || "" })),
         schema: true,
       },
     },
@@ -983,6 +1073,7 @@ function contentPages() {
       ["industries/es-bpo", "industrias/bpo"],
       ["industries/es-hoteleria", "industrias/hoteleria"],
       ["industries/es-educacion", "industrias/educacion"],
+      ["industries/es-regulated", "industrias/pci-dss-soc-2"],
       ["industries/es-restaurantes", "industrias/restaurantes"],
       ["industries/es-pymes", "industrias/pymes"],
     ]) {

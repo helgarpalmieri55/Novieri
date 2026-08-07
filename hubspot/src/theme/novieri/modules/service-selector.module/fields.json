@@ -1,0 +1,81 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "intro",
+    "label": "Intro",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  },
+  {
+    "name": "question",
+    "label": "Question",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "options",
+    "label": "Situations",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 8,
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "option_label",
+        "label": "What the visitor recognises",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "name": "option_answer",
+        "label": "What we'd start with",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      },
+      {
+        "name": "option_service",
+        "label": "Service name",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "name": "option_link",
+        "label": "Service link",
+        "type": "link",
+        "default": {
+          "url": { "type": "CONTENT", "href": "" },
+          "open_in_new_tab": false
+        }
+      }
+    ],
+    "help_text": "One row per situation, written the way a visitor would describe it — not the way we'd name the service. Empty renders nothing."
+  },
+  {
+    "name": "link_label",
+    "label": "Link label",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "footnote",
+    "label": "Footnote",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  }
+]

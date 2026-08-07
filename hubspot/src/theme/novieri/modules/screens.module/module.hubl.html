@@ -1,0 +1,54 @@
+{# Captures of the live site, for the product that built it.
+
+   The AI-powered Websites page cannot honestly show a mockup: the product is
+   this site, so the demo is a photograph of it. scripts/capture-screens.mjs
+   takes the shots on a runner and commits them; the deploy puts them in the
+   File Manager at /hubfs/screens/<name>.png, which is what the src below
+   composes. No branch per file, so adding a capture is a content change.
+
+   Empty items render nothing, like the audio and chat demos — one template
+   serves every product and only the ones with something to show say so. #}
+{% if module.items %}
+<section class="screens section-pad">
+  <div class="container-site">
+    <div class="reveal mb-9 max-w-2xl">
+      {% if module.eyebrow %}<span class="eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.title %}<h2 class="mt-4">{{ module.title }}</h2>{% endif %}
+      {% if module.intro %}<p class="mt-4 max-w-[56ch] text-ink-muted">{{ module.intro }}</p>{% endif %}
+    </div>
+    <div class="grid items-start gap-7 lg:grid-cols-2">
+      {% for item in module.items %}
+        {% set src = "/hubfs/screens/" ~ item.item_file ~ ".png" %}
+        <figure class="reveal{% if item.item_frame == "phone" %} mx-auto max-w-[300px]{% endif %}" style="--rd: {{ loop.index0 * 90 }}ms">
+          {% if item.item_frame == "phone" %}
+            {# A phone: thick bezel, deep radius, no chrome bar. #}
+            <div class="overflow-hidden rounded-[2rem] border-[6px] border-ink bg-ink shadow-[0_18px_50px_rgba(22,18,29,0.18)]">
+              <img src="{{ src }}" alt="{{ item.item_label|escape_attr }}" loading="lazy" decoding="async" class="block w-full" />
+            </div>
+          {% else %}
+            {# A browser: a hairline window with three dots where the traffic
+               lights go, so a screenshot reads as a screen and not as art. #}
+            <div class="overflow-hidden rounded-xl border border-line shadow-[0_18px_50px_rgba(22,18,29,0.10)]">
+              <div class="flex items-center gap-1.5 border-b border-line bg-plum-wash px-4 py-2.5">
+                <span class="h-2.5 w-2.5 rounded-full bg-line"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-line"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-line"></span>
+              </div>
+              <img src="{{ src }}" alt="{{ item.item_label|escape_attr }}" loading="lazy" decoding="async" class="block w-full" />
+            </div>
+          {% endif %}
+          {% if item.item_label or item.item_caption %}
+            <figcaption class="mt-4">
+              {% if item.item_label %}<p class="idx-mono lowercase text-gold-deep">{{ item.item_label }}</p>{% endif %}
+              {% if item.item_caption %}<p class="mt-1.5 max-w-[46ch] text-small text-ink-muted">{{ item.item_caption }}</p>{% endif %}
+            </figcaption>
+          {% endif %}
+        </figure>
+      {% endfor %}
+    </div>
+    {% if module.footnote %}
+      <p class="reveal mt-7 max-w-[56ch] text-caption text-ink-faint">{{ module.footnote }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

@@ -45,6 +45,10 @@
         {
           "title": "Nobody babysits the phone",
           "body": "The team stopped taking turns watching WhatsApp. The assistant handles the routine, and a person steps in only when the conversation calls for one."
+        },
+        {
+          "title": "How the numbers were measured",
+          "body": "The restaurant operates in Barranquilla, Colombia. The 20% figure comes from a full month running the assistant, compared by the owner against the sales of the months before it went live. It is the owner's own measurement on their real operation — not an independently audited study — and results vary with each business's volume and menu."
         }
       ]
     },
@@ -102,6 +106,10 @@
         {
           "title": "Nadie pendiente del teléfono",
           "body": "El equipo dejó de turnarse para vigilar WhatsApp. El asistente resuelve lo rutinario, y una persona entra solo cuando la conversación lo pide."
+        },
+        {
+          "title": "Cómo se midieron los números",
+          "body": "El restaurante opera en Barranquilla, Colombia. El 20% sale de un mes completo con la asistente funcionando, comparado por el dueño contra las ventas de los meses anteriores a la puesta en marcha. Es la medición del propio dueño sobre su operación real — no un estudio auditado de forma independiente — y los resultados varían según el volumen y la carta de cada negocio."
         }
       ]
     },

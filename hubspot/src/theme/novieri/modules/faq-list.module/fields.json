@@ -27,6 +27,13 @@
         "type": "text",
         "default": "",
         "allow_new_line": true
+      },
+      {
+        "name": "market",
+        "label": "Market",
+        "type": "text",
+        "default": "",
+        "help_text": "Empty shows the question to everyone. \"co\" shows it only in Colombia, \"intl\" only outside it \u2014 for answers that are genuinely different per market, like onsite support or how a contract is signed."
       }
     ]
   },

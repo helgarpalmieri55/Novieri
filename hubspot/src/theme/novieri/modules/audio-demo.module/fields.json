@@ -1,0 +1,75 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "hear it"
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "intro",
+    "label": "Intro",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true
+  },
+  {
+    "name": "items",
+    "label": "Demos",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "item_label",
+        "label": "Label",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "name": "item_file",
+        "label": "Recording",
+        "type": "choice",
+        "choices": [
+          ["restaurant-en", "Restaurant — English"],
+          ["restaurant-es", "Restaurant — Spanish"],
+          ["hotel-en", "Hotel — English"],
+          ["hotel-es", "Hotel — Spanish"],
+          ["business-en", "Business services — English"],
+          ["business-es", "Business services — Spanish"]
+        ],
+        "default": "restaurant-en"
+      },
+      {
+        "name": "item_transcript",
+        "label": "Transcript",
+        "type": "text",
+        "default": "",
+        "allow_new_line": true
+      },
+      {
+        "name": "item_transcript_label",
+        "label": "Transcript toggle label",
+        "type": "text",
+        "default": "Read the transcript"
+      }
+    ],
+    "help_text": "While this is empty the section does not render at all — every other product page stays unchanged."
+  },
+  {
+    "name": "footnote",
+    "label": "Footnote",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true,
+    "help_text": "The honesty line: these are simulated conversations voiced with AI for demonstration, not recordings of real customer calls."
+  }
+]

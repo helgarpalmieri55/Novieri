@@ -55,13 +55,16 @@ const ES_SLUGS = {
   "industries/bpo": "industrias/bpo",
   "industries/hospitality": "industrias/hoteleria",
   "industries/education": "industrias/educacion",
-  // industries/regulated is deliberately absent: PCI/SOC 2 pages sell to the
-  // US market only. The Colombian-only industries (restaurantes, pymes) are
-  // likewise not variants — they are created directly, in Spanish.
+  // Colombian software, BPO and payment companies are asked for SOC 2 and PCI
+  // DSS by the customers they sell to, so this one is a variant like the rest.
+  // The Colombian-only industries (restaurantes, pymes) are not variants —
+  // they are created directly, in Spanish.
+  "industries/regulated": "industrias/pci-dss-soc-2",
   "case-studies": "casos-de-exito",
   "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
   "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
+  "products/ai-website-chatbot": "productos/chatbot-web-ia",
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
   "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
   "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
@@ -118,6 +121,10 @@ const PAGES = [
     name: "AI Virtual Receptionist",
     htmlTitle: "AI Virtual Receptionist — Novieri",
     metaDescription: "An AI receptionist that answers your sales line in a natural voice, captures the caller into your CRM, and books the meeting when nobody is in." },
+  { key: "sol-sitechat", template: "solution", slug: "products/ai-website-chatbot",
+    name: "Website AI Chatbot",
+    htmlTitle: "Website AI Chatbot — Novieri",
+    metaDescription: "An AI assistant for your website that answers from your own information, says that it is an AI, and hands real conversations to your team — the same one running on this page." },
   { key: "sol-whatsapp", template: "solution", slug: "products/whatsapp-ai-assistant",
     name: "WhatsApp AI Assistant",
     htmlTitle: "WhatsApp AI Assistant — Novieri",
@@ -306,6 +313,7 @@ function esMeta() {
     "industries/bpo": pick(readContent("industries/es-bpo")),
     "industries/hospitality": pick(readContent("industries/es-hoteleria")),
     "industries/education": pick(readContent("industries/es-educacion")),
+    "industries/regulated": pick(readContent("industries/es-regulated")),
     "case-studies": pick(csIx?.es),
     "case-studies/restaurant-whatsapp-ai": pick(cs1?.es),
     "self-diagnosis/sample-report": pick(readContent("diagnostic/sample-report")?.es),
@@ -322,6 +330,7 @@ function esMeta() {
     pricing: es.meta.pricing,
     products: es.meta.solutions,
     "products/ai-virtual-assistant": es.meta.sol_aiAssistant,
+    "products/ai-website-chatbot": es.meta.sol_siteChat,
     "products/whatsapp-ai-assistant": es.meta.sol_whatsapp,
     "products/visitor-intelligence": es.meta.sol_visitorIntel,
     "products/vulnerability-management": es.meta.sol_sentinel,

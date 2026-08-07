@@ -30,7 +30,7 @@
     },
     "contact": {
       "title": "Contact — Novieri",
-      "description": "Tell us about your case or book a call directly with the founders. Barranquilla, Colombia — working US Eastern hours."
+      "description": "Tell us about your case or book a call directly with the founders. Barranquilla, Colombia — Eastern Time coverage."
     },
     "notFound": {
       "title": "Page not found — Novieri"
@@ -89,7 +89,7 @@
     },
     "diagnostic": {
       "title": "Technology Self-Diagnosis — Novieri",
-      "description": "Ten questions about your operation and a PDF report with your level, the risks we see, and what to prioritise. Takes three minutes."
+      "description": "Ten questions about your operation and a PDF report with your level, the risks we see, and what to prioritize. Takes three minutes."
     },
     "itConsulting": {
       "title": "IT consulting — Novieri",
@@ -169,7 +169,8 @@
     "talkCase": "Let's talk about your case",
     "whatsappCta": "Message us on WhatsApp",
     "goHome": "Back to home",
-    "recaptchaNotice": "This site is protected by reCAPTCHA and the Google <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms> apply."
+    "recaptchaNotice": "This site is protected by reCAPTCHA and the Google <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms> apply.",
+    "seePricing": "See pricing"
   },
   "home": {
     "hero": {
@@ -377,7 +378,47 @@
   "servicesIndex": {
     "eyebrow": "services",
     "title": "What we do",
-    "intro": "Five services that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, software has to fit the operation — and someone has to decide which of those to do first."
+    "intro": "Five services that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, software has to fit the operation — and someone has to decide which of those to do first.",
+    "selector": {
+      "eyebrow": "which one is you",
+      "title": "You know the problem. We'll name the service.",
+      "intro": "Most people arrive knowing what hurts, not which of five services fixes it. Pick the sentence that sounds like your month.",
+      "question": "closest to your situation",
+      "linkLabel": "See the service",
+      "footnote": "If two of these sound like you, that is normal and usually one engagement — say so on the call and we'll scope it as one.",
+      "options": [
+        {
+          "label": "Things break and there's nobody to call.",
+          "service": "Managed IT",
+          "answer": "A helpdesk that answers, machines that get updated, backups that actually restore, and a network someone is watching. We start by taking inventory of what you have and fixing what is already broken, then run it month to month.",
+          "slug": "services/managed-it"
+        },
+        {
+          "label": "My team retypes the same thing all day.",
+          "service": "AI & automation",
+          "answer": "We start with a fixed-price assessment that finds where automation actually pays off in your operation — then pilot the one with the best return, with a person approving the output until the error rate says otherwise.",
+          "slug": "services/ai-automation"
+        },
+        {
+          "label": "A customer is asking for SOC 2 or PCI DSS.",
+          "service": "Cybersecurity & compliance",
+          "answer": "Gap assessment against the framework your customer named, a remediation plan with owners and dates, and the evidence organized before the independent auditor arrives. Typically three to six months from where most companies start.",
+          "slug": "services/cybersecurity-compliance"
+        },
+        {
+          "label": "The software we need doesn't exist off the shelf.",
+          "service": "Custom software",
+          "answer": "A discovery sprint first, with an honest build-versus-buy answer at the end — including the times the answer is to buy something instead. If we build, you own the code and the repository from day one.",
+          "slug": "services/custom-software"
+        },
+        {
+          "label": "I have to make a decision and no one to ask.",
+          "service": "Fractional CTO & advisory",
+          "answer": "Someone senior to think it through with — what to buy, what to fix, what to leave alone — and a written recommendation you can hand to any supplier, including one that isn't us.",
+          "slug": "services/it-consulting"
+        }
+      ]
+    }
   },
   "serviceCommon": {
     "whatTitle": "What we do",
@@ -385,7 +426,7 @@
     "packagesTitle": "Packages",
     "packagesIntro": "Every operation is different, so the price comes after we understand yours. These are the shapes the work usually takes.",
     "faqTitle": "Frequently asked questions",
-    "ctaTitle": "Shall we talk about your case?",
+    "ctaTitle": "Let’s talk about your goals.",
     "ctaSubtitle": "A 30-minute call to understand your operation and tell you, frankly, whether we can help."
   },
   "ai": {
@@ -405,7 +446,7 @@
           "body": "Assistants that read email, classify requests, draft responses, and execute tasks inside your systems."
         },
         {
-          "title": "Chatbots on your knowledge",
+          "title": "Knowledge-grounded AI assistants",
           "body": "Customer and internal support with answers grounded in your documents and policies — not made up."
         },
         {
@@ -429,7 +470,7 @@
       "tiers": [
         {
           "name": "A two-week diagnostic",
-          "blurb": "Fixed price, two weeks. We look at how the work really moves through your business and find what a machine could take over. At the end you get a short list, ordered by what it saves you. No commitment afterwards."
+          "blurb": "Fixed price, two weeks. We look at how the work really moves through your business and identify repetitive tasks that can be automated safely. At the end you get a short list, ordered by what it saves you. No commitment afterwards."
         },
         {
           "name": "Your first automation",
@@ -525,7 +566,7 @@
     "hero": {
       "eyebrow": "managed it",
       "title": "Your IT department, without having to build one.",
-      "promise": "Support that answers, computers that work, backups that actually restore, and a network that stays up. We run your technology to big-company standards, at a fraction of the cost of an internal team."
+      "promise": "Support that answers, computers that work, backups that actually restore, and a network that stays up. We run your technology to big-company standards, at a predictable monthly cost, without the overhead of building a full internal department."
     },
     "what": {
       "items": [
@@ -578,19 +619,33 @@
       "items": [
         {
           "q": "How fast do you respond?",
-          "a": "Every plan has response times agreed in writing by severity. A down workstation doesn't wait like a printer does; urgent issues get attention in minutes, not days."
+          "a": "Every plan has response times agreed in writing by severity. A down workstation doesn't wait like a printer does; urgent issues get attention in minutes, not days.",
+          "market": ""
         },
         {
-          "q": "We already have someone who \"knows computers\". Why change?",
-          "a": "Because your operation depends on that person being available, documenting things, and knowing security. We leave everything documented, monitored, and backed by a team — and we answer under a service agreement, not as a favor."
+          "q": "We already have someone who helps when technology breaks. What changes with managed IT?",
+          "a": "Because your operation depends on that person being available, documenting things, and knowing security. We leave everything documented, monitored, and backed by a team — and we answer under a service agreement, not as a favor.",
+          "market": ""
         },
         {
           "q": "Do I have to replace my current equipment or licenses?",
-          "a": "Not up front. We start with a diagnostic of what you have; what works, stays. Investments are proposed with priority and budget, and you make the call."
+          "a": "Not up front. We start with a diagnostic of what you have; what works, stays. Investments are proposed with priority and budget, and you make the call.",
+          "market": ""
         },
         {
           "q": "Do you work with US-based teams?",
-          "a": "Yes — that's the point of being in Barranquilla: we operate on US Eastern hours with native bilingual communication, at nearshore rates. Remote-first, with the same standards a US MSP would offer."
+          "market": "intl",
+          "a": "Yes — that's the point of being in Barranquilla: we operate on Eastern Time with native bilingual communication, at nearshore rates. Remote-first, with the same standards a US MSP would offer."
+        },
+        {
+          "q": "Can you come onsite?",
+          "market": "co",
+          "a": "Yes. Day-to-day work is remote — that resolves things faster — and we schedule onsite visits when the job needs hands: cabling, installations, network changes."
+        },
+        {
+          "q": "Can you come onsite?",
+          "market": "intl",
+          "a": "Not today. In the United States the service is fully remote, and we say so rather than promise trucks we don't have. Support, Microsoft 365, security, monitoring and backups are all resolved remotely; when something needs physical hands we guide someone on your side through it step by step. If your operation depends on frequent onsite visits, we are not the right fit yet."
         }
       ]
     },
@@ -662,7 +717,7 @@
         },
         {
           "title": "SOC 2 / PCI DSS readiness",
-          "body": "Gap assessment, remediation plan, and evidence support until you pass the audit."
+          "body": "Gap assessment, remediation plan, and evidence preparation and support throughout the independent audit process."
         },
         {
           "title": "Identity & email protection",
@@ -709,11 +764,11 @@
         },
         {
           "q": "Do you issue the certification?",
-          "a": "No — the audit is always performed by an independent third party. We prepare your infrastructure, policies, and evidence so you walk into that audit to pass it, not to discover problems."
+          "a": "No — the audit is always performed by an independent third party. We prepare your infrastructure, policies, and evidence so the independent audit begins with fewer surprises and clearly documented controls."
         },
         {
           "q": "Isn't this expensive?",
-          "a": "It costs a fraction of what an incident does: the ransom, the days down, the customers lost. We start with the baseline — the essentials done right — and grow from there based on your actual risk."
+          "a": "We begin with the highest-priority controls — the essentials done right — and scale the engagement according to your actual risk, customer requirements, and budget."
         }
       ]
     },
@@ -776,12 +831,12 @@
         },
         {
           "title": "Operation & evolution",
-          "body": "We don't deliver and disappear: we monitor, fix, and evolve the software on a a set number of hours each month."
+          "body": "We don't deliver and disappear: we monitor, fix, and evolve the software on a set number of hours each month."
         }
       ]
     },
     "how": {
-      "caption": "How we build: a person sets the goal, an orchestrator decomposes it and delegates to specialised agents working in parallel, and nothing merges without human approval."
+      "caption": "How we build: a person sets the goal, an orchestrator decomposes it and delegates to specialized agents working in parallel, and nothing is released without human review."
     },
     "packages": {
       "tiers": [
@@ -853,7 +908,7 @@
     "hero": {
       "eyebrow": "about",
       "title": "Two founders, and nobody in between.",
-      "intro": "Novieri is the two people who built it: the person who designs and runs the technology, and the person who owns the relationship. Family-run in how it treats you, enterprise in what it delivers."
+      "intro": "Novieri is the two people who built it: the person who designs and runs the technology, and the person who owns the relationship. Founder-led service, enterprise-grade execution."
     },
     "story": {
       "title": "The story",
@@ -870,14 +925,14 @@
       "partner": {
         "name": "Sylvana Nova",
         "role": "Co-founder · Commercial Strategy & Client Experience",
-        "bio": "Business administrator and commercial leader with more than ten years of experience working directly with clients. At Novieri, she turns operational needs into clear priorities, strong business cases, and realistic plans of action.\nSylvana supports each engagement from the initial conversation through implementation and adoption, connecting the client's needs with practical, measurable, and sustainable results.",
+        "bio": "Business strategist and client experience leader with more than ten years of experience working directly with clients. At Novieri, she turns operational needs into clear priorities, strong business cases, and realistic plans of action.\nSylvana supports each engagement from the initial conversation through implementation and adoption, connecting the client's needs with practical, measurable, and sustainable results.",
         "photoAlt": "Sylvana Nova, co-founder, commercial and client relationships"
       },
       "linkedinLabel": "LinkedIn: {name}"
     },
     "location": {
       "title": "From Barranquilla, for two markets",
-      "body": "Barranquilla gives us something uncommon: the same time zone as the US East Coast, costs that allow fair rates, and a technical talent pool that grows every year. That's how we can serve a local SMB in the morning and a client in New York in the afternoon — same team, same standard."
+      "body": "Barranquilla gives us something uncommon: full working-day overlap with the US East Coast — the same time in winter, one hour behind during daylight saving — costs that allow fair rates, and a technical talent pool that grows every year. That's how we can serve a local SMB in the morning and a client in New York in the afternoon — same team, same standard."
     },
     "cta": {
       "title": "Let's work together.",
@@ -917,7 +972,7 @@
         "email": "Please enter a valid email.",
         "message": "Even one line helps."
       },
-      "consentNote": "By submitting this form you authorise the processing of your data under our privacy policy."
+      "consentNote": "By submitting this form you authorize the processing of your data under our privacy policy."
     },
     "booking": {
       "title": "Prefer to just book a time?",
@@ -928,7 +983,7 @@
     "aside": {
       "whatsappLabel": "Message us on WhatsApp",
       "emailLabel": "Or by email",
-      "location": "Barranquilla, Colombia · Working US Eastern hours"
+      "location": "Barranquilla, Colombia · Eastern Time coverage"
     }
   },
   "whatsapp": {
@@ -984,13 +1039,13 @@
           "crm"
         ],
         "hero": {
-          "title": "No call goes unanswered again.",
+          "title": "Answer more calls — day, night, and during peak demand.",
           "promise": "An AI receptionist that picks up your sales line in seconds, in a natural voice: it answers questions from your company's information, captures the caller's details into your CRM, warm-transfers to your team during business hours, and books meetings when nobody's in."
         },
         "features": [
           {
             "title": "Answers every call",
-            "body": "Every inbound call is attended instantly, during business hours or at midnight — no more full voicemail boxes and lost leads."
+            "body": "Calls are answered within seconds, during business hours or at midnight — no more full voicemail boxes and lost leads."
           },
           {
             "title": "Answers from your knowledge",
@@ -1010,7 +1065,11 @@
           },
           {
             "title": "Secure by design",
-            "body": "Every integration call is signed and verified, transcripts are purged automatically, and failures degrade gracefully — the conversation never drops."
+            "body": "Every integration call is signed and verified, transcripts are purged automatically, and integration failures follow a defined fallback and escalation path."
+          },
+          {
+            "title": "Consent, disclosed up front",
+            "body": "Every call opens by telling the caller it may be recorded and transcribed — a design built for all-party-consent jurisdictions like Florida. Transcripts attach to the CRM record and are purged automatically on schedule."
           }
         ],
         "built": {
@@ -1023,7 +1082,146 @@
           "fastapi",
           "hubspot",
           "microsoft bookings"
-        ]
+        ],
+        "demo": {
+          "eyebrow": "hear it",
+          "title": "Hear a call before you book one.",
+          "intro": "Three simulated conversations — a restaurant, a hotel, and a professional-services firm — plus one in Spanish. Notice the first thing the receptionist does on every call: tell the caller it may be recorded and transcribed.",
+          "items": [
+            {
+              "label": "Restaurant — a dinner reservation",
+              "file": "restaurant-en",
+              "transcriptLabel": "Read the transcript",
+              "transcript": "Receptionist: Thank you for calling Casa Marina. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you tonight?\nCaller: Hi — do you have a table for four this Saturday, around eight?\nReceptionist: Let me check... on Saturday I have eight fifteen or eight forty-five available. Which works better for you?\nCaller: Eight fifteen is great. Oh — and one of us has a shellfish allergy. Can the kitchen handle that?\nReceptionist: Absolutely — I'll note the shellfish allergy on the reservation so the kitchen sees it. May I have a name and a mobile number for the confirmation?\nCaller: Sure — Sam Rivera, five five five, zero one four two.\nReceptionist: Perfect, Sam — table for four, Saturday at eight fifteen, shellfish allergy noted. You'll get a text confirmation in a moment. Anything else I can help with?\nCaller: No, that's everything. Thanks!\nReceptionist: Our pleasure — see you Saturday."
+            },
+            {
+              "label": "Hotel — a room booking",
+              "file": "hotel-en",
+              "transcriptLabel": "Read the transcript",
+              "transcript": "Receptionist: Thank you for calling Hotel Costa Azul. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you?\nCaller: Hi — I'd like a room for two, next Friday to Sunday. Do you have anything available?\nReceptionist: Let me check... for those dates I have a king room with ocean view, or a double garden room. Would you like to hear the rates?\nCaller: The ocean view — how much is it?\nReceptionist: The king ocean view is one eighty-nine a night, breakfast included. Shall I hold it for you?\nCaller: Yes, please. Could we also get an early check-in? Our flight lands at nine in the morning.\nReceptionist: I'll note the early check-in request — the front desk confirms it the day before, and I'll flag your arrival time. May I have a name and a mobile number for the reservation?\nCaller: Dana Whitfield — five five five, zero one nine eight.\nReceptionist: All set, Dana — king ocean view, Friday to Sunday, two guests, breakfast included, early check-in requested. Your confirmation is on its way by text. Anything else?\nCaller: That's everything, thank you!\nReceptionist: Wonderful — we'll see you Friday."
+            },
+            {
+              "label": "Business services — a new-client inquiry",
+              "file": "business-en",
+              "transcriptLabel": "Read the transcript",
+              "transcript": "Receptionist: Thank you for calling Meridian Advisors. You've reached our AI receptionist — this call may be recorded and transcribed to help with your request. How can I help you today?\nCaller: Hi — I run a small logistics company, and I'm looking for help with our bookkeeping. Is that something you do?\nReceptionist: It is — monthly bookkeeping, payroll, and tax filings are the core of what the team does. So I can point you to the right person: roughly how many employees do you have?\nCaller: Twelve. And we'd want payroll too.\nReceptionist: Perfect — that's exactly the kind of engagement our advisors scope on a short intro call. I can book you fifteen minutes with one of them; how does tomorrow at ten or Thursday at two look?\nCaller: Thursday at two works.\nReceptionist: Great. May I have your name, your company, and the best number to reach you?\nCaller: Marcus Webb, Webb Logistics — five five five, zero one seven three.\nReceptionist: Thank you, Marcus — Thursday at two with one of our advisors, and I've noted bookkeeping and payroll for a twelve-person logistics company. You'll get a calendar invitation shortly. Anything else?\nCaller: No, that's great. Thanks.\nReceptionist: Our pleasure — talk to you Thursday."
+            },
+            {
+              "label": "In Spanish — the same receptionist, other language",
+              "file": "restaurant-es",
+              "transcriptLabel": "Read the transcript",
+              "transcript": "Recepcionista: Gracias por llamar a Casa Marina. Te habla nuestra recepcionista virtual — esta llamada puede ser grabada y transcrita para ayudarte mejor. ¿En qué te puedo ayudar?\nCliente: Hola, ¿tienen mesa para cuatro este sábado, como a las ocho?\nRecepcionista: Déjame revisar... el sábado tengo disponible a las ocho y quince o a las ocho y cuarenta y cinco. ¿Cuál te sirve más?\nCliente: A las ocho y quince, perfecto. Ah, y una persona del grupo es alérgica a los mariscos. ¿La cocina puede con eso?\nRecepcionista: Claro que sí — dejo anotada la alergia a los mariscos en la reserva. ¿Me regalas un nombre y un celular para la confirmación?\nCliente: Claro: Andrés Movilla, tres cero cero, siete uno cuatro, veintidós, treinta y uno.\nRecepcionista: Listo, Andrés — mesa para cuatro, el sábado a las ocho y quince, con la alergia anotada. Te llega la confirmación por mensaje de texto. ¿Algo más?\nCliente: No, eso es todo. ¡Muchas gracias!\nRecepcionista: Con mucho gusto — nos vemos el sábado."
+            }
+          ],
+          "footnote": "These are simulated conversations voiced with AI for demonstration — not recordings of real customer calls. Casa Marina is a fictional restaurant."
+        }
+      },
+      "siteChat": {
+        "name": "Website AI Chatbot",
+        "tagline": "The assistant in the corner of this page — answering from your own knowledge, handing your team the conversations that matter.",
+        "tags": [
+          "ai",
+          "leads",
+          "bilingual"
+        ],
+        "hero": {
+          "title": "The assistant on this page, working for your business.",
+          "promise": "Sylvi answers questions on novieri.com at any hour — from our own published information, in English or Spanish — and hands the conversation to a person when it deserves one. The same assistant, grounded in your business instead of ours, is what we deploy on your site. Try her before you read any further: she's in the corner of this page."
+        },
+        "features": [
+          {
+            "title": "Answers from your business, not the internet",
+            "body": "The knowledge base is compiled from the pages you publish and the documents you approve. When the answer isn't there, it says so instead of inventing one — no imagined prices, no services you don't offer."
+          },
+          {
+            "title": "Says that it's an AI",
+            "body": "It identifies itself as an automated assistant rather than impersonating someone on your team, and points to a real person the moment anyone asks for one."
+          },
+          {
+            "title": "One language per conversation",
+            "body": "English and Spanish, switching completely when the visitor switches — not a reply that starts in one language and finishes in the other."
+          },
+          {
+            "title": "Turns questions into qualified leads",
+            "body": "It asks one useful question at a time — what the business does, what is actually going wrong — and offers your booking link or inbox once it knows enough to be worth your time. No form standing between a visitor and an answer."
+          },
+          {
+            "title": "Knows when to hand over",
+            "body": "When it isn't sure, it says so and offers a person instead of guessing. Anything urgent goes straight to a human rather than being diagnosed in a chat window."
+          },
+          {
+            "title": "Treats every message as untrusted",
+            "body": "Visitor text is never followed as instructions: it won't adopt another persona, reveal how it was configured, or repeat confidential information back, however the request is phrased."
+          },
+          {
+            "title": "Refuses secrets",
+            "body": "If someone starts typing a password or a card number, it stops them and moves the conversation to a private channel."
+          }
+        ],
+        "built": {
+          "title": "Built like production software, not a widget.",
+          "body": "Claude runs behind serverless functions on your own domain, so no third-party chat platform sits between you and your visitors' conversations. The knowledge base is compiled from your approved content at build time, which keeps the assistant from drifting away from what you actually publish. Per-visitor rate limits and a daily ceiling keep the cost predictable, requests are accepted only from your own site, and every behaviour above is written into guardrails you approve before it goes live."
+        },
+        "stack": [
+          "claude",
+          "serverless",
+          "rate limiting",
+          "en/es",
+          "hubspot"
+        ],
+        "chatDemo": {
+          "eyebrow": "see it answer",
+          "title": "The same assistant, on a client's site.",
+          "body": "A conversation of the kind Sylvi has every day. Watch what she does when she does not know something: she says so and offers a person, instead of inventing an answer.",
+          "header": {
+            "name": "Assistant",
+            "status": "online · replies in seconds"
+          },
+          "badge": "AI assistant",
+          "inputHint": "Ask anything about the company…",
+          "foot": [
+            "answers from your own content",
+            "says when it isn't sure",
+            "hands over to a person"
+          ],
+          "entries": [
+            {
+              "from": "guest",
+              "text": "hey — are you a real person?",
+              "t": "10:14 AM"
+            },
+            {
+              "from": "bot",
+              "text": "No — I'm the assistant on this site, and I'm automated. I can answer questions about what the team does, and put you in front of a person whenever you'd rather.",
+              "t": "10:14 AM"
+            },
+            {
+              "from": "guest",
+              "text": "ok. what does managed IT cost for 25 people?",
+              "t": "10:15 AM"
+            },
+            {
+              "from": "bot",
+              "text": "Published ranges are **$99–115 per user, per month** for the essentials and **$139–160** with managed security and Microsoft 365 included — so for 25 people, roughly $2,500–4,000 a month depending on the tier. Where you land depends on devices, servers and how regulated your work is. The exact number arrives in a written proposal.",
+              "t": "10:15 AM"
+            },
+            {
+              "from": "guest",
+              "text": "do you have a SOC 2 report I can send my security team?",
+              "t": "10:16 AM"
+            },
+            {
+              "from": "bot",
+              "text": "I don't want to guess at that one — it's the kind of question a founder should answer directly rather than me. Two ways forward: I can pass your question to them by email, or you can take a 30-minute slot on their calendar. Which do you prefer?",
+              "t": "10:16 AM"
+            },
+            {
+              "kind": "action",
+              "text": "Conversation summarized and sent to the team — company, need and contact captured.",
+              "t": "10:17 AM"
+            }
+          ]
+        }
       },
       "whatsapp": {
         "name": "WhatsApp AI Assistant",
@@ -1186,7 +1384,7 @@
         ],
         "hero": {
           "title": "A sales platform with an AI salesperson inside.",
-          "promise": "Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI sales agent that attends every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
+          "promise": "Novieri's e-commerce platform: complete online stores — catalog, cart, payments — with an AI shopping assistant that helps every visitor, and a multi-store architecture that lets you launch several brands on the same foundation."
         },
         "features": [
           {
@@ -1198,7 +1396,7 @@
             "body": "A fast storefront with catalog, variants, cart, and checkout — the solid base of a serious sales operation."
           },
           {
-            "title": "Multi-store by birth",
+            "title": "Built for multiple brands",
             "body": "Several brands or stores on one platform, each with isolated data and its own visual identity — down to the typography."
           },
           {
@@ -1206,11 +1404,11 @@
             "body": "Products, orders, and customers managed from a dedicated admin application."
           },
           {
-            "title": "Pluggable payments",
+            "title": "Flexible payment integrations",
             "body": "A swappable payment-provider architecture, ready to adapt to each market's payment methods."
           },
           {
-            "title": "Engineering that holds",
+            "title": "Production-ready architecture",
             "body": "A TypeScript monorepo with a dedicated API, a typed database schema, and automated tests against real databases."
           }
         ],
@@ -1344,15 +1542,15 @@
         "features": [
           {
             "title": "A list of everything you have",
-            "body": "Most companies do not have one. It keeps a running inventory of every computer, server and device on your network, and only ever looks at what you have authorised."
+            "body": "Most companies do not have one. It keeps a running inventory of every computer, server and device on your network, and only ever looks at what you have authorized."
           },
           {
-            "title": "It checks without breaking anything",
-            "body": "The checks run in a mode that only looks — never pushes. Your systems keep working while it runs, including during business hours."
+            "title": "Non-intrusive by default",
+            "body": "Authorized assets are scanned with non-intrusive settings by default — active testing is separately approved. Your systems keep working while it runs, including during business hours."
           },
           {
             "title": "It knows what is being attacked right now",
-            "body": "Every weakness it finds is matched against the public catalogues of what criminals are actively exploiting, so urgent means urgent rather than theoretical."
+            "body": "Every weakness it finds is matched against the public catalogs of what criminals are actively exploiting, so urgent means urgent rather than theoretical."
           },
           {
             "title": "It tells you what to fix first",
@@ -1363,13 +1561,13 @@
             "body": "From found, to fixed, to checked again. If you decide to accept a risk instead of fixing it, that decision expires and comes back to you."
           },
           {
-            "title": "Reports an auditor accepts",
-            "body": "One report for the board, one for whoever does the work, and the evidence file a SOC 2 or PCI DSS auditor asks for."
+            "title": "Evidence-ready reporting",
+            "body": "One report for the board, one for whoever does the work, and reports designed to support SOC 2 and PCI DSS evidence collection."
           }
         ],
         "built": {
           "title": "Defensive security, with the guardrails written into the code.",
-          "body": "Authorised scope is allowlisted and enforced default-deny, safe mode is forced in code rather than configured, and every action lands in an audit log that cannot be edited. Role-based access control and multi-factor authentication server-side, hardened containerised deployment, and a large automated test suite behind all of it."
+          "body": "Authorized scope is allowlisted and enforced default-deny, safe mode is forced in code rather than configured, and every action lands in an audit log that cannot be edited. Role-based access control and multi-factor authentication server-side, hardened containerized deployment, and a large automated test suite behind all of it."
         },
         "stack": [
           "fastapi",
@@ -1378,7 +1576,33 @@
           "postgresql",
           "celery · redis",
           "react"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "the interface",
+          "title": "What it looks like to run it.",
+          "intro": "Three views from the platform: the exposure dashboard, the scan queue, and the prioritized findings — the loop that takes a vulnerability from found to fixed to verified.",
+          "items": [
+            {
+              "file": "vuln-dashboard",
+              "frame": "desktop",
+              "label": "dashboard",
+              "caption": "Exposure score, open findings, assets monitored and mean time to remediate — the numbers a board asks for, and the trend behind them."
+            },
+            {
+              "file": "vuln-scans",
+              "frame": "desktop",
+              "label": "scans",
+              "caption": "What is running, what finished, what is scheduled. Host discovery, vulnerability, web app and configuration scans against the scope you authorized."
+            },
+            {
+              "file": "vuln-findings",
+              "frame": "desktop",
+              "label": "findings",
+              "caption": "Every finding with its asset, severity and risk score — sorted so the work starts where the risk actually is, not where the CVE list happens to begin."
+            }
+          ],
+          "footnote": "Interface mockups with sample data, not a client's environment: the findings, asset names and scores shown here are illustrative. What your own dashboard reports depends on the scope you authorize and what the scans actually find."
+        }
       },
       "webDev": {
         "name": "AI-powered Websites",
@@ -1390,7 +1614,7 @@
         ],
         "hero": {
           "title": "A site that doesn't just look good. It works.",
-          "promise": "We design and build commercial websites with the AI features we already run in production: assistants that attend your visitors, search that understands questions, bilingual content, and visitor intelligence wired in — all with the design and speed standard you're seeing on this very page."
+          "promise": "We design and build commercial websites with the AI features we already run in production: AI assistants that help and engage your visitors, search that understands questions, bilingual content, and visitor intelligence wired in — all with the design and speed standard you're seeing on this very page."
         },
         "features": [
           {
@@ -1402,8 +1626,8 @@
             "body": "An assistant trained on your information attends visitors on your site — and can connect to WhatsApp or your phone line."
           },
           {
-            "title": "Bilingual by birth",
-            "body": "Spanish and English with localized URLs and international SEO done right — like this site."
+            "title": "Built for English and Spanish",
+            "body": "Spanish and English with localized URLs, hreflang annotations, and clean canonical structure built in."
           },
           {
             "title": "Visitor intelligence",
@@ -1428,7 +1652,33 @@
           "tailwind",
           "claude",
           "vercel"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "the demo is the site",
+          "title": "You're looking at it.",
+          "intro": "novieri.com runs on this platform — the same components, the same bilingual routing, the same assistant in the corner. So rather than show you a mockup, here it is: one build, two languages, two screen sizes.",
+          "items": [
+            {
+              "file": "site-home-desktop",
+              "frame": "desktop",
+              "label": "home · english · desktop",
+              "caption": "The home page as a visitor outside Colombia gets it: prices in dollars, the offers that apply to their market, English throughout."
+            },
+            {
+              "file": "site-home-mobile-es",
+              "frame": "phone",
+              "label": "inicio · español · teléfono",
+              "caption": "The same build on a phone in Spanish, for a visitor in Colombia — different language, different currency, different offers, one codebase."
+            },
+            {
+              "file": "site-products-desktop",
+              "frame": "desktop",
+              "label": "products · english · desktop",
+              "caption": "An inner page: the same layout system, filled from content rather than rebuilt by hand."
+            }
+          ],
+          "footnote": "These are captures of the live site, taken automatically and refreshed when it changes — not renders or concept art."
+        }
       }
     }
   },
@@ -1591,7 +1841,7 @@
             "Strictly necessary: we store your cookie decision in your browser's local storage (key “novieri-consent”) so we don't ask again on every visit. It does not identify individuals and is not shared with third parties.",
             "Analytics and measurement: if you accept them, we activate a web analytics tool that tells us how many people visit the site and which pages they read, in aggregate. We use it to improve the content, not to profile people.",
             "CRM and attribution (HubSpot): if you accept, we load HubSpot's script, which sets the __hstc, hubspotutk, __hssc, and __hssrc cookies. They recognise your browser between visits and link the form you submit to the pages you read beforehand, so we know which content was useful. If you reject them, the forms still work — they simply arrive without that history.",
-            "Form security (Google reCAPTCHA): when you start typing in the contact form or the self-diagnosis we load reCAPTCHA v3, which analyses session behaviour to tell people from bots and may set Google cookies. It is a strictly necessary security measure that keeps those forms usable; without it we cannot keep them working. Google's Privacy Policy and Terms of Service apply.",
+            "Form security (Google reCAPTCHA): when you start typing in the contact form or the self-diagnosis we load reCAPTCHA v3, which analyzes session behavior to tell people from bots and may set Google cookies. It is a strictly necessary security measure that keeps those forms usable; without it we cannot keep them working. Google's Privacy Policy and Terms of Service apply.",
             "Third-party functional: when you open meeting scheduling or the WhatsApp chat, the relevant provider may set its own cookies in your browser, subject to its policies.",
             "Advertising: we do not use advertising or cross-site tracking cookies."
           ]
@@ -1731,7 +1981,7 @@
     },
     "preview": {
       "title": "Your preliminary level",
-      "body": "This is the quick calculation from your answers. The full report analyses each point and prioritises what to do first."
+      "body": "This is the quick calculation from your answers. The full report analyzes each point and prioritizes what to do first."
     },
     "gate": {
       "title": "Where should we send the report?",
@@ -1762,7 +2012,7 @@
       "name": "Enter your name.",
       "email": "Enter a valid email.",
       "company": "Enter your company name.",
-      "consent": "We need your authorisation to send you the report.",
+      "consent": "We need your authorization to send you the report.",
       "failed": "We couldn't generate the report right now. Write to {email} and we'll send it over.",
       "notConfigured": "The automatic diagnostic isn't available right now. Write to {email} and we'll go through it with you."
     },
@@ -1995,7 +2245,7 @@
     "hero": {
       "eyebrow": "it consulting",
       "title": "Decide what to buy, what to fix, and what to leave alone.",
-      "promise": "Most of the money lost on technology is lost before anything is installed — the wrong system, licences nobody uses, a supplier who has you locked in. We look at what you have, what it costs and where it is heading, and tell you what to do. Including the times the answer is: not yet."
+      "promise": "Most of the money lost on technology is lost before anything is installed — the wrong system, licenses nobody uses, a supplier who has you locked in. We look at what you have, what it costs and where it is heading, and tell you what to do. Including the times the answer is: not yet."
     },
     "what": {
       "items": [
@@ -2005,7 +2255,7 @@
         },
         {
           "title": "What to buy, and what not to",
-          "body": "We read the quotes with you: what the licence really includes, what it will cost in year three, and whether the cheaper option leaves you stuck."
+          "body": "We read the quotes with you: what the license really includes, what it will cost in year three, and whether the cheaper option leaves you stuck."
         },
         {
           "title": "The architecture, before you build it",
@@ -2071,9 +2321,8 @@
     "hero": {
       "eyebrow": "pricing",
       "title": "Numbers you can plan with.",
-      "intro": "Most firms make you sit through a sales call before you hear a price. Here is ours up front: every figure below is a realistic range, not a quote — the exact number depends on what your business needs, and it comes with a proposal after we understand your operation. Prices show in dollars or Colombian pesos depending on where you're browsing from; switch below if we guessed wrong."
+      "intro": "Most firms make you sit through a sales call before you hear a price. Here is ours up front: every figure below is a realistic range, not a quote — the exact number depends on what your business needs, and it comes with a proposal after we understand your operation. Prices show in US dollars or Colombian pesos depending on where you're browsing from."
     },
-    "toggleLabel": "prices in",
     "groups": [
       {
         "name": "Managed IT",
@@ -2082,26 +2331,26 @@
           {
             "service": "Core",
             "price_usd": "$99 – 115",
-            "price_cop": "$95.000 – 115.000",
+            "price_cop": "COP 95,000 – 115,000",
             "unit": "per user / month",
             "note": "Helpdesk, monitoring, updates, and backups — the essentials, run properly."
           },
           {
             "service": "Complete",
             "price_usd": "$139 – 160",
-            "price_cop": "$145.000 – 170.000",
+            "price_cop": "COP 145,000 – 170,000",
             "unit": "per user / month",
             "note": "Core plus managed security and Microsoft 365 administration. Most teams land here."
           },
           {
             "service": "Premium",
             "price_usd": "$189 – 220",
-            "price_cop": "$195.000 – 230.000",
+            "price_cop": "COP 195,000 – 230,000",
             "unit": "per user / month",
             "note": "Complete plus compliance support and vCIO guidance, for teams with auditors to answer."
           }
         ],
-        "footnote": "Onboarding is one month of service, billed once at the start. Where you land inside each range depends on the size and needs of your operation."
+        "footnote": "Onboarding is one month of service, billed once at the start. Where you land inside each range depends on the size and needs of your operation. What moves the price inside a range: users, devices, locations, servers, support hours, security tooling, and compliance requirements."
       },
       {
         "name": "AI & automation",
@@ -2110,33 +2359,33 @@
           {
             "service": "AI Opportunity Assessment",
             "price_usd": "$1,500",
-            "price_cop": "$2.900.000",
+            "price_cop": "COP 2,900,000",
             "unit": "fixed · 2 weeks",
             "note": "Credited toward your first project if you go ahead."
           },
           {
             "service": "Automation pilot",
             "price_usd": "$4,900 – 15,000",
-            "price_cop": "$9 – 18 millones",
+            "price_cop": "COP 9 – 18 million",
             "unit": "per project",
             "note": "Where it lands depends on how many systems are involved."
           },
           {
             "service": "AI Partner",
             "price_usd": "$1,500 – 2,900",
-            "price_cop": "$2,9 – 5,9 millones",
+            "price_cop": "COP 2.9 – 5.9 million",
             "unit": "per month",
             "note": "Ongoing improvement, monitoring, and governance of what we build."
           },
           {
             "service": "WhatsApp bot for restaurants & hotels",
             "price_usd": "",
-            "price_cop": "$2,9 – 3,5 millones",
+            "price_cop": "COP 2.9 – 3.5 million",
             "unit": "setup",
-            "note": "Orders, reservations, and after-hours service. Plus a monthly fee of $790.000 – 1.100.000 depending on scope."
+            "note": "Orders, reservations, and after-hours service. Plus a monthly fee of COP 790,000 – 1,100,000 depending on scope."
           }
         ],
-        "footnote": ""
+        "footnote": "What moves the price: how many systems are involved, monthly volume, human-review requirements, data sensitivity, and voice or messaging usage."
       },
       {
         "name": "Cybersecurity & compliance",
@@ -2145,26 +2394,26 @@
           {
             "service": "Security baseline",
             "price_usd": "$4,500 – 7,500",
-            "price_cop": "$9 – 13 millones",
+            "price_cop": "COP 9 – 13 million",
             "unit": "per project",
             "note": "The essentials audited and fixed: identity, email, endpoints, backups."
           },
           {
             "service": "SOC 2 / PCI DSS readiness",
             "price_usd": "$9,500 – 18,000",
-            "price_cop": "$18 – 32 millones",
+            "price_cop": "COP 18 – 32 million",
             "unit": "per project",
             "note": "From gap assessment to audit-ready evidence. Compliance platform and auditor fees are separate."
           },
           {
             "service": "Part-time security chief (vCISO)",
             "price_usd": "$2,900 – 5,000",
-            "price_cop": "$3,9 – 5,5 millones",
+            "price_cop": "COP 3.9 – 5.5 million",
             "unit": "per month",
             "note": "A senior security director, a few hours a month — instead of a full-time hire."
           }
         ],
-        "footnote": ""
+        "footnote": "What moves the price: the framework, the scope, how many systems are involved, which controls already exist, and how much evidence is already in place."
       },
       {
         "name": "Custom software",
@@ -2173,19 +2422,19 @@
           {
             "service": "Senior development",
             "price_usd": "$45 – 55",
-            "price_cop": "$110.000 – 140.000",
+            "price_cop": "COP 110,000 – 140,000",
             "unit": "per hour",
             "note": "Blended senior rate. Comparable US senior rates commonly run well above this."
           },
           {
             "service": "Discovery sprint",
             "price_usd": "$2,900",
-            "price_cop": "$5.500.000",
+            "price_cop": "COP 5,500,000",
             "unit": "fixed",
             "note": "Scope, architecture, and an honest build-vs-buy answer before you commit to a build."
           }
         ],
-        "footnote": ""
+        "footnote": "What moves the price: user roles, workflows, integrations, data migration, and reporting needs."
       },
       {
         "name": "IT consulting",
@@ -2194,7 +2443,7 @@
           {
             "service": "Consulting / assessment",
             "price_usd": "$150 – 200",
-            "price_cop": "$280.000 – 350.000",
+            "price_cop": "COP 280,000 – 350,000",
             "unit": "per hour",
             "note": ""
           },
@@ -2206,7 +2455,7 @@
             "note": "Ongoing technology leadership without the full-time hire."
           }
         ],
-        "footnote": ""
+        "footnote": "What moves the price: how many decisions are on the table and how much of your current setup we need to review to answer them properly."
       }
     ],
     "note": {
@@ -2217,19 +2466,43 @@
       "items": [
         {
           "q": "Are these the final prices?",
-          "a": "No — they're honest ranges. Where your case lands inside one depends on what your business needs; after a 30-minute call we send a proposal with an exact number, and that number is the one that counts."
+          "a": "No — they're honest ranges. Where your case lands inside one depends on what your business needs; after a 30-minute call we send a proposal with an exact number, and that number is the one that counts.",
+          "market": ""
         },
         {
           "q": "Why publish prices when most firms don't?",
-          "a": "So you can rule us in or out without a sales process. If these ranges are far from your budget, we've saved us both a call; if they fit, you arrive knowing roughly what to expect."
-        },
-        {
-          "q": "Is there a minimum engagement?",
-          "a": "Managed IT starts at 10 users in the US, or a minimum monthly contract of $1.900.000 COP in Colombia. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+          "a": "So you can rule us in or out without a sales process. If these ranges are far from your budget, we've saved us both a call; if they fit, you arrive knowing roughly what to expect.",
+          "market": ""
         },
         {
           "q": "Why do I see pesos (or dollars)?",
-          "a": "The currency follows where you're browsing from: Colombia sees pesos, everywhere else sees dollars. Use the COP/USD switch at the top to see the other list."
+          "a": "The currency follows where you're browsing from: Colombia sees pesos, everywhere else sees dollars.",
+          "market": ""
+        },
+        {
+          "q": "How do the engagement models compare?",
+          "a": "Assessments and discovery sprints are fixed-price and run one to two weeks. Pilots are fixed-price projects of roughly three to six weeks. Managed IT is per user per month, billed monthly. Software builds are quoted as fixed milestones or hourly. Advisory (fractional CTO, vCISO) is hourly or a monthly retainer. Every model states its number in the proposal before work starts.",
+          "market": ""
+        },
+        {
+          "q": "Is there a minimum engagement?",
+          "market": "co",
+          "a": "Managed IT starts at a minimum monthly contract of COP 1,900,000. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+        },
+        {
+          "q": "Is there a minimum engagement?",
+          "market": "intl",
+          "a": "Managed IT starts at 10 users. Projects are quoted fixed-price after scoping, and assessments are fixed-price from the start."
+        },
+        {
+          "q": "Who do we actually contract with?",
+          "market": "intl",
+          "a": "With Novieri S.A.S., our company in Colombia — the same way US businesses routinely work with overseas vendors. Proposals and invoices for US clients are in US dollars, and we provide the standard tax documentation a US accounting team asks of a foreign vendor (a W-8BEN-E form). Currency, terms, ownership, and data handling are all stated in the proposal before any work starts."
+        },
+        {
+          "q": "What might be charged separately?",
+          "market": "co",
+          "a": "Published ranges are before VAT. Licenses, platform usage, hardware, special travel and independent audits appear as separate line items when they apply."
         }
       ]
     }
