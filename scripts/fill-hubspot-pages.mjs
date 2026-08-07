@@ -370,13 +370,33 @@ function servicesIndexWidgets() {
         })),
       },
     },
-    [SOLUTIONS_INDEX_SLOTS.cta]: {
+    // services-index.hubl.html only: the selector sits between the cards and
+    // the closing band, so this page's CTA is one slot further down than the
+    // products index, which has no selector.
+    "main-module-4": {
+      body: {
+        eyebrow: idx.selector.eyebrow,
+        title: idx.selector.title,
+        intro: idx.selector.intro,
+        question: idx.selector.question,
+        link_label: idx.selector.linkLabel,
+        footnote: idx.selector.footnote,
+        options: idx.selector.options.map((o) => ({
+          option_label: o.label,
+          option_service: o.service,
+          option_answer: o.answer,
+          option_link: { url: { type: "CONTENT", href: `/${slugFor(o.slug)}` } },
+        })),
+      },
+    },
+    "main-module-5": {
       body: {
         eyebrow: NEXT_STEP,
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
         button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        ...PRICING_CTA,
       },
     },
   };

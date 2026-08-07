@@ -1,0 +1,56 @@
+{# "Which of these is you?" — the review asked for a service selector, and
+   this is the honest version of one: no quiz, no scoring, no email gate. A
+   visitor picks the sentence that sounds like their week and reads what we
+   would start with and why. Five services is exactly the range where a
+   buyer can't tell which one they need, and the vocabulary gap is the whole
+   problem: they know "the network keeps dropping", not "managed IT".
+
+   Every answer is visible in the markup from the start, so this works with
+   no JavaScript at all — the script only collapses the ones you did not
+   choose. That also means a crawler reads all five answers, which is the
+   point for AI search. #}
+{% if module.options %}
+<section class="service-selector section-pad">
+  <div class="container-site">
+    <div class="reveal mb-9 max-w-2xl">
+      {% if module.eyebrow %}<span class="eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.title %}<h2 class="mt-4">{{ module.title }}</h2>{% endif %}
+      {% if module.intro %}<p class="mt-4 max-w-[56ch] text-ink-muted">{{ module.intro }}</p>{% endif %}
+    </div>
+    <div class="reveal grid gap-8 lg:grid-cols-[5fr_7fr]">
+      <div>
+        {% if module.question %}
+          <p id="sel-q" class="idx-mono mb-4 lowercase text-ink-faint">{{ module.question }}</p>
+        {% endif %}
+        <div class="grid gap-2" role="group" aria-labelledby="sel-q">
+          {% for opt in module.options %}
+            <button type="button"
+                    class="sel-pick rounded-xl border border-line px-5 py-4 text-left text-small font-medium text-ink-muted transition-colors hover:border-plum hover:text-ink"
+                    data-sel="{{ loop.index0 }}"
+                    aria-expanded="false"
+                    aria-controls="sel-a-{{ loop.index0 }}">
+              {{ opt.option_label }}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="grid content-start gap-3">
+        {% for opt in module.options %}
+          <div id="sel-a-{{ loop.index0 }}" class="sel-answer rounded-2xl border border-line bg-plum-wash p-7" data-sel-answer="{{ loop.index0 }}">
+            <p class="idx-mono lowercase text-gold-deep">{{ opt.option_service }}</p>
+            <p class="mt-3 text-body text-ink">{{ opt.option_answer }}</p>
+            {% if opt.option_link.url.href %}
+              <a href="{{ opt.option_link.url.href }}" class="mt-5 inline-flex items-center gap-1.5 text-small font-medium text-plum transition-[gap] duration-200 hover:gap-3">
+                {{ module.link_label }} <span aria-hidden="true">→</span>
+              </a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if module.footnote %}
+      <p class="reveal mt-6 max-w-[56ch] text-caption text-ink-faint">{{ module.footnote }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

@@ -378,7 +378,47 @@
   "servicesIndex": {
     "eyebrow": "services",
     "title": "What we do",
-    "intro": "Five services that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, software has to fit the operation — and someone has to decide which of those to do first."
+    "intro": "Five services that reinforce each other: automation needs healthy infrastructure, infrastructure needs security, software has to fit the operation — and someone has to decide which of those to do first.",
+    "selector": {
+      "eyebrow": "which one is you",
+      "title": "You know the problem. We'll name the service.",
+      "intro": "Most people arrive knowing what hurts, not which of five services fixes it. Pick the sentence that sounds like your month.",
+      "question": "closest to your situation",
+      "linkLabel": "See the service",
+      "footnote": "If two of these sound like you, that is normal and usually one engagement — say so on the call and we'll scope it as one.",
+      "options": [
+        {
+          "label": "Things break and there's nobody to call.",
+          "service": "Managed IT",
+          "answer": "A helpdesk that answers, machines that get updated, backups that actually restore, and a network someone is watching. We start by taking inventory of what you have and fixing what is already broken, then run it month to month.",
+          "slug": "services/managed-it"
+        },
+        {
+          "label": "My team retypes the same thing all day.",
+          "service": "AI & automation",
+          "answer": "We start with a fixed-price assessment that finds where automation actually pays off in your operation — then pilot the one with the best return, with a person approving the output until the error rate says otherwise.",
+          "slug": "services/ai-automation"
+        },
+        {
+          "label": "A customer is asking for SOC 2 or PCI DSS.",
+          "service": "Cybersecurity & compliance",
+          "answer": "Gap assessment against the framework your customer named, a remediation plan with owners and dates, and the evidence organized before the independent auditor arrives. Typically three to six months from where most companies start.",
+          "slug": "services/cybersecurity-compliance"
+        },
+        {
+          "label": "The software we need doesn't exist off the shelf.",
+          "service": "Custom software",
+          "answer": "A discovery sprint first, with an honest build-versus-buy answer at the end — including the times the answer is to buy something instead. If we build, you own the code and the repository from day one.",
+          "slug": "services/custom-software"
+        },
+        {
+          "label": "I have to make a decision and no one to ask.",
+          "service": "Fractional CTO & advisory",
+          "answer": "Someone senior to think it through with — what to buy, what to fix, what to leave alone — and a written recommendation you can hand to any supplier, including one that isn't us.",
+          "slug": "services/it-consulting"
+        }
+      ]
+    }
   },
   "serviceCommon": {
     "whatTitle": "What we do",

@@ -388,7 +388,47 @@
   "servicesIndex": {
     "eyebrow": "servicios",
     "title": "Lo que hacemos",
-    "intro": "Cinco servicios que se refuerzan entre sí: la automatización necesita infraestructura sana, la infraestructura necesita seguridad, el software tiene que ajustarse a la operación, y alguien tiene que decidir cuál de esas cosas va primero."
+    "intro": "Cinco servicios que se refuerzan entre sí: la automatización necesita infraestructura sana, la infraestructura necesita seguridad, el software tiene que ajustarse a la operación, y alguien tiene que decidir cuál de esas cosas va primero.",
+    "selector": {
+      "eyebrow": "¿cuál de estas eres tú?",
+      "title": "Tú conoces el problema. Nosotros le ponemos el nombre al servicio.",
+      "intro": "La mayoría llega sabiendo qué le duele, no cuál de cinco servicios lo resuelve. Elige la frase que se parece a tu mes.",
+      "question": "lo más parecido a tu situación",
+      "linkLabel": "Ver el servicio",
+      "footnote": "Si dos de estas te suenan, es normal y casi siempre es un solo proyecto — dilo en la llamada y lo dimensionamos junto.",
+      "options": [
+        {
+          "label": "Las cosas se dañan y no hay a quién llamar.",
+          "service": "TI administrada",
+          "answer": "Una mesa de ayuda que contesta, equipos actualizados, copias de seguridad que de verdad restauran y una red que alguien está vigilando. Empezamos por inventariar lo que tienes y arreglar lo que ya está roto, y de ahí lo operamos mes a mes.",
+          "slug": "services/managed-it"
+        },
+        {
+          "label": "Mi equipo vuelve a escribir lo mismo todo el día.",
+          "service": "IA y automatización",
+          "answer": "Arrancamos con una evaluación de precio fijo que encuentra dónde la automatización sí paga en tu operación — y pilotamos la de mejor retorno, con una persona aprobando el resultado hasta que la tasa de error diga otra cosa.",
+          "slug": "services/ai-automation"
+        },
+        {
+          "label": "Un cliente nos está pidiendo SOC 2 o PCI DSS.",
+          "service": "Ciberseguridad y cumplimiento",
+          "answer": "Análisis de brechas contra el estándar que te nombró tu cliente, un plan de remediación con responsables y fechas, y la evidencia organizada antes de que llegue el auditor independiente. Normalmente de tres a seis meses desde donde empiezan la mayoría.",
+          "slug": "services/cybersecurity-compliance"
+        },
+        {
+          "label": "El software que necesitamos no existe en el mercado.",
+          "service": "Desarrollo a medida",
+          "answer": "Primero un sprint de descubrimiento, con una respuesta honesta de construir o comprar al final — incluidas las veces en que la respuesta es comprar algo que ya existe. Si construimos, el código y el repositorio son tuyos desde el primer día.",
+          "slug": "services/custom-software"
+        },
+        {
+          "label": "Tengo que tomar una decisión y no tengo a quién preguntarle.",
+          "service": "Consultoría y CTO por horas",
+          "answer": "Alguien con experiencia para pensarlo contigo — qué comprar, qué arreglar, qué dejar quieto — y una recomendación escrita que le puedes entregar a cualquier proveedor, incluso a uno que no seamos nosotros.",
+          "slug": "services/it-consulting"
+        }
+      ]
+    }
   },
   "serviceCommon": {
     "whatTitle": "Qué hacemos",
