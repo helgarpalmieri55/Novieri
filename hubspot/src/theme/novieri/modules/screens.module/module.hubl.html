@@ -20,7 +20,12 @@
       {% for item in module.items %}
         {% set src = "/hubfs/screens/" ~ item.item_file ~ ".png" %}
         <figure class="reveal{% if item.item_frame == "phone" %} mx-auto max-w-[300px]{% endif %}" style="--rd: {{ loop.index0 * 90 }}ms">
-          {% if item.item_frame == "phone" %}
+          {% if item.item_frame == "bare" %}
+            {# The capture already carries its own device. Framing a laptop
+               render inside a browser window frames it twice, and a render
+               shot at an angle cannot be cropped square to fit one anyway. #}
+            <img src="{{ src }}" alt="{{ item.item_label|escape_attr }}" loading="lazy" decoding="async" class="block w-full rounded-xl" />
+          {% elif item.item_frame == "phone" %}
             {# A phone: thick bezel, deep radius, no chrome bar. #}
             <div class="overflow-hidden rounded-[2rem] border-[6px] border-ink bg-ink shadow-[0_18px_50px_rgba(22,18,29,0.18)]">
               <img src="{{ src }}" alt="{{ item.item_label|escape_attr }}" loading="lazy" decoding="async" class="block w-full" />

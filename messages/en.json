@@ -1372,7 +1372,33 @@
           "prisma · postgresql",
           "claude",
           "redis"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "the interface",
+          "title": "What you actually get to look at.",
+          "intro": "Three views: the traffic overview with identified visits alongside total ones, the AI analyst you can ask in plain language, and the daily report that lands in an inbox without anyone opening a dashboard.",
+          "items": [
+            {
+              "file": "raw-dash-visitor",
+              "frame": "bare",
+              "label": "overview",
+              "caption": "Total visits against identified visits, the share that resolves to a business network, and which pages the traffic actually reads. Identification is company-level — not every visit resolves, and the number here says which did."
+            },
+            {
+              "file": "raw-ai-visitor",
+              "frame": "bare",
+              "label": "ai analyst",
+              "caption": "Ask in your own words — “which companies are showing the strongest buying intent this week?” — and get the accounts ranked with the pages they visited and when. The answer is built from your own traffic, not a model's guess."
+            },
+            {
+              "file": "raw-reports-visitor",
+              "frame": "bare",
+              "label": "daily report",
+              "caption": "The part most people use: a report in the inbox each morning, with the companies identified and the change against yesterday. Nobody has to remember to log in."
+            }
+          ],
+          "footnote": "Interface mockups with sample data — the companies, visit counts and intent scores shown are illustrative. What your own account sees depends on your traffic and on how much of it resolves to an identifiable business network."
+        }
       },
       "ventia": {
         "name": "AI E-commerce",
@@ -1581,26 +1607,7 @@
           "eyebrow": "the interface",
           "title": "What it looks like to run it.",
           "intro": "Three views from the platform: the exposure dashboard, the scan queue, and the prioritized findings — the loop that takes a vulnerability from found to fixed to verified.",
-          "items": [
-            {
-              "file": "vuln-dashboard",
-              "frame": "desktop",
-              "label": "dashboard",
-              "caption": "Exposure score, open findings, assets monitored and mean time to remediate — the numbers a board asks for, and the trend behind them."
-            },
-            {
-              "file": "vuln-scans",
-              "frame": "desktop",
-              "label": "scans",
-              "caption": "What is running, what finished, what is scheduled. Host discovery, vulnerability, web app and configuration scans against the scope you authorized."
-            },
-            {
-              "file": "vuln-findings",
-              "frame": "desktop",
-              "label": "findings",
-              "caption": "Every finding with its asset, severity and risk score — sorted so the work starts where the risk actually is, not where the CVE list happens to begin."
-            }
-          ],
+          "items": [],
           "footnote": "Interface mockups with sample data, not a client's environment: the findings, asset names and scores shown here are illustrative. What your own dashboard reports depends on the scope you authorize and what the scans actually find."
         }
       },

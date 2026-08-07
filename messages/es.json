@@ -1382,7 +1382,33 @@
           "prisma · postgresql",
           "claude",
           "redis"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "la interfaz",
+          "title": "Lo que de verdad vas a mirar.",
+          "intro": "Tres vistas: el resumen de tráfico con las visitas identificadas junto a las totales, el analista con IA al que le preguntas en lenguaje normal, y el informe diario que llega al correo sin que nadie abra un tablero.",
+          "items": [
+            {
+              "file": "raw-dash-visitor",
+              "frame": "bare",
+              "label": "resumen",
+              "caption": "Visitas totales frente a visitas identificadas, qué porcentaje resuelve a una red empresarial y qué páginas lee de verdad ese tráfico. La identificación es a nivel de empresa: no toda visita resuelve, y el número dice cuáles sí."
+            },
+            {
+              "file": "raw-ai-visitor",
+              "frame": "bare",
+              "label": "analista con ia",
+              "caption": "Preguntas con tus palabras — «¿qué empresas muestran mayor intención de compra esta semana?» — y recibes las cuentas ordenadas, con las páginas que visitaron y cuándo. La respuesta sale de tu propio tráfico, no de una suposición del modelo."
+            },
+            {
+              "file": "raw-reports-visitor",
+              "frame": "bare",
+              "label": "informe diario",
+              "caption": "Lo que más se usa: un informe en el correo cada mañana, con las empresas identificadas y el cambio frente al día anterior. Nadie tiene que acordarse de entrar."
+            }
+          ],
+          "footnote": "Son maquetas de la interfaz con datos de ejemplo: las empresas, los conteos de visitas y los puntajes de intención son ilustrativos. Lo que verá tu cuenta depende de tu tráfico y de cuánto de él resuelve a una red empresarial identificable."
+        }
       },
       "ventia": {
         "name": "Tienda en línea inteligente",
@@ -1591,26 +1617,7 @@
           "eyebrow": "la interfaz",
           "title": "Así se ve operarla.",
           "intro": "Tres vistas de la plataforma: el tablero de exposición, la cola de escaneos y los hallazgos priorizados — el ciclo que lleva una vulnerabilidad de encontrada a corregida y verificada.",
-          "items": [
-            {
-              "file": "vuln-dashboard",
-              "frame": "desktop",
-              "label": "tablero",
-              "caption": "Puntaje de exposición, hallazgos abiertos, activos monitoreados y tiempo promedio de remediación — los números que pide una junta, con la tendencia detrás."
-            },
-            {
-              "file": "vuln-scans",
-              "frame": "desktop",
-              "label": "escaneos",
-              "caption": "Qué está corriendo, qué terminó y qué está programado. Descubrimiento de hosts, vulnerabilidades, aplicaciones web y auditoría de configuración sobre el alcance que autorizaste."
-            },
-            {
-              "file": "vuln-findings",
-              "frame": "desktop",
-              "label": "hallazgos",
-              "caption": "Cada hallazgo con su activo, severidad y puntaje de riesgo — ordenados para empezar por donde está el riesgo real, no por donde arranca la lista de CVE."
-            }
-          ],
+          "items": [],
           "footnote": "Son maquetas de la interfaz con datos de ejemplo, no el entorno de un cliente: los hallazgos, nombres de activos y puntajes son ilustrativos. Lo que reporte tu propio tablero depende del alcance que autorices y de lo que encuentren los escaneos."
         }
       },
