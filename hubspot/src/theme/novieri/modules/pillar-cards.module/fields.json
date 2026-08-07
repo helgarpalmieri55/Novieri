@@ -101,7 +101,7 @@
         "type": "choice",
         "choices": [
           [
-            "",
+            "all",
             "Every market"
           ],
           [
@@ -109,7 +109,7 @@
             "Colombia only"
           ]
         ],
-        "default": "",
+        "default": "all",
         "help_text": "Colombia only hides the card outside Colombia \u2014 for products that are not sold in the US market."
       }
     ],

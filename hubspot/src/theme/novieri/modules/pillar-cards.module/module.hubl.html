@@ -22,7 +22,7 @@
         {# A card marked for one market disappears in the others — the theme
            stylesheet acts on data-region-only, and base.hubl.html decides the
            region before first paint. #}
-        <a href="{{ card.card_link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7"{% if card.card_region %} data-region-only="{{ card.card_region }}"{% endif %} style="--rd: {{ loop.index0 * 70 }}ms">
+        <a href="{{ card.card_link.url.href }}" class="card-hairline reveal group flex flex-col gap-3.5 p-8 pb-7"{% if card.card_region and card.card_region != "all" %} data-region-only="{{ card.card_region }}"{% endif %} style="--rd: {{ loop.index0 * 70 }}ms">
           <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.card_colour }}">··</span>
           {# Explicit ink: on the dark band the section's light text colour
              inherits into the white card and the title all but vanishes. #}

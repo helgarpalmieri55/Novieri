@@ -362,7 +362,7 @@ function servicesIndexWidgets() {
           card_tags: (t.pillars[key].tags || []).join(", "),
           card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
           card_colour: ACCENTS[n % ACCENTS.length],
-          card_region: CO_ONLY.has(key) ? "co" : "",
+          card_region: CO_ONLY.has(key) ? "co" : "all",
         })),
       },
     },
