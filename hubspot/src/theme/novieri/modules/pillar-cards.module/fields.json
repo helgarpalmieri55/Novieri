@@ -94,6 +94,23 @@
         "label": "Link label for this card (falls back to the shared one)",
         "type": "text",
         "default": ""
+      },
+      {
+        "name": "card_region",
+        "label": "Show to",
+        "type": "choice",
+        "choices": [
+          [
+            "",
+            "Every market"
+          ],
+          [
+            "co",
+            "Colombia only"
+          ]
+        ],
+        "default": "",
+        "help_text": "Colombia only hides the card outside Colombia \u2014 for products that are not sold in the US market."
       }
     ],
     "default": [

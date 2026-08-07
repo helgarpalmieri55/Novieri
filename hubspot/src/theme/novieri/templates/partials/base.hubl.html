@@ -12,10 +12,18 @@
     <meta name="description" content="{{ page_meta.meta_description }}" />
     {{ require_css(get_asset_url("../../css/theme.css")) }}
     {#
-      Runs before first paint. Two jobs: opt into animations (content stays
-      visible without JS), and decide whether the cookie banner shows. On the
-      old site the banner mounted only after hydration, which made it the
-      largest paint on mobile; this decides at parse time instead.
+      Runs before first paint. Three jobs: opt into animations (content stays
+      visible without JS), decide whether the cookie banner shows, and stamp
+      the visitor's market. On the old site the banner mounted only after
+      hydration, which made it the largest paint on mobile; this decides at
+      parse time instead.
+
+      data-region is the same timezone signal the price table uses — the one
+      location clue every browser gives without a permission prompt — and it
+      has to be set here rather than in a deferred script: anything marked
+      [data-region-only] would otherwise paint once and then disappear.
+      Colombia has to be positively identified; everything else, including a
+      browser that will not answer, is treated as international.
     #}
     <script>
       document.documentElement.classList.add("js");
@@ -23,6 +31,12 @@
         var c = localStorage.getItem("novieri-consent");
         if (c !== "all" && c !== "necessary") document.documentElement.classList.add("needs-consent");
       } catch (e) {}
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        document.documentElement.setAttribute("data-region", tz === "America/Bogota" ? "co" : "intl");
+      } catch (e) {
+        document.documentElement.setAttribute("data-region", "intl");
+      }
     </script>
     {#
       Who Novieri is, in the vocabulary answer engines read. Facts only —

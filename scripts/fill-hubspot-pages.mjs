@@ -55,6 +55,7 @@ const ES_SLUGS = {
   "case-studies/restaurant-whatsapp-ai": "casos-de-exito/restaurante-whatsapp-ia",
   products: "productos",
   "products/ai-virtual-assistant": "productos/asistente-virtual-ia",
+  "products/ai-website-chatbot": "productos/chatbot-web-ia",
   "products/whatsapp-ai-assistant": "productos/asistente-ia-whatsapp",
   "products/visitor-intelligence": "productos/inteligencia-de-visitantes",
   "products/vulnerability-management": "productos/gestion-de-vulnerabilidades",
@@ -222,12 +223,20 @@ const SERVICE_SLOTS = {
  */
 const SOLUTIONS = [
   ["aiAssistant", "products/ai-virtual-assistant"],
+  ["siteChat", "products/ai-website-chatbot"],
   ["whatsapp", "products/whatsapp-ai-assistant"],
   ["visitorIntel", "products/visitor-intelligence"],
   ["sentinel", "products/vulnerability-management"],
   ["ventia", "products/ai-ecommerce"],
   ["webDev", "products/ai-websites"],
 ];
+
+/**
+ * Products sold in Colombia and not offered to the US market. Their card on
+ * the products index is tagged for that market and disappears everywhere
+ * else; the matching menu link is tagged by the header module.
+ */
+const CO_ONLY = new Set(["whatsapp"]);
 
 /** Mirrors solution.hubl.html. */
 const SOLUTION_SLOTS = {
@@ -353,6 +362,7 @@ function servicesIndexWidgets() {
           card_tags: (t.pillars[key].tags || []).join(", "),
           card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
           card_colour: ACCENTS[n % ACCENTS.length],
+          card_region: CO_ONLY.has(key) ? "co" : "",
         })),
       },
     },

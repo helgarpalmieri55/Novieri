@@ -32,6 +32,7 @@ const services = (m, label) =>
  */
 const SOLUTION_PATHS = {
   aiAssistant: { es: "/productos/asistente-virtual-ia", en: "/products/ai-virtual-assistant" },
+  siteChat: { es: "/productos/chatbot-web-ia", en: "/products/ai-website-chatbot" },
   whatsapp: { es: "/productos/asistente-ia-whatsapp", en: "/products/whatsapp-ai-assistant" },
   visitorIntel: { es: "/productos/inteligencia-de-visitantes", en: "/products/visitor-intelligence" },
   sentinel: { es: "/productos/gestion-de-vulnerabilidades", en: "/products/vulnerability-management" },

@@ -1065,6 +1065,60 @@
           "footnote": "These are simulated conversations voiced with AI for demonstration — not recordings of real customer calls. Casa Marina is a fictional restaurant."
         }
       },
+      "siteChat": {
+        "name": "Website AI Chatbot",
+        "tagline": "The assistant in the corner of this page — answering from your own knowledge, handing your team the conversations that matter.",
+        "tags": [
+          "ai",
+          "leads",
+          "bilingual"
+        ],
+        "hero": {
+          "title": "The assistant on this page, working for your business.",
+          "promise": "Sylvi answers questions on novieri.com at any hour — from our own published information, in English or Spanish — and hands the conversation to a person when it deserves one. The same assistant, grounded in your business instead of ours, is what we deploy on your site. Try her before you read any further: she's in the corner of this page."
+        },
+        "features": [
+          {
+            "title": "Answers from your business, not the internet",
+            "body": "The knowledge base is compiled from the pages you publish and the documents you approve. When the answer isn't there, it says so instead of inventing one — no imagined prices, no services you don't offer."
+          },
+          {
+            "title": "Says that it's an AI",
+            "body": "It identifies itself as an automated assistant rather than impersonating someone on your team, and points to a real person the moment anyone asks for one."
+          },
+          {
+            "title": "One language per conversation",
+            "body": "English and Spanish, switching completely when the visitor switches — not a reply that starts in one language and finishes in the other."
+          },
+          {
+            "title": "Turns questions into qualified leads",
+            "body": "It asks one useful question at a time — what the business does, what is actually going wrong — and offers your booking link or inbox once it knows enough to be worth your time. No form standing between a visitor and an answer."
+          },
+          {
+            "title": "Knows when to hand over",
+            "body": "When it isn't sure, it says so and offers a person instead of guessing. Anything urgent goes straight to a human rather than being diagnosed in a chat window."
+          },
+          {
+            "title": "Treats every message as untrusted",
+            "body": "Visitor text is never followed as instructions: it won't adopt another persona, reveal how it was configured, or repeat confidential information back, however the request is phrased."
+          },
+          {
+            "title": "Refuses secrets",
+            "body": "If someone starts typing a password or a card number, it stops them and moves the conversation to a private channel."
+          }
+        ],
+        "built": {
+          "title": "Built like production software, not a widget.",
+          "body": "Claude runs behind serverless functions on your own domain, so no third-party chat platform sits between you and your visitors' conversations. The knowledge base is compiled from your approved content at build time, which keeps the assistant from drifting away from what you actually publish. Per-visitor rate limits and a daily ceiling keep the cost predictable, requests are accepted only from your own site, and every behaviour above is written into guardrails you approve before it goes live."
+        },
+        "stack": [
+          "claude",
+          "serverless",
+          "rate limiting",
+          "en/es",
+          "hubspot"
+        ]
+      },
       "whatsapp": {
         "name": "WhatsApp AI Assistant",
         "tagline": "A real conversational agent that takes orders and reservations on WhatsApp.",

@@ -1067,6 +1067,60 @@
           "footnote": "Son conversaciones simuladas con voces de IA para demostración — no grabaciones de llamadas reales de clientes. Casa Marina es un restaurante ficticio."
         }
       },
+      "siteChat": {
+        "name": "Chatbot web con IA",
+        "tagline": "La asistente que está en la esquina de esta página: responde con la información de tu negocio y te pasa las conversaciones que valen la pena.",
+        "tags": [
+          "ia",
+          "leads",
+          "bilingüe"
+        ],
+        "hero": {
+          "title": "La asistente de esta página, trabajando para tu negocio.",
+          "promise": "Sylvi responde preguntas en novieri.com a cualquier hora — con nuestra información publicada, en español o en inglés — y le pasa la conversación a una persona cuando hace falta. La misma asistente, alimentada con tu negocio en lugar del nuestro, es la que instalamos en tu sitio. Pruébala antes de seguir leyendo: está en la esquina de esta página."
+        },
+        "features": [
+          {
+            "title": "Responde con tu negocio, no con internet",
+            "body": "Su base de conocimiento se arma con las páginas que publicas y los documentos que autorizas. Cuando la respuesta no está ahí, lo dice en lugar de inventarla: sin precios imaginados ni servicios que no ofreces."
+          },
+          {
+            "title": "Dice que es una IA",
+            "body": "Se presenta como una asistente automática en vez de hacerse pasar por alguien de tu equipo, y remite a una persona real apenas alguien la pide."
+          },
+          {
+            "title": "Un idioma por conversación",
+            "body": "Español e inglés, cambiando por completo cuando el visitante cambia — no una respuesta que empieza en un idioma y termina en el otro."
+          },
+          {
+            "title": "Convierte preguntas en oportunidades reales",
+            "body": "Hace una sola pregunta útil a la vez — qué hace el negocio, qué es lo que de verdad está fallando — y ofrece tu enlace de agenda o tu correo cuando ya sabe lo suficiente para que valga tu tiempo. Sin un formulario entre el visitante y su respuesta."
+          },
+          {
+            "title": "Sabe cuándo pasar la conversación",
+            "body": "Cuando no está segura, lo dice y ofrece una persona en lugar de adivinar. Lo urgente va directo a alguien del equipo, no se diagnostica en un chat."
+          },
+          {
+            "title": "Trata cada mensaje como texto no confiable",
+            "body": "Lo que escribe el visitante nunca se sigue como instrucción: no adopta otra personalidad, no revela cómo está configurada ni repite información confidencial, sin importar cómo se lo pidan."
+          },
+          {
+            "title": "No recibe datos sensibles",
+            "body": "Si alguien empieza a escribir una contraseña o un número de tarjeta, lo detiene y lleva la conversación a un canal privado."
+          }
+        ],
+        "built": {
+          "title": "Construida como software de producción, no como un widget.",
+          "body": "Claude corre detrás de funciones serverless en tu propio dominio, así que no hay una plataforma de chat de terceros entre tú y las conversaciones de tus visitantes. La base de conocimiento se compila con tu contenido autorizado en el momento de la publicación, lo que evita que la asistente se aleje de lo que realmente publicas. Los límites por visitante y un tope diario mantienen el costo predecible, las solicitudes solo se aceptan desde tu propio sitio, y todo el comportamiento anterior queda escrito en reglas que apruebas antes de salir a producción."
+        },
+        "stack": [
+          "claude",
+          "serverless",
+          "límites de uso",
+          "es/en",
+          "hubspot"
+        ]
+      },
       "whatsapp": {
         "name": "Asistente para WhatsApp",
         "tagline": "Atiende pedidos, reservas y preguntas por WhatsApp, con entrega a tu equipo cuando hace falta.",

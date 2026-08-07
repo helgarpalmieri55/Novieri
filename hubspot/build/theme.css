@@ -81,6 +81,15 @@
  * 380px wide at most and a reply is a few sentences, not an article.
  */
 @layer components {
+  /* Market-specific entries. The WhatsApp assistant is sold in Colombia and
+     is not offered to the US market, so its menu link and its card on the
+     products index carry data-region-only="co" and disappear everywhere else.
+     base.hubl.html stamps data-region before first paint, so nothing flashes
+     in and out. The page itself stays live and indexed — it is a real product
+     for the market it serves, just not one every visitor is shown. */
+  [data-region="intl"] [data-region-only="co"] {
+    display: none !important;
+  }
   .sylvi-reply > * + * {
     margin-top: 0.625rem;
   }
