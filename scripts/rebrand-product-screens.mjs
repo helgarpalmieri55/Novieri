@@ -34,12 +34,20 @@ import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
-const DIR = resolve(dirname(fileURLToPath(import.meta.url)), "../hubspot/files/screens");
+// The received renders, not the published rectangles: this measures against
+// the device shot, and unframe-product-screens.mjs runs after it.
+const DIR = resolve(dirname(fileURLToPath(import.meta.url)), "../hubspot/screens-src");
 const check = process.argv.includes("--check");
 
 // Every box is [left, top, right, bottom] in source pixels, right/bottom
-// exclusive. The ink boxes are what the assertions check; the paint boxes are
-// deliberately looser so antialiasing does not survive at the edges.
+// exclusive. The paint boxes are deliberately looser than the ink boxes so
+// antialiasing does not survive at the edges.
+//
+// Each spot declares both states: expectInk is what is there before the edit,
+// expectDone what is there after. The edit is applied in place, so on a second
+// run the file no longer matches expectInk — and a run that cannot tell "done"
+// from "wrong" would either refuse to work or quietly re-edit an edited file.
+// null means the region should be empty.
 const PLAN = {
   donor: {
     file: "raw-findings.png",
@@ -53,20 +61,20 @@ const PLAN = {
       file: "raw-findings.png",
       erase: [
         // The codename, leaving "NOVIERI" and the descriptor under it.
-        { box: [346, 56, 420, 73], expectInk: [351, 61, 414, 69] },
+        { box: [346, 56, 420, 73], expectInk: [351, 61, 414, 69], expectDone: null },
       ],
     },
     {
       file: "raw-dashboard.png",
       erase: [
-        { box: [289, 68, 358, 83], expectInk: [293, 72, 354, 80] },
+        { box: [289, 68, 358, 83], expectInk: [293, 72, 354, 80], expectDone: [293, 72, 346, 80] },
         // The account line. "novieri.demo" is eleven pixels wider than the
         // domain it would replace and this header has no eleven pixels to
         // give, so the line comes out rather than being stamped at a size that
         // would not match the type beside it. An icon and an avatar with no
         // address is an ordinary way for a console to render its header; a
         // half-scale email next to a full-scale one is not.
-        { box: [1213, 64, 1315, 92], expectInk: [1219, 68, 1308, 87] },
+        { box: [1213, 64, 1315, 92], expectInk: [1219, 68, 1308, 87], expectDone: null },
       ],
       // Left edge and cap top of the erased wordmark, so the donor lands where
       // the codename was rather than where the donor happened to sit.
@@ -76,7 +84,7 @@ const PLAN = {
       file: "raw-scans.png",
       // The account here is analyst@acme.demo — a generic demo domain, and not
       // a name the site has to avoid. Only the wordmark is a problem.
-      erase: [{ box: [286, 70, 356, 85], expectInk: [290, 74, 351, 82] }],
+      erase: [{ box: [286, 70, 356, 85], expectInk: [290, 74, 351, 82], expectDone: [290, 74, 343, 82] }],
       stamp: { at: [290, 74] },
     },
   ],
@@ -103,16 +111,15 @@ def ink_box(im, box, thr=INK):
     xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
     return [min(xs), min(ys), max(xs) + 1, max(ys) + 1]
 
-def expect(name, got, want, slack=2):
-    """A re-export that moves the type must stop the run, not be pasted over."""
+def matches(got, want, slack=2):
+    if want is None:
+        return got is None
     if got is None:
-        problems.append(f"{name}: found no text where some was expected at {want}")
         return False
-    off = [abs(g - w) for g, w in zip(got, want)]
-    if max(off) > slack:
-        problems.append(f"{name}: text is at {got}, expected {want} (off by {off})")
-        return False
-    return True
+    return max(abs(g - w) for g, w in zip(got, want)) <= slack
+
+def describe(box):
+    return "nothing" if box is None else str(box)
 
 def erase(im, box):
     """Rebuild a rectangle from the background on either side of it.
@@ -170,15 +177,34 @@ def stamp(im, patch, at, ink_origin):
 d = PLAN["donor"]
 donor_im = Image.open(f"{DIR}/{d['file']}").convert("RGB")
 got = ink_box(donor_im, d["lift"])
-expect(f"donor {d['file']}", got, d["ink"])
-print(f"donor  {d['file']:20s} NOVIERI ink at {got} (expected {d['ink']})")
+if not matches(got, d["ink"]):
+    problems.append(f"donor {d['file']}: NOVIERI is at {describe(got)}, expected {d['ink']}")
+print(f"donor    {d['file']:20s} NOVIERI ink at {describe(got)}")
 
+# Each file is all-or-nothing: a half-edited render means a box moved, and
+# guessing which half is real is exactly the guess this refuses to make.
+todo = []
 for e in PLAN["edits"]:
     im = Image.open(f"{DIR}/{e['file']}").convert("RGB")
+    states = []
     for spot in e["erase"]:
         got = ink_box(im, spot["box"])
-        expect(f"{e['file']} {spot['box']}", got, spot["expectInk"])
-        print(f"erase  {e['file']:20s} ink at {got} (expected {spot['expectInk']})")
+        if matches(got, spot["expectInk"]):
+            states.append("pending")
+        elif matches(got, spot["expectDone"]):
+            states.append("done")
+        else:
+            states.append("unknown")
+            problems.append(
+                f"{e['file']} {spot['box']}: found {describe(got)}, which is neither the "
+                f"text to edit ({describe(spot['expectInk'])}) nor the result of editing it "
+                f"({describe(spot['expectDone'])})")
+        print(f"{states[-1]:8s} {e['file']:20s} {spot['box']} ink at {describe(got)}")
+    if set(states) == {"done"}:
+        continue
+    if "pending" in states and "done" in states:
+        problems.append(f"{e['file']}: partly edited — {states}")
+    todo.append(e)
 
 if problems:
     print()
@@ -187,8 +213,12 @@ if problems:
     print("\\nNothing was written. Re-measure against the new export before running again.")
     sys.exit(1)
 
+if not todo:
+    print("\\nEvery render is already rebranded. Nothing to do.")
+    sys.exit(0)
+
 if CHECK:
-    print("\\nEvery measurement holds. Run without --check to write.")
+    print(f"\\nEvery measurement holds. Run without --check to write {len(todo)} file(s).")
     sys.exit(0)
 
 # --- write ------------------------------------------------------------------
@@ -198,7 +228,7 @@ patch = donor_im.crop(d["lift"])
 # Where the donor's ink starts inside the cropped patch.
 patch_offset = [d["ink"][0] - d["lift"][0], d["ink"][1] - d["lift"][1]]
 
-for e in PLAN["edits"]:
+for e in todo:
     path = f"{DIR}/{e['file']}"
     im = Image.open(path).convert("RGB")
     for spot in e["erase"]:

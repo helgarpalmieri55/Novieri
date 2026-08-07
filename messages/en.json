@@ -1379,19 +1379,19 @@
           "intro": "Three views: the traffic overview with identified visits alongside total ones, the AI analyst you can ask in plain language, and the daily report that lands in an inbox without anyone opening a dashboard.",
           "items": [
             {
-              "file": "raw-dash-visitor",
+              "file": "visitor-overview",
               "frame": "bare",
               "label": "overview",
               "caption": "Total visits against identified visits, the share that resolves to a business network, and which pages the traffic actually reads. Identification is company-level — not every visit resolves, and the number here says which did."
             },
             {
-              "file": "raw-ai-visitor",
+              "file": "visitor-ai-analyst",
               "frame": "bare",
               "label": "ai analyst",
               "caption": "Ask in your own words — “which companies are showing the strongest buying intent this week?” — and get the accounts ranked with the pages they visited and when. The answer is built from your own traffic, not a model's guess."
             },
             {
-              "file": "raw-reports-visitor",
+              "file": "visitor-daily-report",
               "frame": "bare",
               "label": "daily report",
               "caption": "The part most people use: a report in the inbox each morning, with the companies identified and the change against yesterday. Nobody has to remember to log in."
@@ -1609,19 +1609,19 @@
           "intro": "Three views from the platform: the exposure dashboard, the scan queue, and the prioritized findings — the loop that takes a vulnerability from found to fixed to verified.",
           "items": [
             {
-              "file": "raw-dashboard",
+              "file": "vuln-dashboard",
               "frame": "bare",
               "label": "exposure dashboard",
               "caption": "One score for the estate, and the four numbers that move it: open criticals, vulnerabilities already known to be exploited in the wild, findings on software the vendor no longer supports, and how long a fix is currently taking. The trend line is there so you can tell whether the number is falling."
             },
             {
-              "file": "raw-scans",
+              "file": "vuln-scans",
               "frame": "bare",
               "label": "scans",
               "caption": "Scans run to a schedule and to a scope you authorize — discovery, vulnerability and web application passes, plus a PCI DSS-aligned profile for the checks that assessment asks about. The history shows what ran, what it found, and what failed rather than only what succeeded."
             },
             {
-              "file": "raw-findings",
+              "file": "vuln-findings",
               "frame": "bare",
               "label": "findings",
               "caption": "Findings ordered by what to fix first, not by what was found first: severity next to a risk score, the EPSS probability that a vulnerability gets exploited, the CVE it maps to, and whether the clock on it has already run out. Every row names the asset it belongs to."

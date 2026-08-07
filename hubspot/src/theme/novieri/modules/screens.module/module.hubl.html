@@ -21,10 +21,15 @@
         {% set src = "/hubfs/screens/" ~ item.item_file ~ ".png" %}
         <figure class="reveal{% if item.item_frame == "phone" %} mx-auto max-w-[300px]{% endif %}" style="--rd: {{ loop.index0 * 90 }}ms">
           {% if item.item_frame == "bare" %}
-            {# The capture already carries its own device. Framing a laptop
-               render inside a browser window frames it twice, and a render
-               shot at an angle cannot be cropped square to fit one anyway. #}
-            <img src="{{ src }}" alt="{{ item.item_label|escape_attr }}" loading="lazy" decoding="async" class="block w-full rounded-xl" />
+            {# The screenshot on its own: a border and a shadow so it sits on
+               the page, and nothing else. These are app interfaces, not pages
+               in a browser, so the window chrome below would be a thing the
+               product does not have — and the device the render came wrapped
+               in has already been cut away by
+               scripts/unframe-product-screens.mjs, because at this width the
+               laptop was most of the picture and the interface was too small
+               to read. #}
+            <img src="{{ src }}" alt="{{ item.item_label|escape_attr }}" loading="lazy" decoding="async" class="block w-full rounded-2xl border border-line shadow-[0_18px_50px_rgba(22,18,29,0.10)]" />
           {% elif item.item_frame == "phone" %}
             {# A phone: thick bezel, deep radius, no chrome bar. #}
             <div class="overflow-hidden rounded-[2rem] border-[6px] border-ink bg-ink shadow-[0_18px_50px_rgba(22,18,29,0.18)]">

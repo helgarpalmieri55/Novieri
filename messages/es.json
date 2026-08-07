@@ -1389,19 +1389,19 @@
           "intro": "Tres vistas: el resumen de tráfico con las visitas identificadas junto a las totales, el analista con IA al que le preguntas en lenguaje normal, y el informe diario que llega al correo sin que nadie abra un tablero.",
           "items": [
             {
-              "file": "raw-dash-visitor",
+              "file": "visitor-overview",
               "frame": "bare",
               "label": "resumen",
               "caption": "Visitas totales frente a visitas identificadas, qué porcentaje resuelve a una red empresarial y qué páginas lee de verdad ese tráfico. La identificación es a nivel de empresa: no toda visita resuelve, y el número dice cuáles sí."
             },
             {
-              "file": "raw-ai-visitor",
+              "file": "visitor-ai-analyst",
               "frame": "bare",
               "label": "analista con ia",
               "caption": "Preguntas con tus palabras — «¿qué empresas muestran mayor intención de compra esta semana?» — y recibes las cuentas ordenadas, con las páginas que visitaron y cuándo. La respuesta sale de tu propio tráfico, no de una suposición del modelo."
             },
             {
-              "file": "raw-reports-visitor",
+              "file": "visitor-daily-report",
               "frame": "bare",
               "label": "informe diario",
               "caption": "Lo que más se usa: un informe en el correo cada mañana, con las empresas identificadas y el cambio frente al día anterior. Nadie tiene que acordarse de entrar."
@@ -1619,19 +1619,19 @@
           "intro": "Tres vistas de la plataforma: el tablero de exposición, la cola de escaneos y los hallazgos priorizados — el ciclo que lleva una vulnerabilidad de encontrada a corregida y verificada.",
           "items": [
             {
-              "file": "raw-dashboard",
+              "file": "vuln-dashboard",
               "frame": "bare",
               "label": "tablero de exposición",
               "caption": "Un puntaje para todo el entorno y los cuatro números que lo mueven: críticas abiertas, vulnerabilidades que ya se sabe que se están explotando, hallazgos sobre software que el fabricante dejó de soportar, y cuánto se está demorando hoy una corrección. La línea de tendencia está ahí para que veas si el número está bajando."
             },
             {
-              "file": "raw-scans",
+              "file": "vuln-scans",
               "frame": "bare",
               "label": "escaneos",
               "caption": "Los escaneos corren con un calendario y sobre un alcance que tú autorizas: descubrimiento, vulnerabilidades y aplicaciones web, más un perfil alineado a PCI DSS para las verificaciones que pide esa evaluación. El historial muestra qué corrió, qué encontró y qué falló, no solo lo que salió bien."
             },
             {
-              "file": "raw-findings",
+              "file": "vuln-findings",
               "frame": "bare",
               "label": "hallazgos",
               "caption": "Los hallazgos van ordenados por qué corregir primero, no por qué apareció primero: la severidad junto a un puntaje de riesgo, la probabilidad EPSS de que la vulnerabilidad sea explotada, el CVE al que corresponde y si ya se venció el plazo. Cada fila dice a qué activo pertenece."
