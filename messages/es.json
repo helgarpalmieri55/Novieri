@@ -1586,7 +1586,33 @@
           "postgresql",
           "celery · redis",
           "react"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "la interfaz",
+          "title": "Así se ve operarla.",
+          "intro": "Tres vistas de la plataforma: el tablero de exposición, la cola de escaneos y los hallazgos priorizados — el ciclo que lleva una vulnerabilidad de encontrada a corregida y verificada.",
+          "items": [
+            {
+              "file": "vuln-dashboard",
+              "frame": "desktop",
+              "label": "tablero",
+              "caption": "Puntaje de exposición, hallazgos abiertos, activos monitoreados y tiempo promedio de remediación — los números que pide una junta, con la tendencia detrás."
+            },
+            {
+              "file": "vuln-scans",
+              "frame": "desktop",
+              "label": "escaneos",
+              "caption": "Qué está corriendo, qué terminó y qué está programado. Descubrimiento de hosts, vulnerabilidades, aplicaciones web y auditoría de configuración sobre el alcance que autorizaste."
+            },
+            {
+              "file": "vuln-findings",
+              "frame": "desktop",
+              "label": "hallazgos",
+              "caption": "Cada hallazgo con su activo, severidad y puntaje de riesgo — ordenados para empezar por donde está el riesgo real, no por donde arranca la lista de CVE."
+            }
+          ],
+          "footnote": "Son maquetas de la interfaz con datos de ejemplo, no el entorno de un cliente: los hallazgos, nombres de activos y puntajes son ilustrativos. Lo que reporte tu propio tablero depende del alcance que autorices y de lo que encuentren los escaneos."
+        }
       },
       "webDev": {
         "name": "Sitios web inteligentes",

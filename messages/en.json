@@ -1576,7 +1576,33 @@
           "postgresql",
           "celery · redis",
           "react"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "the interface",
+          "title": "What it looks like to run it.",
+          "intro": "Three views from the platform: the exposure dashboard, the scan queue, and the prioritized findings — the loop that takes a vulnerability from found to fixed to verified.",
+          "items": [
+            {
+              "file": "vuln-dashboard",
+              "frame": "desktop",
+              "label": "dashboard",
+              "caption": "Exposure score, open findings, assets monitored and mean time to remediate — the numbers a board asks for, and the trend behind them."
+            },
+            {
+              "file": "vuln-scans",
+              "frame": "desktop",
+              "label": "scans",
+              "caption": "What is running, what finished, what is scheduled. Host discovery, vulnerability, web app and configuration scans against the scope you authorized."
+            },
+            {
+              "file": "vuln-findings",
+              "frame": "desktop",
+              "label": "findings",
+              "caption": "Every finding with its asset, severity and risk score — sorted so the work starts where the risk actually is, not where the CVE list happens to begin."
+            }
+          ],
+          "footnote": "Interface mockups with sample data, not a client's environment: the findings, asset names and scores shown here are illustrative. What your own dashboard reports depends on the scope you authorize and what the scans actually find."
+        }
       },
       "webDev": {
         "name": "AI-powered Websites",
