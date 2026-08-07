@@ -1168,7 +1168,60 @@
           "rate limiting",
           "en/es",
           "hubspot"
-        ]
+        ],
+        "chatDemo": {
+          "eyebrow": "see it answer",
+          "title": "The same assistant, on a client's site.",
+          "body": "A conversation of the kind Sylvi has every day. Watch what she does when she does not know something: she says so and offers a person, instead of inventing an answer.",
+          "header": {
+            "name": "Assistant",
+            "status": "online · replies in seconds"
+          },
+          "badge": "AI assistant",
+          "inputHint": "Ask anything about the company…",
+          "foot": [
+            "answers from your own content",
+            "says when it isn't sure",
+            "hands over to a person"
+          ],
+          "entries": [
+            {
+              "from": "guest",
+              "text": "hey — are you a real person?",
+              "t": "10:14 AM"
+            },
+            {
+              "from": "bot",
+              "text": "No — I'm the assistant on this site, and I'm automated. I can answer questions about what the team does, and put you in front of a person whenever you'd rather.",
+              "t": "10:14 AM"
+            },
+            {
+              "from": "guest",
+              "text": "ok. what does managed IT cost for 25 people?",
+              "t": "10:15 AM"
+            },
+            {
+              "from": "bot",
+              "text": "Published ranges are **$99–115 per user, per month** for the essentials and **$139–160** with managed security and Microsoft 365 included — so for 25 people, roughly $2,500–4,000 a month depending on the tier. Where you land depends on devices, servers and how regulated your work is. The exact number arrives in a written proposal.",
+              "t": "10:15 AM"
+            },
+            {
+              "from": "guest",
+              "text": "do you have a SOC 2 report I can send my security team?",
+              "t": "10:16 AM"
+            },
+            {
+              "from": "bot",
+              "text": "I don't want to guess at that one — it's the kind of question a founder should answer directly rather than me. Two ways forward: I can pass your question to them by email, or you can take a 30-minute slot on their calendar. Which do you prefer?",
+              "t": "10:16 AM"
+            },
+            {
+              "kind": "action",
+              "text": "Conversation summarized and sent to the team — company, need and contact captured.",
+              "t": "10:17 AM"
+            }
+          ]
+        }
       },
       "whatsapp": {
         "name": "WhatsApp AI Assistant",

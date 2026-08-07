@@ -1178,7 +1178,60 @@
           "límites de uso",
           "es/en",
           "hubspot"
-        ]
+        ],
+        "chatDemo": {
+          "eyebrow": "míralo responder",
+          "title": "La misma asistente, en el sitio de un cliente.",
+          "body": "Una conversación como las que Sylvi tiene todos los días. Fíjate en lo que hace cuando no sabe algo: lo dice y ofrece una persona, en lugar de inventarse la respuesta.",
+          "header": {
+            "name": "Asistente",
+            "status": "en línea · responde en segundos"
+          },
+          "badge": "asistente con IA",
+          "inputHint": "Pregunta lo que quieras sobre la empresa…",
+          "foot": [
+            "responde con tu propio contenido",
+            "dice cuándo no está segura",
+            "pasa la conversación a una persona"
+          ],
+          "entries": [
+            {
+              "from": "guest",
+              "text": "hola, ¿eres una persona real?",
+              "t": "10:14 a. m."
+            },
+            {
+              "from": "bot",
+              "text": "No — soy la asistente de este sitio y soy automática. Puedo responder preguntas sobre lo que hace el equipo, y te paso con una persona cuando prefieras.",
+              "t": "10:14 a. m."
+            },
+            {
+              "from": "guest",
+              "text": "listo. ¿cuánto cuesta la TI administrada para 25 personas?",
+              "t": "10:15 a. m."
+            },
+            {
+              "from": "bot",
+              "text": "Los rangos publicados van de **COP 95.000 a 115.000 por usuario al mes** en lo esencial, y de **145.000 a 170.000** con seguridad administrada y Microsoft 365 incluidos — así que para 25 personas serían entre 2,4 y 4,3 millones al mes según el plan. Dónde caes depende de equipos, servidores y qué tan regulado es tu negocio. El número exacto llega en una propuesta escrita.",
+              "t": "10:15 a. m."
+            },
+            {
+              "from": "guest",
+              "text": "¿tienen un informe SOC 2 que le pueda mandar a mi área de seguridad?",
+              "t": "10:16 a. m."
+            },
+            {
+              "from": "bot",
+              "text": "Prefiero no adivinar en esa: es de las preguntas que debería responder un fundador y no yo. Dos caminos: le paso tu consulta por correo, o tomas media hora en su calendario. ¿Cuál prefieres?",
+              "t": "10:16 a. m."
+            },
+            {
+              "kind": "action",
+              "text": "Conversación resumida y enviada al equipo — empresa, necesidad y contacto quedaron registrados.",
+              "t": "10:17 a. m."
+            }
+          ]
+        }
       },
       "whatsapp": {
         "name": "Asistente para WhatsApp",

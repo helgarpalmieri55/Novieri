@@ -247,9 +247,10 @@ const SOLUTION_SLOTS = {
   hero: "main-module-2",     // page-hero
   what: "main-module-3",     // dot-list
   demo: "main-module-4",     // audio-demo (renders only when given items)
-  built: "main-module-5",    // split-note
-  powered: "main-module-6",  // founders-band
-  cta: "main-module-7",      // cta-band
+  chat: "main-module-5",     // chat-demo (renders only when given entries)
+  built: "main-module-6",    // split-note
+  powered: "main-module-7",  // founders-band
+  cta: "main-module-8",      // cta-band
 };
 
 /** Mirrors solutions.hubl.html — and services-index.hubl.html, which is the
@@ -496,6 +497,29 @@ function solutionWidgets(key) {
         intro: "",
         tone: "light",
         items: p.features.map((f) => ({ item_title: f.title, item_body: f.body })),
+      },
+    },
+    // A product gets a conversation only if its copy carries one; the module
+    // renders nothing otherwise.
+    [SOLUTION_SLOTS.chat]: {
+      body: {
+        eyebrow: p.chatDemo?.eyebrow || "",
+        title: p.chatDemo?.title || "",
+        intro: p.chatDemo?.body || "",
+        cta_text: "",
+        channel: "web",
+        chat_name: p.chatDemo?.header?.name || "",
+        chat_status: p.chatDemo?.header?.status || "",
+        badge: p.chatDemo?.badge || "",
+        entries: (p.chatDemo?.entries || []).map((e) => ({
+          row_kind: e.kind || e.from,
+          message: e.text || "",
+          caption: e.label || "",
+          duration: e.duration || "",
+          sent_at: e.t || "",
+        })),
+        input_hint: p.chatDemo?.inputHint || "",
+        capabilities: (p.chatDemo?.foot || []).map((c) => ({ capability: c })),
       },
     },
     // Only products with a `demo` block get playable audio; for the rest the
