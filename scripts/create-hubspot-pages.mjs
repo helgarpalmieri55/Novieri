@@ -33,6 +33,7 @@ const publish = (args.find((a) => a.startsWith("--publish=")) || "").split("=")[
 const variants = args.includes("--language-variants");
 const retemplate = args.includes("--retemplate");
 const renameProducts = args.includes("--rename-products");
+const syncNames = args.includes("--sync-names");
 
 /**
  * The Spanish slugs, from src/i18n/pathnames.json. The home page is "es"
@@ -239,7 +240,9 @@ async function api(path, options = {}) {
 
 const plan = PAGES.filter((p) => !only || p.key === only);
 
-if (dryRun) {
+// --dry-run belongs to whichever mode asked for it; on its own it describes
+// creation, and the modes below that honour it check the flag themselves.
+if (dryRun && !syncNames) {
   console.log(`Would create ${plan.length} page(s) on ${DOMAIN}:\n`);
   for (const p of plan) {
     console.log(`  ${p.name}`);
@@ -507,6 +510,61 @@ if (renameProducts) {
 
   console.log("\nNow re-run fill-content and es-fill so stored links point at the new paths,");
   console.log("and rename the two menu items in Content > Navigation.");
+  process.exit(0);
+}
+
+/**
+ * Brings each page's stored HubSpot name back in line with what PAGES says.
+ *
+ * A page's name looks like an editor-only label and is not: solution.hubl.html
+ * puts content.name into the Service and BreadcrumbList JSON-LD, so it is
+ * published, machine-readable text. Creation skips a slug that already exists,
+ * which means a page keeps whatever it was called on the day it was made — the
+ * vulnerability page was still carrying a product codename the site had since
+ * dropped everywhere a visitor could see it, in both languages.
+ *
+ * Reconciling against PAGES rather than a list of known-bad names means the
+ * next rename in this file propagates on its own. Spanish variants take the
+ * English name, which is the convention every other page here already follows.
+ *
+ * Read-only with --dry-run.
+ */
+if (syncNames) {
+  const pages = [];
+  for (let after; ; ) {
+    const q = new URLSearchParams({ limit: "100", ...(after ? { after } : {}) });
+    const res = await api(`/cms/v3/pages/site-pages?${q}`);
+    pages.push(...(res.results || []));
+    after = res.paging?.next?.after;
+    if (!after) break;
+  }
+  const bySlug = new Map(pages.map((p) => [p.slug, p]));
+
+  let changed = 0;
+  for (const p of plan) {
+    for (const slug of [p.slug, ES_SLUGS[p.slug]].filter((s) => s !== undefined)) {
+      const page = bySlug.get(slug);
+      if (!page) {
+        console.log(`skip    ${slug || "(home)"} — no such page`);
+        continue;
+      }
+      if (page.name === p.name) continue;
+      changed += 1;
+      console.log(`${dryRun ? "would  " : "rename "} ${slug || "(home)"}: ${JSON.stringify(page.name)} -> ${JSON.stringify(p.name)}`);
+      if (dryRun) continue;
+      await api(`/cms/v3/pages/site-pages/${page.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ name: p.name }),
+      });
+      // The name only reaches the rendered JSON-LD once the page is pushed
+      // live again, the same way a changed slug does.
+      await api(`/cms/v3/pages/site-pages/${page.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ publishDate: new Date().toISOString(), state: "PUBLISHED" }),
+      });
+    }
+  }
+  console.log(changed ? `\n${changed} page name(s) ${dryRun ? "would change" : "changed"}.` : "\nEvery page name already matches.");
   process.exit(0);
 }
 
