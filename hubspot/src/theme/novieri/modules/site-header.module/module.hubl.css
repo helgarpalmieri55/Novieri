@@ -51,3 +51,25 @@
 .lang_list_class .lang_switcher_link[aria-current="true"] {
   color: var(--color-ink);
 }
+
+/*
+ * Let the sticky header actually stick.
+ *
+ * `position: sticky; top: 0` was correct and did nothing: measured on the live
+ * site, the header's rect.top tracked -scrollY exactly from the first pixel, on
+ * every page and both viewports. It was not the usual cause — no ancestor has
+ * overflow, transform, filter, contain or will-change; all of them were
+ * checked. It is the containing block. HubSpot wraps every module in its own
+ * div, and #hs_cos_wrapper_site_header computes to height: 85px, the height of
+ * the header itself, as does the div above it. A sticky element cannot travel
+ * outside its containing block, so the header left the viewport with an 85px
+ * wrapper it had no way to escape.
+ *
+ * The cost of that was not subtle: the Spanish home page is 12,044px on a
+ * phone, so the one booking control was on screen for the first 6% of the
+ * scroll and then gone for the rest.
+ */
+#hs_cos_wrapper_site_header,
+#hs_cos_wrapper_site_header > div {
+  height: auto;
+}

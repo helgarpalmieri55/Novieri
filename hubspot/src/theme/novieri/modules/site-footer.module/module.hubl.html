@@ -65,7 +65,7 @@
           {% endif %}
         {% endif %}
         <nav class="footer-links" aria-label="{{ col_title|escape_attr }}">
-          <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ col_title }}</h2>
+          <p class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ col_title }}</p>
           {# menu(), not {% menu %}, and per language — see site-header. #}
           {% set col_menu = column.column_menu %}
           {% if is_es and column.column_menu_es %}
@@ -88,7 +88,7 @@
       {% set legal_links = menu(legal_menu, "site_root").children %}
       {% if legal_links %}
         <nav class="footer-links" aria-label="{{ f_legal_title|escape_attr }}">
-          <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ f_legal_title }}</h2>
+          <p class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ f_legal_title }}</p>
           <ul class="grid gap-2.5 text-small text-ink-muted">
             {% for link in legal_links %}
               <li><a href="{{ link.url }}" class="transition-colors hover:text-ink">{{ link.label }}</a></li>
@@ -106,7 +106,7 @@
       {% endif %}
 
       <div>
-        <h2 class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ f_contact_title }}</h2>
+        <p class="idx-mono mb-3.5 lowercase text-gold-deep">·· {{ f_contact_title }}</p>
         <ul class="grid gap-2.5 text-small text-ink-muted">
           <li>
             <a href="mailto:{{ module.contact_email }}" class="transition-colors hover:text-ink">{{ module.contact_email }}</a>
