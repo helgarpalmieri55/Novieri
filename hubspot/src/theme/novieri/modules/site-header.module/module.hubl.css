@@ -57,19 +57,27 @@
  *
  * `position: sticky; top: 0` was correct and did nothing: measured on the live
  * site, the header's rect.top tracked -scrollY exactly from the first pixel, on
- * every page and both viewports. It was not the usual cause — no ancestor has
- * overflow, transform, filter, contain or will-change; all of them were
- * checked. It is the containing block. HubSpot wraps every module in its own
- * div, and #hs_cos_wrapper_site_header computes to height: 85px, the height of
- * the header itself, as does the div above it. A sticky element cannot travel
- * outside its containing block, so the header left the viewport with an 85px
- * wrapper it had no way to escape.
+ * every page and both viewports. No ancestor has overflow, transform, filter,
+ * contain or will-change — all of them were checked, and the usual suspects are
+ * not it.
  *
- * The cost of that was not subtle: the Spanish home page is 12,044px on a
+ * It is the parent box. HubSpot wraps every module in a div, and wraps that in
+ * another: header -> #hs_cos_wrapper_site_header -> div -> body. Both wrappers
+ * are 85px tall, because that is how tall the header inside them is. A sticky
+ * element can only travel within its parent's box, so a header in an 85px
+ * parent has 85px of travel and then leaves with it. Setting height: auto on
+ * them does nothing at all — they are already auto; 85px IS the auto height.
+ *
+ * `display: contents` is the fix that works: it takes both wrappers out of the
+ * layout tree entirely, so the header's parent becomes body and its travel
+ * becomes the length of the page. The wrappers keep their ids and classes, so
+ * HubSpot's editor still finds the module.
+ *
+ * The cost of the bug was not subtle: the Spanish home page is 12,044px on a
  * phone, so the one booking control was on screen for the first 6% of the
- * scroll and then gone for the rest.
+ * scroll and gone for the rest.
  */
 #hs_cos_wrapper_site_header,
-#hs_cos_wrapper_site_header > div {
-  height: auto;
+body > div:has(> #hs_cos_wrapper_site_header) {
+  display: contents;
 }
