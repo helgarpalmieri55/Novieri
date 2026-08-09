@@ -1,80 +1,108 @@
 /**
- * Fetches every @font-face URL the built stylesheet asks for.
+ * Checks that the stylesheet the live site links to asks for fonts that exist.
  *
- * The six brand faces 404'd in production and nobody noticed, because the
- * fallback stack — system-ui, then the platform default — is close enough that
- * no page looks broken. It looks like a different brand on every operating
- * system, which is worse than looking broken and much harder to spot. A design
- * critique found it; a build never would have, because the CSS was valid and
- * the files were uploaded. Only the URL joining them was wrong.
+ * The six brand faces 404'd in production and nothing caught it, because the
+ * CSS was valid and the files were uploaded — only the URL joining them was
+ * wrong. HubSpot serves the built stylesheet from a versioned path,
+ * /hubfs/raw_assets/<n>/public/..., and serves the raw fonts from the same
+ * path *without* that segment, so a relative ../fonts/ resolved one directory
+ * too deep and could never have worked. It took a design critique to notice,
+ * because the fallback stack is close enough that no page looks broken; it
+ * just looks like a different brand on every operating system.
  *
- * So this checks the one thing neither the build nor the upload can: that the
- * address in the stylesheet returns a font at the domain that serves the site.
+ *   node scripts/check-font-urls.mjs [--domain=www.novieri.com] [--local]
  *
- *   node scripts/check-font-urls.mjs [--domain www.novieri.com]
+ * It reads the live page, follows the stylesheet the page actually links to,
+ * and fetches the URLs *that* file requests. Reading the local build instead
+ * would repeat the original mistake in miniature — verifying an artifact
+ * nobody is served. The first version of this script did exactly that and
+ * passed while the site was still broken.
  *
- * Reads the URLs out of the built theme rather than a list kept here, so a new
- * face is covered the moment it is added and a removed one stops being checked.
- * Exits non-zero on any non-200 or any response that is not a font, which is
- * what makes it usable as a deploy gate.
+ * The version segment moves on every deploy (76 -> 82 on the one that fixed
+ * this), which is why the URLs must be absolute against the unversioned path
+ * and why this resolves the stylesheet fresh rather than remembering it.
+ *
+ * --local checks the built file instead, for a pre-deploy sanity run. It says
+ * so in its output, because a local pass proves less.
  */
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const CSS = `${ROOT}/hubspot/src/theme/novieri/css/theme.css`;
-const domain =
-  (process.argv.find((a) => a.startsWith("--domain=")) || "").split("=")[1] ||
-  process.env.HUBSPOT_SITE_DOMAIN ||
-  "www.novieri.com";
+const arg = (n) => (process.argv.find((a) => a.startsWith(`--${n}=`)) || "").split("=")[1];
+const domain = arg("domain") || process.env.HUBSPOT_SITE_DOMAIN || "www.novieri.com";
+const local = process.argv.includes("--local");
+
+const fail = (...msg) => {
+  console.error(...msg);
+  process.exit(1);
+};
+
+/** Every @font-face src URL in a stylesheet, in order, deduplicated. */
+function fontUrls(css) {
+  const faces = css.match(/@font-face\s*\{[^}]*\}/gs) || [];
+  const urls = faces.flatMap((f) =>
+    [...f.matchAll(/url\(\s*["']?([^"')]+?)["']?\s*\)/g)].map((m) => m[1]),
+  );
+  return [...new Set(urls)];
+}
 
 let css;
-try {
-  css = readFileSync(CSS, "utf8");
-} catch {
-  console.error(`No built stylesheet at ${CSS} — run \`npm run build:hubspot\` first.`);
-  process.exit(1);
+let source;
+
+if (local) {
+  const path = `${ROOT}/hubspot/src/theme/novieri/css/theme.css`;
+  try {
+    css = readFileSync(path, "utf8");
+  } catch {
+    fail(`No built stylesheet at ${path} — run \`npm run build:hubspot\` first.`);
+  }
+  source = `${path} (local build — proves the CSS is right, not that the site serves it)`;
+} else {
+  const page = await fetch(`https://${domain}/`).then((r) => r.text());
+  // The theme stylesheet, as linked by the page. Not reconstructed from a
+  // remembered path: the version segment in it changes on every deploy.
+  const href = (page.match(/href="([^"]*novieri_theme[^"]*\.css[^"]*)"/) || [])[1];
+  if (!href) fail(`Could not find the theme stylesheet linked from https://${domain}/`);
+  const res = await fetch(href);
+  if (!res.ok) fail(`The stylesheet the page links to returned ${res.status}: ${href}`);
+  css = await res.text();
+  source = href;
 }
 
-// Only absolute paths are checkable against a domain. A relative one is the
-// bug this exists to catch, so it is a failure rather than something to skip.
-const urls = [...css.matchAll(/@font-face\s*\{[^}]*?url\(\s*["']?([^"')]+)["']?\s*\)/gs)].map(
-  (m) => m[1],
-);
-if (!urls.length) {
-  console.error("Found no @font-face URLs in the built stylesheet. That is itself suspicious.");
-  process.exit(1);
-}
+console.log(`stylesheet  ${source}`);
 
-const relative = urls.filter((u) => !u.startsWith("/") && !/^https?:/.test(u));
+const urls = fontUrls(css);
+if (!urls.length) fail("That stylesheet declares no @font-face URLs at all. That is itself wrong.");
+
+// A relative URL is the shape of the original bug, so it fails on sight rather
+// than being resolved and quietly passing against the wrong directory.
+const relative = urls.filter((u) => !u.startsWith("/") && !/^https?:|^data:/.test(u));
 if (relative.length) {
-  console.error("These @font-face URLs are relative, so they resolve against whatever path");
+  console.error("\nThese @font-face URLs are relative, so they resolve against whatever path");
   console.error("HubSpot happens to serve the stylesheet from — which is not where the fonts are:");
   for (const u of relative) console.error(`  ${u}`);
-  process.exit(1);
+  fail("");
 }
 
 let bad = 0;
-for (const u of [...new Set(urls)]) {
+for (const u of urls) {
   const href = /^https?:/.test(u) ? u : `https://${domain}${u}`;
-  let line;
   try {
     const res = await fetch(href, { redirect: "follow" });
-    const type = res.headers.get("content-type") || "";
+    const type = (res.headers.get("content-type") || "").split(";")[0];
     const ok = res.ok && /font|octet-stream/i.test(type);
     if (!ok) bad += 1;
-    line = `${ok ? "ok   " : "FAIL "} ${res.status} ${type.split(";")[0] || "(no type)"}  ${u}`;
+    console.log(`${ok ? "ok   " : "FAIL "} ${res.status} ${type || "(no type)"}  ${u}`);
   } catch (err) {
     bad += 1;
-    line = `FAIL  ${String(err.message).slice(0, 60)}  ${u}`;
+    console.log(`FAIL  ${String(err.message).slice(0, 60)}  ${u}`);
   }
-  console.log(line);
 }
 
 if (bad) {
-  console.error(`\n${bad} font URL(s) do not serve a font from ${domain}.`);
-  console.error("Every visitor is reading the site in their own OS default face.");
-  process.exit(1);
+  console.error(`\n${bad} of ${urls.length} font URL(s) do not serve a font from ${domain}.`);
+  fail("Every visitor is reading the site in their own OS default face.");
 }
-console.log(`\nAll ${new Set(urls).size} font URL(s) serve a font from ${domain}.`);
+console.log(`\nAll ${urls.length} font URL(s) serve a font from ${domain}.`);
