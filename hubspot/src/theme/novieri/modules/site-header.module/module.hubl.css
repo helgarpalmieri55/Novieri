@@ -3,20 +3,25 @@
  * the theme where the design is applied by element instead of by utility
  * class. The navigation used to need the same treatment; it renders from
  * menu() now, with our own markup, so those rules are gone.
+ *
+ * They were not gone. `.site-nav a, .site-mobile-nav a` outlived the markup it
+ * was written for and kept setting a colour on every link in the header — and
+ * an element+class selector outranks a single utility class, so it quietly won
+ * three arguments it should never have been in:
+ *
+ *   - the menu's own "Book a call" is `.btn .btn-primary`, white on plum. It
+ *     rendered ink-muted on plum instead: 1.31:1, measured, both locales. The
+ *     one conversion control on mobile was invisible.
+ *   - the panel's top-level items carry `text-ink` and its children carry
+ *     `text-ink-muted`, so the two levels were the same colour and the
+ *     hierarchy the markup describes never appeared.
+ *   - the desktop nav sets `text-ink` on the active branch. That was overridden
+ *     too, which is why no nav item ever looks like the page you are on.
+ *
+ * Deleting them is the fix, because the markup already carries every one of
+ * these colours as a utility. The language switcher below is unaffected: it
+ * sets its own colours on `.lang_list_class a`, later in this file.
  */
-.site-nav a,
-.site-mobile-nav a {
-  font-size: var(--text-small);
-  font-weight: 500;
-  color: var(--color-ink-muted);
-  text-decoration: none;
-  transition: color 200ms var(--ease-out-quart);
-}
-
-.site-nav a:hover,
-.site-mobile-nav a:hover {
-  color: var(--color-ink);
-}
 
 
 /* Language switcher: HubSpot renders a list with the current page's variants */
