@@ -22,7 +22,7 @@
     },
     "software": {
       "title": "Custom software — Novieri",
-      "description": "Web apps, APIs, and integrations in React, FastAPI, and Node. Software that fits your operation, not the other way around."
+      "description": "Web apps, APIs, and integrations in React, FastAPI, and Node, built around the way your operation already works."
     },
     "about": {
       "title": "About — Novieri",
@@ -145,7 +145,7 @@
     },
     "software": {
       "name": "Custom software",
-      "tagline": "Software that fits your operation, not the other way around.",
+      "tagline": "Software built around the way your operation already works.",
       "tags": [
         "react",
         "fastapi",
@@ -198,7 +198,7 @@
     "liveChat": {
       "eyebrow": "ai in production",
       "title": "While you read this, our agents are answering.",
-      "body": "This isn't a promise — it's the WhatsApp assistant we run for restaurants and hotels. It understands voice notes, replies in seconds, creates the booking in your system, and hands off to a person only when it matters.",
+      "body": "This is the WhatsApp assistant we run for restaurants and hotels. It understands messages and voice notes, replies in seconds, creates the booking in your system, and hands the conversation to a person when the case calls for it.",
       "cta": "See the WhatsApp assistant",
       "header": {
         "name": "Marisquería La Bahía",
@@ -269,14 +269,14 @@
       "points": [
         {
           "title": "Less downtime",
-          "body": "Monitoring that catches problems early, backups that actually restore, and someone accountable when something breaks."
+          "body": "We monitor the systems, test the backups, and work problems in order of how urgent they are — before a small fault stops somebody from working."
         },
         {
           "title": "Hours back, every week",
           "body": "Agents and automations take over the repetitive work — answering, capturing, scheduling, re-typing — so your team does the work only they can do."
         },
         {
-          "title": "Security you can show, not just claim",
+          "title": "Security you can show",
           "body": "Hardening, managed protection, and the evidence trail an auditor or enterprise customer asks for — PCI DSS and SOC 2 experience included."
         },
         {
@@ -336,8 +336,8 @@
       "note": "3 minutes · PDF report · free"
     },
     "segments": {
-      "eyebrow": "who we help",
-      "title": "Built for operations like yours.",
+      "eyebrow": "by sector",
+      "title": "Who do we help?",
       "linkLabel": "See how we help",
       "cards": [
         {
@@ -365,7 +365,7 @@
           "linkLabel": "See education solutions"
         }
       ],
-      "intro": "We don't start from a tool. We start from what's costing you time, putting the operation at risk, or holding growth back."
+      "intro": "These are the operations we work with most. If yours looks like one of them, that page shows where we would start."
     },
     "caseStudy": {
       "eyebrow": "real results",
@@ -424,7 +424,7 @@
     "whatTitle": "What we do",
     "howTitle": "How it looks",
     "packagesTitle": "Packages",
-    "packagesIntro": "Every operation is different, so the price comes after we understand yours. These are the shapes the work usually takes.",
+    "packagesIntro": "Every operation is different, so the price is set after we understand yours. These are the scopes we usually work in — start at the first and carry on, or come straight in at the one that fits.",
     "faqTitle": "Frequently asked questions",
     "ctaTitle": "Let’s talk about your goals.",
     "ctaSubtitle": "A 30-minute call to understand your operation and tell you, frankly, whether we can help."
@@ -464,7 +464,7 @@
       ]
     },
     "how": {
-      "caption": "Two real flows, on the two channels your customers already use: WhatsApp and the chat on your own site. The assistant understands, answers in seconds, and performs the action — book it, log it, bring in a person — without pulling the customer out of the conversation."
+      "caption": "Two real flows, on the two channels your customers already use: WhatsApp and the chat on your own site. The assistant understands, answers in seconds, and performs the action — book it, log it, bring in a person — without sending the customer off to call a number or fill in a form."
     },
     "packages": {
       "tiers": [
@@ -566,7 +566,7 @@
     "hero": {
       "eyebrow": "managed it",
       "title": "Your IT department, without having to build one.",
-      "promise": "Support that answers, computers that work, backups that actually restore, and a network that stays up. We run your technology to big-company standards, at a predictable monthly cost, without the overhead of building a full internal department."
+      "promise": "Support that answers, computers kept current, Microsoft 365 accounts opened and closed when they should be, backups tested by restoring them, and a network built to keep interruptions down. We take responsibility for the day-to-day running of your technology, at a predictable monthly cost."
     },
     "what": {
       "items": [
@@ -576,7 +576,7 @@
         },
         {
           "title": "Microsoft 365",
-          "body": "Email, Teams, SharePoint, and licensing managed: onboarding, offboarding, security, and good practices from day one."
+          "body": "Email, Teams, SharePoint and licensing managed: creating and removing users, permissions, security settings, and licenses kept current."
         },
         {
           "title": "Networking & firewall",
@@ -584,11 +584,11 @@
         },
         {
           "title": "Backups & continuity",
-          "body": "Automatic backups of servers and critical machines, proven with real restores — not just green lights."
+          "body": "Automatic backups of servers and critical machines. We test them by restoring files for real, so we know they work before the day you need them."
         },
         {
           "title": "Patching & maintenance",
-          "body": "System and application updates applied on time, before an old vulnerability becomes an incident."
+          "body": "Operating system and application patches installed on time, before a known vulnerability becomes an incident."
         },
         {
           "title": "Proactive monitoring",
@@ -804,7 +804,7 @@
   "software": {
     "hero": {
       "eyebrow": "custom software",
-      "title": "Software that fits your operation, not the other way around.",
+      "title": "Software built around the way your operation already works.",
       "promise": "When the spreadsheet can't take any more and off-the-shelf software forces you to work its way, we build the exact tool: web applications, APIs, and integrations that talk to what you already use."
     },
     "what": {
@@ -1074,7 +1074,7 @@
         ],
         "built": {
           "title": "Real telephony, real AI.",
-          "body": "Business telephony connected to a Claude-powered voice agent, a dedicated FastAPI backend that performs real actions — CRM, calendar, Teams notifications — and a knowledge base synced from your site. Configuration as code, tested end to end."
+          "body": "A business phone line answered by an assistant that can actually do things: look the caller up, book the appointment, tell the right person. Every action it is allowed to take is written down and tested end to end before it answers a call."
         },
         "stack": [
           "voice ai",
@@ -1130,7 +1130,7 @@
         },
         "features": [
           {
-            "title": "Answers from your business, not the internet",
+            "title": "Answers from your own content",
             "body": "The knowledge base is compiled from the pages you publish and the documents you approve. When the answer isn't there, it says so instead of inventing one — no imagined prices, no services you don't offer."
           },
           {
@@ -1159,7 +1159,7 @@
           }
         ],
         "built": {
-          "title": "Built like production software, not a widget.",
+          "title": "Built like production software.",
           "body": "Claude runs behind serverless functions on your own domain, so no third-party chat platform sits between you and your visitors' conversations. The knowledge base is compiled from your approved content at build time, which keeps the assistant from drifting away from what you actually publish. Per-visitor rate limits and a daily ceiling keep the cost predictable, requests are accepted only from your own site, and every behaviour above is written into guardrails you approve before it goes live."
         },
         "stack": [
@@ -1263,7 +1263,7 @@
         ],
         "built": {
           "title": "A real product, in production.",
-          "body": "A multi-tenant SaaS platform: WhatsApp layer on Evolution API and the official WhatsApp Business API, an Anthropic Claude agent with tool use, RAG on PostgreSQL with pgvector, Redis queues, and a React panel — with cross-tenant data-isolation tests included."
+          "body": "One platform serving many businesses at once, with each one's data kept apart from the rest. The assistant answers from your own documents and finishes the task: books it, records it, tells someone. The separation between accounts has its own tests."
         },
         "stack": [
           "whatsapp api",
@@ -1313,8 +1313,8 @@
           }
         ],
         "built": {
-          "title": "Platform security, not brochure security.",
-          "body": "Multi-tenant with database-level isolation, Ed25519-signed jobs the agent verifies before executing, an outbound-only mTLS channel, a hash-chained audit log, and a single Go agent for Windows, Linux, and macOS. Dogfooded on our own fleet first, designed to be commercialized."
+          "title": "The security is in the platform.",
+          "body": "Each client's data is separated at the database itself. Every job is signed, and the agent checks that signature before it will run anything. The agent only ever calls out, never in, so nothing new is left listening inside your network. The audit log cannot be edited after the fact. One agent covers Windows, Linux and macOS — and it ran on our own machines before it ran on anyone else's."
         },
         "stack": [
           "go agent",
@@ -1363,8 +1363,8 @@
           }
         ],
         "built": {
-          "title": "Sales intelligence, not surveillance.",
-          "body": "A dedicated collector, an enrichment pipeline (IP → company → firmographics → contacts), Claude for the analysis, an account dashboard and a report scheduler — a self-hosted stack that runs on a single server and serves multiple sites from the first line of code."
+          "title": "Company level, and only on your own site.",
+          "body": "We built the whole chain ourselves: the collector that records the visit, the steps that turn an address into a company and then into the people who work there, and Claude reading the result. It runs on a server we operate, serving several sites at once."
         },
         "stack": [
           "typescript",
@@ -1372,7 +1372,33 @@
           "prisma · postgresql",
           "claude",
           "redis"
-        ]
+        ],
+        "screens": {
+          "eyebrow": "the interface",
+          "title": "What you actually get to look at.",
+          "intro": "Three views: the traffic overview with identified visits alongside total ones, the AI analyst you can ask in plain language, and the daily report that lands in an inbox without anyone opening a dashboard.",
+          "items": [
+            {
+              "file": "visitor-overview",
+              "frame": "bare",
+              "label": "overview",
+              "caption": "Total visits against identified visits, the share that resolves to a business network, and which pages the traffic actually reads. Identification is company-level — not every visit resolves, and the number here says which did."
+            },
+            {
+              "file": "visitor-ai-analyst",
+              "frame": "bare",
+              "label": "ai analyst",
+              "caption": "Ask in your own words — “which companies are showing the strongest buying intent this week?” — and get the accounts ranked with the pages they visited and when. The answer is built from your own traffic, not a model's guess."
+            },
+            {
+              "file": "visitor-daily-report",
+              "frame": "bare",
+              "label": "daily report",
+              "caption": "The part most people use: a report in the inbox each morning, with the companies identified and the change against yesterday. Nobody has to remember to log in."
+            }
+          ],
+          "footnote": "Interface mockups with sample data — the companies, visit counts and intent scores shown are illustrative. What your own account sees depends on your traffic and on how much of it resolves to an identifiable business network."
+        }
       },
       "ventia": {
         "name": "AI E-commerce",
@@ -1413,8 +1439,8 @@
           }
         ],
         "built": {
-          "title": "Built as a product, not a template.",
-          "body": "A Turborepo monorepo: Next.js 15 storefront and admin, NestJS API, PostgreSQL with Prisma and a tenant-scoped client, Redis, and containerized deployment — Novieri's own development end to end."
+          "title": "Built as a product.",
+          "body": "One codebase we wrote ourselves, storefront and admin together, with each store's data kept apart from the rest."
         },
         "stack": [
           "next.js 15",
@@ -1465,7 +1491,7 @@
         ],
         "built": {
           "title": "Platform engineering, tests first.",
-          "body": "A FastAPI control plane with Celery workers, Go agent and collector, metrics in VictoriaMetrics, a React console with its own design system — and a testing discipline where the quality classifier runs identically in Go and TypeScript against the same golden cases."
+          "body": "Our own monitoring platform, built tests first. The part that matters: the code that decides whether a signal is worth waking somebody for is written twice, in two languages, and both versions have to agree on the same reference cases before either one ships."
         },
         "stack": [
           "go",
@@ -1516,7 +1542,7 @@
         ],
         "built": {
           "title": "A service, with our own platform underneath.",
-          "body": "Novieri's managed monitoring runs on Matter Flow, our observability platform: an outbound-only collector and agent, time-series metrics, hysteresis-based alerting, and live dashboards. You get the service; we operate the platform."
+          "body": "The service runs on Matter Flow, the monitoring platform we build ourselves. The collector only ever calls out, so nothing new is left listening on your network, and a problem has to hold for a while before it raises an alert — which is what keeps the alerts worth reading. You get the service; we operate the platform."
         },
         "stack": [
           "go",
@@ -1584,21 +1610,21 @@
           "items": [
             {
               "file": "vuln-dashboard",
-              "frame": "desktop",
-              "label": "dashboard",
-              "caption": "Exposure score, open findings, assets monitored and mean time to remediate — the numbers a board asks for, and the trend behind them."
+              "frame": "bare",
+              "label": "exposure dashboard",
+              "caption": "One score for the estate, and the four numbers that move it: open criticals, vulnerabilities already known to be exploited in the wild, findings on software the vendor no longer supports, and how long a fix is currently taking. The trend line is there so you can tell whether the number is falling."
             },
             {
               "file": "vuln-scans",
-              "frame": "desktop",
+              "frame": "bare",
               "label": "scans",
-              "caption": "What is running, what finished, what is scheduled. Host discovery, vulnerability, web app and configuration scans against the scope you authorized."
+              "caption": "Scans run to a schedule and to a scope you authorize — discovery, vulnerability and web application passes, plus a PCI DSS-aligned profile for the checks that assessment asks about. The history shows what ran, what it found, and what failed rather than only what succeeded."
             },
             {
               "file": "vuln-findings",
-              "frame": "desktop",
+              "frame": "bare",
               "label": "findings",
-              "caption": "Every finding with its asset, severity and risk score — sorted so the work starts where the risk actually is, not where the CVE list happens to begin."
+              "caption": "Findings ordered by what to fix first, not by what was found first: severity next to a risk score, the EPSS probability that a vulnerability gets exploited, the CVE it maps to, and whether the clock on it has already run out. Every row names the asset it belongs to."
             }
           ],
           "footnote": "Interface mockups with sample data, not a client's environment: the findings, asset names and scores shown here are illustrative. What your own dashboard reports depends on the scope you authorize and what the scans actually find."
@@ -1618,7 +1644,7 @@
         },
         "features": [
           {
-            "title": "Custom design, not a template",
+            "title": "Custom design",
             "body": "Identity, typography, and motion designed for your brand, with the level of craft on this site."
           },
           {
@@ -1626,8 +1652,8 @@
             "body": "An assistant trained on your information attends visitors on your site — and can connect to WhatsApp or your phone line."
           },
           {
-            "title": "Built for English and Spanish",
-            "body": "Spanish and English with localized URLs, hreflang annotations, and clean canonical structure built in."
+            "title": "English and Spanish",
+            "body": "Localized URLs, hreflang annotations, and a clean canonical structure."
           },
           {
             "title": "Visitor intelligence",

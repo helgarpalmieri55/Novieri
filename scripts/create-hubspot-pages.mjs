@@ -33,6 +33,7 @@ const publish = (args.find((a) => a.startsWith("--publish=")) || "").split("=")[
 const variants = args.includes("--language-variants");
 const retemplate = args.includes("--retemplate");
 const renameProducts = args.includes("--rename-products");
+const syncNames = args.includes("--sync-names");
 
 /**
  * The Spanish slugs, from src/i18n/pathnames.json. The home page is "es"
@@ -104,7 +105,7 @@ const PAGES = [
   { key: "software", template: "service", slug: "services/custom-software",
     name: "Custom software",
     htmlTitle: "Custom software — Novieri",
-    metaDescription: "Web apps, APIs, and integrations in React, FastAPI, and Node. Software that fits your operation, not the other way around." },
+    metaDescription: "Web apps, APIs, and integrations in React, FastAPI, and Node, built around the way your operation already works." },
   { key: "it-consulting", template: "service", slug: "services/it-consulting",
     name: "IT consulting",
     htmlTitle: "IT consulting — Novieri",
@@ -239,7 +240,9 @@ async function api(path, options = {}) {
 
 const plan = PAGES.filter((p) => !only || p.key === only);
 
-if (dryRun) {
+// --dry-run belongs to whichever mode asked for it; on its own it describes
+// creation, and the modes below that honour it check the flag themselves.
+if (dryRun && !syncNames) {
   console.log(`Would create ${plan.length} page(s) on ${DOMAIN}:\n`);
   for (const p of plan) {
     console.log(`  ${p.name}`);
@@ -507,6 +510,78 @@ if (renameProducts) {
 
   console.log("\nNow re-run fill-content and es-fill so stored links point at the new paths,");
   console.log("and rename the two menu items in Content > Navigation.");
+  process.exit(0);
+}
+
+/**
+ * Brings each page's stored name, title and meta description back in line with
+ * what PAGES says.
+ *
+ * All three are set once, when a page is created, and creation skips a slug
+ * that already exists — so a page keeps whatever it was given on the day it was
+ * made, no matter how many times this file changes afterwards. The fill script
+ * does not touch them either: it writes modules, and these are page fields.
+ *
+ * All three are published text. The name goes into the Service and
+ * BreadcrumbList JSON-LD via content.name; the title and description are what a
+ * search result shows. The vulnerability page was still carrying a product
+ * codename in its JSON-LD months after the site stopped saying it out loud, and
+ * the custom-software page kept a tagline in its meta description for a release
+ * after the tagline itself was rewritten. Same cause both times.
+ *
+ * Reconciling against PAGES rather than a list of known-bad values means the
+ * next edit in this file propagates on its own. Spanish variants take the
+ * English name, which is the convention every other page here already follows —
+ * but not the English title or description, which would be wrong on a Spanish
+ * page; those are left to the language variant that owns them.
+ *
+ * Read-only with --dry-run.
+ */
+if (syncNames) {
+  const pages = [];
+  for (let after; ; ) {
+    const q = new URLSearchParams({ limit: "100", ...(after ? { after } : {}) });
+    const res = await api(`/cms/v3/pages/site-pages?${q}`);
+    pages.push(...(res.results || []));
+    after = res.paging?.next?.after;
+    if (!after) break;
+  }
+  const bySlug = new Map(pages.map((p) => [p.slug, p]));
+
+  let changed = 0;
+  for (const p of plan) {
+    const es = ES_SLUGS[p.slug];
+    for (const slug of [p.slug, es].filter((s) => s !== undefined)) {
+      const page = bySlug.get(slug);
+      if (!page) {
+        console.log(`skip    ${slug || "(home)"} — no such page`);
+        continue;
+      }
+      // English wording on a Spanish page would be a worse bug than the one
+      // this fixes, so a variant only gets the fields that are language-neutral.
+      const want = slug === es
+        ? { name: p.name }
+        : { name: p.name, htmlTitle: p.htmlTitle, metaDescription: p.metaDescription };
+      const patch = {};
+      for (const [field, value] of Object.entries(want)) {
+        if (value !== undefined && page[field] !== value) patch[field] = value;
+      }
+      if (!Object.keys(patch).length) continue;
+      changed += 1;
+      for (const [field, value] of Object.entries(patch)) {
+        console.log(`${dryRun ? "would " : "set   "}  ${slug || "(home)"} ${field}: ${JSON.stringify(page[field])} -> ${JSON.stringify(value)}`);
+      }
+      if (dryRun) continue;
+      await api(`/cms/v3/pages/site-pages/${page.id}`, { method: "PATCH", body: JSON.stringify(patch) });
+      // None of it reaches the rendered page until it is pushed live again,
+      // the same way a changed slug does not.
+      await api(`/cms/v3/pages/site-pages/${page.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ publishDate: new Date().toISOString(), state: "PUBLISHED" }),
+      });
+    }
+  }
+  console.log(changed ? `\n${changed} page(s) ${dryRun ? "would change" : "changed"}.` : "\nEvery page already matches what this file declares.");
   process.exit(0);
 }
 

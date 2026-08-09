@@ -105,7 +105,21 @@ jobs:
             retemplate)    node scripts/create-hubspot-pages.mjs --retemplate ;;
             # One-time: /solutions -> /products (and /soluciones -> /productos)
             # with a 301 behind each old path. Safe to re-run.
-            rename-products) node scripts/create-hubspot-pages.mjs --rename-products ;;
+            #
+            # slug=names instead reconciles every page's stored HubSpot name
+            # with the name the script declares for it, which is published text
+            # — solution.hubl.html puts content.name in the JSON-LD. A page
+            # created under an old name keeps it, because creation skips a slug
+            # that exists. slug=names-dry-run reports without writing. Riding
+            # the free-text slug rather than a new mode value for the reason
+            # the blog modes below give: the dispatch API refuses a new mode
+            # for a while after the workflow file changes.
+            rename-products)
+              case "${{ inputs.slug }}" in
+                names)         node scripts/create-hubspot-pages.mjs --sync-names ;;
+                names-dry-run) node scripts/create-hubspot-pages.mjs --sync-names --dry-run ;;
+                *)             node scripts/create-hubspot-pages.mjs --rename-products ;;
+              esac ;;
             # The Insights posts. blog-list discovers blogs and their posts;
             # blog-sync upserts content/insights/*.json into the first blog
             # (both languages, paired into language groups) and publishes.
