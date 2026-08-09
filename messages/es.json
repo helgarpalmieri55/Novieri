@@ -149,7 +149,7 @@
     },
     "software": {
       "name": "Desarrollo de software",
-      "tagline": "Software que se adapta a tu operación, no al revés.",
+      "tagline": "Software que se adapta a cómo ya trabaja tu operación.",
       "tags": [
         "react",
         "fastapi",
@@ -158,7 +158,7 @@
     },
     "itConsulting": {
       "name": "Consultoría tecnológica",
-      "tagline": "Decide qué comprar, qué corregir y qué dejar quieto.",
+      "tagline": "Decide qué comprar, qué corregir y qué dejar como está.",
       "tags": [
         "decisiones",
         "arquitectura",
@@ -202,7 +202,7 @@
     "liveChat": {
       "eyebrow": "ia en funcionamiento",
       "title": "Mira cómo funciona un asistente de IA en WhatsApp.",
-      "body": "El asistente entiende mensajes y notas de voz, consulta la información autorizada, registra pedidos o reservas y entrega la conversación a una persona cuando el caso lo requiere.",
+      "body": "Esta es la asistente de WhatsApp que operamos para restaurantes y hoteles. Entiende mensajes y notas de voz, consulta la información autorizada, registra pedidos o reservas y entrega la conversación a una persona cuando el caso lo requiere.",
       "cta": "Ver el asistente para WhatsApp",
       "header": {
         "name": "Marisquería La Bahía",
@@ -273,7 +273,7 @@
       "points": [
         {
           "title": "Menos interrupciones",
-          "body": "Monitoreamos los sistemas, probamos las copias de seguridad y atendemos los problemas según su nivel de urgencia, antes de que una falla menor se convierta en una parada."
+          "body": "Monitoreamos los sistemas, probamos las copias de seguridad y atendemos los problemas según su nivel de urgencia, antes de que una falla menor deje a alguien sin poder trabajar."
         },
         {
           "title": "Horas recuperadas cada semana",
@@ -340,19 +340,19 @@
       "note": "3 minutos · resultado inmediato · informe en PDF · sin costo"
     },
     "segments": {
-      "eyebrow": "para quién trabajamos",
-      "title": "Tecnología pensada para operaciones como la tuya.",
+      "eyebrow": "por sector",
+      "title": "¿A quiénes ayudamos?",
       "linkLabel": "Ver soluciones",
       "cards": [
         {
           "title": "Pymes",
-          "body": "Un responsable claro para el soporte, Microsoft 365, los equipos, la red, las copias de seguridad y las decisiones de tecnología.",
+          "body": "Empresas sin área de sistemas propia. Nosotros respondemos por el soporte, los equipos, Microsoft 365, la red y las copias de seguridad.",
           "href": "/industrias/pymes",
           "linkLabel": "Ver soluciones para pymes"
         },
         {
           "title": "Restaurantes",
-          "body": "Pedidos, reservas y preguntas atendidos por WhatsApp, incluso cuando el salón está lleno y el equipo no puede responder.",
+          "body": "Restaurantes que atienden pedidos y reservas por WhatsApp. La asistente contesta a toda hora, también cuando el salón está lleno y nadie alcanza a mirar el celular.",
           "href": "/industrias/restaurantes",
           "linkLabel": "Ver soluciones para restaurantes"
         },
@@ -375,7 +375,7 @@
           "linkLabel": "Ver soluciones para educación"
         }
       ],
-      "intro": "No empezamos por una herramienta. Empezamos por lo que hoy te quita tiempo, pone la operación en riesgo o frena el crecimiento."
+      "intro": "Estas son las operaciones con las que más trabajamos. Si la tuya se parece a alguna, ahí verás por dónde empezaríamos."
     },
     "caseStudy": {
       "eyebrow": "resultado real",
@@ -424,7 +424,7 @@
         {
           "label": "Tengo que tomar una decisión y no tengo a quién preguntarle.",
           "service": "Consultoría y CTO por horas",
-          "answer": "Alguien con experiencia para pensarlo contigo — qué comprar, qué arreglar, qué dejar quieto — y una recomendación escrita que le puedes entregar a cualquier proveedor, incluso a uno que no seamos nosotros.",
+          "answer": "Alguien con experiencia para pensarlo contigo — qué comprar, qué arreglar, qué dejar como está — y una recomendación escrita que le puedes entregar a cualquier proveedor, incluso a uno que no seamos nosotros.",
           "slug": "services/it-consulting"
         }
       ]
@@ -434,7 +434,7 @@
     "whatTitle": "Qué hacemos",
     "howTitle": "Cómo se ve",
     "packagesTitle": "Paquetes",
-    "packagesIntro": "Cada operación es distinta, así que el precio sale después de entender la tuya. Estas son las formas que suele tomar el trabajo.",
+    "packagesIntro": "Cada operación es distinta, así que el precio se define después de entender la tuya. Estos son los alcances con los que solemos trabajar: puedes empezar por el primero y seguir, o entrar directo en el que corresponda a tu caso.",
     "faqTitle": "Preguntas frecuentes",
     "ctaTitle": "¿Hablamos de tu caso?",
     "ctaSubtitle": "Una llamada de 30 minutos para entender tu operación y decirte, con franqueza, si podemos ayudar."
@@ -474,7 +474,7 @@
       ]
     },
     "how": {
-      "caption": "Dos flujos reales, en los dos canales donde tus clientes ya escriben: WhatsApp y el chat de tu propio sitio. El asistente entiende, responde en segundos y ejecuta la acción — reservar, registrar, avisar a una persona — sin sacar al cliente de la conversación."
+      "caption": "Dos flujos reales, en los dos canales donde tus clientes ya escriben: WhatsApp y el chat de tu propio sitio. La asistente entiende, responde en segundos y ejecuta la acción — reservar, registrar, avisar a una persona — sin mandar al cliente a llamar a otro número ni a llenar un formulario."
     },
     "packages": {
       "tiers": [
@@ -576,7 +576,7 @@
     "hero": {
       "eyebrow": "ti administrada",
       "title": "Tu área de tecnología, sin tener que contratarla.",
-      "promise": "Soporte que responde, equipos actualizados, Microsoft 365 bien administrado, copias de seguridad probadas y una red diseñada para reducir interrupciones. Nos hacemos responsables de la operación diaria de tu tecnología por un valor mensual predecible."
+      "promise": "Soporte que responde, equipos actualizados, cuentas de Microsoft 365 que se abren y se cierran cuando corresponde, copias de seguridad probadas restaurándolas y una red diseñada para reducir interrupciones. Nos hacemos responsables de la operación diaria de tu tecnología por un valor mensual predecible."
     },
     "what": {
       "items": [
@@ -586,7 +586,7 @@
         },
         {
           "title": "Administración de Microsoft 365",
-          "body": "Correo, Teams, SharePoint y licencias administradas: altas, bajas, seguridad y buenas prácticas desde el primer día."
+          "body": "Correo, Teams, SharePoint y licencias administradas: creación y eliminación de usuarios, permisos, configuración de seguridad y licencias al día."
         },
         {
           "title": "Redes, wifi y firewall",
@@ -594,11 +594,11 @@
         },
         {
           "title": "Copias de seguridad y continuidad",
-          "body": "Copias automáticas de servidores y equipos críticos, probadas con restauraciones reales, no solo con luces verdes."
+          "body": "Copias automáticas de servidores y equipos críticos. Las probamos restaurando archivos de verdad, para saber que sirven antes del día en que hagan falta."
         },
         {
           "title": "Actualizaciones y mantenimiento",
-          "body": "Actualizaciones de sistemas y aplicaciones aplicadas a tiempo, antes de que una vulnerabilidad conocida se convierta en un incidente."
+          "body": "Parches del sistema operativo y de las aplicaciones instalados a tiempo, antes de que una vulnerabilidad conocida se convierta en un incidente."
         },
         {
           "title": "Monitoreo proactivo",
@@ -814,7 +814,7 @@
   "software": {
     "hero": {
       "eyebrow": "desarrollo de software",
-      "title": "Software que se adapta a tu operación.",
+      "title": "Software que se adapta a cómo ya trabaja tu operación.",
       "promise": "Cuando una hoja de cálculo ya no alcanza, tus sistemas no se hablan o una herramienta genérica obliga a tu equipo a trabajar de la forma equivocada, construimos la pieza que falta: aplicaciones, portales, integraciones y automatizaciones conectadas con lo que ya utilizas."
     },
     "what": {
@@ -1084,7 +1084,7 @@
         ],
         "built": {
           "title": "Telefonía real, IA real.",
-          "body": "Telefonía empresarial conectada a un agente de voz con Claude de Anthropic, backend propio en FastAPI que ejecuta acciones reales — CRM, calendario, notificaciones a Teams — y una base de conocimiento sincronizada desde tu sitio. Configuración como código, probada de punta a punta."
+          "body": "Una línea telefónica empresarial contestada por una asistente que sí hace cosas: busca a quien llama, agenda la cita, avisa a la persona indicada. Cada acción que tiene permitido hacer queda escrita y probada de punta a punta antes de que conteste una llamada."
         },
         "stack": [
           "voz ia",
@@ -1140,7 +1140,7 @@
         },
         "features": [
           {
-            "title": "Responde con tu negocio, no con internet",
+            "title": "Responde con tu propio contenido",
             "body": "Su base de conocimiento se arma con las páginas que publicas y los documentos que autorizas. Cuando la respuesta no está ahí, lo dice en lugar de inventarla: sin precios imaginados ni servicios que no ofreces."
           },
           {
@@ -1169,7 +1169,7 @@
           }
         ],
         "built": {
-          "title": "Construida como software de producción, no como un widget.",
+          "title": "Construida como software de producción.",
           "body": "Claude corre detrás de funciones serverless en tu propio dominio, así que no hay una plataforma de chat de terceros entre tú y las conversaciones de tus visitantes. La base de conocimiento se compila con tu contenido autorizado en el momento de la publicación, lo que evita que la asistente se aleje de lo que realmente publicas. Los límites por visitante y un tope diario mantienen el costo predecible, las solicitudes solo se aceptan desde tu propio sitio, y todo el comportamiento anterior queda escrito en reglas que apruebas antes de salir a producción."
         },
         "stack": [
@@ -1273,7 +1273,7 @@
         ],
         "built": {
           "title": "Un producto real, en producción.",
-          "body": "Una plataforma que atiende a varios clientes con los datos de cada uno separados: una capa de integración con WhatsApp adecuada a cada caso, un agente con Claude de Anthropic que ejecuta acciones, búsqueda sobre tus documentos en PostgreSQL con pgvector, colas en Redis y panel en React."
+          "body": "Una sola plataforma que atiende a varias empresas a la vez, con los datos de cada una separados de los demás. La asistente responde a partir de tus propios documentos y termina la tarea: agenda, registra, avisa. Esa separación entre cuentas tiene sus propias pruebas."
         },
         "stack": [
           "whatsapp api",
@@ -1323,8 +1323,8 @@
           }
         ],
         "built": {
-          "title": "Seguridad de plataforma, no de folleto.",
-          "body": "Multi-tenant con aislamiento a nivel de base de datos, trabajos firmados con Ed25519 que el agente verifica antes de ejecutar, canal mTLS de salida únicamente, bitácora de auditoría encadenada por hash y agente único en Go para Windows, Linux y macOS. Primero operado en nuestra propia flota, diseñado para comercializarse."
+          "title": "La seguridad está en la plataforma.",
+          "body": "Los datos de cada cliente están separados en la base de datos misma. Cada trabajo va firmado, y el agente verifica esa firma antes de ejecutar nada. El agente solo se comunica hacia afuera, nunca al revés, así que no queda nada nuevo escuchando dentro de tu red. La bitácora de auditoría no se puede editar después. Un solo agente cubre Windows, Linux y macOS — y corrió en nuestros propios equipos antes que en los de nadie más."
         },
         "stack": [
           "agente go",
@@ -1373,8 +1373,8 @@
           }
         ],
         "built": {
-          "title": "Inteligencia comercial, no vigilancia.",
-          "body": "Un recolector propio, una cadena de enriquecimiento (IP → empresa → datos de firma → contactos), Claude para el análisis, un tablero de cuentas y un programador de informes — todo autoalojado, corriendo en un solo servidor y sirviendo varios sitios desde la primera línea de código."
+          "title": "A nivel de empresa, y solo en tu propio sitio.",
+          "body": "Construimos toda la cadena nosotros: el recolector que registra la visita, los pasos que convierten una dirección en una empresa y luego en las personas que trabajan ahí, y Claude leyendo el resultado. Corre en un servidor que operamos nosotros, atendiendo varios sitios a la vez."
         },
         "stack": [
           "typescript",
@@ -1449,8 +1449,8 @@
           }
         ],
         "built": {
-          "title": "Construida como producto, no como plantilla.",
-          "body": "Un solo repositorio con todo: tienda y panel en Next.js 15, API en NestJS, datos en PostgreSQL con Prisma y separación por tienda, Redis y despliegue en contenedores — desarrollo propio de Novieri de principio a fin."
+          "title": "Construida como producto.",
+          "body": "Un solo código, escrito por nosotros, con la tienda y el panel juntos y los datos de cada tienda separados de los demás."
         },
         "stack": [
           "next.js 15",
@@ -1501,7 +1501,7 @@
         ],
         "built": {
           "title": "Ingeniería de plataforma, con pruebas primero.",
-          "body": "Control plane en FastAPI con workers Celery, agente y colector en Go, métricas en VictoriaMetrics, consola React con sistema de diseño propio — y una disciplina de pruebas donde el clasificador de calidad corre idéntico en Go y TypeScript contra los mismos casos dorados."
+          "body": "Nuestra propia plataforma de monitoreo, construida con las pruebas primero. Lo que importa: el código que decide si una señal merece despertar a alguien está escrito dos veces, en dos lenguajes, y las dos versiones tienen que coincidir sobre los mismos casos de referencia antes de que salga cualquiera."
         },
         "stack": [
           "go",
@@ -1552,7 +1552,7 @@
         ],
         "built": {
           "title": "Un servicio, con una plataforma propia debajo.",
-          "body": "El monitoreo administrado de Novieri corre sobre Matter Flow, nuestra plataforma de observabilidad: colector y agente que solo marcan hacia afuera, métricas en series de tiempo, alertas con histéresis y tableros en vivo. Tú recibes el servicio; nosotros operamos la plataforma."
+          "body": "El servicio corre sobre Matter Flow, la plataforma de monitoreo que construimos nosotros. El colector solo se comunica hacia afuera, así que no queda nada nuevo escuchando en tu red, y un problema tiene que sostenerse un rato antes de generar una alerta — que es lo que hace que valga la pena leerlas. Tú recibes el servicio; nosotros operamos la plataforma."
         },
         "stack": [
           "go",
@@ -1655,15 +1655,15 @@
         "features": [
           {
             "title": "Diseño a medida",
-            "body": "Identidad, tipografía y movimiento diseñados para tu marca, no una plantilla genérica."
+            "body": "Identidad, tipografía y movimiento diseñados para tu marca, con el mismo nivel de detalle de este sitio."
           },
           {
             "title": "Asistente integrado",
             "body": "Un asistente entrenado con tu información atiende a los visitantes del sitio, y puede conectarse con WhatsApp o tu línea telefónica."
           },
           {
-            "title": "Español e inglés desde el inicio",
-            "body": "Bilingüe desde el inicio, con URLs localizadas y SEO internacional bien hecho."
+            "title": "Español e inglés",
+            "body": "URLs localizadas, anotaciones hreflang y una estructura canónica limpia."
           },
           {
             "title": "Analítica e inteligencia comercial",
@@ -2280,7 +2280,7 @@
   "itConsulting": {
     "hero": {
       "eyebrow": "consultoría tecnológica",
-      "title": "Decide qué comprar, qué corregir y qué dejar quieto.",
+      "title": "Decide qué comprar, qué corregir y qué dejar como está.",
       "promise": "Muchas empresas pagan licencias que no usan, dependen de un proveedor que nadie sabe evaluar o toman decisiones técnicas sin una visión completa del costo. Revisamos lo que tienes, identificamos riesgos y te entregamos una recomendación que puedes ejecutar con nosotros o con cualquier otro proveedor."
     },
     "what": {
