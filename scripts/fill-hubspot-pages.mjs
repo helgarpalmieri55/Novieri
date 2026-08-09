@@ -22,6 +22,23 @@
  */
 import { readFileSync } from "node:fs";
 
+/**
+ * Where every "Book a call" button goes.
+ *
+ * The critique measured this twice: every booking control on the site resolved
+ * to the contact form, and the scheduler appeared exactly twice on the whole
+ * site, both inside one card partway down that page — below the fold, after
+ * nine form fields in reading order. PRODUCT.md names booking as the one
+ * success action and the form as a secondary path; the build had them the other
+ * way round, and every step between intent and calendar sheds intent.
+ *
+ * Only the buttons literally labelled "Book a call" move here. The demo,
+ * diagnostic and "tell us about your case" CTAs still go to the form, because
+ * for those the form is the thing being asked for.
+ */
+const BOOK_HREF = "https://meetings.hubspot.com/helgar-palmieri";
+
+
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
@@ -289,7 +306,7 @@ function serviceWidgets(ns) {
         title: s.hero.title,
         intro: s.hero.promise,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -328,7 +345,7 @@ function serviceWidgets(ns) {
         // Each service asks for its own next step — "assess your audit
         // readiness" converts a security reader that "book a call" loses.
         button_text: s.ctaButton || t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         ...PRICING_CTA,
       },
     },
@@ -352,7 +369,7 @@ function servicesIndexWidgets() {
         title: idx.title,
         intro: idx.intro,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -397,7 +414,7 @@ function servicesIndexWidgets() {
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         ...PRICING_CTA,
       },
     },
@@ -433,7 +450,7 @@ function pricingWidgets() {
         title: p.hero.title,
         intro: p.hero.intro,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -472,7 +489,7 @@ function pricingWidgets() {
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
       },
     },
   };
@@ -596,7 +613,7 @@ function solutionsIndexWidgets() {
         title: idx.title,
         intro: idx.intro,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -700,7 +717,7 @@ function aboutWidgets() {
         title: a.cta.title,
         subtitle: a.cta.subtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
       },
     },
   };
@@ -745,7 +762,7 @@ function homeWidgets() {
         title_b: h.hero.titleB,
         subtitle: h.hero.subtitle,
         primary_text: t.common.bookCall,
-        primary_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        primary_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         secondary_text: t.nav.services,
         secondary_link: { url: { type: "CONTENT", href: `/${slugFor("services")}` } },
       },

@@ -50,7 +50,12 @@
        the English contact page. #}
     {% set cta_text = module.cta_text %}
     {% set cta_text_short = module.cta_text_short %}
-    {% set cta_href = module.cta_link.url.href %}
+    {# Booking is one destination for the whole site, so it comes from a
+       single field rather than from each instance's own link. The stored
+       content of a global module outranks a changed field default, which is
+       why this is a new field and not an edit to cta_link: an instance has no
+       stored value for a field that did not exist, so the default applies. #}
+    {% set cta_href = module.booking_url or module.cta_link.url.href %}
     {% if html_lang == "es" %}
       {% if module.cta_text_es %}{% set cta_text = module.cta_text_es %}{% endif %}
       {% if module.cta_text_short_es %}{% set cta_text_short = module.cta_text_short_es %}{% endif %}

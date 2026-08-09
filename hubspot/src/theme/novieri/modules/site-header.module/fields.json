@@ -49,6 +49,13 @@
     "help_text": "Shown in the header on phones, where the full label does not fit."
   },
   {
+    "name": "booking_url",
+    "label": "Booking URL",
+    "type": "text",
+    "default": "https://meetings.hubspot.com/helgar-palmieri",
+    "help_text": "Where every Book a call button goes. Booking is one destination sitewide, so it lives here rather than per instance. Empty falls back to the CTA link below."
+  },
+  {
     "name": "cta_link",
     "label": "Header button link",
     "type": "link",
