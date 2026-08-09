@@ -59,7 +59,11 @@
     {% if html_lang == "es" %}
       {% if module.cta_text_es %}{% set cta_text = module.cta_text_es %}{% endif %}
       {% if module.cta_text_short_es %}{% set cta_text_short = module.cta_text_short_es %}{% endif %}
-      {% if module.cta_link_es.url.href %}{% set cta_href = module.cta_link_es.url.href %}{% endif %}
+      {# The Spanish link only overrides when booking_url is empty. The
+         scheduler is one destination for both markets — a Spanish visitor
+         books the same calendar — so a per-language contact link must not
+         quietly pull the Spanish header back to the form. #}
+      {% if not module.booking_url and module.cta_link_es.url.href %}{% set cta_href = module.cta_link_es.url.href %}{% endif %}
     {% endif %}
     {# One product is sold in Colombia and not offered to the US market. Its
        menu link is tagged here and hidden by the theme stylesheet everywhere

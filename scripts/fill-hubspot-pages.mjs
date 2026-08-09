@@ -873,7 +873,8 @@ function homeWidgets() {
         title: h.cta.title,
         subtitle: h.cta.subtitle,
         button_text: h.cta.button,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        // "Book a call" / "Agenda una llamada" — a booking label, so it books.
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
       },
     },
   };
@@ -930,7 +931,9 @@ function diagnosticWidgets() {
         result_print: d.result.print,
         no_script: d.noScript,
         result_cta: d.result.cta,
-        result_cta_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        // "Book a 30-minute call", offered the moment someone has just read
+        // their own diagnostic — the highest-intent click on the site.
+        result_cta_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         result_emailed: d.result.emailed,
         result_again: d.result.again,
         error_required: d.errors.required,
