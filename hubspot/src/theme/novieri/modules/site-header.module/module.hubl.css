@@ -81,3 +81,18 @@
 body > div:has(> #hs_cos_wrapper_site_header) {
   display: contents;
 }
+
+/*
+ * The header's own bar.
+ *
+ * It used .container-site — 1240px, centred — which is right for reading
+ * columns and wrong for a navigation bar: it pulled the logo inward from the
+ * corner and the nav in behind it, so on Spanish, where every label is longer,
+ * the wordmark and "Servicios" ended up 24px apart while the page had room to
+ * spare on both sides. Full width with its own padding puts the mark in the
+ * corner and the nav group against the far edge.
+ */
+.header-bar {
+  width: 100%;
+  padding-inline: clamp(1.25rem, 2.5vw, 2.5rem);
+}
