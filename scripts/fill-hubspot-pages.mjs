@@ -85,8 +85,19 @@ const ES_SLUGS = {
 };
 const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 
-/** The NIT stays empty until registration completes; [[…]] blocks drop it cleanly. */
-const VARS = { company: "Novieri SAS", nit: "", email: "sales@novieri.com" };
+/**
+ * The company's legal identification, as registered.
+ *
+ * The NIT was empty while registration was pending, and the [[…]] blocks in the
+ * legal copy dropped the clause around it so nothing ever read "NIT —". It
+ * exists now, so the clause comes back on its own: every legal page and the
+ * footer already carry the sentence, waiting for the number.
+ *
+ * Written "S.A.S." with the periods, as the registry has it. A Colombian buyer
+ * checks the razón social and the NIT before wiring money, which is the whole
+ * reason this line is on the page.
+ */
+const VARS = { company: "Novieri S.A.S.", nit: "902.094.392-7", email: "sales@novieri.com" };
 /**
  * The legal pages route data-subject requests to a dedicated address per
  * language — governance the review asked for, and a mailbox that now exists.
