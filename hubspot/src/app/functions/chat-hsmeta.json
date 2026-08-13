@@ -7,7 +7,7 @@
       "ANTHROPIC_API_KEY",
       "CHAT_SECRET",
       "RATE_LIMIT_TABLE_ID",
-      "PRIVATE_APP_ACCESS_TOKEN"
+      "HUBSPOT_APP_TOKEN"
     ],
     "endpoint": {
       "path": "chat",

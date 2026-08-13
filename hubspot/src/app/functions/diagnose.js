@@ -68,6 +68,23 @@ function cleanText(text) {
 }
 
 /**
+ * The private app token the HubSpot APIs are called with.
+ *
+ * Not `PRIVATE_APP_ACCESS_TOKEN`, which is what this code asked for until the
+ * upload refused it: that name is a reserved keyword in an app function's
+ * config and cannot be a project secret, so the variable could never have
+ * held anything. Nothing said so — every caller here fails open — which is
+ * how rate limiting came to be off for months while looking on.
+ *
+ * The reserved name is still read first, on the chance the platform is
+ * reserving it because it injects one itself. If it ever does, that is the
+ * better token: it belongs to the app rather than to a secret someone pasted.
+ */
+function appToken() {
+  return process.env.PRIVATE_APP_ACCESS_TOKEN || process.env.HUBSPOT_APP_TOKEN || "";
+}
+
+/**
  * Per-identity rate limiting, backed by a HubDB table because serverless
  * invocations share no filesystem — the PHP version's counter files would
  * evaporate between calls. Read-modify-write is not atomic, which is fine for
@@ -77,7 +94,7 @@ function cleanText(text) {
  * of epoch seconds). Fails open on any HubDB trouble, and says so in the log.
  */
 async function enforceRateLimit(bucket, identity, max, windowSeconds) {
-  const token = process.env.PRIVATE_APP_ACCESS_TOKEN;
+  const token = appToken();
   const tableId = process.env.RATE_LIMIT_TABLE_ID;
   if (!token || !tableId) return null;
 
@@ -146,7 +163,7 @@ async function verifyRecaptcha(token, action) {
   }
 }
 
-module.exports = { requireKnownOrigin, headerValue, clientIp, cleanText, enforceRateLimit, verifyRecaptcha };
+module.exports = { requireKnownOrigin, headerValue, clientIp, cleanText, appToken, enforceRateLimit, verifyRecaptcha };
 
 };
 

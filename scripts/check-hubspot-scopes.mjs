@@ -3,9 +3,13 @@
  *
  * Two things the serverless functions need have been quietly dead: per-IP
  * rate limiting, which writes its counters to HubDB, and the chat handoff,
- * which files the transcript as a ticket. Both read
- * PRIVATE_APP_ACCESS_TOKEN, and both fail open — they log and carry on — so
- * a missing secret or a missing scope looks exactly like nothing happening.
+ * which files the transcript as a ticket. Both authenticate with the private
+ * app token, and both fail open — they log and carry on — so a missing secret
+ * or a missing scope looks exactly like nothing happening.
+ *
+ * The variable is HUBSPOT_APP_TOKEN, not PRIVATE_APP_ACCESS_TOKEN: that name
+ * is a reserved keyword in an app function's config and cannot be a project
+ * secret at all, which is the other half of why none of this ever ran.
  *
  * This says which it is, before a deploy depends on the answer:
  *
@@ -16,7 +20,7 @@
  * granted in the UI and an API that answers are not always the same thing.
  * Nothing here writes.
  */
-const token = (process.env.HUBSPOT_PRIVATE_APP_TOKEN || process.env.PRIVATE_APP_ACCESS_TOKEN || "").trim();
+const token = (process.env.HUBSPOT_PRIVATE_APP_TOKEN || process.env.HUBSPOT_APP_TOKEN || "").trim();
 if (!token) {
   console.error("No token. Set HUBSPOT_PRIVATE_APP_TOKEN.");
   process.exit(1);

@@ -13,13 +13,14 @@
  * forms API would put a fake person in the database. A ticket is also what
  * this actually is — a queue of people waiting on a human.
  *
- * Delivery needs PRIVATE_APP_ACCESS_TOKEN, which the portal does not have
- * yet. Until it does, the transcript goes to the function log, where `hs logs`
- * can reach it, and the log says plainly that it is a fallback. Nothing here
- * may break a reply: every failure is caught, logged and swallowed, because
- * the visitor's answer matters more than Novieri's copy of it.
+ * Delivery needs the private app token and the tickets scope on it. Without
+ * either, the transcript goes to the function log, where `hs logs` can reach
+ * it, and the log says plainly that it is a fallback. Nothing here may break
+ * a reply: every failure is caught, logged and swallowed, because the
+ * visitor's answer matters more than Novieri's copy of it.
  */
 const axios = require("axios");
+const { appToken } = require("./guard.js");
 
 const TICKETS_API = "https://api.hubapi.com/crm/v3/objects/tickets";
 
@@ -48,13 +49,13 @@ function transcript({ messages, reply, locale, region, page }) {
  */
 async function deliverTranscript(conversation) {
   const body = transcript(conversation);
-  const token = process.env.PRIVATE_APP_ACCESS_TOKEN;
+  const token = appToken();
 
   if (!token) {
     // Not silent: a handoff nobody hears about is the failure this exists to
     // prevent, so it goes somewhere a person can still find it.
     console.warn(
-      `handoff: PRIVATE_APP_ACCESS_TOKEN is not set, so this transcript is only in the log\n${body}`,
+      `handoff: no private app token, so this transcript is only in the log\n${body}`,
     );
     return false;
   }

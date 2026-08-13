@@ -76,16 +76,21 @@ jobs:
           HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           FORM_GUID: 42957848-6780-467b-8f8b-4e5944e2ebe0
           # The private app token, which the repo already holds for the CMS
-          # API. The functions need it under their own name: HubDB rate
-          # limiting and the chat handoff both read PRIVATE_APP_ACCESS_TOKEN
-          # and both fail open, so neither has ever run and neither said so.
-          PRIVATE_APP_ACCESS_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
+          # API. The functions need it under a name of their own: HubDB rate
+          # limiting and the chat handoff both authenticate with it, and both
+          # fail open, so neither has ever run and neither said so.
+          #
+          # HUBSPOT_APP_TOKEN, not PRIVATE_APP_ACCESS_TOKEN. That name is a
+          # reserved keyword in an app function's config — `hs project upload`
+          # rejects the component outright — so the variable the code used to
+          # read could never have held anything.
+          HUBSPOT_APP_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
         run: |
           echo "$FORM_GUID" | hs secrets add HUBSPOT_FORM_DIAGNOSTIC --use-env \
             || echo "$FORM_GUID" | hs secrets update HUBSPOT_FORM_DIAGNOSTIC --use-env
-          if [ -n "${PRIVATE_APP_ACCESS_TOKEN:-}" ]; then
-            echo "$PRIVATE_APP_ACCESS_TOKEN" | hs secrets add PRIVATE_APP_ACCESS_TOKEN --use-env \
-              || echo "$PRIVATE_APP_ACCESS_TOKEN" | hs secrets update PRIVATE_APP_ACCESS_TOKEN --use-env
+          if [ -n "${HUBSPOT_APP_TOKEN:-}" ]; then
+            echo "$HUBSPOT_APP_TOKEN" | hs secrets add HUBSPOT_APP_TOKEN --use-env \
+              || echo "$HUBSPOT_APP_TOKEN" | hs secrets update HUBSPOT_APP_TOKEN --use-env
           else
             echo "::warning::No HUBSPOT_PRIVATE_APP_TOKEN repo secret — skipping."
           fi
