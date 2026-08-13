@@ -768,7 +768,11 @@ function homeWidgets() {
   return {
     [HOME_SLOTS.hero]: {
       body: {
-        ticker: SERVICES.map(([key], i) => ({ word: t.pillars[key].name, colour: ACCENTS[i] })),
+        // One line, not five rotating ones. The hero used to cycle every
+        // pillar name above the headline; what a visitor saw depended on
+        // when they looked, and there was no way to stop it.
+        eyebrow: h.hero.eyebrow,
+        eyebrow_colour: ACCENTS[0],
         title_a: h.hero.titleA,
         title_b: h.hero.titleB,
         subtitle: h.hero.subtitle,

@@ -481,20 +481,5 @@
     transform: scaleX(1);
   }
 
-  .ticker-word {
-    display: inline-block;
-    animation: ticker-in 500ms var(--ease-out-quart) both;
-  }
-
-  @keyframes ticker-in {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
 }
 

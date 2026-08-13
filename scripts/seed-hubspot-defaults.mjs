@@ -43,12 +43,8 @@ function chatRow(entry) {
 
 const seeds = {
   "hero.module": {
-    ticker: [
-      { word: en.pillars.ai.name, colour: "text-plum" },
-      { word: en.pillars.managedIt.name, colour: "text-teal" },
-      { word: en.pillars.security.name, colour: "text-gold-deep" },
-      { word: en.pillars.software.name, colour: "text-ink-muted" },
-    ],
+    eyebrow: en.home.hero.eyebrow,
+    eyebrow_colour: "text-plum",
   },
   "stat-strip.module": {
     stats: en.home.proof.items.map((item, i) => ({
