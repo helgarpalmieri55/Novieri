@@ -75,9 +75,20 @@ jobs:
           HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           FORM_GUID: 42957848-6780-467b-8f8b-4e5944e2ebe0
+          # The private app token, which the repo already holds for the CMS
+          # API. The functions need it under their own name: HubDB rate
+          # limiting and the chat handoff both read PRIVATE_APP_ACCESS_TOKEN
+          # and both fail open, so neither has ever run and neither said so.
+          PRIVATE_APP_ACCESS_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
         run: |
           echo "$FORM_GUID" | hs secrets add HUBSPOT_FORM_DIAGNOSTIC --use-env \
             || echo "$FORM_GUID" | hs secrets update HUBSPOT_FORM_DIAGNOSTIC --use-env
+          if [ -n "${PRIVATE_APP_ACCESS_TOKEN:-}" ]; then
+            echo "$PRIVATE_APP_ACCESS_TOKEN" | hs secrets add PRIVATE_APP_ACCESS_TOKEN --use-env \
+              || echo "$PRIVATE_APP_ACCESS_TOKEN" | hs secrets update PRIVATE_APP_ACCESS_TOKEN --use-env
+          else
+            echo "::warning::No HUBSPOT_PRIVATE_APP_TOKEN repo secret — skipping."
+          fi
           hs secrets list --use-env
       - name: List the project's secrets
         if: inputs.mode == 'list-secrets'
@@ -87,6 +98,13 @@ jobs:
           HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
         run: hs secrets list --use-env
+      # Names are only half the answer: a secret that exists still buys
+      # nothing if the token in it lacks the scope. This says which.
+      - name: Check what the private app token can do
+        if: inputs.mode == 'list-secrets'
+        env:
+          HUBSPOT_PRIVATE_APP_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
+        run: node scripts/check-hubspot-scopes.mjs
       - name: Validate and upload the project
         if: inputs.mode == 'deploy'
         working-directory: hubspot
