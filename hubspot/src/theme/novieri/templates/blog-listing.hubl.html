@@ -10,11 +10,33 @@
   the listing and the search snippet tell the same story.
 #}
 {% extends "./partials/base.hubl.html" %}
+
+{#
+  standard_header_includes emits a canonical on every page and every blog
+  post, and none at all on a blog listing — so /insights and /es/insights were
+  the two URLs on the site with no canonical, while carrying the same articles
+  as /insights/page/2 and an ?hsLang variant of themselves.
+
+  Each page of the listing points at itself rather than at page 1: page 2 is
+  its own set of articles, and collapsing it into page 1 would tell Google the
+  older articles are duplicates of the newer ones.
+#}
+{% block head %}
+  <link rel="canonical" href="{% if current_page_num > 1 %}{{ blog_page_link(current_page_num) }}{% else %}{{ group.absolute_url }}{% endif %}" />
+{% endblock head %}
+
 {% block body %}
   <section class="relative overflow-hidden">
     <div class="container-site section-pad">
       <p class="reveal idx-mono lowercase text-gold-deep">{{ group.public_title || "insights" }}</p>
-      <h1 class="reveal mt-3 max-w-[20ch]" style="--rd: 60ms">{{ group.html_title || content.html_title }}</h1>
+      {#
+        The heading was the blog's SEO title, brand suffix and all: the page
+        read "Insights — Novieri" as its h1, on Novieri's own site. The title
+        tag says the brand because a search result needs it; a heading on the
+        page does not. Splitting on the em dash separator leaves the part that
+        is actually the name of the section.
+      #}
+      <h1 class="reveal mt-3 max-w-[20ch]" style="--rd: 60ms">{{ (group.html_title || content.html_title)|split(" — ")|first }}</h1>
       {% if group.description %}
         <p class="reveal mt-5 max-w-[56ch] text-lead text-ink-muted" style="--rd: 120ms">{{ group.description }}</p>
       {% endif %}

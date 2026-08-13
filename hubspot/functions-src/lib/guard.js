@@ -131,4 +131,4 @@ async function verifyRecaptcha(token, action) {
   }
 }
 
-module.exports = { requireKnownOrigin, clientIp, cleanText, enforceRateLimit, verifyRecaptcha };
+module.exports = { requireKnownOrigin, headerValue, clientIp, cleanText, enforceRateLimit, verifyRecaptcha };

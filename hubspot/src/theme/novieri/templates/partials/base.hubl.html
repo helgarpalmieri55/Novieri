@@ -84,13 +84,37 @@
       Spanish-speaking searchers everywhere else — including South Florida,
       which is exactly the market this site is being pointed at.
     #}
+    {#
+      The English pages have carried x-default since this was written. The
+      Spanish ones never did, because the variable this asked for does not
+      exist: `content.translations` returns nothing on any page. The name
+      HubSpot actually populates is `content.translated_content` — a dict of
+      the page's language variants, keyed by language tag — which is what the
+      documented custom language switcher reads.
+
+      An hreflang set has to be complete on every page in it. With the Spanish
+      pages naming en and es but no x-default, the cluster disagreed with
+      itself on eight URLs.
+    #}
     {% if html_lang == "es" %}
-      {% if content.translations and content.translations.en and content.translations.en.url %}
-        <link rel="alternate" hreflang="x-default" href="{{ content.translations.en.url }}" />
+      {% set en_variant = content.translated_content.en %}
+      {% set en_url = en_variant.absolute_url or en_variant.url or content.translations.en.url %}
+      {% if en_url %}
+        <link rel="alternate" hreflang="x-default" href="{{ en_url }}" />
+      {% else %}
+        {# Left visible on purpose: if this comment is in the page source, the
+           variant lookup is still failing and the cluster is still incomplete. #}
+        <!-- x-default: no English variant found for this page -->
       {% endif %}
     {% else %}
       <link rel="alternate" hreflang="x-default" href="{{ page_meta.canonical_url }}" />
     {% endif %}
+    {#
+      Head additions from a template that needs them. HubSpot's
+      standard_header_includes emits a canonical for pages and blog posts but
+      not for blog listings, so the listing template fills its own in.
+    #}
+    {% block head %}{% endblock head %}
   </head>
 
   <body class="{{ builtin_body_classes }}">

@@ -238,7 +238,30 @@ async function api(path, options = {}) {
   return body;
 }
 
+/**
+ * The home page, for --sync-names and nothing else.
+ *
+ * It stays out of PAGES because creation is where the risk is: the empty slug
+ * is what makes a page the homepage, and no script should be able to hand it
+ * to something else. Renaming carries none of that risk — it patches a page
+ * that already exists, matched by slug — and the cost of leaving it out was
+ * the site's most-linked URL shipping `<title>Home</title>` with an empty
+ * description, while every inner page carried a written one.
+ *
+ * No `name`: the sync skips undefined fields, so this changes the two SEO
+ * fields on the English page and touches nothing on the Spanish variant,
+ * which already has a Spanish title of its own.
+ */
+const HOME = {
+  key: "home",
+  slug: "",
+  htmlTitle: "Novieri — managed IT, AI automation and cybersecurity",
+  metaDescription:
+    "We run and secure your company's technology and build the AI that removes repetitive work. Founder-led delivery in English and Spanish, from Barranquilla.",
+};
+
 const plan = PAGES.filter((p) => !only || p.key === only);
+const syncPlan = [HOME, ...PAGES].filter((p) => !only || p.key === only);
 
 // --dry-run belongs to whichever mode asked for it; on its own it describes
 // creation, and the modes below that honour it check the flag themselves.
@@ -549,7 +572,7 @@ if (syncNames) {
   const bySlug = new Map(pages.map((p) => [p.slug, p]));
 
   let changed = 0;
-  for (const p of plan) {
+  for (const p of syncPlan) {
     const es = ES_SLUGS[p.slug];
     for (const slug of [p.slug, es].filter((s) => s !== undefined)) {
       const page = bySlug.get(slug);

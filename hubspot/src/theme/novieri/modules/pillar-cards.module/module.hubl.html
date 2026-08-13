@@ -13,6 +13,22 @@
         {% if module.intro %}<p class="mt-4 max-w-[56ch] text-ink-muted{% if module.dark %} text-on-dark-muted{% endif %}">{{ module.intro }}</p>{% endif %}
       </div>
     {% endif %}
+    {#
+      The card heading follows the section, not the module.
+
+      With a section title above them the cards sit under an h2, so h3 is the
+      right level. Without one — which is how the services, products and
+      industries indexes use this module, because the page hero already says
+      what the page is — the h3s came straight after the h1 and the outline
+      skipped a level on six pages: h1, h3, h3, h3, h3, h3. A screen reader
+      announcing "heading level 3" with no level 2 anywhere describes a
+      structure that is not there.
+
+      Size is set explicitly so the card looks the same either way: an h2 here
+      would otherwise render at the section-heading size.
+    #}
+    {% set card_tag = "h2" %}
+    {% if module.title %}{% set card_tag = "h3" %}{% endif %}
     {# Three across, not four. There are five pillars now and five cards in a
        four-column grid leave one stranded on its own row; 3 + 2 reads as a
        deliberate arrangement instead of an accident. The solutions index has
@@ -38,7 +54,7 @@
           <span aria-hidden="true" class="text-h3 font-bold leading-[0.5] tracking-[0.1em] {{ card.card_colour }}">··</span>
           {# Explicit ink: on the dark band the section's light text colour
              inherits into the white card and the title all but vanishes. #}
-          <h3 class="text-ink">{{ card.card_name }}</h3>
+          <{{ card_tag }} class="text-h3 leading-[1.25] tracking-[-0.01em] text-ink">{{ card.card_name }}</{{ card_tag }}>
           <p class="grow text-small text-ink-muted">{{ card.card_tagline }}</p>
           <span class="flex flex-wrap gap-1.5">
             {% for tag in card.card_tags|split(",") %}

@@ -5,7 +5,9 @@
    {% language_switcher %} tag, not {% module path="@hubspot/language_switcher" %}:
    the module tag is disabled inside a module, and the build rejects it. #}
 
-<header class="site-header sticky top-0 z-50 border-b border-transparent bg-white/90 backdrop-blur transition-colors duration-300">
+{# Fixed, not sticky — module.hubl.css explains why, and carries the body
+   padding that replaces the space the header no longer occupies. #}
+<header class="site-header z-50 border-b border-transparent bg-white/90 backdrop-blur transition-colors duration-300">
   <a
     href="#main"
     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-ink"

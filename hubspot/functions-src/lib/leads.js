@@ -23,7 +23,14 @@ const axios = require("axios");
  * @param {string} consentText  The consent copy the visitor accepted
  */
 async function submitForm(formGuid, fields, context = {}, consentText = "") {
-  const portal = (process.env.HUBSPOT_PORTAL_ID || "").trim();
+  // The portal id is a public value — it is in every embed code and in every
+  // /hubfs/ URL this site serves — but it was only ever read from an
+  // environment variable that no function declares and the portal has never
+  // held. So this guard failed on every submission and every diagnostic lead
+  // was dropped, quietly, on the one path that promises a follow-up email.
+  // The default is the id, taken from the file-manager URLs the theme already
+  // hardcodes; the variable still wins if it is ever set.
+  const portal = (process.env.HUBSPOT_PORTAL_ID || "45528787").trim();
   const guid = (formGuid || "").trim();
   if (!portal || !guid) {
     console.warn("leads: portal id or form guid missing — skipping CRM delivery");
