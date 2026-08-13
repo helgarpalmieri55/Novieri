@@ -28,10 +28,21 @@ if (!token) {
 
 const auth = { Authorization: `Bearer ${token}` };
 
-/** What each function needs, and why — so a missing one reads as a symptom. */
+/**
+ * What each function needs, and why — so a missing one reads as a symptom.
+ *
+ * Each entry lists every spelling of the same grant, because HubSpot has two.
+ * The private app's scope picker offers short names (`tickets`); the OAuth
+ * documentation and the granular scopes use the long form
+ * (`crm.objects.tickets.write`). Asking for the long one by name sent someone
+ * looking for a checkbox that is not in that list.
+ */
 const NEEDED = [
-  { scope: "hubdb", why: "per-IP rate limiting on /chat and /diagnose" },
-  { scope: "crm.objects.tickets.write", why: "filing a chat handoff transcript as a ticket" },
+  { any: ["hubdb"], why: "per-IP rate limiting on /chat and /diagnose" },
+  {
+    any: ["tickets", "crm.objects.tickets.write"],
+    why: "filing a chat handoff transcript as a ticket",
+  },
 ];
 
 let failed = false;
@@ -53,11 +64,13 @@ try {
   console.log("        falling back to the live calls below, which are the real test\n");
 }
 
-for (const { scope, why } of NEEDED) {
+for (const { any, why } of NEEDED) {
   if (!scopes.length) continue;
-  const has = scopes.includes(scope);
-  if (!has) failed = true;
-  console.log(`${has ? "ok   " : "MISS "} ${scope.padEnd(28)} ${why}`);
+  const held = any.find((s) => scopes.includes(s));
+  if (!held) failed = true;
+  // The name it was actually granted under when it is there, and every name
+  // that would have counted when it is not — so the fix is a search term.
+  console.log(`${held ? "ok   " : "MISS "} ${(held || any.join(" | ")).padEnd(40)} ${why}`);
 }
 
 // And what the APIs themselves say. A read is enough: if the token cannot
@@ -83,7 +96,8 @@ for (const [label, url] of probes) {
 if (failed) {
   console.error(
     "\nAdd the missing scopes in HubSpot: Settings > Integrations > Private Apps >" +
-      "\nthe app > Scopes. Then rotate nothing — the token stays the same.",
+      "\nthe app > Scopes. Search the short name — the picker does not list the" +
+      "\nlong crm.objects.* spelling. Rotate nothing: the token stays the same.",
   );
   process.exit(1);
 }
