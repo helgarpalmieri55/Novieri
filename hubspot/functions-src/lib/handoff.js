@@ -73,10 +73,10 @@ async function deliverTranscript(conversation) {
 
   // Each identity in turn. A 403 means this token's app was never granted the
   // scope, which is a different problem from a bad request and the only one a
-  // second token can solve — so it is the only status worth retrying. The
-  // first attempt failing this way is exactly what happened here: the app
-  // declared hubdb and contacts, not tickets, so every transcript 403'd into
-  // a log and the visitor's reply looked perfect.
+  // second token can solve — so it is the only status worth retrying. No
+  // token has needed the retry yet; it is here because a scope that is only
+  // granted in a UI can be revoked in one, and this path fails silently by
+  // design.
   let last;
   for (const token of tokens) {
     try {

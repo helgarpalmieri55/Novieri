@@ -55,26 +55,28 @@ function cleanText(text) {
 /**
  * The tokens the HubSpot APIs may be called with, best first.
  *
- * `PRIVATE_APP_ACCESS_TOKEN` is a reserved keyword in an app function's
- * config — the upload rejects the component if you name it as a secret —
- * because the platform injects it itself. It carries the project app's own
- * identity, and its power is exactly the `requiredScopes` in app-hsmeta.json,
- * no more. That is the right token to prefer: nobody pastes it, nobody
- * rotates it, and its scopes are declared in the repo next to the code that
- * needs them.
+ * `HUBSPOT_APP_TOKEN` is a standalone private app token, held as a project
+ * secret. It is first because it is the one whose scopes can be read, granted
+ * and verified — scripts/check-hubspot-scopes.mjs calls every API these
+ * functions use and reports what answers.
  *
- * Being reserved is easy to mistake for being empty. It does not appear in
- * `hs secrets list`, because it is not a secret — which is not evidence that
- * it is unset, and reading it that way cost an afternoon here. Rate limiting
- * has been running on it the whole time: the app declares hubdb, and the
- * sixth request in a minute gets a 429, measured.
+ * `PRIVATE_APP_ACCESS_TOKEN` is a reserved keyword: `hs project upload`
+ * rejects any component that names it as a secret. Reserved is not the same
+ * as provided. The evidence says it is empty here — a handoff at 13:59:56
+ * filed its ticket while the app declared no tickets scope and this function
+ * still returned a single token, which only works if that token was the
+ * standalone one and the reserved variable was blank. It stays in the list in
+ * case the platform ever fills it, and second because a token whose scopes
+ * are declared elsewhere is the one more likely to surprise you.
  *
- * The second is a standalone private app token, supplied as a secret. It
- * exists so a scope the app has not declared cannot silently disable a
- * feature — see deliverTranscript, which retries with it on a 403.
+ * Both of these were read the wrong way today, in both directions. Absence
+ * from `hs secrets list` was taken as proof the variable was unset (it proves
+ * nothing either way — a reserved name is not a secret), and then the
+ * reservation was taken as proof it was set. The ticket timestamps settled
+ * it, and rate limiting really had been off until this token arrived.
  */
 function appTokens() {
-  return [process.env.PRIVATE_APP_ACCESS_TOKEN, process.env.HUBSPOT_APP_TOKEN]
+  return [process.env.HUBSPOT_APP_TOKEN, process.env.PRIVATE_APP_ACCESS_TOKEN]
     .map((t) => (t || "").trim())
     .filter((t, i, all) => t && all.indexOf(t) === i);
 }
