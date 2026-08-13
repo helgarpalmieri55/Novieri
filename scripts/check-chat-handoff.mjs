@@ -78,7 +78,35 @@ if (!search.ok) {
 const ticket = (found.results || []).find((t) => (t.properties.content || "").includes(MARKER));
 if (!ticket) {
   console.error(`\nFAIL  no ticket carrying the transcript was created in the last minute.`);
-  console.error(`      ${found.total || 0} ticket(s) created in that window.`);
+  console.error(`      ${found.total || 0} ticket(s) created in that window.\n`);
+
+  // The function swallows its own failures so a broken CRM cannot cost a
+  // visitor their answer, which means the reason is only in a log nobody
+  // reads. So make the same call from here, where the error is visible.
+  const pipelines = await fetch("https://api.hubapi.com/crm/v3/pipelines/tickets", {
+    headers: { Authorization: `Bearer ${token}` },
+  }).then((r) => r.json());
+  console.error("      ticket pipelines this portal actually has:");
+  for (const p of pipelines.results || []) {
+    console.error(`        pipeline ${p.id} "${p.label}" — stages ${(p.stages || []).map((s) => `${s.id} "${s.label}"`).join(", ")}`);
+  }
+
+  const probe = await fetch("https://api.hubapi.com/crm/v3/objects/tickets", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      properties: {
+        subject: `Sylvi handoff — ${MARKER}`,
+        content: MARKER,
+        hs_pipeline: process.env.TICKET_PIPELINE_ID || "0",
+        hs_pipeline_stage: process.env.TICKET_STAGE_ID || "1",
+        hs_ticket_priority: "HIGH",
+      },
+    }),
+  });
+  const probeBody = await probe.text();
+  console.error(`\n      the same call, made from here: ${probe.status}`);
+  console.error(`      ${probeBody.slice(0, 500)}`);
   process.exit(1);
 }
 
