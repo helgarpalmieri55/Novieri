@@ -68,20 +68,34 @@ function cleanText(text) {
 }
 
 /**
- * The private app token the HubSpot APIs are called with.
+ * The tokens the HubSpot APIs may be called with, best first.
  *
- * Not `PRIVATE_APP_ACCESS_TOKEN`, which is what this code asked for until the
- * upload refused it: that name is a reserved keyword in an app function's
- * config and cannot be a project secret, so the variable could never have
- * held anything. Nothing said so — every caller here fails open — which is
- * how rate limiting came to be off for months while looking on.
+ * `PRIVATE_APP_ACCESS_TOKEN` is a reserved keyword in an app function's
+ * config — the upload rejects the component if you name it as a secret —
+ * because the platform injects it itself. It carries the project app's own
+ * identity, and its power is exactly the `requiredScopes` in app-hsmeta.json,
+ * no more. That is the right token to prefer: nobody pastes it, nobody
+ * rotates it, and its scopes are declared in the repo next to the code that
+ * needs them.
  *
- * The reserved name is still read first, on the chance the platform is
- * reserving it because it injects one itself. If it ever does, that is the
- * better token: it belongs to the app rather than to a secret someone pasted.
+ * Being reserved is easy to mistake for being empty. It does not appear in
+ * `hs secrets list`, because it is not a secret — which is not evidence that
+ * it is unset, and reading it that way cost an afternoon here. Rate limiting
+ * has been running on it the whole time: the app declares hubdb, and the
+ * sixth request in a minute gets a 429, measured.
+ *
+ * The second is a standalone private app token, supplied as a secret. It
+ * exists so a scope the app has not declared cannot silently disable a
+ * feature — see deliverTranscript, which retries with it on a 403.
  */
+function appTokens() {
+  return [process.env.PRIVATE_APP_ACCESS_TOKEN, process.env.HUBSPOT_APP_TOKEN]
+    .map((t) => (t || "").trim())
+    .filter((t, i, all) => t && all.indexOf(t) === i);
+}
+
 function appToken() {
-  return process.env.PRIVATE_APP_ACCESS_TOKEN || process.env.HUBSPOT_APP_TOKEN || "";
+  return appTokens()[0] || "";
 }
 
 /**
@@ -163,7 +177,7 @@ async function verifyRecaptcha(token, action) {
   }
 }
 
-module.exports = { requireKnownOrigin, headerValue, clientIp, cleanText, appToken, enforceRateLimit, verifyRecaptcha };
+module.exports = { requireKnownOrigin, headerValue, clientIp, cleanText, appToken, appTokens, enforceRateLimit, verifyRecaptcha };
 
 };
 
@@ -183,14 +197,14 @@ __modules["lib/handoff.js"] = function (module, exports) {
  * forms API would put a fake person in the database. A ticket is also what
  * this actually is — a queue of people waiting on a human.
  *
- * Delivery needs the private app token and the tickets scope on it. Without
- * either, the transcript goes to the function log, where `hs logs` can reach
+ * Delivery needs a token whose app holds the tickets scope. Without one, the
+ * transcript goes to the function log, where `hs logs` can reach
  * it, and the log says plainly that it is a fallback. Nothing here may break
  * a reply: every failure is caught, logged and swallowed, because the
  * visitor's answer matters more than Novieri's copy of it.
  */
 const axios = require("axios");
-const { appToken } = __require("lib/guard.js");
+const { appTokens } = __require("lib/guard.js");
 
 const TICKETS_API = "https://api.hubapi.com/crm/v3/objects/tickets";
 
@@ -219,9 +233,9 @@ function transcript({ messages, reply, locale, region, page }) {
  */
 async function deliverTranscript(conversation) {
   const body = transcript(conversation);
-  const token = appToken();
+  const tokens = appTokens();
 
-  if (!token) {
+  if (!tokens.length) {
     // Not silent: a handoff nobody hears about is the failure this exists to
     // prevent, so it goes somewhere a person can still find it.
     console.warn(
@@ -230,28 +244,42 @@ async function deliverTranscript(conversation) {
     return false;
   }
 
-  try {
-    await axios.post(
-      TICKETS_API,
-      {
-        properties: {
-          subject: `Sylvi handoff — visitor asked for a person (${conversation.region === "co" ? "Colombia" : "international"})`,
-          content: body.slice(0, 60000),
-          // The default ticket pipeline and its first stage. Overridable
-          // without a deploy if the portal's pipeline is ever rebuilt.
-          hs_pipeline: process.env.TICKET_PIPELINE_ID || "0",
-          hs_pipeline_stage: process.env.TICKET_STAGE_ID || "1",
-          hs_ticket_priority: "HIGH",
-        },
-      },
-      { headers: { Authorization: `Bearer ${token}` }, timeout: 6000 },
-    );
-    return true;
-  } catch (e) {
-    const detail = JSON.stringify(e.response?.data || e.message).slice(0, 400);
-    console.error(`handoff: ticket creation failed (${e.response?.status || e.code}) — ${detail}\n${body}`);
-    return false;
+  const properties = {
+    subject: `Sylvi handoff — visitor asked for a person (${conversation.region === "co" ? "Colombia" : "international"})`,
+    content: body.slice(0, 60000),
+    // The default ticket pipeline and its first stage — measured against this
+    // portal: pipeline 0 "Support Pipeline", stage 1 "New". Overridable
+    // without a deploy if the pipeline is ever rebuilt.
+    hs_pipeline: process.env.TICKET_PIPELINE_ID || "0",
+    hs_pipeline_stage: process.env.TICKET_STAGE_ID || "1",
+    hs_ticket_priority: "HIGH",
+  };
+
+  // Each identity in turn. A 403 means this token's app was never granted the
+  // scope, which is a different problem from a bad request and the only one a
+  // second token can solve — so it is the only status worth retrying. The
+  // first attempt failing this way is exactly what happened here: the app
+  // declared hubdb and contacts, not tickets, so every transcript 403'd into
+  // a log and the visitor's reply looked perfect.
+  let last;
+  for (const token of tokens) {
+    try {
+      await axios.post(TICKETS_API, { properties }, {
+        headers: { Authorization: `Bearer ${token}` },
+        timeout: 6000,
+      });
+      return true;
+    } catch (e) {
+      last = e;
+      const status = e.response?.status;
+      if (status !== 403) break;
+      console.warn("handoff: token lacks the tickets scope — trying the next one");
+    }
   }
+
+  const detail = JSON.stringify(last?.response?.data || last?.message).slice(0, 400);
+  console.error(`handoff: ticket creation failed (${last?.response?.status || last?.code}) — ${detail}\n${body}`);
+  return false;
 }
 
 module.exports = { deliverTranscript, transcript };

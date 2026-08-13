@@ -68,20 +68,34 @@ function cleanText(text) {
 }
 
 /**
- * The private app token the HubSpot APIs are called with.
+ * The tokens the HubSpot APIs may be called with, best first.
  *
- * Not `PRIVATE_APP_ACCESS_TOKEN`, which is what this code asked for until the
- * upload refused it: that name is a reserved keyword in an app function's
- * config and cannot be a project secret, so the variable could never have
- * held anything. Nothing said so — every caller here fails open — which is
- * how rate limiting came to be off for months while looking on.
+ * `PRIVATE_APP_ACCESS_TOKEN` is a reserved keyword in an app function's
+ * config — the upload rejects the component if you name it as a secret —
+ * because the platform injects it itself. It carries the project app's own
+ * identity, and its power is exactly the `requiredScopes` in app-hsmeta.json,
+ * no more. That is the right token to prefer: nobody pastes it, nobody
+ * rotates it, and its scopes are declared in the repo next to the code that
+ * needs them.
  *
- * The reserved name is still read first, on the chance the platform is
- * reserving it because it injects one itself. If it ever does, that is the
- * better token: it belongs to the app rather than to a secret someone pasted.
+ * Being reserved is easy to mistake for being empty. It does not appear in
+ * `hs secrets list`, because it is not a secret — which is not evidence that
+ * it is unset, and reading it that way cost an afternoon here. Rate limiting
+ * has been running on it the whole time: the app declares hubdb, and the
+ * sixth request in a minute gets a 429, measured.
+ *
+ * The second is a standalone private app token, supplied as a secret. It
+ * exists so a scope the app has not declared cannot silently disable a
+ * feature — see deliverTranscript, which retries with it on a 403.
  */
+function appTokens() {
+  return [process.env.PRIVATE_APP_ACCESS_TOKEN, process.env.HUBSPOT_APP_TOKEN]
+    .map((t) => (t || "").trim())
+    .filter((t, i, all) => t && all.indexOf(t) === i);
+}
+
 function appToken() {
-  return process.env.PRIVATE_APP_ACCESS_TOKEN || process.env.HUBSPOT_APP_TOKEN || "";
+  return appTokens()[0] || "";
 }
 
 /**
@@ -163,7 +177,7 @@ async function verifyRecaptcha(token, action) {
   }
 }
 
-module.exports = { requireKnownOrigin, headerValue, clientIp, cleanText, appToken, enforceRateLimit, verifyRecaptcha };
+module.exports = { requireKnownOrigin, headerValue, clientIp, cleanText, appToken, appTokens, enforceRateLimit, verifyRecaptcha };
 
 };
 
