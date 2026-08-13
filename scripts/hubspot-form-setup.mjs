@@ -220,7 +220,9 @@ eachField(esBody, (f) => {
 });
 
 // --- The review's two missing fields: an optional phone/WhatsApp and a
-// team-size qualifier. The property comes first — an enumeration field on a
+// company-size qualifier — the one answer that says which pricing tier a
+// first contact is even in, since every tier is priced per user per month.
+// The property comes first — an enumeration field on a
 // form is rejected unless the contact property already knows its options.
 const TEAM_PROP = "novieri_people_affected";
 const TEAM_OPTIONS = [
@@ -236,7 +238,7 @@ if (!teamProp && !dryRun) {
       method: "POST",
       body: JSON.stringify({
         name: TEAM_PROP,
-        label: "People affected (website form)",
+        label: "Company size (website form)",
         groupName: "contactinformation",
         type: "enumeration",
         fieldType: "select",
@@ -310,7 +312,13 @@ const fieldDefs = (lang) => [
   ...(teamProp ? [{
     objectTypeId: "0-1",
     name: TEAM_PROP,
-    label: lang === "es" ? "¿Cuántas personas están afectadas?" : "How many people are affected?",
+    // A sizing question, asked plainly. It shipped as "How many people are
+    // affected?" — a support-desk question about an incident, on a form where
+    // nobody has an incident yet, above four options that are obviously
+    // headcount bands. The property name keeps its old spelling because a
+    // contact property cannot be renamed without moving every value on it;
+    // the label is what anyone reads.
+    label: lang === "es" ? "¿Cuántas personas trabajan en tu empresa?" : "How many people work at your company?",
     required: false,
     hidden: false,
     fieldType: "dropdown",
