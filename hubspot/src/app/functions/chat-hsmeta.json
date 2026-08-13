@@ -6,7 +6,8 @@
     "secretKeys": [
       "ANTHROPIC_API_KEY",
       "CHAT_SECRET",
-      "RATE_LIMIT_TABLE_ID"
+      "RATE_LIMIT_TABLE_ID",
+      "PRIVATE_APP_ACCESS_TOKEN"
     ],
     "endpoint": {
       "path": "chat",
