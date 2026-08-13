@@ -162,6 +162,7 @@ jobs:
             form-setup)
               case "${{ inputs.slug }}" in
                 handoff-test) node scripts/check-chat-handoff.mjs ;;
+                handoff-list) node scripts/check-chat-handoff.mjs --list ;;
                 *)            node scripts/hubspot-form-setup.mjs ;;
               esac ;;
             # Read-only: menu names and ids. Items are added in HubSpot's UI.

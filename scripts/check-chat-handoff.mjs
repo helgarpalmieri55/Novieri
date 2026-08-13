@@ -25,6 +25,37 @@ if (!token) {
 const MARKER = "automated handoff test";
 const since = Date.now() - 60_000;
 
+/**
+ * --list shows the handoff queue instead of adding to it: every ticket Sylvi
+ * has filed in the last few hours, newest first. Useful on its own, and it is
+ * how you tell a handoff that never happened from one the search index had
+ * not caught up with yet.
+ */
+if (process.argv.includes("--list")) {
+  const hours = Number((process.argv.find((a) => a.startsWith("--hours=")) || "").split("=")[1] || 6);
+  const res = await fetch("https://api.hubapi.com/crm/v3/objects/tickets/search", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      filterGroups: [{ filters: [{ propertyName: "createdate", operator: "GT", value: String(Date.now() - hours * 3600_000) }] }],
+      properties: ["subject", "content", "createdate"],
+      sorts: [{ propertyName: "createdate", direction: "DESCENDING" }],
+      limit: 50,
+    }),
+  });
+  const body = await res.json();
+  if (!res.ok) {
+    console.error(`ticket search returned ${res.status}: ${JSON.stringify(body).slice(0, 300)}`);
+    process.exit(1);
+  }
+  const handoffs = (body.results || []).filter((t) => (t.properties.subject || "").startsWith("Sylvi handoff"));
+  console.log(`${body.total || 0} ticket(s) in the last ${hours}h, ${handoffs.length} of them handoffs:\n`);
+  for (const t of handoffs) {
+    console.log(`  ${t.properties.createdate}  ${t.id}  ${t.properties.subject}`);
+  }
+  process.exit(0);
+}
+
 // A Colombian visitor asking for a person: the one case that should produce
 // both the number and a ticket.
 const res = await fetch(`https://${domain}/hs/serverless/chat`, {
