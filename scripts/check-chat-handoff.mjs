@@ -57,27 +57,44 @@ const leaked = /\[\[\s*HANDOFF\s*\]\]/i.test(chat.reply);
 console.log(`${gaveNumber ? "ok   " : "FAIL "} the number reached a Colombian visitor who asked for a person`);
 console.log(`${leaked ? "FAIL " : "ok   "} the handoff token was stripped before the reply went out`);
 
-// The ticket. Searched by creation time rather than by subject, so a changed
-// subject line shows up as the wrong ticket instead of as no ticket at all.
-const search = await fetch("https://api.hubapi.com/crm/v3/objects/tickets/search", {
-  method: "POST",
-  headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-  body: JSON.stringify({
-    filterGroups: [{ filters: [{ propertyName: "createdate", operator: "GT", value: String(since) }] }],
-    properties: ["subject", "content", "createdate"],
-    sorts: [{ propertyName: "createdate", direction: "DESCENDING" }],
-    limit: 5,
-  }),
-});
-const found = await search.json();
-if (!search.ok) {
-  console.error(`\nFAIL  ticket search returned ${search.status}: ${JSON.stringify(found).slice(0, 300)}`);
-  process.exit(1);
+/**
+ * The ticket. Searched by creation time rather than by subject, so a changed
+ * subject line shows up as the wrong ticket instead of as no ticket at all.
+ *
+ * Polled, because CRM search is not read-your-writes: a ticket created two
+ * seconds ago is not in the index yet, and asking once said "no ticket" about
+ * a feature that was working. The first version of this check did exactly
+ * that and sent me looking for a bug that was not there.
+ */
+async function findTicket() {
+  const search = await fetch("https://api.hubapi.com/crm/v3/objects/tickets/search", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      filterGroups: [{ filters: [{ propertyName: "createdate", operator: "GT", value: String(since) }] }],
+      properties: ["subject", "content", "createdate"],
+      sorts: [{ propertyName: "createdate", direction: "DESCENDING" }],
+      limit: 10,
+    }),
+  });
+  const body = await search.json();
+  if (!search.ok) {
+    console.error(`\nFAIL  ticket search returned ${search.status}: ${JSON.stringify(body).slice(0, 300)}`);
+    process.exit(1);
+  }
+  return body;
 }
 
-const ticket = (found.results || []).find((t) => (t.properties.content || "").includes(MARKER));
+let found = { results: [] };
+let ticket;
+for (let attempt = 1; attempt <= 8 && !ticket; attempt += 1) {
+  if (attempt > 1) await new Promise((r) => setTimeout(r, 8000));
+  found = await findTicket();
+  ticket = (found.results || []).find((t) => (t.properties.content || "").includes(MARKER));
+  if (!ticket) console.log(`      waiting for the search index (${attempt}/8)`);
+}
 if (!ticket) {
-  console.error(`\nFAIL  no ticket carrying the transcript was created in the last minute.`);
+  console.error(`\nFAIL  no ticket carrying the transcript appeared, after a minute of polling.`);
   console.error(`      ${found.total || 0} ticket(s) created in that window.\n`);
 
   // The function swallows its own failures so a broken CRM cannot cost a
