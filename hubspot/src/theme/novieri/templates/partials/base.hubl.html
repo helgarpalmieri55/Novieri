@@ -98,7 +98,19 @@
     #}
     {% if html_lang == "es" %}
       {% set en_variant = content.translated_content.en %}
-      {% set en_url = en_variant.absolute_url or en_variant.url or content.translations.en.url %}
+      {% set en_url = en_variant.absolute_url or en_variant.url %}
+      {#
+        A blog listing has no `content` to carry variants — it is the blog, not
+        a page — so the lookup above finds nothing there and only there. Blog
+        posts resolve fine, which is why this is not a general fallback: their
+        two languages have different slugs and a rewritten URL would be a
+        confident 404. The blog root is the one pair where the Spanish URL is
+        the English one with /es in front, so it can be derived rather than
+        remembered.
+      #}
+      {% if not en_url and group.absolute_url %}
+        {% set en_url = group.absolute_url|replace("/es/", "/") %}
+      {% endif %}
       {% if en_url %}
         <link rel="alternate" hreflang="x-default" href="{{ en_url }}" />
       {% else %}
