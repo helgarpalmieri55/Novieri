@@ -156,7 +156,14 @@ jobs:
             forms-list)    node scripts/hubspot-forms.mjs ;;
             form-dump)     node scripts/hubspot-forms.mjs --form='${{ inputs.slug }}' ;;
             # Consent copy, the language dropdown, and the Spanish twin.
-            form-setup)    node scripts/hubspot-form-setup.mjs ;;
+            # form-setup with slug=handoff-test runs the end-to-end check
+            # instead — the same free-text trick the blog modes use, because
+            # a new choice option is only dispatchable once it is on main.
+            form-setup)
+              case "${{ inputs.slug }}" in
+                handoff-test) node scripts/check-chat-handoff.mjs ;;
+                *)            node scripts/hubspot-form-setup.mjs ;;
+              esac ;;
             # Read-only: menu names and ids. Items are added in HubSpot's UI.
             menus)         node scripts/hubspot-menus.mjs ;;
             menu-dump)     node scripts/hubspot-menus.mjs --menu='${{ inputs.slug }}' ;;
