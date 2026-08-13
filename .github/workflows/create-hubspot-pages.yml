@@ -86,6 +86,9 @@ jobs:
         env:
           HUBSPOT_PRIVATE_APP_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
           HUBSPOT_SITE_DOMAIN: ${{ inputs.domain }}
+          # The slug as a variable, so the value reaches the shell as data
+          # rather than being pasted into the script before it runs.
+          SLUG: ${{ inputs.slug }}
         run: |
           set -euo pipefail
           case "${{ inputs.mode }}" in
@@ -136,7 +139,16 @@ jobs:
             blog-sync)     node scripts/manage-hubspot-blog.mjs --sync ;;
             # Per-page copy from messages/*.json into each page's modules.
             fill-content)  node scripts/fill-hubspot-pages.mjs ;;
-            fill-one)      node scripts/fill-hubspot-pages.mjs --only='${{ inputs.slug }}' ;;
+            # An "es:" prefix on the slug fills that one page in Spanish —
+            # es-fill rewrites every Spanish page from messages/es.json, which
+            # is a lot of live copy to move to change one field. The Spanish
+            # home is `es:es`: in the Spanish plan the home page's key is its
+            # slug, "es", rather than the empty string English holds.
+            fill-one)
+              case "${{ inputs.slug }}" in
+                es:*) node scripts/fill-hubspot-pages.mjs --locale=es --only="${SLUG#es:}" ;;
+                *)    node scripts/fill-hubspot-pages.mjs --only="${SLUG}" ;;
+              esac ;;
             # Spanish: create the language variants, then fill and publish them.
             es-variants)   node scripts/create-hubspot-pages.mjs --language-variants ;;
             es-fill)       node scripts/fill-hubspot-pages.mjs --locale=es ;;
