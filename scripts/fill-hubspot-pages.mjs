@@ -1212,7 +1212,23 @@ async function api(path, options = {}) {
   return body;
 }
 
-const plan = Object.entries(PAGES).filter(([slug]) => !only || slug === only);
+/**
+ * --only accepts either spelling of a page's slug.
+ *
+ * PAGES is keyed by the slug for the locale being filled, so in Spanish the
+ * privacy policy is `legal/politica-de-privacidad`. Every instruction for this
+ * script — the usage note at the top of this file, the workflow's es: branch —
+ * passes the English one. It matched nothing, the plan came out empty, and the
+ * run ended green having written not one field. The Spanish half of a
+ * bilingual site has a one-line fix and no way to tell it did not happen.
+ */
+const target = !only || PAGES[only] ? only : slugFor(only);
+const plan = Object.entries(PAGES).filter(([slug]) => !only || slug === target);
+if (only && !plan.length) {
+  console.error(`--only=${only} matches no page in ${locale}. Known slugs:`);
+  for (const slug of Object.keys(PAGES).sort()) console.error(`  ${slug || "(home)"}`);
+  process.exit(1);
+}
 
 if (dryRun) {
   for (const [slug, widgets] of plan) {
