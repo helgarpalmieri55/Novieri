@@ -1829,21 +1829,32 @@
           ]
         },
         {
-          "h": "9. Conversaciones con el asistente virtual",
+          "h": "9. Conversaciones con el asistente de nuestro sitio web",
           "p": [
             "El sitio ofrece un asistente virtual que responde preguntas sobre Novieri. El contenido de la conversación se envía a nuestro proveedor de modelos de inteligencia artificial únicamente para generar la respuesta.",
             "Te pedimos no escribir en el chat datos sensibles, credenciales, información confidencial de terceros ni datos personales que no sean necesarios para tu consulta. Si necesitas tratar un asunto que involucre información confidencial, escríbenos a {email}."
           ]
         },
         {
-          "h": "10. Seguridad y conservación",
+          "h": "10. Servicios que operamos por cuenta de nuestros clientes",
+          "p": [
+            "Además de nuestro propio sitio, operamos asistentes de WhatsApp y otros canales de atención por cuenta de empresas clientes —restaurantes, hoteles y otros negocios—. En esos servicios el responsable del tratamiento es la empresa cliente, no Novieri: ella define las finalidades, informa a los titulares y obtiene su autorización. Novieri actúa como encargado del tratamiento y trata esos datos únicamente siguiendo sus instrucciones, en los términos de la Ley 1581 de 2012.",
+            "Los datos que tratamos en esos servicios son de las personas que escriben al canal de nuestro cliente, no de nuestros propios clientes. Según la conversación, pueden incluir el número de teléfono y el nombre de perfil de WhatsApp, el contenido de los mensajes, las notas de voz y su transcripción, y los datos que la persona entregue durante la conversación: por ejemplo una dirección de entrega, los datos de una reserva o el detalle de un pedido.",
+            "En la prestación de ese servicio intervienen la plataforma de WhatsApp Business de Meta, que es el canal por el que llegan los mensajes; nuestro proveedor de modelos de inteligencia artificial, que genera las respuestas; y nuestro proveedor de transcripción, que convierte las notas de voz en texto. Todos actúan como subencargados, pueden estar ubicados fuera de Colombia y están sujetos a las mismas obligaciones de seguridad y confidencialidad descritas en la sección 8.",
+            "No usamos esas conversaciones para finalidades propias de Novieri, no las vendemos ni las compartimos con terceros distintos de los subencargados mencionados, y exigimos contractualmente a nuestros proveedores que no las utilicen para entrenar sus modelos.",
+            "Conservamos esas conversaciones durante el tiempo que indique la empresa cliente y, al terminar el contrato, se las devolvemos o las suprimimos según nos instruya.",
+            "Si escribiste al canal de un negocio que usa nuestra tecnología y quieres conocer, actualizar, rectificar o suprimir tus datos, la solicitud corresponde a ese negocio como responsable. Si nos escribes a {email}, la trasladamos a quien corresponda y te indicamos a quién, dentro de los plazos de la sección 7."
+          ]
+        },
+        {
+          "h": "11. Seguridad y conservación",
           "p": [
             "Aplicamos medidas técnicas, humanas y administrativas razonables para proteger tus datos frente a acceso no autorizado, pérdida, alteración o uso indebido: cifrado en tránsito, control de acceso por roles, registro de actividad y revisión periódica de nuestros proveedores.",
             "Conservamos tus datos mientras exista una relación comercial o una finalidad vigente, y después por el tiempo necesario para cumplir obligaciones legales, contables y tributarias. Vencidos esos plazos, los suprimimos o anonimizamos."
           ]
         },
         {
-          "h": "11. Vigencia y cambios",
+          "h": "12. Vigencia y cambios",
           "p": [
             "Esta política rige a partir de la fecha de su última actualización y permanece vigente mientras Novieri trate datos personales. Cualquier cambio sustancial se publicará en esta misma página; te recomendamos revisarla periódicamente.",
             "Las bases de datos se conservarán durante la vigencia de las finalidades del tratamiento y de los deberes legales aplicables."
