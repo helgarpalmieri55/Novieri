@@ -22,6 +22,23 @@
  */
 import { readFileSync } from "node:fs";
 
+/**
+ * Where every "Book a call" button goes.
+ *
+ * The critique measured this twice: every booking control on the site resolved
+ * to the contact form, and the scheduler appeared exactly twice on the whole
+ * site, both inside one card partway down that page — below the fold, after
+ * nine form fields in reading order. PRODUCT.md names booking as the one
+ * success action and the form as a secondary path; the build had them the other
+ * way round, and every step between intent and calendar sheds intent.
+ *
+ * Only the buttons literally labelled "Book a call" move here. The demo,
+ * diagnostic and "tell us about your case" CTAs still go to the form, because
+ * for those the form is the thing being asked for.
+ */
+const BOOK_HREF = "https://meetings.hubspot.com/helgar-palmieri";
+
+
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
@@ -68,8 +85,19 @@ const ES_SLUGS = {
 };
 const slugFor = (en) => (locale === "es" ? ES_SLUGS[en] ?? en : en);
 
-/** The NIT stays empty until registration completes; [[…]] blocks drop it cleanly. */
-const VARS = { company: "Novieri SAS", nit: "", email: "sales@novieri.com" };
+/**
+ * The company's legal identification, as registered.
+ *
+ * The NIT was empty while registration was pending, and the [[…]] blocks in the
+ * legal copy dropped the clause around it so nothing ever read "NIT —". It
+ * exists now, so the clause comes back on its own: every legal page and the
+ * footer already carry the sentence, waiting for the number.
+ *
+ * Written "S.A.S." with the periods, as the registry has it. A Colombian buyer
+ * checks the razón social and the NIT before wiring money, which is the whole
+ * reason this line is on the page.
+ */
+const VARS = { company: "Novieri S.A.S.", nit: "902.094.392-7", email: "sales@novieri.com" };
 /**
  * The legal pages route data-subject requests to a dedicated address per
  * language — governance the review asked for, and a mailbox that now exists.
@@ -289,7 +317,7 @@ function serviceWidgets(ns) {
         title: s.hero.title,
         intro: s.hero.promise,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -328,7 +356,7 @@ function serviceWidgets(ns) {
         // Each service asks for its own next step — "assess your audit
         // readiness" converts a security reader that "book a call" loses.
         button_text: s.ctaButton || t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         ...PRICING_CTA,
       },
     },
@@ -352,7 +380,7 @@ function servicesIndexWidgets() {
         title: idx.title,
         intro: idx.intro,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -397,7 +425,7 @@ function servicesIndexWidgets() {
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         ...PRICING_CTA,
       },
     },
@@ -433,7 +461,7 @@ function pricingWidgets() {
         title: p.hero.title,
         intro: p.hero.intro,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -472,7 +500,7 @@ function pricingWidgets() {
         title: t.serviceCommon.ctaTitle,
         subtitle: t.serviceCommon.ctaSubtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
       },
     },
   };
@@ -596,7 +624,7 @@ function solutionsIndexWidgets() {
         title: idx.title,
         intro: idx.intro,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -700,7 +728,7 @@ function aboutWidgets() {
         title: a.cta.title,
         subtitle: a.cta.subtitle,
         button_text: t.common.bookCall,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
       },
     },
   };
@@ -740,12 +768,16 @@ function homeWidgets() {
   return {
     [HOME_SLOTS.hero]: {
       body: {
-        ticker: SERVICES.map(([key], i) => ({ word: t.pillars[key].name, colour: ACCENTS[i] })),
+        // One line, not five rotating ones. The hero used to cycle every
+        // pillar name above the headline; what a visitor saw depended on
+        // when they looked, and there was no way to stop it.
+        eyebrow: h.hero.eyebrow,
+        eyebrow_colour: ACCENTS[0],
         title_a: h.hero.titleA,
         title_b: h.hero.titleB,
         subtitle: h.hero.subtitle,
         primary_text: t.common.bookCall,
-        primary_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        primary_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         secondary_text: t.nav.services,
         secondary_link: { url: { type: "CONTENT", href: `/${slugFor("services")}` } },
       },
@@ -856,7 +888,8 @@ function homeWidgets() {
         title: h.cta.title,
         subtitle: h.cta.subtitle,
         button_text: h.cta.button,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        // "Book a call" / "Agenda una llamada" — a booking label, so it books.
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
       },
     },
   };
@@ -913,7 +946,9 @@ function diagnosticWidgets() {
         result_print: d.result.print,
         no_script: d.noScript,
         result_cta: d.result.cta,
-        result_cta_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        // "Book a 30-minute call", offered the moment someone has just read
+        // their own diagnostic — the highest-intent click on the site.
+        result_cta_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         result_emailed: d.result.emailed,
         result_again: d.result.again,
         error_required: d.errors.required,
@@ -1177,7 +1212,23 @@ async function api(path, options = {}) {
   return body;
 }
 
-const plan = Object.entries(PAGES).filter(([slug]) => !only || slug === only);
+/**
+ * --only accepts either spelling of a page's slug.
+ *
+ * PAGES is keyed by the slug for the locale being filled, so in Spanish the
+ * privacy policy is `legal/politica-de-privacidad`. Every instruction for this
+ * script — the usage note at the top of this file, the workflow's es: branch —
+ * passes the English one. It matched nothing, the plan came out empty, and the
+ * run ended green having written not one field. The Spanish half of a
+ * bilingual site has a one-line fix and no way to tell it did not happen.
+ */
+const target = !only || PAGES[only] ? only : slugFor(only);
+const plan = Object.entries(PAGES).filter(([slug]) => !only || slug === target);
+if (only && !plan.length) {
+  console.error(`--only=${only} matches no page in ${locale}. Known slugs:`);
+  for (const slug of Object.keys(PAGES).sort()) console.error(`  ${slug || "(home)"}`);
+  process.exit(1);
+}
 
 if (dryRun) {
   for (const [slug, widgets] of plan) {

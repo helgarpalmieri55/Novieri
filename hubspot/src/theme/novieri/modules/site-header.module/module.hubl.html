@@ -5,7 +5,9 @@
    {% language_switcher %} tag, not {% module path="@hubspot/language_switcher" %}:
    the module tag is disabled inside a module, and the build rejects it. #}
 
-<header class="site-header sticky top-0 z-50 border-b border-transparent bg-white/90 backdrop-blur transition-colors duration-300">
+{# Fixed, not sticky — module.hubl.css explains why, and carries the body
+   padding that replaces the space the header no longer occupies. #}
+<header class="site-header z-50 border-b border-transparent bg-white/90 backdrop-blur transition-colors duration-300">
   <a
     href="#main"
     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
@@ -15,8 +17,15 @@
     {% if "es" in html_lang|string %}Saltar al contenido{% else %}{{ module.label_skip }}{% endif %}
   </a>
 
-  <div class="container-site flex h-[84px] items-center gap-6">
-    <a href="{{ module.home_url }}" aria-label="{{ module.label_home|escape_attr }}" class="mr-auto flex items-center gap-2.5">
+  {# The header gets its own bar rather than the site container. A 1240px
+     centred column pulled the logo inward and the nav in after it, so on
+     Spanish — where every label is longer — the wordmark and "Servicios" ended
+     up 24px apart while the page had room to spare on both sides. Full width
+     with its own padding puts the mark in the corner and the nav group against
+     the far edge, which is the shape the rest of the industry has settled on
+     and the one that reads as uncrowded. #}
+  <div class="header-bar flex h-[84px] items-center gap-6">
+    <a href="{{ module.home_url }}" aria-label="{{ module.label_home|escape_attr }}" class="flex items-center gap-2.5">
       {% if module.logo.src %}
         <img
           src="{{ module.logo.src }}"
@@ -48,20 +57,34 @@
     {# The call to action needs the same treatment: one global header, so
        without this the Spanish pages read "Book a call" and send people to
        the English contact page. #}
-    {% set cta_text = module.cta_text %}
+    {% set cta_text = module.booking_text or module.cta_text %}
     {% set cta_text_short = module.cta_text_short %}
-    {% set cta_href = module.cta_link.url.href %}
+    {# Booking is one destination for the whole site, so it comes from a
+       single field rather than from each instance's own link. The stored
+       content of a global module outranks a changed field default, which is
+       why this is a new field and not an edit to cta_link: an instance has no
+       stored value for a field that did not exist, so the default applies. #}
+    {% set cta_href = module.booking_url or module.cta_link.url.href %}
     {% if html_lang == "es" %}
-      {% if module.cta_text_es %}{% set cta_text = module.cta_text_es %}{% endif %}
+      {# booking_text_es wins for the same reason booking_url does: a global
+         module's stored value outranks a changed default, so a shorter label
+         has to arrive on a field that did not exist before. "Agenda una
+         llamada" wrapped to two lines in the header at every desktop width. #}
+      {% if module.booking_text_es %}{% set cta_text = module.booking_text_es %}
+      {% elif module.cta_text_es %}{% set cta_text = module.cta_text_es %}{% endif %}
       {% if module.cta_text_short_es %}{% set cta_text_short = module.cta_text_short_es %}{% endif %}
-      {% if module.cta_link_es.url.href %}{% set cta_href = module.cta_link_es.url.href %}{% endif %}
+      {# The Spanish link only overrides when booking_url is empty. The
+         scheduler is one destination for both markets — a Spanish visitor
+         books the same calendar — so a per-language contact link must not
+         quietly pull the Spanish header back to the form. #}
+      {% if not module.booking_url and module.cta_link_es.url.href %}{% set cta_href = module.cta_link_es.url.href %}{% endif %}
     {% endif %}
     {# One product is sold in Colombia and not offered to the US market. Its
        menu link is tagged here and hidden by the theme stylesheet everywhere
        except Colombia; the fragment matches both languages' slugs. #}
     {% set co_frags = module.co_only_match|split(",") %}
     {% set nav_items = menu(nav_menu, "site_root").children %}
-    <nav class="site-nav hidden items-center gap-6 md:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
+    <nav class="site-nav ml-auto hidden items-center gap-6 md:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
       {% for item in nav_items %}
         <div class="group relative">
           <a href="{{ item.url }}"{% if co_frags|length > 0 and co_frags[0]|trim and co_frags[0]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 1 and co_frags[1]|trim and co_frags[1]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 2 and co_frags[2]|trim and co_frags[2]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 3 and co_frags[3]|trim and co_frags[3]|trim in item.url %} data-region-only="co"{% endif %}
@@ -109,7 +132,7 @@
 
     <button
       type="button"
-      class="site-menu-toggle flex h-10 w-10 items-center justify-center rounded-lg border border-line text-ink md:hidden"
+      class="site-menu-toggle flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink md:hidden"
       aria-expanded="false"
       aria-label="{{ module.label_open_menu|escape_attr }}"
       data-open-label="{{ module.label_open_menu|escape_attr }}"

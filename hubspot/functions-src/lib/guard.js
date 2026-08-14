@@ -53,6 +53,39 @@ function cleanText(text) {
 }
 
 /**
+ * The tokens the HubSpot APIs may be called with, best first.
+ *
+ * `HUBSPOT_APP_TOKEN` is a standalone private app token, held as a project
+ * secret. It is first because it is the one whose scopes can be read, granted
+ * and verified — scripts/check-hubspot-scopes.mjs calls every API these
+ * functions use and reports what answers.
+ *
+ * `PRIVATE_APP_ACCESS_TOKEN` is a reserved keyword: `hs project upload`
+ * rejects any component that names it as a secret. Reserved is not the same
+ * as provided. The evidence says it is empty here — a handoff at 13:59:56
+ * filed its ticket while the app declared no tickets scope and this function
+ * still returned a single token, which only works if that token was the
+ * standalone one and the reserved variable was blank. It stays in the list in
+ * case the platform ever fills it, and second because a token whose scopes
+ * are declared elsewhere is the one more likely to surprise you.
+ *
+ * Both of these were read the wrong way today, in both directions. Absence
+ * from `hs secrets list` was taken as proof the variable was unset (it proves
+ * nothing either way — a reserved name is not a secret), and then the
+ * reservation was taken as proof it was set. The ticket timestamps settled
+ * it, and rate limiting really had been off until this token arrived.
+ */
+function appTokens() {
+  return [process.env.HUBSPOT_APP_TOKEN, process.env.PRIVATE_APP_ACCESS_TOKEN]
+    .map((t) => (t || "").trim())
+    .filter((t, i, all) => t && all.indexOf(t) === i);
+}
+
+function appToken() {
+  return appTokens()[0] || "";
+}
+
+/**
  * Per-identity rate limiting, backed by a HubDB table because serverless
  * invocations share no filesystem — the PHP version's counter files would
  * evaporate between calls. Read-modify-write is not atomic, which is fine for
@@ -62,7 +95,7 @@ function cleanText(text) {
  * of epoch seconds). Fails open on any HubDB trouble, and says so in the log.
  */
 async function enforceRateLimit(bucket, identity, max, windowSeconds) {
-  const token = process.env.PRIVATE_APP_ACCESS_TOKEN;
+  const token = appToken();
   const tableId = process.env.RATE_LIMIT_TABLE_ID;
   if (!token || !tableId) return null;
 
@@ -131,4 +164,4 @@ async function verifyRecaptcha(token, action) {
   }
 }
 
-module.exports = { requireKnownOrigin, clientIp, cleanText, enforceRateLimit, verifyRecaptcha };
+module.exports = { requireKnownOrigin, headerValue, clientIp, cleanText, appToken, appTokens, enforceRateLimit, verifyRecaptcha };

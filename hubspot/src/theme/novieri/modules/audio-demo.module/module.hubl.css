@@ -80,3 +80,26 @@
   background: #4f3461;
   transition: width 0.15s linear;
 }
+
+/*
+ * Stop the audio cards from pushing the page sideways on a phone.
+ *
+ * At 390px the receptionist page had a document 585px wide — 195px of
+ * horizontal scroll. The cards sit in a grid, and a grid item defaults to
+ * min-width: auto, which means it refuses to shrink below its min-content
+ * width. The card's min-content came out at 564.922px and the single implicit
+ * track sized itself to that inside a 350px container.
+ *
+ * minmax(0, 1fr) is the fix: it tells the track it may go narrower than its
+ * content, which is what lets the card wrap instead of overflow. Verified on
+ * the live page — setting it dropped scrollWidth from 585 to 390 immediately.
+ */
+.audio-demo .grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 640px) {
+  .audio-demo .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

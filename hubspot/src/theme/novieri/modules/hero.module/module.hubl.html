@@ -12,10 +12,22 @@
 
   <div class="container-site relative grid items-center gap-[clamp(2.5rem,5vw,4.5rem)] lg:grid-cols-[6fr_5fr]">
     <div>
-      <p class="rise eyebrow" aria-live="off">
-        <span class="hero-ticker" data-words='{% for item in module.ticker %}{{ item.word }}{% if not loop.last %}|{% endif %}{% endfor %}' data-classes='{% for item in module.ticker %}{{ item.colour }}{% if not loop.last %}|{% endif %}{% endfor %}'>
-          {% if module.ticker %}<span class="ticker-word {{ module.ticker[0].colour }}">{{ module.ticker[0].word }}</span>{% endif %}
-        </span>
+      {# One line, printed once.
+
+         This used to cycle all five service pillars, 2.6 seconds each,
+         forever, with no pause and no controls — a carousel above the
+         headline. It failed WCAG 2.2.2, which asks for a way to stop
+         auto-updating content, and it changed what Novieri appeared to
+         specialise in depending on when you happened to look. A first-time
+         visitor read a different company every three seconds.
+
+         The eyebrow now names the whole offer rather than one fifth of it.
+         `eyebrow` is a new field, so its default applies everywhere at once:
+         a module instance has no stored value for a field that did not exist
+         when its content was written, which is the one case where a default
+         still wins. #}
+      <p class="rise eyebrow">
+        <span class="{{ module.eyebrow_colour }}">{{ module.eyebrow }}</span>
       </p>
 
       <h1 class="mt-5 max-w-[15ch]">
@@ -53,7 +65,7 @@
 
         {# The mark itself, plus a light sweep masked to its facets #}
         <div class="gem-float relative mx-auto aspect-square w-[82%]">
-          <img src="{{ module.mark.src }}" alt="{{ module.mark.alt|escape_attr }}" class="absolute inset-0 h-full w-full select-none" fetchpriority="high" />
+          <img src="{{ module.mark.src }}" alt="{{ module.mark.alt|escape_attr }}" width="264" height="269" decoding="async" class="absolute inset-0 h-full w-full select-none" fetchpriority="high" />
           <div
             aria-hidden="true"
             class="gem-sweep absolute inset-0"

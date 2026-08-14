@@ -75,19 +75,4 @@
     });
   });
 
-  if (reduced) return;
-
-  document.querySelectorAll(".hero-ticker").forEach(function (ticker) {
-    var words = (ticker.dataset.words || "").split("|").filter(Boolean);
-    var classes = (ticker.dataset.classes || "").split("|");
-    if (words.length < 2) return;
-    var index = 0;
-    setInterval(function () {
-      index = (index + 1) % words.length;
-      var span = document.createElement("span");
-      span.className = "ticker-word " + (classes[index] || "text-plum");
-      span.textContent = words[index];
-      ticker.replaceChildren(span);
-    }, 2600);
-  });
 })();

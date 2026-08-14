@@ -220,7 +220,9 @@ eachField(esBody, (f) => {
 });
 
 // --- The review's two missing fields: an optional phone/WhatsApp and a
-// team-size qualifier. The property comes first — an enumeration field on a
+// company-size qualifier — the one answer that says which pricing tier a
+// first contact is even in, since every tier is priced per user per month.
+// The property comes first — an enumeration field on a
 // form is rejected unless the contact property already knows its options.
 const TEAM_PROP = "novieri_people_affected";
 const TEAM_OPTIONS = [
@@ -236,7 +238,7 @@ if (!teamProp && !dryRun) {
       method: "POST",
       body: JSON.stringify({
         name: TEAM_PROP,
-        label: "People affected (website form)",
+        label: "Company size (website form)",
         groupName: "contactinformation",
         type: "enumeration",
         fieldType: "select",
@@ -284,15 +286,40 @@ function hasField(patch, name) {
   eachField(patch, (f) => { if (f.name === name) found = true; });
   return found;
 }
-/** Inserts single-field groups before the service dropdown, cloning an
-    existing group's shape so HubSpot recognises the structure. */
-function insertFields(patch, defs) {
+/**
+ * Makes the form's fields match the definitions below.
+ *
+ * A missing field is inserted before the service dropdown, cloning an
+ * existing group's shape so HubSpot recognises the structure. A field that is
+ * already there has its wording corrected in place — which this used to skip
+ * entirely, with `if (hasField) continue`. The consequence was quiet: a label
+ * fixed here changed nothing on the live form, the run went green, and the old
+ * wording stayed up. A script that only ever adds is not a script that makes
+ * the form match this file.
+ *
+ * Only the wording is reconciled. Whether a field is required, and what order
+ * the groups are in, are things someone may legitimately have changed in the
+ * editor, and overwriting those from here would be a worse habit than the one
+ * this fixes.
+ */
+function syncFields(patch, defs) {
   const groups = patch.fieldGroups;
   const template = groups.find((g) => (g.fields || []).length === 1) || groups[0];
   let at = groups.findIndex((g) => (g.fields || []).some((f) => f.name === "novieri_service_interest"));
   if (at === -1) at = groups.length;
   for (const d of defs) {
-    if (hasField(patch, d.name)) continue;
+    if (hasField(patch, d.name)) {
+      eachField(patch, (f) => {
+        if (f.name !== d.name) return;
+        for (const key of ["label", "placeholder"]) {
+          if (d[key] !== undefined && f[key] !== d[key]) {
+            console.log(`  field ~ ${d.name} ${key}: "${f[key]}" -> "${d[key]}"`);
+            f[key] = d[key];
+          }
+        }
+      });
+      continue;
+    }
     groups.splice(at, 0, { ...template, fields: [d] });
     at += 1;
     console.log(`  field + ${d.name} — "${d.label}"`);
@@ -310,15 +337,21 @@ const fieldDefs = (lang) => [
   ...(teamProp ? [{
     objectTypeId: "0-1",
     name: TEAM_PROP,
-    label: lang === "es" ? "¿Cuántas personas están afectadas?" : "How many people are affected?",
+    // A sizing question, asked plainly. It shipped as "How many people are
+    // affected?" — a support-desk question about an incident, on a form where
+    // nobody has an incident yet, above four options that are obviously
+    // headcount bands. The property name keeps its old spelling because a
+    // contact property cannot be renamed without moving every value on it;
+    // the label is what anyone reads.
+    label: lang === "es" ? "¿Cuántas personas trabajan en tu empresa?" : "How many people work at your company?",
     required: false,
     hidden: false,
     fieldType: "dropdown",
     options: TEAM_OPTIONS.map((o, n) => ({ ...o, description: "", displayOrder: n })),
   }] : []),
 ];
-insertFields(enPatch, fieldDefs("en"));
-insertFields(esBody, fieldDefs("es"));
+syncFields(enPatch, fieldDefs("en"));
+syncFields(esBody, fieldDefs("es"));
 
 if (dryRun) {
   console.log(`patch  ${EN_FORM} (${en.id}) — submit "${EN.submit}", ${LANGUAGE_OPTIONS.length} languages, consent rewritten`);

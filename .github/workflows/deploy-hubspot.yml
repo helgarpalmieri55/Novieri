@@ -75,9 +75,25 @@ jobs:
           HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           FORM_GUID: 42957848-6780-467b-8f8b-4e5944e2ebe0
+          # The private app token, which the repo already holds for the CMS
+          # API. The functions need it under a name of their own: HubDB rate
+          # limiting and the chat handoff both authenticate with it, and both
+          # fail open, so neither has ever run and neither said so.
+          #
+          # HUBSPOT_APP_TOKEN, not PRIVATE_APP_ACCESS_TOKEN. That name is a
+          # reserved keyword in an app function's config — `hs project upload`
+          # rejects the component outright — so the variable the code used to
+          # read could never have held anything.
+          HUBSPOT_APP_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
         run: |
           echo "$FORM_GUID" | hs secrets add HUBSPOT_FORM_DIAGNOSTIC --use-env \
             || echo "$FORM_GUID" | hs secrets update HUBSPOT_FORM_DIAGNOSTIC --use-env
+          if [ -n "${HUBSPOT_APP_TOKEN:-}" ]; then
+            echo "$HUBSPOT_APP_TOKEN" | hs secrets add HUBSPOT_APP_TOKEN --use-env \
+              || echo "$HUBSPOT_APP_TOKEN" | hs secrets update HUBSPOT_APP_TOKEN --use-env
+          else
+            echo "::warning::No HUBSPOT_PRIVATE_APP_TOKEN repo secret — skipping."
+          fi
           hs secrets list --use-env
       - name: List the project's secrets
         if: inputs.mode == 'list-secrets'
@@ -87,6 +103,13 @@ jobs:
           HUBSPOT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
           HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
         run: hs secrets list --use-env
+      # Names are only half the answer: a secret that exists still buys
+      # nothing if the token in it lacks the scope. This says which.
+      - name: Check what the private app token can do
+        if: inputs.mode == 'list-secrets'
+        env:
+          HUBSPOT_PRIVATE_APP_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
+        run: node scripts/check-hubspot-scopes.mjs
       - name: Validate and upload the project
         if: inputs.mode == 'deploy'
         working-directory: hubspot
@@ -126,3 +149,16 @@ jobs:
             echo "::error::Upload finished without producing a build — see the log above"
             exit 1
           }
+
+      # The one thing neither the build nor the upload can check: that the
+      # address in the stylesheet returns a font. All six brand faces 404'd in
+      # production and no check caught it, because the CSS was valid and the
+      # files were uploaded — only the URL joining them was wrong, and the
+      # fallback stack is close enough that no page looked broken. It took a
+      # design critique to notice the site had been rendering in system-ui.
+      #
+      # Runs after the upload so it tests what is now live, and only on a real
+      # deploy: the other modes do not touch the theme.
+      - name: Verify the brand fonts actually serve
+        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        run: node scripts/check-font-urls.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}"

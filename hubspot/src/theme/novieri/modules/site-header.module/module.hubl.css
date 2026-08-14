@@ -3,20 +3,25 @@
  * the theme where the design is applied by element instead of by utility
  * class. The navigation used to need the same treatment; it renders from
  * menu() now, with our own markup, so those rules are gone.
+ *
+ * They were not gone. `.site-nav a, .site-mobile-nav a` outlived the markup it
+ * was written for and kept setting a colour on every link in the header — and
+ * an element+class selector outranks a single utility class, so it quietly won
+ * three arguments it should never have been in:
+ *
+ *   - the menu's own "Book a call" is `.btn .btn-primary`, white on plum. It
+ *     rendered ink-muted on plum instead: 1.31:1, measured, both locales. The
+ *     one conversion control on mobile was invisible.
+ *   - the panel's top-level items carry `text-ink` and its children carry
+ *     `text-ink-muted`, so the two levels were the same colour and the
+ *     hierarchy the markup describes never appeared.
+ *   - the desktop nav sets `text-ink` on the active branch. That was overridden
+ *     too, which is why no nav item ever looks like the page you are on.
+ *
+ * Deleting them is the fix, because the markup already carries every one of
+ * these colours as a utility. The language switcher below is unaffected: it
+ * sets its own colours on `.lang_list_class a`, later in this file.
  */
-.site-nav a,
-.site-mobile-nav a {
-  font-size: var(--text-small);
-  font-weight: 500;
-  color: var(--color-ink-muted);
-  text-decoration: none;
-  transition: color 200ms var(--ease-out-quart);
-}
-
-.site-nav a:hover,
-.site-mobile-nav a:hover {
-  color: var(--color-ink);
-}
 
 
 /* Language switcher: HubSpot renders a list with the current page's variants */
@@ -45,4 +50,71 @@
 .lang_list_class a:hover,
 .lang_list_class .lang_switcher_link[aria-current="true"] {
   color: var(--color-ink);
+}
+
+/*
+ * The header is fixed, not sticky, and that is a decision rather than a
+ * preference.
+ *
+ * `position: sticky; top: 0` was correct CSS and did nothing. Measured on the
+ * live site, the header's rect.top tracked -scrollY exactly from the first
+ * pixel, on every page and both viewports. Every textbook cause was ruled out
+ * by measurement: no ancestor carries overflow, transform, filter, contain or
+ * will-change; html and body are both overflow: visible; the scrolling element
+ * is html.
+ *
+ * Two attempts at making sticky work failed. Setting height: auto on HubSpot's
+ * module wrappers was a no-op — they were already auto, and 85px is what auto
+ * computes to when the header inside is 85px tall. `display: contents` on both
+ * wrappers did apply (verified in the live DOM) and the header still travelled
+ * with the scroll.
+ *
+ * A sticky element depends on the box its parent gives it. A fixed element does
+ * not: its containing block is the viewport, and the only thing that can take
+ * that away — an ancestor with transform, filter or perspective — has already
+ * been measured and is not there. So the header is fixed, and body carries the
+ * height it no longer occupies. Same appearance, one fewer thing that has to be
+ * true for it to work.
+ *
+ * The cost of the bug was not subtle: the Spanish home page is 12,044px on a
+ * phone, so the one booking control was on screen for the first 6% of the
+ * scroll and gone for the rest.
+ */
+:root {
+  /* 84px bar + 1px bottom border. */
+  --header-h: 85px;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+body {
+  padding-top: var(--header-h);
+}
+
+/*
+ * An in-page anchor scrolls its target to the top of the viewport, which is now
+ * behind the header. This is the one thing sticky gave for free.
+ */
+html {
+  scroll-padding-top: var(--header-h);
+}
+
+/*
+ * The header's own bar.
+ *
+ * It used .container-site — 1240px, centred — which is right for reading
+ * columns and wrong for a navigation bar: it pulled the logo inward from the
+ * corner and the nav in behind it, so on Spanish, where every label is longer,
+ * the wordmark and "Servicios" ended up 24px apart while the page had room to
+ * spare on both sides. Full width with its own padding puts the mark in the
+ * corner and the nav group against the far edge.
+ */
+.header-bar {
+  width: 100%;
+  padding-inline: clamp(1.25rem, 2.5vw, 2.5rem);
 }

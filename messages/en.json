@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "Novieri — AI-first IT solutions with a nearshore edge",
-      "description": "We automate your processes, run your infrastructure, and secure your operation — enterprise-grade delivery from your own time zone, at nearshore rates."
+      "title": "Novieri — managed IT, AI automation and cybersecurity",
+      "description": "We run and secure your company's technology and build the AI that removes repetitive work. Founder-led delivery in English and Spanish, from Barranquilla."
     },
     "services": {
       "title": "Services — Novieri",
@@ -174,6 +174,7 @@
   },
   "home": {
     "hero": {
+      "eyebrow": "AI-first IT services",
       "titleA": "Your outsourced technology team",
       "titleB": "— with AI built in.",
       "subtitle": "We run, secure and improve your company's technology while building AI solutions that eliminate repetitive work, streamline operations and help your team grow. Founder-led delivery in English and Spanish for companies across Colombia and the United States."
@@ -1825,14 +1826,25 @@
           ]
         },
         {
-          "h": "10. Security and retention",
+          "h": "10. Services we operate on behalf of our clients",
+          "p": [
+            "Beyond our own site, we operate WhatsApp assistants and other customer channels on behalf of client companies — restaurants, hotels and other businesses. In those services the data controller is the client company, not Novieri: it defines the purposes, informs the data subjects and obtains their authorization. Novieri acts as a data processor and handles that data only on the client's instructions, under Law 1581 of 2012.",
+            "The data we handle in those services belongs to the people who write to our client's channel, not to our own clients. Depending on the conversation it can include the phone number and WhatsApp profile name, the content of the messages, voice notes and their transcription, and whatever the person provides during the conversation: a delivery address, reservation details or the contents of an order, for example.",
+            "Three providers take part in delivering that service: Meta's WhatsApp Business Platform, which is the channel the messages arrive through; our AI model provider, which generates the replies; and our transcription provider, which turns voice notes into text. All act as sub-processors, may be located outside Colombia, and are bound by the same security and confidentiality obligations described in section 8.",
+            "We do not use those conversations for Novieri's own purposes, we do not sell them or share them with anyone other than the sub-processors named above, and we require our providers by contract not to use them to train their models.",
+            "We retain those conversations for as long as the client company instructs, and at the end of the contract we return or delete them as it directs.",
+            "If you wrote to the channel of a business that uses our technology and you want to access, update, correct or delete your data, that request belongs to that business as the controller. Write to {email} and we will pass it on, tell you who it went to, and do so within the timeframes in section 7."
+          ]
+        },
+        {
+          "h": "11. Security and retention",
           "p": [
             "We apply reasonable technical, human, and administrative measures to protect your data against unauthorized access, loss, alteration, or misuse: encryption in transit, role-based access control, activity logging, and periodic review of our providers.",
             "We retain your data while a commercial relationship or an active purpose exists, and afterwards for as long as needed to meet legal, accounting, and tax obligations. Once those periods lapse, we delete or anonymize it."
           ]
         },
         {
-          "h": "11. Effective date and changes",
+          "h": "12. Effective date and changes",
           "p": [
             "This policy applies from the date of its last update and remains in force for as long as Novieri processes personal data. Any substantial change will be published on this page; we recommend reviewing it periodically.",
             "Databases are kept for as long as the processing purposes and applicable legal duties remain in force."

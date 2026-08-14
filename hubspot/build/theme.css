@@ -18,45 +18,59 @@
 @source "../src/theme/novieri/modules/**/*.js";
 @source "../src/theme/novieri/js/**/*.js";
 
-/* next/font declares these in the Next.js build; here they are ours. */
+/* next/font declares these in the Next.js build; here they are ours.
+ *
+ * Absolute, not relative, and that is the whole point. HubSpot serves the
+ * built stylesheet from a versioned path — /hubfs/raw_assets/<n>/public/... —
+ * but serves the raw font files from the same path without that segment. A
+ * relative ../fonts/ therefore resolves one directory too deep and every face
+ * 404s, which is exactly what shipped: every visitor read the site in their
+ * own OS default for as long as it was live. Nothing caught it because the
+ * fallback stack is close enough that no page looks broken.
+ *
+ * The unversioned path is also the more stable of the two: the number in the
+ * stylesheet's URL moves, the fonts' path does not.
+ *
+ * scripts/check-font-urls.mjs fetches all six against the live domain, and the
+ * deploy runs it after upload. */
 @font-face {
   font-family: "Clash Display";
-  src: url("../fonts/ClashDisplay-Medium.woff2") format("woff2");
+  src: url("/hubfs/raw_assets/public/@projects/Novieri%20website/novieri_theme/fonts/ClashDisplay-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Clash Display";
-  src: url("../fonts/ClashDisplay-Semibold.woff2") format("woff2");
+  src: url("/hubfs/raw_assets/public/@projects/Novieri%20website/novieri_theme/fonts/ClashDisplay-Semibold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Satoshi";
-  src: url("../fonts/Satoshi-Regular.woff2") format("woff2");
+  src: url("/hubfs/raw_assets/public/@projects/Novieri%20website/novieri_theme/fonts/Satoshi-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Satoshi";
-  src: url("../fonts/Satoshi-Medium.woff2") format("woff2");
+  src: url("/hubfs/raw_assets/public/@projects/Novieri%20website/novieri_theme/fonts/Satoshi-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Satoshi";
-  src: url("../fonts/Satoshi-Bold.woff2") format("woff2");
+  src: url("/hubfs/raw_assets/public/@projects/Novieri%20website/novieri_theme/fonts/Satoshi-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "JetBrains Mono";
-  src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  src: url("/hubfs/raw_assets/public/@projects/Novieri%20website/novieri_theme/fonts/JetBrainsMono-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
