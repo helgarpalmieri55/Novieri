@@ -1723,7 +1723,7 @@
     "title": "Atena · asistente virtual con IA",
     "open": "Abrir el chat con Atena",
     "close": "Cerrar el chat",
-    "greeting": "Hola. Cuéntame qué quieres mejorar o qué problema está afectando tu operación. Te orientaré sobre el servicio, producto o primer paso que podría tener más sentido.",
+    "greeting": "Hola, soy Atena, la asistente con IA de Novieri. Pregúntame lo que quieras sobre nuestros servicios, productos o forma de trabajar.",
     "placeholder": "Escribe tu pregunta o describe el problema…",
     "send": "Enviar",
     "error": "No pude responder en este momento. Intenta de nuevo o escríbenos desde la página de contacto.",

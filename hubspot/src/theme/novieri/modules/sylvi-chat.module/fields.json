@@ -38,7 +38,7 @@
     "name": "greeting_es",
     "label": "Greeting (Spanish)",
     "type": "text",
-    "default": "Hola. Cuéntame qué quieres mejorar o qué problema está afectando tu operación. Te orientaré sobre el servicio, producto o primer paso que podría tener más sentido.",
+    "default": "Hola, soy Atena. Cuéntame qué está frenando tu operación y te digo si somos los indicados para resolverlo.",
     "allow_new_line": true
   },
   {
