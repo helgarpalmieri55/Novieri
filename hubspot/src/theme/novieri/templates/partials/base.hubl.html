@@ -10,6 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page_meta.html_title }}</title>
     <meta name="description" content="{{ page_meta.meta_description }}" />
+    {#
+      The tab icon. There was none: no rel="icon" anywhere and /favicon.ico
+      returning 404, so every tab of this site showed the browser's blank page
+      glyph and every bookmark was anonymous.
+
+      Declared here rather than left to HubSpot's branding setting, so it ships
+      with the theme and is reviewable in the repo. Once a page declares an
+      icon the browser stops asking for /favicon.ico, which is also why that
+      404 stops mattering. scripts/build-favicons.mjs cuts these from the logo
+      and explains why they are a white mark on a plum tile instead of the
+      colour mark: the outlines vanish at 16px.
+    #}
+    <link rel="icon" type="image/png" sizes="32x32" href="/hubfs/favicons/novieri-favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/hubfs/favicons/novieri-favicon-512.png" />
+    <link rel="apple-touch-icon" href="/hubfs/favicons/novieri-favicon-180.png" />
     {{ require_css(get_asset_url("../../css/theme.css")) }}
     {#
       Runs before first paint. Three jobs: opt into animations (content stays

@@ -131,6 +131,9 @@ jobs:
           # File Manager serves them at /hubfs/audio/<name>.mp3, which is
           # what the module hardcodes.
           hs filemanager upload files/audio audio --use-env
+          # The tab icons. Same reasoning as the audio: the File Manager URL is
+          # the one that has always served, and base.hubl.html points at it.
+          hs filemanager upload files/favicons favicons --use-env
           # The site screenshots, when the capture workflow has produced any.
           if [ -n "$(ls -A hubspot/files/screens 2>/dev/null || ls -A files/screens 2>/dev/null)" ]; then
             hs filemanager upload files/screens screens --use-env
