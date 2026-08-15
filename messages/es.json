@@ -83,6 +83,10 @@
       "title": "Política de tratamiento de datos personales — Novieri",
       "description": "Cómo Novieri trata, protege y conserva tus datos personales, y cómo ejercer tus derechos según la Ley 1581 de 2012."
     },
+    "legalDataDeletion": {
+      "title": "Eliminación de datos personales — Novieri",
+      "description": "Cómo pedirle a Novieri que elimine tus datos personales, qué se elimina, qué debemos conservar por ley y en cuánto tiempo respondemos."
+    },
     "legalCookies": {
       "title": "Política de cookies — Novieri",
       "description": "Qué cookies usa novieri.com, para qué sirven y cómo aceptarlas, rechazarlas o cambiar tu decisión en cualquier momento."
@@ -1058,7 +1062,8 @@
     "legalTitle": "Legal",
     "privacy": "Política de privacidad",
     "cookies": "Política de cookies",
-    "terms": "Términos de uso"
+    "terms": "Términos de uso",
+    "dataDeletion": "Eliminación de datos"
   },
   "notFound": {
     "eyebrow": "error 404",
@@ -1902,6 +1907,55 @@
           "p": [
             "Esta política rige a partir de la fecha de su última actualización y permanece vigente mientras Novieri trate datos personales. Cualquier cambio sustancial se publicará en esta misma página; te recomendamos revisarla periódicamente.",
             "Las bases de datos se conservarán durante la vigencia de las finalidades del tratamiento y de los deberes legales aplicables."
+          ]
+        }
+      ]
+    },
+    "dataDeletion": {
+      "title": "Eliminación de datos personales",
+      "lead": "Esta página explica cómo pedir que eliminemos tus datos personales, qué eliminamos, qué estamos obligados a conservar y en cuánto tiempo respondemos. Aplica tanto a los datos que Novieri trata por su cuenta como a los que trata por cuenta de una empresa cliente — por ejemplo, si escribiste al WhatsApp de un restaurante o un hotel que usa nuestra tecnología.",
+      "sections": [
+        {
+          "h": "1. Cómo pedir la eliminación",
+          "p": [
+            "Escríbenos a {email} desde una dirección que permita identificarte, con «Eliminación de datos» en el asunto. No tienes que explicar por qué: es tu derecho y no te vamos a pedir un motivo.",
+            "Para poder encontrar tus datos, incluye lo que aplique en tu caso: tu nombre; por dónde nos contactaste (este sitio, el chat, un formulario, o el WhatsApp de un negocio); si fue por WhatsApp, el número desde el que escribiste y el nombre del negocio; y las fechas aproximadas.",
+            "Si la solicitud llega incompleta, te pedimos lo que falte dentro de los cinco (5) días hábiles siguientes a recibirla."
+          ]
+        },
+        {
+          "h": "2. En cuánto tiempo respondemos",
+          "p": [
+            "Una solicitud de supresión se tramita como un reclamo en los términos del artículo 15 de la Ley 1581 de 2012: la atendemos en un máximo de quince (15) días hábiles, prorrogables por ocho (8) días hábiles más cuando no sea posible resolverla en ese plazo, informándote los motivos y la fecha en que quedará resuelta.",
+            "Cuando esté hecho te lo confirmamos por escrito, indicando qué se eliminó."
+          ]
+        },
+        {
+          "h": "3. Si escribiste al WhatsApp de un negocio que usa nuestra tecnología",
+          "p": [
+            "En esos casos el responsable del tratamiento es el negocio al que le escribiste, no Novieri. Nosotros operamos el asistente por cuenta suya, como encargados, y solo tratamos esos datos siguiendo sus instrucciones.",
+            "Puedes escribirle directamente a ese negocio, o escribirnos a nosotros: trasladamos tu solicitud dentro de los cinco (5) días hábiles siguientes y te decimos a quién la trasladamos, para que sepas con quién estás tratando. Mientras tanto no usamos esa conversación para nada distinto de atender tu solicitud."
+          ]
+        },
+        {
+          "h": "4. Qué eliminamos",
+          "p": [
+            "De una conversación por WhatsApp: el contenido de los mensajes, las notas de voz y su transcripción, el número de teléfono y el nombre de perfil, y los datos que hayas entregado dentro de la conversación — por ejemplo una dirección de entrega, los datos de una reserva o el detalle de un pedido.",
+            "De este sitio: lo que hayas enviado en un formulario, la conversación con nuestro asistente y el informe del autodiagnóstico, si lo hiciste."
+          ]
+        },
+        {
+          "h": "5. Qué debemos conservar, y por qué",
+          "p": [
+            "Si existe o existió una relación comercial, la ley colombiana nos obliga a conservar la facturación y los soportes contables y tributarios durante los plazos que ella fija. Eso no se puede eliminar a solicitud; vencidos esos plazos, se suprime o se anonimiza.",
+            "También conservamos un registro mínimo de tu propia solicitud —la fecha y el resultado— para poder demostrar que la atendimos. Ese registro no incluye el contenido de lo que eliminamos."
+          ]
+        },
+        {
+          "h": "6. Proveedores que intervienen",
+          "p": [
+            "Tres terceros participan en el servicio de WhatsApp: la plataforma de WhatsApp Business de Meta, que es el canal por el que llegan los mensajes; Anthropic, cuyo modelo de inteligencia artificial genera las respuestas; y nuestro proveedor de transcripción, que convierte las notas de voz en texto.",
+            "Cuando eliminamos una conversación, solicitamos también la eliminación de las copias que estos proveedores puedan conservar por su propia operación. Todos actúan como subencargados y pueden estar ubicados fuera de Colombia, en los términos de la sección 10 de nuestra política de tratamiento de datos personales."
           ]
         }
       ]

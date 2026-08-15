@@ -72,6 +72,7 @@ const ES_SLUGS = {
   "products/ai-ecommerce": "productos/ecommerce-ia",
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
+  "legal/data-deletion": "legal/eliminacion-de-datos",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
 };
@@ -162,6 +163,13 @@ const PAGES = [
     name: "Privacy policy",
     htmlTitle: "Privacy policy — Novieri",
     metaDescription: "How Novieri collects, uses, and protects personal data, under Colombian Law 1581 of 2012." },
+  // Meta's App Review checks this one for real: a WhatsApp app handling a
+  // restaurant's customers has to show a working way to ask for deletion, and
+  // pointing the field at facebook.com is a refusal.
+  { key: "data-deletion", template: "legal", slug: "legal/data-deletion",
+    name: "Data deletion",
+    htmlTitle: "Deleting your personal data — Novieri",
+    metaDescription: "How to ask Novieri to delete your personal data, what gets deleted, what the law requires us to keep, and how long we take." },
   { key: "cookies", template: "legal", slug: "legal/cookie-policy",
     name: "Cookie policy",
     htmlTitle: "Cookie policy — Novieri",
@@ -363,6 +371,7 @@ function esMeta() {
     "products/ai-ecommerce": es.meta.sol_ventia,
     // The legal pages were the last ES titles still in English.
     "legal/privacy-policy": es.meta.legalPrivacy,
+    "legal/data-deletion": es.meta.legalDataDeletion,
     "legal/cookie-policy": es.meta.legalCookies,
     "legal/terms-of-use": es.meta.legalTerms,
     "products/ai-websites": es.meta.sol_webDev,

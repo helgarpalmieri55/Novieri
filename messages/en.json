@@ -1036,7 +1036,8 @@
     "legalTitle": "Legal",
     "privacy": "Privacy policy",
     "cookies": "Cookie policy",
-    "terms": "Terms of use"
+    "terms": "Terms of use",
+    "dataDeletion": "Data deletion"
   },
   "notFound": {
     "eyebrow": "error 404",
@@ -1880,6 +1881,55 @@
           "p": [
             "This policy applies from the date of its last update and remains in force for as long as Novieri processes personal data. Any substantial change will be published on this page; we recommend reviewing it periodically.",
             "Databases are kept for as long as the processing purposes and applicable legal duties remain in force."
+          ]
+        }
+      ]
+    },
+    "dataDeletion": {
+      "title": "Deleting your personal data",
+      "lead": "This page explains how to ask us to delete your personal data, what we delete, what we are required to keep, and how long we take. It covers both the data Novieri holds in its own right and the data it holds on behalf of a client company — if you wrote to the WhatsApp number of a restaurant or hotel that uses our technology, for example.",
+      "sections": [
+        {
+          "h": "1. How to request deletion",
+          "p": [
+            "Write to {email} from an address that identifies you, with “Data deletion” in the subject line. You do not have to explain why: it is your right and we will not ask for a reason.",
+            "So that we can find your data, include whatever applies: your name; how you contacted us (this site, the chat, a form, or a business's WhatsApp); if it was WhatsApp, the number you wrote from and the name of the business; and roughly when.",
+            "If the request arrives incomplete, we will ask for what is missing within five (5) business days of receiving it."
+          ]
+        },
+        {
+          "h": "2. How long we take",
+          "p": [
+            "A deletion request is handled as a claim under article 15 of Colombian Law 1581 of 2012: we answer within fifteen (15) business days at most, extendable by a further eight (8) business days where it cannot be resolved in that time, telling you why and when it will be.",
+            "When it is done we confirm it in writing, and say what was deleted."
+          ]
+        },
+        {
+          "h": "3. If you wrote to a business that uses our technology",
+          "p": [
+            "In that case the data controller is the business you wrote to, not Novieri. We operate the assistant on its behalf, as a processor, and handle that data only on its instructions.",
+            "You can write to that business directly, or write to us: we pass your request on within five (5) business days and tell you who we passed it to, so you know who you are dealing with. In the meantime we do not use that conversation for anything other than handling your request."
+          ]
+        },
+        {
+          "h": "4. What we delete",
+          "p": [
+            "From a WhatsApp conversation: the content of the messages, voice notes and their transcription, the phone number and WhatsApp profile name, and anything you provided during the conversation — a delivery address, reservation details or the contents of an order, for example.",
+            "From this site: whatever you submitted through a form, your conversation with our assistant, and your self-diagnosis report if you completed one."
+          ]
+        },
+        {
+          "h": "5. What we have to keep, and why",
+          "p": [
+            "Where there is or was a commercial relationship, Colombian law requires us to keep invoicing and the accounting and tax records behind it for the periods it sets. That cannot be deleted on request; once those periods expire it is deleted or anonymized.",
+            "We also keep a minimal record of the request itself — the date and the outcome — so that we can show it was handled. That record does not include the content of what was deleted."
+          ]
+        },
+        {
+          "h": "6. Providers involved",
+          "p": [
+            "Three third parties take part in the WhatsApp service: Meta's WhatsApp Business Platform, which is the channel the messages arrive through; Anthropic, whose AI model generates the replies; and our transcription provider, which turns voice notes into text.",
+            "When we delete a conversation we also request deletion of any copies those providers may hold for their own operation. All act as sub-processors, may be located outside Colombia, and are covered by section 10 of our personal data policy."
           ]
         }
       ]

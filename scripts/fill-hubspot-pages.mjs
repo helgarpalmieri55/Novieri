@@ -80,6 +80,7 @@ const ES_SLUGS = {
   "products/ai-ecommerce": "productos/ecommerce-ia",
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
+  "legal/data-deletion": "legal/eliminacion-de-datos",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
 };
@@ -184,14 +185,16 @@ function sectionHtml(section) {
 
 const LEGAL_SLUGS = {
   privacy: "legal/privacy-policy",
+  dataDeletion: "legal/data-deletion",
   cookies: "legal/cookie-policy",
   terms: "legal/terms-of-use",
 };
 /** Labels come from the footer namespace, which already has both languages. */
 const OTHER = {
-  privacy: ["cookies", "terms"],
-  cookies: ["privacy", "terms"],
-  terms: ["privacy", "cookies"],
+  privacy: ["dataDeletion", "cookies", "terms"],
+  dataDeletion: ["privacy", "cookies", "terms"],
+  cookies: ["privacy", "dataDeletion", "terms"],
+  terms: ["privacy", "dataDeletion", "cookies"],
 };
 
 /** The one string with no home in messages/*.json. */
@@ -1174,6 +1177,7 @@ const PAGES = {
   ...Object.fromEntries(SOLUTIONS.map(([key, slug]) => [slugFor(slug), solutionWidgets(key)])),
   [slugFor("about")]: aboutWidgets(),
   [slugFor(LEGAL_SLUGS.privacy)]: legalWidgets("privacy"),
+  [slugFor(LEGAL_SLUGS.dataDeletion)]: legalWidgets("dataDeletion"),
   [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),
   [slugFor(LEGAL_SLUGS.terms)]: legalWidgets("terms"),
   [slugFor("contact")]: {
