@@ -5,7 +5,7 @@ name: Deploy to HubSpot
 # only credential involved; nothing here can read it back out.
 #
 # The build step regenerates two files that must never be edited by hand:
-# Sylvi's company profile (from the site's own copy) and the theme stylesheet
+# Atena's company profile (from the site's own copy) and the theme stylesheet
 # (Tailwind, scanning the HubL templates).
 
 on:
@@ -49,7 +49,7 @@ jobs:
         run: npm run build:hubspot
       - name: Fail if the build left anything uncommitted
         # Every generated file is committed so the repo always shows what is
-        # deployed: the stylesheet, Sylvi's profile, and the two bundled
+        # deployed: the stylesheet, Atena's profile, and the two bundled
         # serverless entrypoints. A diff here means someone edited a source
         # without rebuilding.
         run: git diff --exit-code hubspot/src/theme/novieri/css/theme.css hubspot/functions-src/lib/company-profile.json hubspot/src/app/functions/chat.js hubspot/src/app/functions/diagnose.js

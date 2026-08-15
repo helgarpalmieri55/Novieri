@@ -1137,7 +1137,7 @@
         ],
         "hero": {
           "title": "La asistente de esta página, trabajando para tu negocio.",
-          "promise": "Sylvi responde preguntas en novieri.com a cualquier hora — con nuestra información publicada, en español o en inglés — y le pasa la conversación a una persona cuando hace falta. La misma asistente, alimentada con tu negocio en lugar del nuestro, es la que instalamos en tu sitio. Pruébala antes de seguir leyendo: está en la esquina de esta página."
+          "promise": "Atena responde preguntas en novieri.com a cualquier hora — con nuestra información publicada, en español o en inglés — y le pasa la conversación a una persona cuando hace falta. La misma asistente, alimentada con tu negocio en lugar del nuestro, es la que instalamos en tu sitio. Pruébala antes de seguir leyendo: está en la esquina de esta página."
         },
         "features": [
           {
@@ -1183,7 +1183,7 @@
         "chatDemo": {
           "eyebrow": "míralo responder",
           "title": "La misma asistente, en el sitio de un cliente.",
-          "body": "Una conversación como las que Sylvi tiene todos los días. Fíjate en lo que hace cuando no sabe algo: lo dice y ofrece una persona, en lugar de inventarse la respuesta.",
+          "body": "Una conversación como las que Atena tiene todos los días. Fíjate en lo que hace cuando no sabe algo: lo dice y ofrece una persona, en lugar de inventarse la respuesta.",
           "header": {
             "name": "Asistente",
             "status": "en línea · responde en segundos"
@@ -1720,8 +1720,8 @@
     }
   },
   "chat": {
-    "title": "Sylvi · asistente virtual con IA",
-    "open": "Abrir el chat con Sylvi",
+    "title": "Atena · asistente virtual con IA",
+    "open": "Abrir el chat con Atena",
     "close": "Cerrar el chat",
     "greeting": "Hola. Cuéntame qué quieres mejorar o qué problema está afectando tu operación. Te orientaré sobre el servicio, producto o primer paso que podría tener más sentido.",
     "placeholder": "Escribe tu pregunta o describe el problema…",

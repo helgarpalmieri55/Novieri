@@ -1,7 +1,7 @@
 /**
  * Handing a conversation to a person.
  *
- * When a visitor asks to talk to someone real, Sylvi gives them the way
+ * When a visitor asks to talk to someone real, Atena gives them the way
  * through — in Colombia, the WhatsApp line; everywhere else, the calendar and
  * the inbox, because that line is Colombian and Novieri does not pretend
  * otherwise. Whoever picks that up needs the conversation that led to it: the
@@ -27,7 +27,7 @@ const TICKETS_API = "https://api.hubapi.com/crm/v3/objects/tickets";
 /** The conversation, as a person would read it. */
 function transcript({ messages, reply, locale, region, page }) {
   const lines = [
-    "A visitor asked to speak to a real person, and Sylvi gave them the way through.",
+    "A visitor asked to speak to a real person, and Atena gave them the way through.",
     "",
     `Page:     ${page || "(unknown)"}`,
     `Reading:  ${locale === "es" ? "Spanish" : "English"}`,
@@ -36,9 +36,9 @@ function transcript({ messages, reply, locale, region, page }) {
     "--- conversation ---",
   ];
   for (const message of messages) {
-    lines.push(`${message.role === "user" ? "Visitor" : "Sylvi"}: ${message.content}`);
+    lines.push(`${message.role === "user" ? "Visitor" : "Atena"}: ${message.content}`);
   }
-  lines.push(`Sylvi: ${reply}`);
+  lines.push(`Atena: ${reply}`);
   return lines.join("\n");
 }
 
@@ -61,7 +61,7 @@ async function deliverTranscript(conversation) {
   }
 
   const properties = {
-    subject: `Sylvi handoff — visitor asked for a person (${conversation.region === "co" ? "Colombia" : "international"})`,
+    subject: `Atena handoff — visitor asked for a person (${conversation.region === "co" ? "Colombia" : "international"})`,
     content: body.slice(0, 60000),
     // The default ticket pipeline and its first stage — measured against this
     // portal: pipeline 0 "Support Pipeline", stage 1 "New". Overridable

@@ -1,5 +1,5 @@
 /**
- * Sylvi widget behaviour — the vanilla port of src/components/ChatWidget.tsx.
+ * Atena widget behaviour — the vanilla port of src/components/ChatWidget.tsx.
  *
  * The `sig` on each assistant reply is the server's HMAC over that text. It
  * travels back with the next request so the function can tell its own words

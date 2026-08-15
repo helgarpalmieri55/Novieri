@@ -1127,7 +1127,7 @@
         ],
         "hero": {
           "title": "The assistant on this page, working for your business.",
-          "promise": "Sylvi answers questions on novieri.com at any hour — from our own published information, in English or Spanish — and hands the conversation to a person when it deserves one. The same assistant, grounded in your business instead of ours, is what we deploy on your site. Try her before you read any further: she's in the corner of this page."
+          "promise": "Atena answers questions on novieri.com at any hour — from our own published information, in English or Spanish — and hands the conversation to a person when it deserves one. The same assistant, grounded in your business instead of ours, is what we deploy on your site. Try her before you read any further: she's in the corner of this page."
         },
         "features": [
           {
@@ -1173,7 +1173,7 @@
         "chatDemo": {
           "eyebrow": "see it answer",
           "title": "The same assistant, on a client's site.",
-          "body": "A conversation of the kind Sylvi has every day. Watch what she does when she does not know something: she says so and offers a person, instead of inventing an answer.",
+          "body": "A conversation of the kind Atena has every day. Watch what she does when she does not know something: she says so and offers a person, instead of inventing an answer.",
           "header": {
             "name": "Assistant",
             "status": "online · replies in seconds"
@@ -1710,10 +1710,10 @@
     }
   },
   "chat": {
-    "title": "Sylvi · Novieri assistant",
-    "open": "Open the chat with Sylvi",
+    "title": "Atena · Novieri assistant",
+    "open": "Open the chat with Atena",
     "close": "Close the chat",
-    "greeting": "Hi, I'm Sylvi, Novieri's AI assistant. Ask me anything about our services, products or how we work.",
+    "greeting": "Hi, I'm Atena, Novieri's AI assistant. Ask me anything about our services, products or how we work.",
     "placeholder": "Type your question…",
     "send": "Send",
     "error": "I couldn't answer right now. Try again, or write to us from the contact page.",
