@@ -73,6 +73,7 @@ const ES_SLUGS = {
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/data-deletion": "legal/eliminacion-de-datos",
+  "legal/terms-of-service": "legal/terminos-del-servicio",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
 };
@@ -170,6 +171,12 @@ const PAGES = [
     name: "Data deletion",
     htmlTitle: "Deleting your personal data — Novieri",
     metaDescription: "How to ask Novieri to delete your personal data, what gets deleted, what the law requires us to keep, and how long we take." },
+  // Not the same document as terms-of-use: that one governs browsing
+  // novieri.com, this one governs delivering the services someone has bought.
+  { key: "terms-of-service", template: "legal", slug: "legal/terms-of-service",
+    name: "Service terms",
+    htmlTitle: "Terms and conditions of service — Novieri",
+    metaDescription: "The terms under which Novieri delivers its services and products: how a contract is formed, pricing and payment, AI limitations, WhatsApp and Meta, data protection, service levels and liability." },
   { key: "cookies", template: "legal", slug: "legal/cookie-policy",
     name: "Cookie policy",
     htmlTitle: "Cookie policy — Novieri",
@@ -372,6 +379,7 @@ function esMeta() {
     // The legal pages were the last ES titles still in English.
     "legal/privacy-policy": es.meta.legalPrivacy,
     "legal/data-deletion": es.meta.legalDataDeletion,
+    "legal/terms-of-service": es.meta.legalTermsOfService,
     "legal/cookie-policy": es.meta.legalCookies,
     "legal/terms-of-use": es.meta.legalTerms,
     "products/ai-websites": es.meta.sol_webDev,

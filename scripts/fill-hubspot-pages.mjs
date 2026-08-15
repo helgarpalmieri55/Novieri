@@ -81,6 +81,7 @@ const ES_SLUGS = {
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
   "legal/data-deletion": "legal/eliminacion-de-datos",
+  "legal/terms-of-service": "legal/terminos-del-servicio",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
 };
@@ -172,29 +173,79 @@ function interpolate(text) {
 const escapeHtml = (s) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-/** A legal section is paragraphs, an optional list, then more paragraphs. */
-function sectionHtml(section) {
-  const parts = [];
-  for (const p of section.p || []) parts.push(`<p>${escapeHtml(interpolate(p))}</p>`);
-  if (section.ul?.length) {
-    parts.push(`<ul>${section.ul.map((li) => `<li>${escapeHtml(interpolate(li))}</li>`).join("")}</ul>`);
+/**
+ * Inline formatting for legal copy: **bold** and [text](href), nothing else.
+ *
+ * Escaping happens first and the markers are applied to the escaped string, so
+ * a document can carry emphasis and cross-references without any of it being a
+ * way to inject markup. Everything else — asterisks in the middle of a word, a
+ * stray bracket — survives as text.
+ */
+function inline(text) {
+  return escapeHtml(interpolate(text))
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+}
+
+/**
+ * One block of a legal section.
+ *
+ * The older documents are paragraphs and a list, which is all they needed. The
+ * services terms and the deletion policy are not that shape: they carry
+ * sub-headings, numbered obligations, a severity matrix, a retention table
+ * with a legal basis per row. Flattening those into prose would lose the thing
+ * that makes them readable — a reader looking up how long an invoice is kept
+ * wants a row, not a sentence in the middle of a paragraph.
+ *
+ * A table is wrapped in its own scroll container: it is the one element here
+ * that cannot reflow, and a legal page that scrolls sideways on a phone is a
+ * legal page nobody reads on a phone.
+ */
+function blockHtml(b) {
+  if (typeof b === "string") return `<p>${inline(b)}</p>`;
+  if (b.h) return `<h3>${inline(b.h)}</h3>`;
+  if (b.ul) return `<ul>${b.ul.map((li) => `<li>${inline(li)}</li>`).join("")}</ul>`;
+  if (b.ol) return `<ol>${b.ol.map((li) => `<li>${inline(li)}</li>`).join("")}</ol>`;
+  if (b.note) return `<p class="legal-note">${inline(b.note)}</p>`;
+  if (b.table) {
+    const head = `<thead><tr>${b.table.head.map((c) => `<th>${inline(c)}</th>`).join("")}</tr></thead>`;
+    const rows = b.table.rows
+      .map((r) => `<tr>${r.map((c) => `<td>${inline(c)}</td>`).join("")}</tr>`)
+      .join("");
+    return `<div class="legal-table"><table>${head}<tbody>${rows}</tbody></table></div>`;
   }
-  for (const p of section.p2 || []) parts.push(`<p>${escapeHtml(interpolate(p))}</p>`);
+  return "";
+}
+
+/**
+ * A legal section: either the newer block list, or the older paragraphs, an
+ * optional list, then more paragraphs.
+ */
+function sectionHtml(section) {
+  if (section.blocks) return section.blocks.map(blockHtml).join("");
+  const parts = [];
+  for (const p of section.p || []) parts.push(`<p>${inline(p)}</p>`);
+  if (section.ul?.length) {
+    parts.push(`<ul>${section.ul.map((li) => `<li>${inline(li)}</li>`).join("")}</ul>`);
+  }
+  for (const p of section.p2 || []) parts.push(`<p>${inline(p)}</p>`);
   return parts.join("");
 }
 
 const LEGAL_SLUGS = {
   privacy: "legal/privacy-policy",
   dataDeletion: "legal/data-deletion",
+  termsOfService: "legal/terms-of-service",
   cookies: "legal/cookie-policy",
   terms: "legal/terms-of-use",
 };
 /** Labels come from the footer namespace, which already has both languages. */
 const OTHER = {
-  privacy: ["dataDeletion", "cookies", "terms"],
-  dataDeletion: ["privacy", "cookies", "terms"],
-  cookies: ["privacy", "dataDeletion", "terms"],
-  terms: ["privacy", "dataDeletion", "cookies"],
+  privacy: ["dataDeletion", "termsOfService", "cookies", "terms"],
+  dataDeletion: ["privacy", "termsOfService", "cookies", "terms"],
+  termsOfService: ["privacy", "dataDeletion", "cookies", "terms"],
+  cookies: ["privacy", "dataDeletion", "termsOfService", "terms"],
+  terms: ["privacy", "dataDeletion", "termsOfService", "cookies"],
 };
 
 /** The one string with no home in messages/*.json. */
@@ -219,7 +270,9 @@ function legalWidgets(doc) {
         title: t.legal[doc].title,
         lead: t.legal[doc].lead,
         updated_label: c.updated,
-        updated_value: c.updatedValue,
+        // These two documents took effect on their own date, so the shared
+        // one would be wrong on them and wrong on the others if changed.
+        updated_value: t.legal[doc].updatedValue || c.updatedValue,
         toc_label: c.toc,
         identity_title: c.identityTitle,
         identity_body: `<p>${escapeHtml(interpolate(c.identityBody))}</p>`,
@@ -1178,6 +1231,7 @@ const PAGES = {
   [slugFor("about")]: aboutWidgets(),
   [slugFor(LEGAL_SLUGS.privacy)]: legalWidgets("privacy"),
   [slugFor(LEGAL_SLUGS.dataDeletion)]: legalWidgets("dataDeletion"),
+  [slugFor(LEGAL_SLUGS.termsOfService)]: legalWidgets("termsOfService"),
   [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),
   [slugFor(LEGAL_SLUGS.terms)]: legalWidgets("terms"),
   [slugFor("contact")]: {

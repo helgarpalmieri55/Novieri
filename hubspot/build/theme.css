@@ -296,6 +296,41 @@
     color: var(--color-ink);
     font-weight: 500;
   }
+  /*
+   * Tables, for the documents that need them: a severity matrix, a retention
+   * schedule with a legal basis per row. They are the one thing in this prose
+   * that cannot reflow, so each one scrolls inside itself rather than pushing
+   * the page sideways on a phone.
+   */
+  .legal-prose .legal-table {
+    overflow-x: auto;
+    margin-top: 1.25rem;
+  }
+  .legal-prose table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 30rem;
+    font-size: var(--text-small);
+  }
+  .legal-prose th,
+  .legal-prose td {
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.625rem 1rem 0.625rem 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .legal-prose th {
+    color: var(--color-ink);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  /* The one aside each document gets: a reassurance, not a clause. */
+  .legal-prose .legal-note {
+    border-left: 2px solid var(--color-plum);
+    padding-left: 1rem;
+    color: var(--color-ink);
+  }
+
   .legal-prose ul,
   .legal-prose ol {
     margin-top: 1.25rem;

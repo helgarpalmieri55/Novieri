@@ -1037,7 +1037,8 @@
     "privacy": "Privacy policy",
     "cookies": "Cookie policy",
     "terms": "Terms of use",
-    "dataDeletion": "Data deletion"
+    "dataDeletion": "Data deletion",
+    "termsOfService": "Service terms"
   },
   "notFound": {
     "eyebrow": "error 404",
@@ -1886,50 +1887,592 @@
       ]
     },
     "dataDeletion": {
-      "title": "Deleting your personal data",
-      "lead": "This page explains how to ask us to delete your personal data, what we delete, what we are required to keep, and how long we take. It covers both the data Novieri holds in its own right and the data it holds on behalf of a client company — if you wrote to the WhatsApp number of a restaurant or hotel that uses our technology, for example.",
+      "title": "Personal data deletion policy",
+      "updatedValue": "15 August 2026",
+      "lead": "This explains how to ask us to delete your personal data, what happens after you do, how long we take, and where the law requires us to keep something.",
       "sections": [
         {
-          "h": "1. How to request deletion",
-          "p": [
-            "Write to {email} from an address that identifies you, with “Data deletion” in the subject line. You do not have to explain why: it is your right and we will not ask for a reason.",
-            "So that we can find your data, include whatever applies: your name; how you contacted us (this site, the chat, a form, or a business's WhatsApp); if it was WhatsApp, the number you wrote from and the name of the business; and roughly when.",
-            "If the request arrives incomplete, we will ask for what is missing within five (5) business days of receiving it."
+          "h": "1. What this document is for",
+          "blocks": [
+            "It applies to anyone whose data we have handled: visitors to our site, prospects, contacts belonging to our business clients, and people who talk to the WhatsApp, web or phone assistants we operate.",
+            "It sits alongside our [privacy policy](/legal/privacy-policy). Where the two differ on the deletion procedure, this document governs."
           ]
         },
         {
-          "h": "2. How long we take",
-          "p": [
-            "A deletion request is handled as a claim under article 15 of Colombian Law 1581 of 2012: we answer within fifteen (15) business days at most, extendable by a further eight (8) business days where it cannot be resolved in that time, telling you why and when it will be.",
-            "When it is done we confirm it in writing, and say what was deleted."
+          "h": "2. First: who is answerable for your data?",
+          "blocks": [
+            "This is the question that decides who you should write to, and the answer is not always us. Law 1581 of 2012 draws a line between two roles:",
+            {
+              "ul": [
+                "**Data controller** — whoever decides what the data is used for.",
+                "**Data processor** — whoever handles it on the controller's instructions."
+              ]
+            },
+            "Across much of what we do **we are the processor, not the controller**: we handle data on behalf of the company that hired us.",
+            {
+              "table": {
+                "head": [
+                  "Your situation",
+                  "Controller",
+                  "Who to write to"
+                ],
+                "rows": [
+                  [
+                    "You visited novieri.com, filled in a form, or talked to the assistant on the site",
+                    "**Novieri**",
+                    "{email}"
+                  ],
+                  [
+                    "You are a client, supplier or business contact of Novieri",
+                    "**Novieri**",
+                    "{email}"
+                  ],
+                  [
+                    "You applied for a job with us",
+                    "**Novieri**",
+                    "{email}"
+                  ],
+                  [
+                    "**You wrote on WhatsApp to a business** — a restaurant, a hotel — and an assistant we operate answered you",
+                    "**That business**",
+                    "The business. Write to us anyway and we will put you in touch — see section 3."
+                  ],
+                  [
+                    "A virtual receptionist or web chatbot belonging to another company answered you",
+                    "**That company**",
+                    "Same as above"
+                  ]
+                ]
+              }
+            },
+            {
+              "note": "Knocking on the wrong door costs you nothing. If you write to us and the controller is someone else, we do not file your request away: we pass it on, and tell you to whom and when."
+            }
           ]
         },
         {
-          "h": "3. If you wrote to a business that uses our technology",
-          "p": [
-            "In that case the data controller is the business you wrote to, not Novieri. We operate the assistant on its behalf, as a processor, and handle that data only on its instructions.",
-            "You can write to that business directly, or write to us: we pass your request on within five (5) business days and tell you who we passed it to, so you know who you are dealing with. In the meantime we do not use that conversation for anything other than handling your request."
+          "h": "3. How to request deletion",
+          "blocks": [
+            {
+              "h": "The channel"
+            },
+            "Write to {email}. It is the only official channel and it is staffed on business days. We charge nothing for handling your request.",
+            {
+              "h": "What to include"
+            },
+            "So that we can find you in our systems and not delete somebody else's data, we need:",
+            {
+              "table": {
+                "head": [
+                  "What",
+                  "Why"
+                ],
+                "rows": [
+                  [
+                    "**Full name**",
+                    "To identify you"
+                  ],
+                  [
+                    "**ID document number** — the number; you do not need to attach a copy in the first email",
+                    "To verify it is you"
+                  ],
+                  [
+                    "**The contact detail we hold**: WhatsApp number with country code, email address, and so on",
+                    "It is the key we search on"
+                  ],
+                  [
+                    "**Which company you interacted with**, if that applies",
+                    "To know whether we are the controller or the processor"
+                  ],
+                  [
+                    "**What you want**: everything deleted, or only certain information",
+                    "To set the scope"
+                  ]
+                ]
+              }
+            },
+            "If you are writing on someone else's behalf, attach the power of attorney or the document establishing your authority. Where the person is a minor, the request comes from whoever holds parental authority.",
+            {
+              "h": "If the controller is a client of ours"
+            },
+            "Where the data belongs to a business using our platform — your WhatsApp conversations with a restaurant, for example — the decision to delete is theirs. What we do, within **three (3) business days** at most, is:",
+            {
+              "ol": [
+                "Confirm we received the request and give you a reference number.",
+                "Pass it to the controller, telling you the name of the company.",
+                "Carry out the deletion as soon as the controller instructs us to, at no charge to them."
+              ]
+            },
+            "If the controller does not respond, we tell you, so that you can go to them directly or to the Superintendency of Industry and Commerce."
           ]
         },
         {
-          "h": "4. What we delete",
-          "p": [
-            "From a WhatsApp conversation: the content of the messages, voice notes and their transcription, the phone number and WhatsApp profile name, and anything you provided during the conversation — a delivery address, reservation details or the contents of an order, for example.",
-            "From this site: whatever you submitted through a form, your conversation with our assistant, and your self-diagnosis report if you completed one."
+          "h": "4. What happens after you write",
+          "blocks": [
+            {
+              "h": "Acknowledgement and reference number"
+            },
+            "Within **two (2) business days** we reply with a reference number in the format NOV-DEL-YYYYMMDD-XXX. Keep it: with that number you can ask where your request stands at any time, at the same address.",
+            {
+              "h": "Deadlines"
+            },
+            "A deletion request is a **claim** under article 15 of Law 1581 of 2012, so these are the times it runs to:",
+            {
+              "table": {
+                "head": [
+                  "Stage",
+                  "Deadline"
+                ],
+                "rows": [
+                  [
+                    "Acknowledgement with a reference number",
+                    "2 business days"
+                  ],
+                  [
+                    "If information is missing, we ask for it",
+                    "5 business days from receipt"
+                  ],
+                  [
+                    "**Substantive answer**",
+                    "**15 business days** from receipt, or from when you complete the information"
+                  ],
+                  [
+                    "Extension, where the case warrants it",
+                    "Up to 8 further business days, told to you before the first deadline expires"
+                  ]
+                ]
+              }
+            },
+            "If two (2) months pass after we ask for more information and it does not arrive, the request is treated as withdrawn and we close it — you are free to file it again whenever you like.",
+            {
+              "h": "Final confirmation"
+            },
+            "When we close it we send written confirmation saying **what was deleted, what was kept, and why**. We do not close a request without explaining the outcome."
           ]
         },
         {
-          "h": "5. What we have to keep, and why",
-          "p": [
-            "Where there is or was a commercial relationship, Colombian law requires us to keep invoicing and the accounting and tax records behind it for the periods it sets. That cannot be deleted on request; once those periods expire it is deleted or anonymized.",
-            "We also keep a minimal record of the request itself — the date and the outcome — so that we can show it was handled. That record does not include the content of what was deleted."
+          "h": "5. What gets deleted",
+          "blocks": [
+            "Where deletion applies, we remove the following from our production systems:",
+            {
+              "ul": [
+                "Your identifying and contact details.",
+                "The conversation history — WhatsApp, web chat, calls — including the transcribed text of your voice notes.",
+                "The original audio of those voice notes.",
+                "Orders, reservations and requests associated with you, except as set out in section 6.",
+                "Your entry in our contact lists and commercial communications."
+              ]
+            },
+            {
+              "h": "Backups"
+            },
+            "Our backups are encrypted and rotate automatically. Data deleted from production disappears from the backups within **thirty (30) calendar days** at most. During that window it is isolated: not queried, not used, and restored only in the event of a serious incident — in which case we repeat the deletion."
           ]
         },
         {
-          "h": "6. Providers involved",
-          "p": [
-            "Three third parties take part in the WhatsApp service: Meta's WhatsApp Business Platform, which is the channel the messages arrive through; Anthropic, whose AI model generates the replies; and our transcription provider, which turns voice notes into text.",
-            "When we delete a conversation we also request deletion of any copies those providers may hold for their own operation. All act as sub-processors, may be located outside Colombia, and are covered by section 10 of our personal data policy."
+          "h": "6. What we cannot delete, and why",
+          "blocks": [
+            "Deletion is not absolute. Article 8(e) of Law 1581 of 2012 says so expressly: it does not apply where a legal or contractual duty to keep the information exists. Specifically:",
+            {
+              "table": {
+                "head": [
+                  "What we keep",
+                  "Basis",
+                  "How long"
+                ],
+                "rows": [
+                  [
+                    "Invoices, accounting and tax records",
+                    "Articles 28 and 60 of the Commercial Code; the Tax Statute",
+                    "Up to 10 years"
+                  ],
+                  [
+                    "Contracts and their supporting documents",
+                    "Civil and commercial limitation periods",
+                    "While those periods run"
+                  ],
+                  [
+                    "Records of the deletion request itself",
+                    "To show the SIC that we handled it",
+                    "5 years"
+                  ],
+                  [
+                    "Information required by a judicial or administrative authority",
+                    "Order of the competent authority",
+                    "As ordered"
+                  ],
+                  [
+                    "Already anonymized data (aggregate metrics)",
+                    "It has stopped being personal data",
+                    "Indefinite"
+                  ]
+                ]
+              }
+            },
+            "Data kept for these reasons is **blocked**: held to meet the obligation, not used to contact you or for any other purpose."
+          ]
+        },
+        {
+          "h": "7. Other rights you can exercise through the same channel",
+          "blocks": [
+            "Deletion is not always what you need. At {email} you can also:",
+            {
+              "ul": [
+                "**Find out** what data we hold on you and where it came from.",
+                "**Update or correct** data that is incomplete or wrong.",
+                "**Withdraw the authorization** you gave.",
+                "**Object** to receiving commercial communications.",
+                "**Request a copy** of the authorization you granted.",
+                "**File a complaint** with the SIC over an alleged breach of the law."
+              ]
+            },
+            "Enquiries — finding out what we hold — run to a shorter deadline: 10 business days, extendable by 5 more."
+          ]
+        },
+        {
+          "h": "8. If you are not satisfied",
+          "blocks": [
+            "You can go to the **Superintendency of Industry and Commerce (SIC)**, Colombia's data protection authority:",
+            {
+              "ul": [
+                "www.sic.gov.co, under Protección de Datos Personales",
+                "Carrera 13 No. 27-00, Bogotá D.C."
+              ]
+            },
+            "The law requires you to exhaust the enquiry or claim process with us first, under article 16 of Law 1581 of 2012. That is why the reference number is worth keeping."
+          ]
+        },
+        {
+          "h": "9. Requests arriving through third-party platforms",
+          "blocks": [
+            "Where someone asks for their data to be deleted through Meta — WhatsApp, Facebook, Instagram — or another platform we use, we handle it by this same procedure and to the same deadlines. The answer and the reference number go to the contact address attached to the request.",
+            "Bear in mind that deleting your data from our systems **does not erase whatever remains on the platform itself**: messages stored on your phone, or in the WhatsApp Business app of the business you talked to, are deleted from those apps and with that business."
+          ]
+        },
+        {
+          "h": "10. Changes to this policy",
+          "blocks": [
+            "If we change it, we publish the new version at this same address with its effective date. Where a change significantly affects your rights, we say so through whatever channels we have before it takes effect."
+          ]
+        }
+      ]
+    },
+    "termsOfService": {
+      "title": "Terms and conditions of service",
+      "updatedValue": "15 August 2026",
+      "lead": "These terms govern the delivery of our services and products to business clients. They are separate from the website terms of use, which only govern browsing novieri.com.",
+      "sections": [
+        {
+          "h": "1. What this document governs",
+          "blocks": [
+            "These Terms govern **the delivery of our services and products**. They are separate from the [website terms of use](/legal/terms-of-use), which only govern browsing novieri.com.",
+            "They apply to the following services:",
+            {
+              "table": {
+                "head": [
+                  "Line",
+                  "What it covers"
+                ],
+                "rows": [
+                  [
+                    "**AI & automation**",
+                    "Conversational agents, automations and AI projects"
+                  ],
+                  [
+                    "**Managed IT**",
+                    "Helpdesk, monitoring, patching and backups"
+                  ],
+                  [
+                    "**Cybersecurity & compliance**",
+                    "Managed security and SOC 2 / PCI DSS readiness"
+                  ],
+                  [
+                    "**Custom software**",
+                    "Bespoke software development"
+                  ],
+                  [
+                    "**IT consulting**",
+                    "Consulting and fractional technology leadership"
+                  ]
+                ]
+              }
+            },
+            "And to the products we operate: websites and e-commerce with AI, vulnerability management, visitor intelligence, the WhatsApp AI assistant, the virtual receptionist and the website chatbot."
+          ]
+        },
+        {
+          "h": "2. Legal framework",
+          "blocks": [
+            "They are governed by Colombian law, in particular: the Commercial Code and the Civil Code; Law 527 of 1999 on electronic commerce and the validity of data messages; Law 1480 of 2011, the Consumer Statute; Law 1581 of 2012 and Decree 1074 of 2015 on personal data protection; Law 1273 of 2009 on computer crime; Law 2300 of 2023 on contacting consumers; and applicable intellectual property law."
+          ]
+        },
+        {
+          "h": "3. Definitions",
+          "blocks": [
+            {
+              "ul": [
+                "**Novieri / we** — Novieri S.A.S.",
+                "**Client / you** — the individual or company contracting the services.",
+                "**Proposal** — the commercial document setting out scope, deliverables, price and timelines.",
+                "**Contract** — the accepted Proposal together with these Terms and their annexes.",
+                "**Services** — what the Proposal agrees.",
+                "**Platform** — the software, infrastructure and tooling we deliver the Services with.",
+                "**Client Content** — data, text, menus, prices, images, knowledge bases and other information you supply.",
+                "**Third-Party Channels** — WhatsApp, Meta, AI providers, telephony, payments and other third-party services needed to operate."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "4. How the contract is formed",
+          "blocks": [
+            {
+              "ol": [
+                "We deliver a **Proposal** with a firm scope and price.",
+                "The contract is formed when you **accept it in writing** — email, electronic signature or payment of the deposit all count. Under Law 527 of 1999 that electronic acceptance is fully valid and admissible as evidence.",
+                "Proposals are valid for **thirty (30) calendar days** unless they say otherwise.",
+                "Information published on novieri.com, price ranges included, is **indicative and is not a binding offer**. The firm price is the one in the Proposal."
+              ]
+            },
+            "**Order of precedence** where documents conflict: the accepted Proposal first, then the technical annexes, then these Terms."
+          ]
+        },
+        {
+          "h": "5. Prices, invoicing and payment",
+          "blocks": [
+            {
+              "ol": [
+                "Prices are stated in **Colombian pesos (COP) or US dollars (USD)** according to the Proposal. Where they are agreed in USD and invoiced in COP, they settle at the TRM rate on the invoice date.",
+                "**VAT and other taxes are charged separately** from published figures.",
+                "Usual arrangements: recurring services are invoiced in advance; implementation is invoiced at the start, before work begins; fixed-scope projects run 50 % at the start and 50 % on delivery unless agreed otherwise; and hourly services are invoiced monthly against a report of hours.",
+                "**Payment term: thirty (30) calendar days** from the invoice date, unless the Proposal says otherwise.",
+                "**Late payment.** Late payment accrues default interest at the maximum legal rate certified by the Colombian Financial Superintendency. Where it runs past thirty (30) days we may suspend the Services after giving you five (5) business days' notice. Suspension does not release you from paying what is owed.",
+                "**Annual adjustment.** Recurring fees are adjusted once a year, from the anniversary, by no more than the previous year's CPI plus five (5) percentage points. We give you thirty (30) days' notice.",
+                "**Third-party costs.** Fees from Meta and WhatsApp, AI providers, telephony, domains, licences and cloud are **not included** unless the Proposal says so expressly. Where the provider allows it, you contract and pay them directly."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "6. Term, renewal and termination",
+          "blocks": [
+            {
+              "ol": [
+                "Recurring services run for the term in the Proposal and, failing that, for **twelve (12) months**, renewing automatically for equal periods.",
+                "Either party may terminate without penalty on **thirty (30) calendar days'** written notice before the end of the current period.",
+                "We may terminate immediately on serious breach, in particular: payment more than sixty (60) days late, use of the Services for unlawful purposes, or breach of Third-Party Channel policies that puts our accounts at risk."
+              ]
+            },
+            "**On termination:** we give you an export of your Content and data in a standard format, if you ask within the following thirty (30) days; we delete your information under the [data deletion policy](/legal/data-deletion); amounts accrued and unpaid fall due; and the confidentiality, intellectual property, limitation of liability, data protection and governing law clauses survive."
+          ]
+        },
+        {
+          "h": "7. Your obligations",
+          "blocks": [
+            "You undertake to:",
+            {
+              "ol": [
+                "Supply **accurate, complete and current information** — menus, prices, opening hours, policies, inventory. The quality of the assistant's answers depends directly on this.",
+                "Appoint a **counterpart with authority to decide** and respond to our requests in reasonable time. Delays on your side move the schedule.",
+                "Grant the **access needed** to your systems, accounts and providers.",
+                "Safeguard the **credentials** to the panel and tell us immediately of any unauthorized use.",
+                "Hold the **rights** to the Client Content you give us.",
+                "Not use the Services for unlawful or deceptive purposes, or to send unauthorized communications.",
+                "Comply with the law applicable to **your** business: health, tax, alcohol licensing, consumer protection and personal data."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "8. Artificial intelligence services: what you need to know",
+          "blocks": [
+            "This section matters and we ask you to read it carefully.",
+            {
+              "ol": [
+                "**AI is probabilistic, not deterministic.** The assistants generate answers from language models and **can get things wrong**, even with correct information in their knowledge base. We do not guarantee absolute accuracy or freedom from error.",
+                "**Human oversight.** The assistants are designed to escalate to someone on your team when they detect they cannot resolve something. You undertake to keep that channel staffed. The Services do not replace human supervision.",
+                "**Not professional advice.** The assistant's answers do not constitute medical, legal, financial, accounting or any other regulated professional advice.",
+                "**Business decisions.** Prices, availability, accepting orders and reservations, and honouring them, are your responsibility. The assistant communicates them; it does not decide them.",
+                "**Model providers.** We use third-party providers — among them Anthropic (Claude) and audio transcription services. Their changes of version, price, policy or availability can affect the Services, and we do not control them.",
+                "**Training.** We do not use your Content or your customers' conversations to train models of our own, nor do we authorize our providers to use them for that purpose.",
+                "**Testing before going live.** We give you an environment to validate how the assistant behaves. Approval to go to production is yours."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "9. WhatsApp, Meta and other Third-Party Channels",
+          "blocks": [
+            {
+              "ol": [
+                "**Meta sets the rules.** The WhatsApp Business service is governed by Meta's policies, which that company changes unilaterally. We undertake to configure the Services in line with them, but **we are not answerable for Meta's decisions**: account suspensions, fee changes, messaging limits, API changes or template rejections.",
+                "**The account is yours.** The WhatsApp Business account, the phone number and the business portfolio are yours and are registered in your name.",
+                "**You pay Meta directly**, with your own payment method. We act as a technology provider, not as a messaging reseller.",
+                "**Prohibited content.** Meta's Commerce Policies prohibit, among other things, the sale of alcohol, tobacco, medicines, weapons and supplements over WhatsApp. The assistant is configured **not to take orders for these products** even if they appear on your menu. You undertake not to force or request that this control be disabled.",
+                "**Law 2300 of 2023.** Business-initiated communications for commercial or collection purposes may only be sent to someone who authorized them, through the channel they authorized, and within the legal hours: **Monday to Friday 7:00 a.m. to 7:00 p.m. and Saturdays 8:00 a.m. to 3:00 p.m.**, never Sundays or public holidays. A simple opt-out must also be offered. You are answerable for the campaigns you choose to send; we provide the tool and the technical restrictions.",
+                "**Availability.** Continuity of the channel depends on Meta's infrastructure and on your carrier. Interruptions attributable to them do not count against our service levels."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "10. Intellectual property",
+          "blocks": [
+            {
+              "ol": [
+                "**The Platform is ours.** The software, architecture, prompts, design, documentation, know-how and improvements developed by Novieri are and remain our property. These Terms transfer no ownership: they grant you a non-exclusive, non-transferable licence to use it, limited to the term of the contract.",
+                "**Your Content is yours.** You keep title to the Client Content and to the data your operation generates. You grant us the licence needed to host and process it while we deliver the Services.",
+                "**Bespoke development.** In custom software projects, title to the specific deliverables is set in the Proposal. Unless expressly agreed otherwise, it transfers to you **once the full price is paid**, except for Novieri's reusable components, libraries and pre-existing know-how, which we retain and license to you perpetually.",
+                "**Commercial references.** We may state that you are a client and use your brand in our portfolio, unless you ask us in writing not to. We will not disclose figures or project details without your authorization."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "11. Confidentiality",
+          "blocks": [
+            "Both parties undertake to protect the other's confidential information, to use it only to perform the contract, and not to disclose it to anyone beyond those who need to know. The obligation holds during the term and for **five (5) years** after the contract ends. It does not cover public information, information already lawfully known, or information that must be disclosed by order of a competent authority — in which case the other party will be told where the law allows it."
+          ]
+        },
+        {
+          "h": "12. Personal data protection",
+          "blocks": [
+            {
+              "ol": [
+                "In respect of **your end customers'** personal data — the people who write to the assistant — **you are the data controller and Novieri is the data processor**, under Law 1581 of 2012.",
+                "As controller, it falls to you to obtain the data subjects' authorization, state the purposes, publish your own data policy, and handle enquiries and claims.",
+                "As processor we undertake to handle the data only on your instructions, apply security measures, keep it confidential, assist you in handling data subject requests, inform you without delay of any security incident, and delete or return the data when the contract ends.",
+                "The detail is in our [privacy policy](/legal/privacy-policy) and the [data deletion policy](/legal/data-deletion).",
+                "**International transfers.** Some sub-processors — AI, transcription, cloud and messaging providers — are outside Colombia. By accepting these Terms you authorize those transfers, which are made under the corresponding contractual safeguards."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "13. Service levels and support",
+          "blocks": [
+            "Unless the Proposal agrees different levels:",
+            {
+              "table": {
+                "head": [
+                  "Severity",
+                  "What it means",
+                  "First response"
+                ],
+                "rows": [
+                  [
+                    "**Critical**",
+                    "The service is down, or the assistant answers no customer at all",
+                    "4 business hours"
+                  ],
+                  [
+                    "**High**",
+                    "Main functionality degraded, with an impact on the business",
+                    "8 business hours"
+                  ],
+                  [
+                    "**Medium**",
+                    "An isolated fault with a workaround available",
+                    "2 business days"
+                  ],
+                  [
+                    "**Low**",
+                    "A question, an improvement or a content change",
+                    "5 business days"
+                  ]
+                ]
+              }
+            },
+            {
+              "ul": [
+                "**Support hours:** Monday to Friday, 8:00 a.m. to 6:00 p.m. Colombia time, excluding public holidays.",
+                "The times given are for **first response**, not resolution.",
+                "**They do not count** against these levels: scheduled maintenance notified 48 hours in advance, Third-Party Channel failures, failures of the Client's connectivity or equipment, and delays caused by information or access not being provided by you."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "14. Warranties and limitation of liability",
+          "blocks": [
+            {
+              "ol": [
+                "We undertake to deliver the Services with **professional diligence** and in line with good industry practice. It is an **obligation of means, not of result**: we do not guarantee commercial outcomes, sales volume, or operation free of interruption or error.",
+                "**Cap on liability.** Novieri's total aggregate liability, on any ground and across the whole term, will not exceed the **amount actually paid by the Client in the three (3) months preceding** the event giving rise to it.",
+                "**Exclusions.** We are not liable for lost profits, lost commercial opportunities, reputational harm, or indirect or unforeseeable damages.",
+                "**What this cap does not cover.** Under article 1522 of the Civil Code and Colombian case law, this limitation **does not apply** in cases of wilful misconduct or gross negligence, harm to life or personal integrity, or the non-delegable obligations in personal data protection.",
+                "**Consumer Statute.** If you contract as a consumer under Law 1480 of 2011 — that is, for a purpose outside your economic activity — the statutory guarantees of that law apply in preference and nothing in this section limits them."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "15. Force majeure",
+          "blocks": [
+            "Neither party is liable for failures arising from unforeseeable and irresistible events: natural disasters, conflict, acts of authority, widespread internet or power failures, third-party cyberattacks despite reasonable measures, or the suspension or discontinuation of essential third-party services. The affected party will give notice within the following five (5) business days. If the event lasts more than sixty (60) days, either party may terminate without penalty."
+          ]
+        },
+        {
+          "h": "16. Subcontracting and assignment",
+          "blocks": [
+            "We may rely on subcontractors and providers, remaining answerable to you for their work. Neither party may assign the contract without the other's written authorization, except on merger, demerger or transfer of the business, on fifteen (15) days' notice."
+          ]
+        },
+        {
+          "h": "17. Changes",
+          "blocks": [
+            "We may update these Terms by publishing the new version with its effective date. **Substantial** changes affecting your rights or obligations will be notified **thirty (30) days** in advance; if you do not agree, you may terminate without penalty before they take effect. Contracts already running are governed by the version in force when the Proposal was accepted, except for changes required by law or by the Third-Party Channels."
+          ]
+        },
+        {
+          "h": "18. Governing law and disputes",
+          "blocks": [
+            {
+              "ol": [
+                "They are governed by **Colombian law**.",
+                "The parties will try in good faith to resolve any difference by direct settlement over thirty (30) calendar days from the written notice of disagreement.",
+                "Once that stage is exhausted, the dispute goes to the **competent courts of Barranquilla, Colombia**.",
+                "If you are a consumer, you keep the right to go to the **Superintendency of Industry and Commerce** in exercise of your rights under Law 1480 of 2011."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "19. Notices",
+          "blocks": [
+            "Communications are validly received when sent by email to the addresses registered in the Proposal. For Novieri:",
+            {
+              "table": {
+                "head": [
+                  "Subject",
+                  "Email"
+                ],
+                "rows": [
+                  [
+                    "Commercial and contractual",
+                    "sales@novieri.com"
+                  ],
+                  [
+                    "Personal data",
+                    "{email}"
+                  ]
+                ]
+              }
+            },
+            "Any change of address must be notified in writing."
+          ]
+        },
+        {
+          "h": "20. Final provisions",
+          "blocks": [
+            {
+              "ul": [
+                "If any clause is invalid, the rest remain in full force.",
+                "Tolerating a breach does not waive the right to require compliance later.",
+                "These Terms, together with the Proposal and its annexes, are the **entire agreement** between the parties and replace any previous understanding on the same subject.",
+                "The parties act independently. Nothing here creates a partnership, commercial agency, representation or employment relationship."
+              ]
+            }
           ]
         }
       ]

@@ -87,6 +87,10 @@
       "title": "Eliminación de datos personales — Novieri",
       "description": "Cómo pedirle a Novieri que elimine tus datos personales, qué se elimina, qué debemos conservar por ley y en cuánto tiempo respondemos."
     },
+    "legalTermsOfService": {
+      "title": "Términos y condiciones de los servicios — Novieri",
+      "description": "Los términos con los que Novieri presta sus servicios y productos: cómo se perfecciona el contrato, precios y pago, límites de la IA, WhatsApp y Meta, datos personales, niveles de servicio y responsabilidad."
+    },
     "legalCookies": {
       "title": "Política de cookies — Novieri",
       "description": "Qué cookies usa novieri.com, para qué sirven y cómo aceptarlas, rechazarlas o cambiar tu decisión en cualquier momento."
@@ -1063,7 +1067,8 @@
     "privacy": "Política de privacidad",
     "cookies": "Política de cookies",
     "terms": "Términos de uso",
-    "dataDeletion": "Eliminación de datos"
+    "dataDeletion": "Eliminación de datos",
+    "termsOfService": "Términos de los servicios"
   },
   "notFound": {
     "eyebrow": "error 404",
@@ -1912,50 +1917,592 @@
       ]
     },
     "dataDeletion": {
-      "title": "Eliminación de datos personales",
-      "lead": "Esta página explica cómo pedir que eliminemos tus datos personales, qué eliminamos, qué estamos obligados a conservar y en cuánto tiempo respondemos. Aplica tanto a los datos que Novieri trata por su cuenta como a los que trata por cuenta de una empresa cliente — por ejemplo, si escribiste al WhatsApp de un restaurante o un hotel que usa nuestra tecnología.",
+      "title": "Política de eliminación de datos personales",
+      "updatedValue": "15 de agosto de 2026",
+      "lead": "Aquí explicamos cómo pedir que eliminemos tus datos personales, qué pasa después de que lo pides, en cuánto tiempo respondemos y en qué casos la ley nos obliga a conservar algo.",
       "sections": [
         {
-          "h": "1. Cómo pedir la eliminación",
-          "p": [
-            "Escríbenos a {email} desde una dirección que permita identificarte, con «Eliminación de datos» en el asunto. No tienes que explicar por qué: es tu derecho y no te vamos a pedir un motivo.",
-            "Para poder encontrar tus datos, incluye lo que aplique en tu caso: tu nombre; por dónde nos contactaste (este sitio, el chat, un formulario, o el WhatsApp de un negocio); si fue por WhatsApp, el número desde el que escribiste y el nombre del negocio; y las fechas aproximadas.",
-            "Si la solicitud llega incompleta, te pedimos lo que falte dentro de los cinco (5) días hábiles siguientes a recibirla."
+          "h": "1. Para qué sirve este documento",
+          "blocks": [
+            "Aplica a cualquier persona cuyos datos hayamos tratado: visitantes de nuestro sitio, prospectos, contactos de nuestros clientes empresariales, y personas que conversan con los asistentes de WhatsApp, web o telefónicos que operamos.",
+            "Complementa nuestra [política de privacidad](/legal/politica-de-privacidad). Si hay diferencias sobre el procedimiento de supresión, manda este documento."
           ]
         },
         {
-          "h": "2. En cuánto tiempo respondemos",
-          "p": [
-            "Una solicitud de supresión se tramita como un reclamo en los términos del artículo 15 de la Ley 1581 de 2012: la atendemos en un máximo de quince (15) días hábiles, prorrogables por ocho (8) días hábiles más cuando no sea posible resolverla en ese plazo, informándote los motivos y la fecha en que quedará resuelta.",
-            "Cuando esté hecho te lo confirmamos por escrito, indicando qué se eliminó."
+          "h": "2. Primero: ¿quién responde por tus datos?",
+          "blocks": [
+            "Esta es la pregunta que define a quién debes escribir, y la respuesta no siempre somos nosotros. La Ley 1581 de 2012 distingue dos papeles:",
+            {
+              "ul": [
+                "**Responsable del tratamiento** — quien decide para qué se usan los datos.",
+                "**Encargado del tratamiento** — quien los procesa siguiendo instrucciones del Responsable."
+              ]
+            },
+            "En buena parte de nuestra operación **somos Encargados, no Responsables**: procesamos datos por cuenta de la empresa que nos contrató.",
+            {
+              "table": {
+                "head": [
+                  "Tu situación",
+                  "Responsable",
+                  "A quién escribir"
+                ],
+                "rows": [
+                  [
+                    "Visitaste novieri.com, llenaste un formulario o hablaste con el asistente del sitio",
+                    "**Novieri**",
+                    "{email}"
+                  ],
+                  [
+                    "Eres cliente, proveedor o contacto comercial de Novieri",
+                    "**Novieri**",
+                    "{email}"
+                  ],
+                  [
+                    "Postulaste a una vacante nuestra",
+                    "**Novieri**",
+                    "{email}"
+                  ],
+                  [
+                    "**Escribiste por WhatsApp a un negocio** (restaurante, hotel, etc.) y te atendió un asistente que nosotros operamos",
+                    "**Ese negocio**",
+                    "El negocio. Escríbenos igual y te ponemos en contacto — ver la sección 3."
+                  ],
+                  [
+                    "Te atendió una recepcionista virtual o un chatbot web de otra empresa",
+                    "**Esa empresa**",
+                    "Igual que arriba"
+                  ]
+                ]
+              }
+            },
+            {
+              "note": "No te quedamos mal si te equivocas de puerta. Si nos escribes y el Responsable es otro, no archivamos tu solicitud: la trasladamos y te decimos a quién y cuándo."
+            }
           ]
         },
         {
-          "h": "3. Si escribiste al WhatsApp de un negocio que usa nuestra tecnología",
-          "p": [
-            "En esos casos el responsable del tratamiento es el negocio al que le escribiste, no Novieri. Nosotros operamos el asistente por cuenta suya, como encargados, y solo tratamos esos datos siguiendo sus instrucciones.",
-            "Puedes escribirle directamente a ese negocio, o escribirnos a nosotros: trasladamos tu solicitud dentro de los cinco (5) días hábiles siguientes y te decimos a quién la trasladamos, para que sepas con quién estás tratando. Mientras tanto no usamos esa conversación para nada distinto de atender tu solicitud."
+          "h": "3. Cómo pedir la eliminación",
+          "blocks": [
+            {
+              "h": "El canal"
+            },
+            "Escribe a {email}. Es el único canal oficial y está atendido en días hábiles. No cobramos nada por tramitar tu solicitud.",
+            {
+              "h": "Qué incluir"
+            },
+            "Para poder encontrarte en nuestros sistemas y no borrarle los datos a otra persona, necesitamos:",
+            {
+              "table": {
+                "head": [
+                  "Dato",
+                  "Por qué"
+                ],
+                "rows": [
+                  [
+                    "**Nombre completo**",
+                    "Identificarte"
+                  ],
+                  [
+                    "**Documento de identidad** (el número; no necesitas adjuntar copia en el primer correo)",
+                    "Verificar que eres tú"
+                  ],
+                  [
+                    "**El dato de contacto que usamos**: número de WhatsApp con indicativo, correo, etc.",
+                    "Es la llave con la que buscamos"
+                  ],
+                  [
+                    "**Con qué empresa interactuaste**, si aplica",
+                    "Saber si somos Responsables o Encargados"
+                  ],
+                  [
+                    "**Qué quieres**: eliminar todo, o solo cierta información",
+                    "Delimitar el alcance"
+                  ]
+                ]
+              }
+            },
+            "Si escribes en nombre de otra persona, adjunta el poder o el documento que acredite la representación. Si el titular es menor de edad, debe hacerlo quien ejerce la patria potestad.",
+            {
+              "h": "Si el Responsable es un cliente nuestro"
+            },
+            "Cuando los datos son de un negocio que usa nuestra plataforma —por ejemplo, tus conversaciones de WhatsApp con un restaurante—, la decisión de borrar es de ese negocio. Lo que hacemos en máximo **tres (3) días hábiles** es:",
+            {
+              "ol": [
+                "Confirmarte que recibimos la solicitud y darte el número de radicado.",
+                "Trasladarla al Responsable, identificándote el nombre de la empresa.",
+                "Ejecutar la eliminación en cuanto el Responsable nos lo instruya, sin cobrarle nada."
+              ]
+            },
+            "Si el Responsable no responde, te lo informamos para que puedas acudir directamente a él o a la Superintendencia de Industria y Comercio."
           ]
         },
         {
-          "h": "4. Qué eliminamos",
-          "p": [
-            "De una conversación por WhatsApp: el contenido de los mensajes, las notas de voz y su transcripción, el número de teléfono y el nombre de perfil, y los datos que hayas entregado dentro de la conversación — por ejemplo una dirección de entrega, los datos de una reserva o el detalle de un pedido.",
-            "De este sitio: lo que hayas enviado en un formulario, la conversación con nuestro asistente y el informe del autodiagnóstico, si lo hiciste."
+          "h": "4. Qué pasa después de que escribes",
+          "blocks": [
+            {
+              "h": "Acuse y número de radicado"
+            },
+            "Dentro de los **dos (2) días hábiles** siguientes te respondemos con un número de radicado con el formato NOV-DEL-AAAAMMDD-XXX. Guárdalo: con ese número puedes preguntar el estado de tu solicitud en cualquier momento escribiendo al mismo correo.",
+            {
+              "h": "Plazos"
+            },
+            "Una solicitud de eliminación es un **reclamo** en los términos del artículo 15 de la Ley 1581 de 2012, así que se rige por estos tiempos:",
+            {
+              "table": {
+                "head": [
+                  "Etapa",
+                  "Plazo"
+                ],
+                "rows": [
+                  [
+                    "Acuse de recibo con número de radicado",
+                    "2 días hábiles"
+                  ],
+                  [
+                    "Si falta información, te lo pedimos",
+                    "5 días hábiles desde el recibo"
+                  ],
+                  [
+                    "**Respuesta de fondo**",
+                    "**15 días hábiles** desde el recibo, o desde que completas la información"
+                  ],
+                  [
+                    "Prórroga, si el caso lo amerita",
+                    "Hasta 8 días hábiles más, avisándote antes de que venza el primer plazo"
+                  ]
+                ]
+              }
+            },
+            "Si pasan dos (2) meses desde que te pedimos información adicional y no la envías, la solicitud se entiende desistida y la cerramos — pero puedes volver a radicarla cuando quieras.",
+            {
+              "h": "Confirmación final"
+            },
+            "Al cerrar te enviamos una confirmación escrita que dice **qué se eliminó, qué se conservó y por qué**. No cerramos una solicitud sin explicarte el resultado."
           ]
         },
         {
-          "h": "5. Qué debemos conservar, y por qué",
-          "p": [
-            "Si existe o existió una relación comercial, la ley colombiana nos obliga a conservar la facturación y los soportes contables y tributarios durante los plazos que ella fija. Eso no se puede eliminar a solicitud; vencidos esos plazos, se suprime o se anonimiza.",
-            "También conservamos un registro mínimo de tu propia solicitud —la fecha y el resultado— para poder demostrar que la atendimos. Ese registro no incluye el contenido de lo que eliminamos."
+          "h": "5. Qué se elimina",
+          "blocks": [
+            "Cuando procede la supresión, borramos de nuestros sistemas de producción:",
+            {
+              "ul": [
+                "Tus datos de identificación y contacto.",
+                "El historial de conversaciones —WhatsApp, chat web, llamadas—, incluidos los textos transcritos de tus notas de voz.",
+                "Los audios originales de esas notas de voz.",
+                "Pedidos, reservas y solicitudes asociadas a ti, salvo lo indicado en la sección 6.",
+                "Tu registro en nuestras listas de contacto y comunicaciones comerciales."
+              ]
+            },
+            {
+              "h": "Copias de seguridad"
+            },
+            "Nuestras copias de seguridad son cifradas y rotan automáticamente. Los datos eliminados de producción desaparecen de las copias en un máximo de **treinta (30) días calendario**. Durante esa ventana quedan aislados: no se consultan, no se usan y solo se restaurarían ante un incidente grave, en cuyo caso repetimos la eliminación."
           ]
         },
         {
-          "h": "6. Proveedores que intervienen",
-          "p": [
-            "Tres terceros participan en el servicio de WhatsApp: la plataforma de WhatsApp Business de Meta, que es el canal por el que llegan los mensajes; Anthropic, cuyo modelo de inteligencia artificial genera las respuestas; y nuestro proveedor de transcripción, que convierte las notas de voz en texto.",
-            "Cuando eliminamos una conversación, solicitamos también la eliminación de las copias que estos proveedores puedan conservar por su propia operación. Todos actúan como subencargados y pueden estar ubicados fuera de Colombia, en los términos de la sección 10 de nuestra política de tratamiento de datos personales."
+          "h": "6. Qué no podemos eliminar, y por qué",
+          "blocks": [
+            "La eliminación no es absoluta. El artículo 8, literal e) de la Ley 1581 de 2012 lo dice expresamente: no procede cuando existe un deber legal o contractual de conservar la información. En concreto:",
+            {
+              "table": {
+                "head": [
+                  "Qué conservamos",
+                  "Fundamento",
+                  "Cuánto tiempo"
+                ],
+                "rows": [
+                  [
+                    "Facturas, soportes contables y tributarios",
+                    "Artículos 28 y 60 del Código de Comercio; Estatuto Tributario",
+                    "Hasta 10 años"
+                  ],
+                  [
+                    "Contratos y sus soportes",
+                    "Términos de prescripción civil y comercial",
+                    "Mientras corran los términos"
+                  ],
+                  [
+                    "Registros de la propia solicitud de eliminación",
+                    "Demostrar ante la SIC que la atendimos",
+                    "5 años"
+                  ],
+                  [
+                    "Información requerida por una autoridad judicial o administrativa",
+                    "Orden de autoridad competente",
+                    "Lo que ordene"
+                  ],
+                  [
+                    "Datos ya anonimizados (métricas agregadas)",
+                    "Dejan de ser datos personales",
+                    "Indefinido"
+                  ]
+                ]
+              }
+            },
+            "Los datos que conservamos por estas razones quedan **bloqueados**: se guardan para cumplir la obligación, no se usan para contactarte ni para ningún otro fin."
+          ]
+        },
+        {
+          "h": "7. Otros derechos que puedes ejercer por el mismo canal",
+          "blocks": [
+            "Eliminar no siempre es lo que necesitas. Por {email} también puedes:",
+            {
+              "ul": [
+                "**Conocer** qué datos tuyos tenemos y de dónde salieron.",
+                "**Actualizar o rectificar** datos incompletos o equivocados.",
+                "**Revocar la autorización** que diste.",
+                "**Oponerte** a recibir comunicaciones comerciales.",
+                "**Pedir copia** de la autorización que otorgaste.",
+                "**Presentar queja** ante la SIC por presunta violación de la ley."
+              ]
+            },
+            "Las consultas —saber qué tenemos— tienen un plazo más corto: 10 días hábiles, prorrogables por 5 más."
+          ]
+        },
+        {
+          "h": "8. Si no quedas conforme",
+          "blocks": [
+            "Puedes acudir a la **Superintendencia de Industria y Comercio (SIC)**, que es la autoridad colombiana de protección de datos:",
+            {
+              "ul": [
+                "www.sic.gov.co, en Protección de Datos Personales",
+                "Carrera 13 No. 27-00, Bogotá D.C."
+              ]
+            },
+            "La ley exige que antes agotes el trámite de consulta o reclamo ante nosotros, según el artículo 16 de la Ley 1581 de 2012. Por eso conviene guardar el número de radicado."
+          ]
+        },
+        {
+          "h": "9. Solicitudes que llegan por plataformas de terceros",
+          "blocks": [
+            "Cuando alguien pide la eliminación de sus datos a través de Meta —WhatsApp, Facebook, Instagram— o de otra plataforma que usemos, la atendemos por este mismo procedimiento y en los mismos plazos. La respuesta y el número de radicado se envían a la dirección de contacto asociada a la solicitud.",
+            "Ten en cuenta que eliminar tus datos de nuestros sistemas **no borra lo que quede en la plataforma misma**: los mensajes guardados en tu teléfono, o en la aplicación WhatsApp Business del negocio con el que hablaste, se eliminan desde esas aplicaciones y con ese negocio."
+          ]
+        },
+        {
+          "h": "10. Cambios a esta política",
+          "blocks": [
+            "Si la modificamos, publicamos la nueva versión en esta misma dirección con su fecha de vigencia. Cuando el cambio afecte de forma significativa tus derechos, lo avisamos por los canales que tengamos disponibles antes de que entre a regir."
+          ]
+        }
+      ]
+    },
+    "termsOfService": {
+      "title": "Términos y condiciones de los servicios",
+      "updatedValue": "15 de agosto de 2026",
+      "lead": "Estos términos rigen la prestación de nuestros servicios y productos a empresas clientes. Son distintos de los términos de uso del sitio web, que solo regulan la navegación por novieri.com.",
+      "sections": [
+        {
+          "h": "1. Qué regula este documento",
+          "blocks": [
+            "Estos Términos rigen **la prestación de nuestros servicios y productos**. Son distintos de los [Términos de uso del sitio web](/legal/terminos-de-uso), que solo regulan la navegación por novieri.com.",
+            "Aplican a los servicios de:",
+            {
+              "table": {
+                "head": [
+                  "Línea",
+                  "Qué comprende"
+                ],
+                "rows": [
+                  [
+                    "**IA y automatización**",
+                    "Agentes conversacionales, automatizaciones y proyectos de IA"
+                  ],
+                  [
+                    "**TI administrada**",
+                    "Mesa de ayuda, monitoreo, actualizaciones y respaldos"
+                  ],
+                  [
+                    "**Ciberseguridad y cumplimiento**",
+                    "Seguridad gestionada y acompañamiento hacia SOC 2 / PCI DSS"
+                  ],
+                  [
+                    "**Desarrollo a medida**",
+                    "Desarrollo de software a la medida"
+                  ],
+                  [
+                    "**Consultoría TI**",
+                    "Consultoría y dirección tecnológica fraccionada"
+                  ]
+                ]
+              }
+            },
+            "Y a los productos que operamos: sitios web y comercio electrónico con IA, gestión de vulnerabilidades, inteligencia de visitantes, asistente de WhatsApp con IA, recepcionista virtual y chatbot web."
+          ]
+        },
+        {
+          "h": "2. Marco legal",
+          "blocks": [
+            "Se rigen por la ley colombiana, en particular: Código de Comercio y Código Civil; Ley 527 de 1999 sobre comercio electrónico y validez de los mensajes de datos; Ley 1480 de 2011, Estatuto del Consumidor; Ley 1581 de 2012 y Decreto 1074 de 2015 sobre protección de datos personales; Ley 1273 de 2009 sobre delitos informáticos; Ley 2300 de 2023 sobre contacto con consumidores; y las normas de propiedad intelectual aplicables."
+          ]
+        },
+        {
+          "h": "3. Definiciones",
+          "blocks": [
+            {
+              "ul": [
+                "**Novieri / nosotros** — Novieri S.A.S.",
+                "**Cliente / usted** — la persona natural o jurídica que contrata los servicios.",
+                "**Propuesta** — el documento comercial con alcance, entregables, precio y plazos.",
+                "**Contrato** — la Propuesta aceptada junto con estos Términos y sus anexos.",
+                "**Servicios** — lo pactado en la Propuesta.",
+                "**Plataforma** — el software, la infraestructura y las herramientas con que prestamos los Servicios.",
+                "**Contenido del Cliente** — datos, textos, menús, precios, imágenes, bases de conocimiento y demás información que usted aporta.",
+                "**Canales de Terceros** — WhatsApp, Meta, proveedores de IA, telefonía, pagos y demás servicios de terceros necesarios para operar."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "4. Cómo se perfecciona el contrato",
+          "blocks": [
+            {
+              "ol": [
+                "Entregamos una **Propuesta** con alcance y precio en firme.",
+                "El contrato se perfecciona cuando usted la **acepta por escrito** — incluye correo electrónico, firma electrónica o el pago del anticipo. Conforme a la Ley 527 de 1999, esa aceptación electrónica tiene plena validez y fuerza probatoria.",
+                "Las Propuestas tienen una vigencia de **treinta (30) días calendario** salvo que indiquen otra cosa.",
+                "La información publicada en novieri.com, incluidos los rangos de precios, es **referencial y no constituye oferta vinculante**. El precio en firme es el de la Propuesta."
+              ]
+            },
+            "**Orden de prelación** ante contradicciones: primero la Propuesta aceptada, después los anexos técnicos, y por último estos Términos."
+          ]
+        },
+        {
+          "h": "5. Precios, facturación y pago",
+          "blocks": [
+            {
+              "ol": [
+                "Los precios se expresan en **pesos colombianos (COP) o dólares (USD)** según la Propuesta. Si se pactan en USD y se factura en COP, se liquida a la TRM del día de la factura.",
+                "**El IVA y demás impuestos se liquidan aparte** de los valores publicados.",
+                "Modalidades habituales: los servicios recurrentes se facturan por anticipado; la implementación se factura al inicio, antes de arrancar; los proyectos de alcance fijo van 50 % al inicio y 50 % contra entrega, salvo pacto distinto; y los servicios por hora se facturan mensualmente contra reporte de horas.",
+                "**Plazo de pago: treinta (30) días calendario** desde la fecha de la factura, salvo que la Propuesta diga otra cosa.",
+                "**Mora.** El pago tardío causa intereses moratorios a la tasa máxima legal certificada por la Superintendencia Financiera de Colombia. Si la mora supera los treinta (30) días, podemos suspender los Servicios tras avisarle con cinco (5) días hábiles de anticipación. La suspensión no lo libera de pagar lo causado.",
+                "**Ajuste anual.** Las tarifas recurrentes se ajustan una vez al año, a partir del aniversario, en un porcentaje que no excederá el IPC del año inmediatamente anterior más cinco (5) puntos porcentuales. Se lo avisamos con treinta (30) días de anticipación.",
+                "**Costos de terceros.** Las tarifas de Meta y WhatsApp, proveedores de IA, telefonía, dominios, licencias y nube **no están incluidas** salvo que la Propuesta lo diga expresamente. Cuando el proveedor lo permite, usted contrata y paga directamente."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "6. Duración, renovación y terminación",
+          "blocks": [
+            {
+              "ol": [
+                "Los servicios recurrentes se contratan por el plazo de la Propuesta y, a falta de estipulación, por **doce (12) meses** prorrogables automáticamente por períodos iguales.",
+                "Cualquiera de las partes puede terminar sin penalidad avisando por escrito con **treinta (30) días calendario** de anticipación al vencimiento del período en curso.",
+                "Podemos terminar de inmediato si usted incumple gravemente, especialmente: mora superior a sesenta (60) días, uso de los Servicios para fines ilícitos, o violación de las políticas de los Canales de Terceros que ponga en riesgo nuestras cuentas."
+              ]
+            },
+            "**Al terminar:** le entregamos una exportación de su Contenido y sus datos en formato estándar, si la solicita dentro de los treinta (30) días siguientes; eliminamos su información conforme a la [política de eliminación de datos](/legal/eliminacion-de-datos); se hacen exigibles los valores causados y no pagados; y sobreviven las cláusulas de confidencialidad, propiedad intelectual, limitación de responsabilidad, protección de datos y ley aplicable."
+          ]
+        },
+        {
+          "h": "7. Obligaciones del Cliente",
+          "blocks": [
+            "Usted se compromete a:",
+            {
+              "ol": [
+                "Entregar **información veraz, completa y actualizada** — menús, precios, horarios, políticas, inventario. La calidad de las respuestas del asistente depende directamente de esto.",
+                "Designar una **contraparte con capacidad de decisión** y responder nuestras solicitudes en tiempo razonable. Las demoras suyas corren los cronogramas.",
+                "Dar los **accesos necesarios** a sus sistemas, cuentas y proveedores.",
+                "Custodiar las **credenciales** del panel y notificarnos de inmediato cualquier uso no autorizado.",
+                "Contar con los **derechos** sobre el Contenido del Cliente que nos entrega.",
+                "No usar los Servicios para fines ilícitos o engañosos, ni para enviar comunicaciones no autorizadas.",
+                "Cumplir la ley aplicable a **su** negocio: sanitaria, tributaria, de licores, de protección al consumidor y de datos personales."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "8. Servicios de inteligencia artificial: lo que debe saber",
+          "blocks": [
+            "Esta sección es importante y le pedimos leerla con atención.",
+            {
+              "ol": [
+                "**La IA es probabilística, no determinística.** Los asistentes generan respuestas a partir de modelos de lenguaje y **pueden equivocarse**, incluso con información correcta en su base de conocimiento. No garantizamos exactitud absoluta ni ausencia de errores.",
+                "**Supervisión humana.** Los asistentes están diseñados para escalar a una persona de su equipo cuando detectan que no pueden resolver. Usted se obliga a mantener ese canal atendido. Los Servicios no reemplazan la supervisión humana.",
+                "**No es asesoría profesional.** Las respuestas del asistente no constituyen asesoría médica, legal, financiera, contable ni de ninguna profesión regulada.",
+                "**Decisiones de negocio.** Los precios, la disponibilidad, la aceptación de pedidos y reservas, y su cumplimiento, son responsabilidad suya. El asistente los comunica; no los decide.",
+                "**Proveedores de modelos.** Usamos proveedores de terceros — entre ellos Anthropic (Claude) y servicios de transcripción de audio. Sus cambios de versión, precio, políticas o disponibilidad pueden afectar los Servicios, y no los controlamos.",
+                "**Entrenamiento.** No usamos su Contenido ni las conversaciones de sus clientes para entrenar modelos propios, ni autorizamos a nuestros proveedores a usarlos con ese fin.",
+                "**Pruebas antes de salir a producción.** Le entregamos un entorno para validar el comportamiento del asistente. La aprobación para salir a producción es suya."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "9. WhatsApp, Meta y otros Canales de Terceros",
+          "blocks": [
+            {
+              "ol": [
+                "**Las reglas las pone Meta.** El servicio de WhatsApp Business se rige por las políticas de Meta, que esa compañía modifica unilateralmente. Nos obligamos a configurar los Servicios conforme a ellas, pero **no respondemos por decisiones de Meta**: suspensión de cuentas, cambios de tarifas, límites de mensajería, modificaciones de la API o rechazo de plantillas.",
+                "**Usted es el titular de la cuenta.** La cuenta de WhatsApp Business, el número telefónico y el portafolio de negocio son suyos y se registran a su nombre.",
+                "**Usted le paga a Meta directamente**, con su propio medio de pago. Actuamos como proveedor de tecnología, no como revendedor de mensajería.",
+                "**Contenido prohibido.** Las Políticas de Comercio de Meta prohíben, entre otros, la venta de bebidas alcohólicas, tabaco, medicamentos, armas y suplementos por WhatsApp. El asistente está configurado para **no tomar pedidos de estos productos** aunque figuren en su carta. Usted se obliga a no forzar ni solicitar que se deshabilite ese control.",
+                "**Ley 2300 de 2023.** Las comunicaciones iniciadas por el negocio con fines comerciales o de cobranza solo pueden enviarse a quien las autorizó, por el canal que autorizó y dentro de los horarios legales: **lunes a viernes de 7:00 a. m. a 7:00 p. m. y sábados de 8:00 a. m. a 3:00 p. m.**, nunca domingos ni festivos. Además debe ofrecerse un mecanismo simple para cancelar el envío. Usted responde por las campañas que decida enviar; nosotros proveemos la herramienta y las restricciones técnicas.",
+                "**Disponibilidad.** La continuidad del canal depende de la infraestructura de Meta y de su operador. Las interrupciones atribuibles a ellos no se computan en nuestros niveles de servicio."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "10. Propiedad intelectual",
+          "blocks": [
+            {
+              "ol": [
+                "**La Plataforma es nuestra.** El software, la arquitectura, los prompts, el diseño, la documentación, el conocimiento y las mejoras desarrolladas por Novieri son y siguen siendo de nuestra propiedad. Estos Términos no transfieren propiedad: le otorgamos una licencia de uso, no exclusiva, intransferible y limitada a la vigencia del contrato.",
+                "**Su Contenido es suyo.** Conserva la titularidad sobre el Contenido del Cliente y sobre los datos generados por su operación. Nos concede la licencia necesaria para alojarlo y procesarlo mientras prestemos los Servicios.",
+                "**Desarrollos a la medida.** En proyectos de desarrollo a medida, la titularidad de los entregables específicos se define en la Propuesta. Salvo pacto expreso, se transfiere a usted **una vez pagado el precio total**, con excepción de los componentes reutilizables, librerías y conocimiento previo de Novieri, sobre los que conservamos la propiedad y le concedemos licencia perpetua de uso.",
+                "**Referencias comerciales.** Podemos mencionar que usted es cliente y usar su marca en nuestro portafolio, salvo que nos pida lo contrario por escrito. No divulgaremos cifras ni detalles del proyecto sin su autorización."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "11. Confidencialidad",
+          "blocks": [
+            "Ambas partes se obligan a proteger la información confidencial de la otra, a usarla solo para ejecutar el contrato y a no divulgarla a terceros distintos de quienes necesiten conocerla. La obligación se mantiene durante la vigencia y por **cinco (5) años** después de terminado el contrato. No cubre la información pública, la que ya se conocía legítimamente, ni la que deba revelarse por orden de autoridad competente — caso en el cual se avisará a la otra parte cuando la ley lo permita."
+          ]
+        },
+        {
+          "h": "12. Protección de datos personales",
+          "blocks": [
+            {
+              "ol": [
+                "Frente a los datos personales de **los clientes finales de usted** — quienes escriben al asistente —, **usted es el Responsable del tratamiento y Novieri es el Encargado**, en los términos de la Ley 1581 de 2012.",
+                "Como Responsable, le corresponde obtener la autorización de los titulares, informar las finalidades, publicar su propia política de tratamiento y atender las consultas y reclamos.",
+                "Como Encargados nos obligamos a tratar los datos únicamente conforme a sus instrucciones, aplicar medidas de seguridad, guardar confidencialidad, colaborar con usted en la atención de solicitudes de titulares, informarle sin demora cualquier incidente de seguridad y suprimir o devolver los datos al terminar el contrato.",
+                "Los detalles están en nuestra [política de privacidad](/legal/politica-de-privacidad) y en la [política de eliminación de datos](/legal/eliminacion-de-datos).",
+                "**Transferencias internacionales.** Algunos subencargados — proveedores de IA, transcripción, nube y mensajería — están fuera de Colombia. Al aceptar estos Términos usted autoriza esas transferencias, que se realizan con las garantías contractuales correspondientes."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "13. Niveles de servicio y soporte",
+          "blocks": [
+            "Salvo que la Propuesta pacte niveles distintos:",
+            {
+              "table": {
+                "head": [
+                  "Severidad",
+                  "Qué significa",
+                  "Primera respuesta"
+                ],
+                "rows": [
+                  [
+                    "**Crítica**",
+                    "El servicio está caído o el asistente no responde a ningún cliente",
+                    "4 horas hábiles"
+                  ],
+                  [
+                    "**Alta**",
+                    "Funcionalidad principal degradada, con afectación al negocio",
+                    "8 horas hábiles"
+                  ],
+                  [
+                    "**Media**",
+                    "Falla puntual con alternativa disponible",
+                    "2 días hábiles"
+                  ],
+                  [
+                    "**Baja**",
+                    "Consulta, mejora o ajuste de contenido",
+                    "5 días hábiles"
+                  ]
+                ]
+              }
+            },
+            {
+              "ul": [
+                "**Horario de soporte:** lunes a viernes, 8:00 a. m. a 6:00 p. m., hora de Colombia, excepto festivos.",
+                "Los tiempos indicados son de **primera respuesta**, no de solución.",
+                "**No cuentan** en estos niveles: mantenimientos programados avisados con 48 horas de anticipación, fallas de Canales de Terceros, fallas de conectividad o equipos del Cliente, y demoras causadas por falta de información o accesos de su parte."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "14. Garantías y limitación de responsabilidad",
+          "blocks": [
+            {
+              "ol": [
+                "Nos obligamos a prestar los Servicios con **diligencia profesional** y conforme a las buenas prácticas de la industria. Es una **obligación de medio, no de resultado**: no garantizamos resultados comerciales, volumen de ventas, ni operación libre de interrupciones o errores.",
+                "**Límite de responsabilidad.** La responsabilidad total acumulada de Novieri, por cualquier causa y durante toda la vigencia, no excederá el **valor efectivamente pagado por el Cliente en los tres (3) meses anteriores** al hecho que la origine.",
+                "**Exclusiones.** No respondemos por lucro cesante, pérdida de oportunidades comerciales, daño reputacional ni perjuicios indirectos o imprevisibles.",
+                "**Lo que este límite no cubre.** Conforme al artículo 1522 del Código Civil y a la jurisprudencia colombiana, esta limitación **no aplica** en casos de dolo o culpa grave, daños a la vida o integridad de las personas, ni frente a las obligaciones indelegables en materia de protección de datos personales.",
+                "**Estatuto del Consumidor.** Si usted contrata como consumidor en los términos de la Ley 1480 de 2011 — es decir, para un fin ajeno a su actividad económica —, las garantías legales de esa ley se aplican con preferencia y nada en esta sección las limita."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "15. Fuerza mayor",
+          "blocks": [
+            "Ninguna parte responde por incumplimientos derivados de hechos imprevisibles e irresistibles: desastres naturales, conflictos, actos de autoridad, fallas generalizadas de internet o energía, ataques informáticos de terceros pese a las medidas razonables, o la suspensión o discontinuación de servicios esenciales de terceros. La parte afectada avisará dentro de los cinco (5) días hábiles siguientes. Si el evento se prolonga más de sesenta (60) días, cualquiera podrá terminar el contrato sin penalidad."
+          ]
+        },
+        {
+          "h": "16. Subcontratación y cesión",
+          "blocks": [
+            "Podemos apoyarnos en subcontratistas y proveedores manteniendo la responsabilidad frente a usted por su gestión. Ninguna de las partes puede ceder el contrato sin autorización escrita de la otra, salvo en casos de fusión, escisión o transferencia del establecimiento de comercio, avisando con quince (15) días de anticipación."
+          ]
+        },
+        {
+          "h": "17. Modificaciones",
+          "blocks": [
+            "Podemos actualizar estos Términos publicando la nueva versión con su fecha de vigencia. Los cambios **sustanciales** que afecten sus derechos u obligaciones se le avisarán con **treinta (30) días** de anticipación; si no está de acuerdo, podrá terminar sin penalidad antes de que entren a regir. Los contratos en curso se rigen por la versión vigente al momento de aceptar la Propuesta, salvo cambios exigidos por la ley o por los Canales de Terceros."
+          ]
+        },
+        {
+          "h": "18. Ley aplicable y solución de controversias",
+          "blocks": [
+            {
+              "ol": [
+                "Se rigen por la **ley colombiana**.",
+                "Las partes intentarán resolver de buena fe cualquier diferencia mediante arreglo directo durante treinta (30) días calendario desde la comunicación escrita del desacuerdo.",
+                "Agotada esa etapa, la controversia se someterá a los **jueces competentes de Barranquilla, Colombia**.",
+                "Si usted es consumidor, conserva la facultad de acudir a la **Superintendencia de Industria y Comercio** en ejercicio de sus derechos bajo la Ley 1480 de 2011."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "19. Notificaciones",
+          "blocks": [
+            "Las comunicaciones se entienden válidamente recibidas cuando se envían por correo electrónico a las direcciones registradas en la Propuesta. Para Novieri:",
+            {
+              "table": {
+                "head": [
+                  "Asunto",
+                  "Correo"
+                ],
+                "rows": [
+                  [
+                    "Comercial y contractual",
+                    "sales@novieri.com"
+                  ],
+                  [
+                    "Datos personales",
+                    "{email}"
+                  ]
+                ]
+              }
+            },
+            "Todo cambio de dirección debe avisarse por escrito."
+          ]
+        },
+        {
+          "h": "20. Disposiciones finales",
+          "blocks": [
+            {
+              "ul": [
+                "Si alguna cláusula resulta inválida, las demás conservan plena vigencia.",
+                "La tolerancia frente a un incumplimiento no implica renuncia a exigirlo después.",
+                "Estos Términos, junto con la Propuesta y sus anexos, constituyen el **acuerdo íntegro** entre las partes y reemplazan cualquier entendimiento previo sobre la misma materia.",
+                "Las partes actúan de forma independiente. Nada aquí crea sociedad, agencia comercial, representación ni vínculo laboral."
+              ]
+            }
           ]
         }
       ]
