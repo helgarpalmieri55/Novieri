@@ -7,19 +7,24 @@
  *
  *   node scripts/build-favicons.mjs [--check]
  *
- * The mark is white, on a plum tile, at every size — and that is the whole
- * decision here. The logo is built from thin outlines, which is right at
- * header scale and falls apart at tab scale: rendered at 16px, which is what
- * a browser actually draws, the colour mark reduces to a pale smudge that
- * disappears against a light tab bar. Both were generated and looked at.
- * Filling a brand-plum square with the white mark keeps a definite silhouette
- * and a colour nobody else in the tab strip is using, which is all a favicon
- * has to do.
+ * The colour mark on white, at every size, matching the favicon already set in
+ * the HubSpot brand kit. That is a deliberate choice with a known cost, and
+ * the cost is worth writing down so nobody re-litigates it by accident.
+ *
+ * The logo is built from thin outlines. That is right at header scale and hard
+ * at tab scale: rendered at 16px, which is what a browser actually draws, the
+ * strokes thin out and the mark reads as a pale smudge on a light tab bar. A
+ * white mark on a solid plum tile was generated and compared side by side, and
+ * it is unambiguously more legible at that size. Brand consistency won — one
+ * favicon, matching the brand kit, rather than a tab that disagrees with the
+ * panel every other HubSpot surface reads from.
+ *
+ * To go back, change TREATMENT below to "plum" and re-run. Both are one line.
  *
  * One treatment at all three sizes, so the tab, the iOS home screen and the
- * Android install prompt are recognisably the same thing. The tile is opaque
- * for a second reason too: iOS composites home-screen icons and renders
- * transparency as black.
+ * Android install prompt are recognisably the same thing. The background is
+ * opaque rather than transparent for a second reason: iOS composites
+ * home-screen icons and renders transparency as black.
  *
  * The source is 256x261 — taller than it is wide — so every size fits the mark
  * inside a square canvas rather than stretching it to fill one.
@@ -34,7 +39,10 @@ import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = `${ROOT}/hubspot/src/theme/novieri/images/novieri-isotipo-blanco-256px.png`;
+/** "colour" matches the brand kit; "plum" is the more legible alternative. */
+const TREATMENT = "colour";
+const MARKS = { colour: "novieri-isotipo-color-256px.png", plum: "novieri-isotipo-blanco-256px.png" };
+const SRC = `${ROOT}/hubspot/src/theme/novieri/images/${MARKS[TREATMENT]}`;
 const OUT = `${ROOT}/hubspot/files/favicons`;
 const check = process.argv.includes("--check");
 
@@ -43,6 +51,7 @@ import os
 from PIL import Image
 
 SRC = ${JSON.stringify(SRC)}
+TREATMENT = ${JSON.stringify(TREATMENT)}
 OUT = ${JSON.stringify(OUT)}
 CHECK = ${check ? "True" : "False"}
 
@@ -59,15 +68,18 @@ def square(size, pad_ratio, background):
     canvas.alpha_composite(fitted, ((size - fitted.width) // 2, (size - fitted.height) // 2))
     return canvas
 
+WHITE = (255, 255, 255, 255)
 # --color-plum, the same value the stylesheet uses.
 PLUM = (79, 52, 97, 255)
+BG = WHITE if TREATMENT == "colour" else PLUM
 
-# Tighter padding on the tab icon: at 16px every pixel of the mark counts, and
-# the tile already provides the separation the padding would have.
+# The tab icon gets almost no padding. On the colour treatment the strokes are
+# already fighting for legibility at 16px, so every pixel of the mark is one it
+# needs; the larger sizes can afford the breathing room an app icon expects.
 plan = [
-    ("novieri-favicon-32.png", 32, 0.08, PLUM),
-    ("novieri-favicon-180.png", 180, 0.14, PLUM),
-    ("novieri-favicon-512.png", 512, 0.14, PLUM),
+    ("novieri-favicon-32.png", 32, 0.03, BG),
+    ("novieri-favicon-180.png", 180, 0.12, BG),
+    ("novieri-favicon-512.png", 512, 0.12, BG),
 ]
 
 for name, size, pad, bg in plan:
