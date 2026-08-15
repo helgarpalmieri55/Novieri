@@ -467,6 +467,38 @@
     "how": {
       "caption": "Two real flows, on the two channels your customers already use: WhatsApp and the chat on your own site. The assistant understands, answers in seconds, and performs the action — book it, log it, bring in a person — without sending the customer off to call a number or fill in a form."
     },
+    "industries": {
+      "eyebrow": "where it lands",
+      "title": "What this looks like in your industry.",
+      "intro": "The work worth automating is different in a contact centre than in a hotel. These are the ones we are asked for most, and what we would start with in each.",
+      "linkLabel": "See the full picture",
+      "cards": [
+        {
+          "name": "BPOs & contact centers",
+          "tagline": "QA sampling, agent onboarding paperwork, reporting and internal support — the repetitive work around the calls, not a gimmick on top of them.",
+          "tags": "QA sampling, Onboarding, Reporting",
+          "href": "/industries/bpo"
+        },
+        {
+          "name": "Hotels & restaurants",
+          "tagline": "Reservations, orders and the questions that arrive at 11 PM — answered on WhatsApp and by phone, in English and Spanish, with the hard ones handed to your team.",
+          "tags": "WhatsApp, Voice notes, Bookings",
+          "href": "/industries/hospitality"
+        },
+        {
+          "name": "Education",
+          "tagline": "Routine family questions answered from your own information, and the enrollment paperwork and reporting that eat an administrator's week.",
+          "tags": "Enrollment, Family questions, Reporting",
+          "href": "/industries/education"
+        },
+        {
+          "name": "PCI DSS & SOC 2 companies",
+          "tagline": "Evidence collection, access reviews and AI-assisted prioritization of what to fix first — with the boundary of what data may leave your systems agreed before anything runs.",
+          "tags": "Evidence, Access reviews, Prioritization",
+          "href": "/industries/regulated"
+        }
+      ]
+    },
     "packages": {
       "tiers": [
         {

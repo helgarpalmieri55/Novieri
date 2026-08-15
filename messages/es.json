@@ -477,6 +477,50 @@
     "how": {
       "caption": "Dos flujos reales, en los dos canales donde tus clientes ya escriben: WhatsApp y el chat de tu propio sitio. La asistente entiende, responde en segundos y ejecuta la acción — reservar, registrar, avisar a una persona — sin mandar al cliente a llamar a otro número ni a llenar un formulario."
     },
+    "industries": {
+      "eyebrow": "dónde aterriza",
+      "title": "Cómo se ve esto en tu sector.",
+      "intro": "Lo que vale la pena automatizar no es lo mismo en un contact center que en un hotel. Estos son los sectores que más nos buscan, y por dónde empezaríamos en cada uno.",
+      "linkLabel": "Ver el panorama completo",
+      "cards": [
+        {
+          "name": "BPO y centros de contacto",
+          "tagline": "El muestreo de calidad, el papeleo de ingreso de agentes, los reportes y el soporte interno — el trabajo repetitivo alrededor de las llamadas, no un adorno encima.",
+          "tags": "Calidad, Ingreso de agentes, Reportes",
+          "href": "/industrias/bpo"
+        },
+        {
+          "name": "Hoteles",
+          "tagline": "Disponibilidad, tarifas y políticas respondidas con tu propia información, la reserva gestionada de punta a punta y las notas de voz entendidas — 24/7, en español e inglés.",
+          "tags": "WhatsApp, Notas de voz, Reservas",
+          "href": "/industrias/hoteleria"
+        },
+        {
+          "name": "Restaurantes",
+          "tagline": "Reportes de ventas, cuadres e inventario que se arman solos en lugar de robarle la noche al administrador. Empezamos por lo que más horas consume.",
+          "tags": "Cuadres, Inventario, Pedidos",
+          "href": "/industrias/restaurantes"
+        },
+        {
+          "name": "Pymes",
+          "tagline": "Empezamos por la tarea que más tiempo consume — reportes, cuadres, respuestas repetidas — y la pasamos al software de punta a punta. Ves las horas recuperadas antes de decidir algo más grande.",
+          "tags": "Reportes, Cuadres, Respuestas",
+          "href": "/industrias/pymes"
+        },
+        {
+          "name": "Colegios y universidades",
+          "tagline": "Las preguntas de siempre respondidas con la información de tu institución, y las automatizaciones de matrículas, certificados y reportes.",
+          "tags": "Matrículas, Certificados, Reportes",
+          "href": "/industrias/educacion"
+        },
+        {
+          "name": "Empresas con PCI DSS y SOC 2",
+          "tagline": "Recolección de evidencia, revisiones de acceso y priorización asistida por IA de qué arreglar primero — con el límite de qué datos salen de tus sistemas acordado antes de encender nada.",
+          "tags": "Evidencia, Accesos, Priorización",
+          "href": "/industrias/pci-dss-soc-2"
+        }
+      ]
+    },
     "packages": {
       "tiers": [
         {

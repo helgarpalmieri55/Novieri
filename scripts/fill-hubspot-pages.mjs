@@ -248,12 +248,16 @@ function legalWidgets(doc) {
  * change it here, or a page will fill its sections with each other's copy.
  */
 const SERVICE_SLOTS = {
-  hero: "main-module-2",      // page-hero
-  what: "main-module-3",      // dot-list
-  how: "main-module-4",       // split-note
-  packages: "main-module-5",  // package-cards
-  faq: "main-module-6",       // faq-list
-  cta: "main-module-7",       // cta-band
+  hero: "main-module-2",       // page-hero
+  what: "main-module-3",       // dot-list
+  how: "main-module-4",        // split-note
+  // Added between the demo and the packages, which pushed the three below it
+  // down by one. A dnd slot is its position, so every service page in both
+  // languages has to be refilled for the numbers to mean what they say again.
+  industries: "main-module-5", // pillar-cards — only where copy exists
+  packages: "main-module-6",   // package-cards
+  faq: "main-module-7",        // faq-list
+  cta: "main-module-8",        // cta-band
 };
 /**
  * The published products, and where each one lives. Three of the nine written
@@ -332,6 +336,24 @@ function serviceWidgets(ns) {
     [SERVICE_SLOTS.how]: {
       body: { title: c.howTitle, intro: s.how.caption, footnote: "", picture: { src: "", alt: "" } },
     },
+    // Written on every service, empty on the ones with nothing to say — not
+    // skipped. Slot 5 is where package-cards used to live, so a service left
+    // untouched keeps that module's stored `title` in it, and a title is
+    // enough to make the new band paint a heading over an empty grid. Writing
+    // the blanks is what actually removes it.
+    [SERVICE_SLOTS.industries]: { body: s.industries ? {
+      eyebrow: s.industries.eyebrow,
+      title: s.industries.title,
+      intro: s.industries.intro,
+      link_label: s.industries.linkLabel,
+      cards: s.industries.cards.map((c, i) => ({
+        card_name: c.name,
+        card_tagline: c.tagline,
+        card_tags: c.tags,
+        card_colour: ACCENTS[i % ACCENTS.length],
+        card_link: { url: { type: "CONTENT", href: c.href } },
+      })),
+    } : { eyebrow: "", title: "", intro: "", link_label: "", cards: [] } },
     [SERVICE_SLOTS.packages]: {
       body: {
         title: c.packagesTitle,
