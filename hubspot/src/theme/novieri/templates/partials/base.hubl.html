@@ -54,6 +54,75 @@
       }
     </script>
     {#
+      Analytics, and only ever after consent.
+
+      Nothing here loads on a first visit. The cookie banner writes
+      "all" or "necessary" to localStorage and dispatches novieri:consent when
+      someone chooses, so this checks the stored answer on load and listens for
+      the event — accepting starts measurement immediately instead of on the
+      next page, which is the difference between counting a session and losing
+      it.
+
+      Both are analytics, which is the category the cookie policy already
+      gates. Neither is an advertising tag: the policy says this site sets no
+      advertising or cross-site tracking cookies, and the banner pushes
+      advertisement: false to HubSpot even on "accept all". Adding an ads tag
+      means changing both of those first, deliberately.
+
+      In the head rather than before the closing body tag, which is where
+      both vendors ask for it: on a return visit the answer is already in
+      localStorage, so the tags start with the page instead of after it.
+      Nothing about a first visit changes — that still waits for a choice.
+
+      An empty id loads nothing at all, which is how this shipped before the
+      accounts existed.
+    #}
+    {% set ga4_id = "G-Z44ET5N6YR" %}
+    {% set clarity_id = "y38sg8tbit" %}
+    {% if ga4_id or clarity_id %}
+      <script>
+        (function () {
+          var GA4 = {{ ga4_id|escapejson }};
+          var CLARITY = {{ clarity_id|escapejson }};
+          var started = false;
+
+          function start() {
+            if (started) return;
+            started = true;
+
+            if (GA4) {
+              var s = document.createElement("script");
+              s.async = true;
+              s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4;
+              document.head.appendChild(s);
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function () { window.dataLayer.push(arguments); };
+              window.gtag("js", new Date());
+              window.gtag("config", GA4);
+            }
+
+            if (CLARITY) {
+              // Clarity's own loader, with the queue in place before the script
+              // arrives so nothing recorded in the first moments is lost.
+              (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+                t = l.createElement(r); t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+              })(window, document, "clarity", "script", CLARITY);
+            }
+          }
+
+          try {
+            if (localStorage.getItem("novieri-consent") === "all") start();
+          } catch (e) {}
+          window.addEventListener("novieri:consent", function (e) {
+            if (e.detail === "all") start();
+          });
+        })();
+      </script>
+    {% endif %}
+    {#
       Who Novieri is, in the vocabulary answer engines read. Facts only —
       every value here also appears in the visible copy; nothing is claimed
       to a crawler that a visitor can't see. FAQ markup is separate, emitted
@@ -156,70 +225,6 @@
     {% module "cookie_banner" path="../../modules/cookie-banner" %}
     {% module "sylvi_chat" path="../../modules/sylvi-chat" %}
 
-    {#
-      Analytics, and only ever after consent.
-
-      Nothing here loads on a first visit. The cookie banner writes
-      "all" or "necessary" to localStorage and dispatches novieri:consent when
-      someone chooses, so this checks the stored answer on load and listens for
-      the event — accepting starts measurement immediately instead of on the
-      next page, which is the difference between counting a session and losing
-      it.
-
-      Both are analytics, which is the category the cookie policy already
-      gates. Neither is an advertising tag: the policy says this site sets no
-      advertising or cross-site tracking cookies, and the banner pushes
-      advertisement: false to HubSpot even on "accept all". Adding an ads tag
-      means changing both of those first, deliberately.
-
-      The ids are empty until they exist. An empty id loads nothing at all,
-      which is why this can ship before the accounts do.
-    #}
-    {% set ga4_id = "" %}
-    {% set clarity_id = "" %}
-    {% if ga4_id or clarity_id %}
-      <script>
-        (function () {
-          var GA4 = {{ ga4_id|escapejson }};
-          var CLARITY = {{ clarity_id|escapejson }};
-          var started = false;
-
-          function start() {
-            if (started) return;
-            started = true;
-
-            if (GA4) {
-              var s = document.createElement("script");
-              s.async = true;
-              s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4;
-              document.head.appendChild(s);
-              window.dataLayer = window.dataLayer || [];
-              window.gtag = function () { window.dataLayer.push(arguments); };
-              window.gtag("js", new Date());
-              window.gtag("config", GA4);
-            }
-
-            if (CLARITY) {
-              // Clarity's own loader, with the queue in place before the script
-              // arrives so nothing recorded in the first moments is lost.
-              (function (c, l, a, r, i, t, y) {
-                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-                t = l.createElement(r); t.async = 1;
-                t.src = "https://www.clarity.ms/tag/" + i;
-                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-              })(window, document, "clarity", "script", CLARITY);
-            }
-          }
-
-          try {
-            if (localStorage.getItem("novieri-consent") === "all") start();
-          } catch (e) {}
-          window.addEventListener("novieri:consent", function (e) {
-            if (e.detail === "all") start();
-          });
-        })();
-      </script>
-    {% endif %}
     {{ require_js(get_asset_url("../../js/reveal.js")) }}
     {{ require_js(get_asset_url("../../js/language-preference.js")) }}
     {{ standard_footer_includes }}
