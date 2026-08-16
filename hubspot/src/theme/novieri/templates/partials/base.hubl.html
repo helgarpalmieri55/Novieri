@@ -82,8 +82,12 @@
     {% if ga4_id or clarity_id %}
       <script>
         (function () {
-          var GA4 = {{ ga4_id|escapejson }};
-          var CLARITY = {{ clarity_id|escapejson }};
+          // Quoted here on purpose: escapejson escapes the contents of a value
+          // but does not wrap it, so `var GA4 = {{ "..." }}` renders bare and the
+          // whole block is a syntax error that fails silently. It shipped that
+          // way once and measured as "no tags fire, ever".
+          var GA4 = "{{ ga4_id|escapejson }}";
+          var CLARITY = "{{ clarity_id|escapejson }}";
           var started = false;
 
           function start() {
