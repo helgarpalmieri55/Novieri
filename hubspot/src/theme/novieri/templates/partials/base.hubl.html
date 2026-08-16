@@ -54,28 +54,29 @@
       }
     </script>
     {#
-      Analytics, and only ever after consent.
+      Analytics, under Google Consent Mode v2.
 
-      Nothing here loads on a first visit. The cookie banner writes
-      "all" or "necessary" to localStorage and dispatches novieri:consent when
-      someone chooses, so this checks the stored answer on load and listens for
-      the event — accepting starts measurement immediately instead of on the
-      next page, which is the difference between counting a session and losing
-      it.
+      Two tools, deliberately treated differently, because they are not the
+      same kind of thing.
 
-      Both are analytics, which is the category the cookie policy already
-      gates. Neither is an advertising tag: the policy says this site sets no
-      advertising or cross-site tracking cookies, and the banner pushes
-      advertisement: false to HubSpot even on "accept all". Adding an ads tag
-      means changing both of those first, deliberately.
+      Google Analytics loads on the first pixel with consent defaulted to
+      denied. In that state it sets no cookie and keeps no identifier — it
+      sends anonymous pings that let Google report traffic volume and model
+      conversions. Accepting sends a consent update and it becomes ordinary
+      analytics in place, without a reload. That is the whole point of consent
+      mode: measure everyone a little, measure the ones who agree properly.
 
-      In the head rather than before the closing body tag, which is where
-      both vendors ask for it: on a return visit the answer is already in
-      localStorage, so the tags start with the page instead of after it.
-      Nothing about a first visit changes — that still waits for a choice.
+      Clarity stays fully gated and loads only on accept. It has no equivalent
+      of a cookieless ping — it either records the session or it does not, and
+      a session replay of somebody who has not answered the banner is not
+      "anonymous aggregate measurement" in any honest reading of the phrase.
+      The cookie policy says replays happen only after consent, and this is
+      what makes that true.
 
-      An empty id loads nothing at all, which is how this shipped before the
-      accounts existed.
+      Advertising consent is denied and never updated. The site runs no
+      advertising tags and the policy says it sets no advertising or
+      cross-site tracking cookies; if that ever changes, it changes here, in
+      the policy, and in the banner, on purpose.
     #}
     {% set ga4_id = "G-Z44ET5N6YR" %}
     {% set clarity_id = "y38sg8tbit" %}
@@ -83,46 +84,60 @@
       <script>
         (function () {
           // Quoted here on purpose: escapejson escapes the contents of a value
-          // but does not wrap it, so `var GA4 = {{ "..." }}` renders bare and the
-          // whole block is a syntax error that fails silently. It shipped that
-          // way once and measured as "no tags fire, ever".
+          // but does not wrap it, so an unquoted id renders bare and the whole
+          // block is a syntax error that fails silently. It shipped that way
+          // once and measured as "no tags fire, ever".
           var GA4 = "{{ ga4_id|escapejson }}";
           var CLARITY = "{{ clarity_id|escapejson }}";
-          var started = false;
+          var clarityStarted = false;
 
-          function start() {
-            if (started) return;
-            started = true;
+          if (GA4) {
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () { window.dataLayer.push(arguments); };
+            // Defaults first, before the tag loads: anything sent before this
+            // runs would be sent under no policy at all.
+            window.gtag("consent", "default", {
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              analytics_storage: "denied",
+              wait_for_update: 500,
+            });
+            window.gtag("js", new Date());
+            window.gtag("config", GA4);
+            var s = document.createElement("script");
+            s.async = true;
+            s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4;
+            document.head.appendChild(s);
+          }
 
+          function startClarity() {
+            if (clarityStarted || !CLARITY) return;
+            clarityStarted = true;
+            (function (c, l, a, r, i, t, y) {
+              c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+              t = l.createElement(r); t.async = 1;
+              t.src = "https://www.clarity.ms/tag/" + i;
+              y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", CLARITY);
+            window.clarity("consent");
+          }
+
+          function apply(choice) {
             if (GA4) {
-              var s = document.createElement("script");
-              s.async = true;
-              s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4;
-              document.head.appendChild(s);
-              window.dataLayer = window.dataLayer || [];
-              window.gtag = function () { window.dataLayer.push(arguments); };
-              window.gtag("js", new Date());
-              window.gtag("config", GA4);
+              window.gtag("consent", "update", {
+                analytics_storage: choice === "all" ? "granted" : "denied",
+              });
             }
-
-            if (CLARITY) {
-              // Clarity's own loader, with the queue in place before the script
-              // arrives so nothing recorded in the first moments is lost.
-              (function (c, l, a, r, i, t, y) {
-                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-                t = l.createElement(r); t.async = 1;
-                t.src = "https://www.clarity.ms/tag/" + i;
-                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-              })(window, document, "clarity", "script", CLARITY);
-            }
+            if (choice === "all") startClarity();
+            else if (window.clarity) window.clarity("consent", false);
           }
 
           try {
-            if (localStorage.getItem("novieri-consent") === "all") start();
+            var stored = localStorage.getItem("novieri-consent");
+            if (stored) apply(stored);
           } catch (e) {}
-          window.addEventListener("novieri:consent", function (e) {
-            if (e.detail === "all") start();
-          });
+          window.addEventListener("novieri:consent", function (e) { apply(e.detail); });
         })();
       </script>
     {% endif %}

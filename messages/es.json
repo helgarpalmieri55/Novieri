@@ -2522,7 +2522,7 @@
           "h": "2. Base legal y consentimiento",
           "p": [
             "En Colombia, la instalación de cookies que traten datos personales requiere consentimiento previo, expreso e informado del titular, conforme a la Ley 1581 de 2012 y el Decreto 1074 de 2015.",
-            "Por eso, al entrar por primera vez al sitio te mostramos un aviso donde puedes aceptar o rechazar las cookies que no son estrictamente necesarias. Mientras no aceptes, no activamos analítica ni tecnologías de medición. Las cookies estrictamente necesarias no requieren consentimiento porque sin ellas el sitio no puede funcionar."
+            "Por eso, al entrar por primera vez al sitio te mostramos un aviso donde puedes aceptar o rechazar las cookies que no son estrictamente necesarias. Mientras no aceptes no instalamos cookies ni identificadores que te reconozcan: la medición funciona en modo anónimo, sin cookies, y solo nos deja ver totales de tráfico. Las grabaciones de sesión no se activan hasta que aceptes. Las cookies estrictamente necesarias no requieren consentimiento porque sin ellas el sitio no puede funcionar."
           ]
         },
         {
@@ -2532,7 +2532,7 @@
           ],
           "ul": [
             "Estrictamente necesarias: guardamos tu decisión sobre cookies en el almacenamiento local de tu navegador (clave «novieri-consent») para no volver a preguntarte en cada visita. No identifica a personas y no se comparte con terceros.",
-            "Analítica y medición (Google Analytics): si las aceptas, cargamos Google Analytics 4, que instala cookies propias de Google para contar visitas, ver qué páginas se consultan y de dónde llega la gente. Lo usamos con datos agregados, para mejorar el contenido, no para perfilar personas.",
+            "Analítica y medición (Google Analytics): cargamos Google Analytics 4 en modo de consentimiento. Mientras no aceptes funciona sin cookies y sin identificarte — solo permite estimar cuánta gente visita el sitio. Si aceptas, instala las cookies propias de Google y podemos ver qué páginas se consultan y de dónde llega la gente, con datos agregados, para mejorar el contenido y no para perfilar personas.",
             "Grabación de sesión y mapas de calor (Microsoft Clarity): si las aceptas, cargamos Microsoft Clarity, que registra de forma anónima cómo se navega la página — clics, desplazamiento y recorrido — y arma mapas de calor y reproducciones de sesión. Va más allá del dato agregado, así que lo decimos claro: el contenido que escribes en formularios y en el chat va enmascarado y no queda grabado, y usamos esas grabaciones para encontrar dónde se traba la página, no para identificarte.",
             "CRM y atribución (HubSpot): si aceptas, cargamos el script de HubSpot, que instala las cookies __hstc, hubspotutk, __hssc y __hssrc. Sirven para reconocer tu navegador entre visitas y asociar el formulario que envías con las páginas que consultaste antes, de modo que sepamos qué contenido resultó útil. Si las rechazas, los formularios siguen funcionando: solo se envían sin ese historial.",
             "Seguridad de formularios (Google reCAPTCHA): al escribir en el formulario de contacto o en el autodiagnóstico cargamos reCAPTCHA v3, que analiza el comportamiento de la sesión para distinguir personas de bots y puede instalar cookies de Google. Es una medida de seguridad estrictamente necesaria para evitar el abuso de esos formularios; sin ella no podemos garantizar su funcionamiento. Aplican la Política de Privacidad y los Términos del Servicio de Google.",
