@@ -70,6 +70,16 @@ function diff(a, b, path, out) {
   return out;
 }
 
+const pick = (o, keys) => Object.fromEntries(keys.map((k) => [k, o?.[k]]));
+
+/** Every non-empty string in a tree, with the path that reaches it. */
+function leaves(v, path, out) {
+  if (Array.isArray(v)) v.forEach((x, i) => leaves(x, `${path}[${i}]`, out));
+  else if (isObj(v)) for (const [k, x] of Object.entries(v)) if (!NOISE.has(k)) leaves(x, path ? `${path}.${k}` : k, out);
+  else if (typeof v === "string" && v.trim()) out.push([path, v.length > 160 ? `${v.slice(0, 160)}…` : v]);
+  return out;
+}
+
 function report(label, a, b) {
   const rows = diff(a, b, "", []);
   if (!rows.length) {
@@ -108,7 +118,17 @@ if (widgetsOf !== undefined) {
     return null;
   });
   console.log(JSON.stringify(full.widgets, null, 1));
-  if (draft) report("draft vs live", full.widgets, draft.widgets);
+  if (draft) {
+    report("draft vs live · widgets", full.widgets, draft.widgets);
+    /**
+     * And the drag-and-drop half. A page can hold content in both: editing a
+     * template-built page in HubSpot's editor materialises `layoutSections`
+     * and stamps `deleted_at` on the widgets it replaced, after which the
+     * widget map is a fossil that still compares equal to the repo while the
+     * page renders something else entirely.
+     */
+    report("draft vs live · layoutSections", full.layoutSections, draft.layoutSections);
+  }
   /**
    * And what the repo would write, which is the comparison that decides
    * whether a fill is safe to run. The locale is not passed in: the fill
@@ -125,7 +145,15 @@ if (widgetsOf !== undefined) {
   };
   const repo = emit("en") || emit("es");
   if (!repo) console.log("# no page with this slug in messages/*.json — nothing to compare against");
-  else report("repo vs live", full.widgets, repo);
+  else report("repo vs live · widgets", full.widgets, repo);
+  // The page's own fields, which no fill writes and an editor session can.
+  const META = ["name", "htmlTitle", "metaDescription", "slug", "language", "currentState"];
+  if (draft) report("draft vs live · page fields", pick(full, META), pick(draft, META));
+  // Whatever the drag-and-drop half holds, as plain text, because "identical
+  // to the repo" above is only reassuring if that half is empty.
+  const text = leaves(full.layoutSections, "", []);
+  console.log(`# layoutSections: ${text.length} text field${text.length === 1 ? "" : "s"}`);
+  for (const [path, value] of text) console.log(`  ${path} = ${value}`);
   process.exit(0);
 }
 
