@@ -170,8 +170,18 @@ if (widgetsOf !== undefined) {
     const who = r.updatedBy || r.user?.email || r.editedBy || "";
     console.log(`# revision ${r.id}  ${r.createdAt || r.updated}  ${who}`);
   }
-  const newest = revs?.results?.[0]?.object;
+  const list = revs?.results || [];
+  const newest = list[0]?.object;
   if (newest) report(`newest revision vs live`, newest.widgets, full.widgets);
+  /**
+   * And the span the history covers, whole-object: an editor session that
+   * changed a page title, a meta description or a module's settings leaves no
+   * mark on `widgets`, and "identical" above would be true and useless.
+   */
+  const oldest = list[list.length - 1];
+  if (list.length > 1) {
+    report(`oldest revision (${oldest.createdAt}) vs newest`, oldest.object, list[0].object);
+  }
   process.exit(0);
 }
 
