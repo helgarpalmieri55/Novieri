@@ -15,6 +15,8 @@
  *   node scripts/hubspot-forms.mjs --form="Website Contact"
  *   node scripts/hubspot-forms.mjs --widgets=contact
  */
+import { execFileSync } from "node:child_process";
+
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
 const widgetsOf = args.find((a) => a.startsWith("--widgets="))?.slice("--widgets=".length);
@@ -107,6 +109,23 @@ if (widgetsOf !== undefined) {
   });
   console.log(JSON.stringify(full.widgets, null, 1));
   if (draft) report("draft vs live", full.widgets, draft.widgets);
+  /**
+   * And what the repo would write, which is the comparison that decides
+   * whether a fill is safe to run. The locale is not passed in: the fill
+   * script keys its pages by the slug of the language it is filling, so the
+   * English attempt failing on a Spanish slug is itself the answer.
+   */
+  const emit = (locale) => {
+    try {
+      const flags = [`--emit=${widgetsOf}`, ...(locale === "es" ? ["--locale=es"] : [])];
+      return JSON.parse(execFileSync("node", ["scripts/fill-hubspot-pages.mjs", ...flags], { encoding: "utf8" }));
+    } catch {
+      return null;
+    }
+  };
+  const repo = emit("en") || emit("es");
+  if (!repo) console.log("# no page with this slug in messages/*.json — nothing to compare against");
+  else report("repo vs live", full.widgets, repo);
   process.exit(0);
 }
 

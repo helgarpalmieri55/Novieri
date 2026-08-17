@@ -41,8 +41,20 @@ const BOOK_HREF = "https://meetings.hubspot.com/helgar-palmieri";
 
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
-const dryRun = args.includes("--dry-run");
-const only = (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
+/**
+ * --emit=<slug> prints the widget map this script would write for one page and
+ * stops. No token, no network, nothing changed.
+ *
+ * It exists so "what does the repo say this page should hold?" can be answered
+ * next to "what does HubSpot actually hold?" — hubspot-forms.mjs --widgets
+ * runs this and diffs the two. That question has a cost attached: a fill
+ * replaces a page's widgets wholesale, so an edit made in HubSpot and not
+ * mirrored back here is erased the next time anyone fills that page. Being
+ * able to see the divergence is what makes it survivable.
+ */
+const emit = (args.find((a) => a.startsWith("--emit=")) || "").split("=")[1];
+const dryRun = args.includes("--dry-run") || emit !== undefined;
+const only = emit ?? (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
 const locale = (args.find((a) => a.startsWith("--locale=")) || "").split("=")[1] || "en";
 
 const t = JSON.parse(readFileSync(`messages/${locale}.json`, "utf8"));
@@ -1308,6 +1320,11 @@ if (only && !plan.length) {
   console.error(`--only=${only} matches no page in ${locale}. Known slugs:`);
   for (const slug of Object.keys(PAGES).sort()) console.error(`  ${slug || "(home)"}`);
   process.exit(1);
+}
+
+if (emit !== undefined) {
+  console.log(JSON.stringify(Object.fromEntries(plan.map(([, widgets]) => Object.entries(widgets)).flat()), null, 1));
+  process.exit(0);
 }
 
 if (dryRun) {
