@@ -36,6 +36,52 @@ if (!TOKEN) {
   process.exit(1);
 }
 
+/**
+ * Field-by-field, which is the only comparison worth printing.
+ *
+ * Two copies of a page's `widgets` differ in one of two ways: a value changed,
+ * or a repeater grew or shrank. Both come out here as a path — the widget's
+ * slot name, then the field, then the row index — so a one-word edit inside a
+ * forty-row price table reads as one line instead of two JSON dumps to eyeball.
+ *
+ * HubSpot's own bookkeeping is skipped: `deleted_at` is stamped on every
+ * widget of a page whose editor session rebuilt the layout, and it says
+ * nothing about the copy.
+ */
+const NOISE = new Set(["deleted_at", "id", "order", "type", "name", "child_css", "css", "styles"]);
+const isObj = (v) => v && typeof v === "object" && !Array.isArray(v);
+const scalar = (v) => (v === null || v === undefined ? "" : typeof v === "string" ? v : JSON.stringify(v));
+
+function diff(a, b, path, out) {
+  if (Array.isArray(a) || Array.isArray(b)) {
+    const x = Array.isArray(a) ? a : [];
+    const y = Array.isArray(b) ? b : [];
+    for (let i = 0; i < Math.max(x.length, y.length); i++) diff(x[i], y[i], `${path}[${i}]`, out);
+    return out;
+  }
+  if (isObj(a) || isObj(b)) {
+    const keys = new Set([...Object.keys(a || {}), ...Object.keys(b || {})].filter((k) => !NOISE.has(k)));
+    for (const k of keys) diff((a || {})[k], (b || {})[k], path ? `${path}.${k}` : k, out);
+    return out;
+  }
+  if (scalar(a) !== scalar(b)) out.push([path, scalar(a), scalar(b)]);
+  return out;
+}
+
+function report(label, a, b) {
+  const rows = diff(a, b, "", []);
+  if (!rows.length) {
+    console.log(`# ${label}: identical`);
+    return;
+  }
+  console.log(`# ${label}: ${rows.length} field${rows.length === 1 ? "" : "s"} differ`);
+  for (const [path, was, now] of rows) {
+    console.log(`  ${path}`);
+    console.log(`    - ${was || "(empty)"}`);
+    console.log(`    + ${now || "(empty)"}`);
+  }
+}
+
 if (widgetsOf !== undefined) {
   const pages = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
   const page = (pages.results || []).find((p) => p.slug === widgetsOf);
@@ -45,7 +91,22 @@ if (widgetsOf !== undefined) {
   }
   const full = await api(`/cms/v3/pages/site-pages/${page.id}`);
   console.log(`# ${full.name} (id ${full.id}, slug "${full.slug}")`);
+  console.log(`# updated ${full.updatedAt}  published ${full.publishDate}`);
+  /**
+   * The draft, separately.
+   *
+   * An edit made in HubSpot and not published lives in a buffer the page
+   * object does not show: GET on the page returns what is live. Reading only
+   * that and concluding "nothing changed" is how an edit sitting in the
+   * editor gets reported as a caching problem. This asks for the buffer and
+   * says what is in it that the live page does not have.
+   */
+  const draft = await api(`/cms/v3/pages/site-pages/${page.id}/draft`).catch((e) => {
+    console.log(`# no draft available (${e.message})`);
+    return null;
+  });
   console.log(JSON.stringify(full.widgets, null, 1));
+  if (draft) report("draft vs live", full.widgets, draft.widgets);
   process.exit(0);
 }
 
