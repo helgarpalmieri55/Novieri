@@ -3022,8 +3022,8 @@
         "rows": [
           {
             "service": "AI Opportunity Assessment",
-            "price_usd": "$1,500",
-            "price_cop": "COP 2,900,000",
+            "price_usd": "$1,000",
+            "price_cop": "COP 1.1 – 2.5 million",
             "unit": "fixed · 2 weeks",
             "note": "Credited toward your first project if you go ahead."
           },
@@ -3044,9 +3044,9 @@
           {
             "service": "WhatsApp bot for restaurants & hotels",
             "price_usd": "",
-            "price_cop": "COP 2.9 – 3.5 million",
+            "price_cop": "COP 1.0 – 3.5 million",
             "unit": "setup",
-            "note": "Orders, reservations, and after-hours service. Plus a monthly fee of COP 790,000 – 1,100,000 depending on scope."
+            "note": "Orders, reservations, and after-hours service. Plus a monthly fee of COP 400,000 – 1,100,000 depending on scope."
           }
         ],
         "footnote": "What moves the price: how many systems are involved, monthly volume, human-review requirements, data sensitivity, and voice or messaging usage."
@@ -3092,8 +3092,8 @@
           },
           {
             "service": "Discovery sprint",
-            "price_usd": "$2,900",
-            "price_cop": "COP 5,500,000",
+            "price_usd": "$500",
+            "price_cop": "COP 500,000",
             "unit": "fixed",
             "note": "Scope, architecture, and an honest build-vs-buy answer before you commit to a build."
           }

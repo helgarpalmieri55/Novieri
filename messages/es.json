@@ -3052,8 +3052,8 @@
         "rows": [
           {
             "service": "Diagnóstico de automatización e IA",
-            "price_usd": "$1,500",
-            "price_cop": "$2.900.000",
+            "price_usd": "$1,000",
+            "price_cop": "$1,1 – 2,5 millones",
             "unit": "precio fijo · 2 semanas",
             "note": "Dos semanas para mapear procesos, priorizar oportunidades y definir el primer caso de uso. El valor se abona al proyecto si decides continuar."
           },
@@ -3074,9 +3074,9 @@
           {
             "service": "Asistente para WhatsApp",
             "price_usd": "",
-            "price_cop": "$2,9 – 3,5 millones",
+            "price_cop": "$1 – 3,5 millones",
             "unit": "implementación",
-            "note": "Configuración, integración, contenido inicial, pruebas y puesta en marcha. La operación mensual depende del volumen y las funciones contratadas."
+            "note": "Configuración, integración, contenido inicial, pruebas y puesta en marcha. La operación mensual va de $400.000 a $1.100.000 según el volumen y las funciones contratadas."
           }
         ],
         "footnote": "Qué mueve el precio: cuántos sistemas participan, el volumen mensual, cuánta revisión humana se requiere, la sensibilidad de los datos y el uso de voz o mensajería."
@@ -3122,8 +3122,8 @@
           },
           {
             "service": "Descubrimiento y alcance",
-            "price_usd": "$2,900",
-            "price_cop": "$5.500.000",
+            "price_usd": "$500",
+            "price_cop": "$500.000",
             "unit": "precio fijo",
             "note": "Proceso de precio fijo para entender el problema, validar la solución, definir arquitectura, prioridades, riesgos y presupuesto."
           }
