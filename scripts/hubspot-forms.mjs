@@ -154,6 +154,24 @@ if (widgetsOf !== undefined) {
   const text = leaves(full.layoutSections, "", []);
   console.log(`# layoutSections: ${text.length} text field${text.length === 1 ? "" : "s"}`);
   for (const [path, value] of text) console.log(`  ${path} = ${value}`);
+  /**
+   * And the version history, which is the only record of who changed what.
+   *
+   * The page object, its draft and the repo can all agree while the page
+   * serves something else entirely — measured, not hypothesised, on this very
+   * page. When they disagree with what a browser gets, the revisions say which
+   * version is the published one and when the divergence started.
+   */
+  const revs = await api(`/cms/v3/pages/site-pages/${page.id}/revisions?limit=8`).catch((e) => {
+    console.log(`# no revisions available (${e.message})`);
+    return null;
+  });
+  for (const r of revs?.results || []) {
+    const who = r.updatedBy || r.user?.email || r.editedBy || "";
+    console.log(`# revision ${r.id}  ${r.createdAt || r.updated}  ${who}`);
+  }
+  const newest = revs?.results?.[0]?.object;
+  if (newest) report(`newest revision vs live`, newest.widgets, full.widgets);
   process.exit(0);
 }
 
