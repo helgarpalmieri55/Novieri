@@ -20,7 +20,7 @@ export const site = {
 
   // The website assistant's name — used by the widget and by the system
   // prompt in api/chat.php, which must be kept in step with it.
-  assistantName: "Sylvi",
+  assistantName: "Atena",
 
   // Google reCAPTCHA v3 site key (public; the secret goes in api/config.php).
   // While empty the forms submit without a token and the backend, seeing no

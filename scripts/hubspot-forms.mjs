@@ -15,6 +15,8 @@
  *   node scripts/hubspot-forms.mjs --form="Website Contact"
  *   node scripts/hubspot-forms.mjs --widgets=contact
  */
+import { execFileSync } from "node:child_process";
+
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
 const widgetsOf = args.find((a) => a.startsWith("--widgets="))?.slice("--widgets=".length);
@@ -36,6 +38,62 @@ if (!TOKEN) {
   process.exit(1);
 }
 
+/**
+ * Field-by-field, which is the only comparison worth printing.
+ *
+ * Two copies of a page's `widgets` differ in one of two ways: a value changed,
+ * or a repeater grew or shrank. Both come out here as a path — the widget's
+ * slot name, then the field, then the row index — so a one-word edit inside a
+ * forty-row price table reads as one line instead of two JSON dumps to eyeball.
+ *
+ * HubSpot's own bookkeeping is skipped: `deleted_at` is stamped on every
+ * widget of a page whose editor session rebuilt the layout, and it says
+ * nothing about the copy.
+ */
+const NOISE = new Set(["deleted_at", "id", "order", "type", "name", "child_css", "css", "styles"]);
+const isObj = (v) => v && typeof v === "object" && !Array.isArray(v);
+const scalar = (v) => (v === null || v === undefined ? "" : typeof v === "string" ? v : JSON.stringify(v));
+
+function diff(a, b, path, out) {
+  if (Array.isArray(a) || Array.isArray(b)) {
+    const x = Array.isArray(a) ? a : [];
+    const y = Array.isArray(b) ? b : [];
+    for (let i = 0; i < Math.max(x.length, y.length); i++) diff(x[i], y[i], `${path}[${i}]`, out);
+    return out;
+  }
+  if (isObj(a) || isObj(b)) {
+    const keys = new Set([...Object.keys(a || {}), ...Object.keys(b || {})].filter((k) => !NOISE.has(k)));
+    for (const k of keys) diff((a || {})[k], (b || {})[k], path ? `${path}.${k}` : k, out);
+    return out;
+  }
+  if (scalar(a) !== scalar(b)) out.push([path, scalar(a), scalar(b)]);
+  return out;
+}
+
+const pick = (o, keys) => Object.fromEntries(keys.map((k) => [k, o?.[k]]));
+
+/** Every non-empty string in a tree, with the path that reaches it. */
+function leaves(v, path, out) {
+  if (Array.isArray(v)) v.forEach((x, i) => leaves(x, `${path}[${i}]`, out));
+  else if (isObj(v)) for (const [k, x] of Object.entries(v)) if (!NOISE.has(k)) leaves(x, path ? `${path}.${k}` : k, out);
+  else if (typeof v === "string" && v.trim()) out.push([path, v.length > 160 ? `${v.slice(0, 160)}…` : v]);
+  return out;
+}
+
+function report(label, a, b) {
+  const rows = diff(a, b, "", []);
+  if (!rows.length) {
+    console.log(`# ${label}: identical`);
+    return;
+  }
+  console.log(`# ${label}: ${rows.length} field${rows.length === 1 ? "" : "s"} differ`);
+  for (const [path, was, now] of rows) {
+    console.log(`  ${path}`);
+    console.log(`    - ${was || "(empty)"}`);
+    console.log(`    + ${now || "(empty)"}`);
+  }
+}
+
 if (widgetsOf !== undefined) {
   const pages = await api(`/cms/v3/pages/site-pages?${new URLSearchParams({ limit: "100" })}`);
   const page = (pages.results || []).find((p) => p.slug === widgetsOf);
@@ -45,7 +103,85 @@ if (widgetsOf !== undefined) {
   }
   const full = await api(`/cms/v3/pages/site-pages/${page.id}`);
   console.log(`# ${full.name} (id ${full.id}, slug "${full.slug}")`);
+  console.log(`# updated ${full.updatedAt}  published ${full.publishDate}`);
+  /**
+   * The draft, separately.
+   *
+   * An edit made in HubSpot and not published lives in a buffer the page
+   * object does not show: GET on the page returns what is live. Reading only
+   * that and concluding "nothing changed" is how an edit sitting in the
+   * editor gets reported as a caching problem. This asks for the buffer and
+   * says what is in it that the live page does not have.
+   */
+  const draft = await api(`/cms/v3/pages/site-pages/${page.id}/draft`).catch((e) => {
+    console.log(`# no draft available (${e.message})`);
+    return null;
+  });
   console.log(JSON.stringify(full.widgets, null, 1));
+  if (draft) {
+    report("draft vs live · widgets", full.widgets, draft.widgets);
+    /**
+     * And the drag-and-drop half. A page can hold content in both: editing a
+     * template-built page in HubSpot's editor materialises `layoutSections`
+     * and stamps `deleted_at` on the widgets it replaced, after which the
+     * widget map is a fossil that still compares equal to the repo while the
+     * page renders something else entirely.
+     */
+    report("draft vs live · layoutSections", full.layoutSections, draft.layoutSections);
+  }
+  /**
+   * And what the repo would write, which is the comparison that decides
+   * whether a fill is safe to run. The locale is not passed in: the fill
+   * script keys its pages by the slug of the language it is filling, so the
+   * English attempt failing on a Spanish slug is itself the answer.
+   */
+  const emit = (locale) => {
+    try {
+      const flags = [`--emit=${widgetsOf}`, ...(locale === "es" ? ["--locale=es"] : [])];
+      return JSON.parse(execFileSync("node", ["scripts/fill-hubspot-pages.mjs", ...flags], { encoding: "utf8" }));
+    } catch {
+      return null;
+    }
+  };
+  const repo = emit("en") || emit("es");
+  if (!repo) console.log("# no page with this slug in messages/*.json — nothing to compare against");
+  else report("repo vs live · widgets", full.widgets, repo);
+  // The page's own fields, which no fill writes and an editor session can.
+  const META = ["name", "htmlTitle", "metaDescription", "slug", "language", "currentState"];
+  if (draft) report("draft vs live · page fields", pick(full, META), pick(draft, META));
+  // Whatever the drag-and-drop half holds, as plain text, because "identical
+  // to the repo" above is only reassuring if that half is empty.
+  const text = leaves(full.layoutSections, "", []);
+  console.log(`# layoutSections: ${text.length} text field${text.length === 1 ? "" : "s"}`);
+  for (const [path, value] of text) console.log(`  ${path} = ${value}`);
+  /**
+   * And the version history, which is the only record of who changed what.
+   *
+   * The page object, its draft and the repo can all agree while the page
+   * serves something else entirely — measured, not hypothesised, on this very
+   * page. When they disagree with what a browser gets, the revisions say which
+   * version is the published one and when the divergence started.
+   */
+  const revs = await api(`/cms/v3/pages/site-pages/${page.id}/revisions?limit=8`).catch((e) => {
+    console.log(`# no revisions available (${e.message})`);
+    return null;
+  });
+  for (const r of revs?.results || []) {
+    const who = r.updatedBy || r.user?.email || r.editedBy || "";
+    console.log(`# revision ${r.id}  ${r.createdAt || r.updated}  ${who}`);
+  }
+  const list = revs?.results || [];
+  const newest = list[0]?.object;
+  if (newest) report(`newest revision vs live`, newest.widgets, full.widgets);
+  /**
+   * And the span the history covers, whole-object: an editor session that
+   * changed a page title, a meta description or a module's settings leaves no
+   * mark on `widgets`, and "identical" above would be true and useless.
+   */
+  const oldest = list[list.length - 1];
+  if (list.length > 1) {
+    report(`oldest revision (${oldest.createdAt}) vs newest`, oldest.object, list[0].object);
+  }
   process.exit(0);
 }
 

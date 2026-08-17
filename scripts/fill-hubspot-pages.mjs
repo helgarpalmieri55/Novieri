@@ -41,8 +41,20 @@ const BOOK_HREF = "https://meetings.hubspot.com/helgar-palmieri";
 
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
 const args = process.argv.slice(2);
-const dryRun = args.includes("--dry-run");
-const only = (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
+/**
+ * --emit=<slug> prints the widget map this script would write for one page and
+ * stops. No token, no network, nothing changed.
+ *
+ * It exists so "what does the repo say this page should hold?" can be answered
+ * next to "what does HubSpot actually hold?" — hubspot-forms.mjs --widgets
+ * runs this and diffs the two. That question has a cost attached: a fill
+ * replaces a page's widgets wholesale, so an edit made in HubSpot and not
+ * mirrored back here is erased the next time anyone fills that page. Being
+ * able to see the divergence is what makes it survivable.
+ */
+const emit = (args.find((a) => a.startsWith("--emit=")) || "").split("=")[1];
+const dryRun = args.includes("--dry-run") || emit !== undefined;
+const only = emit ?? (args.find((a) => a.startsWith("--only=")) || "").split("=")[1];
 const locale = (args.find((a) => a.startsWith("--locale=")) || "").split("=")[1] || "en";
 
 const t = JSON.parse(readFileSync(`messages/${locale}.json`, "utf8"));
@@ -80,6 +92,8 @@ const ES_SLUGS = {
   "products/ai-ecommerce": "productos/ecommerce-ia",
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
+  "legal/data-deletion": "legal/eliminacion-de-datos",
+  "legal/terms-of-service": "legal/terminos-del-servicio",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
 };
@@ -171,27 +185,79 @@ function interpolate(text) {
 const escapeHtml = (s) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-/** A legal section is paragraphs, an optional list, then more paragraphs. */
-function sectionHtml(section) {
-  const parts = [];
-  for (const p of section.p || []) parts.push(`<p>${escapeHtml(interpolate(p))}</p>`);
-  if (section.ul?.length) {
-    parts.push(`<ul>${section.ul.map((li) => `<li>${escapeHtml(interpolate(li))}</li>`).join("")}</ul>`);
+/**
+ * Inline formatting for legal copy: **bold** and [text](href), nothing else.
+ *
+ * Escaping happens first and the markers are applied to the escaped string, so
+ * a document can carry emphasis and cross-references without any of it being a
+ * way to inject markup. Everything else — asterisks in the middle of a word, a
+ * stray bracket — survives as text.
+ */
+function inline(text) {
+  return escapeHtml(interpolate(text))
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+}
+
+/**
+ * One block of a legal section.
+ *
+ * The older documents are paragraphs and a list, which is all they needed. The
+ * services terms and the deletion policy are not that shape: they carry
+ * sub-headings, numbered obligations, a severity matrix, a retention table
+ * with a legal basis per row. Flattening those into prose would lose the thing
+ * that makes them readable — a reader looking up how long an invoice is kept
+ * wants a row, not a sentence in the middle of a paragraph.
+ *
+ * A table is wrapped in its own scroll container: it is the one element here
+ * that cannot reflow, and a legal page that scrolls sideways on a phone is a
+ * legal page nobody reads on a phone.
+ */
+function blockHtml(b) {
+  if (typeof b === "string") return `<p>${inline(b)}</p>`;
+  if (b.h) return `<h3>${inline(b.h)}</h3>`;
+  if (b.ul) return `<ul>${b.ul.map((li) => `<li>${inline(li)}</li>`).join("")}</ul>`;
+  if (b.ol) return `<ol>${b.ol.map((li) => `<li>${inline(li)}</li>`).join("")}</ol>`;
+  if (b.note) return `<p class="legal-note">${inline(b.note)}</p>`;
+  if (b.table) {
+    const head = `<thead><tr>${b.table.head.map((c) => `<th>${inline(c)}</th>`).join("")}</tr></thead>`;
+    const rows = b.table.rows
+      .map((r) => `<tr>${r.map((c) => `<td>${inline(c)}</td>`).join("")}</tr>`)
+      .join("");
+    return `<div class="legal-table"><table>${head}<tbody>${rows}</tbody></table></div>`;
   }
-  for (const p of section.p2 || []) parts.push(`<p>${escapeHtml(interpolate(p))}</p>`);
+  return "";
+}
+
+/**
+ * A legal section: either the newer block list, or the older paragraphs, an
+ * optional list, then more paragraphs.
+ */
+function sectionHtml(section) {
+  if (section.blocks) return section.blocks.map(blockHtml).join("");
+  const parts = [];
+  for (const p of section.p || []) parts.push(`<p>${inline(p)}</p>`);
+  if (section.ul?.length) {
+    parts.push(`<ul>${section.ul.map((li) => `<li>${inline(li)}</li>`).join("")}</ul>`);
+  }
+  for (const p of section.p2 || []) parts.push(`<p>${inline(p)}</p>`);
   return parts.join("");
 }
 
 const LEGAL_SLUGS = {
   privacy: "legal/privacy-policy",
+  dataDeletion: "legal/data-deletion",
+  termsOfService: "legal/terms-of-service",
   cookies: "legal/cookie-policy",
   terms: "legal/terms-of-use",
 };
 /** Labels come from the footer namespace, which already has both languages. */
 const OTHER = {
-  privacy: ["cookies", "terms"],
-  cookies: ["privacy", "terms"],
-  terms: ["privacy", "cookies"],
+  privacy: ["dataDeletion", "termsOfService", "cookies", "terms"],
+  dataDeletion: ["privacy", "termsOfService", "cookies", "terms"],
+  termsOfService: ["privacy", "dataDeletion", "cookies", "terms"],
+  cookies: ["privacy", "dataDeletion", "termsOfService", "terms"],
+  terms: ["privacy", "dataDeletion", "termsOfService", "cookies"],
 };
 
 /** The one string with no home in messages/*.json. */
@@ -216,7 +282,9 @@ function legalWidgets(doc) {
         title: t.legal[doc].title,
         lead: t.legal[doc].lead,
         updated_label: c.updated,
-        updated_value: c.updatedValue,
+        // These two documents took effect on their own date, so the shared
+        // one would be wrong on them and wrong on the others if changed.
+        updated_value: t.legal[doc].updatedValue || c.updatedValue,
         toc_label: c.toc,
         identity_title: c.identityTitle,
         identity_body: `<p>${escapeHtml(interpolate(c.identityBody))}</p>`,
@@ -248,12 +316,16 @@ function legalWidgets(doc) {
  * change it here, or a page will fill its sections with each other's copy.
  */
 const SERVICE_SLOTS = {
-  hero: "main-module-2",      // page-hero
-  what: "main-module-3",      // dot-list
-  how: "main-module-4",       // split-note
-  packages: "main-module-5",  // package-cards
-  faq: "main-module-6",       // faq-list
-  cta: "main-module-7",       // cta-band
+  hero: "main-module-2",       // page-hero
+  what: "main-module-3",       // dot-list
+  how: "main-module-4",        // split-note
+  // Added between the demo and the packages, which pushed the three below it
+  // down by one. A dnd slot is its position, so every service page in both
+  // languages has to be refilled for the numbers to mean what they say again.
+  industries: "main-module-5", // pillar-cards — only where copy exists
+  packages: "main-module-6",   // package-cards
+  faq: "main-module-7",        // faq-list
+  cta: "main-module-8",        // cta-band
 };
 /**
  * The published products, and where each one lives. Three of the nine written
@@ -332,6 +404,24 @@ function serviceWidgets(ns) {
     [SERVICE_SLOTS.how]: {
       body: { title: c.howTitle, intro: s.how.caption, footnote: "", picture: { src: "", alt: "" } },
     },
+    // Written on every service, empty on the ones with nothing to say — not
+    // skipped. Slot 5 is where package-cards used to live, so a service left
+    // untouched keeps that module's stored `title` in it, and a title is
+    // enough to make the new band paint a heading over an empty grid. Writing
+    // the blanks is what actually removes it.
+    [SERVICE_SLOTS.industries]: { body: s.industries ? {
+      eyebrow: s.industries.eyebrow,
+      title: s.industries.title,
+      intro: s.industries.intro,
+      link_label: s.industries.linkLabel,
+      cards: s.industries.cards.map((c, i) => ({
+        card_name: c.name,
+        card_tagline: c.tagline,
+        card_tags: c.tags,
+        card_colour: ACCENTS[i % ACCENTS.length],
+        card_link: { url: { type: "CONTENT", href: c.href } },
+      })),
+    } : { eyebrow: "", title: "", intro: "", link_label: "", cards: [] } },
     [SERVICE_SLOTS.packages]: {
       body: {
         title: c.packagesTitle,
@@ -1152,6 +1242,8 @@ const PAGES = {
   ...Object.fromEntries(SOLUTIONS.map(([key, slug]) => [slugFor(slug), solutionWidgets(key)])),
   [slugFor("about")]: aboutWidgets(),
   [slugFor(LEGAL_SLUGS.privacy)]: legalWidgets("privacy"),
+  [slugFor(LEGAL_SLUGS.dataDeletion)]: legalWidgets("dataDeletion"),
+  [slugFor(LEGAL_SLUGS.termsOfService)]: legalWidgets("termsOfService"),
   [slugFor(LEGAL_SLUGS.cookies)]: legalWidgets("cookies"),
   [slugFor(LEGAL_SLUGS.terms)]: legalWidgets("terms"),
   [slugFor("contact")]: {
@@ -1228,6 +1320,11 @@ if (only && !plan.length) {
   console.error(`--only=${only} matches no page in ${locale}. Known slugs:`);
   for (const slug of Object.keys(PAGES).sort()) console.error(`  ${slug || "(home)"}`);
   process.exit(1);
+}
+
+if (emit !== undefined) {
+  console.log(JSON.stringify(Object.fromEntries(plan.map(([, widgets]) => Object.entries(widgets)).flat()), null, 1));
+  process.exit(0);
 }
 
 if (dryRun) {

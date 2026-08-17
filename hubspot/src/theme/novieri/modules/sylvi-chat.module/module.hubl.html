@@ -1,4 +1,4 @@
-{# Sylvi — the website assistant. Every string is a module field, so the
+{# Atena — the website assistant. Every string is a module field, so the
    copy is editable in the page editor without a deploy. The logic lives in
    module.hubl.js and talks to the serverless function in src/app/functions.
 
@@ -76,7 +76,12 @@
       </button>
     </div>
 
-    <div class="sylvi-log flex-1 overflow-y-auto px-4 py-4">
+    {# Masked from session recording. Clarity hides the value of an input on
+       its own, but a chat transcript is rendered text, not a field — and
+       everything a visitor typed is sitting in it. The cookie policy says
+       this content is not recorded, so this is the line that makes that
+       true. #}
+    <div class="sylvi-log flex-1 overflow-y-auto px-4 py-4" data-clarity-mask="true">
       <div class="mb-3 max-w-[85%] rounded-2xl rounded-tl-md bg-plum-wash px-4 py-2.5 text-small text-ink">
         {{ s_greeting }}
       </div>

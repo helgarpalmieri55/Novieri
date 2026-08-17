@@ -3,7 +3,7 @@
   "type": "app",
   "config": {
     "name": "Novieri site",
-    "description": "Backend for novieri.com: the website assistant (Sylvi), the contact form and the self-diagnosis report.",
+    "description": "Backend for novieri.com: the website assistant (Atena), the contact form and the self-diagnosis report.",
     "distribution": "private",
     "auth": {
       "type": "static",

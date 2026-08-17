@@ -1,7 +1,7 @@
 /**
  * End-to-end test of the chat handoff.
  *
- * Sylvi gives out the WhatsApp number when a visitor asks for a person, and
+ * Atena gives out the WhatsApp number when a visitor asks for a person, and
  * the conversation that led there is filed as a ticket so whoever answers has
  * already read it. Four things have to line up for that: the number reaching
  * the prompt, the handoff being detected in the reply, a token in the
@@ -26,7 +26,7 @@ const MARKER = "automated handoff test";
 const since = Date.now() - 60_000;
 
 /**
- * --list shows the handoff queue instead of adding to it: every ticket Sylvi
+ * --list shows the handoff queue instead of adding to it: every ticket Atena
  * has filed in the last few hours, newest first. Useful on its own, and it is
  * how you tell a handoff that never happened from one the search index had
  * not caught up with yet.
@@ -48,7 +48,7 @@ if (process.argv.includes("--list")) {
     console.error(`ticket search returned ${res.status}: ${JSON.stringify(body).slice(0, 300)}`);
     process.exit(1);
   }
-  const handoffs = (body.results || []).filter((t) => (t.properties.subject || "").startsWith("Sylvi handoff"));
+  const handoffs = (body.results || []).filter((t) => (t.properties.subject || "").startsWith("Atena handoff"));
   console.log(`${body.total || 0} ticket(s) in the last ${hours}h, ${handoffs.length} of them handoffs:\n`);
   for (const t of handoffs) {
     console.log(`  ${t.properties.createdate}  ${t.id}  ${t.properties.subject}`);
@@ -144,7 +144,7 @@ if (!ticket) {
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       properties: {
-        subject: `Sylvi handoff — ${MARKER}`,
+        subject: `Atena handoff — ${MARKER}`,
         content: MARKER,
         hs_pipeline: process.env.TICKET_PIPELINE_ID || "0",
         hs_pipeline_stage: process.env.TICKET_STAGE_ID || "1",

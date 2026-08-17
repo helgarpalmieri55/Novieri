@@ -72,6 +72,8 @@ const ES_SLUGS = {
   "products/ai-ecommerce": "productos/ecommerce-ia",
   "products/ai-websites": "productos/sitios-web-con-ia",
   "legal/privacy-policy": "legal/politica-de-privacidad",
+  "legal/data-deletion": "legal/eliminacion-de-datos",
+  "legal/terms-of-service": "legal/terminos-del-servicio",
   "legal/cookie-policy": "legal/politica-de-cookies",
   "legal/terms-of-use": "legal/terminos-de-uso",
 };
@@ -162,6 +164,19 @@ const PAGES = [
     name: "Privacy policy",
     htmlTitle: "Privacy policy — Novieri",
     metaDescription: "How Novieri collects, uses, and protects personal data, under Colombian Law 1581 of 2012." },
+  // Meta's App Review checks this one for real: a WhatsApp app handling a
+  // restaurant's customers has to show a working way to ask for deletion, and
+  // pointing the field at facebook.com is a refusal.
+  { key: "data-deletion", template: "legal", slug: "legal/data-deletion",
+    name: "Data deletion",
+    htmlTitle: "Deleting your personal data — Novieri",
+    metaDescription: "How to ask Novieri to delete your personal data, what gets deleted, what the law requires us to keep, and how long we take." },
+  // Not the same document as terms-of-use: that one governs browsing
+  // novieri.com, this one governs delivering the services someone has bought.
+  { key: "terms-of-service", template: "legal", slug: "legal/terms-of-service",
+    name: "Service terms",
+    htmlTitle: "Terms and conditions of service — Novieri",
+    metaDescription: "The terms under which Novieri delivers its services and products: how a contract is formed, pricing and payment, AI limitations, WhatsApp and Meta, data protection, service levels and liability." },
   { key: "cookies", template: "legal", slug: "legal/cookie-policy",
     name: "Cookie policy",
     htmlTitle: "Cookie policy — Novieri",
@@ -363,6 +378,8 @@ function esMeta() {
     "products/ai-ecommerce": es.meta.sol_ventia,
     // The legal pages were the last ES titles still in English.
     "legal/privacy-policy": es.meta.legalPrivacy,
+    "legal/data-deletion": es.meta.legalDataDeletion,
+    "legal/terms-of-service": es.meta.legalTermsOfService,
     "legal/cookie-policy": es.meta.legalCookies,
     "legal/terms-of-use": es.meta.legalTerms,
     "products/ai-websites": es.meta.sol_webDev,
@@ -646,6 +663,14 @@ if (verify) {
   const q = new URLSearchParams({ limit: "100" });
   const res = await api(`/cms/v3/pages/site-pages?${q}`);
   const page = (res.results || []).find((p) => p.slug === verify || p.slug === `${verify}/`);
+  const similar = (res.results || []).filter(
+    (p) => p.slug !== verify && (p.slug || "").includes(verify.split("/").pop()),
+  );
+  if (similar.length) {
+    console.log("other pages with a similar slug — check you edited this one:");
+    for (const p of similar) console.log(`  ${p.slug}  "${p.name}"  id ${p.id}`);
+    console.log("");
+  }
   if (!page) {
     console.error(`no page with slug "${verify}"`);
     process.exit(1);
@@ -669,6 +694,22 @@ if (verify) {
   console.log(`slug      ${full.slug}`);
   console.log(`template  ${full.templatePath}`);
   console.log(`state     ${full.currentState || full.state}`);
+  // "PUBLISHED" only says a published version exists. HubSpot keeps edits in a
+  // buffer until someone hits Update, and the editor shows you the buffer while
+  // the public URL keeps serving the last published version — which looks
+  // exactly like a caching problem and is not one. updatedAt after publishDate
+  // is that state, and it is the first thing to check when a change is visible
+  // in HubSpot and nowhere else.
+  const updated = full.updatedAt || full.updated;
+  const published = full.publishDate || full.publishedAt;
+  console.log(`updated   ${updated}`);
+  console.log(`published ${published}`);
+  if (updated && published && new Date(updated) > new Date(published)) {
+    const mins = Math.round((new Date(updated) - new Date(published)) / 60000);
+    console.log(`          ^ edited ${mins} min after the last publish — there are`);
+    console.log(`            unpublished changes. Open the page and hit Update.`);
+  }
+  console.log(`archived  ${full.archived}`);
   console.log(`sections  ${Object.keys(sections).length}`);
   console.log(`widgets   ${Object.keys(full.widgets || {}).length}`);
   console.log(`modules   ${names.length}${names.length ? " — " + names.join(", ") : ""}`);

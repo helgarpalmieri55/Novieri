@@ -1,9 +1,9 @@
 /**
- * Builds the company profile Sylvi answers from, and writes it next to the
+ * Builds the company profile Atena answers from, and writes it next to the
  * serverless function so the deploy carries it.
  *
  * Today the source is messages/*.json — the same strings the Next.js site
- * renders, which is why Sylvi has never been able to contradict the site.
+ * renders, which is why Atena has never been able to contradict the site.
  * When the copy moves into editable HubSpot pages, only this file changes:
  * read the published page content instead, and everything downstream still
  * works. That is the whole reason the profile is generated rather than
@@ -24,7 +24,7 @@ const services = (m, label) =>
   `${label}:\n` + Object.values(m.pillars).map((p) => `- ${p.name}: ${p.tagline}`).join("\n");
 
 /**
- * The six products with a page on the site, and the path to each. Sylvi was
+ * The six products with a page on the site, and the path to each. Atena was
  * naming these in conversation with nowhere to send anyone; now she can link.
  * The other three in messages/*.json — the IT suite, the monitoring service
  * and Matter Flow — are real and she may still discuss them, but they have no
@@ -55,7 +55,7 @@ const contactEmail = process.env.CONTACT_EMAIL ?? "sales@novieri.com";
 /** The founders' public HubSpot meetings link, same one the contact page embeds. */
 /**
  * The published price anchors, both currencies per row — the same data the
- * pricing page renders. Sylvi may quote these and nothing else; a row priced
+ * pricing page renders. Atena may quote these and nothing else; a row priced
  * for one market only says so instead of showing a blank.
  */
 const prices = (m, label) =>
@@ -105,7 +105,7 @@ const text = [
   `- Email: ${contactEmail}`,
   "- Ubicación: Barranquilla, Colombia (GMT-5, mismo huso horario que la costa este de EE. UU.)",
   "- Atiende Colombia localmente y Estados Unidos de forma remota (nearshore), en español e inglés.",
-  // The routes are HubSpot's, not the old Next.js export's — Sylvi was sending
+  // The routes are HubSpot's, not the old Next.js export's — Atena was sending
   // people to /en/contact, which does not exist here.
   "- Página de contacto / contact page: /contacto (ES) · /contact (EN).",
   "- Índice de productos / products index: /productos (ES) · /products (EN).",

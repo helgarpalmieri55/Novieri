@@ -139,7 +139,7 @@ hubspot/
 └── src/
     ├── app/                   # private app + serverless endpoints
     │   ├── app-hsmeta.json
-    │   └── functions/         # chat.js (Sylvi), diagnose.js, lib/
+    │   └── functions/         # chat.js (Atena), diagnose.js, lib/
     └── theme/novieri/         # templates, modules, css, js, fonts, images
 ```
 
@@ -184,7 +184,7 @@ they are stale:
 - `src/theme/novieri/css/theme.css` — Tailwind, scanning the HubL templates and
   importing `src/app/globals.css`. The design system is shared with the Next.js
   site, so module markup can be lifted from the React components unchanged.
-- `src/app/functions/lib/company-profile.json` — Sylvi's knowledge, built from
+- `src/app/functions/lib/company-profile.json` — Atena's knowledge, built from
   the site's own copy. When copy moves into HubSpot pages, change
   `scripts/build-company-profile.mjs` and nothing else.
 
@@ -377,7 +377,7 @@ Enterprise subscription. Nothing in this repo can install it — look for the
 install prompt on the project page in HubSpot, or under Settings >
 Integrations > Connected Apps.
 
-Until that resolves, Sylvi's widget and the diagnostic's submit button both
+Until that resolves, Atena's widget and the diagnostic's submit button both
 fail at the network call. The rest of both pages renders normally.
 
 ### Deploying
@@ -421,7 +421,7 @@ Dependency-free PHP (works on GoDaddy shared hosting, PHP ≥ 8.0):
 
 - `contact.php` — contact form → email via GoDaddy SMTP (vendored PHPMailer in
   `lib/`). Honeypot + per-IP rate limit (5/10 min).
-- `chat.php` — **Sylvi**, the website assistant → Claude API (`claude-opus-5`) over raw HTTPS.
+- `chat.php` — **Atena**, the website assistant → Claude API (`claude-opus-5`) over raw HTTPS.
   The company profile is assembled at request time from `data/es.json` +
   `data/en.json` (copies of `messages/*.json` made by the deploy), so the bot
   always matches the site. Prompt-cached system block. See **Chatbot

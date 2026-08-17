@@ -2,6 +2,11 @@
    `dark` turns the section into a black band: headings and eyebrow go light
    by inheriting from dark-s, and the white cards read as the point of the
    section instead of furniture on it. #}
+{# Nothing to show, nothing drawn. This module is placed on every service
+   page by the template, and only the ones with industry cards written for
+   them have anything to say — an empty instance used to paint a blank band
+   the height of a section anyway. #}
+{% if module.cards or module.title or module.eyebrow %}
 <section class="{% if module.dark %}dark-s {% endif %}section-pad">
   <div class="container-site">
     {# Both empty on the solutions index, and an empty heading block still
@@ -69,3 +74,4 @@
     </div>
   </div>
 </section>
+{% endif %}

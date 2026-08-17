@@ -48,6 +48,11 @@
         {% dnd_row %}
           {% dnd_module path="../modules/split-note" %}{% end_dnd_module %}
         {% end_dnd_row %}
+        {# Who this service is for, in their words. Renders nothing on a
+           service that has no cards written for it — see pillar-cards. #}
+        {% dnd_row %}
+          {% dnd_module path="../modules/pillar-cards" %}{% end_dnd_module %}
+        {% end_dnd_row %}
         {% dnd_row %}
           {% dnd_module path="../modules/package-cards" %}{% end_dnd_module %}
         {% end_dnd_row %}

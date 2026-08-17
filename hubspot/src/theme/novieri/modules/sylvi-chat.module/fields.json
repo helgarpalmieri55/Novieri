@@ -13,32 +13,32 @@
     "name": "assistant_name",
     "label": "Assistant name",
     "type": "text",
-    "default": "Sylvi"
+    "default": "Atena"
   },
   {
     "name": "title",
     "label": "Panel title",
     "type": "text",
-    "default": "Sylvi · Novieri AI assistant"
+    "default": "Atena · Novieri AI assistant"
   },
   {
     "name": "title_es",
     "label": "Panel title (Spanish)",
     "type": "text",
-    "default": "Sylvi · asistente virtual con IA"
+    "default": "Atena · asistente virtual con IA"
   },
   {
     "name": "greeting",
     "label": "Greeting",
     "type": "text",
-    "default": "Hi — I'm Sylvi. Tell me what's slowing your operation down and I'll tell you whether we're the right people for it.",
+    "default": "Hi — I'm Atena. Tell me what's slowing your operation down and I'll tell you whether we're the right people for it.",
     "allow_new_line": true
   },
   {
     "name": "greeting_es",
     "label": "Greeting (Spanish)",
     "type": "text",
-    "default": "Hola. Cuéntame qué quieres mejorar o qué problema está afectando tu operación. Te orientaré sobre el servicio, producto o primer paso que podría tener más sentido.",
+    "default": "Hola, soy Atena. Cuéntame qué está frenando tu operación y te digo si somos los indicados para resolverlo.",
     "allow_new_line": true
   },
   {
@@ -112,13 +112,13 @@
     "name": "open_label",
     "label": "Open button label (screen readers)",
     "type": "text",
-    "default": "Open the chat with Sylvi"
+    "default": "Open the chat with Atena"
   },
   {
     "name": "open_label_es",
     "label": "Open button label (Spanish)",
     "type": "text",
-    "default": "Abrir el chat con Sylvi"
+    "default": "Abrir el chat con Atena"
   },
   {
     "name": "close_label",
