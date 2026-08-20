@@ -30,15 +30,15 @@
       },
       {
         "name": "price_usd",
-        "label": "Price (USD) \u2014 empty hides the row for USD viewers",
+        "label": "Price (USD) — empty hides the row for USD viewers",
         "type": "text",
-        "default": "$99 \u2013 115"
+        "default": "$99 – 115"
       },
       {
         "name": "price_cop",
-        "label": "Price (COP) \u2014 empty hides the row for COP viewers",
+        "label": "Price (COP) — empty hides the row for COP viewers",
         "type": "text",
-        "default": "$95.000 \u2013 115.000"
+        "default": "$95.000 – 115.000"
       },
       {
         "name": "unit",
@@ -61,5 +61,25 @@
     "type": "text",
     "default": "",
     "allow_new_line": true
+  },
+  {
+    "name": "cta_text",
+    "label": "Booking link under the table",
+    "type": "text",
+    "default": "",
+    "help_text": "Names the group it sits under, so a reader who has just picked a tier has something to click that still refers to what they picked. Empty hides the row."
+  },
+  {
+    "name": "cta_link",
+    "label": "Booking link destination",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "EXTERNAL",
+        "href": "https://meetings.hubspot.com/helgar-palmieri"
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
   }
 ]

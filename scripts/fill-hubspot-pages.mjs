@@ -524,6 +524,15 @@ function servicesIndexWidgets() {
 }
 
 /** Mirrors pricing.hubl.html. */
+/* See the cta_text note below: lowercase a Spanish group name when it lands
+   inside a sentence, but never an initialism like TI or IA. */
+const midSentence = (name) => {
+  if (locale !== "es") return name;
+  const first = name.split(" ")[0];
+  if (first === first.toUpperCase()) return name;
+  return name.charAt(0).toLowerCase() + name.slice(1);
+};
+
 const PRICING_SLOTS = {
   hero: "main-module-2",
   tables: ["main-module-3", "main-module-4", "main-module-5", "main-module-6", "main-module-7"],
@@ -571,6 +580,16 @@ function pricingWidgets() {
               note: r.note,
             })),
             footnote: g.footnote,
+            // Named for its group. The pricing page had two links in <main>
+            // for thirteen priced rows, both of them the same hero button.
+            //
+            // The group name is a heading, so it is capitalised; dropped into
+            // the middle of a sentence in Spanish it should not be, unless the
+            // first word is an initialism. "sobre ciberseguridad y
+            // cumplimiento" reads as Spanish; "sobre Ciberseguridad" reads as
+            // a string that was concatenated. TI and IA stay as they are.
+            cta_text: (p.groupCta || "").replace("{topic}", midSentence(g.name)),
+            cta_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
           },
         },
       ]),
@@ -887,6 +906,10 @@ function homeWidgets() {
     },
     [HOME_SLOTS.stats]: {
       body: {
+        // The qualifier on the 1000+ claim. It was written empty for a while
+        // because its first placement read as a stray centred sentence; the
+        // module now renders it as a real footnote row, so the sentence is
+        // back where the claim it qualifies can be read with it.
         footnote: h.proof.disclosure || "",
         stats: h.proof.items.map((s, i) => ({
           value: s.value,

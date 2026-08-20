@@ -27,28 +27,15 @@
     "name": "body_text",
     "label": "Body",
     "type": "text",
-    "default": "HubSpot's analytics cookies are set when you arrive. Google Analytics and session recording only if you accept — never advertising.",
+    "default": "Some analytics cookies are set when you arrive. The rest, and session recording, only if you accept — never advertising.",
     "allow_new_line": true
   },
   {
     "name": "body_text_es",
     "label": "Body (Spanish)",
     "type": "text",
-    "default": "Las cookies de analítica de HubSpot se instalan al entrar. Google Analytics y la grabación de sesión, solo si aceptas. Publicidad, nunca.",
+    "default": "Algunas cookies de analítica se instalan al entrar. El resto, y la grabación de sesión, solo si aceptas. Publicidad, nunca.",
     "allow_new_line": true
-  },
-  {
-    "name": "body_short",
-    "label": "Notice body (phone)",
-    "type": "text",
-    "default": "HubSpot's analytics start on arrival. Google's only if you accept.",
-    "help_text": "Shown instead of the full text under 640px, where every line costs more than it says. Keep it to two lines: name the categories, offer the choice, let the policy link carry the detail."
-  },
-  {
-    "name": "body_short_es",
-    "label": "Notice body (phone, ES)",
-    "type": "text",
-    "default": "La analítica de HubSpot se instala al entrar; la de Google, solo si aceptas."
   },
   {
     "name": "accept",

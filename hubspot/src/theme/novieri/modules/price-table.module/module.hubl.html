@@ -58,6 +58,25 @@
           </div>
         </div>
       {% endfor %}
+      {#
+        The row a reader needs after they have picked one.
+
+        Measured before this: /pricing and /precios held exactly two visible
+        links in <main>, both the same hero button, across thirteen priced
+        rows. Someone who read the whole table, chose a tier and wanted to act
+        had to scroll back to the top or to the bottom of the page and press a
+        control that no longer referred to anything they had been reading.
+
+        One per group rather than one per row — thirteen buttons in a
+        thirteen-row table is a wall of plum, and the group is the unit a
+        buyer actually chooses. It names its group, so the click carries what
+        it was about even though the calendar it opens is shared.
+      #}
+      {% if module.cta_text %}
+        <a href="{{ module.cta_link.url.href }}" class="flex items-center gap-1.5 border-t border-line bg-plum-wash px-6 py-4 text-small font-medium text-plum transition-colors hover:bg-plum hover:text-white">
+          {{ module.cta_text }} <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
     </div>
     {% if module.footnote %}
       {# Capped. This footnote sat in a 1144px box at 13px and measured 197

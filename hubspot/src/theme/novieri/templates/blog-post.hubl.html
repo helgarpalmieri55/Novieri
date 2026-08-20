@@ -14,11 +14,32 @@
 {% block body %}
   <article>
     <header class="relative overflow-hidden">
+      {# The hero shares the body's axis, and shares it the same way the body
+         gets it: an inner column inside the normal container. Capping the
+         container itself instead put its own horizontal padding inside the
+         cap, so the headline came out 592px against the body's 640 — aligned
+         in intent, off by 48px in fact. #}
       <div class="container-site section-pad">
+        <div class="mx-auto max-w-[40rem]">
         <p class="reveal idx-mono lowercase text-gold-deep">
           <a href="{{ group.absolute_url }}" class="hover:text-plum">{{ group.public_title || "insights" }}</a>
         </p>
-        <h1 class="reveal mt-3 max-w-[24ch]" style="--rd: 60ms">{{ content.name }}</h1>
+        {#
+          article-title, not the h1 default.
+
+          The site's h1 is sized for a hero: clamp(2.5rem, 6vw, 4.5rem), which
+          is 72px on a desktop, and a hero headline has the whole container to
+          run across. An article headline has the reading measure — 640px —
+          and 72px display type inside 640px produces a six-line title.
+          Measured on a 900px viewport: the title ran to y=535 and the first
+          body paragraph started at y=765, so a reader arriving at an article
+          got 24px of the article.
+
+          One step down the scale, to the h2 size, and the same title lands in
+          three lines inside the same measure. It stays the h1 semantically and
+          stays on the body's axis; it stops being a poster.
+        #}
+        <h1 class="article-title reveal mt-3" style="--rd: 60ms">{{ content.name }}</h1>
         {% set is_es = content.language and "es" in content.language|string %}
         <p class="reveal idx-mono mt-6 lowercase text-ink-faint" style="--rd: 120ms">
           {% if is_es %}{{ content.publish_date|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}{{ content.publish_date|datetimeformat("%b %e, %Y") }}{% endif %}
@@ -37,6 +58,7 @@
           <a href="https://www.linkedin.com/in/helgar-palmieri-82726b16a/" rel="author" class="font-medium text-ink underline decoration-line underline-offset-2 hover:text-plum">{{ content.blog_post_author.display_name || "Helgar Palmieri" }}</a>
           {% if is_es %}· Cofundador y director de tecnología{% else %}· Co-founder, Technology &amp; delivery{% endif %}
         </p>
+        </div>
       </div>
     </header>
     <script type="application/ld+json">
@@ -69,10 +91,32 @@
       }
     </script>
     <div class="container-site pb-[clamp(3rem,8vh,6rem)]">
-      <div class="article-prose max-w-[44ch]">{{ content.post_body }}</div>
+      {#
+        One centred column, and a real reading measure.
+
+        Measured before this: the container is 1240px and the h1 spanned
+        1144px of it, while the body sat in a 511px block hard against the
+        left edge — 633px of empty space beside every paragraph, at every
+        viewport width, with the headline running twice the width of the text
+        beneath it. It read as a narrow strip of copy pinned to one side of an
+        empty page rather than as an article.
+
+        40rem is 640px. At the 17px body default that measured ~83 characters
+        a line — medians of 80-87 across this article's fourteen paragraphs,
+        maximum 91 — which is past the comfortable band, not inside it, and
+        the 72 first claimed here came from measuring a single paragraph. The
+        column keeps its width and the type goes up to 19px instead (see
+        .article-prose in theme.css), which lands the line at ~72 for real and
+        leaves the margin symmetric rather than trading it away.
+
+        The hero above is capped to the same width so title, byline and body
+        share one axis; what is left over becomes margin, which is what a
+        margin is supposed to look like.
+      #}
+      <div class="article-prose mx-auto max-w-[40rem]">{{ content.post_body }}</div>
       {# The review's end-of-article ask: a reader who finished has a next
          step that names their situation, not another generic button. #}
-      <aside class="mt-14 max-w-[44ch] rounded-2xl border border-line p-8">
+      <aside class="mx-auto mt-14 max-w-[40rem] rounded-2xl border border-line p-8">
         <h2 class="text-h3">{% if is_es %}¿Necesitas aplicar esto a tu empresa?{% else %}Need to apply this to your company?{% endif %}</h2>
         <p class="mt-3 text-small text-ink-muted">
           {% if is_es %}En una llamada de 30 minutos revisamos tu caso y te decimos cuál sería el primer paso más razonable.{% else %}In a 30-minute call we review your case and tell you the most sensible first step.{% endif %}
@@ -86,7 +130,7 @@
           {% if is_es %}Agendar llamada{% else %}Book a call{% endif %} <span aria-hidden="true">→</span>
         </a>
       </aside>
-      <p class="mt-10">
+      <p class="mx-auto mt-10 max-w-[40rem]">
         <a href="{{ group.absolute_url }}" class="idx-mono lowercase text-plum hover:text-gold-deep">&larr; {{ group.public_title || "insights" }}</a>
       </p>
     </div>

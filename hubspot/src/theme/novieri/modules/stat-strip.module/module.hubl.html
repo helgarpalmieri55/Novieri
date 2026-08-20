@@ -1,4 +1,5 @@
-{# The proof strip under the hero: three numbers, nothing else. #}
+{# The proof strip under the hero: three numbers, and the sentence that says
+   whose numbers they are. #}
 <div class="border-b border-line bg-white">
   <div class="container-site grid grid-cols-1 sm:grid-cols-3">
     {% for stat in module.stats %}
@@ -9,16 +10,31 @@
     {% endfor %}
   </div>
   {% if module.footnote %}
-    {# The audit's ask: the numbers stay, but a reader can see whose numbers
-       they are — founder track record, not yet a Novieri client list. #}
-    <div class="container-site pb-4">
-      {# Capped and one step up in size. This is the sentence that qualifies
-         the founders' experience claim — the highest-stakes reassurance copy
-         on the home page — and it was set in the smallest type on the site,
-         at the lowest-contrast token, running 102 characters per line across
-         a 1144px box. The most careful reader is the one it was least
-         readable for. #}
-      <p class="mx-auto max-w-[62ch] text-caption text-ink-muted">{{ module.footnote }}</p>
+    {#
+      The qualifier: the numbers stay, and a reader can see they are founder
+      track record rather than a Novieri client list.
+
+      This is the second time it has been placed, because the first placement
+      was the reason it got deleted. It hung centred under a left-aligned
+      three-column grid, with no rule above it and no mark attaching it to
+      anything, set in 13px at the faintest ink on the site — a stray sentence
+      floating in the gap between two sections rather than a part of either.
+
+      It is a footnote, so it is built like one. A hairline separates it from
+      the row it annotates. It starts on the same axis as the first number,
+      which is the number it qualifies, instead of on the page's centre. It
+      carries the ·· mark the site already uses to say "small label, attached
+      to the thing above". And it is set in ink-muted at a real measure, at
+      the size the rest of the site's fine print uses — because the most
+      careful reader on the page is the one this sentence is for.
+    #}
+    <div class="border-t border-line">
+      <div class="container-site py-3.5">
+        <p class="flex max-w-[64ch] items-baseline gap-2.5 pl-2 text-caption leading-snug text-ink-muted md:pl-6">
+          <span aria-hidden="true" class="relative top-[0.12em] font-sans text-[1.25rem] font-bold leading-none tracking-[0.12em] text-gold">··</span>
+          <span>{{ module.footnote }}</span>
+        </p>
+      </div>
     </div>
   {% endif %}
 </div>

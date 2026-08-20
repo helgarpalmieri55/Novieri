@@ -194,19 +194,19 @@
     "proof": {
       "items": [
         {
-          "value": "+1.000 usuarios",
-          "label": "Experiencia dirigiendo operaciones tecnológicas"
+          "value": "+1.000",
+          "label": "usuarios atendidos en roles de dirección tecnológica"
         },
         {
-          "value": "PCI DSS y SOC 2",
-          "label": "Programas liderados de principio a fin"
+          "value": "PCI DSS / SOC 2",
+          "label": "programas liderados de principio a fin"
         },
         {
-          "value": "2 fundadores",
-          "label": "Trato directo, sin capas comerciales"
+          "value": "2",
+          "label": "fundadores, sin capas comerciales"
         }
       ],
-      "disclosure": "La experiencia incluye trabajos liderados por los fundadores de Novieri en la empresa y en roles actuales y anteriores de dirección tecnológica."
+      "disclosure": "La experiencia incluye trabajos liderados por los fundadores de Novieri en roles actuales y anteriores de dirección tecnológica."
     },
     "liveChat": {
       "eyebrow": "ia en funcionamiento",
@@ -3017,6 +3017,7 @@
       "title": "Rangos claros para saber si encajamos antes de hablar.",
       "intro": "No necesitas pasar por una presentación de ventas para saber si Novieri está dentro de tu presupuesto. Estos valores son rangos de referencia, no cotizaciones finales. El precio exacto depende del tamaño de tu operación, los sistemas involucrados, el riesgo y el alcance, y queda definido por escrito antes de empezar. Precios antes de IVA · licencias, consumo de plataformas y auditorías externas se indican por separado cuando apliquen."
     },
+    "groupCta": "Agendar llamada sobre {topic}",
     "groups": [
       {
         "name": "TI administrada",
