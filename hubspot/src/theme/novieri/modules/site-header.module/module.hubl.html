@@ -25,7 +25,7 @@
      the far edge, which is the shape the rest of the industry has settled on
      and the one that reads as uncrowded. #}
   {#
-    gap-3 below the nav breakpoint, gap-6 from md up. With the desktop nav
+    gap-2 at phone widths, gap-3 from sm, gap-6 from md up. With the desktop nav
     hidden, the bar holds three things — mark, call to action, hamburger — and
     24px between each of them is 48px that a 320px screen does not have. It
     did not have it: measured at 320, the hamburger's right edge landed at
@@ -33,8 +33,13 @@
     shrinking the one item that could shrink. The wordmark went to 42.3px for
     text needing 90.3, and the opaque call to action painted over the rest, so
     the brand name read "novie" — two letters short in Spanish, one in English.
+
+    gap-3 alone left the Spanish row 2.5px past its own padding box at 320 —
+    inside the viewport, but with no headroom at all, so the next word added
+    to that button would have pushed it back out. gap-2 restores a symmetric
+    20px gutter at every width tested, 320 through 430, in both languages.
   #}
-  <div class="header-bar flex h-[84px] items-center gap-3 md:gap-6">
+  <div class="header-bar flex h-[84px] items-center gap-2 sm:gap-3 md:gap-6">
     {#
       shrink-0 and nowrap: the brand name is the one thing in this bar that
       must never be negotiated down to fit. If the row runs out of room the
