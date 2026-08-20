@@ -207,8 +207,11 @@ const axios = require("axios");
  * @param {Record<string,string>} fields  HubSpot property name => value
  * @param {{hutk?:string,pageUri?:string,pageName?:string,ipAddress?:string}} context
  * @param {string} consentText  The consent copy the visitor accepted
+ * @param {number} timeoutMs     Overridable because the outage alerter calls
+ *   this with whatever milliseconds are left before the platform kills the
+ *   function, and a request that outlives its caller helps nobody.
  */
-async function submitForm(formGuid, fields, context = {}, consentText = "") {
+async function submitForm(formGuid, fields, context = {}, consentText = "", timeoutMs = 8000) {
   // The portal id is a public value — it is in every embed code and in every
   // /hubfs/ URL this site serves — but it was only ever read from an
   // environment variable that no function declares and the portal has never
@@ -249,7 +252,7 @@ async function submitForm(formGuid, fields, context = {}, consentText = "") {
     await axios.post(
       `https://api.hsforms.com/submissions/v3/integration/submit/${portal}/${guid}`,
       payload,
-      { headers: { "Content-Type": "application/json" }, timeout: 8000 },
+      { headers: { "Content-Type": "application/json" }, timeout: timeoutMs },
     );
     return true;
   } catch (e) {

@@ -11,6 +11,7 @@ const crypto = require("crypto");
 const axios = require("axios");
 const { requireKnownOrigin, headerValue, clientIp, cleanText, enforceRateLimit } = require("./lib/guard.js");
 const { deliverTranscript } = require("./lib/handoff.js");
+const { reportOutage } = require("./lib/alert.js");
 const profile = require("./lib/company-profile.json");
 
 /**
@@ -170,11 +171,19 @@ ${profile.text}`;
 }
 
 exports.main = async (context = {}, sendResponse) => {
+  // The platform kills a function at 15s. Everything that reports a failure
+  // does so on a path that has already spent most of that budget, so the
+  // clock starts here and every alert is given what is left of it rather
+  // than being killed halfway through a write.
+  const started = Date.now();
+  const alertBy = () => started + 13500;
+
   const blocked = requireKnownOrigin(context);
   if (blocked) return respond(sendResponse, blocked.error.status, blocked.error.body);
 
   if (!process.env.ANTHROPIC_API_KEY) {
     console.error("chat: ANTHROPIC_API_KEY secret is not set");
+    await reportOutage("not_configured", "ANTHROPIC_API_KEY is unset", { deadline: alertBy() });
     return respond(sendResponse, 503, { error: "not_configured" });
   }
 
@@ -275,13 +284,23 @@ exports.main = async (context = {}, sendResponse) => {
           "x-api-key": process.env.ANTHROPIC_API_KEY,
           "anthropic-version": "2023-06-01",
         },
-        timeout: 12000, // the platform kills the function at 15s
+        // 10s, not the 12s this used to allow. The platform kills the
+        // function at 15s, and the seconds between the model giving up and
+        // that ceiling are what the outage alert spends telling somebody.
+        // A 700-token reply that has not started by 10s is not coming.
+        timeout: 10000,
       },
     ));
   } catch (e) {
     const status = e.response?.status;
-    if (status === 429) return respond(sendResponse, 429, { error: "rate_limited" });
-    console.error(`chat: upstream error ${status || e.code} — ${JSON.stringify(e.response?.data || e.message).slice(0, 500)}`);
+    const where = { deadline: alertBy(), locale, page: headerValue(context, "referer") };
+    if (status === 429) {
+      await reportOutage("rate_limited", "the provider returned 429", where);
+      return respond(sendResponse, 429, { error: "rate_limited" });
+    }
+    const detail = JSON.stringify(e.response?.data || e.message).slice(0, 500);
+    console.error(`chat: upstream error ${status || e.code} — ${detail}`);
+    await reportOutage("upstream", `${status || e.code} — ${detail}`, where);
     return respond(sendResponse, 502, { error: "upstream" });
   }
 
@@ -301,19 +320,37 @@ exports.main = async (context = {}, sendResponse) => {
   const handedOff = HANDOFF_PATTERN.test(raw) || CO_PHONE_DIGITS.test(raw);
   HANDOFF_PATTERN.lastIndex = 0; // the g flag makes .test() stateful
   const text = raw.replace(HANDOFF_PATTERN, "\n").trim();
-  if (!text) return respond(sendResponse, 502, { error: "empty" });
+  if (!text) {
+    await reportOutage("empty", `stop_reason ${data?.stop_reason || "unknown"}`, {
+      deadline: alertBy(),
+      locale,
+      page: headerValue(context, "referer"),
+    });
+    return respond(sendResponse, 502, { error: "empty" });
+  }
 
   if (handedOff) {
     // Awaited, not fired and forgotten: a serverless invocation stops the
     // moment it responds, so an unawaited request is a request that may never
     // leave. deliverTranscript swallows its own failures.
-    await deliverTranscript({
+    const delivered = await deliverTranscript({
       messages,
       reply: text,
       locale,
       region,
       page: headerValue(context, "referer"),
     });
+    // The failure this whole file exists to prevent, and the only one with no
+    // symptom: the visitor got the number and a warm goodbye, and nobody at
+    // Novieri knows they are coming. reportOutage falls back to the forms
+    // channel here, because the ticket API is what just refused us.
+    if (!delivered) {
+      await reportOutage("handoff", "deliverTranscript could not reach the CRM", {
+        deadline: alertBy(),
+        locale,
+        page: headerValue(context, "referer"),
+      });
+    }
   }
 
   // The signature comes back with the next request and proves this turn is ours.

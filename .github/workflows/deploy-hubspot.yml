@@ -165,3 +165,24 @@ jobs:
       - name: Verify the brand fonts actually serve
         if: inputs.mode == 'deploy' || github.event_name == 'push'
         run: node scripts/check-font-urls.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}"
+
+      # Atena, after the deploy that could have broken her.
+      #
+      # The failure this catches is the one that actually happens: a secret
+      # renamed, an entrypoint moved, a bad bundle — all of them created at
+      # deploy time, all of them silent afterwards, because a broken assistant
+      # shows the visitor a polite error and tells nobody. Checking here costs
+      # one request and reports at the exact moment the cause is known.
+      #
+      # Not a cron. A scheduled workflow would run late, and GitHub disables
+      # scheduled workflows after 60 days without repo activity — a watchdog
+      # that switches itself off during the quiet spell it is meant to cover.
+      # Continuous watching belongs in a monitor that is always awake; this
+      # step only has to answer "did I just break it?".
+      - name: Check that Atena still answers
+        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          # The theme upload propagates to the CDN before the function does.
+          sleep 20
+          node scripts/check-atena.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}" --locale=es
