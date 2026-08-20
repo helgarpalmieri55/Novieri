@@ -61,7 +61,12 @@
       <p class="mt-5 font-display text-[clamp(2rem,5vw,2.75rem)] font-semibold leading-none text-plum" data-level></p>
       <p class="idx-mono mt-3 text-ink-faint"><span data-pct>0</span> / 100</p>
       <span aria-hidden="true" class="mt-4 block h-2 w-full overflow-hidden rounded-full bg-line">
-        <span class="block h-full w-0 rounded-full bg-gradient-to-r from-teal to-plum transition-[width] duration-1000" data-bar></span>
+        {# Scaled, not resized. Animating width makes the browser lay the page
+           out again on every frame of a one-second transition; a transform is
+           composited and costs nothing. The bar is a plain gradient fill, so
+           the two look identical — and the gradient is pinned to the full
+           track width so scaling reveals it rather than squashing it. #}
+        <span class="block h-full w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-teal to-plum transition-transform duration-1000" data-bar></span>
       </span>
       <p class="mt-5 text-small text-ink-muted">{{ module.preview_body }}</p>
     </div>
@@ -134,7 +139,7 @@
   <div class="card-hairline p-7 sm:p-10" data-stage="done" hidden>
     <span class="eyebrow">{{ module.result_title }}</span>
     <h2 class="mt-4 text-[clamp(1.5rem,3vw,2rem)]" data-headline></h2>
-    <p class="mt-4 max-w-[70ch] text-ink-muted" data-summary></p>
+    <p class="mt-4 max-w-[46ch] text-ink-muted" data-summary></p>
 
     <div class="mt-8 grid gap-8 md:grid-cols-2">
       <div data-block="strengths" hidden>
@@ -152,7 +157,7 @@
       <ol class="mt-4 grid gap-4" data-priorities></ol>
     </div>
 
-    <p class="mt-8 max-w-[70ch] text-ink-muted" data-closing></p>
+    <p class="mt-8 max-w-[46ch] text-ink-muted" data-closing></p>
 
     <div class="mt-9 flex flex-wrap items-center gap-3.5 print:hidden">
       <button type="button" class="btn btn-primary" data-print>{{ module.result_print }}</button>

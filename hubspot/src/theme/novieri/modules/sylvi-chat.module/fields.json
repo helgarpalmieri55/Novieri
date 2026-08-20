@@ -65,6 +65,10 @@
     "help_text": "Shown as chips under the greeting until the visitor writes something. Keep them short. One row per question, each with both languages.",
     "default": [
       {
+        "question": "Book a call",
+        "question_es": "Agendar llamada"
+      },
+      {
         "question": "Automate our WhatsApp",
         "question_es": "Quiero automatizar WhatsApp"
       },
@@ -75,10 +79,6 @@
       {
         "question": "Show me pricing",
         "question_es": "Quiero revisar precios"
-      },
-      {
-        "question": "Talk to a person",
-        "question_es": "Hablar con una persona"
       }
     ],
     "children": [

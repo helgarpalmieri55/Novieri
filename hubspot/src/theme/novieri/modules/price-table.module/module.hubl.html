@@ -35,7 +35,7 @@
              data-has-usd="{{ 1 if row.price_usd else 0 }}" data-has-cop="{{ 1 if row.price_cop else 0 }}">
           <div>
             <h3 class="text-body font-medium">{{ row.service }}</h3>
-            {% if row.note %}<p class="mt-1 max-w-[52ch] text-caption text-ink-faint">{{ row.note }}</p>{% endif %}
+            {% if row.note %}<p class="mt-1 max-w-[34ch] text-caption text-ink-faint">{{ row.note }}</p>{% endif %}
           </div>
           <div class="sm:text-right">
             {% if row.price_cop %}<span data-price="cop" class="{% if default_currency != "cop" %}hidden {% endif %}font-display text-h3 font-semibold text-ink">{{ row.price_cop }}</span>{% endif %}
@@ -46,7 +46,10 @@
       {% endfor %}
     </div>
     {% if module.footnote %}
-      <p class="reveal mt-4 text-caption text-ink-faint">{{ module.footnote }}</p>
+      {# Capped. This footnote sat in a 1144px box at 13px and measured 197
+         characters on one line — the longest measurement on the site, on the
+         page that exists to be read carefully. #}
+      <p class="reveal mt-4 max-w-[58ch] text-caption text-ink-faint">{{ module.footnote }}</p>
     {% endif %}
   </div>
 </section>

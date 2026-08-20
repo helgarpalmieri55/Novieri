@@ -41,7 +41,7 @@
     audio.addEventListener("ended", function () {
       card.classList.remove("is-playing");
       audio.currentTime = 0;
-      fill.style.width = "0%";
+      fill.style.transform = "scaleX(0)";
       time.textContent = fmt(audio.duration);
     });
 
@@ -49,7 +49,7 @@
       time.textContent = fmt(audio.duration);
     });
     audio.addEventListener("timeupdate", function () {
-      if (audio.duration) fill.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+      if (audio.duration) fill.style.transform = `scaleX(${audio.currentTime / audio.duration})`;
       time.textContent = fmt(audio.paused && audio.currentTime === 0 ? audio.duration : audio.currentTime);
     });
 

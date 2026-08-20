@@ -28,6 +28,31 @@
     /* storage can be off; then there is no decision to repeat */
   }
 
+
+  /**
+   * Two jobs whenever the banner is on screen.
+   *
+   * One: publish its height, so the chat bubble can step out from under it.
+   * Both are fixed to the bottom-right corner and the banner is taller in
+   * Spanish than in English, so a hard-coded offset would be wrong in one
+   * language or the other. Measuring is cheaper than guessing.
+   *
+   * Two: move focus to it. It renders at the end of the document, so a
+   * keyboard visitor met twenty-two tab stops before reaching the buttons
+   * that dismiss it. Focus goes to the container rather than to "Accept all",
+   * so the first thing announced is the notice, not one of the answers.
+   */
+  function raise() {
+    var banner = document.querySelector(".cookie-banner");
+    if (!banner) return;
+    document.documentElement.style.setProperty("--consent-h", banner.offsetHeight + "px");
+    banner.focus({ preventScroll: true });
+  }
+
+  function lower() {
+    document.documentElement.style.removeProperty("--consent-h");
+  }
+
   function decide(choice) {
     try {
       localStorage.setItem(KEY, choice);
@@ -35,6 +60,7 @@
       /* private browsing can reject writes; the banner still dismisses */
     }
     document.documentElement.classList.remove("needs-consent");
+    lower();
     tellHubSpot(choice);
     window.dispatchEvent(new CustomEvent("novieri:consent", { detail: choice }));
   }
@@ -54,8 +80,11 @@
         localStorage.removeItem(KEY);
       } catch (e) {}
       document.documentElement.classList.add("needs-consent");
-      var banner = document.querySelector(".cookie-banner");
-      if (banner) banner.scrollIntoView({ block: "end", behavior: "smooth" });
+      raise();
     });
   });
+
+  // The pre-paint script in the <head> decides whether the banner shows, so
+  // this only has to react to that decision.
+  if (document.documentElement.classList.contains("needs-consent")) raise();
 })();

@@ -73,12 +73,17 @@
   background: #e9e6ee;
   cursor: pointer;
 }
+/* Scaled rather than resized: this updates on every timeupdate while audio
+   plays, and animating width relays out the page each time. A transform is
+   composited. Same bar, no layout work. */
 .audio-demo .ad-fill {
-  width: 0%;
+  width: 100%;
   height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
   border-radius: 9999px;
   background: #4f3461;
-  transition: width 0.15s linear;
+  transition: transform 0.15s linear;
 }
 
 /*

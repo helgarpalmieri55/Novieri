@@ -76,7 +76,7 @@
       show("gate", true);
       // Set the width after paint so the bar animates rather than jumping.
       requestAnimationFrame(function () {
-        root.querySelector("[data-bar]").style.width = s.pct + "%";
+        root.querySelector("[data-bar]").style.transform = `scaleX(${s.pct / 100})`;
       });
     }
 
@@ -234,7 +234,7 @@
       root.querySelectorAll('input[type="radio"]').forEach(function (input) {
         input.checked = false;
       });
-      root.querySelector("[data-bar]").style.width = "0%";
+      root.querySelector("[data-bar]").style.transform = "scaleX(0)";
       step = 0;
       render();
       show("quiz", true);

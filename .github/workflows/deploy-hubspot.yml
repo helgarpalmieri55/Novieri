@@ -52,7 +52,7 @@ jobs:
         # deployed: the stylesheet, Atena's profile, and the two bundled
         # serverless entrypoints. A diff here means someone edited a source
         # without rebuilding.
-        run: git diff --exit-code hubspot/src/theme/novieri/css/theme.css hubspot/functions-src/lib/company-profile.json hubspot/src/app/functions/chat.js hubspot/src/app/functions/diagnose.js
+        run: git diff --exit-code hubspot/src/theme/novieri/css/theme.css hubspot/functions-src/lib/company-profile.json hubspot/src/app/functions/chat.js hubspot/src/app/functions/diagnose.js hubspot/src/app/functions/probe.js
       # The official action is not used for the upload. It builds a shell
       # command containing the commit subject and eval()s it, so any commit
       # message with an apostrophe or parenthesis kills the run:
@@ -165,3 +165,34 @@ jobs:
       - name: Verify the brand fonts actually serve
         if: inputs.mode == 'deploy' || github.event_name == 'push'
         run: node scripts/check-font-urls.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}"
+
+      # Atena, after the deploy that could have broken her.
+      #
+      # The failure this catches is the one that actually happens: a secret
+      # renamed, an entrypoint moved, a bad bundle — all of them created at
+      # deploy time, all of them silent afterwards, because a broken assistant
+      # shows the visitor a polite error and tells nobody. Checking here costs
+      # one request and reports at the exact moment the cause is known.
+      #
+      # Not a cron. A scheduled workflow would run late, and GitHub disables
+      # scheduled workflows after 60 days without repo activity — a watchdog
+      # that switches itself off during the quiet spell it is meant to cover.
+      # Continuous watching belongs in a monitor that is always awake; this
+      # step only has to answer "did I just break it?".
+      - name: Check that Atena still answers
+        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          # The theme upload propagates to the CDN before the function does.
+          sleep 20
+          node scripts/check-atena.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}" --locale=es
+
+      # And whether HubSpot is still serving anybody an old snapshot.
+      #
+      # A merged fix that never reaches a visitor is indistinguishable from no
+      # fix. /es/insights served a thirteen-day-old pre-render — no x-default,
+      # no booking link, a heading fixed a week earlier — while a live render
+      # of the same URL was correct and every check in this file was green.
+      - name: Check for stale pre-rendered pages
+        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        run: node scripts/check-prerender-age.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}" --max-age-days=7

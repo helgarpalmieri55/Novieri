@@ -8,7 +8,10 @@
  *
  * Built by `npm run build:hubspot` into src/theme/novieri/css/theme.css.
  */
-@import "../../src/app/globals.css";
+/* Tailwind with source detection turned off — the @source lines below are the
+   whole list, so the theme stops inheriting the Next app's tree. */
+@import "tailwindcss" source(none);
+@import "../../src/app/tokens.css";
 
 @source "../src/theme/novieri/templates/**/*.html";
 /* Project modules are module.hubl.html / .js / .css — the .hubl goes before
@@ -566,4 +569,73 @@
   padding: 0;
   margin: 0;
   max-width: none;
+}
+
+/*
+ * The chat bubble steps out from under the cookie banner.
+ *
+ * Both are fixed to the bottom-right corner, and while the banner is up it
+ * covered the bubble completely on a phone — two floating widgets stacked in
+ * one corner, the lower one unreachable. --consent-h is published by the
+ * banner's own script from its measured height, because the notice is taller
+ * in Spanish than in English and a fixed offset would be wrong in one of them.
+ * The fallback applies only in the moment before that script runs.
+ */
+.needs-consent .sylvi-toggle {
+  bottom: calc(var(--consent-h, 11rem) + 1.75rem);
+}
+
+/*
+ * Nothing a thumb has to hit is smaller than 44px.
+ *
+ * Measured at 390x844 with the menu open: 23 of 28 interactive elements were
+ * under 44px on one axis, including every service and industry link at 19-21px
+ * and the header's own booking pill at 34px. WCAG 2.5.8 asks for 24; 44 is the
+ * size a thumb actually lands on. The consent checkbox was 13x13 and had been
+ * reported by three consecutive reviews.
+ */
+@media (max-width: 767px) {
+  .site-mobile-nav a,
+  .site-mobile-nav .mnav-toggle,
+  .site-header .btn,
+  .lang_switcher_link,
+  .cookie-banner .btn,
+  .cookie-banner a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .site-mobile-nav .mnav-toggle {
+    justify-content: center;
+    min-width: 44px;
+  }
+  .cookie-banner .btn,
+  .cookie-banner a {
+    display: inline-flex;
+  }
+}
+.hs-form input[type="checkbox"],
+.legal-consent-container input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  flex: 0 0 24px;
+}
+
+/*
+ * The header's own focus ring.
+ *
+ * Every control on the site outlines in plum on focus except the seven main
+ * nav items, which came out in --ink-muted — the browser's default outline
+ * takes its colour from the element, and those links are muted grey. The most
+ * used control group on the site was the one exception to the brand's own
+ * rule that focus is an accent outline.
+ */
+.site-header a:focus-visible,
+.site-header button:focus-visible,
+.site-mobile-nav a:focus-visible,
+.site-mobile-nav button:focus-visible {
+  outline: 2px solid var(--color-plum-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
