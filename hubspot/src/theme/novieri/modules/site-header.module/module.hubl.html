@@ -39,7 +39,27 @@
     to that button would have pushed it back out. gap-2 restores a symmetric
     20px gutter at every width tested, 320 through 430, in both languages.
   #}
-  <div class="header-bar flex h-[84px] items-center gap-2 sm:gap-3 md:gap-6">
+  {#
+    xl, not md, and the 512px difference is the whole point.
+
+    The desktop navigation used to appear at 768. It does not fit at 768:
+    measured header-bar.scrollWidth against the viewport, English needs 1016
+    and Spanish 1093, so from 768 to 1023 the row ran off the screen and the
+    one control the entire site exists to get pressed — "Book a call" /
+    "Agendar llamada" — was not on it. Spanish still lost the button at 1024.
+    Every iPad in portrait and every 13-inch laptop in a half-width window.
+
+    Nothing caught it for the same reason nothing could: .site-header is
+    position: fixed, so it contributes nothing to document.scrollWidth. Fifty
+    overflow measurements across ten pages and five widths reported the site
+    clean while this was live. The check was structurally blind to the header,
+    so scripts/check-header-fit.mjs now measures the bar itself, per locale,
+    at ten widths, and the deploy runs it.
+
+    1280 rather than 1100 because Spanish needs 1098 plus the bar's own
+    padding, and a breakpoint with 2px of headroom is not a breakpoint.
+  #}
+  <div class="header-bar flex h-[84px] items-center gap-2 sm:gap-3 xl:gap-6">
     {#
       shrink-0 and nowrap: the brand name is the one thing in this bar that
       must never be negotiated down to fit. If the row runs out of room the
@@ -110,20 +130,47 @@
        except Colombia; the fragment matches both languages' slugs. #}
     {% set co_frags = module.co_only_match|split(",") %}
     {% set nav_items = menu(nav_menu, "site_root").children %}
-    <nav class="site-nav ml-auto hidden items-center gap-6 md:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
+    <nav class="site-nav ml-auto hidden items-center gap-6 xl:flex" aria-label="{{ module.label_open_menu|escape_attr }}">
       {% for item in nav_items %}
-        <div class="group relative">
+        <div class="group relative flex items-center gap-1.5">
           <a href="{{ item.url }}"{% if co_frags|length > 0 and co_frags[0]|trim and co_frags[0]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 1 and co_frags[1]|trim and co_frags[1]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 2 and co_frags[2]|trim and co_frags[2]|trim in item.url %} data-region-only="co"{% elif co_frags|length > 3 and co_frags[3]|trim and co_frags[3]|trim in item.url %} data-region-only="co"{% endif %}
              class="flex items-center gap-1.5 text-small font-medium text-ink-muted transition-colors hover:text-ink{% if item.activeBranch %} text-ink{% endif %}">
             {{ item.label }}
-            {% if item.children %}
-              <svg aria-hidden="true" width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform duration-200 group-hover:rotate-180">
-                <path d="M1 1.5 4.5 5 8 1.5" />
-              </svg>
-            {% endif %}
           </a>
           {% if item.children %}
-            <div class="invisible absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-4 opacity-0 transition-[opacity,visibility] duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            {#
+              A real button, because the chevron used to be decoration inside
+              the link and the panel was hidden with `invisible`.
+
+              visibility: hidden takes an element's descendants out of the tab
+              order. The panel's only keyboard opener was
+              group-focus-within — which fires when a descendant receives
+              focus, and no descendant could receive focus while the panel was
+              hidden. It could never fire. A 22-key tab trace on the live site
+              ran Services, Products, Industries, Insights, Pricing, About,
+              Contact and skipped all eighteen submenu links: a third of the
+              site unreachable without a mouse, on a company that sells SOC 2
+              and PCI DSS readiness.
+
+              The mobile drawer twenty lines below has had the correct pattern
+              all along — a button carrying aria-expanded next to the link
+              rather than a chevron inside it. This is that, on the desktop
+              nav. Hover still opens the panel for a mouse; the button opens
+              it for a keyboard; Escape and an outside click close it. The
+              children stay out of the tab order until it is open, so the
+              header is ten stops closed rather than twenty-five.
+            #}
+            <button
+              type="button"
+              class="nav-disclosure -ml-0.5 flex h-6 w-6 flex-none items-center justify-center rounded text-ink-muted transition-colors hover:text-ink"
+              aria-expanded="false"
+              aria-label="{{ item.label|escape_attr }}"
+            >
+              <svg aria-hidden="true" width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="nav-chev transition-transform duration-200 group-hover:rotate-180">
+                <path d="M1 1.5 4.5 5 8 1.5" />
+              </svg>
+            </button>
+            <div class="nav-panel invisible absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-4 opacity-0 transition-[opacity,visibility] duration-200 group-hover:visible group-hover:opacity-100 data-[open=true]:visible data-[open=true]:opacity-100" data-open="false">
               <div class="grid gap-0.5 rounded-2xl border border-line bg-white p-2 shadow-[0_8px_40px_rgba(22,18,29,0.10)]">
                 {% for child in item.children %}
                   <a href="{{ child.url }}"{% if co_frags|length > 0 and co_frags[0]|trim and co_frags[0]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 1 and co_frags[1]|trim and co_frags[1]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 2 and co_frags[2]|trim and co_frags[2]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 3 and co_frags[3]|trim and co_frags[3]|trim in child.url %} data-region-only="co"{% endif %} class="rounded-xl px-3.5 py-2.5 text-small text-ink-muted transition-colors hover:bg-plum-wash hover:text-ink">{{ child.label }}</a>
@@ -146,7 +193,7 @@
     </nav>
 
     {% if cta_text %}
-      <a href="{{ cta_href }}" class="btn btn-primary hidden !px-4.5 !py-2.5 !text-small md:inline-flex">
+      <a href="{{ cta_href }}" class="btn btn-primary hidden !px-4.5 !py-2.5 !text-small xl:inline-flex">
         {{ cta_text }}
       </a>
       {# The same call to action on a phone. It used to live only inside the
@@ -158,14 +205,14 @@
          gutter grew 24.7 → 39.7 → 63.7 → 79.7px across the phone widths while
          the left one stayed at 20 — a header that drifted further off its own
          margin the wider the phone got. #}
-      <a href="{{ cta_href }}" class="btn btn-primary ml-auto !px-4 !py-2 !text-small md:hidden">
+      <a href="{{ cta_href }}" class="btn btn-primary ml-auto !px-4 !py-2 !text-small xl:hidden">
         {{ cta_text_short or cta_text }}
       </a>
     {% endif %}
 
     <button
       type="button"
-      class="site-menu-toggle flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink md:hidden"
+      class="site-menu-toggle flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink xl:hidden"
       aria-expanded="false"
       aria-label="{{ module.label_open_menu|escape_attr }}"
       data-open-label="{{ module.label_open_menu|escape_attr }}"
@@ -182,7 +229,7 @@
      there is nothing to scroll — the overflow is simply cut off. Capped at the
      viewport minus the header bar, scrolling inside itself instead. dvh, not
      vh: on phones the URL bar collapses and vh lies about the space left. #}
-  <div class="site-mobile-nav hidden max-h-[calc(100dvh-85px)] overflow-y-auto overscroll-contain border-t border-line bg-white px-5 py-6 md:hidden">
+  <div class="site-mobile-nav hidden max-h-[calc(100dvh-85px)] overflow-y-auto overscroll-contain border-t border-line bg-white px-5 py-6 xl:hidden">
     {# Sections arrive collapsed. Every submenu used to render expanded, and
        with five services, six products, and four industries the menu was a
        wall of thirty links; now the parent is the link and the chevron opens

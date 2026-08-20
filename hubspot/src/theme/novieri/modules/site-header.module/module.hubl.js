@@ -14,6 +14,60 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  /*
+   * The desktop mega-menu's keyboard path.
+   *
+   * Hover is still CSS — group-hover in the markup — so a mouse behaves
+   * exactly as before and nothing here runs for it. This adds the path a
+   * keyboard never had: the disclosure button flips data-open, which the
+   * panel's own utility classes react to, and aria-expanded follows it so
+   * the state is announced rather than merely visible.
+   *
+   * One panel at a time, Escape returns focus to the button that opened it,
+   * and a click anywhere else closes whatever is open — the three behaviours
+   * a disclosure owes a keyboard user, and the reason this is a button
+   * instead of a chevron with a :focus-within rule that could never match.
+   */
+  var panels = header.querySelectorAll(".nav-disclosure");
+
+  function closeMenus(except) {
+    panels.forEach(function (btn) {
+      if (btn === except) return;
+      btn.setAttribute("aria-expanded", "false");
+      var p = btn.parentNode.querySelector(".nav-panel");
+      if (p) p.setAttribute("data-open", "false");
+    });
+  }
+
+  panels.forEach(function (btn) {
+    var p = btn.parentNode.querySelector(".nav-panel");
+    if (!p) return;
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var open = btn.getAttribute("aria-expanded") !== "true";
+      closeMenus(btn);
+      btn.setAttribute("aria-expanded", String(open));
+      p.setAttribute("data-open", String(open));
+    });
+    p.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      btn.setAttribute("aria-expanded", "false");
+      p.setAttribute("data-open", "false");
+      btn.focus();
+    });
+    btn.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      btn.setAttribute("aria-expanded", "false");
+      p.setAttribute("data-open", "false");
+    });
+  });
+
+  if (panels.length) {
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".site-nav .group")) closeMenus(null);
+    });
+  }
+
   var toggle = header.querySelector(".site-menu-toggle");
   var panel = header.querySelector(".site-mobile-nav");
   if (!toggle || !panel) return;

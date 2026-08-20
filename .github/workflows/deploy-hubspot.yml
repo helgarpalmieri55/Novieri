@@ -176,6 +176,34 @@ jobs:
         if: inputs.mode == 'deploy' || github.event_name == 'push'
         run: node scripts/check-font-urls.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}"
 
+      # Does the header fit the screen it is on?
+      #
+      # A page-level overflow check cannot answer that. .site-header is
+      # position: fixed, so it adds nothing to document.scrollWidth — fifty
+      # overflow measurements across ten pages reported this site clean while
+      # the header was pushing "Book a call" off the viewport at every width
+      # from 768 to 1023, and "Agendar llamada" at 1024 as well. This measures
+      # the bar itself and the booking button's right edge, per locale.
+      - name: Check that the header fits, and the booking button is on screen
+        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        env:
+          CHROMIUM_PATH: ""
+        run: |
+          set -euo pipefail
+          npx --yes playwright install --with-deps chromium
+          node scripts/check-header-fit.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}"
+
+      # Does the structured data parse?
+      #
+      # Two of the four blocks on every blog post, and two on every service
+      # and product page, were invalid JSON from the day they shipped: HubL's
+      # escapejson escapes a value without quoting it, and content.name
+      # renders wrapped in HubSpot's COS markup. The HTML was valid and the
+      # pages looked perfect, so nothing but a parser was ever going to say so.
+      - name: Check that every JSON-LD block parses
+        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        run: node scripts/check-jsonld.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}"
+
       # Atena, after the deploy that could have broken her.
       #
       # The failure this catches is the one that actually happens: a secret

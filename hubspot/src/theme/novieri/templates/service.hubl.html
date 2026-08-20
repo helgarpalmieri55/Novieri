@@ -18,9 +18,9 @@
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": {{ content.name|escapejson }},
-      "description": {{ content.meta_description|escapejson }},
-      "url": {{ content.absolute_url|escapejson }},
+      "name": "{{ content.name|striptags|escapejson }}",
+      "description": "{{ content.meta_description|escapejson }}",
+      "url": "{{ content.absolute_url|escapejson }}",
       "inLanguage": "{{ content.language or "en" }}",
       "provider": { "@id": "https://www.novieri.com/#organization" },
       "areaServed": ["CO", "US"]
@@ -32,7 +32,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": {% if is_es %}"Servicios"{% else %}"Services"{% endif %}, "item": "https://www.novieri.com/{% if is_es %}servicios{% else %}services{% endif %}" },
-        { "@type": "ListItem", "position": 2, "name": {{ content.name|escapejson }}, "item": {{ content.absolute_url|escapejson }} }
+        { "@type": "ListItem", "position": 2, "name": "{{ content.name|striptags|escapejson }}", "item": "{{ content.absolute_url|escapejson }}" }
       ]
     }
   </script>

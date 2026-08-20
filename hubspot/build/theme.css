@@ -406,6 +406,25 @@
       font-size: var(--text-lead);
     }
   }
+  /*
+   * Descendant selectors, not the child combinator — and that is the whole
+   * bug, not a style preference.
+   *
+   * This rule was `.article-prose > * + * { margin-top: 1rem }` and it has
+   * never once applied. HubSpot wraps content.post_body in its own
+   * hs_cos_wrapper <span>, so .article-prose has exactly one element child —
+   * measured on the live article: childTags ["SPAN"], direct-child paragraph
+   * count 0. Every paragraph is a grandchild. The combinator looked at the
+   * span, found no sibling, and matched nothing, so fourteen paragraphs ran
+   * together as one unbroken slab for as long as the blog has existed.
+   *
+   * The font-size rule below is a descendant selector and worked the day it
+   * was written, which is exactly why the type change was visible and the
+   * spacing never was.
+   */
+  .article-prose p {
+    margin-bottom: 1.15em;
+  }
   .article-prose > * + * {
     margin-top: 1rem;
   }
@@ -436,6 +455,7 @@
   .article-prose ul,
   .article-prose ol {
     margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
     padding-left: 1.75rem;
   }
   .article-prose ul {
@@ -461,6 +481,49 @@
   }
   .article-prose li + li {
     margin-top: 0.625rem;
+  }
+  /*
+   * Tables had no rules at all, so every cell inherited padding 0 and border
+   * 0 under border-collapse: collapse. The SOC 2 / ISO 27001 comparison —
+   * the single most useful object in the whole blog — rendered its columns
+   * touching, so the row read "…judgedA defined standard with a…".
+   */
+  .article-prose table {
+    width: 100%;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+    border-collapse: collapse;
+    font-size: var(--text-small);
+    text-align: left;
+  }
+  .article-prose th,
+  .article-prose td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: top;
+  }
+  .article-prose th:first-child,
+  .article-prose td:first-child {
+    padding-left: 0;
+  }
+  .article-prose thead th {
+    color: var(--color-ink);
+    font-weight: 500;
+    border-bottom-color: var(--color-ink-faint);
+  }
+  /* A three-column comparison does not fit a 350px phone, and squeezing it
+     is what produced the collision. The wrapper is added by the blog
+     template's own script; without JS the table simply behaves as it always
+     has, which is the no-JS floor this theme holds everywhere. */
+  .article-prose .table-scroll {
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+    overflow-x: auto;
+  }
+  .article-prose .table-scroll > table {
+    min-width: 30rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -652,7 +715,9 @@
  * size a thumb actually lands on. The consent checkbox was 13x13 and had been
  * reported by three consecutive reviews.
  */
-@media (max-width: 767px) {
+/* 1279, matching the header's own breakpoint: the drawer these rules size is
+   now the navigation up to xl, and a 900px tablet in portrait is a thumb. */
+@media (max-width: 1279px) {
   /*
    * :not(.hidden), and it is not decoration.
    *

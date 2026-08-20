@@ -61,16 +61,27 @@
         </div>
       </div>
     </header>
+    {# escapejson escapes a value's contents; it does not put quotes around
+       them. Every one of these was written unquoted, so the block was invalid
+       JSON from the day it shipped and search engines dropped it silently —
+       measured on the live site, 2 of 4 blocks failed to parse on every blog
+       post, and the Service and BreadcrumbList blocks failed on every service
+       and product page. base.hubl.html already had the comment explaining
+       this; these three templates never got it.
+
+       content.name also needs striptags: HubSpot renders it wrapped in its
+       own COS markup (<span id="hs_cos_wrapper_name" …>), so the raw value
+       put an HTML element where a JSON string belonged. #}
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": {{ content.name|escapejson }},
-        "description": {{ content.meta_description|escapejson }},
+        "headline": "{{ content.name|striptags|escapejson }}",
+        "description": "{{ content.meta_description|escapejson }}",
         "datePublished": "{{ content.publish_date|datetimeformat("%Y-%m-%d") }}",
         "dateModified": "{{ content.updated|datetimeformat("%Y-%m-%d") }}",
         "inLanguage": "{{ content.language or "en" }}",
-        "mainEntityOfPage": {{ content.absolute_url|escapejson }},
+        "mainEntityOfPage": "{{ content.absolute_url|escapejson }}",
         "author": {
           "@type": "Person",
           "name": "Helgar Palmieri",
@@ -85,8 +96,8 @@
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": {{ (group.public_title || "Insights")|escapejson }}, "item": {{ group.absolute_url|escapejson }} },
-          { "@type": "ListItem", "position": 2, "name": {{ content.name|escapejson }}, "item": {{ content.absolute_url|escapejson }} }
+          { "@type": "ListItem", "position": 1, "name": "{{ (group.public_title || "Insights")|striptags|escapejson }}", "item": "{{ group.absolute_url|escapejson }}" },
+          { "@type": "ListItem", "position": 2, "name": "{{ content.name|striptags|escapejson }}", "item": "{{ content.absolute_url|escapejson }}" }
         ]
       }
     </script>
@@ -114,6 +125,24 @@
         margin is supposed to look like.
       #}
       <div class="article-prose mx-auto max-w-[40rem]">{{ content.post_body }}</div>
+      {# A comparison table needs its own scroll box on a phone, and the body
+         arrives as one opaque blob from HubSpot, so there is nowhere in HubL
+         to put the wrapper. Four lines of script put it there instead. It is
+         an enhancement, not a dependency: without JS the table behaves the
+         way it always has. #}
+      <script>
+        (function () {
+          var tables = document.querySelectorAll(".article-prose table");
+          for (var i = 0; i < tables.length; i++) {
+            var t = tables[i];
+            if (t.parentNode.classList.contains("table-scroll")) continue;
+            var box = document.createElement("div");
+            box.className = "table-scroll";
+            t.parentNode.insertBefore(box, t);
+            box.appendChild(t);
+          }
+        })();
+      </script>
       {# The review's end-of-article ask: a reader who finished has a next
          step that names their situation, not another generic button. #}
       <aside class="mx-auto mt-14 max-w-[40rem] rounded-2xl border border-line p-8">
