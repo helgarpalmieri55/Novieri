@@ -50,4 +50,20 @@ upload.log
 # Scratch from an /impeccable critique run. The assessment agents write probe
 # scripts beside the repo while they measure the live site; the findings land
 # in .impeccable/critique/, and these do not need keeping.
+#
+# The probe scripts have to live at the repo root, because that is where the
+# Playwright install is resolvable from — an agent running them out of a temp
+# directory gets ERR_MODULE_NOT_FOUND. So they are named, not relocated: the
+# dot-prefixed patterns below cover the throwaway .mjs files, the screenshot
+# directories they write, and the measurement dumps, in both assessments.
 .critique-*/
+.a-*.mjs
+.b-*.mjs
+.a-shots/
+.b-shots/
+.m[0-9]*.mjs
+.v[0-9]*.mjs
+
+# The live-server's own runtime state: the port it bound, and the annotation
+# overlays it serves back into the page. Recreated on every run.
+.impeccable/live/
