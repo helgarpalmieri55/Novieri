@@ -24,8 +24,28 @@
      with its own padding puts the mark in the corner and the nav group against
      the far edge, which is the shape the rest of the industry has settled on
      and the one that reads as uncrowded. #}
-  <div class="header-bar flex h-[84px] items-center gap-6">
-    <a href="{{ module.home_url }}" aria-label="{{ module.label_home|escape_attr }}" class="flex items-center gap-2.5">
+  {#
+    gap-3 below the nav breakpoint, gap-6 from md up. With the desktop nav
+    hidden, the bar holds three things — mark, call to action, hamburger — and
+    24px between each of them is 48px that a 320px screen does not have. It
+    did not have it: measured at 320, the hamburger's right edge landed at
+    326.9, 6.9px outside the viewport, and the flex row paid for that by
+    shrinking the one item that could shrink. The wordmark went to 42.3px for
+    text needing 90.3, and the opaque call to action painted over the rest, so
+    the brand name read "novie" — two letters short in Spanish, one in English.
+  #}
+  <div class="header-bar flex h-[84px] items-center gap-3 md:gap-6">
+    {#
+      shrink-0 and nowrap: the brand name is the one thing in this bar that
+      must never be negotiated down to fit. If the row runs out of room the
+      overflow has to show up somewhere it can be seen and fixed, not be
+      absorbed silently by clipping the company's name.
+
+      The mark and the type step down a size below sm, which is where the room
+      actually comes from: 48px + 26px type is 148.3px of a 280px content box
+      before anything else is placed.
+    #}
+    <a href="{{ module.home_url }}" aria-label="{{ module.label_home|escape_attr }}" class="flex shrink-0 items-center gap-2 sm:gap-2.5">
       {% if module.logo.src %}
         <img
           src="{{ module.logo.src }}"
@@ -34,9 +54,10 @@
           height="49"
           loading="eager"
           decoding="async"
+          class="h-auto w-10 sm:w-12"
         />
       {% endif %}
-      <span class="font-display text-display-sm font-semibold leading-none text-ink">{{ module.wordmark }}</span>
+      <span class="whitespace-nowrap font-display text-[1.375rem] font-semibold leading-none text-ink sm:text-display-sm">{{ module.wordmark }}</span>
     </a>
 
     {#
@@ -124,8 +145,15 @@
         {{ cta_text }}
       </a>
       {# The same call to action on a phone. It used to live only inside the
-         menu, behind the hamburger, where it may as well not have existed. #}
-      <a href="{{ cta_href }}" class="btn btn-primary !px-4 !py-2 !text-small md:hidden">
+         menu, behind the hamburger, where it may as well not have existed.
+
+         ml-auto because the desktop nav carries it above md and is display:
+         none below, which left the whole cluster packed against the left edge
+         and terminating at a constant 350.3px whatever the screen. The right
+         gutter grew 24.7 → 39.7 → 63.7 → 79.7px across the phone widths while
+         the left one stayed at 20 — a header that drifted further off its own
+         margin the wider the phone got. #}
+      <a href="{{ cta_href }}" class="btn btn-primary ml-auto !px-4 !py-2 !text-small md:hidden">
         {{ cta_text_short or cta_text }}
       </a>
     {% endif %}

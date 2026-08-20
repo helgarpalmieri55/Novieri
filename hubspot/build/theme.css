@@ -366,20 +366,50 @@
 
   /* Blog posts and case-study narrative: legal-prose plus the h2 rhythm an
      article needs, which legal pages render from their own section headings. */
+  /*
+   * An article headline is not a hero headline. The h1 token is sized to run
+   * across the container; here it runs across a 640px reading measure, where
+   * 72px gave six lines and pushed the first paragraph to y=765 on a 900px
+   * screen. One step down the seven-step scale — no new size invented — and
+   * the same title fits in three.
+   */
+  .article-title {
+    font-size: var(--text-h2);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+
   .article-prose {
     color: var(--color-ink-muted);
+  }
+  /*
+   * 19px, not the 17px body default.
+   *
+   * The column was widened to 640px to stop the text sitting in a strip beside
+   * an empty page, and that width at 17px measures ~83 characters a line —
+   * medians of 80-87 across the fourteen paragraphs of a real article, maximum
+   * 91. Comfortable long-form reading is 60-80. Raising the type rather than
+   * narrowing the column keeps the wide margin symmetric and brings the line
+   * to ~72 characters, and 19px is already on the scale as --text-lead.
+   */
+  .article-prose p,
+  .article-prose li {
+    font-size: var(--text-lead);
+    line-height: 1.7;
   }
   .article-prose > * + * {
     margin-top: 1rem;
   }
+  /* Each heading moves one step up with the body: 26 / 22 / 19 rather than
+     22 / 19 / 19, so a subhead still reads as a subhead against 19px prose. */
   .article-prose h2 {
     color: var(--color-ink);
-    font-size: var(--text-h3);
+    font-size: var(--text-display-sm);
     margin-top: 2.5rem;
   }
   .article-prose h3 {
     color: var(--color-ink);
-    font-size: var(--text-lead);
+    font-size: var(--text-h3);
     margin-top: 1.75rem;
   }
   .article-prose a {

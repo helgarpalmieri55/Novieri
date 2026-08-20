@@ -183,17 +183,18 @@
       "items": [
         {
           "value": "1000+",
-          "label": "users supported in founder-led operations"
+          "label": "users supported in technology leadership roles"
         },
         {
-          "value": "PCI / SOC 2",
+          "value": "PCI DSS / SOC 2",
           "label": "programs led end to end"
         },
         {
           "value": "2",
           "label": "founders, zero middlemen"
         }
-      ]
+      ],
+      "disclosure": "Experience includes work led by Novieri's founders in current and previous technology leadership roles."
     },
     "liveChat": {
       "eyebrow": "ai in production",
@@ -2986,6 +2987,7 @@
       "title": "Numbers you can plan with.",
       "intro": "Most firms make you sit through a sales call before you hear a price. Here is ours up front: every figure below is a realistic range, not a quote — the exact number depends on what your business needs, and it comes with a proposal after we understand your operation. Prices show in US dollars or Colombian pesos depending on where you're browsing from."
     },
+    "groupCta": "Book a call about {topic}",
     "groups": [
       {
         "name": "Managed IT",

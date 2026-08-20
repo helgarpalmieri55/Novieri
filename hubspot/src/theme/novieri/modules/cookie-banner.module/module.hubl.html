@@ -26,7 +26,6 @@
 {% set c_dialog = module.dialog_label %}
 {% set c_title = module.title %}
 {% set c_body = module.body_text %}
-{% set c_short = module.body_short %}
 {% set c_accept = module.accept %}
 {% set c_reject = module.reject %}
 {% set c_more = module.more_label %}
@@ -35,7 +34,6 @@
   {% if module.dialog_label_es %}{% set c_dialog = module.dialog_label_es %}{% endif %}
   {% if module.title_es %}{% set c_title = module.title_es %}{% endif %}
   {% if module.body_text_es %}{% set c_body = module.body_text_es %}{% endif %}
-  {% if module.body_short_es %}{% set c_short = module.body_short_es %}{% endif %}
   {% if module.accept_es %}{% set c_accept = module.accept_es %}{% endif %}
   {% if module.reject_es %}{% set c_reject = module.reject_es %}{% endif %}
   {% if module.more_label_es %}{% set c_more = module.more_label_es %}{% endif %}
@@ -52,8 +50,9 @@
 
     Two separate defences, so neither has to be perfect: on desktop it clears
     the CTA horizontally (the hero column is left-aligned, this is not), and on
-    a phone it clears it vertically by being short. The copy above was
-    shortened for the same reason; the cookie policy carries the detail.
+    a phone it clears it vertically by being short — small type, snug leading,
+    one row of buttons, no heading. What it does not do is buy that height by
+    saying less; see the note on the body copy below.
   #}
   class="cookie-banner fixed bottom-3 left-3 right-3 z-50 rounded-2xl border border-line bg-white p-3 shadow-[0_8px_40px_rgba(22,18,29,0.16)] sm:bottom-5 sm:left-auto sm:right-5 sm:max-w-[34rem] sm:p-5"
   role="dialog"
@@ -76,17 +75,23 @@
     and covering it. Measured: 269px tall, CTA at y606, banner from y563.
   #}
   {#
-    Two sentences for a phone, written for it rather than squeezed into it.
-    Tuning the full text down to fit was a losing game: English cleared the
-    hero button by 8px and Spanish, being longer, still covered it by 6. A
-    banner whose fit depends on which language it is in will drift back the
-    first time anyone edits the copy. Both versions name the categories and
-    offer the choice; the policy link carries the detail either way.
+    One string, both breakpoints.
+
+    There were two: a full sentence from sm up and a shorter one on a phone,
+    written that way to keep the banner clear of the hero button. It bought
+    the geometry at the price of the disclosure. The desktop text named
+    session recording and said advertising never happens; the phone text
+    named neither, in either language — so the visitor on a phone, which is
+    most of the Colombian audience, consented to Clarity session replay
+    without the notice ever mentioning that it exists.
+
+    A consent notice that says less to one group of people than another is
+    not informed consent for that group, and the group getting less was the
+    larger one. So the phone gets the whole sentence, and the height it costs
+    is paid for elsewhere: caption size and snug leading below sm, which is
+    what the short variant was already using.
   #}
-  <p class="mt-1 text-caption leading-snug text-ink-muted sm:hidden">
-    {{ c_short }} <a href="{{ c_href }}" class="link-accent whitespace-nowrap">{{ c_more }}</a>
-  </p>
-  <p class="mt-1.5 hidden text-small leading-relaxed text-ink-muted sm:block">
+  <p class="mt-1 text-caption leading-snug text-ink-muted sm:mt-1.5 sm:text-small sm:leading-relaxed">
     {{ c_body }} <a href="{{ c_href }}" class="link-accent whitespace-nowrap">{{ c_more }}</a>
   </p>
   {# One row, never two: both buttons share the width on a phone and sit at
