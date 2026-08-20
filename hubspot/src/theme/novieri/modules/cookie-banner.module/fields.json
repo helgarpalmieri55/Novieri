@@ -38,6 +38,19 @@
     "allow_new_line": true
   },
   {
+    "name": "body_short",
+    "label": "Notice body (phone)",
+    "type": "text",
+    "default": "Necessary cookies always. Analytics only if you accept.",
+    "help_text": "Shown instead of the full text under 640px, where every line costs more than it says. Keep it to two lines: name the categories, offer the choice, let the policy link carry the detail."
+  },
+  {
+    "name": "body_short_es",
+    "label": "Notice body (phone, ES)",
+    "type": "text",
+    "default": "Las necesarias siempre. Estadísticas solo si aceptas."
+  },
+  {
     "name": "accept",
     "label": "Accept button",
     "type": "text",

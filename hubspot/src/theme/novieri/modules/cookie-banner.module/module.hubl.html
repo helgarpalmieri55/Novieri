@@ -12,6 +12,7 @@
 {% set c_dialog = module.dialog_label %}
 {% set c_title = module.title %}
 {% set c_body = module.body_text %}
+{% set c_short = module.body_short %}
 {% set c_accept = module.accept %}
 {% set c_reject = module.reject %}
 {% set c_more = module.more_label %}
@@ -20,6 +21,7 @@
   {% if module.dialog_label_es %}{% set c_dialog = module.dialog_label_es %}{% endif %}
   {% if module.title_es %}{% set c_title = module.title_es %}{% endif %}
   {% if module.body_text_es %}{% set c_body = module.body_text_es %}{% endif %}
+  {% if module.body_short_es %}{% set c_short = module.body_short_es %}{% endif %}
   {% if module.accept_es %}{% set c_accept = module.accept_es %}{% endif %}
   {% if module.reject_es %}{% set c_reject = module.reject_es %}{% endif %}
   {% if module.more_label_es %}{% set c_more = module.more_label_es %}{% endif %}
@@ -60,7 +62,18 @@
     44px minimum — and 56px was the difference between clearing the hero CTA
     and covering it. Measured: 269px tall, CTA at y606, banner from y563.
   #}
-  <p class="mt-1 text-caption leading-snug text-ink-muted sm:mt-1.5 sm:text-small sm:leading-relaxed">
+  {#
+    Two sentences for a phone, written for it rather than squeezed into it.
+    Tuning the full text down to fit was a losing game: English cleared the
+    hero button by 8px and Spanish, being longer, still covered it by 6. A
+    banner whose fit depends on which language it is in will drift back the
+    first time anyone edits the copy. Both versions name the categories and
+    offer the choice; the policy link carries the detail either way.
+  #}
+  <p class="mt-1 text-caption leading-snug text-ink-muted sm:hidden">
+    {{ c_short }} <a href="{{ c_href }}" class="link-accent whitespace-nowrap">{{ c_more }}</a>
+  </p>
+  <p class="mt-1.5 hidden text-small leading-relaxed text-ink-muted sm:block">
     {{ c_body }} <a href="{{ c_href }}" class="link-accent whitespace-nowrap">{{ c_more }}</a>
   </p>
   {# One row, never two: both buttons share the width on a phone and sit at
