@@ -1060,7 +1060,7 @@
       "poweredTitle": "The same team stands behind every product.",
       "poweredBody": "Each product is designed, built, and operated by the Novieri team — with the same enterprise practices as our services: security, monitoring, and continuous improvement. You're not buying software and getting left alone; you're buying a product with a team behind it.",
       "seeSolution": "See product",
-      "demoCta": "Request a demo",
+      "demoCta": "Book a demo",
       "ctaTitle": "Want to see it running on your data?",
       "ctaSubtitle": "Book a 30-minute demo and we'll show it applied to your case, no strings attached."
     },
@@ -2995,21 +2995,21 @@
           {
             "service": "Core",
             "price_usd": "$99 – 115",
-            "price_cop": "COP 95,000 – 115,000",
+            "price_cop": "95,000 – 115,000",
             "unit": "per user / month",
             "note": "Helpdesk, monitoring, updates, and backups — the essentials, run properly."
           },
           {
             "service": "Complete",
             "price_usd": "$139 – 160",
-            "price_cop": "COP 145,000 – 170,000",
+            "price_cop": "145,000 – 170,000",
             "unit": "per user / month",
             "note": "Core plus managed security and Microsoft 365 administration. Most teams land here."
           },
           {
             "service": "Premium",
             "price_usd": "$189 – 220",
-            "price_cop": "COP 195,000 – 230,000",
+            "price_cop": "195,000 – 230,000",
             "unit": "per user / month",
             "note": "Complete plus compliance support and vCIO guidance, for teams with auditors to answer."
           }
@@ -3023,28 +3023,28 @@
           {
             "service": "AI Opportunity Assessment",
             "price_usd": "$1,000",
-            "price_cop": "COP 1.1 – 2.5 million",
+            "price_cop": "1.1 – 2.5 million",
             "unit": "fixed · 2 weeks",
             "note": "Credited toward your first project if you go ahead."
           },
           {
             "service": "Automation pilot",
             "price_usd": "$4,900 – 15,000",
-            "price_cop": "COP 9 – 18 million",
+            "price_cop": "9 – 18 million",
             "unit": "per project",
             "note": "Where it lands depends on how many systems are involved."
           },
           {
             "service": "AI Partner",
             "price_usd": "$1,500 – 2,900",
-            "price_cop": "COP 2.9 – 5.9 million",
+            "price_cop": "2.9 – 5.9 million",
             "unit": "per month",
             "note": "Ongoing improvement, monitoring, and governance of what we build."
           },
           {
             "service": "WhatsApp bot for restaurants & hotels",
             "price_usd": "",
-            "price_cop": "COP 1.0 – 3.5 million",
+            "price_cop": "1.0 – 3.5 million",
             "unit": "setup",
             "note": "Orders, reservations, and after-hours service. Plus a monthly fee of COP 400,000 – 1,100,000 depending on scope."
           }
@@ -3058,21 +3058,21 @@
           {
             "service": "Security baseline",
             "price_usd": "$4,500 – 7,500",
-            "price_cop": "COP 9 – 13 million",
+            "price_cop": "9 – 13 million",
             "unit": "per project",
             "note": "The essentials audited and fixed: identity, email, endpoints, backups."
           },
           {
             "service": "SOC 2 / PCI DSS readiness",
             "price_usd": "$9,500 – 18,000",
-            "price_cop": "COP 18 – 32 million",
+            "price_cop": "18 – 32 million",
             "unit": "per project",
             "note": "From gap assessment to audit-ready evidence. Compliance platform and auditor fees are separate."
           },
           {
             "service": "Part-time security chief (vCISO)",
             "price_usd": "$2,900 – 5,000",
-            "price_cop": "COP 3.9 – 5.5 million",
+            "price_cop": "3.9 – 5.5 million",
             "unit": "per month",
             "note": "A senior security director, a few hours a month — instead of a full-time hire."
           }
@@ -3086,14 +3086,14 @@
           {
             "service": "Senior development",
             "price_usd": "$45 – 55",
-            "price_cop": "COP 110,000 – 140,000",
+            "price_cop": "110,000 – 140,000",
             "unit": "per hour",
             "note": "Blended senior rate. Comparable US senior rates commonly run well above this."
           },
           {
             "service": "Discovery sprint",
             "price_usd": "$500",
-            "price_cop": "COP 500,000",
+            "price_cop": "500,000",
             "unit": "fixed",
             "note": "Scope, architecture, and an honest build-vs-buy answer before you commit to a build."
           }
@@ -3107,7 +3107,7 @@
           {
             "service": "Consulting / assessment",
             "price_usd": "$150 – 200",
-            "price_cop": "COP 280,000 – 350,000",
+            "price_cop": "280,000 – 350,000",
             "unit": "per hour",
             "note": ""
           },

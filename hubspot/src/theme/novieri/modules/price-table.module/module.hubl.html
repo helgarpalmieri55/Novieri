@@ -38,8 +38,22 @@
             {% if row.note %}<p class="mt-1 max-w-[34ch] text-caption text-ink-faint">{{ row.note }}</p>{% endif %}
           </div>
           <div class="sm:text-right">
-            {% if row.price_cop %}<span data-price="cop" class="{% if default_currency != "cop" %}hidden {% endif %}font-display text-h3 font-semibold text-ink">{{ row.price_cop }}</span>{% endif %}
-            {% if row.price_usd %}<span data-price="usd" class="{% if default_currency != "usd" %}hidden {% endif %}font-display text-h3 font-semibold text-ink">{{ row.price_usd }}</span>{% endif %}
+            {#
+              The currency, always, on whichever branch is showing.
+              Measured across all four combinations of page language and
+              browser locale, the string "USD" appeared nowhere on the site,
+              and only the COP branch of the English page carried a code at
+              all. That left the worst case unlabelled: a Colombian on an
+              English-locale phone, arriving on /precios from a WhatsApp link,
+              reading "$99 – 115" under "por usuario al mes". In Colombia the
+              dollar sign means pesos.
+
+              The code sits after the figure in mono, small and quiet — it is
+              a unit, not a headline — and the strings themselves stay clean
+              so a price is edited in one place and reads the same in both.
+            #}
+            {% if row.price_cop %}<span data-price="cop" class="{% if default_currency != "cop" %}hidden {% endif %}font-display text-h3 font-semibold text-ink">{{ row.price_cop }}<span class="idx-mono ml-1.5 align-baseline text-ink-faint">COP</span></span>{% endif %}
+            {% if row.price_usd %}<span data-price="usd" class="{% if default_currency != "usd" %}hidden {% endif %}font-display text-h3 font-semibold text-ink">{{ row.price_usd }}<span class="idx-mono ml-1.5 align-baseline text-ink-faint">USD</span></span>{% endif %}
             {% if row.unit %}<span class="idx-mono ml-2 lowercase text-ink-faint">{{ row.unit }}</span>{% endif %}
           </div>
         </div>

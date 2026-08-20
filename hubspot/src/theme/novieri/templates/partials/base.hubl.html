@@ -46,6 +46,35 @@
         var c = localStorage.getItem("novieri-consent");
         if (c !== "all" && c !== "necessary") document.documentElement.classList.add("needs-consent");
       } catch (e) {}
+      /*
+        Tell HubSpot no before it asks itself.
+
+        The banner's own script repeats a *stored* choice to HubSpot on every
+        load, which covers the visitor who has already answered. The visitor
+        who has not answered was the gap: nothing was pushed, HubSpot's tracker
+        loaded with its own default, and __hstc and hubspotutk were written to
+        .novieri.com with a 180-day life before anyone had clicked anything.
+        Measured, on a fresh profile, with the banner still on screen.
+
+        That contradicted this site's own cookie policy and the module's own
+        comment about prior, express and informed consent under Ley 1581. It
+        also contradicted the rest of the stack: Google Consent Mode was
+        already defaulting to denied a few lines below.
+
+        _hsp is a queue HubSpot drains when its script arrives, so pushing here
+        — in the head, before standard_footer_includes — lands first. An
+        accepted visitor's "allow" is pushed afterwards by the banner script
+        and wins, because the queue is processed in order.
+      */
+      try {
+        window._hsp = window._hsp || [];
+        if (c !== "all") {
+          window._hsp.push([
+            "setHubSpotConsent",
+            { analytics: false, advertisement: false, functionality: true },
+          ]);
+        }
+      } catch (e) {}
       try {
         var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
         document.documentElement.setAttribute("data-region", tz === "America/Bogota" ? "co" : "intl");
