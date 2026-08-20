@@ -52,7 +52,7 @@ jobs:
         # deployed: the stylesheet, Atena's profile, and the two bundled
         # serverless entrypoints. A diff here means someone edited a source
         # without rebuilding.
-        run: git diff --exit-code hubspot/src/theme/novieri/css/theme.css hubspot/functions-src/lib/company-profile.json hubspot/src/app/functions/chat.js hubspot/src/app/functions/diagnose.js
+        run: git diff --exit-code hubspot/src/theme/novieri/css/theme.css hubspot/functions-src/lib/company-profile.json hubspot/src/app/functions/chat.js hubspot/src/app/functions/diagnose.js hubspot/src/app/functions/probe.js
       # The official action is not used for the upload. It builds a shell
       # command containing the commit subject and eval()s it, so any commit
       # message with an apostrophe or parenthesis kills the run:

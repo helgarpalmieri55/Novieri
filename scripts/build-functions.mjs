@@ -19,7 +19,7 @@ import path from "node:path";
 
 const SRC = "hubspot/functions-src";
 const OUT = "hubspot/src/app/functions";
-const ENTRIES = ["chat.js", "diagnose.js"];
+const ENTRIES = ["chat.js", "diagnose.js", "probe.js"];
 
 /** Only our own files are inlined; node built-ins and axios stay requires. */
 const LOCAL_REQUIRE = /require\(\s*["'](\.[^"']+)["']\s*\)/g;
