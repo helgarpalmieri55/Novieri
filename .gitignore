@@ -46,3 +46,8 @@ server/api/data/
 hubspot/src/app/functions/node_modules/
 
 upload.log
+
+# Scratch from an /impeccable critique run. The assessment agents write probe
+# scripts beside the repo while they measure the live site; the findings land
+# in .impeccable/critique/, and these do not need keeping.
+.critique-*/
