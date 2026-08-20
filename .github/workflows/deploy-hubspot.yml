@@ -186,13 +186,22 @@ jobs:
       # the bar itself and the booking button's right edge, per locale.
       - name: Check that the header fits, and the booking button is on screen
         if: inputs.mode == 'deploy' || github.event_name == 'push'
-        env:
-          CHROMIUM_PATH: ""
         run: |
           set -euo pipefail
-          npx --yes playwright install --with-deps chromium
+          # The package comes from npm ci — it is a declared devDependency, and
+          # relying on it arriving transitively through another package is what
+          # made the first run of this step die on ERR_MODULE_NOT_FOUND. Only
+          # the browser binary has to be fetched here.
+          npx playwright install --with-deps chromium
           node scripts/check-header-fit.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}"
 
+      # always(): each post-deploy check stands on its own.
+      #
+      # The first run of the header check died on a missing package, and
+      # because the following steps were plain `if:` conditions they were
+      # skipped — so a broken assertion silently switched off the Atena canary
+      # and the stale-snapshot check on a deploy that had already shipped. A
+      # check that can disable the other checks is worse than no check.
       # Does the structured data parse?
       #
       # Two of the four blocks on every blog post, and two on every service
@@ -201,7 +210,7 @@ jobs:
       # renders wrapped in HubSpot's COS markup. The HTML was valid and the
       # pages looked perfect, so nothing but a parser was ever going to say so.
       - name: Check that every JSON-LD block parses
-        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        if: always() && (inputs.mode == 'deploy' || github.event_name == 'push') && steps.upload.outcome == 'success'
         run: node scripts/check-jsonld.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}"
 
       # Atena, after the deploy that could have broken her.
@@ -218,7 +227,7 @@ jobs:
       # Continuous watching belongs in a monitor that is always awake; this
       # step only has to answer "did I just break it?".
       - name: Check that Atena still answers
-        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        if: always() && (inputs.mode == 'deploy' || github.event_name == 'push') && steps.upload.outcome == 'success'
         run: |
           set -euo pipefail
           # The theme upload propagates to the CDN before the function does.
@@ -232,7 +241,7 @@ jobs:
       # no booking link, a heading fixed a week earlier — while a live render
       # of the same URL was correct and every check in this file was green.
       - name: Check for stale pre-rendered pages
-        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        if: always() && (inputs.mode == 'deploy' || github.event_name == 'push') && steps.upload.outcome == 'success'
         run: node scripts/check-prerender-age.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}" --max-age-days=7
 
       # The lesson from the bug above, generalised: a check inside a step
