@@ -581,8 +581,27 @@
  * in Spanish than in English and a fixed offset would be wrong in one of them.
  * The fallback applies only in the moment before that script runs.
  */
-.needs-consent .sylvi-toggle {
-  bottom: calc(var(--consent-h, 11rem) + 1.75rem);
+/*
+ * On a wide screen the bubble steps up over the banner. On a phone it steps
+ * out of the way entirely.
+ *
+ * Lifting it worked on desktop and backfired on a phone: raised by the
+ * banner's height it landed at y594, which is the hero CTA's own row, and the
+ * Spanish label — 9px wider than the English one — reached x318 under a bubble
+ * starting at x314. Measured overlap 176px². A 390px viewport does not have
+ * room for a full-width button, a consent notice and a floating bubble at the
+ * same time, and the bubble is the one of the three that can wait: the moment
+ * consent is answered the banner goes and it returns to its own corner.
+ */
+@media (min-width: 768px) {
+  .needs-consent .sylvi-toggle {
+    bottom: calc(var(--consent-h, 11rem) + 1.75rem);
+  }
+}
+@media (max-width: 767px) {
+  .needs-consent .sylvi-toggle {
+    display: none;
+  }
 }
 
 /*
