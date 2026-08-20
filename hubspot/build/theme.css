@@ -8,7 +8,10 @@
  *
  * Built by `npm run build:hubspot` into src/theme/novieri/css/theme.css.
  */
-@import "../../src/app/globals.css";
+/* Tailwind with source detection turned off — the @source lines below are the
+   whole list, so the theme stops inheriting the Next app's tree. */
+@import "tailwindcss" source(none);
+@import "../../src/app/tokens.css";
 
 @source "../src/theme/novieri/templates/**/*.html";
 /* Project modules are module.hubl.html / .js / .css — the .hubl goes before

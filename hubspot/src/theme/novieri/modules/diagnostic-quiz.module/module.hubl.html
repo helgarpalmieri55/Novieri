@@ -61,7 +61,12 @@
       <p class="mt-5 font-display text-[clamp(2rem,5vw,2.75rem)] font-semibold leading-none text-plum" data-level></p>
       <p class="idx-mono mt-3 text-ink-faint"><span data-pct>0</span> / 100</p>
       <span aria-hidden="true" class="mt-4 block h-2 w-full overflow-hidden rounded-full bg-line">
-        <span class="block h-full w-0 rounded-full bg-gradient-to-r from-teal to-plum transition-[width] duration-1000" data-bar></span>
+        {# Scaled, not resized. Animating width makes the browser lay the page
+           out again on every frame of a one-second transition; a transform is
+           composited and costs nothing. The bar is a plain gradient fill, so
+           the two look identical — and the gradient is pinned to the full
+           track width so scaling reveals it rather than squashing it. #}
+        <span class="block h-full w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-teal to-plum transition-transform duration-1000" data-bar></span>
       </span>
       <p class="mt-5 text-small text-ink-muted">{{ module.preview_body }}</p>
     </div>
