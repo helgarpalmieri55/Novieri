@@ -65,6 +65,14 @@
         — in the head, before standard_footer_includes — lands first. An
         accepted visitor's "allow" is pushed afterwards by the banner script
         and wins, because the queue is processed in order.
+
+        Measured afterwards, and worth recording: this deny is delivered and
+        HubSpot sets __hstc and hubspotutk anyway. The API only suppresses
+        them when the portal itself is configured to require consent before
+        tracking — a HubSpot setting, not something a theme can override. The
+        push stays because it is correct and costs nothing, and because the
+        day that setting is turned on it starts working. Until then the cookie
+        policy and the banner say what actually happens.
       */
       try {
         window._hsp = window._hsp || [];
