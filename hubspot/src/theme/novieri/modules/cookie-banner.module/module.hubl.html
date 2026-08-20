@@ -1,5 +1,19 @@
-{# Consent must be prior, express and informed (Ley 1581 de 2012 / Decreto
-   1074 de 2015), so nothing non-essential loads until the visitor accepts.
+{# Ley 1581 de 2012 / Decreto 1074 de 2015 require consent that is prior,
+   express and informed. Google Analytics and Clarity are gated on that: GA
+   runs cookieless until accept, Clarity does not load at all.
+
+   HubSpot's own script is not gated, and this comment used to claim it was.
+   Measured on a fresh profile with the banner still on screen: __hstc and
+   hubspotutk are written on arrival with a ~180-day life. The site pushes a
+   setHubSpotConsent deny in the head before the tracker loads — see
+   base.hubl.html — and HubSpot places the cookies regardless, because that
+   API only suppresses them when the portal is configured to require consent
+   before tracking, which is a setting in HubSpot, not in this theme.
+
+   The owner has decided to leave that as it is, so the banner copy and the
+   cookie policy now say so plainly instead of promising otherwise. If the
+   portal setting is ever turned on, the deny already in the head starts
+   working and both texts need revisiting.
 
    The markup ships in the HTML and the pre-paint script in the base template
    decides whether to show it. Mounting it after hydration made this panel the

@@ -77,8 +77,13 @@
         <p class="mt-3 text-small text-ink-muted">
           {% if is_es %}En una llamada de 30 minutos revisamos tu caso y te decimos cuál sería el primer paso más razonable.{% else %}In a 30-minute call we review your case and tell you the most sensible first step.{% endif %}
         </p>
-        <a href="{% if is_es %}/contacto{% else %}/contact{% endif %}" class="mt-5 inline-flex items-center gap-1.5 text-small font-medium text-plum hover:text-gold-deep">
-          {% if is_es %}Agenda una conversación{% else %}Book a conversation{% endif %} <span aria-hidden="true">→</span>
+        {# The paragraph above promises a 30-minute call; this used to hand the
+           reader a nine-field form instead. Someone who has just read two
+           thousand words is the warmest lead on the site and was paying two
+           extra steps to reach the one success action. Same label as every
+           other booking control, same destination. #}
+        <a href="https://meetings.hubspot.com/helgar-palmieri" class="mt-5 inline-flex items-center gap-1.5 text-small font-medium text-plum hover:text-gold-deep">
+          {% if is_es %}Agendar llamada{% else %}Book a call{% endif %} <span aria-hidden="true">→</span>
         </a>
       </aside>
       <p class="mt-10">

@@ -1060,7 +1060,7 @@
       "poweredTitle": "The same team stands behind every product.",
       "poweredBody": "Each product is designed, built, and operated by the Novieri team — with the same enterprise practices as our services: security, monitoring, and continuous improvement. You're not buying software and getting left alone; you're buying a product with a team behind it.",
       "seeSolution": "See product",
-      "demoCta": "Request a demo",
+      "demoCta": "Book a demo",
       "ctaTitle": "Want to see it running on your data?",
       "ctaSubtitle": "Book a 30-minute demo and we'll show it applied to your case, no strings attached."
     },
@@ -2492,7 +2492,7 @@
           "h": "2. Legal basis and consent",
           "p": [
             "In Colombia, setting cookies that process personal data requires the data subject's prior, express, and informed consent, under Law 1581 of 2012 and Decree 1074 of 2015.",
-            "So on your first visit we show a notice where you can accept or reject the cookies that are not strictly necessary. Until you accept we set no cookies and no identifier that recognises you: measurement runs in an anonymous, cookieless mode that only shows us traffic totals. Session recordings do not start until you accept. Strictly necessary cookies do not require consent, because without them the site cannot work."
+            "On your first visit we show a notice where you can accept or reject the cookies that are not strictly necessary. Two things happen before you answer, and we would rather write them down than let you discover them: HubSpot's analytics script loads with the page and places the four cookies listed below, and Google Analytics runs in a cookieless mode that stores nothing and identifies no one. Until you accept, we instruct HubSpot not to use its cookies for analytics. Everything else — Google Analytics' own cookies, and session recording — does not load at all until you accept. You can change your answer at any time from “Cookie settings” in the footer, and you can delete the cookies from your browser."
           ]
         },
         {
@@ -2504,7 +2504,7 @@
             "Strictly necessary: we store your cookie decision in your browser's local storage (key “novieri-consent”) so we don't ask again on every visit. It does not identify individuals and is not shared with third parties.",
             "Analytics and measurement (Google Analytics): we load Google Analytics 4 in consent mode. Until you accept it runs without cookies and without identifying you — it only allows an estimate of how many people visit. If you accept, it sets Google's own cookies and we can see which pages get read and where people arrive from, in aggregate, to improve the content rather than to profile anyone.",
             "Session recording and heatmaps (Microsoft Clarity): if you accept them, we load Microsoft Clarity, which anonymously records how the page is used — clicks, scrolling and the path through it — and builds heatmaps and session replays. That goes further than aggregate figures, so we say it plainly: anything you type into a form or the chat is masked and not recorded, and we use the replays to find where the page stalls, not to identify you.",
-            "CRM and attribution (HubSpot): if you accept, we load HubSpot's script, which sets the __hstc, hubspotutk, __hssc, and __hssrc cookies. They recognise your browser between visits and link the form you submit to the pages you read beforehand, so we know which content was useful. If you reject them, the forms still work — they simply arrive without that history.",
+            "CRM and attribution (HubSpot): HubSpot's script loads with the page, before you answer the notice, and sets the __hstc, hubspotutk, __hssc and __hssrc cookies. The first two last about six months and recognise your browser between visits; the other two cover the current session. They let us link a form you submit to the pages you read beforehand, so we know which content was useful. Until you accept, we instruct HubSpot not to use them for analytics; if you reject, that instruction stands. The forms work either way — they simply arrive without that history.",
             "Form security (Google reCAPTCHA): when you start typing in the contact form or the self-diagnosis we load reCAPTCHA v3, which analyzes session behavior to tell people from bots and may set Google cookies. It is a strictly necessary security measure that keeps those forms usable; without it we cannot keep them working. Google's Privacy Policy and Terms of Service apply.",
             "Third-party functional: when you open meeting scheduling or the WhatsApp chat, the relevant provider may set its own cookies in your browser, subject to its policies.",
             "Advertising: we do not use advertising or cross-site tracking cookies."
@@ -2995,21 +2995,21 @@
           {
             "service": "Core",
             "price_usd": "$99 – 115",
-            "price_cop": "COP 95,000 – 115,000",
+            "price_cop": "95,000 – 115,000",
             "unit": "per user / month",
             "note": "Helpdesk, monitoring, updates, and backups — the essentials, run properly."
           },
           {
             "service": "Complete",
             "price_usd": "$139 – 160",
-            "price_cop": "COP 145,000 – 170,000",
+            "price_cop": "145,000 – 170,000",
             "unit": "per user / month",
             "note": "Core plus managed security and Microsoft 365 administration. Most teams land here."
           },
           {
             "service": "Premium",
             "price_usd": "$189 – 220",
-            "price_cop": "COP 195,000 – 230,000",
+            "price_cop": "195,000 – 230,000",
             "unit": "per user / month",
             "note": "Complete plus compliance support and vCIO guidance, for teams with auditors to answer."
           }
@@ -3023,28 +3023,28 @@
           {
             "service": "AI Opportunity Assessment",
             "price_usd": "$1,000",
-            "price_cop": "COP 1.1 – 2.5 million",
+            "price_cop": "1.1 – 2.5 million",
             "unit": "fixed · 2 weeks",
             "note": "Credited toward your first project if you go ahead."
           },
           {
             "service": "Automation pilot",
             "price_usd": "$4,900 – 15,000",
-            "price_cop": "COP 9 – 18 million",
+            "price_cop": "9 – 18 million",
             "unit": "per project",
             "note": "Where it lands depends on how many systems are involved."
           },
           {
             "service": "AI Partner",
             "price_usd": "$1,500 – 2,900",
-            "price_cop": "COP 2.9 – 5.9 million",
+            "price_cop": "2.9 – 5.9 million",
             "unit": "per month",
             "note": "Ongoing improvement, monitoring, and governance of what we build."
           },
           {
             "service": "WhatsApp bot for restaurants & hotels",
             "price_usd": "",
-            "price_cop": "COP 1.0 – 3.5 million",
+            "price_cop": "1.0 – 3.5 million",
             "unit": "setup",
             "note": "Orders, reservations, and after-hours service. Plus a monthly fee of COP 400,000 – 1,100,000 depending on scope."
           }
@@ -3058,21 +3058,21 @@
           {
             "service": "Security baseline",
             "price_usd": "$4,500 – 7,500",
-            "price_cop": "COP 9 – 13 million",
+            "price_cop": "9 – 13 million",
             "unit": "per project",
             "note": "The essentials audited and fixed: identity, email, endpoints, backups."
           },
           {
             "service": "SOC 2 / PCI DSS readiness",
             "price_usd": "$9,500 – 18,000",
-            "price_cop": "COP 18 – 32 million",
+            "price_cop": "18 – 32 million",
             "unit": "per project",
             "note": "From gap assessment to audit-ready evidence. Compliance platform and auditor fees are separate."
           },
           {
             "service": "Part-time security chief (vCISO)",
             "price_usd": "$2,900 – 5,000",
-            "price_cop": "COP 3.9 – 5.5 million",
+            "price_cop": "3.9 – 5.5 million",
             "unit": "per month",
             "note": "A senior security director, a few hours a month — instead of a full-time hire."
           }
@@ -3086,14 +3086,14 @@
           {
             "service": "Senior development",
             "price_usd": "$45 – 55",
-            "price_cop": "COP 110,000 – 140,000",
+            "price_cop": "110,000 – 140,000",
             "unit": "per hour",
             "note": "Blended senior rate. Comparable US senior rates commonly run well above this."
           },
           {
             "service": "Discovery sprint",
             "price_usd": "$500",
-            "price_cop": "COP 500,000",
+            "price_cop": "500,000",
             "unit": "fixed",
             "note": "Scope, architecture, and an honest build-vs-buy answer before you commit to a build."
           }
@@ -3107,7 +3107,7 @@
           {
             "service": "Consulting / assessment",
             "price_usd": "$150 – 200",
-            "price_cop": "COP 280,000 – 350,000",
+            "price_cop": "280,000 – 350,000",
             "unit": "per hour",
             "note": ""
           },

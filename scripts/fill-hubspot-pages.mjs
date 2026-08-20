@@ -32,9 +32,10 @@ import { readFileSync } from "node:fs";
  * success action and the form as a secondary path; the build had them the other
  * way round, and every step between intent and calendar sheds intent.
  *
- * Only the buttons literally labelled "Book a call" move here. The demo,
- * diagnostic and "tell us about your case" CTAs still go to the form, because
- * for those the form is the thing being asked for.
+ * Everything that promises a meeting points here: "Book a call", "Book a demo"
+ * and the end-of-article CTA whose own paragraph offers a 30-minute call. Only
+ * the diagnostic and "tell us about your case" go to the form, because for
+ * those the form is the thing being asked for.
  */
 const BOOK_HREF = "https://meetings.hubspot.com/helgar-palmieri";
 
@@ -606,7 +607,11 @@ function solutionWidgets(key) {
         title: p.hero.title,
         intro: p.hero.promise,
         button_text: c.demoCta,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        // A demo is a meeting. It used to be a form, which made "demo" the one
+        // word on the site that meant two different destinations depending on
+        // which page you were standing on — the calendar from an industry
+        // page, a form from a product page.
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         seam: true,
       },
     },
@@ -697,7 +702,11 @@ function solutionWidgets(key) {
         title: c.ctaTitle,
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        // A demo is a meeting. It used to be a form, which made "demo" the one
+        // word on the site that meant two different destinations depending on
+        // which page you were standing on — the calendar from an industry
+        // page, a form from a product page.
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         ...PRICING_CTA,
       },
     },
@@ -738,7 +747,11 @@ function solutionsIndexWidgets() {
         title: c.ctaTitle,
         subtitle: c.ctaSubtitle,
         button_text: c.demoCta,
-        button_link: { url: { type: "CONTENT", href: `/${slugFor("contact")}` } },
+        // A demo is a meeting. It used to be a form, which made "demo" the one
+        // word on the site that meant two different destinations depending on
+        // which page you were standing on — the calendar from an industry
+        // page, a form from a product page.
+        button_link: { url: { type: "EXTERNAL", href: BOOK_HREF } },
         ...PRICING_CTA,
       },
     },

@@ -28,7 +28,11 @@
 {% block body %}
   <section class="relative overflow-hidden">
     <div class="container-site section-pad">
-      <p class="reveal idx-mono lowercase text-gold-deep">{{ group.public_title || "insights" }}</p>
+      {# ·· like every other eyebrow, and not a verbatim repeat of the h1
+         directly beneath it. The motif is the one piece of ornament this
+         design system rations; the one page that dropped it is the one a
+         search engine sends people to first. #}
+      <p class="reveal idx-mono lowercase text-gold-deep">·· {% if html_lang == "es" %}artículos{% else %}articles{% endif %}</p>
       {#
         The heading was the blog's SEO title, brand suffix and all: the page
         read "Insights — Novieri" as its h1, on Novieri's own site. The title
