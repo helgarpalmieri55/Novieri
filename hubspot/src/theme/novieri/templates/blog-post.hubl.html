@@ -14,10 +14,13 @@
 {% block body %}
   <article>
     <header class="relative overflow-hidden">
-      {# The hero shares the body's axis. It used to run the full 1240px
-         container over a 511px column, so the headline was twice the width of
-         the text it introduced. #}
-      <div class="container-site section-pad mx-auto max-w-[calc(40rem+3rem)]">
+      {# The hero shares the body's axis, and shares it the same way the body
+         gets it: an inner column inside the normal container. Capping the
+         container itself instead put its own horizontal padding inside the
+         cap, so the headline came out 592px against the body's 640 — aligned
+         in intent, off by 48px in fact. #}
+      <div class="container-site section-pad">
+        <div class="mx-auto max-w-[40rem]">
         <p class="reveal idx-mono lowercase text-gold-deep">
           <a href="{{ group.absolute_url }}" class="hover:text-plum">{{ group.public_title || "insights" }}</a>
         </p>
@@ -40,6 +43,7 @@
           <a href="https://www.linkedin.com/in/helgar-palmieri-82726b16a/" rel="author" class="font-medium text-ink underline decoration-line underline-offset-2 hover:text-plum">{{ content.blog_post_author.display_name || "Helgar Palmieri" }}</a>
           {% if is_es %}· Cofundador y director de tecnología{% else %}· Co-founder, Technology &amp; delivery{% endif %}
         </p>
+        </div>
       </div>
     </header>
     <script type="application/ld+json">
