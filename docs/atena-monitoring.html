@@ -1,0 +1,511 @@
+<title>Watching Atena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<style>
+  /* Novieri's own tokens. The site's palette, not a document theme:
+     plum carries interaction, gold marks where the eye should land, and
+     status colour is deliberately separate from both so "down" never reads
+     as branding. */
+  :root {
+    --paper: #ffffff;
+    --surface: #faf9fb;
+    --sunken: #f4f0f8;
+    --ink: #16121d;
+    --ink-muted: #554d60;
+    --ink-faint: #6f6880;
+    --line: #e6e2ec;
+    --line-strong: #cfc7d8;
+    --plum: #4f3461;
+    --gold: #77613c;
+    --teal: #264e59;
+    --up: #1f6b52;
+    --warn: #8a6212;
+    --down: #97303c;
+    --up-bg: #e8f3ee;
+    --warn-bg: #fbf2df;
+    --down-bg: #fbeaec;
+    --code-bg: #16121d;
+    --code-ink: #ece8f2;
+    --measure: 68ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0c0a10;
+      --surface: #131019;
+      --sunken: #1a1522;
+      --ink: #f4f2f7;
+      --ink-muted: #a49cb2;
+      --ink-faint: #8b8399;
+      --line: #2b2536;
+      --line-strong: #3d3550;
+      --plum: #b28ccd;
+      --gold: #c9a878;
+      --teal: #4f93a6;
+      --up: #5fc9a2;
+      --warn: #e0b45f;
+      --down: #ef8f9c;
+      --up-bg: #12281f;
+      --warn-bg: #2b2313;
+      --down-bg: #2d151a;
+      --code-bg: #06050a;
+      --code-ink: #e6e2ee;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0c0a10;
+    --surface: #131019;
+    --sunken: #1a1522;
+    --ink: #f4f2f7;
+    --ink-muted: #a49cb2;
+    --ink-faint: #8b8399;
+    --line: #2b2536;
+    --line-strong: #3d3550;
+    --plum: #b28ccd;
+    --gold: #c9a878;
+    --teal: #4f93a6;
+    --up: #5fc9a2;
+    --warn: #e0b45f;
+    --down: #ef8f9c;
+    --up-bg: #12281f;
+    --warn-bg: #2b2313;
+    --down-bg: #2d151a;
+    --code-bg: #06050a;
+    --code-ink: #e6e2ee;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4.5rem) clamp(1.1rem, 4vw, 3rem) 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 5vw, 3.75rem);
+  }
+
+  h1, h2, h3 {
+    font-family: Archivo, ui-sans-serif, system-ui, sans-serif;
+    text-wrap: balance;
+    margin: 0;
+    letter-spacing: -0.017em;
+  }
+  h1 { font-size: clamp(2.1rem, 5.4vw, 3.1rem); font-weight: 700; line-height: 1.06; }
+  h2 { font-size: clamp(1.32rem, 2.6vw, 1.62rem); font-weight: 600; line-height: 1.18; }
+  h3 { font-size: 1.06rem; font-weight: 600; letter-spacing: -0.008em; }
+
+  p, li { max-width: var(--measure); }
+  p { margin: 0; }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0;
+  }
+
+  /* Masthead ------------------------------------------------------------ */
+  header.masthead { display: flex; flex-direction: column; gap: 1.1rem; }
+  .lede { font-size: 1.16rem; color: var(--ink-muted); max-width: 60ch; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem;
+    padding-top: 1.15rem; border-top: 1px solid var(--line);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.775rem; color: var(--ink-faint);
+  }
+  .meta b { color: var(--ink-muted); font-weight: 500; }
+
+  section { display: flex; flex-direction: column; gap: 1.15rem; }
+  section > h2 + p { margin-top: -0.2rem; }
+
+  /* Tiers --------------------------------------------------------------- */
+  .tier {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--tier, var(--plum));
+    border-radius: 4px;
+    background: var(--surface);
+    padding: 1.4rem clamp(1rem, 2.5vw, 1.6rem);
+    display: flex; flex-direction: column; gap: 0.9rem;
+  }
+  .tier-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.55rem 1rem; }
+  .tier-head h3 { flex: 1 1 auto; }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 0.75rem 1.5rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .facts div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .facts dt, .fact-k {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .fact-v { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .pill {
+    display: inline-block;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.16rem 0.5rem; border-radius: 3px; white-space: nowrap;
+    border: 1px solid currentColor;
+  }
+  .pill.up { color: var(--up); background: var(--up-bg); }
+  .pill.warn { color: var(--warn); background: var(--warn-bg); }
+  .pill.down { color: var(--down); background: var(--down-bg); }
+  .pill.free { color: var(--teal); background: transparent; }
+
+  /* Code ---------------------------------------------------------------- */
+  pre {
+    margin: 0; padding: 1rem 1.15rem; border-radius: 4px;
+    background: var(--code-bg); color: var(--code-ink);
+    overflow-x: auto; font-size: 0.815rem; line-height: 1.6;
+  }
+  pre, code { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace; }
+  p code, li code, td code {
+    background: var(--sunken); color: var(--plum);
+    padding: 0.1em 0.36em; border-radius: 3px; font-size: 0.86em;
+  }
+  .c-key { color: #c9a878; }
+  .c-str { color: #7fd1b0; }
+  .c-com { color: #8b8399; }
+
+  /* Tables -------------------------------------------------------------- */
+  .scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.68rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--ink-faint); background: var(--sunken); border-bottom: 1px solid var(--line-strong);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* Ladder — a real sequence, so it is numbered ------------------------- */
+  ol.ladder { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 0.55rem; }
+  ol.ladder li {
+    counter-increment: step; position: relative; padding-left: 2.6rem; max-width: var(--measure);
+  }
+  ol.ladder li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute; left: 0; top: 0.1rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.74rem; color: var(--gold);
+  }
+
+  ul.plain { margin: 0; padding-left: 1.15rem; display: flex; flex-direction: column; gap: 0.4rem; }
+
+  /* Callout ------------------------------------------------------------- */
+  .note {
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    background: var(--sunken);
+    padding: 1.1rem 1.25rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .note .eyebrow { color: var(--plum); }
+  .note p { max-width: 64ch; }
+
+  a { color: var(--plum); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; border-radius: 2px; }
+
+  footer.end {
+    border-top: 1px solid var(--line); padding-top: 1.25rem;
+    font-size: 0.85rem; color: var(--ink-faint); max-width: var(--measure);
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Novieri · ops platform intake</p>
+    <h1>Watching Atena</h1>
+    <p class="lede">
+      Three checks that answer three different questions about the website assistant, so that
+      the first person to notice she has stopped answering is never a visitor.
+    </p>
+    <div class="meta">
+      <span><b>Service</b> novieri-chat</span>
+      <span><b>Host</b> HubSpot app function</span>
+      <span><b>Origin</b> www.novieri.com</span>
+      <span><b>Owner</b> Novieri S.A.S.</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>What actually breaks</h2>
+    <p>
+      Atena is a HubSpot serverless function that calls a model provider and answers from a
+      profile generated out of the site's own copy. Five things go wrong, and only one of
+      them is visible without instrumentation.
+    </p>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Failure</th><th>What a visitor sees</th><th>Detectable by</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>API key missing or revoked</td><td>Error notice in the widget</td><td>Health check · deep check</td></tr>
+          <tr><td>Provider outage or credit exhausted</td><td>Error notice in the widget</td><td>Deep check only</td></tr>
+          <tr><td>Provider rate-limits the account</td><td>Some get answers, some get the error</td><td>Deep check · in-function alert</td></tr>
+          <tr><td>Bad deploy removes the endpoint</td><td>Error notice in the widget</td><td>Health check only</td></tr>
+          <tr><td><b>Handoff fails to reach the CRM</b></td><td><b>Nothing. A warm goodbye and the WhatsApp number.</b></td><td>In-function alert only</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <p class="eyebrow">The one worth building for</p>
+      <p>
+        The last row is the expensive one. When a visitor asks for a person, Atena hands over the
+        Colombian WhatsApp line and the server posts the transcript to the CRM. That delivery is
+        deliberately fail-open — no CRM error is allowed to break a reply — so when it fails the
+        conversation still ends perfectly and nobody at Novieri learns the lead exists. They arrive
+        on WhatsApp saying "hola" and everything they explained is gone.
+      </p>
+      <p>
+        No external monitor can see this. It is reported from inside the function, which is why the
+        site-side alerting and the ops-platform checks below are complements, not alternatives.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tier 1 · Health</h2>
+    <div class="tier" style="--tier: var(--teal)">
+      <div class="tier-head">
+        <h3>Is the machine assembled?</h3>
+        <span class="pill free">no model call</span>
+      </div>
+      <p>
+        Confirms the function is deployed, its secrets are present and the HubDB store it depends
+        on answers. Costs nothing per run, so poll it as often as the platform likes.
+      </p>
+      <div class="facts">
+        <div><span class="fact-k">Method</span><span class="fact-v">GET</span></div>
+        <div><span class="fact-k">Path</span><span class="fact-v">/hs/serverless/probe</span></div>
+        <div><span class="fact-k">Cadence</span><span class="fact-v">60 s</span></div>
+        <div><span class="fact-k">Timeout</span><span class="fact-v">10 s</span></div>
+        <div><span class="fact-k">Cost</span><span class="fact-v">0 tokens</span></div>
+      </div>
+<pre><span class="c-com">// healthy</span>
+200 {<span class="c-key">"service"</span>:<span class="c-str">"novieri-chat"</span>, <span class="c-key">"deployed"</span>:true, <span class="c-key">"ready"</span>:true, <span class="c-key">"ms"</span>:41}
+
+<span class="c-com">// a secret is missing, or the store is unreachable</span>
+503 {<span class="c-key">"service"</span>:<span class="c-str">"novieri-chat"</span>, <span class="c-key">"deployed"</span>:true, <span class="c-key">"ready"</span>:false, <span class="c-key">"ms"</span>:38}
+
+<span class="c-com">// with header  x-novieri-probe: $PROBE_TOKEN  the response names names</span>
+503 {… <span class="c-key">"checks"</span>:{<span class="c-key">"anthropic_key"</span>:false, <span class="c-key">"app_token"</span>:true,
+     <span class="c-key">"rate_limit_table"</span>:true, <span class="c-key">"store_reachable"</span>:true}}</pre>
+      <p>
+        <b>Verdict:</b> status <code>200</code> is up, <code>503</code> is down, anything else —
+        including a timeout, a <code>404</code>, or HTML instead of JSON — is down and means the
+        deploy removed the endpoint. Do not parse the body to decide; the status code carries the
+        verdict on its own.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tier 2 · Answering</h2>
+    <div class="tier" style="--tier: var(--plum)">
+      <div class="tier-head">
+        <h3>Can she still think?</h3>
+        <span class="pill warn">~5,600 input tokens per run</span>
+      </div>
+      <p>
+        A real conversation turn: one question with exactly one correct answer, drawn from the
+        published site. This is the only check that exercises the model provider, the API key,
+        the generated profile and the prompt together.
+      </p>
+      <div class="facts">
+        <div><span class="fact-k">Method</span><span class="fact-v">POST</span></div>
+        <div><span class="fact-k">Path</span><span class="fact-v">/hs/serverless/chat</span></div>
+        <div><span class="fact-k">Cadence</span><span class="fact-v">30 min</span></div>
+        <div><span class="fact-k">Timeout</span><span class="fact-v">20 s</span></div>
+        <div><span class="fact-k">Typical</span><span class="fact-v">4.3–6.6 s</span></div>
+      </div>
+<pre>POST https://www.novieri.com/hs/serverless/chat
+Content-Type: application/json
+<span class="c-com">Origin: https://www.novieri.com        ← required, the function checks it</span>
+Referer: https://www.novieri.com/
+
+{
+  <span class="c-key">"locale"</span>: <span class="c-str">"es"</span>,
+  <span class="c-key">"region"</span>: <span class="c-str">"co"</span>,
+  <span class="c-key">"messages"</span>: [{ <span class="c-key">"role"</span>: <span class="c-str">"user"</span>, <span class="c-key">"content"</span>: <span class="c-str">"¿En qué ciudad está Novieri?"</span> }]
+}
+
+<span class="c-com">// expected</span>
+200 { <span class="c-key">"reply"</span>: <span class="c-str">"… Barranquilla …"</span>, <span class="c-key">"sig"</span>: <span class="c-str">"&lt;hmac&gt;"</span> }</pre>
+      <h3>Assertion ladder</h3>
+      <p>Run in order. The first failure is the verdict, and the rung that failed is the diagnosis.</p>
+      <ol class="ladder">
+        <li>A response arrived before the timeout. <b>No</b> → down, <code>unreachable</code>.</li>
+        <li>Status is <code>429</code>. <b>Yes</b> → <b>up</b>, and stop. That is Novieri's own rate limiter working, not an outage.</li>
+        <li>Status is <code>200</code>. <b>No</b> → down; record the status and the <code>error</code> field.</li>
+        <li>The body parses as JSON and has no <code>error</code> key. <b>No</b> → down.</li>
+        <li><code>reply</code> is a string of at least 20 characters. <b>No</b> → down; an empty reply reaches the visitor as an error.</li>
+        <li><code>reply</code> matches <code>/barranquilla/i</code>. <b>No</b> → degraded: she answered but not from her own profile, which is how a broken content build shows up.</li>
+      </ol>
+      <p>
+        Rung 2 is the one monitors get wrong. Treating <code>429</code> as an outage produces
+        alerts caused by the monitor itself.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tier 3 · Handoff</h2>
+    <div class="tier" style="--tier: var(--gold)">
+      <div class="tier-head">
+        <h3>Does a lead actually arrive?</h3>
+        <span class="pill down">writes to the CRM — weekly, never hourly</span>
+      </div>
+      <p>
+        Asks to speak to a person, then confirms a ticket carrying that transcript exists in the
+        CRM within two minutes. It is the only check that covers the silent failure, and the only
+        one that leaves a trace in real business data.
+      </p>
+      <div class="facts">
+        <div><span class="fact-k">Cadence</span><span class="fact-v">Weekly</span></div>
+        <div><span class="fact-k">Window</span><span class="fact-v">120 s</span></div>
+        <div><span class="fact-k">Marker</span><span class="fact-v">in the message</span></div>
+        <div><span class="fact-k">Cleanup</span><span class="fact-v">required</span></div>
+      </div>
+      <ul class="plain">
+        <li>Send a message that asks for a human <em>and</em> carries a unique marker, e.g. <code>ops-probe-2026-08-17</code>, so the resulting ticket is identifiable.</li>
+        <li>Poll the CRM tickets search for that marker. <b>CRM search is not read-your-writes</b> — it lags by tens of seconds. Poll for up to two minutes before declaring failure; a single immediate query will report a false outage.</li>
+        <li>Close or delete the ticket afterwards. A monitor that leaves debris in the support queue gets muted by the humans who work it.</li>
+        <li>Alert as <b>critical</b> on failure. This one is silently losing customers.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>The rate-limit budget</h2>
+    <p>
+      The chat endpoint defends itself, and a monitor is indistinguishable from a visitor. These
+      limits are per calling IP unless noted, and they cap how often Tier 2 can run.
+    </p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Bucket</th><th>Limit</th><th>Window</th><th>Effect on a monitor</th></tr></thead>
+        <tbody>
+          <tr><td><code>chat_burst</code></td><td class="num">5</td><td class="num">60 s</td><td>No practical effect</td></tr>
+          <tr><td><code>chat</code></td><td class="num">20</td><td class="num">15 min</td><td>No practical effect</td></tr>
+          <tr><td><code>chat_day</code></td><td class="num">60</td><td class="num">24 h</td><td><b>The binding constraint</b></td></tr>
+          <tr><td><code>chat_all</code> (site-wide)</td><td class="num">800</td><td class="num">24 h</td><td>Shared with real visitors</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <p class="eyebrow">Do the arithmetic before choosing a cadence</p>
+      <p>
+        A 5-minute Tier 2 cadence is 288 runs a day against a 60-a-day ceiling. The monitor would
+        exhaust its own quota before 10am and spend the rest of the day measuring nothing but its
+        own <code>429</code>s — while reporting <b>up</b>, because rung 2 says a <code>429</code>
+        is healthy. Silent blindness, dressed as green.
+      </p>
+      <p>
+        <b>30 minutes = 48 runs a day</b> and fits under the cap with room. Tighter than that needs
+        one of: a raised <code>CHAT_DAILY_PER_IP</code> for the monitor's address, or a probe
+        bypass header that skips rate limiting and nothing else. Ask before assuming either exists.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Alerting</h2>
+    <p>
+      Severity should follow how many people are affected and whether anyone else would notice,
+      not how alarming the error text looks.
+    </p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Condition</th><th>Severity</th><th>Fires after</th><th>Reasoning</th></tr></thead>
+        <tbody>
+          <tr><td>Tier 1 fails</td><td><span class="pill down">critical</span></td><td class="num">2 consecutive</td><td>The endpoint is gone; every visitor is affected</td></tr>
+          <tr><td>Tier 2 fails</td><td><span class="pill down">critical</span></td><td class="num">2 consecutive</td><td>~60 min of silent failure at a 30-min cadence</td></tr>
+          <tr><td>Tier 2 degraded (rung 6)</td><td><span class="pill warn">warning</span></td><td class="num">3 consecutive</td><td>She answers; the content build is suspect</td></tr>
+          <tr><td>Tier 2 latency &gt; 12 s</td><td><span class="pill warn">warning</span></td><td class="num">3 consecutive</td><td>The function is killed at 15 s — this is the cliff edge</td></tr>
+          <tr><td>Tier 3 fails</td><td><span class="pill down">critical</span></td><td class="num">1</td><td>Leads are being lost invisibly</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Two consecutive failures rather than one, because a single provider hiccup is not an
+      incident and a monitor that cries wolf gets ignored — except Tier 3, which runs weekly and
+      whose failure mode is already silent.
+    </p>
+    <p>
+      <b>Deduplicate against the site's own alerts.</b> The function opens a CRM ticket on failure,
+      capped at one per kind per hour. During a real outage the ops platform and that ticket
+      describe the same event. Correlate on a five-minute window rather than paging twice.
+    </p>
+  </section>
+
+  <section>
+    <h2>What to record</h2>
+    <p>
+      Every run, whatever the verdict — the history is what turns "it broke" into "it has been
+      degrading since Tuesday".
+    </p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Field</th><th>Type</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><code>checked_at</code></td><td>timestamp</td><td>Ordering and gap detection</td></tr>
+          <tr><td><code>tier</code></td><td>enum 1–3</td><td>Which question was asked</td></tr>
+          <tr><td><code>verdict</code></td><td>up · degraded · down</td><td>The rollup</td></tr>
+          <tr><td><code>rung</code></td><td>int 1–6</td><td>Where the ladder stopped — the diagnosis</td></tr>
+          <tr><td><code>http_status</code></td><td>int</td><td>Distinguishes 429 from a real failure</td></tr>
+          <tr><td><code>latency_ms</code></td><td>int</td><td>The leading indicator; watch the trend, not the value</td></tr>
+          <tr><td><code>reply_chars</code></td><td>int</td><td>A shrinking reply means a truncated profile</td></tr>
+          <tr><td><code>reply_excerpt</code></td><td>text, ≤300</td><td>Only on failure. Never store full replies.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      A defensible first objective: <b>99% of Tier 2 runs return <code>up</code> over a rolling
+      30 days</b>, with p95 latency under 10 seconds. Both are measurable from the fields above
+      and neither requires the provider's cooperation.
+    </p>
+  </section>
+
+  <section>
+    <h2>Notes for whoever implements this</h2>
+    <ul class="plain">
+      <li><b>The <code>Origin</code> header is mandatory on Tier 2.</b> Without it the function replies <code>403</code>, which means "bad client", not "service down" — the most likely way this integration fails on its first day.</li>
+      <li><b>Never store an API key for this.</b> Tier 1 and Tier 2 need no credentials at all. Only Tier 3 needs CRM read access, and only to search for its own marker.</li>
+      <li><b>Latency is the leading indicator.</b> The provider gets slow before it fails, and the function is killed at 15 seconds. A run creeping from 5 s to 12 s is a warning that has not become an outage yet.</li>
+      <li><b>Do not let probe traffic reach the analytics.</b> Tier 2 conversations are real conversations to any counter watching. Tag or exclude them or the numbers drift.</li>
+      <li><b>Keep the question in sync with the site.</b> Rung 6 asserts a fact from the generated profile. If Novieri ever moves cities, this check fails before anyone notices why — which is arguably correct, but only if the runbook says so.</li>
+      <li><b>Reference implementation:</b> <code>scripts/check-atena.mjs</code> in the website repository implements Tier 2 exactly as specified, exits <code>0</code> or <code>1</code>, and prints <code>--json</code> shaped for ingestion. Port it, or shell out to it.</li>
+    </ul>
+  </section>
+
+  <footer class="end">
+    Site-side alerting — the CRM ticket on failure, one per kind per hour, and the post-deploy
+    check — is already live in the website repository. This document covers what an external
+    monitor adds on top: continuous coverage, history, and the one check that has to write to the
+    CRM to prove a lead can still get through.
+  </footer>
+
+</div>
