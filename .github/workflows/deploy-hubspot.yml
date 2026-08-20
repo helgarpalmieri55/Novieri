@@ -110,8 +110,18 @@ jobs:
         env:
           HUBSPOT_PRIVATE_APP_TOKEN: ${{ secrets.HUBSPOT_PRIVATE_APP_TOKEN }}
         run: node scripts/check-hubspot-scopes.mjs
+      # `inputs.mode` is empty on a push — there are no inputs on a push event —
+      # so `inputs.mode == 'deploy'` was false and this step was skipped on
+      # every merge to main. The run went green having uploaded nothing, and
+      # the guard written below to catch exactly that ("A green run that
+      # uploaded nothing is worse than a red one") lives inside the step it
+      # was meant to protect, so it never ran either. Every deploy since this
+      # workflow was written happened only because someone dispatched it by
+      # hand; a merge shipped precisely nothing. Found when a merged cookie
+      # banner fix was still not on the site an hour later.
       - name: Validate and upload the project
-        if: inputs.mode == 'deploy'
+        id: upload
+        if: inputs.mode == 'deploy' || github.event_name == 'push'
         working-directory: hubspot
         env:
           # --use-env reads these two names, not the DEFAULT_* ones. Without
@@ -196,3 +206,12 @@ jobs:
       - name: Check for stale pre-rendered pages
         if: inputs.mode == 'deploy' || github.event_name == 'push'
         run: node scripts/check-prerender-age.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}" --max-age-days=7
+
+      # The lesson from the bug above, generalised: a check inside a step
+      # cannot report that the step did not run. This one sits outside it.
+      - name: Fail if the upload never ran
+        if: always() && github.event_name == 'push' && steps.upload.outcome != 'success'
+        run: |
+          echo "::error::A push to main finished without uploading (upload outcome: ${{ steps.upload.outcome }})."
+          echo "The site is still serving whatever was there before this merge."
+          exit 1
