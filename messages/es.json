@@ -116,7 +116,7 @@
     "services": "Servicios",
     "about": "Nosotros",
     "contact": "Contacto",
-    "bookCall": "Agenda una llamada",
+    "bookCall": "Agendar llamada",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "servicesMenuLabel": "Ver todos los servicios",
@@ -175,7 +175,7 @@
     }
   },
   "common": {
-    "bookCall": "Agenda una llamada de 30 minutos",
+    "bookCall": "Agendar llamada de 30 minutos",
     "seeServices": "Ver servicios",
     "learnMore": "Conocer más",
     "talkCase": "Hablemos de tu caso",
@@ -1090,7 +1090,7 @@
       "poweredTitle": "Detrás de cada producto está el mismo equipo.",
       "poweredBody": "Cada producto lo diseña, construye y opera el equipo de Novieri, con las mismas prácticas de nuestros servicios: seguridad, monitoreo y mejora continua. No compras un software y quedas solo; compras un producto con un equipo detrás.",
       "seeSolution": "Ver producto",
-      "demoCta": "Agenda una demo",
+      "demoCta": "Solicita una demo",
       "ctaTitle": "¿Quieres verlo funcionando con tus datos?",
       "ctaSubtitle": "Agenda una demo de 30 minutos y te lo mostramos aplicado a tu caso, sin compromiso."
     },
@@ -2694,7 +2694,7 @@
       "title": "Tu diagnóstico está listo",
       "download": "Guardar como PDF",
       "again": "Volver a responder",
-      "cta": "Agenda una llamada de 30 minutos",
+      "cta": "Agendar llamada de 30 minutos",
       "emailed": "También te lo enviamos por correo.",
       "strengths": "Lo que ya tienes bien",
       "risks": "Riesgos que identificamos",

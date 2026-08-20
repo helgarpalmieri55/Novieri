@@ -27,14 +27,31 @@
 {% endif %}
 
 <div
-  class="cookie-banner fixed inset-x-3 bottom-3 z-50 mx-auto max-w-[46rem] rounded-2xl border border-line bg-white p-5 shadow-[0_8px_40px_rgba(22,18,29,0.16)] sm:inset-x-5 sm:bottom-5 sm:p-6"
+  {#
+    Docked bottom-right on a wide screen and full-width but short on a phone,
+    because this element used to land on top of the one button the whole site
+    exists to get pressed. Measured before the change, at 1440x900: the banner
+    spanned y 647-880 and the hero CTA y 693-743. On a 390x844 phone it took
+    311px — 37% of the viewport — and buried both the CTA and the chat bubble.
+
+    Two separate defences, so neither has to be perfect: on desktop it clears
+    the CTA horizontally (the hero column is left-aligned, this is not), and on
+    a phone it clears it vertically by being short. The copy above was
+    shortened for the same reason; the cookie policy carries the detail.
+  #}
+  class="cookie-banner fixed bottom-3 left-3 right-3 z-50 rounded-2xl border border-line bg-white p-4 shadow-[0_8px_40px_rgba(22,18,29,0.16)] sm:bottom-5 sm:left-auto sm:right-5 sm:max-w-[34rem] sm:p-5"
   role="dialog"
   aria-label="{{ c_dialog|escape_attr }}"
+  {# Focusable so the choice can be reached from the keyboard. It sits at the
+     end of the document — index 566 of 607 — and never entered the first 22
+     tab stops, which meant a keyboard user could not dismiss the thing
+     covering the page. The script focuses it when it is raised. #}
+  tabindex="-1"
 >
-  <div aria-hidden="true" class="seam mb-4 -mt-1 rounded-full"></div>
+  <div aria-hidden="true" class="seam mb-3 -mt-0.5 rounded-full"></div>
   <p class="font-display text-body font-semibold">{{ c_title }}</p>
-  <p class="mt-2 max-w-[62ch] text-small leading-relaxed text-ink-muted">{{ c_body }}</p>
-  <div class="mt-5 flex flex-wrap items-center gap-3">
+  <p class="mt-1.5 text-small leading-relaxed text-ink-muted">{{ c_body }}</p>
+  <div class="mt-4 flex flex-wrap items-center gap-3">
     <button type="button" class="cookie-accept btn btn-primary px-5 py-2.5 text-small">{{ c_accept }}</button>
     <button type="button" class="cookie-reject btn btn-ghost-light px-5 py-2.5 text-small">{{ c_reject }}</button>
     <a href="{{ c_href }}" class="link-accent ml-auto text-small">{{ c_more }}</a>

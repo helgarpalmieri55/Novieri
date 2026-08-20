@@ -27,14 +27,14 @@
     "name": "body_text",
     "label": "Body",
     "type": "text",
-    "default": "We use first-party cookies needed for the site to work and, only if you accept, aggregate analytics plus HubSpot cookies that link your enquiry to the content you read. We don't use advertising cookies.",
+    "default": "Necessary cookies keep the site working. Analytics and HubSpot cookies only if you accept — we never use advertising cookies.",
     "allow_new_line": true
   },
   {
     "name": "body_text_es",
     "label": "Body (Spanish)",
     "type": "text",
-    "default": "Usamos cookies propias, necesarias para que el sitio funcione y, solo si aceptas, estadísticas agregadas y cookies de HubSpot que relacionan tu consulta con el contenido que leíste. No usamos cookies de publicidad.",
+    "default": "Las cookies necesarias hacen que el sitio funcione. Las de estadísticas y HubSpot, solo si aceptas. Nunca usamos cookies de publicidad.",
     "allow_new_line": true
   },
   {

@@ -1100,16 +1100,42 @@ const readContent = (p) => {
 const heroOf = (c) => ({
   body: { eyebrow: c.hero.eyebrow, title: c.hero.title, intro: c.hero.intro, button_text: "", seam: true },
 });
-const ctaOf = (c, href) => ({
-  body: {
-    eyebrow: "",
-    title: c.cta.title,
-    subtitle: c.cta.subtitle,
-    button_text: c.cta.buttonText,
-    button_link: { url: { type: "CONTENT", href: href || `/${slugFor("contact")}` } },
-    ...PRICING_CTA,
-  },
-});
+/**
+ * A button that says "book" has to book.
+ *
+ * Every industry and index CTA band sent its visitor to the nine-field contact
+ * form while its own subtitle promised "a 30-minute call with the founders",
+ * and four of them were labelled, in so many words, "Book a call". The same
+ * label meant the calendar in the header and a form on the page below it —
+ * measured across both languages as thirteen labels resolving to two
+ * destinations, including the Spanish near-homographs "Agendar llamada"
+ * (calendar) and "Agenda una llamada" (form).
+ *
+ * So the default flipped: these bands book. An explicit href still wins, for
+ * the two pages that genuinely lead somewhere else — the sample report points
+ * at the diagnostic it is an example of.
+ */
+const BOOKING_VERB = /^(book|agendar|agenda)\b/i;
+const ctaOf = (c, href) => {
+  const label = c.cta.buttonText || "";
+  // Loud rather than subtle: a booking label aimed at a form is the exact
+  // defect this rewrite removed, and it should never come back quietly.
+  if (href && BOOKING_VERB.test(label) && !href.startsWith("http")) {
+    throw new Error(`cta: "${label}" promises a booking but points at ${href}`);
+  }
+  return {
+    body: {
+      eyebrow: "",
+      title: c.cta.title,
+      subtitle: c.cta.subtitle,
+      button_text: label,
+      button_link: href
+        ? { url: { type: "CONTENT", href } }
+        : { url: { type: "EXTERNAL", href: BOOK_HREF } },
+      ...PRICING_CTA,
+    },
+  };
+};
 const cardsOf = (cards, linkLabel) => ({
   body: {
     eyebrow: "",

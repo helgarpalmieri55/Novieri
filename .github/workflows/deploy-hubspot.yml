@@ -186,3 +186,13 @@ jobs:
           # The theme upload propagates to the CDN before the function does.
           sleep 20
           node scripts/check-atena.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}" --locale=es
+
+      # And whether HubSpot is still serving anybody an old snapshot.
+      #
+      # A merged fix that never reaches a visitor is indistinguishable from no
+      # fix. /es/insights served a thirteen-day-old pre-render — no x-default,
+      # no booking link, a heading fixed a week earlier — while a live render
+      # of the same URL was correct and every check in this file was green.
+      - name: Check for stale pre-rendered pages
+        if: inputs.mode == 'deploy' || github.event_name == 'push'
+        run: node scripts/check-prerender-age.mjs --domain="${HUBSPOT_SITE_DOMAIN:-www.novieri.com}" --max-age-days=7
