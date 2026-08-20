@@ -56,11 +56,13 @@ upload.log
 # directory gets ERR_MODULE_NOT_FOUND. So they are named, not relocated: the
 # dot-prefixed patterns below cover the throwaway .mjs files, the screenshot
 # directories they write, and the measurement dumps, in both assessments.
+# Two agents, two prefixes, everything they write: probe scripts, screenshot
+# directories, and the measurement dumps they read back. Naming the extensions
+# individually was already wrong once — the review agent's next run wrote
+# .a-fn1.txt through .a-fn15.txt and none of the patterns caught them.
 .critique-*/
-.a-*.mjs
-.b-*.mjs
-.a-shots/
-.b-shots/
+.a-*
+.b-*
 .m[0-9]*.mjs
 .v[0-9]*.mjs
 
