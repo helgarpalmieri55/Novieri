@@ -887,7 +887,9 @@ function homeWidgets() {
     },
     [HOME_SLOTS.stats]: {
       body: {
-        footnote: h.proof.disclosure || "",
+        // Written empty on purpose: the module no longer renders a footnote,
+        // and an empty value clears whatever is stored on the page.
+        footnote: "",
         stats: h.proof.items.map((s, i) => ({
           value: s.value,
           stat_label: s.label,
