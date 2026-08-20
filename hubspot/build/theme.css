@@ -595,22 +595,36 @@
  * reported by three consecutive reviews.
  */
 @media (max-width: 767px) {
+  /*
+   * :not(.hidden), and it is not decoration.
+   *
+   * This block is unlayered, so it outranks every @layer rule including
+   * Tailwind's own utilities — which meant `display: flex` here beat
+   * `.hidden` and un-hid the desktop header CTA on phones. Two booking
+   * buttons then shared the header row, the hamburger lost the flex
+   * negotiation, and it measured 28.5px wide in English and 20px in Spanish,
+   * with its right edge 6.4px outside a 390px viewport. A rule added to make
+   * targets bigger made the most important target on the page smaller.
+   *
+   * The toggle also gets flex: none, so it can never be the element that
+   * gives way, whatever else lands in that row.
+   */
   .site-mobile-nav a,
   .site-mobile-nav .mnav-toggle,
-  .site-header .btn,
-  .lang_switcher_link,
-  .cookie-banner .btn,
-  .cookie-banner a {
+  .site-header .btn:not(.hidden),
+  .lang_switcher_link:not(.hidden),
+  .cookie-banner .btn {
     min-height: 44px;
     display: flex;
     align-items: center;
   }
-  .site-mobile-nav .mnav-toggle {
+  .site-mobile-nav .mnav-toggle,
+  .site-menu-toggle {
     justify-content: center;
     min-width: 44px;
+    flex: none;
   }
-  .cookie-banner .btn,
-  .cookie-banner a {
+  .cookie-banner .btn {
     display: inline-flex;
   }
 }
