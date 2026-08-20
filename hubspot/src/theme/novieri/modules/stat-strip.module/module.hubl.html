@@ -12,7 +12,13 @@
     {# The audit's ask: the numbers stay, but a reader can see whose numbers
        they are — founder track record, not yet a Novieri client list. #}
     <div class="container-site pb-4">
-      <p class="idx-mono text-ink-faint">{{ module.footnote }}</p>
+      {# Capped and one step up in size. This is the sentence that qualifies
+         the founders' experience claim — the highest-stakes reassurance copy
+         on the home page — and it was set in the smallest type on the site,
+         at the lowest-contrast token, running 102 characters per line across
+         a 1144px box. The most careful reader is the one it was least
+         readable for. #}
+      <p class="mx-auto max-w-[62ch] text-caption text-ink-muted">{{ module.footnote }}</p>
     </div>
   {% endif %}
 </div>
