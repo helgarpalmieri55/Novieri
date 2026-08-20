@@ -14,11 +14,14 @@
 {% block body %}
   <article>
     <header class="relative overflow-hidden">
-      <div class="container-site section-pad">
+      {# The hero shares the body's axis. It used to run the full 1240px
+         container over a 511px column, so the headline was twice the width of
+         the text it introduced. #}
+      <div class="container-site section-pad mx-auto max-w-[calc(40rem+3rem)]">
         <p class="reveal idx-mono lowercase text-gold-deep">
           <a href="{{ group.absolute_url }}" class="hover:text-plum">{{ group.public_title || "insights" }}</a>
         </p>
-        <h1 class="reveal mt-3 max-w-[24ch]" style="--rd: 60ms">{{ content.name }}</h1>
+        <h1 class="reveal mt-3" style="--rd: 60ms">{{ content.name }}</h1>
         {% set is_es = content.language and "es" in content.language|string %}
         <p class="reveal idx-mono mt-6 lowercase text-ink-faint" style="--rd: 120ms">
           {% if is_es %}{{ content.publish_date|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}{{ content.publish_date|datetimeformat("%b %e, %Y") }}{% endif %}
@@ -69,10 +72,26 @@
       }
     </script>
     <div class="container-site pb-[clamp(3rem,8vh,6rem)]">
-      <div class="article-prose max-w-[44ch]">{{ content.post_body }}</div>
+      {#
+        One centred column, and a real reading measure.
+
+        Measured before this: the container is 1240px and the h1 spanned
+        1144px of it, while the body sat in a 511px block hard against the
+        left edge — 633px of empty space beside every paragraph, at every
+        viewport width, with the headline running twice the width of the text
+        beneath it. It read as a narrow strip of copy pinned to one side of an
+        empty page rather than as an article.
+
+        40rem is 640px, about 72 characters at this size — inside the band
+        where long-form reading is comfortable, and wider than the 60 it was.
+        The hero above is capped to the same width so title, byline and body
+        share one axis; what is left over becomes symmetric margin, which is
+        what a margin is supposed to look like.
+      #}
+      <div class="article-prose mx-auto max-w-[40rem]">{{ content.post_body }}</div>
       {# The review's end-of-article ask: a reader who finished has a next
          step that names their situation, not another generic button. #}
-      <aside class="mt-14 max-w-[44ch] rounded-2xl border border-line p-8">
+      <aside class="mx-auto mt-14 max-w-[40rem] rounded-2xl border border-line p-8">
         <h2 class="text-h3">{% if is_es %}¿Necesitas aplicar esto a tu empresa?{% else %}Need to apply this to your company?{% endif %}</h2>
         <p class="mt-3 text-small text-ink-muted">
           {% if is_es %}En una llamada de 30 minutos revisamos tu caso y te decimos cuál sería el primer paso más razonable.{% else %}In a 30-minute call we review your case and tell you the most sensible first step.{% endif %}
@@ -86,7 +105,7 @@
           {% if is_es %}Agendar llamada{% else %}Book a call{% endif %} <span aria-hidden="true">→</span>
         </a>
       </aside>
-      <p class="mt-10">
+      <p class="mx-auto mt-10 max-w-[40rem]">
         <a href="{{ group.absolute_url }}" class="idx-mono lowercase text-plum hover:text-gold-deep">&larr; {{ group.public_title || "insights" }}</a>
       </p>
     </div>
