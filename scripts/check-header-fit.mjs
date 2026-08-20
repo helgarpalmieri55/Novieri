@@ -18,6 +18,27 @@
  *   node scripts/check-header-fit.mjs [--domain=www.novieri.com]
  */
 import pw from "playwright";
+import { existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+
+/**
+ * Playwright's own default is a headless shell that a CI runner installs and
+ * this project's sandbox does not have; the sandbox instead ships a full
+ * Chromium under a versioned /opt path. Resolve whichever is actually here
+ * rather than making the caller know which environment they are in.
+ */
+function chromium() {
+  if (process.env.CHROMIUM_PATH && existsSync(process.env.CHROMIUM_PATH)) return process.env.CHROMIUM_PATH;
+  const root = process.env.PLAYWRIGHT_BROWSERS_PATH || "/opt/pw-browsers";
+  if (existsSync(root)) {
+    for (const dir of readdirSync(root)) {
+      if (!dir.startsWith("chromium-")) continue;
+      const bin = join(root, dir, "chrome-linux", "chrome");
+      if (existsSync(bin)) return bin;
+    }
+  }
+  return undefined; // let Playwright find its own
+}
 
 const arg = (n, d) => (process.argv.find((a) => a.startsWith(`--${n}=`)) || "").split("=")[1] || d;
 const domain = arg("domain", "www.novieri.com");
@@ -28,7 +49,7 @@ const PAGES = [
 ];
 
 const browser = await pw.chromium.launch({
-  executablePath: process.env.CHROMIUM_PATH || undefined,
+  executablePath: chromium(),
   args: ["--ssl-version-max=tls1.2"],
 });
 
