@@ -17,9 +17,29 @@
            class="btn btn-primary w-full">
           {{ module.button_text }} <span aria-hidden="true">→</span>
         </a>
-        <div class="meetings-iframe-container mt-5 w-full"
-             data-src="{{ module.meetings_url }}{% if '?' in module.meetings_url %}&{% else %}?{% endif %}embed=true"></div>
-        <script src="https://static.hsappstatic.net/MeetingsEmbedCode/static-1/MeetingsEmbedCode.js" async></script>
+        {#
+          A plain iframe, because HubSpot's loader is gone.
+
+          This used to be an empty div with a data-src, hydrated by
+          MeetingsEmbedCode.js. That script now returns 403 AccessDenied from
+          HubSpot's own S3 origin — measured directly, both the static-1 and
+          the ex path — so the div rendered at 429x0 and the calendar never
+          appeared for anybody, on either contact page, with nothing in the
+          console to say so. The comment above was right that the embed is
+          the unreliable half; it was not expecting the loader itself to
+          disappear.
+
+          The embed URL answers 200 and sends neither X-Frame-Options nor a
+          frame-ancestors directive, so it frames directly and needs no
+          script at all. One fewer third-party request, and one fewer thing
+          that can vanish.
+        #}
+        <iframe
+          src="{{ module.meetings_url }}{% if '?' in module.meetings_url %}&{% else %}?{% endif %}embed=true"
+          title="{{ module.button_text|escape_attr }}"
+          loading="lazy"
+          class="mt-5 h-[680px] w-full border-0"
+        ></iframe>
       {% else %}
         <p class="rounded-lg bg-plum-wash px-4 py-3.5 text-small text-ink-muted">{{ module.fallback }}</p>
       {% endif %}
