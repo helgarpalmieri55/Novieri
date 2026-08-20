@@ -39,7 +39,7 @@
     a phone it clears it vertically by being short. The copy above was
     shortened for the same reason; the cookie policy carries the detail.
   #}
-  class="cookie-banner fixed bottom-3 left-3 right-3 z-50 rounded-2xl border border-line bg-white p-4 shadow-[0_8px_40px_rgba(22,18,29,0.16)] sm:bottom-5 sm:left-auto sm:right-5 sm:max-w-[34rem] sm:p-5"
+  class="cookie-banner fixed bottom-3 left-3 right-3 z-50 rounded-2xl border border-line bg-white p-3 shadow-[0_8px_40px_rgba(22,18,29,0.16)] sm:bottom-5 sm:left-auto sm:right-5 sm:max-w-[34rem] sm:p-5"
   role="dialog"
   aria-label="{{ c_dialog|escape_attr }}"
   {# Focusable so the choice can be reached from the keyboard. It sits at the
@@ -48,8 +48,11 @@
      covering the page. The script focuses it when it is raised. #}
   tabindex="-1"
 >
-  <div aria-hidden="true" class="seam mb-2.5 -mt-0.5 rounded-full sm:mb-3"></div>
-  <p class="font-display text-small font-semibold sm:text-body">{{ c_title }}</p>
+  <div aria-hidden="true" class="seam mb-2 -mt-0.5 rounded-full sm:mb-3"></div>
+  {# Visible from sm up; on a phone the dialog's aria-label already names it
+     and the first sentence says what it is, so 26px of heading is 26px that
+     would otherwise push this over the hero button. #}
+  <p class="sr-only font-display text-small font-semibold sm:not-sr-only sm:text-body">{{ c_title }}</p>
   {#
     The policy link reads inline, at the end of the sentence it belongs to,
     instead of sitting on a row of its own. On a phone that row cost 56px —
