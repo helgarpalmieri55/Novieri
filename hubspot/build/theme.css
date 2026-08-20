@@ -394,8 +394,17 @@
    */
   .article-prose p,
   .article-prose li {
-    font-size: var(--text-lead);
     line-height: 1.7;
+  }
+  /* From sm up only. The 19px exists to bring a 640px measure back under 80
+     characters; on a phone the measure is the screen, and 19px in a 350px
+     column drops the line to 39 characters — as far below the band as 83 was
+     above it. Measured at 390: 17px gives 44, 19px gives 39. */
+  @media (min-width: 40rem) {
+    .article-prose p,
+    .article-prose li {
+      font-size: var(--text-lead);
+    }
   }
   .article-prose > * + * {
     margin-top: 1rem;
