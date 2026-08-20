@@ -14,7 +14,7 @@
     <div class="reveal mb-9 max-w-2xl">
       {% if module.eyebrow %}<span class="eyebrow">{{ module.eyebrow }}</span>{% endif %}
       {% if module.title %}<h2 class="mt-4">{{ module.title }}</h2>{% endif %}
-      {% if module.intro %}<p class="mt-4 max-w-[56ch] text-ink-muted">{{ module.intro }}</p>{% endif %}
+      {% if module.intro %}<p class="mt-4 max-w-[36ch] text-ink-muted">{{ module.intro }}</p>{% endif %}
     </div>
     <div class="grid items-start gap-7 lg:grid-cols-2">
       {% for item in module.items %}
@@ -50,14 +50,14 @@
           {% if item.item_label or item.item_caption %}
             <figcaption class="mt-4">
               {% if item.item_label %}<p class="idx-mono lowercase text-gold-deep">{{ item.item_label }}</p>{% endif %}
-              {% if item.item_caption %}<p class="mt-1.5 max-w-[46ch] text-small text-ink-muted">{{ item.item_caption }}</p>{% endif %}
+              {% if item.item_caption %}<p class="mt-1.5 max-w-[30ch] text-small text-ink-muted">{{ item.item_caption }}</p>{% endif %}
             </figcaption>
           {% endif %}
         </figure>
       {% endfor %}
     </div>
     {% if module.footnote %}
-      <p class="reveal mt-7 max-w-[56ch] text-caption text-ink-faint">{{ module.footnote }}</p>
+      <p class="reveal mt-7 max-w-[36ch] text-caption text-ink-faint">{{ module.footnote }}</p>
     {% endif %}
   </div>
 </section>

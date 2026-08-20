@@ -69,10 +69,10 @@
       }
     </script>
     <div class="container-site pb-[clamp(3rem,8vh,6rem)]">
-      <div class="article-prose max-w-[68ch]">{{ content.post_body }}</div>
+      <div class="article-prose max-w-[44ch]">{{ content.post_body }}</div>
       {# The review's end-of-article ask: a reader who finished has a next
          step that names their situation, not another generic button. #}
-      <aside class="mt-14 max-w-[68ch] rounded-2xl border border-line p-8">
+      <aside class="mt-14 max-w-[44ch] rounded-2xl border border-line p-8">
         <h2 class="text-h3">{% if is_es %}¿Necesitas aplicar esto a tu empresa?{% else %}Need to apply this to your company?{% endif %}</h2>
         <p class="mt-3 text-small text-ink-muted">
           {% if is_es %}En una llamada de 30 minutos revisamos tu caso y te decimos cuál sería el primer paso más razonable.{% else %}In a 30-minute call we review your case and tell you the most sensible first step.{% endif %}
@@ -102,7 +102,7 @@
         <div class="reveal">
           <span class="eyebrow">{% if is_es %}empieza por aquí{% else %}start here{% endif %}</span>
           <h2 class="mt-4 max-w-[18ch]">{% if is_es %}¿Y cómo está tu operación?{% else %}So how does your own operation look?{% endif %}</h2>
-          <p class="mt-5 max-w-[56ch] text-ink-muted">
+          <p class="mt-5 max-w-[36ch] text-ink-muted">
             {% if is_es %}Responde diez preguntas sobre tu empresa y recibes el diagnóstico: en qué nivel estás, los riesgos que vemos y qué haríamos primero — escrito para tu caso, no una plantilla. No te compromete a nada.{% else %}Answer ten questions about your business and you get the diagnostic: the level you are at, the risks we see, and what we would do first — written for your case, not a template. It commits you to nothing.{% endif %}
           </p>
         </div>

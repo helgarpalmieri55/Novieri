@@ -618,3 +618,21 @@
   min-width: 24px;
   flex: 0 0 24px;
 }
+
+/*
+ * The header's own focus ring.
+ *
+ * Every control on the site outlines in plum on focus except the seven main
+ * nav items, which came out in --ink-muted — the browser's default outline
+ * takes its colour from the element, and those links are muted grey. The most
+ * used control group on the site was the one exception to the brand's own
+ * rule that focus is an accent outline.
+ */
+.site-header a:focus-visible,
+.site-header button:focus-visible,
+.site-mobile-nav a:focus-visible,
+.site-mobile-nav button:focus-visible {
+  outline: 2px solid var(--color-plum-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

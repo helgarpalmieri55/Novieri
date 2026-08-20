@@ -8,9 +8,9 @@
       {% if module.picture.src %}
         <img src="{{ module.picture.src }}" alt="{{ module.picture.alt }}" loading="lazy" decoding="async"
              class="w-full rounded-2xl border border-white/10" />
-        {% if module.intro %}<p class="mt-6 max-w-[62ch] text-on-dark-muted">{{ module.intro }}</p>{% endif %}
+        {% if module.intro %}<p class="mt-6 max-w-[40ch] text-on-dark-muted">{{ module.intro }}</p>{% endif %}
       {% else %}
-        <p class="max-w-[62ch] text-lead text-on-dark-muted">{{ module.intro }}</p>
+        <p class="max-w-[40ch] text-lead text-on-dark-muted">{{ module.intro }}</p>
       {% endif %}
       {% if module.footnote %}
         <p class="idx-mono mt-8 tracking-[0.07em] text-on-dark-faint">{{ module.footnote }}</p>
