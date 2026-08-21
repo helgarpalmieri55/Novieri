@@ -34,11 +34,24 @@
     #}
     {% set card_tag = "h2" %}
     {% if module.title %}{% set card_tag = "h3" %}{% endif %}
-    {# Three across, not four. There are five pillars now and five cards in a
-       four-column grid leave one stranded on its own row; 3 + 2 reads as a
-       deliberate arrangement instead of an accident. The solutions index has
-       six, which fills two rows of three exactly. #}
-    <div class="grid grid-cols-1 gap-4.5 sm:grid-cols-2 xl:grid-cols-3">
+    {#
+      The column count follows the card count instead of ignoring it.
+
+      Three across was chosen for the five pillars — 3 + 2 leaves one empty
+      cell and reads as an arrangement. The same grid was then handed four
+      cards, on the home industries band and again on the service pages, and
+      3 + 1 does not read as an arrangement: measured at 1440 it left a single
+      369px card beside roughly 900px of empty ground, on a dark section where
+      the void is at its most visible.
+
+      So any count that would strand exactly one card on the last row goes
+      four across instead — four fills its row, and seven becomes 4 + 3. Every
+      other count keeps the three-column rhythm it was designed with.
+    #}
+    {% set n = module.cards|length %}
+    {% set grid_cols = "sm:grid-cols-2 xl:grid-cols-3" %}
+    {% if n > 3 and n % 3 == 1 %}{% set grid_cols = "sm:grid-cols-2 xl:grid-cols-4" %}{% endif %}
+    <div class="grid grid-cols-1 gap-4.5 {{ grid_cols }}">
       {% for card in module.cards %}
         {# A card for one market disappears in the others: the theme stylesheet
            acts on data-region-only and base.hubl.html decides the region before
@@ -72,6 +85,24 @@
         </a>
       {% endfor %}
     </div>
+    {#
+      One link under the grid, for the page the home page never offered.
+
+      Measured: the home body held fourteen unique destinations and not one of
+      them was /pricing — the page carrying "Most firms make you sit through a
+      sales call before you hear a price. Here is ours up front", which is the
+      sharpest argument on the site and the one thing a visitor comparing
+      vendors in five tabs cannot get from four of them. It was reachable from
+      the nav and nowhere else. This is the moment to offer it: directly under
+      the five things we do, before the reader has to go looking.
+    #}
+    {% if module.after_label and module.after_link.url.href %}
+      <p class="reveal mt-9">
+        <a href="{{ module.after_link.url.href }}" class="inline-flex items-center gap-1.5 text-small font-medium text-plum transition-[gap] duration-200 hover:gap-3 hover:text-gold-deep">
+          {{ module.after_label }} <span aria-hidden="true">&rarr;</span>
+        </a>
+      </p>
+    {% endif %}
   </div>
 </section>
 {% endif %}

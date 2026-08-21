@@ -155,9 +155,29 @@
   },
   {
     "name": "co_only_match",
-    "label": "Colombia-only cards \u2014 URL fragment",
+    "label": "Colombia-only cards — URL fragment",
     "type": "text",
     "default": "whatsapp, restaurantes, pymes",
-    "help_text": "Comma-separated URL fragments, up to four. Anything whose link contains one is shown only to visitors in Colombia \u2014 the offers that are not sold to the US market."
+    "help_text": "Comma-separated URL fragments, up to four. Anything whose link contains one is shown only to visitors in Colombia — the offers that are not sold to the US market."
+  },
+  {
+    "name": "after_label",
+    "label": "Link under the grid",
+    "type": "text",
+    "default": "",
+    "help_text": "One quiet link below the cards, for the page a reader wants next. Empty hides the row."
+  },
+  {
+    "name": "after_link",
+    "label": "Link under the grid — destination",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "CONTENT",
+        "href": ""
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
   }
 ]

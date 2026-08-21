@@ -36,6 +36,37 @@
       ]
     }
   </script>
+  {#
+    The per-pillar accent, which DESIGN.md has specified since the first
+    commit and which nothing has ever built.
+
+    Measured before this: all five pillar pages rendered the same eyebrow at
+    rgb(119,97,60) and the same plum button. Four pillars in "strict priority
+    order", one colour — the single largest piece of design specificity the
+    brief asks for and the site had none of it.
+
+    Keyed off the page's own slug rather than a field, so it needs no fill run
+    and cannot drift out of sync with the copy: both languages of a pillar
+    resolve to the same accent from their own URLs.
+
+    What it colours is deliberately narrow. Principle 3 says plum carries
+    interaction, so buttons and links stay plum on every pillar; the accent
+    takes the ornament — the ·· marks that open every eyebrow and every list
+    item. That is the site's own signature element carrying the pillar's
+    identity, rather than a second interaction colour competing with the first.
+  #}
+  {% set slug = content.slug|string %}
+  {% set pillar = "" %}
+  {% if "ai-automation" in slug or "ia-y-automatizacion" in slug %}
+    {% set pillar = "pillar-plum" %}
+  {% elif "managed-it" in slug or "it-administrado" in slug %}
+    {% set pillar = "pillar-teal" %}
+  {% elif "cybersecurity" in slug or "ciberseguridad" in slug %}
+    {% set pillar = "pillar-gold" %}
+  {% elif "custom-software" in slug or "desarrollo-a-medida" in slug %}
+    {% set pillar = "pillar-ink" %}
+  {% endif %}
+  <div class="{{ pillar }}">
   {% dnd_area "main" label="Page content" %}
     {% dnd_section %}
       {% dnd_column %}
@@ -65,4 +96,5 @@
       {% end_dnd_column %}
     {% end_dnd_section %}
   {% end_dnd_area %}
+  </div>
 {% endblock body %}

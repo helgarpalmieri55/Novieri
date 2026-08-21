@@ -7,7 +7,15 @@
 
 {# Fixed, not sticky — module.hubl.css explains why, and carries the body
    padding that replaces the space the header no longer occupies. #}
-<header class="site-header z-50 border-b border-transparent bg-white/90 backdrop-blur transition-colors duration-300">
+{# Solid white, no blur.
+
+   `bg-white/90 backdrop-blur` is glassmorphism, and glassmorphism is the
+   third item on the brief's own anti-reference list — shipping under the logo
+   on every page of a site whose first design principle is "depth from
+   borders, not shadows". The hairline that appears on scroll is the
+   separation this header is supposed to have; the blur was doing that job
+   badly and off-brief at the same time. #}
+<header class="site-header z-50 border-b border-transparent bg-white transition-colors duration-300">
   <a
     href="#main"
     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
@@ -171,7 +179,8 @@
               </svg>
             </button>
             <div class="nav-panel invisible absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-4 opacity-0 transition-[opacity,visibility] duration-200 group-hover:visible group-hover:opacity-100 data-[open=true]:visible data-[open=true]:opacity-100" data-open="false">
-              <div class="grid gap-0.5 rounded-2xl border border-line bg-white p-2 shadow-[0_8px_40px_rgba(22,18,29,0.10)]">
+              {# Hairline, not a drop shadow — same reason as the header above. #}
+              <div class="grid gap-0.5 rounded-2xl border border-line bg-white p-2">
                 {% for child in item.children %}
                   <a href="{{ child.url }}"{% if co_frags|length > 0 and co_frags[0]|trim and co_frags[0]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 1 and co_frags[1]|trim and co_frags[1]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 2 and co_frags[2]|trim and co_frags[2]|trim in child.url %} data-region-only="co"{% elif co_frags|length > 3 and co_frags[3]|trim and co_frags[3]|trim in child.url %} data-region-only="co"{% endif %} class="rounded-xl px-3.5 py-2.5 text-small text-ink-muted transition-colors hover:bg-plum-wash hover:text-ink">{{ child.label }}</a>
                 {% endfor %}

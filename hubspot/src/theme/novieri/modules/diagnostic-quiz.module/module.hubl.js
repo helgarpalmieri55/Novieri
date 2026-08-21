@@ -109,10 +109,44 @@
       }
     });
 
+    /*
+     * Showing the message was only ever half of it.
+     *
+     * These four errors have always rendered — an empty submit unhides
+     * "Enter your name.", "Enter a valid company name.", "Enter a valid
+     * email." and the consent line, and a sighted visitor sees all four in
+     * red. What none of it did was reach anyone not looking at the screen:
+     * no role="alert" on the messages, no aria-invalid on the fields, no
+     * aria-describedby tying one to the other, and focus left on the body.
+     * A screen-reader user pressed the button at the end of a ten-question
+     * assessment and was told nothing at all.
+     *
+     * The input keeps the message's id in aria-describedby only while the
+     * error is up, so the field is not permanently described by an empty
+     * paragraph.
+     */
     function fieldError(name, on) {
       var el = form.querySelector('[data-error="' + name + '"]');
-      if (el) el.hidden = !on;
+      if (!el) return;
+      el.hidden = !on;
+      if (!el.id) el.id = "dg-err-" + name;
+      var input = form.querySelector('[name="' + name + '"]');
+      if (!input) return;
+      if (on) {
+        input.setAttribute("aria-invalid", "true");
+        input.setAttribute("aria-describedby", el.id);
+      } else {
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+      }
     }
+
+    // The script is here, so it owns validation: native bubbles would replace
+    // four localized inline messages with the browser's own. With the script
+    // absent the markup's `required` attributes stand and the browser blocks
+    // the submit instead, which is the point of setting this here rather than
+    // in the HTML.
+    form.noValidate = true;
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -123,12 +157,22 @@
       var company = String(data.get("company") || "").trim();
 
       var problems = 0;
+      var firstBad = null;
       [["name", !name], ["email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)],
        ["company", !company], ["consent", !data.get("consent")]].forEach(function (pair) {
         fieldError(pair[0], pair[1]);
-        if (pair[1]) problems += 1;
+        if (pair[1]) {
+          problems += 1;
+          if (!firstBad) firstBad = form.querySelector('[name="' + pair[0] + '"]');
+        }
       });
-      if (problems) return;
+      // Focus goes to the first field that needs fixing, so the answer to
+      // "what went wrong" is wherever the cursor now is rather than somewhere
+      // up the page the visitor has to hunt for.
+      if (problems) {
+        if (firstBad) firstBad.focus({ preventScroll: false });
+        return;
+      }
 
       busy = true;
       failed.hidden = true;

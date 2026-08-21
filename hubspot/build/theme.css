@@ -562,8 +562,27 @@
     padding: 0.75rem 1rem;
     font-family: inherit;
     font-size: var(--text-small);
+    line-height: 1.5;
+    /* One height for every control in the column. A select and an input with
+       identical padding still came out 47px and 51px, because a select sizes
+       from its own intrinsic content box — so the contact form had a visible
+       4px step down the middle of its stack. Stating the line-height and a
+       floor settles both. The floor is also the thumb minimum. */
+    min-height: 48px;
     color: var(--color-ink);
     transition: border-color 0.2s;
+  }
+  /* And the select stops wearing the operating system's chevron. Native
+     appearance is a different arrow on every platform, in a stack where
+     everything else is drawn by this file; this is the same chevron the
+     navigation uses, at the same weight. */
+  .hs-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='6' viewBox='0 0 9 6' fill='none' stroke='%236f6880' stroke-width='1.5'%3E%3Cpath d='M1 1.5 4.5 5 8 1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
   }
   .hs-form input::placeholder,
   .hs-form textarea::placeholder {

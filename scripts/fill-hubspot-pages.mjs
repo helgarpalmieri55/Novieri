@@ -955,6 +955,11 @@ function homeWidgets() {
           card_colour: ACCENTS[i],
           card_link: { url: { type: "CONTENT", href: `/${slugFor(slug)}` } },
         })),
+        // The home body had fourteen destinations and none of them was the
+        // pricing page. This is the one place it belongs: under the five
+        // things we do, where the next question is what they cost.
+        after_label: h.services.pricingLink || "",
+        after_link: { url: { type: "CONTENT", href: `/${slugFor("pricing")}` } },
       },
     },
     [HOME_SLOTS.diagnose]: {

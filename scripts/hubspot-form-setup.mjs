@@ -37,7 +37,12 @@ const EN = {
   thanks: "Received. We'll reply within the same business day.",
   consent: "By submitting this form you agree that Novieri may contact you about your enquiry.",
   optIn: "I also agree to receive occasional updates from Novieri. You can unsubscribe at any time.",
-  privacy: "We care about your privacy. Read how we handle your data in our privacy policy: https://www.novieri.com/legal/privacy-policy",
+  // An anchor, not a bare URL. privacyText is rendered as HTML by HubSpot, and
+  // this string ended in a naked address that printed as plain text inside the
+  // form — measured on both contact pages, `form a` count was 0. At the exact
+  // moment someone hands over their personal data, the policy describing what
+  // happens to it was not clickable.
+  privacy: 'We care about your privacy. Read how we handle your data in our <a href="https://www.novieri.com/legal/privacy-policy">privacy policy</a>.',
   process: "To answer your enquiry we need your permission to store and process your personal data.",
 };
 
@@ -46,7 +51,7 @@ const ES = {
   thanks: "Recibido. Te respondemos el mismo día hábil.",
   consent: "Al enviar este formulario aceptas que Novieri te contacte sobre tu consulta.",
   optIn: "También acepto recibir novedades ocasionales de Novieri. Puedes darte de baja cuando quieras.",
-  privacy: "Cuidamos tu privacidad. Lee cómo tratamos tus datos en nuestra política de privacidad: https://www.novieri.com/legal/politica-de-privacidad",
+  privacy: 'Cuidamos tu privacidad. Lee cómo tratamos tus datos en nuestra <a href="https://www.novieri.com/legal/politica-de-privacidad">política de privacidad</a>.',
   process: "Para responder tu consulta necesitamos tu permiso para almacenar y tratar tus datos personales.",
 };
 

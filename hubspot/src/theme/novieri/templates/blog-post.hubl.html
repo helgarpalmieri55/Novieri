@@ -41,12 +41,15 @@
         #}
         <h1 class="article-title reveal mt-3" style="--rd: 60ms">{{ content.name }}</h1>
         {% set is_es = content.language and "es" in content.language|string %}
+        {# <time datetime> on both dates. They were plain text, so the only
+           machine-readable publication date on an article was the one inside
+           the JSON-LD — which, until today, did not parse. #}
         <p class="reveal idx-mono mt-6 lowercase text-ink-faint" style="--rd: 120ms">
-          {% if is_es %}{{ content.publish_date|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}{{ content.publish_date|datetimeformat("%b %e, %Y") }}{% endif %}
+          <time datetime="{{ content.publish_date|datetimeformat("%Y-%m-%d") }}">{% if is_es %}{{ content.publish_date|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}{{ content.publish_date|datetimeformat("%b %e, %Y") }}{% endif %}</time>
           {# A revision worth republishing is a revision worth dating — the
              review asked for honest update dates, not backdated history. #}
           {% if content.updated and content.updated|datetimeformat("%Y-%m-%d") != content.publish_date|datetimeformat("%Y-%m-%d") %}
-            · {% if is_es %}actualizado el {{ content.updated|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}updated {{ content.updated|datetimeformat("%b %e, %Y") }}{% endif %}
+            · {% if is_es %}actualizado el {% else %}updated {% endif %}<time datetime="{{ content.updated|datetimeformat("%Y-%m-%d") }}">{% if is_es %}{{ content.updated|format_datetime("d 'de' MMMM 'de' yyyy", "America/Bogota", "es") }}{% else %}{{ content.updated|datetimeformat("%b %e, %Y") }}{% endif %}</time>
           {% endif %}
           {% if content.tag_list %} · {% for tag in content.tag_list %}{{ tag.name }}{% if not loop.last %} · {% endif %}{% endfor %}{% endif %}
         </p>

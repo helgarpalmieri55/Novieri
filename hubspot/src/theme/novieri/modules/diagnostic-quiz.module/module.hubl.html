@@ -43,7 +43,7 @@
             </label>
           {% endfor %}
         </div>
-        <p class="mt-3 text-caption text-[#b3261e]" data-required hidden>{{ module.error_required }}</p>
+        <p class="mt-3 text-caption text-[#b3261e]" role="alert" data-required hidden>{{ module.error_required }}</p>
       </fieldset>
     {% endfor %}
 
@@ -71,7 +71,15 @@
       <p class="mt-5 text-small text-ink-muted">{{ module.preview_body }}</p>
     </div>
 
-    <form class="card-hairline p-7" data-gate novalidate>
+    {# novalidate is set by the script, not here.
+       Hardcoded in the markup it meant the browser's own enforcement was off
+       permanently — so with the script dead nothing checked anything, and the
+       Ley 1581 authorization below was a checkbox that could be left blank
+       with no consequence. Now the fields carry `required`, the script turns
+       native validation off when it loads and takes over with its own inline
+       messages, and if the script never arrives the browser still refuses the
+       submit. #}
+    <form class="card-hairline p-7" data-gate>
       <h2 class="text-h3">{{ module.gate_title }}</h2>
       <p class="mt-2.5 text-small text-ink-muted">{{ module.gate_body }}</p>
 
@@ -84,20 +92,20 @@
         <div>
           <label for="dg-name" class="mb-1.5 block text-small font-medium">{{ module.gate_name }}</label>
           <input id="dg-name" name="name" type="text" autocomplete="name"
-                 class="w-full rounded-lg border border-line bg-white px-4 py-3 text-small text-ink transition-colors placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20" />
-          <p class="mt-1.5 text-caption text-[#b3261e]" data-error="name" hidden>{{ module.error_name }}</p>
+                 class="w-full rounded-lg border border-line bg-white px-4 py-3 text-small text-ink transition-colors placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20" required />
+          <p class="mt-1.5 text-caption text-[#b3261e]" role="alert" data-error="name" hidden>{{ module.error_name }}</p>
         </div>
         <div>
           <label for="dg-company" class="mb-1.5 block text-small font-medium">{{ module.gate_company }}</label>
           <input id="dg-company" name="company" type="text" autocomplete="organization"
-                 class="w-full rounded-lg border border-line bg-white px-4 py-3 text-small text-ink transition-colors placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20" />
-          <p class="mt-1.5 text-caption text-[#b3261e]" data-error="company" hidden>{{ module.error_company }}</p>
+                 class="w-full rounded-lg border border-line bg-white px-4 py-3 text-small text-ink transition-colors placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20" required />
+          <p class="mt-1.5 text-caption text-[#b3261e]" role="alert" data-error="company" hidden>{{ module.error_company }}</p>
         </div>
         <div>
           <label for="dg-email" class="mb-1.5 block text-small font-medium">{{ module.gate_email }}</label>
-          <input id="dg-email" name="email" type="email" autocomplete="email"
+          <input id="dg-email" name="email" type="email" autocomplete="email" required
                  class="w-full rounded-lg border border-line bg-white px-4 py-3 text-small text-ink transition-colors placeholder:text-ink-faint focus:border-plum focus:outline-none focus:ring-2 focus:ring-plum/20" />
-          <p class="mt-1.5 text-caption text-[#b3261e]" data-error="email" hidden>{{ module.error_email }}</p>
+          <p class="mt-1.5 text-caption text-[#b3261e]" role="alert" data-error="email" hidden>{{ module.error_email }}</p>
         </div>
         <div>
           <label for="dg-phone" class="mb-1.5 block text-small font-medium">{{ module.gate_phone }}</label>
@@ -107,12 +115,12 @@
       </div>
 
       <label class="mt-5 flex items-start gap-2.5 text-small text-ink-muted">
-        <input type="checkbox" name="consent" class="mt-1 h-4 w-4 flex-none accent-[#4f3461]" />
+        <input type="checkbox" name="consent" required class="mt-1 h-6 w-6 flex-none accent-[#4f3461]" />
         <span data-consent-text>{{ module.gate_consent }}
           <a href="{{ module.gate_privacy_link.url.href }}" class="link-accent">{{ module.gate_privacy }}</a>
         </span>
       </label>
-      <p class="mt-1.5 text-caption text-[#b3261e]" data-error="consent" hidden>{{ module.error_consent }}</p>
+      <p class="mt-1.5 text-caption text-[#b3261e]" role="alert" data-error="consent" hidden>{{ module.error_consent }}</p>
 
       {# The review's consent split: delivering the report and being called
          about it are different permissions. This one is optional, starts

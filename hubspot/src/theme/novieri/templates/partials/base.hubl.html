@@ -254,8 +254,26 @@
       {% if en_url %}
         <link rel="alternate" hreflang="x-default" href="{{ en_url }}" />
       {% else %}
-        {# Left visible on purpose: if this comment is in the page source, the
-           variant lookup is still failing and the cluster is still incomplete. #}
+        {#
+          No English variant. On two pages that is the correct answer rather
+          than a failure: /industrias/restaurantes and /industrias/pymes are
+          written for the Colombian market and have no US counterpart by
+          design — the ES index carries six sectors where the EN one carries
+          four. Measured before this, both emitted no alternate links at all,
+          where every other industry page emitted three.
+
+          So they point at themselves. A single-language page naming itself as
+          the Spanish version and as the default is self-consistent, which is
+          the one thing an hreflang set has to be; the alternative was a page
+          in the cluster with no locale signal whatsoever.
+
+          The comment stays, because it is still the only way to tell this
+          case apart from a genuinely broken variant lookup. If it starts
+          appearing on a page that does have an English twin, the lookup
+          broke and these two links are pointing at the wrong thing.
+        #}
+        <link rel="alternate" hreflang="es" href="{{ page_meta.canonical_url }}" />
+        <link rel="alternate" hreflang="x-default" href="{{ page_meta.canonical_url }}" />
         <!-- x-default: no English variant found for this page -->
       {% endif %}
     {% else %}

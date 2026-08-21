@@ -182,7 +182,7 @@
     "proof": {
       "items": [
         {
-          "value": "1000+",
+          "value": "1,000+",
           "label": "users supported in technology leadership roles"
         },
         {
@@ -262,7 +262,8 @@
     },
     "services": {
       "eyebrow": "one operating model",
-      "title": "One team that runs, secures, automates, and builds."
+      "title": "One team that runs, secures, automates, and builds.",
+      "pricingLink": "See the price ranges"
     },
     "why": {
       "eyebrow": "why novieri",

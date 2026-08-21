@@ -264,6 +264,46 @@
     letter-spacing: 0.1em;
   }
 
+  /*
+   * Per-pillar accent — DESIGN.md's fifth signature element, and until now the
+   * only one of the five never built. AI = plum, Managed IT = teal, Security =
+   * gold, Software = ink; service.hubl.html resolves which from the page slug,
+   * in both languages.
+   *
+   * It colours ornament and nothing else. The `··` opening every eyebrow and
+   * every dot-list item is already the site's signature mark, so giving it the
+   * pillar's colour makes each section of the business recognisable at a
+   * glance without introducing a second interaction colour — plum keeps every
+   * button and link, on every pillar, per principle 3.
+   *
+   * Gold is the default the rest of the site uses, so pillar-gold needs no
+   * rule of its own; it is named in the template anyway, because a pillar that
+   * silently has no class reads as an omission the next time someone looks.
+   */
+  .pillar-plum .eyebrow::before,
+  .pillar-plum .dot-list li::before {
+    color: var(--color-plum);
+  }
+  .pillar-teal .eyebrow::before,
+  .pillar-teal .dot-list li::before {
+    color: var(--color-teal);
+  }
+  .pillar-ink .eyebrow::before,
+  .pillar-ink .dot-list li::before {
+    color: var(--color-ink-muted);
+  }
+  /* On the dark bands the deep variants disappear into the ground, so each
+     pillar swaps to its bright twin exactly where the site already does. */
+  .pillar-plum .dark-s .eyebrow::before {
+    color: var(--color-plum-bright);
+  }
+  .pillar-teal .dark-s .eyebrow::before {
+    color: var(--color-teal-bright);
+  }
+  .pillar-ink .dark-s .eyebrow::before {
+    color: var(--color-on-dark-muted);
+  }
+
   .dark-s .dot-list li::before {
     color: var(--color-gold-bright);
   }
