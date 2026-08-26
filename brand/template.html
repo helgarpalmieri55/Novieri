@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Novieri — Brand guidelines</title>
+<style>
+/*FONTS*/
+:root{
+  --white:#ffffff; --black:#0c0a10;
+  --ink:#16121d; --ink-muted:#554d60; --ink-faint:#6f6880;
+  --on-dark:#f4f2f7; --on-dark-muted:#a49cb2;
+  --line:#e9e6ee; --line-dark:#2b2536;
+  --plum:#4f3461; --plum-bright:#8d63ad; --plum-deep:#3b2549; --plum-wash:#f4f0f8;
+  --gold:#a8875c; --gold-bright:#c9a878; --gold-deep:#77613c;
+  --teal:#264e59; --teal-bright:#4f93a6;
+  --sans:"Satoshi",system-ui,sans-serif;
+  --disp:"Clash Display","Satoshi",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@page{ size:Letter; margin:0; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);
+  -webkit-font-smoothing:antialiased;font-size:10.5pt;line-height:1.6}
+
+.page{width:8.5in;height:11in;padding:0.72in 0.8in;position:relative;
+  page-break-after:always;overflow:hidden;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+.page.dark{background:var(--black);color:var(--on-dark)}
+
+/* ·· signature eyebrow */
+.eyebrow{font-family:var(--mono);font-size:8pt;letter-spacing:.1em;color:var(--ink-muted);
+  text-transform:lowercase;display:flex;align-items:baseline;gap:.5em}
+.eyebrow::before{content:"··";color:var(--gold);font-family:var(--sans);font-weight:700;
+  font-size:13pt;line-height:0;position:relative;top:-.06em}
+.dark .eyebrow{color:var(--on-dark-muted)}
+.dark .eyebrow::before{color:var(--gold-bright)}
+
+h1,h2,h3{font-family:var(--disp);font-weight:600;letter-spacing:-.02em;line-height:1.06}
+h1{font-size:34pt}
+h2{font-size:21pt;letter-spacing:-.015em}
+h3{font-size:12pt;letter-spacing:-.01em;line-height:1.25}
+p{max-width:62ch}
+.lead{font-size:12pt;color:var(--ink-muted);line-height:1.55}
+.dark .lead{color:var(--on-dark-muted)}
+.muted{color:var(--ink-muted)}
+.faint{color:var(--ink-faint)}
+.mono{font-family:var(--mono);font-size:8.5pt;letter-spacing:.02em}
+.rule{height:1px;background:var(--line);margin:14pt 0}
+.dark .rule{background:var(--line-dark)}
+.seam{height:2px;background:linear-gradient(90deg,var(--teal-bright),var(--plum-bright) 45%,var(--gold-bright));border:0}
+
+.hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16pt}
+.ft{position:absolute;left:.8in;right:.8in;bottom:.45in;display:flex;
+  justify-content:space-between;font-family:var(--mono);font-size:7.5pt;
+  color:var(--ink-faint);letter-spacing:.08em}
+.dark .ft{color:var(--on-dark-muted)}
+
+/* cover */
+.cover{justify-content:center;align-items:flex-start;gap:0}
+.cover .mark{width:2.6in;margin-bottom:26pt}
+.cover h1{font-size:46pt;max-width:11ch}
+.wordmark{font-family:var(--disp);font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+
+/* swatches */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9pt 16pt}
+.sw{display:flex;gap:9pt;align-items:flex-start;break-inside:avoid}
+.chip{width:34pt;height:34pt;border-radius:5pt;flex:none}
+.swb{flex:1;min-width:0}
+.swn{font-family:var(--disp);font-weight:600;font-size:10.5pt;line-height:1.2}
+.swh{font-family:var(--mono);font-size:8pt;color:var(--ink-faint);letter-spacing:.04em}
+.dark .swh{color:var(--on-dark-muted)}
+.swu{font-size:8.5pt;color:var(--ink-muted);line-height:1.4;margin-top:2pt;max-width:none}
+.dark .swu{color:var(--on-dark-muted)}
+.swc{font-family:var(--mono);font-size:7.5pt;color:var(--ink-faint);margin-top:2pt}
+.dark .swc{color:var(--on-dark-muted)}
+
+table{width:100%;border-collapse:collapse;font-size:8.5pt}
+th,td{text-align:left;padding:4pt 8pt 4pt 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:7.5pt;letter-spacing:.08em;color:var(--ink-faint);
+  text-transform:lowercase;font-weight:400}
+.dark th,.dark td{border-color:var(--line-dark)}
+
+.card{border:1px solid var(--line);border-radius:10pt;padding:12pt 14pt}
+.dark .card{border-color:var(--line-dark)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14pt}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12pt}
+
+.spec{border:1px solid var(--line);border-radius:10pt;padding:11pt 13pt;margin-top:8pt}
+.spec .s1{font-family:var(--disp);font-weight:600;font-size:26pt;letter-spacing:-.02em;line-height:1.05}
+.spec .s2{font-family:var(--sans);font-size:11pt;color:var(--ink-muted);margin-top:6pt;max-width:52ch}
+.spec .s3{font-family:var(--mono);font-size:8pt;letter-spacing:.1em;color:var(--gold-deep);margin-top:8pt}
+
+.do,.dont{border-radius:8pt;padding:8pt 11pt;font-size:8.8pt;line-height:1.45}
+.do{background:#f2f7f3;border-left:2px solid #2f6b46}
+.dont{background:#fbf2f2;border-left:2px solid #9b2f2f}
+.do b,.dont b{font-family:var(--mono);font-size:7.5pt;letter-spacing:.1em;display:block;margin-bottom:3pt}
+.do b{color:#2f6b46}
+.dont b{color:#9b2f2f}
+
+.pill{color:#fff;font-size:7.5pt;font-family:var(--mono);padding:2pt 6pt;border-radius:4pt;letter-spacing:.04em}
+.dotmark{font-weight:700;font-size:15pt;letter-spacing:.12em;line-height:0}
+.dotbig{font-weight:700;font-size:24pt;letter-spacing:.12em;line-height:0;display:inline-block;padding-top:6pt}
+.swatchdot{display:inline-block;width:15pt;height:15pt;border-radius:3pt;vertical-align:middle}
+ul{list-style:none}
+li{padding-left:16pt;position:relative;margin-bottom:5pt;font-size:9.5pt;line-height:1.5}
+li::before{content:"··";position:absolute;left:0;top:-.15em;color:var(--gold);font-weight:700;font-size:12pt;letter-spacing:.1em}
+.dark li::before{color:var(--gold-bright)}
+.clearspace{position:relative;display:inline-block;padding:33pt;border:1px dashed var(--gold);border-radius:8pt}
+.clearspace .mk{width:74pt;display:block}
+.ratio{font-family:var(--mono);font-size:7.5pt;color:var(--gold-deep);position:absolute}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="page cover">
+  <div class="mark"><!--MARK--></div>
+  <div class="eyebrow">brand guidelines</div>
+  <h1 style="margin-top:12pt">A jeweler’s product, photographed in a laboratory.</h1>
+  <p class="lead" style="margin-top:18pt;max-width:44ch">
+    How Novieri looks, sounds and behaves — the colors, the type, the marks, and
+    the rules that keep them consistent across two languages and two markets.
+  </p>
+  <div class="seam" style="margin-top:26pt;width:3in"></div>
+  <div class="mono" style="margin-top:14pt;color:var(--ink-faint)">
+    novieri s.a.s. · barranquilla, colombia · v1.0
+  </div>
+</section>
+
+<!-- ============ THE IDEA ============ -->
+<section class="page">
+  <div class="hd"><div class="eyebrow">01 — the idea</div><div class="mono faint">novieri</div></div>
+  <h2>Warmth and rigor, at the same time.</h2>
+  <p class="lead" style="margin-top:10pt">
+    Novieri is family-run — the name fuses the two founders’ surnames — and holds
+    enterprise standards. That pairing is the brand. Not a friendly company that
+    happens to be technical, and not a technical company that has learned to smile:
+    both at once, in every artifact.
+  </p>
+  <div class="rule"></div>
+  <div class="cols" style="margin-top:4pt">
+    <div>
+      <h3>Personality</h3>
+      <p class="muted" style="font-size:9.5pt;margin-top:5pt">
+        Premium. Jewel. Distinctive. Lean into the logo’s gem language — jewel-tone
+        commitment, gold used with intent, drama in deliberate moments. The reference
+        for precision is Linear: engineered layouts, tight grids, mono details that
+        speak to a technical buyer.
+      </p>
+    </div>
+    <div>
+      <h3>Voice</h3>
+      <p class="muted" style="font-size:9.5pt;margin-top:5pt">
+        A senior engineer who explains clearly. Confident, plain, specific — never a
+        sales deck. Sentence case everywhere. Spanish uses <i>tú</i>: warm, direct,
+        professional. Colombian Spanish, never a calque of the English.
+      </p>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <h3 style="margin-bottom:7pt">The five principles</h3>
+  <ul>
+    <li><b>The logo is the law.</b> Every color derives from the mark’s teal → plum → gold. Ornament is rationed to two motifs.</li>
+    <li><b>Depth from borders, not shadows.</b> 1px hairlines and background steps. No drop shadows, no glow, no blur.</li>
+    <li><b>One accent, deliberate doses.</b> Plum carries interaction. Gold appears only where the eye should land.</li>
+    <li><b>Typography does the selling.</b> If a section feels flat, fix it with type and spacing — never with more color.</li>
+    <li><b>Every claim is specific.</b> Real timezone math, real certifications, real package names. No vague promises.</li>
+  </ul>
+  <div class="rule"></div>
+  <h3 style="margin-bottom:7pt">Who it is for</h3>
+  <div class="cols">
+    <div class="card">
+      <div class="mono" style="font-size:7.5pt;letter-spacing:.1em;color:var(--gold-deep)">·· 01 &nbsp;english</div>
+      <h3 style="margin-top:5pt">US decision-makers</h3>
+      <p class="muted" style="font-size:8.8pt;margin-top:3pt">
+        Founders, ops leads and CTOs at companies with no internal IT department,
+        comparing nearshore providers from a browser tab. They are weighing us against
+        US agencies and offshore body shops. What they need: a firm they can trust with
+        infrastructure, security and an AI roadmap, without US agency pricing.
+      </p>
+    </div>
+    <div class="card">
+      <div class="mono" style="font-size:7.5pt;letter-spacing:.1em;color:var(--gold-deep)">·· 02 &nbsp;español</div>
+      <h3 style="margin-top:5pt">Barranquilla and Colombian SMBs</h3>
+      <p class="muted" style="font-size:8.8pt;margin-top:3pt">
+        Owners and managers who need enterprise-grade technology — security, monitoring,
+        automation, real process — without building a department for it. They buy trust
+        in the founders, not a brand wall.
+      </p>
+    </div>
+  </div>
+  <p class="muted" style="font-size:8.8pt;margin-top:9pt">
+    <b>Equal priority.</b> The locale is the audience split; there is no flagship market.
+    Neither language is a translation of the other, and neither is allowed to be thinner.
+  </p>
+  <div class="ft"><span>brand guidelines</span><span>01 · the idea</span></div>
+</section>
+
+<!-- ============ THE MARK ============ -->
+<section class="page">
+  <div class="hd"><div class="eyebrow">02 — the mark</div><div class="mono faint">novieri</div></div>
+  <h2>A faceted bloom with a star at its center.</h2>
+  <div class="cols" style="margin-top:16pt;align-items:center">
+    <div style="text-align:center">
+      <div class="clearspace"><div class="mk"><!--MARK--></div></div>
+      <div class="mono" style="margin-top:8pt;color:var(--gold-deep)">clear space = 45% of the mark’s width, on all four sides</div>
+    </div>
+    <div>
+      <h3>Construction</h3>
+      <p class="muted" style="font-size:9.5pt;margin-top:5pt">
+        The gradient runs teal → plum → gold along the diagonal, matching the light
+        source implied by the facets. It is the one place a gradient may appear as a
+        fill. Never recolor the mark, never flatten it to a single tone, and never
+        redraw the facets.
+      </p>
+      <h3 style="margin-top:12pt">Minimum size</h3>
+      <p class="muted" style="font-size:9.5pt;margin-top:5pt">
+        <b>24px</b> on screen, <b>10mm</b> in print. Below that the facets close up and
+        the star at the center stops reading.
+      </p>
+      <h3 style="margin-top:12pt">Lock-up</h3>
+      <p class="muted" style="font-size:9.5pt;margin-top:5pt">
+        Mark and wordmark sit on a shared baseline with a gap of 10px at a 48px mark.
+        The wordmark is Clash Display 600, lowercase, letter-spacing −0.02em, in
+        <span class="mono">--ink</span>. It is never set in another face.
+      </p>
+      <div style="margin-top:10pt;display:flex;align-items:center;gap:8pt">
+        <div style="width:38pt"><!--MARK--></div>
+        <span class="wordmark" style="font-size:20pt">novieri</span>
+      </div>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="do"><b>do</b>Place the mark on white, on the black stage, or on plum-wash. Keep the full gradient. Scale proportionally.</div>
+    <div class="dont"><b>don’t</b>Add a shadow or glow. Rotate it. Place it on a busy photograph. Recolor it to one flat tone. Stretch it.</div>
+  </div>
+  <div class="rule"></div>
+  <h3 style="margin-bottom:9pt">At size</h3>
+  <div style="display:flex;align-items:flex-end;gap:26pt">
+    <div style="text-align:center"><div style="width:72pt"><!--MARK--></div>
+      <div class="mono" style="margin-top:5pt;color:var(--ink-faint)">96px</div></div>
+    <div style="text-align:center"><div style="width:36pt"><!--MARK--></div>
+      <div class="mono" style="margin-top:5pt;color:var(--ink-faint)">48px · header</div></div>
+    <div style="text-align:center"><div style="width:18pt"><!--MARK--></div>
+      <div class="mono" style="margin-top:5pt;color:var(--gold-deep)">24px · minimum</div></div>
+    <p class="muted" style="font-size:8.5pt;max-width:22ch;margin-left:auto">
+      Below 24px the facets close and the star fills in. Use the wordmark alone
+      rather than a mark nobody can read.
+    </p>
+  </div>
+  <div class="ft"><span>brand guidelines</span><span>02 · the mark</span></div>
+</section>
+
+<!-- ============ COLOUR ============ -->
+<section class="page">
+  <div class="hd"><div class="eyebrow">03 — color</div><div class="mono faint">novieri</div></div>
+  <h2>White and black carry the page. Jewels do the work on top.</h2>
+  <p class="muted" style="margin-top:8pt;font-size:9.5pt">
+    Every ratio below is measured, not estimated. WCAG AA needs 4.5:1 for body text
+    and 3:1 for large text; AAA needs 7:1.
+  </p>
+  <div class="rule"></div>
+  <div class="eyebrow" style="margin-bottom:8pt">ink — text on white</div>
+  <div class="grid2"><!--INK--></div>
+  <div class="rule"></div>
+  <div class="eyebrow" style="margin-bottom:8pt">accents on white</div>
+  <div class="grid2"><!--ACCENT--></div>
+  <div class="rule"></div>
+  <h3 style="margin-bottom:7pt">Proportion</h3>
+  <div style="display:flex;height:15pt;border-radius:4pt;overflow:hidden;border:1px solid var(--line)">
+    <div style="flex:86;background:var(--white)"></div>
+    <div style="flex:8;background:var(--plum-wash)"></div>
+    <div style="flex:4;background:var(--plum)"></div>
+    <div style="flex:2;background:var(--gold)"></div>
+  </div>
+  <div class="mono" style="margin-top:5pt;color:var(--ink-faint);font-size:7.5pt">
+    white and ink ~86% &nbsp;·&nbsp; plum-wash ~8% &nbsp;·&nbsp; plum ~4% &nbsp;·&nbsp; gold ~2%
+  </div>
+  <p class="muted" style="font-size:9pt;margin-top:7pt">
+    Gold is the rarest thing on the page and should stay that way — it marks where the
+    eye is meant to land, and a page with gold in four places has told the reader
+    nothing. Plum is reserved for interaction; if something is plum, it should be
+    clickable.
+  </p>
+  <div class="ft"><span>brand guidelines</span><span>03 · color</span></div>
+</section>
+
+<section class="page dark">
+  <div class="hd"><div class="eyebrow">03 — color, continued</div><div class="mono" style="color:var(--on-dark-muted)">novieri</div></div>
+  <h2 style="color:var(--on-dark)">The dark stage.</h2>
+  <p class="lead" style="margin-top:8pt">
+    Black sections are moments, not the default: the hero, the assistant panel, the
+    call-to-action band, the footer. Each accent swaps to its bright twin so it does
+    not sink into the ground.
+  </p>
+  <div class="rule"></div>
+  <div class="grid2"><!--DARK--></div>
+  <div class="rule"></div>
+  <h3 style="color:var(--on-dark)">The gradient rule</h3>
+  <p style="color:var(--on-dark-muted);font-size:9.5pt;margin-top:5pt;max-width:62ch">
+    A gradient is permitted in exactly three places: the logo artwork, the gem’s core
+    and facets, and the 2px seam that joins a dark section to a light one. Never on
+    text. Never as a background fill. Never on a button.
+  </p>
+  <div class="seam" style="margin-top:12pt"></div>
+  <div class="mono" style="margin-top:6pt;color:var(--on-dark-muted)">the seam — 2px, teal → plum → gold</div>
+  <div class="rule"></div>
+  <div class="cols">
+    <div>
+      <h3 style="color:var(--on-dark)">Where the stage appears</h3>
+      <ul style="margin-top:6pt">
+        <li>The home hero, and nowhere else above the fold.</li>
+        <li>The assistant panel — the product showing itself.</li>
+        <li>The call-to-action band before the footer.</li>
+        <li>The footer.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--on-dark)">What the seam is</h3>
+      <p style="color:var(--on-dark-muted);font-size:8.8pt;margin-top:5pt">
+        A structural joint, not decoration. It marks the boundary where the page changes
+        state from light to dark, and it earns its gradient by being 2px tall. A seam
+        between two sections of the same color is residue — remove it.
+      </p>
+    </div>
+  </div>
+  <div class="ft"><span>brand guidelines</span><span>03 · color</span></div>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section class="page">
+  <div class="hd"><div class="eyebrow">04 — typography</div><div class="mono faint">novieri</div></div>
+  <h2>Three families, ten steps, no exceptions.</h2>
+  <div class="spec">
+    <div class="s1">Your outsourced technology team</div>
+    <div class="s3">clash display 600 — display and headings</div>
+  </div>
+  <div class="spec">
+    <div class="s2" style="font-size:12pt;color:var(--ink)">Support that answers, computers kept current, and a network built to keep interruptions down.</div>
+    <div class="s3">satoshi 400 / 500 / 700 — body and interface</div>
+  </div>
+  <div class="spec">
+    <div class="mono" style="font-size:11pt;color:var(--ink)">·· 01 &nbsp; barranquilla, colombia · eastern time coverage</div>
+    <div class="s3">jetbrains mono 400 — labels, indices, numbers</div>
+  </div>
+  <div class="rule"></div>
+  <p class="muted" style="font-size:9.5pt;margin-bottom:8pt">
+    The scale had seventeen sizes once, six of them within 5px of each other. It has ten,
+    and every size on the site is one of them. Nothing is set in a size that is not in this table.
+  </p>
+  <table>
+    <tr><th>token</th><th>role</th><th>size</th><th>face</th></tr>
+    <!--SCALE-->
+  </table>
+  <div class="ft"><span>brand guidelines</span><span>04 · typography</span></div>
+</section>
+
+<!-- ============ SIGNATURE ELEMENTS ============ -->
+<section class="page">
+  <div class="hd"><div class="eyebrow">05 — signature elements</div><div class="mono faint">novieri</div></div>
+  <h2>Two marks, rationed.</h2>
+  <div class="cols" style="margin-top:14pt">
+    <div class="card">
+      <div style="font-size:26pt;color:var(--gold);font-weight:700;letter-spacing:.12em;line-height:1">··</div>
+      <h3 style="margin-top:8pt">The two dots</h3>
+      <p class="muted" style="font-size:9pt;margin-top:4pt">
+        Opens every eyebrow, marks every list item, numbers every index as
+        <span class="mono">··01</span>. Gold on white, gold-bright on black. It is the
+        single most recognizable thing the brand owns after the mark itself.
+      </p>
+    </div>
+    <div class="card">
+      <div style="font-size:26pt;color:var(--gold);line-height:1">✦</div>
+      <h3 style="margin-top:8pt">The four-point star</h3>
+      <p class="muted" style="font-size:9pt;margin-top:4pt">
+        The gem’s core. Used as a separator in marquees and as ornament on dark bands.
+        Never as a bullet — that is the dots’ job — and never more than once in a
+        viewport.
+      </p>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <h3>The per-pillar accent</h3>
+  <p class="muted" style="font-size:9.5pt;margin-top:5pt;margin-bottom:9pt">
+    Each service pillar owns a color, carried by the <span class="mono">··</span> marks
+    on that pillar’s pages and nothing else. Interaction stays plum everywhere, on every
+    pillar — a second interaction color would compete with the first.
+  </p>
+  <table>
+    <tr><th>pillar</th><th>the mark</th><th></th><th>token</th><th>hex</th><th>buttons</th></tr>
+    <!--PILLARS-->
+  </table>
+  <div class="rule"></div>
+  <h3 style="margin-bottom:7pt">Anatomy of an eyebrow</h3>
+  <div class="card" style="display:flex;align-items:center;gap:20pt">
+    <div>
+      <div style="font-family:var(--mono);font-size:12pt;letter-spacing:.1em;color:var(--ink-muted)">
+        <span style="color:var(--gold);font-family:var(--sans);font-weight:700;font-size:17pt;letter-spacing:.12em">··</span>
+        &nbsp;how we work
+      </div>
+    </div>
+    <ul style="flex:1;margin:0">
+      <li style="margin-bottom:2pt">Gold dots, 700 weight, tracking 0.12em, sitting on the baseline.</li>
+      <li style="margin-bottom:2pt">Label in JetBrains Mono, 13px, tracking 0.1em, lowercase.</li>
+      <li style="margin-bottom:0">Color <span class="mono">--ink-muted</span> on white, <span class="mono">--on-dark-muted</span> on black.</li>
+    </ul>
+  </div>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="do"><b>the accent may</b>Color the ·· marks on a pillar’s own pages. Nothing else changes between pillars.</div>
+    <div class="dont"><b>the accent may not</b>Color a button, a link, a focus ring, or body text. Those are plum and ink on every pillar, in both languages.</div>
+  </div>
+  <div class="ft"><span>brand guidelines</span><span>05 · signature elements</span></div>
+</section>
+
+<!-- ============ LAYOUT & MOTION ============ -->
+<section class="page">
+  <div class="hd"><div class="eyebrow">06 — layout &amp; motion</div><div class="mono faint">novieri</div></div>
+  <h2>Depth from borders.</h2>
+  <div class="cols" style="margin-top:12pt">
+    <div>
+      <h3>Structure</h3>
+      <ul style="margin-top:6pt">
+        <li>Max width <b>1240px</b>, centerd.</li>
+        <li>Section padding <b>clamp(3.5rem, 9vh, 6rem)</b>.</li>
+        <li>Reading measure <b>640px</b> for long-form, at 19px.</li>
+        <li>Cards: 1px hairline, 16px radius, no shadow.</li>
+        <li>Touch targets never below <b>44px</b>.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Motion</h3>
+      <ul style="margin-top:6pt">
+        <li>Reveal on scroll: 16px rise, 600ms, 60–90ms stagger.</li>
+        <li>Hover: cards lift 4–6px, buttons 2px, arrows slide.</li>
+        <li>The gem breathes continuously; nothing else loops.</li>
+        <li>All animation is gated behind <span class="mono">html.js</span> — content is visible without JavaScript.</li>
+        <li><b>prefers-reduced-motion collapses every animation to zero</b> and sets revealed content to full opacity. Never strand content at opacity 0.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <h3 style="margin-bottom:8pt">Anti-references — what this brand is not</h3>
+  <div class="cols3">
+    <div class="dont"><b>visual</b>Gradient text. Glassmorphism. Glow. Drop-shadow cards. Hero-metric templates. Carousels. Video heroes.</div>
+    <div class="dont"><b>imagery</b>Stock photos of handshakes, headsets, or people pointing at screens. Logo-soup trust bars.</div>
+    <div class="dont"><b>copy</b>Buzzwords — synergy, empower, revolutionary. Exclamation marks. Title Case headlines. Vague promises.</div>
+  </div>
+  <div class="rule"></div>
+  <h3 style="margin-bottom:8pt">Controls</h3>
+  <div style="display:flex;align-items:center;gap:14pt;flex-wrap:wrap">
+    <span style="background:var(--plum);color:#fff;font-weight:500;font-size:9pt;padding:8pt 15pt;border-radius:6pt;display:inline-block">Book a call</span>
+    <span style="border:1px solid var(--line);color:var(--ink);font-weight:500;font-size:9pt;padding:8pt 15pt;border-radius:6pt;display:inline-block">Secondary</span>
+    <span class="mono" style="background:var(--plum-wash);color:var(--ink-muted);font-size:7.5pt;padding:3pt 7pt;border-radius:4pt">tag</span>
+    <span style="color:var(--plum);font-weight:500;font-size:9pt">Text link →</span>
+    <p class="muted" style="font-size:8.5pt;max-width:26ch;margin-left:auto">
+      Radius 10px on buttons, 16px on cards, 6px on tags. Primary is plum with white
+      text at 10.52:1. Secondary is a hairline, never a second fill color.
+    </p>
+  </div>
+  <div class="ft"><span>brand guidelines</span><span>06 · layout &amp; motion</span></div>
+</section>
+
+<!-- ============ VOICE ============ -->
+<section class="page">
+  <div class="hd"><div class="eyebrow">07 — voice</div><div class="mono faint">novieri</div></div>
+  <h2>Say the specific thing.</h2>
+  <p class="lead" style="margin-top:8pt">
+    The test for any sentence: could a competitor publish it unchanged? If yes, it is
+    not finished.
+  </p>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="do"><b>do — from the live site</b>
+      “Most firms make you sit through a sales call before you hear a price. Here is ours up front.”<br><br>
+      “Two things happen before you answer, and we would rather write them down than let you discover them.”<br><br>
+      “AI answers can be wrong. Don’t share passwords or payment details here.”
+    </div>
+    <div class="dont"><b>don’t</b>
+      “We leverage cutting-edge AI to empower your digital transformation journey!”<br><br>
+      “Industry-leading solutions tailored to your unique needs.”<br><br>
+      “Contact us today to learn more!”
+    </div>
+  </div>
+  <div class="rule"></div>
+  <div class="cols">
+    <div>
+      <h3>English</h3>
+      <ul style="margin-top:6pt">
+        <li>US spelling and conventions. <span class="mono">1,000+</span>, not 1000+.</li>
+        <li>Sentence case in headlines, navigation and buttons.</li>
+        <li>Em dashes for asides, not semicolons.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Español</h3>
+      <ul style="margin-top:6pt">
+        <li>Colombian Spanish, <i>tú</i>, never <i>usted</i> and never a calque.</li>
+        <li>Sentence case, and accents always: <b>Consultoría</b>, never <i>Consultoria</i>.</li>
+        <li>Numbers in local format: <span class="mono">+1.000</span>, <span class="mono">$95.000</span>.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <h3>One verb per destination</h3>
+  <p class="muted" style="font-size:9.5pt;margin-top:5pt">
+    Every control that promises a meeting says <b>Book a call</b> / <b>Agendar llamada</b>
+    and goes to the calendar. Nothing else uses a booking verb. A label that promises a
+    booking and lands somewhere else is a bug, and the build fails on it.
+  </p>
+  <div class="rule"></div>
+  <h3 style="margin-bottom:6pt">Naming a page, a product, a menu item</h3>
+  <p class="muted" style="font-size:9pt;margin-bottom:8pt">
+    Navigation is where these conventions slip first, because menu items are typed by
+    hand in a CMS rather than written in a file with the rest of the copy.
+  </p>
+  <table>
+    <tr><th>rule</th><th>yes</th><th>no</th></tr>
+    <tr><td>Sentence case, always</td><td>AI &amp; automation</td><td class="faint">AI &amp; Automation</td></tr>
+    <tr><td>Initialisms keep their capitals</td><td>Managed IT · TI administrada</td><td class="faint">Managed it · Ti administrada</td></tr>
+    <tr><td>The label is the page’s name</td><td>Desarrollo de software</td><td class="faint">Desarrollo a medida</td></tr>
+    <tr><td>Same order in both languages</td><td>Productos matches Products</td><td class="faint">a different sequence per locale</td></tr>
+    <tr><td>Plain words over category jargon</td><td>Resources · Recursos</td><td class="faint">Insights</td></tr>
+  </table>
+  <div class="ft"><span>brand guidelines</span><span>07 · voice</span></div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="page dark" style="justify-content:center">
+  <div class="eyebrow">08 — in one line</div>
+  <h2 style="color:var(--on-dark);font-size:26pt;margin-top:14pt;max-width:18ch">
+    If a section feels flat, fix it with type and spacing.
+  </h2>
+  <p class="lead" style="margin-top:14pt;max-width:46ch">
+    Never with more color. The palette is small on purpose, the ornament is rationed on
+    purpose, and the restraint is the premium signal — not the decoration.
+  </p>
+  <div class="seam" style="margin-top:26pt;width:2.4in"></div>
+  <div class="mono" style="margin-top:16pt;color:var(--on-dark-muted);line-height:1.9">
+    novieri s.a.s.<br>
+    barranquilla, colombia<br>
+    novieri.com · info@novieri.com
+  </div>
+</section>
+
+</body>
+</html>
