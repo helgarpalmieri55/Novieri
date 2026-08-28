@@ -770,6 +770,60 @@
     display: inline-flex;
   }
 }
+/*
+ * The consent block.
+ *
+ * HubSpot renders four separate statements here and styles exactly one of them
+ * like a form label — the optional marketing checkbox came out at 15px, weight
+ * 500, in full --ink, while the three that carry the actual legal weight sat at
+ * 13px, weight 400, in --ink-faint with no margin between them. The one line a
+ * visitor may ignore was the most prominent thing in the block, and the three
+ * they should read ran together as a grey wall.
+ *
+ * So: one size for all four, the same muted ink, real space between the
+ * statements, and the privacy link finally looking like a link. The optional
+ * checkbox is a peer of the others, not a headline.
+ */
+.legal-consent-container {
+  margin-top: 1.5rem;
+}
+.legal-consent-container .hs-richtext,
+.legal-consent-container .hs-form-booleancheckbox-display > span {
+  font-size: var(--text-caption);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-ink-muted);
+}
+.legal-consent-container .hs-richtext {
+  margin-bottom: 0.75rem;
+}
+.legal-consent-container .hs-richtext:last-child {
+  margin-bottom: 0;
+}
+.legal-consent-container .hs-form-booleancheckbox {
+  margin-bottom: 0.9rem;
+}
+/* The box and its first line of text on one baseline, with a real gap —
+   they were flush against each other and the box sat above the cap height. */
+.legal-consent-container .hs-form-booleancheckbox-display {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+.legal-consent-container .hs-form-booleancheckbox-display > input {
+  margin-top: 0.05rem;
+}
+.legal-consent-container a {
+  color: var(--color-plum);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--color-line);
+}
+.legal-consent-container a:hover {
+  color: var(--color-gold-deep);
+  text-decoration-color: currentColor;
+}
+
 .hs-form input[type="checkbox"],
 .legal-consent-container input[type="checkbox"] {
   width: 24px;

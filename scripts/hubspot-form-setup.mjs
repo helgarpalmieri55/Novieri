@@ -32,27 +32,36 @@ const LANGUAGE_OPTIONS = [
   { label: "Español", value: "es", description: "", displayOrder: 1 },
 ];
 
+/*
+ * Four statements, four different jobs.
+ *
+ * They used to overlap: "agree that Novieri may contact you about your enquiry"
+ * and "we need your permission to store and process your personal data" are the
+ * same permission said twice, and a visitor who reads a block that repeats
+ * itself stops reading the block. Each line now says one thing the others do
+ * not. "Enquiry" was also British, on a site whose English is US.
+ */
 const EN = {
   submit: "Send message",
   thanks: "Received. We'll reply within the same business day.",
-  consent: "By submitting this form you agree that Novieri may contact you about your enquiry.",
-  optIn: "I also agree to receive occasional updates from Novieri. You can unsubscribe at any time.",
+  consent: "By sending this form you authorize Novieri to contact you about your inquiry.",
+  optIn: "I'd also like occasional updates from Novieri. Unsubscribe at any time.",
   // An anchor, not a bare URL. privacyText is rendered as HTML by HubSpot, and
   // this string ended in a naked address that printed as plain text inside the
   // form — measured on both contact pages, `form a` count was 0. At the exact
   // moment someone hands over their personal data, the policy describing what
   // happens to it was not clickable.
-  privacy: 'We care about your privacy. Read how we handle your data in our <a href="https://www.novieri.com/legal/privacy-policy">privacy policy</a>.',
-  process: "To answer your enquiry we need your permission to store and process your personal data.",
+  privacy: 'What we keep, for how long, and how to have it deleted: <a href="https://www.novieri.com/legal/privacy-policy">privacy policy</a>.',
+  process: "Your details are stored and processed only to answer you, and are never sold or shared for advertising.",
 };
 
 const ES = {
   submit: "Enviar mensaje",
   thanks: "Recibido. Te respondemos el mismo día hábil.",
-  consent: "Al enviar este formulario aceptas que Novieri te contacte sobre tu consulta.",
-  optIn: "También acepto recibir novedades ocasionales de Novieri. Puedes darte de baja cuando quieras.",
-  privacy: 'Cuidamos tu privacidad. Lee cómo tratamos tus datos en nuestra <a href="https://www.novieri.com/legal/politica-de-privacidad">política de privacidad</a>.',
-  process: "Para responder tu consulta necesitamos tu permiso para almacenar y tratar tus datos personales.",
+  consent: "Al enviar este formulario autorizas a Novieri a contactarte sobre tu consulta.",
+  optIn: "También quiero recibir novedades ocasionales de Novieri. Puedes darte de baja cuando quieras.",
+  privacy: 'Qué guardamos, por cuánto tiempo y cómo pedir que lo borremos: <a href="https://www.novieri.com/legal/politica-de-privacidad">política de privacidad</a>.',
+  process: "Tus datos se almacenan y tratan únicamente para responderte, y nunca se venden ni se comparten con fines publicitarios.",
 };
 
 /**

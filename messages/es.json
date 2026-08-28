@@ -1046,6 +1046,8 @@
     },
     "aside": {
       "whatsappLabel": "Escríbenos por WhatsApp",
+      "phoneLabel": "Llámanos",
+      "phoneNumber": "+57 300 8516300",
       "emailLabel": "Envíanos un correo",
       "location": "Barranquilla, Colombia · Atendemos clientes de EE. UU. en horarios compatibles con la costa este"
     }

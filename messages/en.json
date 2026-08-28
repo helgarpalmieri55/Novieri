@@ -1016,6 +1016,8 @@
     },
     "aside": {
       "whatsappLabel": "Message us on WhatsApp",
+      "phoneLabel": "Call us",
+      "phoneNumber": "+57 300 8516300",
       "emailLabel": "Or by email",
       "location": "Barranquilla, Colombia · Eastern Time coverage"
     }
@@ -2140,7 +2142,7 @@
                 "Carrera 13 No. 27-00, Bogotá D.C."
               ]
             },
-            "The law requires you to exhaust the enquiry or claim process with us first, under article 16 of Law 1581 of 2012. That is why the reference number is worth keeping."
+            "The law requires you to exhaust the inquiry or claim process with us first, under article 16 of Law 1581 of 2012. That is why the reference number is worth keeping."
           ]
         },
         {
@@ -2623,7 +2625,7 @@
   },
   "cookies": {
     "title": "Cookies on novieri.com",
-    "body": "We use first-party cookies needed for the site to work and, only if you accept, aggregate analytics plus HubSpot cookies that link your enquiry to the content you read. We don't use advertising cookies.",
+    "body": "We use first-party cookies needed for the site to work and, only if you accept, aggregate analytics plus HubSpot cookies that link your inquiry to the content you read. We don't use advertising cookies.",
     "accept": "Accept all",
     "reject": "Necessary only",
     "more": "Read the cookie policy",

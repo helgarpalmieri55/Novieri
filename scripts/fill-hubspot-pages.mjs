@@ -1342,7 +1342,13 @@ const PAGES = {
     contact_details: {
       body: {
         whatsapp_label: t.contact.aside.whatsappLabel,
+        // Empty by owner decision, and it stays empty: the assistant hands the
+        // WhatsApp number over when someone asks for a person, and it is not
+        // published on any page. The label is written anyway so the field is
+        // ready if that ever changes.
         whatsapp_url: "",
+        phone_label: t.contact.aside.phoneLabel,
+        phone_number: t.contact.aside.phoneNumber,
         email_label: t.contact.aside.emailLabel,
         email_address: VARS.email,
         location: t.contact.aside.location,

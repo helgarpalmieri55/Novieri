@@ -13,6 +13,19 @@
     "help_text": "A full wa.me link. Leave empty to hide the row."
   },
   {
+    "name": "phone_label",
+    "label": "Phone label",
+    "type": "text",
+    "default": "Or call us"
+  },
+  {
+    "name": "phone_number",
+    "label": "Phone number, as displayed",
+    "type": "text",
+    "default": "",
+    "help_text": "Shown as written. The tel: link strips everything that is not a digit or a leading +, so spacing here is a presentation choice."
+  },
+  {
     "name": "email_label",
     "label": "Email row label",
     "type": "text",

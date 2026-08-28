@@ -15,6 +15,20 @@
         </a>
       </li>
     {% endif %}
+    {#
+      The phone number, for someone who would rather talk than type.
+
+      A tel: href has to be dialable, and the displayed number is formatted for
+      reading — so the link strips spaces from whatever is written in the field
+      rather than asking anyone to keep two versions of the same number in sync.
+
+      This is a call link and only a call link. The WhatsApp row above stays
+      empty by owner decision: the assistant gives that number out when someone
+      asks for a person, and it is not published on any page.
+    #}
+    {% if module.phone_number %}
+      <li>{{ module.phone_label }}: <a href="tel:{{ module.phone_number|replace(' ', '')|replace('-', '') }}" class="link-accent whitespace-nowrap">{{ module.phone_number }}</a></li>
+    {% endif %}
     {% if module.email_address %}
       <li>{{ module.email_label }}: <a href="mailto:{{ module.email_address }}" class="link-accent">{{ module.email_address }}</a></li>
     {% endif %}
