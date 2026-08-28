@@ -27,10 +27,10 @@
       asks for a person, and it is not published on any page.
     #}
     {% if module.phone_number %}
-      <li>{{ module.phone_label }}: <a href="tel:{{ module.phone_number|replace(' ', '')|replace('-', '') }}" class="link-accent whitespace-nowrap">{{ module.phone_number }}</a></li>
+      <li>{{ module.phone_label }}: <a href="tel:{{ module.phone_number|replace(' ', '')|replace('-', '') }}" class="link-accent contact-tap whitespace-nowrap">{{ module.phone_number }}</a></li>
     {% endif %}
     {% if module.email_address %}
-      <li>{{ module.email_label }}: <a href="mailto:{{ module.email_address }}" class="link-accent">{{ module.email_address }}</a></li>
+      <li>{{ module.email_label }}: <a href="mailto:{{ module.email_address }}" class="link-accent contact-tap">{{ module.email_address }}</a></li>
     {% endif %}
     {% if module.location %}
       <li class="idx-mono lowercase tracking-[0.06em] text-ink-faint">{{ module.location }}</li>

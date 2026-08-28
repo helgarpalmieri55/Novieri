@@ -839,6 +839,17 @@
   text-decoration-color: currentColor;
 }
 
+/*
+ * A phone number is the one link on a contact page a thumb goes straight for,
+ * and it was a 19px line of text. padding-block on an inline anchor grows the
+ * hit area without growing the row, so the layout is untouched and the target
+ * goes to 35px against a 37px row pitch — comfortably clear of its neighbour,
+ * where a full 44px would have overlapped it.
+ */
+.contact-tap {
+  padding-block: 0.5rem;
+}
+
 .hs-form input[type="checkbox"],
 .legal-consent-container input[type="checkbox"] {
   width: 24px;
