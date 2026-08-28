@@ -813,6 +813,14 @@
 .legal-consent-container .hs-form-booleancheckbox-display > input {
   margin-top: 0.05rem;
 }
+/* HubSpot pads the label text away from the box on its own, which stacked with
+   the flex gap and put 30px between a 24px checkbox and the sentence it
+   belongs to — far enough apart to read as two unrelated things. The gap above
+   is the only spacing this needs. */
+.legal-consent-container .hs-form-booleancheckbox-display > span {
+  padding-left: 0;
+  margin-left: 0;
+}
 .legal-consent-container a {
   color: var(--color-plum);
   text-decoration: underline;
