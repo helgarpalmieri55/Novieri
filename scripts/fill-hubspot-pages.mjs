@@ -702,6 +702,12 @@ function solutionWidgets(key) {
       body: {
         title: p.built.title,
         intro: p.built.body,
+        // Only on the WhatsApp assistant. The approval covers the WhatsApp
+        // Business Platform and nothing else, so writing it onto the other six
+        // product pages would claim a scope Meta has not granted. The empty
+        // string matters as much as the credential: it clears the field on any
+        // page that ever had one.
+        credential: key === "whatsapp" ? t.credential.product : "",
         footnote: (p.stack || []).join(" ·· "),
         picture: { src: "", alt: "" },
       },
@@ -838,6 +844,7 @@ function aboutWidgets() {
       body: {
         title: a.location.title,
         intro: a.location.body,
+        credential: t.credential.about,
         footnote: locale === "es"
           ? "Barranquilla · Colombia · español e inglés · horario compatible con EE. UU."
           : "Barranquilla · Colombia · English & Spanish · US Eastern-compatible hours",

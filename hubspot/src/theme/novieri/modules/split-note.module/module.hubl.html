@@ -12,6 +12,21 @@
       {% else %}
         <p class="max-w-[40ch] text-lead text-on-dark-muted">{{ module.intro }}</p>
       {% endif %}
+      {#
+        A credential, when there is one: a fact from outside the company,
+        between the claim above and the fine print below.
+
+        It gets its own treatment rather than joining the footnote because it is
+        the opposite kind of statement. The footnote is small print — the stack,
+        the coverage, the qualifier. This is the one line on the section a
+        reader can hold Novieri to, so it reads at body size against a marker
+        rather than in mono at the faintest ink available.
+      #}
+      {% if module.credential %}
+        <p class="mt-7 border-l-2 border-gold-bright pl-4 text-small text-on-dark">
+          {{ module.credential }}
+        </p>
+      {% endif %}
       {% if module.footnote %}
         <p class="idx-mono mt-8 tracking-[0.07em] text-on-dark-faint">{{ module.footnote }}</p>
       {% endif %}

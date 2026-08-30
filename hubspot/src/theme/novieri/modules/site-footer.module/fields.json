@@ -19,7 +19,7 @@
   },
   {
     "name": "description_es",
-    "label": "Description \u2014 Spanish",
+    "label": "Description — Spanish",
     "type": "text",
     "allow_new_line": true,
     "default": "Soluciones de TI con IA desde Barranquilla, para Colombia y Estados Unidos.",
@@ -43,19 +43,19 @@
       },
       {
         "name": "column_title_es",
-        "label": "Title \u2014 Spanish",
+        "label": "Title — Spanish",
         "type": "text",
         "default": "",
         "help_text": "Falls back to the English title when empty."
       },
       {
         "name": "column_menu",
-        "label": "Menu \u2014 English",
+        "label": "Menu — English",
         "type": "menu"
       },
       {
         "name": "column_menu_es",
-        "label": "Menu \u2014 Spanish",
+        "label": "Menu — Spanish",
         "type": "menu",
         "help_text": "Falls back to the English menu when empty."
       }
@@ -69,19 +69,19 @@
   },
   {
     "name": "legal_title_es",
-    "label": "Legal column title \u2014 Spanish",
+    "label": "Legal column title — Spanish",
     "type": "text",
     "default": "legal"
   },
   {
     "name": "legal_menu",
-    "label": "Legal menu \u2014 English",
+    "label": "Legal menu — English",
     "type": "menu",
     "help_text": "Privacy, cookies and terms. Built in Settings > Content > Navigation menus."
   },
   {
     "name": "legal_menu_es",
-    "label": "Legal menu \u2014 Spanish",
+    "label": "Legal menu — Spanish",
     "type": "menu",
     "help_text": "Falls back to the English menu when empty."
   },
@@ -93,7 +93,7 @@
   },
   {
     "name": "contact_title_es",
-    "label": "Contact column title \u2014 Spanish",
+    "label": "Contact column title — Spanish",
     "type": "text",
     "default": "contacto"
   },
@@ -111,7 +111,7 @@
   },
   {
     "name": "contact_location_es",
-    "label": "Location \u2014 Spanish",
+    "label": "Location — Spanish",
     "type": "text",
     "default": "Barranquilla, Colombia"
   },
@@ -125,7 +125,7 @@
     "name": "legal_line",
     "label": "Legal line",
     "type": "text",
-    "default": "\u00a9 2026 Novieri S.A.S. \u00b7 NIT 902.094.392-7",
+    "default": "© 2026 Novieri S.A.S. · NIT 902.094.392-7",
     "help_text": "Legal identification. The fill script writes this per page; the default is what a page shows before it is filled."
   },
   {
@@ -136,8 +136,21 @@
   },
   {
     "name": "cookie_settings_es",
-    "label": "Cookie settings link \u2014 Spanish",
+    "label": "Cookie settings link — Spanish",
     "type": "text",
     "default": "Preferencias de cookies"
+  },
+  {
+    "name": "credential",
+    "label": "Credential line",
+    "type": "text",
+    "default": "Meta Tech Provider · WhatsApp Business Platform",
+    "help_text": "A global module's stored value outranks a changed default, so this arrives as a new field rather than an edit to an existing one — an instance has no stored value for a field that did not exist, so the default applies."
+  },
+  {
+    "name": "credential_es",
+    "label": "Credential line (ES)",
+    "type": "text",
+    "default": "Meta Tech Provider · plataforma de WhatsApp Business"
   }
 ]

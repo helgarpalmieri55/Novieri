@@ -28,5 +28,13 @@
       "src": "",
       "alt": ""
     }
+  },
+  {
+    "name": "credential",
+    "label": "Credential line",
+    "type": "text",
+    "default": "",
+    "allow_new_line": true,
+    "help_text": "A verifiable fact from outside the company — an approval, a certification. Empty hides the line."
   }
 ]

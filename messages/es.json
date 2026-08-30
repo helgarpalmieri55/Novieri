@@ -184,6 +184,13 @@
     "recaptchaNotice": "Este sitio está protegido por reCAPTCHA y aplican la <privacy>Política de Privacidad</privacy> y los <terms>Términos del Servicio</terms> de Google.",
     "seePricing": "Ver precios"
   },
+  "credential": {
+    "name": "Meta Tech Provider",
+    "short": "Meta Tech Provider · plataforma de WhatsApp Business",
+    "statLabel": "aprobados para la plataforma de whatsapp business",
+    "about": "Meta Tech Provider — aprobados por Meta para la plataforma de WhatsApp Business.",
+    "product": "Meta Tech Provider — aprobados por Meta para la plataforma de WhatsApp Business. Tu número funciona sobre la API oficial y bajo tu propia cuenta de Meta, y las plantillas de mensajes pasan por la aprobación de Meta. No es una pasarela compartida ni un revendedor no oficial."
+  },
   "home": {
     "hero": {
       "eyebrow": "Tecnología con IA en el centro",
@@ -194,8 +201,8 @@
     "proof": {
       "items": [
         {
-          "value": "+1.000",
-          "label": "usuarios atendidos en roles de dirección tecnológica"
+          "value": "Meta Tech Provider",
+          "label": "aprobados para la plataforma de whatsapp business"
         },
         {
           "value": "PCI DSS / SOC 2",
@@ -206,7 +213,7 @@
           "label": "fundadores, sin capas comerciales"
         }
       ],
-      "disclosure": "La experiencia incluye trabajos liderados por los fundadores de Novieri en roles actuales y anteriores de dirección tecnológica."
+      "disclosure": "Los programas de cumplimiento fueron liderados por los fundadores de Novieri en roles actuales y anteriores de dirección tecnológica."
     },
     "liveChat": {
       "eyebrow": "ia en funcionamiento",

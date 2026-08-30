@@ -172,6 +172,13 @@
     "recaptchaNotice": "This site is protected by reCAPTCHA and the Google <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms> apply.",
     "seePricing": "See pricing"
   },
+  "credential": {
+    "name": "Meta Tech Provider",
+    "short": "Meta Tech Provider · WhatsApp Business Platform",
+    "statLabel": "approved for the whatsapp business platform",
+    "about": "Meta Tech Provider — approved by Meta for the WhatsApp Business Platform.",
+    "product": "Meta Tech Provider — approved by Meta for the WhatsApp Business Platform. Your number runs on the official API under your own Meta account, and message templates go through Meta's own approval. Not a shared gateway, and not an unofficial reseller."
+  },
   "home": {
     "hero": {
       "eyebrow": "AI-first IT services",
@@ -182,8 +189,8 @@
     "proof": {
       "items": [
         {
-          "value": "1,000+",
-          "label": "users supported in technology leadership roles"
+          "value": "Meta Tech Provider",
+          "label": "approved for the whatsapp business platform"
         },
         {
           "value": "PCI DSS / SOC 2",
@@ -194,7 +201,7 @@
           "label": "founders, zero middlemen"
         }
       ],
-      "disclosure": "Experience includes work led by Novieri's founders in current and previous technology leadership roles."
+      "disclosure": "The compliance programs above were led by Novieri's founders in current and previous technology leadership roles."
     },
     "liveChat": {
       "eyebrow": "ai in production",
