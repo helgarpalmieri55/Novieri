@@ -131,12 +131,34 @@
         <span>{{ module.legal_line }}</span>
         {% if f_credential %}<span class="text-ink-muted">·· {{ f_credential }}</span>{% endif %}
       </span>
-      {% if module.contact_linkedin %}
-        <a href="{{ module.contact_linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors hover:text-ink">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
-          </svg>
-        </a>
+      {# The social profiles ride in one group so the bottom bar keeps its three
+         columns however many of them are filled. Each is its own field and
+         each renders only when it has a URL — the LinkedIn slot has been empty
+         since this was written, and an empty slot should cost nothing rather
+         than leave a gap where an icon was meant to be.
+
+         p-2.5 is the tap target. An 18px glyph is a fine thing to look at and
+         a poor thing to hit with a thumb; the padding takes the hit area to
+         38px without moving the icon. #}
+      {% if module.contact_linkedin or module.contact_instagram %}
+        <span class="-my-2.5 flex items-center gap-1">
+          {% if module.contact_linkedin %}
+            <a href="{{ module.contact_linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-2.5 transition-colors hover:text-ink">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+              </svg>
+            </a>
+          {% endif %}
+          {% if module.contact_instagram %}
+            <a href="{{ module.contact_instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="p-2.5 transition-colors hover:text-ink">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.2" />
+                <circle cx="12" cy="12" r="4.2" />
+                <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          {% endif %}
+        </span>
       {% endif %}
       {# Was "{{ html_lang }} · Barranquilla", which printed "es · Barranquilla"
          and read as a leaked locale variable next to the copyright. #}

@@ -192,8 +192,17 @@
         "name": "Novieri",
         "legalName": "Novieri S.A.S.",
         {# The NIT is the identifier a Colombian counterparty verifies, so it
-           belongs in the structured data as well as in the footer. #}
+           belongs in the structured data as well as in the footer.
+
+           The D-U-N-S sits beside it and is deliberately not in the footer.
+           It is a free registry identifier, not an accreditation, so it earns
+           nothing from a reader and would dilute the one credential down there
+           that was actually assessed. What it does earn is here: a NIT means
+           nothing to a US knowledge graph, and this pins "Novieri" to one
+           legal entity for the crawlers and assistants that only recognise
+           the international identifier. #}
         "taxID": "902.094.392-7",
+        "duns": "474566078",
         "url": "https://www.novieri.com/",
         "logo": "https://45528787.fs1.hubspotusercontent-na1.net/hubfs/45528787/novieri/novieri-isotipo-color-256px.png",
         "email": "sales@novieri.com",
@@ -204,6 +213,9 @@
           "addressRegion": "Atlántico",
           "addressCountry": "CO"
         },
+        {# Same job as the identifiers above, by a different route: an owned
+           profile a crawler can reconcile the name against. #}
+        "sameAs": ["https://www.instagram.com/novieri.ai/"],
         "areaServed": ["CO", "US"],
         "knowsLanguage": ["es", "en"],
         "founder": [

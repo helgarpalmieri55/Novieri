@@ -122,6 +122,12 @@
     "default": ""
   },
   {
+    "name": "contact_instagram",
+    "label": "Instagram URL",
+    "type": "text",
+    "default": "https://www.instagram.com/novieri.ai/"
+  },
+  {
     "name": "legal_line",
     "label": "Legal line",
     "type": "text",
