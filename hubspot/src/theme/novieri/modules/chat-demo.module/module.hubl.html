@@ -131,7 +131,7 @@
                      above, address beneath. The point of the demo is that the
                      customer never types an address — so the address has to
                      arrive looking like something they tapped, not typed. #}
-                  <div class="mb-2 ml-auto max-w-[85%] overflow-hidden rounded-2xl rounded-tr-md {{ skin.guest }}" data-chat-row="other">
+                  <div class="mb-2 ml-auto max-w-[85%] flex-none overflow-hidden rounded-2xl rounded-tr-md {{ skin.guest }}" data-chat-row="other">
                     <div class="relative h-[86px] w-[208px] {{ skin.map }}">
                       <svg aria-hidden="true" viewBox="0 0 208 86" class="absolute inset-0 h-full w-full" fill="none">
                         <path d="M-6 60H214M-6 24H214M46 -6V92M148 -6V92" stroke="currentColor" stroke-width="7" stroke-linecap="round" class="opacity-[0.16]" />
@@ -162,7 +162,7 @@
                   {# An interactive message with a call-to-action button. The
                      button is decorative here — a span, not a button, because
                      nothing on this mock should take focus or a tap. #}
-                  <div class="mb-2 mr-auto max-w-[85%] overflow-hidden rounded-2xl rounded-tl-md {{ skin.bot }}" data-chat-row="bot">
+                  <div class="mb-2 mr-auto max-w-[85%] flex-none overflow-hidden rounded-2xl rounded-tl-md {{ skin.bot }}" data-chat-row="bot">
                     <div class="px-3 pb-1.5 pt-2 text-small leading-[1.5]">
                       <p class="whitespace-pre-wrap">{{ entry.message|escape|regex_replace("\\*\\*(.+?)\\*\\*", "<strong class='font-semibold'>$1</strong>")|safe }}</p>
                       <span class="mt-0.5 flex items-center justify-end gap-1 text-micro {{ skin.meta }}">{{ entry.sent_at }}</span>
