@@ -20,7 +20,9 @@
     "fade": "from-[#12101a] via-[#12101a]/85",
     "composer": "border-[#2b2536] bg-[#1c1728]",
     "field": "bg-[#241f31] text-on-dark-faint",
-    "send": "bg-plum-bright text-white"
+    "send": "bg-plum-bright text-white",
+    "link": "text-plum-bright",
+    "map": "bg-[#241f31]"
   } %}
 {% else %}
   {# WhatsApp's own dark palette, with three greys lifted off it.
@@ -45,7 +47,10 @@
     "fade": "from-[#0b141a] via-[#0b141a]/85",
     "composer": "border-[#222d34] bg-[#202c33]",
     "field": "bg-[#2a3942] text-[#c0c8ce]",
-    "send": "bg-[#25D366] text-[#0b141a]"
+    "send": "bg-[#25D366] text-[#0b141a]",
+    {# WhatsApp's own link blue, used on interactive-message buttons. #}
+    "link": "text-[#53bdeb]",
+    "map": "bg-[#2a3942]"
   } %}
 {% endif %}
 
@@ -122,9 +127,59 @@
                       {{ entry.message }}
                     </p>
                   </div>
+                {% elif entry.row_kind == "location" %}
+                  {# A shared pin, the way WhatsApp renders one: map preview
+                     above, address beneath. The point of the demo is that the
+                     customer never types an address — so the address has to
+                     arrive looking like something they tapped, not typed. #}
+                  <div class="mb-2 ml-auto max-w-[85%] overflow-hidden rounded-2xl rounded-tr-md {{ skin.guest }}" data-chat-row="other">
+                    <div class="relative h-[86px] w-[208px] {{ skin.map }}">
+                      <svg aria-hidden="true" viewBox="0 0 208 86" class="absolute inset-0 h-full w-full" fill="none">
+                        <path d="M-6 60H214M-6 24H214M46 -6V92M148 -6V92" stroke="currentColor" stroke-width="7" stroke-linecap="round" class="opacity-[0.16]" />
+                        <path d="M-6 42H214M102 -6V92" stroke="currentColor" stroke-width="3" class="opacity-[0.10]" />
+                      </svg>
+                      <span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[60%]">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 22s7-6.1 7-11a7 7 0 10-14 0c0 4.9 7 11 7 11z" fill="#ea4335" />
+                          <circle cx="12" cy="11" r="2.6" fill="#fff" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="px-3 pb-1.5 pt-2 text-small leading-[1.5]">
+                      {% if entry.caption %}<span class="idx-mono block text-micro uppercase tracking-[0.08em] {{ skin.meta }}">{{ entry.caption }}</span>{% endif %}
+                      <p class="whitespace-pre-wrap">{{ entry.message|escape|regex_replace("\\*\\*(.+?)\\*\\*", "<strong class='font-semibold'>$1</strong>")|safe }}</p>
+                      <span class="mt-0.5 flex items-center justify-end gap-1 text-micro {{ skin.meta }}">
+                        {{ entry.sent_at }}
+                        {% if module.channel != "web" %}
+                          <svg aria-hidden="true" width="16" height="11" viewBox="0 0 16 11" fill="none" class="translate-y-[1px]">
+                            <path d="M1 6.2l2.4 2.4L8.2 3.8" stroke="#53bdeb" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6.4 6.2l2.4 2.4L13.6 3.8" stroke="#53bdeb" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        {% endif %}
+                      </span>
+                    </div>
+                  </div>
+                {% elif entry.row_kind == "flow" %}
+                  {# An interactive message with a call-to-action button. The
+                     button is decorative here — a span, not a button, because
+                     nothing on this mock should take focus or a tap. #}
+                  <div class="mb-2 mr-auto max-w-[85%] overflow-hidden rounded-2xl rounded-tl-md {{ skin.bot }}" data-chat-row="bot">
+                    <div class="px-3 pb-1.5 pt-2 text-small leading-[1.5]">
+                      <p class="whitespace-pre-wrap">{{ entry.message|escape|regex_replace("\\*\\*(.+?)\\*\\*", "<strong class='font-semibold'>$1</strong>")|safe }}</p>
+                      <span class="mt-0.5 flex items-center justify-end gap-1 text-micro {{ skin.meta }}">{{ entry.sent_at }}</span>
+                    </div>
+                    <span class="flex w-full items-center justify-center gap-2 border-t px-3 py-2.5 text-small font-medium {{ skin.composer }} {{ skin.link }}">
+                      <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-none">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                        <path d="M15 3h6v6" />
+                        <path d="M10 14L21 3" />
+                      </svg>
+                      {{ entry.caption }}
+                    </span>
+                  </div>
                 {% elif entry.row_kind == "bot" %}
                   <div class="mb-2 max-w-[85%] px-3 pb-1.5 pt-2 text-small leading-[1.5] mr-auto rounded-2xl rounded-tl-md {{ skin.bot }}" data-chat-row="bot">
-                    <p class="whitespace-pre-wrap">{{ entry.message }}</p>
+                    <p class="whitespace-pre-wrap">{{ entry.message|escape|regex_replace("\\*\\*(.+?)\\*\\*", "<strong class='font-semibold'>$1</strong>")|safe }}</p>
                     <span class="mt-0.5 flex items-center justify-end gap-1 text-micro {{ skin.meta }}">{{ entry.sent_at }}</span>
                   </div>
                 {% else %}
@@ -141,7 +196,7 @@
                         </span>
                       </div>
                     {% else %}
-                      <p class="whitespace-pre-wrap">{{ entry.message }}</p>
+                      <p class="whitespace-pre-wrap">{{ entry.message|escape|regex_replace("\\*\\*(.+?)\\*\\*", "<strong class='font-semibold'>$1</strong>")|safe }}</p>
                     {% endif %}
                     <span class="mt-0.5 flex items-center justify-end gap-1 text-micro {{ skin.meta }}">
                       {% if entry.row_kind == "voice" %}<span class="mr-auto text-micro">{{ entry.duration }}</span>{% endif %}

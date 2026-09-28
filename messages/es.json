@@ -1347,7 +1347,73 @@
           "postgresql · pgvector",
           "redis",
           "react"
-        ]
+        ],
+        "chatDemo": {
+          "channel": "whatsapp",
+          "eyebrow": "míralo trabajar",
+          "title": "Un pedido a domicilio completo, sin que nadie del equipo conteste.",
+          "body": "El cliente pide, comparte su ubicación con el clip de adjuntar, y el asistente la lee sola — nadie tiene que escribir una dirección ni dictarla por teléfono. El cobro ocurre dentro de la misma conversación.",
+          "badge": "Demostración ilustrativa · producto e integraciones reales",
+          "header": {
+            "name": "Asadero El Roble",
+            "status": "en línea · responde al instante"
+          },
+          "inputHint": "Escribe tu pedido…",
+          "foot": [
+            "lee la ubicación que comparte el cliente",
+            "cobra sin sacar a nadie de WhatsApp",
+            "pasa el pedido a cocina"
+          ],
+          "entries": [
+            {
+              "from": "guest",
+              "text": "Buenas, ¿están haciendo domicilios?",
+              "t": "7:12 p. m."
+            },
+            {
+              "from": "bot",
+              "text": "Buenas noches. Sí, hasta las 10:30 p. m.\nHoy hay bandeja paisa, sancocho de guandú y pargo frito. ¿Qué le provoca?",
+              "t": "7:12 p. m."
+            },
+            {
+              "from": "guest",
+              "text": "2 bandejas paisas y una limonada de coco",
+              "t": "7:13 p. m."
+            },
+            {
+              "from": "bot",
+              "text": "Anotado: 2 bandejas paisas y 1 limonada de coco — **$78.000**.\n¿A qué dirección se lo llevamos? Si prefiere, mándeme su ubicación con el clip de adjuntar y yo la leo.",
+              "t": "7:13 p. m."
+            },
+            {
+              "kind": "location",
+              "label": "Ubicación",
+              "text": "Cra. 53 #72-18, Alto Prado\nBarranquilla, Atlántico",
+              "t": "7:14 p. m."
+            },
+            {
+              "from": "bot",
+              "text": "Listo, la recibí: **Cra. 53 #72-18, Alto Prado**.\nEstá a 2,4 km del asadero — domicilio **$5.000** y entrega en **35 a 45 minutos**. Total **$83.000**.",
+              "t": "7:14 p. m."
+            },
+            {
+              "kind": "flow",
+              "text": "Puede pagar aquí mismo. El botón abre el pago dentro de WhatsApp: no tiene que salir de la conversación ni instalar nada.",
+              "label": "Pagar $83.000",
+              "t": "7:14 p. m."
+            },
+            {
+              "kind": "action",
+              "text": "pago aprobado · pedido #4412 enviado a cocina",
+              "t": "7:15 p. m."
+            },
+            {
+              "from": "bot",
+              "text": "Pago recibido. Su pedido **#4412** ya está en preparación — le escribo por aquí cuando el domiciliario salga.",
+              "t": "7:15 p. m."
+            }
+          ]
+        }
       },
       "itSuite": {
         "name": "Suite de gestión de TI y RMM",

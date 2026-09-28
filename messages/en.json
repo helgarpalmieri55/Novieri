@@ -1317,7 +1317,73 @@
           "postgresql · pgvector",
           "redis",
           "react"
-        ]
+        ],
+        "chatDemo": {
+          "channel": "whatsapp",
+          "eyebrow": "watch it work",
+          "title": "A whole delivery order, with nobody on the team answering.",
+          "body": "The customer orders, shares their location with the attachment clip, and the assistant reads it on its own — nobody types an address or reads one back over the phone. Payment happens inside the same conversation.",
+          "badge": "Illustrative demo · real product and integrations",
+          "header": {
+            "name": "Asadero El Roble",
+            "status": "online · replies instantly"
+          },
+          "inputHint": "Type your order…",
+          "foot": [
+            "reads the location the customer shares",
+            "takes payment without leaving WhatsApp",
+            "sends the order to the kitchen"
+          ],
+          "entries": [
+            {
+              "from": "guest",
+              "text": "Hi, are you doing deliveries tonight?",
+              "t": "7:12 PM"
+            },
+            {
+              "from": "bot",
+              "text": "Good evening. Yes, until 10:30 PM.\nTonight we have bandeja paisa, sancocho de guandú and fried snapper. What would you like?",
+              "t": "7:12 PM"
+            },
+            {
+              "from": "guest",
+              "text": "2 bandejas paisas and a coconut lemonade",
+              "t": "7:13 PM"
+            },
+            {
+              "from": "bot",
+              "text": "Got it: 2 bandejas paisas and 1 coconut lemonade — **COP 78,000**.\nWhere should we send it? If it's easier, send me your location with the attachment clip and I'll read it.",
+              "t": "7:13 PM"
+            },
+            {
+              "kind": "location",
+              "label": "Location",
+              "text": "Cra. 53 #72-18, Alto Prado\nBarranquilla, Atlántico",
+              "t": "7:14 PM"
+            },
+            {
+              "from": "bot",
+              "text": "Got it: **Cra. 53 #72-18, Alto Prado**.\nThat's 2.4 km from the restaurant — delivery **COP 5,000**, arriving in **35 to 45 minutes**. Total **COP 83,000**.",
+              "t": "7:14 PM"
+            },
+            {
+              "kind": "flow",
+              "text": "You can pay right here. The button opens payment inside WhatsApp — no leaving the chat, nothing to install.",
+              "label": "Pay COP 83,000",
+              "t": "7:14 PM"
+            },
+            {
+              "kind": "action",
+              "text": "payment approved · order #4412 sent to the kitchen",
+              "t": "7:15 PM"
+            },
+            {
+              "from": "bot",
+              "text": "Payment received. Order **#4412** is being prepared — I'll message you here when the driver leaves.",
+              "t": "7:15 PM"
+            }
+          ]
+        }
       },
       "itSuite": {
         "name": "IT Management Suite & RMM",

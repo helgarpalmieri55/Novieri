@@ -31,10 +31,18 @@
       timer = setTimeout(fn, ms);
     }
 
+    /*
+     * The opening message stays on screen at rest. Hiding every row left the
+     * phone frame standing empty until the first message landed, and an empty
+     * frame does not read as "about to start" -- it reads as a demo that
+     * failed to load, which is exactly what got reported. Keeping row zero in
+     * place means the frame always holds a conversation, and the animation
+     * becomes the reply arriving rather than the whole thing materialising.
+     */
     function reset() {
-      i = 0;
-      rows.forEach(function (r) {
-        show(r, false);
+      i = 1;
+      rows.forEach(function (r, n) {
+        show(r, n === 0);
       });
       showTyping(false);
     }
@@ -104,7 +112,19 @@
             stop();
           }
         });
-      }, { threshold: 0.35 }).observe(root);
+      }, {
+        /*
+         * Start a little before it arrives rather than once it is centred.
+         * The conversation takes about fourteen seconds to build and someone
+         * scrolling at reading pace crosses this section in far less, so
+         * waiting for 35% of a 600px frame left the reply still typing after
+         * they had gone past. A screen of bottom margin gives it a head
+         * start, and the low threshold keeps the trigger from depending on
+         * how tall the frame happens to be on a given phone.
+         */
+        rootMargin: "0px 0px 400px 0px",
+        threshold: 0.01,
+      }).observe(root);
     } else {
       // No observer: behave as before rather than never playing at all.
       start();
