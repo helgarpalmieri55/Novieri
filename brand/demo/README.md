@@ -19,6 +19,7 @@ tres segundos y un "Sí, autorizo" menos de uno.
 | `…-feed-1080x1350.mp4` | publicación de feed en Instagram. 4:5. |
 | `…-domicilio.gif` | presentaciones y WhatsApp. Se reproduce solo y en cualquier parte. |
 | `…-domicilio.webm` | el original de la grabación, sin recortar a formato. |
+| `…-claro-*` | los mismos cuatro formatos con el tema claro de WhatsApp: fondo beige, burbujas blancas y verde claro. |
 | `ubicacion-compartida.png` | el momento en que llega el pin y el asistente lo lee. |
 | `pago-en-whatsapp.png` | el botón de pago dentro del chat. |
 
@@ -35,7 +36,10 @@ con cada copia del archivo y no hay que acordarse de ponerlo en el pie.
 ## Volver a grabarlas
 
     pip install Pillow imageio-ffmpeg
-    node scripts/record-chat-demo.mjs --url=<página> --out=<carpeta> --seconds=23
+    node scripts/record-chat-demo.mjs --url=<página> --out=<carpeta> --seconds=55
+
+Con `--tone=light` graba en el tema contrario al publicado. El teléfono
+lleva las dos paletas, así que no hace falta desplegar nada para eso.
 
 Graba desde el sitio publicado, así que hay que desplegar primero. El
 teléfono se monta solo sobre un fondo limpio, centrado; se oculta todo lo
