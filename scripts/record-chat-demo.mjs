@@ -55,9 +55,9 @@ const vp = await videoCtx.newPage();
 await vp.goto(url, { waitUntil: "load", timeout: 60000 });
 await vp.evaluate(HIDE);
 const sectionTop = await vp.evaluate(
-  `Math.round(document.querySelector("[data-chat-demo]").closest("section").getBoundingClientRect().top+scrollY)`,
+  `Math.round(document.querySelector("[data-chat-phone]").getBoundingClientRect().top+scrollY)`,
 );
-await vp.evaluate(`window.scrollTo({top:${sectionTop + 60},behavior:"instant"})`);
+await vp.evaluate(`window.scrollTo({top:${sectionTop - 60},behavior:"instant"})`);
 await vp.waitForTimeout(seconds * 1000 + 1000);
 await videoCtx.close();
 for (const f of readdirSync(tmp).filter((f) => f.endsWith(".webm"))) {
@@ -73,13 +73,18 @@ const ctx = await browser.newContext({
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: "load", timeout: 60000 });
 await page.evaluate(HIDE);
+// Crop to the handset, not the section: the clip should be a phone with
+// WhatsApp open, with no eyebrow, heading or capability strip around it.
+// A few pixels of margin keep the device's shadow from being sliced off.
+const PAD = 14;
 const top = await page.evaluate(
-  `Math.round(document.querySelector("[data-chat-demo]").getBoundingClientRect().top+scrollY)`,
+  `Math.round(document.querySelector("[data-chat-phone]").getBoundingClientRect().top+scrollY)`,
 );
-await page.evaluate(`window.scrollTo({top:${top - 160},behavior:"instant"})`);
+await page.evaluate(`window.scrollTo({top:${top - 120},behavior:"instant"})`);
 const clip = await page.evaluate(`(()=>{
-  const r=document.querySelector("[data-chat-demo]").getBoundingClientRect();
-  return {x:Math.round(r.x),y:Math.round(r.y),width:Math.round(r.width),height:Math.round(r.height)};})()`);
+  const r=document.querySelector("[data-chat-phone]").getBoundingClientRect();
+  return {x:Math.round(r.x)-${PAD},y:Math.round(r.y)-${PAD},
+          width:Math.round(r.width)+${PAD * 2},height:Math.round(r.height)+${PAD * 2}};})()`);
 
 const STEP = 205;
 const total = Math.round((seconds * 1000) / STEP);
