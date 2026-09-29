@@ -30,6 +30,19 @@
      * does not scroll back up in front of the viewer.
      */
     function toBottom(smooth) {
+      // Next frame, not this one. Called straight after a row is unhidden,
+      // scrollHeight is still the height from before it existed, so the log
+      // stopped short and a tall message -- the one carrying the pay button --
+      // stayed half behind the composer.
+      if (typeof requestAnimationFrame === "function") {
+        requestAnimationFrame(function () {
+          scrollNow(smooth);
+        });
+      } else {
+        scrollNow(smooth);
+      }
+    }
+    function scrollNow(smooth) {
       try {
         log.scrollTo({ top: log.scrollHeight, behavior: smooth ? "smooth" : "auto" });
       } catch (e) {

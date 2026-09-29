@@ -127,14 +127,19 @@
               <p class="truncate text-small font-medium leading-tight {{ skin.name }}">{{ module.chat_name }}</p>
               <p class="mt-0.5 truncate text-micro {{ skin.status }}">{{ module.chat_status }}</p>
             </div>
-            {% if module.badge %}
-              {# flex-none, and the Spanish badge is 58 characters where the
-                 English one is 17: measured at 390px it ran 68.7px past the
-                 viewport and the tail was simply clipped. It may shrink now,
-                 and wrap rather than run off the edge. #}
-              <span class="ml-auto min-w-0 rounded-full border border-[#3a3145] px-2.5 py-0.5 text-right text-micro leading-snug tracking-[0.08em] text-gold-bright">{{ module.badge }}</span>
-            {% endif %}
           </div>
+
+          {% if module.badge %}
+            {# The notice sits under the header, centred, where WhatsApp puts
+               its own. In the header it wrapped to two lines and squeezed the
+               contact's status into an ellipsis, which is the one place a
+               mock of an app cannot afford to look unlike the app. Here it
+               stays in frame for the whole clip and costs the header
+               nothing. #}
+            <div class="flex justify-center px-4 pt-2.5">
+              <span class="rounded-md bg-black/30 px-2.5 py-1 text-center text-micro leading-snug tracking-[0.06em] text-gold-bright">{{ module.badge }}</span>
+            </div>
+          {% endif %}
 
           {# Conversation. Every row ships in the HTML; the script hides them
              and lets them back in one at a time. No JS, no motion: all of it
