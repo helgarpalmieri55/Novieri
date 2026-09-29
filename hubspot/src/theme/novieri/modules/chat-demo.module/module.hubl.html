@@ -74,14 +74,41 @@
     </div>
 
     <div class="reveal" style="--rd: 120ms">
-      <div class="relative mx-auto w-full max-w-[440px]" data-chat-demo>
-        <div aria-hidden="true" class="absolute -inset-px rounded-[17px] bg-gradient-to-br from-teal-bright via-plum-bright to-gold-bright"></div>
-        {# data-chat-phone marks the handset itself: header, conversation and
-           composer, and nothing around it. Recordings crop to this, so a clip
-           of the demo is a phone with WhatsApp open rather than a slice of a
-           marketing page. The illustrative-demo notice rides in the header
-           bar, inside the crop, so it travels with every copy of the file. #}
-        <div class="relative overflow-hidden rounded-2xl {{ skin.shell }}" data-chat-phone>
+      <div class="relative mx-auto w-full max-w-[400px]" data-chat-demo>
+        {# An actual handset: body, bezel, island, status bar, home indicator.
+           A flat panel with a gradient edge read as a website element that
+           happened to contain a chat. A phone reads as somebody's phone, and
+           the whole claim of this section is that this happens on one.
+
+           data-chat-phone marks the device, so a recording crops to a phone
+           with WhatsApp open and nothing else. The illustrative-demo notice
+           rides inside the screen, so it travels with every copy of the file. #}
+        <div class="relative rounded-[2.75rem] bg-[#0b0b0e] p-[11px] shadow-[0_0_0_1.5px_#31313a,0_28px_60px_-22px_rgba(0,0,0,0.85)]" data-chat-phone>
+          <div class="relative overflow-hidden rounded-[2.1rem] {{ skin.shell }}">
+
+          {# Status bar, with the island sitting over it. #}
+          <div class="relative {{ skin.bar }}">
+            <span aria-hidden="true" class="absolute left-1/2 top-[6px] h-[25px] w-[86px] -translate-x-1/2 rounded-full bg-black"></span>
+            <div class="flex items-center justify-between px-5 pb-0.5 pt-2 text-[11px] font-semibold {{ skin.name }}">
+              <span>2:13</span>
+              <span aria-hidden="true" class="flex items-center gap-[5px]">
+                <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor">
+                  <rect x="0" y="7.5" width="2.6" height="3.5" rx="0.8" />
+                  <rect x="4.4" y="5" width="2.6" height="6" rx="0.8" />
+                  <rect x="8.8" y="2.5" width="2.6" height="8.5" rx="0.8" />
+                  <rect x="13.2" y="0" width="2.6" height="11" rx="0.8" opacity="0.4" />
+                </svg>
+                <svg width="14" height="11" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                  <path d="M1 4.2a10 10 0 0 1 14 0" />
+                  <path d="M3.6 7a6.4 6.4 0 0 1 8.8 0" />
+                  <path d="M6.2 9.7a2.6 2.6 0 0 1 3.6 0" />
+                </svg>
+                <span class="flex h-[11px] w-[22px] items-center rounded-[3px] border border-current px-[1.5px]">
+                  <span class="h-[6px] w-[11px] rounded-[1px] bg-current"></span>
+                </span>
+              </span>
+            </div>
+          </div>
 
           {# Chat header #}
           <div class="flex items-center gap-3 border-b px-4 py-3 {{ skin.bar }}">
@@ -112,9 +139,15 @@
           {# Conversation. Every row ships in the HTML; the script hides them
              and lets them back in one at a time. No JS, no motion: all of it
              is simply there. #}
-          <div class="relative h-[clamp(360px,50vh,440px)]">
+          <div class="relative h-[clamp(400px,56vh,520px)]">
             <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 bg-gradient-to-b to-transparent {{ skin.fade }}"></div>
-            <div class="flex h-full flex-col justify-end overflow-hidden px-3.5 pb-3 pt-4" aria-live="off" data-chat-log>
+            {# The conversation scrolls rather than stacking inside a fixed
+               window: min-h-full with justify-end keeps a short chat sitting
+               on the composer, and a long one runs past the top the way a
+               real thread does. The script scrolls it down as each message
+               lands. #}
+            <div class="h-full overflow-hidden scroll-smooth px-3.5 pb-3 pt-4" aria-live="off" data-chat-log>
+              <div class="flex min-h-full flex-col justify-end">
               {% for entry in module.entries %}
                 {% if entry.row_kind == "transcript" %}
                   <div class="my-1 flex justify-center" data-chat-row="other">
@@ -249,6 +282,7 @@
                 <span class="dot-pulse h-1.5 w-1.5 rounded-full {{ skin.wave }}" style="--dd: 150ms"></span>
                 <span class="dot-pulse h-1.5 w-1.5 rounded-full {{ skin.wave }}" style="--dd: 300ms"></span>
               </div>
+              </div>
             </div>
           </div>
 
@@ -268,21 +302,24 @@
             </span>
           </div>
 
-          {% if module.capabilities %}
-            {# The capability strip was the site's only contrast failure: 11.5px
-               of --on-dark-faint on the panel's #202c33 measures 3.95:1, and AA
-               asks 4.5 for text this size. --on-dark-muted on the same ground
-               measures 5.43:1. The token was being used below the size it is
-               safe at, which is a rule worth stating rather than a value worth
-               nudging. #}
-            <div class="flex flex-wrap gap-x-5 gap-y-1 border-t px-4 py-3 text-micro tracking-[0.05em] text-on-dark-muted {{ skin.composer }}">
-              {% for item in module.capabilities %}
-                <span>{{ item.capability }}</span>
-              {% endfor %}
-            </div>
-          {% endif %}
+          {# Home indicator. #}
+          <div class="flex justify-center pb-2.5 pt-1.5 {{ skin.composer }}">
+            <span aria-hidden="true" class="h-[4px] w-[124px] rounded-full bg-white/30"></span>
+          </div>
 
+          </div>
         </div>
+
+        {% if module.capabilities %}
+          {# Outside the handset. These used to sit under the composer, inside
+             the screen, where they read as part of WhatsApp and put three
+             lines of marketing into every clip of the demo. #}
+          <div class="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-1 text-micro tracking-[0.05em] text-on-dark-muted">
+            {% for item in module.capabilities %}
+              <span>{{ item.capability }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>

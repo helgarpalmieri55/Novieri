@@ -22,6 +22,20 @@
     function show(el, on) {
       el.style.display = on ? "" : "none";
     }
+    /*
+     * Follow the conversation down. Messages used to appear inside a window
+     * pinned to the composer, which reads as a list filling in rather than a
+     * chat being had; a thread moves, and the movement is most of what makes
+     * it look like somebody's phone. Instant on reset so a restarted loop
+     * does not scroll back up in front of the viewer.
+     */
+    function toBottom(smooth) {
+      try {
+        log.scrollTo({ top: log.scrollHeight, behavior: smooth ? "smooth" : "auto" });
+      } catch (e) {
+        log.scrollTop = log.scrollHeight;
+      }
+    }
     function showTyping(on) {
       if (!typing) return;
       typing.classList.toggle("hidden", !on);
@@ -45,6 +59,7 @@
         show(r, n === 0);
       });
       showTyping(false);
+      toBottom(false);
     }
 
     /*
@@ -71,14 +86,17 @@
       var row = rows[i];
       if (row.getAttribute("data-chat-row") === "bot") {
         showTyping(true);
+        toBottom(true);
         at(beat(1000), function () {
           showTyping(false);
           show(row, true);
+          toBottom(true);
           i += 1;
           at(beat(1100), next);
         });
       } else {
         show(row, true);
+        toBottom(true);
         i += 1;
         at(beat(row.getAttribute("data-chat-row") === "action" ? 1200 : 900), next);
       }
