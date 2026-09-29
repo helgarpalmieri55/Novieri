@@ -76,15 +76,27 @@
     }
 
     /*
-     * Long conversations move faster. The WhatsApp assistant's demo runs
-     * nineteen messages -- consent, registration, a shared pin, the menu, the
-     * order, payment -- and at the pace that suits a six-message exchange it
-     * took half a minute, which is longer than anyone watches a loop. The
-     * beats keep their proportions; the whole thing just plays quicker.
+     * Each message stays up for as long as it takes to read. A flat pace was
+     * wrong in both directions: a six-line order summary got the same beat as
+     * "Hola", and the whole thing was then sped up to keep the loop short,
+     * which is the opposite of the point. A demo nobody can read is a demo
+     * that failed, and a long conversation is not a reason to go faster --
+     * it is a reason to give it the time it needs.
+     *
+     * About 75 characters a second, floored so a two-word reply still
+     * registers and capped so the longest message does not stall the loop.
+     * That puts this conversation at roughly fifty seconds, which is the
+     * trade the commercial side picked: readable, and still short enough to
+     * post.
      */
-    var pace = rows.length > 18 ? 0.54 : rows.length > 12 ? 0.68 : 1;
-    function beat(ms) {
-      return Math.round(ms * pace);
+    function chars(el) {
+      return (el.textContent || "").replace(/\s+/g, " ").trim().length;
+    }
+    function dwell(el) {
+      return Math.min(2800, Math.max(900, 350 + chars(el) * 13));
+    }
+    function typingFor(el) {
+      return Math.min(1200, Math.max(700, 600 + chars(el) * 3));
     }
 
     function next() {
@@ -100,18 +112,18 @@
       if (row.getAttribute("data-chat-row") === "bot") {
         showTyping(true);
         toBottom(true);
-        at(beat(1000), function () {
+        at(typingFor(row), function () {
           showTyping(false);
           show(row, true);
           toBottom(true);
           i += 1;
-          at(beat(1100), next);
+          at(dwell(row), next);
         });
       } else {
         show(row, true);
         toBottom(true);
         i += 1;
-        at(beat(row.getAttribute("data-chat-row") === "action" ? 1200 : 900), next);
+        at(dwell(row), next);
       }
     }
 
