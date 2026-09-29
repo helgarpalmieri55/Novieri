@@ -1321,66 +1321,147 @@
         "chatDemo": {
           "channel": "whatsapp",
           "eyebrow": "watch it work",
-          "title": "A whole delivery order, with nobody on the team answering.",
-          "body": "The customer orders, shares their location with the attachment clip, and the assistant reads it on its own — nobody types an address or reads one back over the phone. Payment happens inside the same conversation.",
+          "title": "A whole delivery order, start to finish.",
+          "body": "Nobody at the restaurant answers at any point. The assistant asks for data-handling consent before it stores anything, registers the customer, reads the location they share instead of asking them to type an address, builds the order and takes payment inside WhatsApp.",
           "badge": "Illustrative demo · real product and integrations",
           "header": {
-            "name": "Asadero El Roble",
+            "name": "Pizzería El Horno",
             "status": "online · replies instantly"
           },
-          "inputHint": "Type your order…",
+          "inputHint": "Type a message…",
           "foot": [
+            "asks consent before storing anything",
             "reads the location the customer shares",
-            "takes payment without leaving WhatsApp",
-            "sends the order to the kitchen"
+            "takes payment without leaving WhatsApp"
           ],
           "entries": [
             {
               "from": "guest",
-              "text": "Hi, are you doing deliveries tonight?",
-              "t": "7:12 PM"
+              "text": "Hi",
+              "t": "2:08 PM"
             },
             {
-              "from": "bot",
-              "text": "Good evening. Yes, until 10:30 PM.\nTonight we have bandeja paisa, sancocho de guandú and fried snapper. What would you like?",
-              "t": "7:12 PM"
+              "kind": "buttons",
+              "text": "Hello. I'm the virtual assistant for **Pizzería El Horno**. To register you and save your delivery address I need your consent, under the data-handling policy. Do you agree?",
+              "buttons": [
+                "Yes, I agree",
+                "No"
+              ],
+              "t": "2:08 PM"
             },
             {
               "from": "guest",
-              "text": "2 bandejas paisas and a coconut lemonade",
-              "t": "7:13 PM"
+              "quote": "…I need your consent, under the data-handling policy.",
+              "text": "Yes, I agree",
+              "t": "2:09 PM"
             },
             {
               "from": "bot",
-              "text": "Got it: 2 bandejas paisas and 1 coconut lemonade — **COP 78,000**.\nWhere should we send it? If it's easier, send me your location with the attachment clip and I'll read it.",
-              "t": "7:13 PM"
+              "text": "Thank you. To register you I need your name and your email — the email is optional. You can send both in one message.",
+              "t": "2:09 PM"
+            },
+            {
+              "from": "guest",
+              "text": "Camila Restrepo, camila@example.com",
+              "t": "2:09 PM"
+            },
+            {
+              "kind": "buttons",
+              "text": "You're registered, Camila. What do you need today?",
+              "buttons": [
+                "Place an order",
+                "See the menu"
+              ],
+              "t": "2:09 PM"
+            },
+            {
+              "from": "guest",
+              "quote": "What do you need today?",
+              "text": "Place an order",
+              "t": "2:10 PM"
+            },
+            {
+              "kind": "buttons",
+              "text": "Where should we take it?",
+              "buttons": [
+                "Type it",
+                "Share location"
+              ],
+              "t": "2:10 PM"
+            },
+            {
+              "from": "guest",
+              "quote": "Where should we take it?",
+              "text": "Share location",
+              "t": "2:10 PM"
             },
             {
               "kind": "location",
               "label": "Location",
-              "text": "Cra. 53 #72-18, Alto Prado\nBarranquilla, Atlántico",
-              "t": "7:14 PM"
+              "text": "Cra. 61b # 72-47, La Concepción\nBarranquilla, Atlántico",
+              "t": "2:10 PM"
             },
             {
-              "from": "bot",
-              "text": "Got it: **Cra. 53 #72-18, Alto Prado**.\nThat's 2.4 km from the restaurant — delivery **COP 5,000**, arriving in **35 to 45 minutes**. Total **COP 83,000**.",
-              "t": "7:14 PM"
+              "kind": "buttons",
+              "text": "Got it. Delivery to **Cra. 61b # 72-47, La Concepción** is **COP 8,000** and takes about **45 minutes**.\nShould I save this address for next time?",
+              "buttons": [
+                "Yes, save it",
+                "No thanks"
+              ],
+              "t": "2:10 PM"
+            },
+            {
+              "from": "guest",
+              "quote": "Should I save this address for next time?",
+              "text": "Yes, save it",
+              "t": "2:10 PM"
             },
             {
               "kind": "flow",
-              "text": "You can pay right here. The button opens payment inside WhatsApp — no leaving the chat, nothing to install.",
-              "label": "Pay COP 83,000",
-              "t": "7:14 PM"
+              "text": "Build your order on the menu and I'll confirm it here when you send it. The menu opens inside WhatsApp.",
+              "label": "See the menu",
+              "t": "2:10 PM"
+            },
+            {
+              "kind": "buttons",
+              "text": "Here's your order:\n• 1 × Half eggplant / half pepperoni (X-LARGE): COP 98,400\n   + Cheese crust: COP 28,700\n• Delivery: COP 8,000\nTotal: **COP 135,100**\nShall I confirm it?",
+              "buttons": [
+                "Confirm",
+                "Change something"
+              ],
+              "t": "2:11 PM"
+            },
+            {
+              "from": "guest",
+              "quote": "Shall I confirm it?",
+              "text": "Confirm",
+              "t": "2:11 PM"
+            },
+            {
+              "kind": "buttons",
+              "text": "How would you like to pay?",
+              "buttons": [
+                "Pay now",
+                "Cash on delivery"
+              ],
+              "t": "2:11 PM"
+            },
+            {
+              "from": "guest",
+              "quote": "How would you like to pay?",
+              "text": "Pay now",
+              "t": "2:11 PM"
+            },
+            {
+              "kind": "flow",
+              "text": "Your order **D28115F5** is placed. Total **COP 135,100**, delivery included. Arriving in about 45 minutes at Cra. 61b # 72-47.",
+              "label": "Pay COP 135,100",
+              "t": "2:11 PM"
             },
             {
               "kind": "action",
-              "text": "payment approved · order #4412 sent to the kitchen",
-              "t": "7:15 PM"
-            },
-            {
-              "from": "bot",
-              "text": "Payment received. Order **#4412** is being prepared — I'll message you here when the driver leaves.",
-              "t": "7:15 PM"
+              "text": "payment approved · order D28115F5 sent to the kitchen",
+              "t": "2:12 PM"
             }
           ]
         }

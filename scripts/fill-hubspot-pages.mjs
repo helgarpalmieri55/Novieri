@@ -662,6 +662,10 @@ function solutionWidgets(key) {
           caption: e.label || "",
           duration: e.duration || "",
           sent_at: e.t || "",
+          quote: e.quote || "",
+          button_a: (e.buttons || [])[0] || "",
+          button_b: (e.buttons || [])[1] || "",
+          button_c: (e.buttons || [])[2] || "",
         })),
         input_hint: p.chatDemo?.inputHint || "",
         capabilities: (p.chatDemo?.foot || []).map((c) => ({ capability: c })),
@@ -895,6 +899,10 @@ function homeWidgets() {
     caption: e.label || "",
     duration: e.duration || "",
     sent_at: e.t || "",
+    quote: e.quote || "",
+    button_a: (e.buttons || [])[0] || "",
+    button_b: (e.buttons || [])[1] || "",
+    button_c: (e.buttons || [])[2] || "",
   });
   return {
     [HOME_SLOTS.hero]: {

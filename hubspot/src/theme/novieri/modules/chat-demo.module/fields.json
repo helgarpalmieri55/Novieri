@@ -116,6 +116,10 @@
           [
             "flow",
             "Interactive message"
+          ],
+          [
+            "buttons",
+            "Reply buttons"
           ]
         ]
       },
@@ -144,6 +148,38 @@
         "label": "Time",
         "type": "text",
         "default": "7:42 PM"
+      },
+      {
+        "name": "quote",
+        "label": "Quoted message",
+        "type": "text",
+        "required": false,
+        "locked": false,
+        "default": ""
+      },
+      {
+        "name": "button_a",
+        "label": "Button 1",
+        "type": "text",
+        "required": false,
+        "locked": false,
+        "default": ""
+      },
+      {
+        "name": "button_b",
+        "label": "Button 2",
+        "type": "text",
+        "required": false,
+        "locked": false,
+        "default": ""
+      },
+      {
+        "name": "button_c",
+        "label": "Button 3",
+        "type": "text",
+        "required": false,
+        "locked": false,
+        "default": ""
       }
     ],
     "default": [

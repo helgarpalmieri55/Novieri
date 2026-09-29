@@ -1351,66 +1351,147 @@
         "chatDemo": {
           "channel": "whatsapp",
           "eyebrow": "míralo trabajar",
-          "title": "Un pedido a domicilio completo, sin que nadie del equipo conteste.",
-          "body": "El cliente pide, comparte su ubicación con el clip de adjuntar, y el asistente la lee sola — nadie tiene que escribir una dirección ni dictarla por teléfono. El cobro ocurre dentro de la misma conversación.",
+          "title": "Un pedido a domicilio completo, de principio a fin.",
+          "body": "Nadie del restaurante contesta en toda la conversación. El asistente pide autorización de datos antes de guardar nada, registra al cliente, lee la ubicación que le comparten sin pedir que escriban una dirección, arma el pedido y cobra dentro de WhatsApp.",
           "badge": "Demostración ilustrativa · producto e integraciones reales",
           "header": {
-            "name": "Asadero El Roble",
+            "name": "Pizzería El Horno",
             "status": "en línea · responde al instante"
           },
-          "inputHint": "Escribe tu pedido…",
+          "inputHint": "Escribe tu mensaje…",
           "foot": [
+            "pide autorización antes de guardar datos",
             "lee la ubicación que comparte el cliente",
-            "cobra sin sacar a nadie de WhatsApp",
-            "pasa el pedido a cocina"
+            "cobra sin sacar a nadie de WhatsApp"
           ],
           "entries": [
             {
               "from": "guest",
-              "text": "Buenas, ¿están haciendo domicilios?",
-              "t": "7:12 p. m."
+              "text": "Hola",
+              "t": "2:08 p. m."
             },
             {
-              "from": "bot",
-              "text": "Buenas noches. Sí, hasta las 10:30 p. m.\nHoy hay bandeja paisa, sancocho de guandú y pargo frito. ¿Qué le provoca?",
-              "t": "7:12 p. m."
+              "kind": "buttons",
+              "text": "Hola. Soy el asistente virtual de **Pizzería El Horno**. Para registrarte y guardar tu dirección de entrega necesito tu autorización, según la política de tratamiento de datos. ¿La autorizas?",
+              "buttons": [
+                "Sí, autorizo",
+                "No autorizo"
+              ],
+              "t": "2:08 p. m."
             },
             {
               "from": "guest",
-              "text": "2 bandejas paisas y una limonada de coco",
-              "t": "7:13 p. m."
+              "quote": "…necesito tu autorización, según la política de tratamiento de datos.",
+              "text": "Sí, autorizo",
+              "t": "2:09 p. m."
             },
             {
               "from": "bot",
-              "text": "Anotado: 2 bandejas paisas y 1 limonada de coco — **$78.000**.\n¿A qué dirección se lo llevamos? Si prefiere, mándeme su ubicación con el clip de adjuntar y yo la leo.",
-              "t": "7:13 p. m."
+              "text": "Gracias. Para registrarte necesito tu nombre y tu correo — el correo es opcional. Puedes mandármelos en este mismo mensaje.",
+              "t": "2:09 p. m."
+            },
+            {
+              "from": "guest",
+              "text": "Camila Restrepo, camila@ejemplo.com",
+              "t": "2:09 p. m."
+            },
+            {
+              "kind": "buttons",
+              "text": "Listo, Camila. Ya quedaste registrada. ¿Qué necesitas hoy?",
+              "buttons": [
+                "Hacer un pedido",
+                "Ver la carta"
+              ],
+              "t": "2:09 p. m."
+            },
+            {
+              "from": "guest",
+              "quote": "¿Qué necesitas hoy?",
+              "text": "Hacer un pedido",
+              "t": "2:10 p. m."
+            },
+            {
+              "kind": "buttons",
+              "text": "¿A dónde te lo llevamos?",
+              "buttons": [
+                "Escribirla",
+                "Compartir ubicación"
+              ],
+              "t": "2:10 p. m."
+            },
+            {
+              "from": "guest",
+              "quote": "¿A dónde te lo llevamos?",
+              "text": "Compartir ubicación",
+              "t": "2:10 p. m."
             },
             {
               "kind": "location",
               "label": "Ubicación",
-              "text": "Cra. 53 #72-18, Alto Prado\nBarranquilla, Atlántico",
-              "t": "7:14 p. m."
+              "text": "Cra. 61b # 72-47, La Concepción\nBarranquilla, Atlántico",
+              "t": "2:10 p. m."
             },
             {
-              "from": "bot",
-              "text": "Listo, la recibí: **Cra. 53 #72-18, Alto Prado**.\nEstá a 2,4 km del asadero — domicilio **$5.000** y entrega en **35 a 45 minutos**. Total **$83.000**.",
-              "t": "7:14 p. m."
+              "kind": "buttons",
+              "text": "Listo. El domicilio a **Cra. 61b # 72-47, La Concepción** cuesta **$8.000** y llega en unos **45 minutos**.\n¿Guardo esta dirección para tus próximos pedidos?",
+              "buttons": [
+                "Sí, guárdala",
+                "No, gracias"
+              ],
+              "t": "2:10 p. m."
+            },
+            {
+              "from": "guest",
+              "quote": "¿Guardo esta dirección para tus próximos pedidos?",
+              "text": "Sí, guárdala",
+              "t": "2:10 p. m."
             },
             {
               "kind": "flow",
-              "text": "Puede pagar aquí mismo. El botón abre el pago dentro de WhatsApp: no tiene que salir de la conversación ni instalar nada.",
-              "label": "Pagar $83.000",
-              "t": "7:14 p. m."
+              "text": "Arma tu pedido en la carta y, cuando lo envíes, te lo confirmo por aquí. La carta se abre dentro de WhatsApp.",
+              "label": "Ver la carta",
+              "t": "2:10 p. m."
+            },
+            {
+              "kind": "buttons",
+              "text": "Este es tu pedido:\n• 1 × Mitad berenjena / mitad pepperoni (X-LARGE): $98.400\n   + Reborde de queso: $28.700\n• Domicilio: $8.000\nTotal: **$135.100**\n¿Lo confirmo?",
+              "buttons": [
+                "Confirmar",
+                "Cambiar algo"
+              ],
+              "t": "2:11 p. m."
+            },
+            {
+              "from": "guest",
+              "quote": "¿Lo confirmo?",
+              "text": "Confirmar",
+              "t": "2:11 p. m."
+            },
+            {
+              "kind": "buttons",
+              "text": "¿Cómo prefieres pagar?",
+              "buttons": [
+                "Pagar ahora",
+                "Contra entrega"
+              ],
+              "t": "2:11 p. m."
+            },
+            {
+              "from": "guest",
+              "quote": "¿Cómo prefieres pagar?",
+              "text": "Pagar ahora",
+              "t": "2:11 p. m."
+            },
+            {
+              "kind": "flow",
+              "text": "Tu pedido **D28115F5** quedó tomado. Total **$135.100**, incluye domicilio. Llega en unos 45 minutos a Cra. 61b # 72-47.",
+              "label": "Pagar $135.100",
+              "t": "2:11 p. m."
             },
             {
               "kind": "action",
-              "text": "pago aprobado · pedido #4412 enviado a cocina",
-              "t": "7:15 p. m."
-            },
-            {
-              "from": "bot",
-              "text": "Pago recibido. Su pedido **#4412** ya está en preparación — le escribo por aquí cuando el domiciliario salga.",
-              "t": "7:15 p. m."
+              "text": "pago aprobado · pedido D28115F5 enviado a cocina",
+              "t": "2:12 p. m."
             }
           ]
         }

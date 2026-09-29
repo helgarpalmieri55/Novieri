@@ -158,6 +158,29 @@
                       </span>
                     </div>
                   </div>
+                {% elif entry.row_kind == "buttons" %}
+                  {# An interactive message with reply buttons stacked under
+                     it. Three named fields rather than one delimited string:
+                     a split filter is one deploy away from silently emitting
+                     nothing, and a button that fails to render takes the
+                     point of the message with it. #}
+                  <div class="mb-2 mr-auto max-w-[85%] flex-none overflow-hidden rounded-2xl rounded-tl-md {{ skin.bot }}" data-chat-row="bot">
+                    <div class="px-3 pb-1.5 pt-2 text-small leading-[1.5]">
+                      <p class="whitespace-pre-wrap">{{ entry.message|escape|regex_replace("\\*\\*(.+?)\\*\\*", "<strong class='font-semibold'>$1</strong>")|safe }}</p>
+                      <span class="mt-0.5 flex items-center justify-end gap-1 text-micro {{ skin.meta }}">{{ entry.sent_at }}</span>
+                    </div>
+                    {% for label in [entry.button_a, entry.button_b, entry.button_c] %}
+                      {% if label %}
+                        <span class="flex w-full items-center justify-center gap-2 border-t px-3 py-2.5 text-small {{ skin.composer }} {{ skin.link }}">
+                          <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-none">
+                            <path d="M9 14L4 9l5-5" />
+                            <path d="M20 20v-7a4 4 0 00-4-4H4" />
+                          </svg>
+                          {{ label }}
+                        </span>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
                 {% elif entry.row_kind == "flow" %}
                   {# An interactive message with a call-to-action button. The
                      button is decorative here — a span, not a button, because
@@ -183,6 +206,10 @@
                   </div>
                 {% else %}
                   <div class="mb-2 max-w-[85%] px-3 pb-1.5 pt-2 text-small leading-[1.5] ml-auto rounded-2xl rounded-tr-md {{ skin.guest }}" data-chat-row="other">
+                    {# Tapping a button quotes the question it answered. #}
+                    {% if entry.quote %}
+                      <span class="mb-1.5 block rounded-md border-l-[3px] border-gold-bright bg-black/20 px-2.5 py-1.5 text-micro leading-snug {{ skin.meta }}">{{ entry.quote }}</span>
+                    {% endif %}
                     {% if entry.row_kind == "voice" %}
                       <div class="flex items-center gap-2.5 py-0.5">
                         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" class="flex-none opacity-90">

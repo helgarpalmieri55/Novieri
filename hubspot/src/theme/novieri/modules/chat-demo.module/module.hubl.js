@@ -47,6 +47,18 @@
       showTyping(false);
     }
 
+    /*
+     * Long conversations move faster. The WhatsApp assistant's demo runs
+     * nineteen messages -- consent, registration, a shared pin, the menu, the
+     * order, payment -- and at the pace that suits a six-message exchange it
+     * took half a minute, which is longer than anyone watches a loop. The
+     * beats keep their proportions; the whole thing just plays quicker.
+     */
+    var pace = rows.length > 12 ? 0.68 : 1;
+    function beat(ms) {
+      return Math.round(ms * pace);
+    }
+
     function next() {
       if (i >= rows.length) {
         // Hold the finished conversation on screen, then start over.
@@ -59,16 +71,16 @@
       var row = rows[i];
       if (row.getAttribute("data-chat-row") === "bot") {
         showTyping(true);
-        at(1000, function () {
+        at(beat(1000), function () {
           showTyping(false);
           show(row, true);
           i += 1;
-          at(1100, next);
+          at(beat(1100), next);
         });
       } else {
         show(row, true);
         i += 1;
-        at(row.getAttribute("data-chat-row") === "action" ? 1200 : 900, next);
+        at(beat(row.getAttribute("data-chat-row") === "action" ? 1200 : 900), next);
       }
     }
 
