@@ -9,7 +9,9 @@ WhatsApp, el pedido, la elección entre pagar ahora o contra entrega, el
 pago y el enlace de seguimiento.
 
 Todo es un celular con WhatsApp abierto: sin titulares ni textos de
-mercadeo alrededor, para que sirva tal cual donde se publique.
+mercadeo alrededor, para que sirva tal cual donde se publique. Dura 55 segundos: cada mensaje
+dura según lo que hay que leer, así que el resumen del pedido se queda casi
+tres segundos y un "Sí, autorizo" menos de uno.
 
 | archivo | para qué sirve |
 | --- | --- |
