@@ -25,6 +25,14 @@ const url = origin + arg("url", "/productos/asistente-ia-whatsapp") + "?hsDebug=
 const out = path.resolve(arg("out", "brand/demo"));
 const name = arg("name", "chat-demo");
 const seconds = Number(arg("seconds", "18"));
+// --tone=light shoots the opposite theme to the one the page is published
+// with. The handset carries both palettes -- the one in use on style, the
+// other on data-alt-tone -- so this is a swap of custom properties, not a
+// second deploy, and the colours stay written down in exactly one place.
+const tone = arg("tone", "");
+const SWAP_TONE = `(()=>{const el=document.querySelector("[data-chat-phone]");
+  const alt=el.getAttribute("data-alt-tone"); if(!alt) return false;
+  el.setAttribute("style", alt); return true;})()`;
 const tmp = path.join(out, ".frames");
 
 // Anything pinned to the viewport lands on top of the phone: the cookie
@@ -94,6 +102,7 @@ const vp = await videoCtx.newPage();
 const t0 = Date.now();
 await vp.goto(url, { waitUntil: "load", timeout: 60000 });
 await vp.evaluate(HIDE);
+if (tone && !(await vp.evaluate(SWAP_TONE))) console.error("no alt tone on the page");
 const bg = await vp.evaluate(STAGE(SCALE));
 await vp.waitForTimeout(700);
 await vp.evaluate(RECENTRE(SCALE));
