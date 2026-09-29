@@ -54,6 +54,25 @@
     ]
   },
   {
+    "name": "tone",
+    "label": "Theme",
+    "type": "choice",
+    "required": false,
+    "locked": false,
+    "default": "dark",
+    "display": "select",
+    "choices": [
+      [
+        "dark",
+        "Dark"
+      ],
+      [
+        "light",
+        "Light"
+      ]
+    ]
+  },
+  {
     "name": "chat_name",
     "label": "Chat header name",
     "type": "text",

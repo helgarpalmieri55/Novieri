@@ -653,6 +653,7 @@ function solutionWidgets(key) {
         // The WhatsApp assistant's demo has to look like WhatsApp; every
         // other product's looks like a site widget. It follows the copy.
         channel: p.chatDemo?.channel || "web",
+        tone: p.chatDemo?.tone || "dark",
         chat_name: p.chatDemo?.header?.name || "",
         chat_status: p.chatDemo?.header?.status || "",
         badge: p.chatDemo?.badge || "",

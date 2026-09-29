@@ -1,57 +1,52 @@
 {#
-  The assistant answering a real conversation. Ported from ChatDemo.tsx: same
-  markup, same two channel skins, same playback. The palette lives in HubL
-  variables rather than a JS object so Tailwind still sees every class as a
-  literal string in this file.
+  The assistant answering a real conversation.
+
+  The palette is a set of CSS custom properties set on the handset rather than
+  colours baked into utility classes, so the same markup renders WhatsApp's
+  dark theme or its light one. Both are emitted every time: the one in use on
+  `style`, the other on `data-alt-tone`, which is how a recording can be shot
+  in the opposite theme without a second deploy and without the palette being
+  written down in two places that can drift apart.
 #}
 {% if module.channel == "web" %}
-  {% set skin = {
-    "shell": "bg-[#12101a]",
-    "bar": "border-[#2b2536] bg-[#1c1728]",
-    "name": "text-on-dark",
-    "status": "text-on-dark-faint",
-    "avatar": "bg-plum-bright text-white",
-    "guest": "bg-plum text-white",
-    "bot": "bg-[#241f31] text-on-dark",
-    "meta": "text-on-dark-faint",
-    "system": "bg-[#1c1728] text-on-dark-faint",
-    "system_label": "text-plum-bright",
-    "wave": "bg-plum-bright",
-    "fade": "from-[#12101a] via-[#12101a]/85",
-    "composer": "border-[#2b2536] bg-[#1c1728]",
-    "field": "bg-[#241f31] text-on-dark-faint",
-    "send": "bg-plum-bright text-white",
-    "link": "text-plum-bright",
-    "map": "bg-[#241f31]"
-  } %}
+  {% set tone_dark %}--wa-shell:#12101a;--wa-bar:#1c1728;--wa-line:#2b2536;--wa-name:#efeaf6;--wa-status:#b3a9c4;--wa-accent:#a78bfa;--wa-on-accent:#ffffff;--wa-guest:#5b3fa8;--wa-guest-ink:#ffffff;--wa-bot:#241f31;--wa-bot-ink:#efeaf6;--wa-meta:#b3a9c4;--wa-system:#1c1728;--wa-label:#c4b5fd;--wa-wave:#a78bfa;--wa-field:#241f31;--wa-link:#c4b5fd;--wa-map:#241f31;--wa-quote:rgba(0,0,0,.2);--wa-indicator:rgba(255,255,255,.3);--wa-action-bg:#1b1a16;--wa-action-line:rgba(190,150,60,.45);--wa-action-ink:#f0c674{% endset %}
+  {% set tone_light %}--wa-shell:#f4f1fa;--wa-bar:#ffffff;--wa-line:#e4dff0;--wa-name:#1c1728;--wa-status:#6b6280;--wa-accent:#7c3aed;--wa-on-accent:#ffffff;--wa-guest:#ede4ff;--wa-guest-ink:#1c1728;--wa-bot:#ffffff;--wa-bot-ink:#1c1728;--wa-meta:#6b6280;--wa-system:#ffffff;--wa-label:#6d28d9;--wa-wave:#7c3aed;--wa-field:#ffffff;--wa-link:#6d28d9;--wa-map:#e2ddee;--wa-quote:rgba(0,0,0,.06);--wa-indicator:rgba(0,0,0,.28);--wa-action-bg:#fdf6e3;--wa-action-line:rgba(160,120,30,.35);--wa-action-ink:#8a6d1f{% endset %}
 {% else %}
-  {# WhatsApp's own dark palette, with three greys lifted off it.
+  {# WhatsApp's own palettes. In the dark one three greys are lifted off it:
      #8696a0 is the colour WhatsApp uses for timestamps and placeholder text,
      and against these backgrounds it measures 2.61:1 on a sent bubble and
-     3.91:1 in the composer — the only AA failures anywhere on the site, and
-     they were here in both languages at both viewports. #c0c8ce keeps the
-     same cool grey and clears 4.5:1 on all three surfaces, so the mock still
-     reads as WhatsApp without reproducing WhatsApp's contrast. #}
-  {% set skin = {
-    "shell": "bg-[#0b141a]",
-    "bar": "border-[#222d34] bg-[#202c33]",
-    "name": "text-[#e9edef]",
-    "status": "text-[#c0c8ce]",
-    "avatar": "bg-[#25D366] text-[#0b141a]",
-    "guest": "bg-[#005c4b] text-[#e9edef]",
-    "bot": "bg-[#202c33] text-[#e9edef]",
-    "meta": "text-[#c0c8ce]",
-    "system": "bg-[#182229] text-[#c0c8ce]",
-    "system_label": "text-[#7ea6b8]",
-    "wave": "bg-[#a5c6bd]",
-    "fade": "from-[#0b141a] via-[#0b141a]/85",
-    "composer": "border-[#222d34] bg-[#202c33]",
-    "field": "bg-[#2a3942] text-[#c0c8ce]",
-    "send": "bg-[#25D366] text-[#0b141a]",
-    "link": "text-[#53bdeb]",
-    "map": "bg-[#2a3942]"
-  } %}
+     3.91:1 in the composer — the only AA failures anywhere on the site.
+     #c0c8ce keeps the same cool grey and clears 4.5:1 on all three surfaces,
+     so the mock still reads as WhatsApp without reproducing its contrast. #}
+  {% set tone_dark %}--wa-shell:#0b141a;--wa-bar:#202c33;--wa-line:#222d34;--wa-name:#e9edef;--wa-status:#c0c8ce;--wa-accent:#25d366;--wa-on-accent:#0b141a;--wa-guest:#005c4b;--wa-guest-ink:#e9edef;--wa-bot:#202c33;--wa-bot-ink:#e9edef;--wa-meta:#c0c8ce;--wa-system:#182229;--wa-label:#7ea6b8;--wa-wave:#a5c6bd;--wa-field:#2a3942;--wa-link:#53bdeb;--wa-map:#2a3942;--wa-quote:rgba(0,0,0,.2);--wa-indicator:rgba(255,255,255,.3);--wa-action-bg:#1b1a16;--wa-action-line:rgba(190,150,60,.45);--wa-action-ink:#f0c674{% endset %}
+  {% set tone_light %}--wa-shell:#efeae2;--wa-bar:#f6f5f3;--wa-line:#e3e0db;--wa-name:#111b21;--wa-status:#667781;--wa-accent:#00a884;--wa-on-accent:#ffffff;--wa-guest:#d9fdd3;--wa-guest-ink:#111b21;--wa-bot:#ffffff;--wa-bot-ink:#111b21;--wa-meta:#667781;--wa-system:#ffffff;--wa-label:#3b7a8c;--wa-wave:#8696a0;--wa-field:#ffffff;--wa-link:#027eb5;--wa-map:#ddd7cc;--wa-quote:rgba(0,0,0,.05);--wa-indicator:rgba(0,0,0,.28);--wa-action-bg:#fdf6e3;--wa-action-line:rgba(160,120,30,.35);--wa-action-ink:#8a6d1f{% endset %}
 {% endif %}
+
+{% if module.tone == "light" %}
+  {% set tone_now = tone_light %}{% set tone_alt = tone_dark %}
+{% else %}
+  {% set tone_now = tone_dark %}{% set tone_alt = tone_light %}
+{% endif %}
+
+{% set skin = {
+  "shell": "bg-[var(--wa-shell)]",
+  "bar": "border-[var(--wa-line)] bg-[var(--wa-bar)]",
+  "name": "text-[var(--wa-name)]",
+  "status": "text-[var(--wa-status)]",
+  "avatar": "bg-[var(--wa-accent)] text-[var(--wa-on-accent)]",
+  "guest": "bg-[var(--wa-guest)] text-[var(--wa-guest-ink)]",
+  "bot": "bg-[var(--wa-bot)] text-[var(--wa-bot-ink)]",
+  "meta": "text-[var(--wa-meta)]",
+  "system": "bg-[var(--wa-system)] text-[var(--wa-meta)]",
+  "system_label": "text-[var(--wa-label)]",
+  "wave": "bg-[var(--wa-wave)]",
+  "fade": "from-[var(--wa-shell)] via-[var(--wa-shell)]",
+  "composer": "border-[var(--wa-line)] bg-[var(--wa-bar)]",
+  "field": "bg-[var(--wa-field)] text-[var(--wa-status)]",
+  "send": "bg-[var(--wa-accent)] text-[var(--wa-on-accent)]",
+  "link": "text-[var(--wa-link)]",
+  "map": "bg-[var(--wa-map)]"
+} %}
 
 {# No conversation, no section. The module now sits in the product template
    for every product, and without this guard each of them rendered the chat
@@ -83,7 +78,7 @@
            data-chat-phone marks the device, so a recording crops to a phone
            with WhatsApp open and nothing else. The illustrative-demo notice
            rides inside the screen, so it travels with every copy of the file. #}
-        <div class="relative rounded-[2.75rem] bg-[#0b0b0e] p-[11px] shadow-[0_0_0_1.5px_#31313a,0_28px_60px_-22px_rgba(0,0,0,0.85)]" data-chat-phone>
+        <div class="relative rounded-[2.75rem] bg-[#0b0b0e] p-[11px] shadow-[0_0_0_1.5px_#31313a,0_28px_60px_-22px_rgba(0,0,0,0.85)]" data-chat-phone style="{{ tone_now }}" data-alt-tone="{{ tone_alt }}">
           <div class="relative overflow-hidden rounded-[2.1rem] {{ skin.shell }}">
 
           {# Status bar, with the island sitting over it. #}
@@ -137,7 +132,7 @@
                stays in frame for the whole clip and costs the header
                nothing. #}
             <div class="flex justify-center px-4 pt-2.5">
-              <span class="rounded-md bg-black/30 px-2.5 py-1 text-center text-micro leading-snug tracking-[0.06em] text-gold-bright">{{ module.badge }}</span>
+              <span class="rounded-md bg-[var(--wa-quote)] px-2.5 py-1 text-center text-micro leading-snug tracking-[0.06em] text-[var(--wa-label)]">{{ module.badge }}</span>
             </div>
           {% endif %}
 
@@ -162,7 +157,7 @@
                   </div>
                 {% elif entry.row_kind == "action" %}
                   <div class="my-1 flex justify-center" data-chat-row="action">
-                    <p class="flex max-w-[90%] items-center gap-2 rounded-lg border border-gold-deep/45 bg-[#1b1a16] px-3 py-1.5 text-center text-caption text-gold-bright">
+                    <p class="flex max-w-[90%] items-center gap-2 rounded-lg border border-[var(--wa-action-line)] bg-[var(--wa-action-bg)] px-3 py-1.5 text-center text-caption text-[var(--wa-action-ink)]">
                       <svg aria-hidden="true" width="12" height="12" viewBox="0 0 14 14" fill="none" class="flex-none">
                         <path d="M2 7.5l3.2 3.2L12 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
@@ -254,7 +249,7 @@
                   <div class="mb-2 max-w-[85%] px-3 pb-1.5 pt-2 text-small leading-[1.5] ml-auto rounded-2xl rounded-tr-md {{ skin.guest }}" data-chat-row="other">
                     {# Tapping a button quotes the question it answered. #}
                     {% if entry.quote %}
-                      <span class="mb-1.5 block rounded-md border-l-[3px] border-gold-bright bg-black/20 px-2.5 py-1.5 text-micro leading-snug {{ skin.meta }}">{{ entry.quote }}</span>
+                      <span class="mb-1.5 block rounded-md border-l-[3px] border-[var(--wa-label)] bg-[var(--wa-quote)] px-2.5 py-1.5 text-micro leading-snug {{ skin.meta }}">{{ entry.quote }}</span>
                     {% endif %}
                     {% if entry.row_kind == "voice" %}
                       <div class="flex items-center gap-2.5 py-0.5">
@@ -312,7 +307,7 @@
 
           {# Home indicator. #}
           <div class="flex justify-center pb-2.5 pt-1.5 {{ skin.composer }}">
-            <span aria-hidden="true" class="h-[4px] w-[124px] rounded-full bg-white/30"></span>
+            <span aria-hidden="true" class="h-[4px] w-[124px] rounded-full bg-[var(--wa-indicator)]"></span>
           </div>
 
           </div>

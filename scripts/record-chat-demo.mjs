@@ -127,6 +127,7 @@ const ctx = await browser.newContext({
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: "load", timeout: 60000 });
 await page.evaluate(HIDE);
+if (tone) await page.evaluate(SWAP_TONE);
 // Crop to the handset, not the section: the clip should be a phone with
 // WhatsApp open, with no eyebrow, heading or capability strip around it.
 // A few pixels of margin keep the device's shadow from being sliced off.
