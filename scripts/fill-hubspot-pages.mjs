@@ -1396,7 +1396,19 @@ async function api(path, options = {}) {
  * run ended green having written not one field. The Spanish half of a
  * bilingual site has a one-line fix and no way to tell it did not happen.
  */
-const target = !only || PAGES[only] ? only : slugFor(only);
+/*
+ * The English home is keyed by the empty string, and --only cannot say that:
+ * an empty value reads as "no filter" and rewrites every page on the site.
+ * So the one page most likely to need a single-field change was the one page
+ * that could only be reached by refilling all of them. `--only=home` names
+ * it. The Spanish home needs no alias -- its key is its own slug, `es`.
+ */
+const target =
+  only === "home" && PAGES[""] !== undefined
+    ? ""
+    : !only || PAGES[only]
+      ? only
+      : slugFor(only);
 const plan = Object.entries(PAGES).filter(([slug]) => !only || slug === target);
 if (only && !plan.length) {
   console.error(`--only=${only} matches no page in ${locale}. Known slugs:`);

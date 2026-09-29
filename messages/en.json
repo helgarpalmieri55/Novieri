@@ -181,10 +181,10 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "AI-first IT services",
-      "titleA": "Your outsourced technology team",
-      "titleB": "— with AI built in.",
-      "subtitle": "We run, secure and improve your company's technology while building AI solutions that eliminate repetitive work, streamline operations and help your team grow. Founder-led delivery in English and Spanish for companies across Colombia and the United States."
+      "eyebrow": "what novieri does",
+      "titleA": "We run the technology",
+      "titleB": "your business depends on.",
+      "subtitle": "Support that answers, computers and email that work, backups that get tested, security you can show a client, and AI assistants that handle WhatsApp and the repetitive work. One team instead of five vendors."
     },
     "proof": {
       "items": [
@@ -269,7 +269,7 @@
     },
     "services": {
       "eyebrow": "one operating model",
-      "title": "One team that runs, secures, automates, and builds.",
+      "title": "Five services. One team responsible.",
       "pricingLink": "See the price ranges"
     },
     "why": {

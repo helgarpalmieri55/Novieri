@@ -193,10 +193,10 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Tecnología con IA en el centro",
-      "titleA": "Tu equipo de tecnología,",
-      "titleB": "con IA integrada.",
-      "subtitle": "Administramos y protegemos la tecnología de tu empresa, automatizamos el trabajo repetitivo y construimos las herramientas que tu operación necesita. Trabajo liderado directamente por los fundadores, desde Barranquilla, para empresas en Colombia y Estados Unidos."
+      "eyebrow": "qué hace novieri",
+      "titleA": "Nos encargamos de la tecnología",
+      "titleB": "de tu empresa.",
+      "subtitle": "Soporte que contesta, equipos y correo que funcionan, copias de seguridad que sí se prueban, seguridad que le puedes demostrar a un cliente, y asistentes de IA que atienden WhatsApp y hacen el trabajo repetitivo. Un solo equipo en vez de cinco proveedores."
     },
     "proof": {
       "items": [
@@ -281,7 +281,7 @@
     },
     "services": {
       "eyebrow": "cómo ayudamos",
-      "title": "Una sola relación para operar, proteger, automatizar y construir.",
+      "title": "Cinco servicios. Un solo responsable.",
       "pricingLink": "Ver los rangos de precios"
     },
     "why": {
