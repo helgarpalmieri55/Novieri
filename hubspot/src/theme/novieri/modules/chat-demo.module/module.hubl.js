@@ -54,7 +54,7 @@
      * took half a minute, which is longer than anyone watches a loop. The
      * beats keep their proportions; the whole thing just plays quicker.
      */
-    var pace = rows.length > 12 ? 0.68 : 1;
+    var pace = rows.length > 18 ? 0.54 : rows.length > 12 ? 0.68 : 1;
     function beat(ms) {
       return Math.round(ms * pace);
     }

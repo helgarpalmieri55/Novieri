@@ -1322,8 +1322,8 @@
           "channel": "whatsapp",
           "eyebrow": "watch it work",
           "title": "A whole delivery order, start to finish.",
-          "body": "Nobody at the restaurant answers at any point. The assistant asks for data-handling consent before it stores anything, registers the customer, reads the location they share instead of asking them to type an address, builds the order and takes payment inside WhatsApp.",
-          "badge": "Illustrative demo · real product and integrations",
+          "body": "Nobody at the restaurant types a word in the entire conversation. The assistant asks for data-handling consent before it stores anything, registers the customer, refuses to talk down a competitor, reads the location it is sent, builds the order, takes payment inside WhatsApp and sends the tracking link when the driver leaves.",
+          "badge": "Illustrative demo",
           "header": {
             "name": "Pizzería El Horno",
             "status": "online · replies instantly"
@@ -1332,7 +1332,7 @@
           "foot": [
             "asks consent before storing anything",
             "reads the location the customer shares",
-            "takes payment without leaving WhatsApp"
+            "takes payment and tracks without leaving the chat"
           ],
           "entries": [
             {
@@ -1357,7 +1357,7 @@
             },
             {
               "from": "bot",
-              "text": "Thank you. To register you I need your name and your email — the email is optional. You can send both in one message.",
+              "text": "Thank you. To register you I need your first name, last name and email. You can send them all in this one message. The email is optional.",
               "t": "2:09 PM"
             },
             {
@@ -1369,15 +1369,23 @@
               "kind": "buttons",
               "text": "You're registered, Camila. What do you need today?",
               "buttons": [
-                "Place an order",
-                "See the menu"
+                "See options"
               ],
               "t": "2:09 PM"
             },
             {
               "from": "guest",
-              "quote": "What do you need today?",
-              "text": "Place an order",
+              "text": "Is this place better than the one down the street?",
+              "t": "2:09 PM"
+            },
+            {
+              "from": "bot",
+              "text": "I can't compare or give an opinion on other restaurants, but I'm happy to tell you anything about what we serve here at Pizzería El Horno. How can I help?",
+              "t": "2:10 PM"
+            },
+            {
+              "from": "guest",
+              "text": "I'd like to place an order",
               "t": "2:10 PM"
             },
             {
@@ -1385,7 +1393,8 @@
               "text": "Where should we take it?",
               "buttons": [
                 "Type it",
-                "Share location"
+                "Share location",
+                "Back to menu"
               ],
               "t": "2:10 PM"
             },
@@ -1393,6 +1402,11 @@
               "from": "guest",
               "quote": "Where should we take it?",
               "text": "Share location",
+              "t": "2:10 PM"
+            },
+            {
+              "from": "bot",
+              "text": "Send me your location from the WhatsApp clip (Location), or type the address if you prefer.",
               "t": "2:10 PM"
             },
             {
@@ -1418,13 +1432,13 @@
             },
             {
               "kind": "flow",
-              "text": "Build your order on the menu and I'll confirm it here when you send it. The menu opens inside WhatsApp.",
+              "text": "Build your order on the menu and I'll confirm it here when you send it.\nTaking it to: Cra. 61b # 72-47, La Concepción.\nDelivery: COP 8,000, arriving in about 45 minutes.",
               "label": "See the menu",
               "t": "2:10 PM"
             },
             {
               "kind": "buttons",
-              "text": "Here's your order:\n• 1 × Half eggplant / half pepperoni (X-LARGE): COP 98,400\n   + Cheese crust: COP 28,700\n• Delivery: COP 8,000\nTotal: **COP 135,100**\nShall I confirm it?",
+              "text": "Here's your order:\n• 1 x Half eggplant / half American pepperoni (X-LARGE): COP 98,400\n   + Crust: Cheese — COP 28,700\n• Delivery: COP 8,000\nTotal: **COP 135,100**\nShall I confirm it?",
               "buttons": [
                 "Confirm",
                 "Change something"
@@ -1442,7 +1456,8 @@
               "text": "How would you like to pay?",
               "buttons": [
                 "Pay now",
-                "Cash on delivery"
+                "Cash on delivery",
+                "Change something"
               ],
               "t": "2:11 PM"
             },
@@ -1454,14 +1469,29 @@
             },
             {
               "kind": "flow",
-              "text": "Your order **D28115F5** is placed. Total **COP 135,100**, delivery included. Arriving in about 45 minutes at Cra. 61b # 72-47.",
-              "label": "Pay COP 135,100",
+              "text": "Your order **D28115F5** is placed.\n• Total: COP 135,100 (delivery COP 8,000 included)\n• Arriving in about 45 minutes at Cra. 61b # 72-47, La Concepción\nPayment is still pending: tap the button and we'll confirm here as soon as it lands.",
+              "label": "Pay now",
               "t": "2:11 PM"
             },
             {
-              "kind": "action",
-              "text": "payment approved · order D28115F5 sent to the kitchen",
+              "kind": "buttons",
+              "text": "We received your payment. Order **D28115F5** is confirmed and we're making it now.",
+              "buttons": [
+                "Track my order",
+                "Back to menu"
+              ],
               "t": "2:12 PM"
+            },
+            {
+              "from": "guest",
+              "quote": "We received your payment. Order D28115F5 is confirmed and we're making it now.",
+              "text": "Track my order",
+              "t": "2:12 PM"
+            },
+            {
+              "from": "bot",
+              "text": "Your Pizzería El Horno order is on its way! You can see where it is here:\nhttps://elhorno.novieritracking.co/s/5ePfeAv",
+              "t": "2:13 PM"
             }
           ]
         }

@@ -76,7 +76,12 @@
     <div class="reveal" style="--rd: 120ms">
       <div class="relative mx-auto w-full max-w-[440px]" data-chat-demo>
         <div aria-hidden="true" class="absolute -inset-px rounded-[17px] bg-gradient-to-br from-teal-bright via-plum-bright to-gold-bright"></div>
-        <div class="relative overflow-hidden rounded-2xl {{ skin.shell }}">
+        {# data-chat-phone marks the handset itself: header, conversation and
+           composer, and nothing around it. Recordings crop to this, so a clip
+           of the demo is a phone with WhatsApp open rather than a slice of a
+           marketing page. The illustrative-demo notice rides in the header
+           bar, inside the crop, so it travels with every copy of the file. #}
+        <div class="relative overflow-hidden rounded-2xl {{ skin.shell }}" data-chat-phone>
 
           {# Chat header #}
           <div class="flex items-center gap-3 border-b px-4 py-3 {{ skin.bar }}">
