@@ -175,10 +175,13 @@
                      customer never types an address — so the address has to
                      arrive looking like something they tapped, not typed. #}
                   <div class="mb-2 ml-auto max-w-[85%] flex-none overflow-hidden rounded-2xl rounded-tr-md {{ skin.guest }}" data-chat-row="other">
-                    <div class="relative h-[86px] w-[208px] {{ skin.map }}">
-                      <svg aria-hidden="true" viewBox="0 0 208 86" class="absolute inset-0 h-full w-full" fill="none">
-                        <path d="M-6 60H214M-6 24H214M46 -6V92M148 -6V92" stroke="currentColor" stroke-width="7" stroke-linecap="round" class="opacity-[0.16]" />
-                        <path d="M-6 42H214M102 -6V92" stroke="currentColor" stroke-width="3" class="opacity-[0.10]" />
+                    {# Full width of the bubble, whose width the address sets.
+                       At a fixed 208px the map stopped short of the address
+                       under it and left a strip of bubble showing beside it. #}
+                    <div class="relative h-[104px] w-full {{ skin.map }}">
+                      <svg aria-hidden="true" viewBox="0 0 280 104" preserveAspectRatio="none" class="absolute inset-0 h-full w-full" fill="none">
+                        <path d="M-6 72H286M-6 28H286M62 -6V110M200 -6V110" stroke="currentColor" stroke-width="8" stroke-linecap="round" class="opacity-[0.16]" />
+                        <path d="M-6 50H286M131 -6V110" stroke="currentColor" stroke-width="3.5" class="opacity-[0.10]" />
                       </svg>
                       <span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[60%]">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
