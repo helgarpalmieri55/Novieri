@@ -39,30 +39,84 @@ const HIDE = `(()=>{document.querySelectorAll("body *").forEach(el=>{
 rmSync(tmp, { recursive: true, force: true });
 mkdirSync(tmp, { recursive: true });
 
+const hex = (rgb) => {
+  const m = /(\d+)\D+(\d+)\D+(\d+)/.exec(rgb || "") || [0, 12, 10, 16];
+  return "0x" + [m[1], m[2], m[3]].map((n) => Number(n).toString(16).padStart(2, "0")).join("");
+};
+
 const browser = await pw.chromium.launch({
   executablePath: process.env.CHROMIUM_PATH || undefined,
   args: ["--ssl-version-max=tls1.2"],
 });
 const common = { locale: "es-CO", timezoneId: "America/Bogota" };
 
-// The section in context, with its heading.
+// The handset alone, centred on a clean backdrop, recorded in real time.
+//
+// Scaling it where it sits does not work: the demo lives in the right-hand
+// column of a two-column section, so scaling about its own centre pushes it
+// off the side of the viewport and the crop fills with page copy. Moving the
+// live element onto a fixed stage keeps its timers, its observer and its
+// scrolling intact while putting it in the middle of a plain background.
+const STAGE = (scale) => `(()=>{
+  const d=document.querySelector("[data-chat-demo]");
+  const bg=getComputedStyle(d.closest("section")).backgroundColor;
+  const stage=document.createElement("div");
+  stage.style.cssText="position:fixed;inset:0;z-index:2147483647;background:"+bg
+    +";display:flex;align-items:center;justify-content:center;overflow:hidden";
+  document.body.appendChild(stage); stage.appendChild(d);
+  Array.prototype.forEach.call(d.children, function(c){
+    if(!c.hasAttribute("data-chat-phone")) c.style.display="none"; });
+  d.style.transformOrigin="center center"; d.style.transform="scale(${scale})";
+  return bg;})()`;
+// The capability strip is hidden but still inside the wrapper, so centring the
+// wrapper leaves the phone sitting high. Centre the phone itself.
+const RECENTRE = (scale) => `(()=>{
+  const d=document.querySelector("[data-chat-demo]");
+  const b=document.querySelector("[data-chat-phone]").getBoundingClientRect();
+  const dy=Math.round(innerHeight/2-(b.y+b.height/2));
+  const dx=Math.round(innerWidth/2-(b.x+b.width/2));
+  d.style.transform="translate("+dx+"px,"+dy+"px) scale(${scale})";})()`;
+const PHONE_BOX = `(()=>{const b=document.querySelector("[data-chat-phone]").getBoundingClientRect();
+  return {x:Math.round(b.x),y:Math.round(b.y),w:Math.round(b.width),h:Math.round(b.height)};})()`;
+
+const VW = 1120;
+const VH = 1700;
+const SCALE = 2.05;
 const videoCtx = await browser.newContext({
   ...common,
-  viewport: { width: 1100, height: 760 },
-  recordVideo: { dir: tmp, size: { width: 1100, height: 760 } },
+  viewport: { width: VW, height: VH },
+  recordVideo: { dir: tmp, size: { width: VW, height: VH } },
 });
 const vp = await videoCtx.newPage();
+// Recording starts with the page, so the first couple of seconds are the
+// marketing page loading, cookie banner and all. Time the setup and trim it
+// off the front: the clip has to open on the phone.
+const t0 = Date.now();
 await vp.goto(url, { waitUntil: "load", timeout: 60000 });
 await vp.evaluate(HIDE);
-const sectionTop = await vp.evaluate(
-  `Math.round(document.querySelector("[data-chat-phone]").getBoundingClientRect().top+scrollY)`,
-);
-await vp.evaluate(`window.scrollTo({top:${sectionTop - 60},behavior:"instant"})`);
+const bg = await vp.evaluate(STAGE(SCALE));
+await vp.waitForTimeout(700);
+await vp.evaluate(RECENTRE(SCALE));
+await vp.waitForTimeout(700);
+const box = await vp.evaluate(PHONE_BOX);
+// Wait until the restarted conversation is back at its first message, so the
+// trim lands on a clean opening frame rather than mid-cycle.
+await vp
+  .waitForFunction(
+    `Array.from(document.querySelectorAll("[data-chat-row]")).filter(r=>r.style.display!=="none").length <= 1`,
+    null,
+    { timeout: 40000 },
+  )
+  .catch(() => {});
+const trim = (Date.now() - t0) / 1000 + 0.35;
 await vp.waitForTimeout(seconds * 1000 + 1000);
 await videoCtx.close();
+let webm = "";
 for (const f of readdirSync(tmp).filter((f) => f.endsWith(".webm"))) {
-  renameSync(path.join(tmp, f), path.join(out, `${name}.webm`));
+  webm = path.join(out, `${name}.webm`);
+  renameSync(path.join(tmp, f), webm);
 }
+console.log(`handset ${box.w}x${box.h} on ${bg}`);
 
 // The phone alone, frame by frame, for the GIF.
 const ctx = await browser.newContext({
@@ -121,4 +175,45 @@ if (gif.status !== 0) {
   console.error(gif.stderr || "GIF step failed; frames kept at " + tmp);
 } else {
   rmSync(tmp, { recursive: true, force: true });
+}
+
+// Instagram wants H.264 in MP4 with square pixels and an audio track, so the
+// webm gets cropped to the handset, letterboxed onto the two shapes Instagram
+// actually uses, and given a silent stereo track. ffmpeg comes from the
+// imageio-ffmpeg wheel (pip install imageio-ffmpeg) rather than the system,
+// which has none.
+if (webm) {
+  const MARGIN = 40;
+  const crop = [
+    Math.max(2, Math.round(box.w + MARGIN * 2)),
+    Math.max(2, Math.round(box.h + MARGIN * 2)),
+    Math.max(0, Math.round(box.x - MARGIN)),
+    Math.max(0, Math.round(box.y - MARGIN)),
+  ].join(":");
+  const shapes = [
+    { label: "reel", W: 1080, H: 1920, inner: 1800 },
+    { label: "feed", W: 1080, H: 1350, inner: 1250 },
+  ];
+  const ff = spawnSync("python3", ["-c", "import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())"], {
+    encoding: "utf8",
+  });
+  const exe = (ff.stdout || "").trim();
+  if (!exe) {
+    console.error("no ffmpeg; skipping MP4 (pip install imageio-ffmpeg)");
+  } else {
+    for (const s2 of shapes) {
+      const w = Math.round(((box.w + MARGIN * 2) / (box.h + MARGIN * 2)) * s2.inner / 2) * 2;
+      const file = path.join(out, `${name}-${s2.label}-${s2.W}x${s2.H}.mp4`);
+      const r = spawnSync(exe, [
+        "-hide_banner", "-loglevel", "error", "-y", "-ss", trim.toFixed(2), "-i", webm,
+        "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
+        "-vf", `crop=${crop},scale=${w}:${s2.inner}:flags=lanczos,setsar=1,` +
+               `pad=${s2.W}:${s2.H}:(ow-iw)/2:(oh-ih)/2:color=${hex(bg)},format=yuv420p`,
+        "-c:v", "libx264", "-profile:v", "high", "-level", "4.0", "-crf", "19", "-preset", "slow",
+        "-r", "30", "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart",
+        file,
+      ], { encoding: "utf8" });
+      console.log(r.status === 0 ? `${s2.label} ${s2.W}x${s2.H}` : `${s2.label} failed: ${r.stderr}`);
+    }
+  }
 }
