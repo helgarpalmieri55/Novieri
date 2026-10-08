@@ -73,7 +73,7 @@ const prices = (m, label) =>
     )
     .join("\n");
 
-const meetingsUrl = "https://meetings.hubspot.com/helgar-palmieri";
+const meetingsUrl = "https://novieri.com/meetings/sylvana9";
 const how = Object.values(es.home.how.steps).map((s, i) => `${i + 1}. ${s.title}: ${s.body}`);
 
 const text = [

@@ -16,7 +16,7 @@ export const site = {
   // HubSpot Meetings. Booking here keeps the meeting on the contact's
   // timeline. While empty, the contact page shows its email fallback.
   meetingsLink:
-    process.env.NEXT_PUBLIC_MEETINGS_LINK ?? "https://meetings.hubspot.com/helgar-palmieri",
+    process.env.NEXT_PUBLIC_MEETINGS_LINK ?? "https://novieri.com/meetings/sylvana9",
 
   // The website assistant's name — used by the widget and by the system
   // prompt in api/chat.php, which must be kept in step with it.

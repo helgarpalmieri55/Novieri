@@ -37,7 +37,7 @@ import { readFileSync } from "node:fs";
  * the diagnostic and "tell us about your case" go to the form, because for
  * those the form is the thing being asked for.
  */
-const BOOK_HREF = "https://meetings.hubspot.com/helgar-palmieri";
+const BOOK_HREF = "https://novieri.com/meetings/sylvana9";
 
 
 const TOKEN = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
@@ -1377,7 +1377,7 @@ const PAGES = {
         title: t.contact.booking.title,
         intro: t.contact.booking.body,
         button_text: t.contact.booking.button,
-        meetings_url: "https://meetings.hubspot.com/helgar-palmieri",
+        meetings_url: BOOK_HREF,
         fallback: t.contact.booking.fallback.replace("{email}", VARS.email),
       },
     },

@@ -23,7 +23,7 @@
     "name": "meetings_url",
     "label": "Meetings link",
     "type": "text",
-    "default": "https://meetings.hubspot.com/helgar-palmieri",
+    "default": "https://novieri.com/meetings/sylvana9",
     "help_text": "Your HubSpot meetings link. Leave empty to show the fallback text instead."
   },
   {

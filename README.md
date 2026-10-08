@@ -34,7 +34,7 @@ verify every sitemap URL resolves to a file.
 | FTPS secrets (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, optional `FTP_SERVER_DIR` variable) | GitHub repo → Settings → Secrets and variables → Actions |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | env or `src/config/site.ts` (default sales@novieri.com) |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` (+57…, digits only) | env — WhatsApp button hidden until set |
-| ~~`NEXT_PUBLIC_MEETINGS_LINK`~~ | **done** — `https://meetings.hubspot.com/helgar-palmieri` is the default in `src/config/site.ts`; the env var only overrides it |
+| ~~`NEXT_PUBLIC_MEETINGS_LINK`~~ | **done** — `https://novieri.com/meetings/sylvana9` is the default in `src/config/site.ts`; the env var only overrides it |
 | reCAPTCHA keys | `RECAPTCHA_SITE_KEY` as a **repo variable** (Settings → Secrets and variables → Actions → Variables) and `recaptcha_secret` in `api/config.php`. Until both exist the forms work with no captcha. See **Form protection** below. |
 | Founder photos | drop `helgar.jpg` and `sylvana.jpg` into `public/team/`. The About page swaps the initials for the portrait automatically when the file is there (checked at build time). Square, 400×400 or larger, face near the top — the cards crop with `object-top`. |
 | `NEXT_PUBLIC_LINKEDIN_URL` | env — footer icon hidden until set |
